@@ -1,0 +1,335 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">Thêm mới dịch vụ khám</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="{% url 'danh_sach_dich_vu_kham' %}" class="text-muted">Danh Sách Dịch Vụ Khám</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="javascript:;" class="text-muted">Thêm Mới Excel</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+           
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!--begin::Card-->
+            
+    
+                {% comment %} <div class="card-body">
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label text-lg-right">Chọn File Excel: </label>
+                        <div class="col-lg-9">
+                            <input type="file" id="fileUploader" name="fileUploader" accept=".xls, .xlsx">
+                            
+                            <button id="getData" class="btn btn-light-primary">Tải lên</button>
+                          
+                        </div>
+                    </div>
+                </div> {% endcomment %}
+        
+            <!--end::Card-->
+
+            <!--begin::Card-->
+            <div class="card card-custom">
+                <div class="card-header flex-wrap border-0 pt-6 pb-0">
+                    <div class="card-title form-group row">
+                        {% comment %} <h3 class="card-label">HTML Table 
+                        <span class="d-block text-muted pt-2 font-size-sm">Datatable initialized from HTML table</span></h3> {% endcomment %}
+                        {% comment %} <form action="{% url "import_dich_vu_ky_thuat" %}" method="post" enctype="multipart/form-data"> {% endcomment %}
+                            
+                            {% comment %} <label class="col-lg-3 col-form-label text-lg-right">Chọn File Excel: </label> {% endcomment %}
+                            <div class="col-lg-9">
+                                <input type="file"
+                                    id="excel_file_to_upload"
+                                    title="Upload excel file"
+                                    name="excel_file"
+                                    style="border: 1px solid black; padding: 5px;"
+                                    required="required",
+                                    accept=".xls, .xlsx">
+                            </div>
+                            <div class="col-lg-3">
+                                <input type="submit" id='previewBtn'
+                                    value="Upload"
+                                    style="cursor: pointer;">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-toolbar">
+                        <!--begin::Dropdown-->
+                        
+                        <!--begin::Button-->
+                        <a href="javascript:;" id="confirmImport" class="btn btn-primary font-weight-bolder">
+                        <span class="svg-icon svg-icon-md">
+                            <!--begin::Svg Icon | path:/metronic/theme/html/demo1/dist/assets/media/svg/icons/Design/Flatten.svg-->
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24" />
+                                    <circle fill="#000000" cx="9" cy="15" r="6" />
+                                    <path d="M8.8012943,7.00241953 C9.83837775,5.20768121 11.7781543,4 14,4 C17.3137085,4 20,6.6862915 20,10 C20,12.2218457 18.7923188,14.1616223 16.9975805,15.1987057 C16.9991904,15.1326658 17,15.0664274 17,15 C17,10.581722 13.418278,7 9,7 C8.93357256,7 8.86733422,7.00080962 8.8012943,7.00241953 Z" fill="#000000" opacity="0.3" />
+                                </g>
+                            </svg>
+                            <!--end::Svg Icon-->
+                        </span>Xác Nhận</a>
+                        <!--end::Button-->
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!--begin: Search Form-->
+                    <!--begin::Search Form-->
+                    <div class="mb-7">
+                        <div class="row align-items-center">
+                            <div class="col-lg-9 col-xl-8">
+                                <div class="row align-items-center">
+                                    <div class="col-md-4 my-2 my-md-0">
+                                        <div class="input-icon">
+                                            <input type="text" class="form-control" placeholder="Search..." id="kt_datatable_search_query" />
+                                            <span>
+                                                <i class="flaticon2-search-1 text-muted"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                
+                                </div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                    <!--end::Search Form-->
+                    <!--end: Search Form-->
+                    <!--begin: Datatable-->
+                    <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable"></div>
+                    <!--end: Datatable-->
+                </div>
+            </div>
+            <!--end::Card-->
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+<!--end::Content-->
+
+{% endblock content %}
+
+{% block scripts %}
+<!--begin::Global Theme Bundle(used by all pages)-->
+
+
+<!--end::Global Theme Bundle-->
+
+<script>
+    
+$(document).ajaxStart(function() {
+    KTApp.blockPage({
+        overlayColor: '#000000',
+        state: 'primary',
+        message: 'Processing...'
+    });
+})
+
+$(document).ajaxStop(function() {
+    KTApp.unblockPage();
+})
+
+var KTDatatableHtmlTableDemo = function() {
+    // Private functions
+
+    // demo initializer
+    var demo = function(dataJSONArray) {
+        
+		var datatable = $('#kt_datatable').KTDatatable({
+            // datasource definition
+            data: {
+                type: 'local',
+                source: dataJSONArray,
+                pageSize: 10,
+            },
+
+            // layout definition
+            layout: {
+                scroll: false, // enable/disable datatable scroll both horizontal and vertical when needed.
+                // height: 450, // datatable's body's fixed height
+                footer: false, // display/hide footer
+            },
+
+            // column sorting
+            sortable: true,
+
+            pagination: true,
+
+            search: {
+                input: $('#kt_datatable_search_query'),
+                key: 'generalSearch'
+            },
+
+            // columns definition
+            columns: [{
+                field: 'STT',
+                title: 'STT',
+                sortable: false,
+                width: 20,
+                type: 'number',
+                
+                textAlign: 'center',
+            }, {
+                field: 'MA_DVKT',
+                title: 'MÃ DVKT',
+            }, {
+                field: 'TEN_DVKT',
+                title: 'TÊN DVKT',
+                
+            }, {
+                field: 'DON_GIA_BHYT',
+                title: 'ĐƠN GIÁ BHYT',
+                
+            }, {
+                field: 'DON_GIA',
+                title: 'ĐƠN GIÁ',
+            }, {
+                field: 'MA_GIA',
+                title: 'MÃ GIÁ',
+                template: function(row){
+                    if (row.MA_GIA == "None") {
+                        return '-'
+                    } else {
+                        return row.MA_GIA
+                    }
+                } 
+            }, {
+                field: 'QUYET_DINH',
+                title: 'QUYẾT ĐỊNH',
+            }, {
+                field: 'CONG_BO',
+                title: 'CÔNG BỐ',
+            }, {
+                field: 'MA_COSOKCB',
+                title: 'MÃ CSKCB',
+                template: function(row){
+                    if (row.MA_COSOKCB == "None") {
+                        return '-'
+                    } else {
+                        return row.MA_COSOKCB
+                    }
+                } 
+            }, {
+                field: 'PHONG_CHUC_NANG',
+                title: 'PHÒNG CHỨC NĂNG',
+            }, ],
+        });
+
+        $('#kt_datatable_search_status').on('change', function() {
+            datatable.search($(this).val().toLowerCase(), 'Status');
+        });
+
+        $('#kt_datatable_search_type').on('change', function() {
+            datatable.search($(this).val().toLowerCase(), 'Type');
+        });
+
+    };
+
+    var previewExcelFile = function() {
+        $("#previewBtn").on('click', function() {
+            var excel_file = $("#excel_file_to_upload")[0].files[0]
+            var formData = new FormData()
+
+            formData.append("excel_file", excel_file)
+            formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
+
+            var thead_tr = ''
+            var tbody_tr = ''
+            var tbody = ''
+
+            $.ajax({
+                type: "POST",
+                url: "{% url 'import_dich_vu_ky_thuat' %}",
+                data: formData,
+                cache: false,
+                processData: false,
+                contentType: false,
+                success: function(response){
+                    demo(response.data)
+                },
+                error: function(response){
+                    toastr.warning("Không gửi được dữ liệu, vui lòng kiểm tra lại", "Lỗi")
+                    console.log("error")
+                }
+            })
+        })
+    }
+
+    var storeDichVu = function() {
+        $("#confirmImport").on('click', function() {
+            var excel_file = $("#excel_file_to_upload")[0].files[0]
+            var formData = new FormData()
+
+            formData.append("excel_file", excel_file)
+            formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
+
+            $.ajax({
+                type: "POST",
+                url: "{% url 'store_dich_vu_excel' %}",
+                data: formData,
+                cache: false,
+                processData: false,
+                contentType: false,
+                success: function(response){
+                    if (response.status == 200){
+                        toastr.success(response.message, "Thành Công")
+                        setTimeout(function () {
+                            window.location.href = response.url; //redirect về danh sách dịch vụ khám
+                        }, 1500);
+                    } else if (response.status == 404) {
+                        toastr.warning(response.message, "Thất Bại")
+                    }
+                },
+                error: function(response){
+                    toastr.warning("Không gửi được dữ liệu, vui lòng kiểm tra lại", "Lỗi")
+                    console.log("error")
+                }
+            })
+        })
+    }
+
+    return {
+        // Public functions
+        init: function() {
+            // init dmeo
+            previewExcelFile();
+            storeDichVu();
+        },
+    };
+}();
+
+jQuery(document).ready(function() {
+	KTDatatableHtmlTableDemo.init();
+});
+</script>
+
+
+{% endblock scripts %}

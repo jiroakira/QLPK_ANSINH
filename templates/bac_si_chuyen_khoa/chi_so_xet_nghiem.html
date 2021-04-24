@@ -1,0 +1,308 @@
+{% extends 'base.html' %}
+{% load static %}
+ 
+ 
+{% block content %}
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">Tải Lên Kết Quả Khám</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="#" class="text-muted">Bác sĩ chuyên khoa</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="#" class="text-muted">Bệnh nhân {{chuoi_kham.benh_nhan.ho_ten}}</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="#" class="text-muted">Tải lên kết quả khám</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+ 
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--begin::Card-->
+                    <div class="card card-custom">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <h3 class="card-label">Dịch Vụ Kĩ Thuật: {{ dich_vu.ten_dvkt }}</h3>
+                            </div>
+                            
+                        </div>
+                        <!--begin::Form-->
+                        <form id="upload-form">
+                            <div class="card-body">
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label text-lg-right">Tên bệnh nhân:</label>
+                                    <div class="col-lg-7">
+                                        <input class="form-control" placeholder="" name="" value="{{ benh_nhan.ho_ten }}" disabled />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label text-lg-right">Tuổi:</label>
+                                    <div class="col-lg-7">
+                                        <input class="form-control" placeholder="" name="" value="{{ benh_nhan.tuoi }}" disabled />  
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label text-lg-right">Giới tính:</label>
+                                    <div class="col-lg-7">
+                                        <input class="form-control" placeholder="" name="" value="{% if benh_nhan.gioi_tinh == '1' %} Nam {% elif benh_nhan.gioi_tinh == '2' %} Nữ {% else %} Không Xác Định {% endif %}" disabled />  
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label text-lg-right">Cân nặng:</label>
+                                    <div class="col-lg-7">
+                                        <input class="form-control" placeholder="" name="" value="{{ benh_nhan.can_nang }}" disabled />  
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label text-lg-right">Địa chỉ:</label>
+                                    <div class="col-lg-7">
+                                        <input class="form-control" placeholder="" name="" value="{{ benh_nhan.dia_chi }}" disabled />  
+                                    </div>
+                                </div>
+
+                                <div id="result">
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label text-lg-right">Mã kết quả:</label>
+                                        <div class="col-lg-7">
+                                            <input type="text" id="ma_ket_qua" class="form-control" placeholder="Nhập mã kết quả" name="ma_ket_qua" value="{{ma_ket_qua}}" disabled />
+                                            <span class="form-text text-muted">Mã kết quả có dạng : <code>"Mã PCN" - "Tên Bệnh Nhân" - Thời gian khám</code></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label text-lg-right">Mô tả:</label>
+                                        <div class="col-lg-7">
+                                            <input type="text" id="mo_ta" class="form-control" placeholder="Nhập mô tả bệnh" name="mo_ta" />       
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label text-lg-right">Kết quả:</label>
+                                        <div class="col-lg-7">
+                                            <textarea class="form-control" id="ket_qua" rows="3" placeholder="Nhập kết quả của bệnh nhân" name='ket_qua'></textarea> 
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class='data_field_section'>
+                                    {% for chi_so in chi_so_xet_nghiem %}
+                                    <div class="data_field form-group row">
+                                        <label class="col-lg-3 col-form-label text-lg-right">{{ chi_so.ten_chi_so }}:</label>
+                                        {% if chi_so.chi_tiet.chi_so_binh_thuong_min  !=  chi_so.chi_tiet.chi_so_binh_thuong_max %}
+                                        <div class="col-lg-5">
+                                            <input type="number" step="0.001" class="evaluate_field form-control" id="{{ chi_so.ma_chi_so }}" data-id="{{ chi_so.id }}" data-name="danh_gia_{{chi_so.ma_chi_so}}" data-ma-chi-so={{ chi_so.ma_chi_so }} data-chi-so-min={{ chi_so.chi_tiet.chi_so_binh_thuong_min }} data-chi-so-max={{ chi_so.chi_tiet.chi_so_binh_thuong_max }} placeholder="Nhập chỉ số" name={{ chi_so.ma_chi_so }}></input> 
+                                            <span class="form-text text-muted">Chỉ số : <code>{{ chi_so.chi_tiet.chi_so_binh_thuong_min }} - {{ chi_so.chi_tiet.chi_so_binh_thuong_max }}</code></span>
+                                            <span class="form-text text-muted">Đơn vị đo : <code> {% if chi_so.chi_tiet.don_vi_do is not None %}{{ chi_so.chi_tiet.don_vi_do }}{% else %}Không có{% endif %}</code></span>
+                                            <span class="form-text text-muted">Quy định nhập : <code>Phần này chỉ được nhập số</code></span>
+                                        </div>
+                                        {% else %}
+                                        <div class="col-lg-5">
+                                            <input type="text" class="evaluate_field form-control" id="{{ chi_so.ma_chi_so }}" data-id="{{ chi_so.id }}" data-name="danh_gia_{{chi_so.ma_chi_so}}" data-ma-chi-so={{ chi_so.ma_chi_so }} data-chi-so-min={{ chi_so.chi_tiet.chi_so_binh_thuong_min }} data-chi-so-max={{ chi_so.chi_tiet.chi_so_binh_thuong_max }} placeholder="Nhập chỉ số" name={{ chi_so.ma_chi_so }}></input> 
+                                            <span class="form-text text-muted">Chỉ số : <code>{{ chi_so.chi_tiet.chi_so_binh_thuong_min }} - {{ chi_so.chi_tiet.chi_so_binh_thuong_max }}</code></span>
+                                            <span class="form-text text-muted">Đơn vị đo : <code> {% if chi_so.chi_tiet.don_vi_do is not None %}{{ chi_so.chi_tiet.don_vi_do }}{% else %}Không có{% endif %}</code></span>
+                                            <span class="form-text text-muted">Quy định nhập : <code>Phần này chỉ được nhập chuỗi kí tự</code></span>
+                                        </div>
+                                        {% endif %}
+                                        <div class="col-lg-2">
+                                            <input class="judment_field form-control" placeholder="" name='danh_gia_{{chi_so.ma_chi_so}}' disabled></input> 
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-lg-3"></div>
+                                    <div class="col-lg-9">
+                                        <button type="button" id="upload" data-id-phan-khoa="{{id_phan_khoa}}" data-id-chuoi-kham="{{id_chuoi_kham}}" data-id-phong-chuc-nang="{{id_phong_chuc_nang}}" class="dropzone-upload btn btn-primary mr-2">Lưu</button>
+                                        <button type="reset" class="btn btn-light-primary">Hủy</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!--end::Form-->
+                    </div>
+                    <!--end::Card-->
+                </div>
+ 
+            </div>
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+<!-- end::Content -->
+ 
+{% endblock content %}
+ 
+{% block scripts %}
+ 
+<!--begin::Global Theme Bundle(used by all pages)-->
+
+<!--end::Global Theme Bundle-->
+ 
+<script>
+ 
+"use strict";
+// Class definition
+ 
+var KTDropzoneDemo = function () {
+ 
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    var csrftoken = getCookie('csrftoken');
+ 
+    function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        }
+    });
+    // Private functions
+   
+    var evaluate = function() {
+        $('.data_field_section').on('keyup', '.data_field', function(e) {
+            if (e.keyCode == 13) {
+                e.preventDefault();
+                $(this).next().find('input[type=number], input[type=text]').focus();
+                var evaluate_value = $(this).find('.evaluate_field').val()
+                var evaluate_value_min = $(this).find('.evaluate_field').data('chi-so-min')
+                var evaluate_value_max = $(this).find('.evaluate_field').data('chi-so-max')
+
+                
+                if (!isNaN(evaluate_value)) {
+                    if (parseFloat(evaluate_value) >= parseFloat(evaluate_value_min) && parseFloat(evaluate_value) <= parseFloat(evaluate_value_max)){
+                        $(this).find('.judment_field').css('color', 'green')
+                        $(this).find('.judment_field').val("Bình Thường")
+                        $(this).find('.evaluate_field').attr('data-danh-gia', '1')
+                    } else {
+                        $(this).find('.judment_field').css('color', 'red')
+                        $(this).find('.judment_field').val("Bất Thường")
+                        $(this).find('.evaluate_field').attr('data-danh-gia', '0')
+                    }
+                } else {
+                    $(this).find('.judment_field').css('color', 'green')
+                    $(this).find('.judment_field').val("Bình Thường")
+                    $(this).find('.evaluate_field').attr('data-danh-gia', '1')
+                }
+                
+            }
+        });
+    }
+
+    var gather_data_and_submit = function () {
+        $(document).on('click', '#upload', function() {
+            var id_chuoi_kham = $(this).attr('data-id-chuoi-kham')
+            var id_phan_khoa = $(this).attr('data-id-phan-khoa')
+            var formData = new FormData()
+            var chi_so = []
+
+            $('#result').find('input[type=number], input[type=text]').each(function() {
+                console.log($(this).attr("name"), $(this).val())
+                formData.append($(this).attr("name"), $(this).val())
+            })
+
+            $('#result').find('textarea').each(function() {
+                formData.append($(this).attr("name"), $(this).val())
+            })
+
+            $('.data_field_section').find('input[type=text], input[type=number]').each(function() {
+                chi_so.push({
+                    key: $(this).attr("name"),
+                    value: $(this).val(),
+                    key2: $(this).attr("data-name"),
+                    value2: $(this).attr("data-danh-gia"),
+                    key3: $(this).data('id')
+                })
+            })
+
+            formData.append('data', JSON.stringify(chi_so))
+            formData.append('id_chuoi_kham', id_chuoi_kham)
+            formData.append('id_phan_khoa', id_phan_khoa)
+            formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
+
+            console.log(chi_so)
+
+            $.ajax({
+                type: "POST",
+                url: "{% url 'store_ket_qua_xet_nghiem' %}", 
+                data: formData,
+                cache: false,
+                processData: false,
+                contentType: false,
+                success: function(response){
+                    if (response.status == 200) {
+                        var id_phong_chuc_nang = $("#upload-form").find("#upload").data('id-phong-chuc-nang')
+                        toastr.success(response.message, "Thành Công")
+                        setTimeout(function () {
+                            window.location.href = '/phong_chuyen_khoa/' + id_phong_chuc_nang; //redirect về danh sách chờ lâm sàng
+                        }, 1500)
+                    } else if (response.status == 404) {
+                        toastr.warning(response.message, "Thất Bại")
+                    }
+                },
+                error: function(response){
+                    toastr.warning("Xảy ra lỗi khi gửi dữ liệu, vui lòng kiểm tra lại", "Thất Bại")
+                }
+            })
+            
+        })
+    }
+ 
+    return {
+        // public functions
+        init: function() {
+           evaluate();
+           gather_data_and_submit();
+        }
+    };
+}();
+ 
+KTUtil.ready(function() {
+    KTDropzoneDemo.init();
+});
+ 
+ 
+</script>
+ 
+{% endblock scripts %}
+ 

@@ -1,0 +1,857 @@
+[
+{
+  "model": "medicine.congty",
+  "pk": 1,
+  "fields": {
+    "ten_cong_ty": "Công ty Cổ phần dược phẩm OPC",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:01.748Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:01.748Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 2,
+  "fields": {
+    "ten_cong_ty": "Liên danh công ty CPDP Vũ Duy - Công ty TNHH DP Tuyên Thạc",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:01.760Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:01.760Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 3,
+  "fields": {
+    "ten_cong_ty": "Công ty Trách nhiệm hữu hạn MTV Vimedimex Bình Dương",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:01.783Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:01.783Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 4,
+  "fields": {
+    "ten_cong_ty": "Công ty Cổ phần Dược Hậu Giang",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:01.795Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:01.795Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 5,
+  "fields": {
+    "ten_cong_ty": "Công ty Trách nhiệm hữu hạn Một thành viên Dược liệu TW2",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:01.809Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:01.809Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 6,
+  "fields": {
+    "ten_cong_ty": "Công ty Cổ phần Dược phẩm Minh Dân",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:01.833Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:01.833Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 7,
+  "fields": {
+    "ten_cong_ty": "Công ty Cổ phần dược phẩm Nam Hà",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:01.849Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:01.849Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 8,
+  "fields": {
+    "ten_cong_ty": "Công ty Trách nhiệm hữu hạn MTV Vimedimex Bình Dương.",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:01.861Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:01.862Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 9,
+  "fields": {
+    "ten_cong_ty": "Công ty Cổ phần dược phẩm Trung ương Vidipha.",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:01.889Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:01.889Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 10,
+  "fields": {
+    "ten_cong_ty": "Công ty Cổ phần Dược phẩm VINACARE",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:01.909Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:01.909Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 11,
+  "fields": {
+    "ten_cong_ty": "Công ty Cổ phần dược phẩm Khánh Hòa",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:01.926Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:01.926Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 12,
+  "fields": {
+    "ten_cong_ty": "Công ty Cổ phần dược phẩm CPC1 Hà Nội",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:01.944Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:01.945Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 13,
+  "fields": {
+    "ten_cong_ty": "Công ty Trách nhiệm hữu hạn Dược Thống Nhất",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:01.960Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:01.960Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 14,
+  "fields": {
+    "ten_cong_ty": "Công ty Cổ phần Dược – Vật tư y tế Thanh Hóa",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:01.977Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:01.977Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 15,
+  "fields": {
+    "ten_cong_ty": "Công ty Cổ phần dược - Trang thiết bị y tế Bình Định (Bidiphar)",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:01.990Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:01.990Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 16,
+  "fields": {
+    "ten_cong_ty": "Công ty Cổ phần Dược phẩm Gia Linh",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:02.028Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:02.028Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 17,
+  "fields": {
+    "ten_cong_ty": "Công ty Cổ phần dược phẩm Trường Thọ",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:02.109Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:02.109Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 18,
+  "fields": {
+    "ten_cong_ty": "Công ty Cổ phần thiết bị dược phẩm & dịch vụ y tế Nam Định.",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:02.125Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:02.125Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 19,
+  "fields": {
+    "ten_cong_ty": "Công ty Cổ phần TMDV Thăng Long",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:02.143Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:02.143Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 20,
+  "fields": {
+    "ten_cong_ty": "Công ty Trách nhiệm hữu hạn Đầu tư thương mại và sản xuất Thái Bình.",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:02.156Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:02.156Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 21,
+  "fields": {
+    "ten_cong_ty": "Công ty Cổ phần dược phẩm Sohaco miền Bắc",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:02.205Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:02.205Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 22,
+  "fields": {
+    "ten_cong_ty": "Công ty Cổ phần kinh doanh thương mại Tân Trường Sinh",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:02.240Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:02.240Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 23,
+  "fields": {
+    "ten_cong_ty": "Cụng ty Cổ phần Dược phẩm Hà Tây",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:02.385Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:02.385Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 24,
+  "fields": {
+    "ten_cong_ty": "Công ty Cổ phần dược phẩm Bến Tre",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:02.397Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:02.397Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 25,
+  "fields": {
+    "ten_cong_ty": "Công ty Cổ phần Dược phẩm Hà Tây",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:02.411Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:02.411Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 26,
+  "fields": {
+    "ten_cong_ty": "Công ty Cổ phần dược Danapha",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:02.431Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:02.432Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 27,
+  "fields": {
+    "ten_cong_ty": "Công ty cổ phần dược phẩm Nam Hà",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:02.465Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:02.465Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 28,
+  "fields": {
+    "ten_cong_ty": "Công ty cổ phần dược phẩm Hà Tây",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:02.705Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:02.705Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 29,
+  "fields": {
+    "ten_cong_ty": "Công ty cổ phần Dược phẩm Nam Hà",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:02.730Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:02.730Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 30,
+  "fields": {
+    "ten_cong_ty": "Công ty cổ phần Dược Medipharco",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:02.770Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:02.770Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 31,
+  "fields": {
+    "ten_cong_ty": "Công ty cổ phần dược phẩm Vian",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:02.799Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:02.799Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 32,
+  "fields": {
+    "ten_cong_ty": "Công ty Cổ phần Dược Trung ương Mediplantex",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:02.833Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:02.833Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 33,
+  "fields": {
+    "ten_cong_ty": "Công ty Cổ phần Dược - Vật tư y tế Thanh Hóa (Thephaco",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:02.848Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:02.848Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 34,
+  "fields": {
+    "ten_cong_ty": "Công ty TNHH Một thành viên Dược liệu TW2",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:02.872Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:02.872Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 35,
+  "fields": {
+    "ten_cong_ty": "Công ty Cổ Phần Dược Phẩm Bến Tre",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:02.895Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:02.895Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 36,
+  "fields": {
+    "ten_cong_ty": "Công ty cổ phần Dược phẩm OPC",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:02.918Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:02.918Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 37,
+  "fields": {
+    "ten_cong_ty": "Công ty cổ phần thiết bị dược phẩm & dịch vụ y tế Nam Định",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:02.935Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:02.935Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 38,
+  "fields": {
+    "ten_cong_ty": "Công ty Cổ phần Đầu tư Quốc tế Việt Á",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:02.947Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:02.947Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 39,
+  "fields": {
+    "ten_cong_ty": "Công ty TNHH Một thành viên Vimedimex Bình Dương",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:02.989Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:02.989Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 40,
+  "fields": {
+    "ten_cong_ty": "Công ty cổ phần dược phẩm Gia Linh",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:03.001Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:03.001Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 41,
+  "fields": {
+    "ten_cong_ty": "Công ty Cổ phần Dược Danapha",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:03.017Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:03.017Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 42,
+  "fields": {
+    "ten_cong_ty": "Công ty Cp Dược phẩm thiết bị y tế Hà Nội",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:03.042Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:03.042Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 43,
+  "fields": {
+    "ten_cong_ty": "Công ty cổ phần TMDV Thăng Long",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:03.085Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:03.085Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 44,
+  "fields": {
+    "ten_cong_ty": "Công ty TNHH đầu tư thương mại và sản xuất Thái Bình",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:03.171Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:03.172Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 45,
+  "fields": {
+    "ten_cong_ty": "Công ty TNHH MTV Dược Sài Gòn",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:03.197Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:03.197Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 46,
+  "fields": {
+    "ten_cong_ty": "Công ty TNHH Đầu tư Thương mại Dược phẩm Việt Tín",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:03.212Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:03.212Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 47,
+  "fields": {
+    "ten_cong_ty": "Công ty cổ phần dược phẩm Trường Thọ",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:03.240Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:03.240Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 48,
+  "fields": {
+    "ten_cong_ty": "Công ty TNHH Dược phẩm Hiếu Anh",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:03.269Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:03.269Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 49,
+  "fields": {
+    "ten_cong_ty": "Công ty TNHH Dược Thống Nhất",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:03.285Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:03.285Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 50,
+  "fields": {
+    "ten_cong_ty": "Công ty Cổ Phần Dược Phẩm Việt Hà",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:03.301Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:03.301Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 51,
+  "fields": {
+    "ten_cong_ty": "Liên danh Công ty cổ phần Dược phẩm Vũ Duy - Công ty TNHH Dược phẩm Tuyên Thạc",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:03.316Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:03.316Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 52,
+  "fields": {
+    "ten_cong_ty": "Công ty cổ phần dược phẩm Khánh Hòa",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:03.355Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:03.355Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 53,
+  "fields": {
+    "ten_cong_ty": "Công ty cổ phần Dược phẩm trung ương I - Pharbaco",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:03.371Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:03.371Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 54,
+  "fields": {
+    "ten_cong_ty": "Công ty cổ phần Pymepharco",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:03.388Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:03.388Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 55,
+  "fields": {
+    "ten_cong_ty": "Công ty cổ phần dược phẩm TV.Pharm",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:03.428Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:03.428Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 56,
+  "fields": {
+    "ten_cong_ty": "Công ty TNHH MTV 120 Armephaco",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:03:03.475Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:03:03.475Z"
+  }
+},
+{
+  "model": "medicine.congty",
+  "pk": 57,
+  "fields": {
+    "ten_cong_ty": "NHA_THAU",
+    "giay_phep_kinh_doanh": null,
+    "dia_chi": null,
+    "so_lien_lac": null,
+    "email": null,
+    "mo_ta": null,
+    "loai_cung": null,
+    "ngay_gio_tao": "2021-03-29T02:05:31.204Z",
+    "thoi_gian_cap_nhat": "2021-03-29T02:05:31.204Z"
+  }
+}
+]

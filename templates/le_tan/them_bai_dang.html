@@ -1,0 +1,406 @@
+{% extends 'base.html' %}
+ 
+{% load static %}
+ 
+{% block content %}
+ 
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">Thêm Mới Bài Đăng</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="{% url 'danh_sach_bai_dang' %}" class="text-muted">Danh sách bài đăng</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="javascript:;" class="text-muted">Thêm bài đăng</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+ 
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!--begin::Card-->
+            <div class="card card-custom">
+                <div class="card-header flex-wrap border-0 pt-6 pb-0">
+                    <div class="card-title">
+                        <h3 class="card-label">Biểu Mẫu Thêm Mới</h3>
+                    </div>
+                </div>
+                <form id="kt_form_1">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-6">
+                                <!--begin::Form-->
+                                <div class="form-group">
+                                    <label>Tiêu Đề </label>
+                                    <input type="text" class="form-control input" id="tieu_de" name="text" placeholder="Nhập tiêu đề bài đăng" />
+                                </div>
+ 
+                                <div class="form-group">
+                                    <label>Nội Dung Chính </label>
+                                    <textarea class="form-control" id="noi_dung_chinh" name="memo" placeholder="Nhập nội dung chính của bài đăng" rows="2"></textarea>
+                                </div>
+ 
+                                <div class="form-group">
+                                    <label>Hình ảnh </label>
+                                    <div class="dropzone dropzone-multi" id="kt_dropzone_4">
+                                        <div class="dropzone-panel mb-lg-0 mb-2">
+                                            <a class="dropzone-select btn btn-light-primary font-weight-bold btn-sm">Đính kèm</a>
+                                            <a class="dropzone-remove-all btn btn-light-primary font-weight-bold btn-sm">Xóa</a>
+                                        </div>
+                                        <div class="dropzone-items">
+                                            <div class="dropzone-item" style="display:none">
+                                                <div class="dropzone-file">
+                                                    <div class="dropzone-filename" title="some_image_file_name.jpg">
+                                                        <span data-dz-name="">ten_ngau_nhien.jpg</span>
+                                                        <strong>( 
+                                                        <span data-dz-size="">340kb</span>)</strong>
+                                                    </div>
+                                                    <div class="dropzone-error" data-dz-errormessage=""></div>
+                                                </div>
+                                                <div class="dropzone-progress">
+                                                    <div class="progress">
+                                                        <div class="progress-bar bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-dz-uploadprogress=""></div>
+                                                    </div>
+                                                </div>
+                                                <div class="dropzone-toolbar">
+                                                    <span class="dropzone-start">
+                                                        <i class="flaticon2-arrow"></i>
+                                                    </span>
+                                                    <span class="dropzone-cancel" data-dz-remove="" style="display: none;">
+                                                        <i class="flaticon2-cross"></i>
+                                                    </span>
+                                                    <span class="dropzone-delete" data-dz-remove="">
+                                                        <i class="flaticon2-cross"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% comment %} <input type="file" id="img" name="img" accept="image/*"> {% endcomment %}
+                                </div>
+ 
+                                <div class="form-group row">
+                                    <div class="col-xxl-6 col-lg-6 col-md-6">
+                                        <label>Thời gian bắt đầu </label>
+                                        {% comment %} <input type="text" class="form-control input" id="thoi_gian_bat_dau" name="text" placeholder="Nhập thời gian bắt đầu áp dụng chương tình" /> {% endcomment %}
+                                        <div class="input-group date" id="chon_thoi_gian_bat_dau" data-target-input="nearest">
+                                            <input type="text" id="thoi_gian_bat_dau" class="form-control datetimepicker-input" placeholder="Chọn thời gian bắt đầu" data-target="#chon_thoi_gian_bat_dau"/>
+                                            <div class="input-group-append" data-target="#chon_thoi_gian_bat_dau" data-toggle="datetimepicker">
+                                                <span class="input-group-text">
+                                                    <i class="ki ki-calendar"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xxl-6 col-lg-6 col-md-6">
+                                        <label>Thời gian kết thúc </label>
+ 
+                                        <div class="input-group date" id="chon_thoi_gian_ket_thuc" data-target-input="nearest">
+                                            <input type="text" id="thoi_gian_ket_thuc" class="form-control datetimepicker-input" placeholder="Chọn thời gian kết thúc" data-target="#chon_thoi_gian_ket_thuc"/>
+                                            <div class="input-group-append" data-target="#chon_thoi_gian_ket_thuc" data-toggle="datetimepicker">
+                                                <span class="input-group-text">
+                                                    <i class="ki ki-calendar"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Nội dung bài đăng </label>
+                                    {% comment %} <div id="kt-ckeditor-1-toolbar"></div> {% endcomment %}
+                                    <textarea class="form-control" id="noi_dung" name="memo" placeholder="Nhập nội dung của bài đăng" rows="7"></textarea>
+                                </div>
+                            <!-- end::Form -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-lg-12 ml-lg-auto text-center">
+                                <button type="button" class="btn btn-primary font-weight-bold mr-2" id="submitData" name="submitButton">Xác nhận</button>
+                                <button type="button" class="btn btn-light-primary font-weight-bold" id="cancelBtn">Hủy</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!--end::Card-->
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+<!--end::Content-->
+ 
+{% endblock content %}
+ 
+{% block scripts %}
+<!--begin::Global Theme Bundle(used by all pages)-->
+
+<script src="{% static 'assets/plugins/custom/ckeditor/ckeditor.js' %}"></script>
+ 
+<script>
+    $(document).ajaxStart(function() {
+        KTApp.blockPage({
+            overlayColor: '#000000',
+            state: 'primary',
+            message: 'Đang xử lý...'
+        });
+    })
+
+    $(document).ajaxStop(function() {
+        KTApp.unblockPage();
+    })
+</script>
+
+<script>
+// Class definition
+    var KTFormControls = function () {
+
+        
+
+        // Private functions
+        var _initPreview = function(){
+            $('.input').keyup(function(){
+                var $this = $(this);
+                $('.'+$this.attr('id')+'').html($this.val());
+            });
+ 
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+ 
+                    reader.onload = function(e) {
+                    $('#blah').attr('src', e.target.result);
+                    }
+ 
+                    reader.readAsDataURL(input.files[0]); // convert to base64 string
+                }
+            }
+ 
+            $("#hinh_anh").change(function() {
+                readURL(this);
+            });
+        }
+ 
+        var _initValidate = function () {
+            CKEDITOR.replace( 'noi_dung');
+ 
+            $('#chon_thoi_gian_bat_dau').datetimepicker({
+                locale: 'vi'
+            });
+ 
+            $('#chon_thoi_gian_ket_thuc').datetimepicker({
+                locale: 'vi'
+            });
+
+            $('#cancelBtn').on('click', function(){
+                window.history.back()
+            })
+ 
+            FormValidation.formValidation(
+                document.getElementById('kt_form_1'),
+                {
+                    fields: {
+                        text: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Không được để trống'
+                                },
+                            }
+                        },
+                        memo: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Không được để trống'
+                                },
+                                stringLength: {
+                                    min:10,
+                                    max:10000,
+                                }
+                            }
+                        },
+                    },
+ 
+                    plugins: { //Learn more: https://formvalidation.io/guide/plugins
+                        trigger: new FormValidation.plugins.Trigger(),
+                        // Bootstrap Framework Integration
+                        bootstrap: new FormValidation.plugins.Bootstrap(),
+                        // Validate fields when clicking the Submit button
+                        submitButton: new FormValidation.plugins.SubmitButton(),
+                        // Submit the form when all fields are valid
+                        defaultSubmit: new FormValidation.plugins.DefaultSubmit(),
+                    }
+                }
+            );
+        }
+ 
+ 
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        var csrftoken = getCookie('csrftoken');
+ 
+        function csrfSafeMethod(method) {
+            // these HTTP methods do not require CSRF protection
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
+        $.ajaxSetup({
+            beforeSend: function(xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            }
+        });
+ 
+        var upload_bai_dang = function () {
+            // set the dropzone container id
+            var id = '#kt_dropzone_4';
+ 
+            // set the preview element template
+            var previewNode = $(id + " .dropzone-item");
+            previewNode.id = "";
+            var previewTemplate = previewNode.parent('.dropzone-items').html();
+            previewNode.remove();
+ 
+            $("#kt_form_1").on('click', '#submitData', function(){
+                var thoi_gian_ket_thuc = $('#thoi_gian_ket_thuc').val()
+                console.log(thoi_gian_ket_thuc);
+            })
+ 
+            var myDropzone4 = new Dropzone(id, { // Make the whole body a dropzone
+                url: HOST_URL + "/upload_bai_dang/", // Set the url for your upload script location
+                parallelUploads: 20,
+                previewTemplate: previewTemplate,
+                maxFilesize: 1, // Max filesize in MB
+                autoQueue: false, // Make sure the files aren't queued until manually added
+                previewsContainer: id + " .dropzone-items", // Define the container to display the previews
+                clickable: id + " .dropzone-select", // Define the element that should be used as click trigger to select files.
+                uploadMultiple: true,
+                acceptedFiles:".jpg, .png, .JPEG",
+                init: function() {
+                    var _this = this;
+ 
+                    this.on("sendingmultiple", function(file, xhr, formData){
+                        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+ 
+                        var noi_dung = CKEDITOR.instances.noi_dung.getData()
+ 
+                        formData.append('tieu_de', $('#tieu_de').val())
+                        formData.append('noi_dung_chinh', $('#noi_dung_chinh').val())
+                        formData.append('thoi_gian_bat_dau', $('#thoi_gian_bat_dau').val())
+                        formData.append('thoi_gian_ket_thuc', $('#thoi_gian_ket_thuc').val())
+                        formData.append('noi_dung', noi_dung)
+                    });
+ 
+                },
+                success: function(response){
+                    toastr.success('', "Thành Công!")
+                    setTimeout(function(){
+                        window.location.href = '/danh_sach_bai_dang/'
+                    },2500)
+                }
+            });
+ 
+            myDropzone4.on("addedfile", function(file) {
+                // Hookup the start button
+                file.previewElement.querySelector(id + " .dropzone-start").onclick = function() { myDropzone4.enqueueFile(file); };
+                $(document).find( id + ' .dropzone-item').css('display', '');
+                $(id + " .dropzone-remove-all").css('display', 'inline-block');
+            });
+ 
+            // Update the total progress bar
+            myDropzone4.on("totaluploadprogress", function(progress) {
+                $(this).find( id + " .progress-bar").css('width', progress + "%");
+            });
+ 
+            myDropzone4.on("send", function(file, xhr, formData) {
+                // Show the total progress bar when upload starts
+                $( id + " .progress-bar").css('opacity', '1');
+                // And disable the start button
+                file.previewElement.querySelector(id + " .dropzone-start").setAttribute("disabled", "disabled");
+ 
+            });
+ 
+            // Hide the total progress bar when nothing's uploading anymore
+            myDropzone4.on("complete", function(progress) {
+                var thisProgressBar = id + " .dz-complete";
+                setTimeout(function(){
+                    $( thisProgressBar + " .progress-bar, " + thisProgressBar + " .progress, " + thisProgressBar + " .dropzone-start").css('opacity', '0');
+                }, 300)
+ 
+            });
+ 
+            // Setup the buttons for all transfers
+            document.querySelector("#submitData").onclick = function() {
+                myDropzone4.enqueueFiles(myDropzone4.getFilesWithStatus(Dropzone.ADDED));
+            };
+ 
+            // Setup the button for remove all files
+            document.querySelector(id + " .dropzone-remove-all").onclick = function() {
+                $( id + " .dropzone-upload, " + id + " .dropzone-remove-all").css('display', 'none');
+                myDropzone4.removeAllFiles(true);
+            };
+ 
+            // On all files completed upload
+            myDropzone4.on("queuecomplete", function(progress){
+                $( id + " .dropzone-upload").css('display', 'none');
+            });
+ 
+            // On all files removed
+            myDropzone4.on("removedfile", function(file){
+                if(myDropzone4.files.length < 1){
+                    $( id + " .dropzone-upload, " + id + " .dropzone-remove-all").css('display', 'none');
+                }
+            });
+        }
+ 
+ 
+        return {
+            // public functions
+            init: function() {
+                _initPreview();
+                _initValidate();
+ 
+                upload_bai_dang();
+            }
+        };
+    }();
+ 
+    jQuery(document).ready(function() {
+        KTFormControls.init();
+    });
+</script>
+{% endblock scripts %}

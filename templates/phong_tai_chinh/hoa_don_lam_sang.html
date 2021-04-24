@@ -1,0 +1,187 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">Hóa Đơn Lâm Sàng</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="#" class="text-muted">Bệnh nhân: {{benh_nhan}}</a>
+                        </li>
+                        
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!-- begin::Card-->
+            <div class="card card-custom overflow-hidden">
+                <!-- begin: Invoice-->
+                <div class="" id="hoa_don_lam_sang">
+                    <div class="row justify-content-center py-4 px-4 py-md-27 px-md-0">
+                        <div id='mau_hoa_don'>
+                            {{mau_hoa_don.noi_dung|safe}}
+                        </div>
+                    </div>
+
+                </div>
+                <!-- end: Invoice-->
+                <!-- begin: Invoice action-->
+                <div class="row justify-content-center py-8 px-8 py-md-10 px-md-0 card-footer">
+                    <div class="col-md-9">
+                        <button type="button" class="btn btn-light-primary font-weight-bold" onclick="printDiv()">In Hóa Đơn</button>
+                
+                    </div>
+                </div>
+                <!-- end: Invoice action-->
+            </div>
+            <!-- end::Card-->
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+<!--end::Content-->
+
+{% endblock content %}
+
+{% block scripts %}
+
+
+<script>
+    function printDiv(){
+        var printContents = document.getElementById("mau_hoa_don").innerHTML;
+        var originalContents = document.body.innerHTML;
+
+        document.body.innerHTML = printContents;
+
+        window.print();
+
+        document.body.innerHTML = originalContents;
+    }
+
+    $(document).ready(function(){
+        var data_ten_mau = '';
+        var data_benh_nhan = '';
+        var data_so_dien_thoai = '';
+        var data_dia_chi = '';
+        var data_gia_tien = '';
+        var data_nguoi_thuc_hien = '';
+        var data_tien_thanh_toan = '';
+        var data_thanh_tien = ''
+        var ten_mau_hoa_don = "{{ mau_hoa_don.ten_mau|safe }}";
+        var thoi_gian_thanh_toan = "{{ thoi_gian_thanh_toan|safe }}";
+        var benh_nhan = "{{ benh_nhan|safe }}";
+        var so_dien_thoai = "{{ so_dien_thoai|safe }}";
+        var dia_chi = "{{ dia_chi|safe }}";
+        var tong_tien = "{{ tong_tien|safe }}";
+        var nguoi_thuc_hien = "{{ nguoi_thanh_toan|safe }}";
+
+
+        $('#mau_hoa_don tbody tr').each(function(){
+            if($(this).find('td').eq(1).text() == `{gia_tien}`){
+                // console.log($(this).html())
+                var innerHtml = $(this).html();
+                var start_tr = '<tr>';
+                var end_tr = '</tr>';
+                var c = start_tr + innerHtml + end_tr;
+                data_gia_tien += c.replace(/{gia_tien}/, tong_tien);
+                $(this).replaceWith(data_gia_tien);
+            }
+
+            if($(this).find('td').eq(3).text() == `{tien_thanh_toan}`){
+                // console.log($(this).html())
+                var innerHtml = $(this).html();
+                var start_tr = '<tr>';
+                var end_tr = '</tr>';
+                var c = start_tr + innerHtml + end_tr;
+                data_tien_thanh_toan += c.replace(/{tien_thanh_toan}/, tong_tien);
+                $(this).replaceWith(data_tien_thanh_toan);
+            }
+
+            if($(this).find('td').eq(0).text() == '{thoi_gian_thanh_toan}'){
+                console.log($(this).html());
+                var innerHtml = $(this).html();
+                var start_tr = '<tr>';
+                var end_tr = '</tr>';
+                var c = start_tr + innerHtml + end_tr;
+
+                data_benh_nhan += c.replace(/{thoi_gian_thanh_toan}/, thoi_gian_thanh_toan).replace(/{benh_nhan}/, benh_nhan);
+
+                $(this).replaceWith(data_benh_nhan);
+            }
+
+            if($(this).find('td').eq(1).text() == '{so_dien_thoai}'){
+                console.log($(this).html())
+                var innerHtml = $(this).html()
+                var start_tr = '<tr>'
+                var end_tr = '</tr>'
+                var c = start_tr + innerHtml + end_tr
+
+                data_so_dien_thoai += c.replace(/{so_dien_thoai}/, so_dien_thoai)
+
+                $(this).replaceWith(data_so_dien_thoai)
+            }
+
+            if($(this).find('td').eq(1).text() == '{dia_chi}'){
+                console.log($(this).html())
+                var innerHtml = $(this).html()
+                var start_tr = '<tr>'
+                var end_tr = '</tr>'
+                var c = start_tr + innerHtml + end_tr
+
+                data_dia_chi += c.replace(/{dia_chi}/, dia_chi)
+
+                $(this).replaceWith(data_dia_chi)
+            }
+
+            if($(this).find('td').eq(3).text() == '{tien_thanh_toan}'){
+                console.log($(this).html())
+                var innerHtml = $(this).html()
+                var start_tr = '<tr>'
+                var end_tr = '</tr>'
+                var c = start_tr + innerHtml + end_tr
+                data_thanh_tien += c.replace(/{tien_thanh_toan}/, tong_tien)
+                $(this).replaceWith(data_thanh_tien)
+            }
+
+            if($(this).find('td').eq(2).text() == '{nguoi_thanh_toan}'){
+                console.log($(this).html())
+                var innerHtml = $(this).html()
+                var start_tr = '<tr>'
+                var end_tr = '</tr>'
+                var c = start_tr + innerHtml + end_tr
+                data_nguoi_thuc_hien += c.replace(/{nguoi_thanh_toan}/, nguoi_thuc_hien)
+                $(this).replaceWith(data_nguoi_thuc_hien)
+            }
+
+        });
+        
+    });
+
+
+    
+</script>
+{% endblock scripts %}
+

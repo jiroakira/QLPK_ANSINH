@@ -1,0 +1,217 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block stylesheet %}
+
+<link href="{% static 'assets/css/loading.css' %} " rel="stylesheet" type="text/css" />
+
+<style>
+#card_content {
+  display: none;
+}
+
+</style>
+
+{% endblock stylesheet %}
+
+{% block  content %}
+<div id="loading">
+    <div class="indicator"> 
+    <svg width="16px" height="12px">
+        <polyline id="back" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
+        <polyline id="front" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
+    </svg>
+    </div>
+</div>
+
+{% comment %} <div id="loading">
+    <div class="boxes">
+        <div class="box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div> {% endcomment %}
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">Thêm mới danh mục bệnh</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="{% url 'danh_sach_dich_vu_kham' %}" class="text-muted">Danh Sách Bệnh</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="javascript:;" class="text-muted">Thêm Mới Excel</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+           
+        </div>
+    </div>
+    <!--end::Subheader-->
+
+
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+
+        <div class="container" id="card_content">
+            <!--begin::Card-->
+            <div class="card card-custom">
+                <div class="card-header flex-wrap border-0 pt-6 pb-0">
+                    <div class="card-title">
+                        <h3 class="card-label">Tải Lên Bằng Excel</h3>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label text-lg-right">Chọn File Excel: </label>
+                        <div class="col-lg-9">
+                            <input type="file" id="fileUploader" name="fileUploader" accept=".xls, .xlsx">
+                            
+                            <button id="getData" class="btn btn-light-primary">Tải lên</button>
+                            <pre id="jsonObject"></pre>
+                            {% comment %} <span class="form-text text-muted">Dung lượng tối đa mỗi file là 1Mb và có thể tải lên tối đa 5 file.</span> {% endcomment %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end::Card-->
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+<!--end::Content-->
+
+
+{% endblock content %}
+
+{% block scripts %}
+<!--begin::Global Theme Bundle(used by all pages)-->
+
+<script src="{% static 'assets/js/xlsx.min.js' %} "></script>
+<!--end::Global Theme Bundle-->
+
+<script>
+
+    function onReady(callback) {
+        var intervalId = window.setInterval(function() {
+            if (document.getElementsByTagName('body')[0] !== undefined) {
+                window.clearInterval(intervalId);
+                callback.call(this);
+            }
+        }, 1000);
+    }
+
+    function setVisible(selector, visible) {
+        document.querySelector(selector).style.display = visible ? 'block' : 'none';
+    }
+
+    onReady(function() {
+        setVisible('#card_content', true);
+        setVisible('#loading', false);
+    });
+
+    $(document).ajaxStart(function() {
+        setVisible('#card_content', false);
+        setVisible('#loading', true);
+    })
+
+    $(document).ajaxStop(function() {
+        setVisible('#card_content', true);
+        setVisible('#loading', false);
+    })
+
+
+    $(document).ready(function(){
+     
+        var lstObj = "";
+        $("#fileUploader").change(function(evt){
+            var selectedFile = evt.target.files[0];
+            var reader = new FileReader();
+            reader.onload = function(event) {
+                var data = event.target.result;
+                var workbook = XLSX.read(data, {
+                    type: 'binary'
+                });
+                workbook.SheetNames.forEach(function(sheetName) {
+                
+                    var XL_row_object = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
+                    var json_object = JSON.stringify(XL_row_object);
+                
+                    document.getElementById("jsonObject").innerHTML = json_object;
+                    lstObj = ""
+                    lstObj = json_object
+                })
+            };
+
+            reader.onerror = function(event) {
+                console.error("File could not be read!  Code " + event.target.error.code);
+            };
+
+            reader.readAsBinaryString(selectedFile);
+        })
+
+
+        $("#getData").on("click", function(){
+
+            var formData = new FormData()
+         
+            formData.append("data", lstObj)
+            formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
+
+            $.ajax({
+                type: "POST",
+                url: "{% url 'import_ma_benh_excel' %}",
+                data: formData,
+                cache: true,
+                processData: false,
+                contentType: false,
+                dataType: "json",
+                success: function (response) {
+                    if (response.status == 200) {
+                        toastr.success(response.message, 'Thành Công')
+                    }
+                }
+            });
+        })
+    });
+</script>
+
+{% endblock scripts %}

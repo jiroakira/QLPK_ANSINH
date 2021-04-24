@@ -1,0 +1,436 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">Danh Sách Các Nhóm Quyền</h5>
+                    <!--end::Page Title-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!--begin::Card-->
+            <div class="card card-custom">
+                <div class="card-header flex-wrap border-0 pt-6 pb-0">
+                    <div class="card-title">
+                        <h3 class="card-label">Nhóm Quyền Sử Dụng Trong Phòng Khám</h3>
+                    </div>
+                    <div class="card-toolbar">
+                        <!-- begin::Button -->
+                        <a href="javascript:;" class="btn btn-light-primary font-weight-bolder mr-2" id="btn-them-nhom-quyen">
+                            <span class="svg-icon svg-icon-sm">
+                                <svg xmlns="http:www.w3.org/2000/svg" xmlns:xlink="http:    www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <polygon points="0 0 24 0 24 24 0 24" />
+                                        <path d="M18,8 L16,8 C15.4477153,8 15,7.55228475 15,7 C15,6.44771525 15.4477153,6 16,6 L18,6 L18,4 C18,3.44771525 18.4477153,3 19,3 C19.5522847,3 20,3.44771525 20,4 L20,6 L22,6 C22.5522847,6 23,6.44771525 23,7 C23,7.55228475 22.5522847,8 22,8 L20,8 L20,10 C20,10.5522847 19.5522847,11 19,11 C18.4477153,11 18,10.5522847 18,10 L18,8 Z M9,11 C6.790861,11 5,9.209139 5,7 C5,4.790861 6.790861,3 9,3 C11.209139,3 13,4.790861 13,7 C13,9.209139 11.209139,11 9,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
+                                        <path d="M0.00065168429,20.1992055 C0.388258525,15.4265159 4.26191235,13 8.98334134,13 C13.7712164,13 17.7048837,15.2931929 17.9979143,20.2 C18.0095879,20.3954741 17.9979143,21 17.2466999,21 C13.541124,21 8.03472472,21 0.727502227,21 C0.476712155,21 -0.0204617505,20.45918 0.00065168429,20.1992055 Z" fill="#000000" fill-rule="nonzero" />
+                                    </g>
+                                </svg>
+                            </span>
+                            Thêm Nhóm Quyền
+                        </a>
+                        <!-- end::Button -->
+
+                        <!--begin::Button-->
+                        <a href="javascript:;" class="btn btn-light-primary font-weight-bolder" id="btn-reload">
+                            <span class="svg-icon svg-icon-md">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <rect x="0" y="0" width="24" height="24"/>
+                                        <path d="M12,8 L8,8 C5.790861,8 4,9.790861 4,12 L4,13 C4,14.6568542 5.34314575,16 7,16 L7,18 C4.23857625,18 2,15.7614237 2,13 L2,12 C2,8.6862915 4.6862915,6 8,6 L12,6 L12,4.72799742 C12,4.62015048 12.0348702,4.51519416 12.0994077,4.42878885 C12.264656,4.2075478 12.5779675,4.16215674 12.7992086,4.32740507 L15.656242,6.46136716 C15.6951359,6.49041758 15.7295917,6.52497737 15.7585249,6.56395854 C15.9231063,6.78569617 15.876772,7.09886961 15.6550344,7.263451 L12.798001,9.3840407 C12.7118152,9.44801079 12.607332,9.48254921 12.5,9.48254921 C12.2238576,9.48254921 12,9.25869158 12,8.98254921 L12,8 Z" fill="#000000"/>
+                                        <path d="M12.0583175,16 L16,16 C18.209139,16 20,14.209139 20,12 L20,11 C20,9.34314575 18.6568542,8 17,8 L17,6 C19.7614237,6 22,8.23857625 22,11 L22,12 C22,15.3137085 19.3137085,18 16,18 L12.0583175,18 L12.0583175,18.9825492 C12.0583175,19.2586916 11.8344599,19.4825492 11.5583175,19.4825492 C11.4509855,19.4825492 11.3465023,19.4480108 11.2603165,19.3840407 L8.40328311,17.263451 C8.18154548,17.0988696 8.13521119,16.7856962 8.29979258,16.5639585 C8.32872576,16.5249774 8.36318164,16.4904176 8.40207551,16.4613672 L11.2591089,14.3274051 C11.48035,14.1621567 11.7936615,14.2075478 11.9589099,14.4287888 C12.0234473,14.5151942 12.0583175,14.6201505 12.0583175,14.7279974 L12.0583175,16 Z" fill="#000000" opacity="0.3"/>
+                                    </g>
+                                </svg>
+                            </span>
+                            Tải lại
+                        </a>
+                        <!--end::Button-->
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!--begin::Search Form-->
+                    <div class="mb-7">
+                        <div class="row align-items-center">
+                            <div class="col-lg-9 col-xl-12">
+                                <div class="row">
+                                    <div class="col-md-5 my-2 my-md-0">
+                                        <div class="input-icon">
+                                            <input type="text" class="form-control" placeholder="Tìm Kiếm..." id="kt_datatable_search_query" />
+                                            <span>
+                                                <i class="flaticon2-search-1 text-muted"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% comment %} </div> {% endcomment %}
+                            </div>
+                        <!--end::Daterange-->
+                        </div>
+                        <!--begin::Daterange-->
+                    </div>
+                    <!--end::Search Form-->
+                    <!--begin: Datatable-->
+                    <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable"></div>
+                    <!--end: Datatable-->
+                </div>
+            </div>
+            <!--end::Card-->
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+<!--end::Content-->
+
+<!-- Register Modal-->
+<div class="modal fade" id="themNhomQuyenModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Thêm mới nhóm quyền</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="card-body">
+                    <form id="form_register">
+                        <div class="form-group mb-8">
+                            <div class="alert alert-custom alert-default" role="alert">
+                                <div class="alert-icon"><i class="flaticon-user-add text-primary"></i></div>
+                                <div class="alert-text font-weight-bolder">
+                                    Tạo mới nhóm quyền tùy chỉnh cho nhân viên
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-12">
+                                <label>Tên nhóm quyền </label>
+                                <input type="text" class="form-control" id="inputNameModal"  placeholder="Nhập tên nhóm quyền"/>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-12">
+                                <select id="kt_dual_listbox_3" class="dual-listbox" multiple>
+                                    {% for p in permissions %}
+                                    <option value="{{p.codename}}">{{p.name}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Đóng</button>
+                <button type="button" id="btn_store_nhom_quyen" class="nhomQuyenModalSubmit btn btn-primary font-weight-bold">Tạo Nhóm Quyền</button>
+            </div>     
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+
+{% block scripts %}
+{% comment %} <script>var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";</script> {% endcomment %}
+<!--begin::Global Theme Bundle(used by all pages)-->
+
+{% comment %} <script src="{% static 'assets/js/pages/crud/forms/widgets/bootstrap-datepicker9cd7.js' %} "></script> {% endcomment %}
+
+<!--end::Global Theme Bundle-->
+{% comment %} <script>var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";</script> {% endcomment %}
+{% comment %} <script src="{% static 'assets/js/pages/crud/ktdatatable/base/data-ajax9cd7.js' %} "></script> {% endcomment %}
+<script>
+
+"use strict";
+// Class definition
+
+var KTDatatableRemoteAjaxDemo = function() {
+    // Private functions
+    //set global data
+
+    let globalData = null;
+    // basic demo
+    var demo = function() {
+        var datatable = $('#kt_datatable').KTDatatable({
+            // datasource definition
+            data: {
+                type: 'remote',
+                source: {
+                    read: {
+                        url: HOST_URL + '/api/danh_sach_nhom_quyen/',
+                        method: 'GET',
+                        // sample custom headers
+                        // headers: {'x-my-custom-header': 'some value', 'x-test-header': 'the value'},
+                        map: function(raw) {
+                            // sample data mapping
+                            var dataSet = raw;
+                            if (typeof raw.data !== 'undefined') {
+                                dataSet = raw.data;
+                            }
+                            globalData = null;
+                            globalData = dataSet;
+                            console.log(dataSet)
+                            return dataSet;
+                        }
+                    },
+                },
+                pageSize: 10,
+                serverPaging: true,
+                // serverFiltering: true,
+                //serverSorting: true,
+            },
+
+            // layout definition
+            layout: {
+                scroll: true,
+                footer: false,
+            },
+
+            // column sorting
+            sortable: true,
+
+            pagination: true,
+
+            search: {
+                input: $('#kt_datatable_search_query'),
+                key: 'generalSearch'
+            },
+
+            // columns definition
+            columns: [
+            {
+                field: 'id',
+                title: 'STT',
+                sortable: 'asc',
+                type: 'number',
+                selector: false,
+                textAlign: 'center',
+                autoHide: false,
+            }, {
+                field: 'name',
+                title: 'Tên Nhóm Quyền',
+                autoHide: false,
+            }, {
+                field: 'update',
+                title: 'Chỉnh Sửa',
+                sortable: false,
+                width: 60,
+                textAlign: 'center',
+                autoHide: false,
+                template: function(row) {
+                    return `
+                        <a href="/nhom_quyen/${row.id}/chinh_sua/" class="btn btn-lg btn-clean btn-icon" title="Chỉnh sửa thông tin nhóm quyền ${row.name}">
+                            <i class="la la-edit icon-lg text-primary"></i>
+                        </a>
+                    `;
+                },
+            }, {
+                field: 'Delete',
+                title: 'Xóa',
+                sortable: false,
+                width: 60,
+                textAlign: 'center',
+                autoHide: false,
+                template: function(row) {
+                    return `
+                        <a href="javascript:;" class="btn_delete btn btn-lg btn-clean btn-icon" data-id="${row.id}" data-ten="${row.name}" title="Xóa nhóm quyền">
+                            <i class="la la-trash-alt icon-lg text-danger"></i>
+                        </a>
+                    `;
+                },
+            }],
+
+        });
+
+		$('#kt_datatable_search_status').on('change', function() {
+            datatable.search($(this).val().toLowerCase(), 'trang_thai');
+        });
+
+        $('#btn-reload').on('click', function(){
+            $('#kt_datatable').KTDatatable('reload');
+        })
+
+        $('#kt_datatable_search_status, #kt_datatable_search_type').selectpicker();
+
+    };
+
+    $('#btn-them-nhom-quyen').on('click', function(){
+        $('#themNhomQuyenModal').modal('show')
+        
+    })
+
+    var initDualListBox = function() {
+
+        var $this = $('#kt_dual_listbox_3');
+        // get options
+        var options = [];
+
+        var selectedOption = [];
+        $this.children('option').each(function () {
+            var value = $(this).val();
+            var label = $(this).text();
+            options.push({
+                text: label,
+                value: value
+            });
+        });
+
+        function removeA(arr) {
+            var what, a = arguments, L = a.length, ax;
+            while (L > 1 && arr.length) {
+                what = a[--L];
+                while ((ax= arr.indexOf(what)) !== -1) {
+                    arr.splice(ax, 1);
+                }
+            }
+            return arr;
+        }
+
+        // init dual listbox
+        var dualListBox = new DualListbox($this.get(0), {
+            addEvent: function (value) {
+                console.log(value);
+                selectedOption.push(value)
+            },
+            removeEvent: function (value) {
+                console.log(value);
+                removeA(selectedOption, value);
+            },
+            availableTitle: 'Những quyền hiện có',
+            selectedTitle: 'Những quyền được chọn',
+            addButtonText: 'Thêm',
+            removeButtonText: 'Xóa',
+            addAllButtonText: 'Thêm tất cả',
+            removeAllButtonText: 'Xóa tất cả',
+            options: options,
+        });
+
+        $("#btn_store_nhom_quyen").on('click', function() {
+            var formData = new FormData()
+            var ten_nhom_quyen = $("#inputNameModal").val()
+            console.log(selectedOption)
+
+            formData.append('ten_nhom_quyen', ten_nhom_quyen)
+            formData.append('danh_sach_quyen', JSON.stringify(selectedOption))
+            formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
+
+            KTApp.blockPage({
+                overlayColor: '#000000',
+                state: 'primary',
+                message: 'Đang xử lý...'
+            });
+
+            $.ajax({
+                type: "POST",
+                url: "{% url 'store_nhom_quyen' %}",
+                data: formData,
+                cache: false,
+                processData: false,
+                contentType: false,
+                success: function(response){
+                    if (response.status == 200) {
+                        KTApp.unblockPage();
+                        toastr.success(response.message, "Thành Công"),
+                        $('#kt_datatable').KTDatatable('reload');
+                        $('#themNhomQuyenModal').modal('hide');
+
+                    } else if (response.status == 404) {
+                        KTApp.unblockPage();
+                        toastr.warning(response.message, 'Cảnh báo')
+                    }
+                },
+                error: function(response){
+                    KTApp.unblockPage();
+                    toastr.warning("Không gửi được dữ liệu", 'Lỗi')
+                }
+            })
+        })
+  
+    }
+
+    var deleteNhomQuyen = function() {
+        $('#kt_datatable').on('click', '.btn_delete', function() {
+            var id = $(this).attr('data-id')
+            var ten_nhom_quyen = $(this).attr('data-ten')
+ 
+            Swal.fire({
+                title: "Xóa Nhóm Quyền " +ten_nhom_quyen+ " khỏi danh sách",
+                text: "Bạn sẽ không thể hoàn tác lại nhóm quyền này!",
+                icon: "warning",
+                showCancelButton: true,
+                cancelButtonText: "Hủy",
+                confirmButtonText: "Xác Nhận!"
+            }).then(function(result) {
+                if (result.value) {
+                    console.log(id)
+                    var formData = new FormData()
+                    formData.append('id', id)
+                    formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
+ 
+                    $.ajax({
+                        type: "POST",
+                        url: "{% url 'xoa_nhom_quyen' %}",
+                        data: formData,
+                        cache: false,
+                        processData: false,
+                        contentType: false,
+                        success: function(response){
+                            Swal.fire(
+                                'Đã Xóa!',
+                                'Nhóm quyền đã xóa thành công.',
+                                'success'
+                            )
+                            $('#kt_datatable').KTDatatable('reload');
+                        },
+                        error: function(response){
+                        }
+                    })
+                }else if (result.dismiss === 'cancel') {
+					Swal.fire(
+						'Đã Hủy',
+						'Nhóm quyền vẫn chưa được xóa',
+						'error'
+					)
+				}
+            });
+ 
+        });
+    }
+    
+
+    return {
+        init: function() {
+            demo();
+            initDualListBox();
+            deleteNhomQuyen();
+        },
+    };
+}();
+
+jQuery(document).ready(function() {
+    KTDatatableRemoteAjaxDemo.init();
+});
+</script>
+
+{% endblock scripts %}

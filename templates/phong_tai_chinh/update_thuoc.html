@@ -1,0 +1,341 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load widget_tweaks %}
+
+{% block content %}
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">Phòng Tài Chính</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="#" class="text-muted">Chỉnh Sửa Thuốc</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!--begin::Card-->
+            <div class="card card-custom">
+                <div class="card-header pb-0">
+                    <div class="card-title">
+                        <h1 class="card-label">
+                            Chỉnh Sửa Thông Tin Thuốc
+                        </h1>
+                    </div>
+                </div>
+                <!--begin::Form-->
+                <form class="form" id="kt_form_1">
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <div class="col-lg-12">
+                                <label>Nguồn cung cấp thuốc *</label>
+                                {{ form.cong_ty|attr:"class:form-control selectpicker"|attr:"name:cong_ty"|attr:"id:cong_ty" }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-4">
+                                <label>Mã Hoạt Chất *</label>
+                                {% comment %} <input type="text" class="form-control" id="tenThuoc" name="text" placeholder="Nhập tên thuốc" /> {% endcomment %}
+                                {{ form.ma_hoat_chat|attr:"class:form-control"|attr:"name:ma_hoat_chat" }}
+                            </div>
+                            
+                            <div class="col-lg-8">
+                                <label>Tên Hoạt Chất *</label>
+                                {% comment %} <input type="text" class="form-control" id="maThuoc" name="text" placeholder="Nhập mã thuốc" /> {% endcomment %}
+                                {{ form.ten_hoat_chat|attr:"class:form-control"|attr:"name:ten_hoat_chat" }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-4">
+                                <label>Mã Thuốc *</label>
+                                {{ form.ma_thuoc|attr:"class:form-control"|attr:"name:ma_thuoc" }}
+                            </div>
+                       
+                            <div class="col-lg-8">
+                                <label>Tên Thuốc *</label>
+                                {{ form.ten_thuoc|attr:"class:form-control"|attr:"name:ten_thuoc" }}
+                                {% comment %} <input class="form-control" id="giaBan" type="text" placeholder="Giá bán" name="text"/> {% endcomment %}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>Hàm Lượng *</label>
+                                {{ form.ham_luong|attr:"class:form-control"|attr:"name:ham_luong" }}
+                                {% comment %} <textarea class="form-control" name="memo" id="moTa" placeholder="Thông tin và cách dùng của thuốc" rows="3"></textarea> {% endcomment %}
+                            </div>
+
+                            <div class="col-lg-6">
+                                <label>Đường dùng *</label>
+                                {{ form.duong_dung|attr:"class:form-control"|attr:"name:duong_dung" }}
+                                {% comment %} <textarea class="form-control" name="memo" id="moTa" placeholder="Thông tin và cách dùng của thuốc" rows="3"></textarea> {% endcomment %}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-4">
+                                <label>Số Đăng Ký *</label>
+                                {{ form.so_dang_ky|attr:"class:form-control"|attr:"name:so_dang_ky" }}
+                                {% comment %} <textarea class="form-control" name="memo" id="moTa" placeholder="Thông tin và cách dùng của thuốc" rows="3"></textarea> {% endcomment %}
+                            </div>
+
+                            <div class="col-lg-4">
+                                <label>Đóng Gói *</label>
+                                {{ form.dong_goi|attr:"class:form-control"|attr:"name:dong_goi" }}
+                                {% comment %} <textarea class="form-control" name="memo" id="moTa" placeholder="Thông tin và cách dùng của thuốc" rows="3"></textarea> {% endcomment %}
+                            </div>
+
+                            <div class="col-lg-4">
+                                <label>Đơn Vị Tính *</label>
+                                {{ form.don_vi_tinh|attr:"class:form-control"|attr:"name:don_vi_tinh" }}
+                                {% comment %} <textarea class="form-control" name="memo" id="moTa" placeholder="Thông tin và cách dùng của thuốc" rows="3"></textarea> {% endcomment %}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>Giá Nhập *</label>
+                                {{ form.don_gia|attr:"class:form-control"|attr:"name:don_gia" }}
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Giá Bán *</label>
+                                {{ form.don_gia_tt|attr:"class:form-control"|attr:"name:don_gia_tt" }}
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>Số Lô *</label>
+                                {{ form.so_lo|attr:"class:form-control"|attr:"name:so_lo" }}
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Số Lượng Khả Dụng *</label>
+                                {{ form.so_luong_kha_dung|attr:"class:form-control"|attr:"so_luong_kha_dung" }}
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>Hãng Sản Xuất *</label>
+                                {{ form.hang_sx|attr:"class:form-control"|attr:"name:hang_sx" }}
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Nước Sản Xuất *</label>
+                                {{ form.nuoc_sx|attr:"class:form-control"|attr:"nuoc_sx" }}
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <div class="col-lg-4">
+                                <label>Quyết Định *</label>
+                                {{ form.quyet_dinh|attr:"class:form-control"|attr:"name:quyet_dinh" }}
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Loại Thuốc *</label>
+                                {{ form.loai_thuoc|attr:"class:form-control selectpicker"|attr:"id:loai_thuoc" }}
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Công Bố *</label>
+                                {{ form.cong_bo|attr:"class:form-control"|attr:"cong_bo" }}
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>Ngày Sản Xuất</label>
+                                {{ form.ngay_san_xuat|attr:"class:form-control"|attr:"name:ngay_san_xuat"|attr:"id:inputNgaySanXuat"|attr:"type:text"}}
+                                <span class="form-text text-muted">Ngày sản xuất dạng: 
+                                <code>ngày/tháng/năm</code></span>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Hạn Sử Dụng</label>
+                                {{ form.han_su_dung|attr:"class:form-control col-lg-12"|attr:"name:han_su_dung"|attr:"id:inputHanSuDung"}}
+                                <span class="form-text text-muted">Hạn sử dụng dạng: 
+                                <code>ngày/tháng/năm</code></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-lg-12 ml-lg-auto text-center">
+                                <button type="button" class="btn btn-primary font-weight-bold mr-2" id="submitData" name="submitButton" data-id='{{id_thuoc}}'>Xác nhận</button>
+                                <button type="button" id='redirectBtn' class="btn btn-light-primary font-weight-bold">Hủy</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!--end::Form-->
+            </div>
+        </div>
+    </div>
+    <!--end::Entry-->
+</div>
+<!--end::Content-->
+{% endblock content %}
+
+{% block scripts %}
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+
+<script>
+    // Class definition
+    var KTFormControls = function () {
+        // Private functions
+
+        $("#redirectBtn").on('click', function() {
+            window.history.back()
+        })
+
+        var dateMasks = function(){
+            //fill ngay san xuat
+            var ngay_san_xuat = $("input[name=ngay_san_xuat]").val();
+            ngay_san_xuat = moment(new Date(ngay_san_xuat)).format('DD/MM/yyyy');
+            if($('#inputNgaySanXuat').length){
+                $("#inputNgaySanXuat").inputmask("99/99/9999", {
+                    "placeholder": "dd/mm/yyyy",
+                    autoUnmask: false
+                });
+            }else{
+                ngay_san_xuat;
+            }
+            $('#inputNgaySanXuat').val(ngay_san_xuat);
+
+            //fill han su dung
+            var han_su_dung = $("input[name=han_su_dung]").val();
+            han_su_dung = moment(new Date(ngay_san_xuat)).format('DD/MM/yyyy');
+            if($('#inputHanSuDung').length){
+                $("#inputHanSuDung").inputmask("99/99/9999", {
+                    "placeholder": "dd/mm/yyyy",
+                    autoUnmask: false
+                });
+            }
+            else{
+                han_su_dung;
+            }
+            $('#inputHanSuDung').val(han_su_dung);
+        }
+
+        var _formAddThuocSubmit = function () {
+            var formData = new FormData();
+            $(document).on("click", "#submitData", function(){
+                FormValidation.formValidation(
+                    document.getElementById('kt_form_1'),
+                    {
+                        fields: {
+                            text: {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Không được để trống'
+                                    },
+                                }
+                            },
+                            memo: {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Không được để trống'
+                                    },
+                                    stringLength: {
+                                        min:10,
+                                        max:10000,
+                                    }
+                                }
+                            },
+                            ngay_san_xuat: {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Không được để trống'
+                                    },
+                                }
+                            },
+                            han_su_dung: {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Không được để trống'
+                                    },
+                                }
+                            },
+                        },
+
+                        plugins: { //Learn more: https://formvalidation.io/guide/plugins
+                            trigger: new FormValidation.plugins.Trigger(),
+                            // Bootstrap Framework Integration
+                            bootstrap: new FormValidation.plugins.Bootstrap(),
+                            // Validate fields when clicking the Submit button
+                            submitButton: new FormValidation.plugins.SubmitButton(),
+                            // Submit the form when all fields are valid
+                            defaultSubmit: new FormValidation.plugins.DefaultSubmit(),
+                        }
+                    }
+                );
+
+                var loai_thuoc = $('#loai_thuoc').val()
+                console.log(loai_thuoc)
+
+                $('#kt_form_1').find("input").each(function(){
+                    formData.append($(this).attr("name"), $(this).val())
+                });
+
+                var id_thuoc = $(this).data('id')
+                var id_cong_ty = $('#cong_ty').find(':selected').val()
+
+                formData.append('id_thuoc', id_thuoc)
+                formData.append('loai_thuoc', loai_thuoc)
+                formData.append('id_cong_ty', id_cong_ty)
+                formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
+
+                $.ajax({
+                    type       : "POST",
+                    url        : "{% url 'update_thuoc' %}",
+                    data       : formData,
+                    cache      : false,
+                    processData: false,
+                    contentType: false,
+                    success: function(response){
+                        toastr.success(response.message, "Thành Công")
+                        setTimeout(function(){
+                            window.location.href = "/phong_tai_chinh/danh_sach_thuoc/"
+                        },2500)
+                    },
+                    error: function(response){
+                        console.log(response.message)
+                        toastr.warning(response.message)
+                        $('#addServicesModal').modal('hide');
+                    }
+                })
+            })
+        }
+
+        return {
+            // public functions
+            init: function() {
+                {% comment %} _initDemo1(); {% endcomment %}
+                dateMasks();
+                _formAddThuocSubmit();
+            }
+        };
+    }();
+
+    jQuery(document).ready(function() {
+        KTFormControls.init();
+    });
+</script>
+{% endblock scripts %}

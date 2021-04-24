@@ -1,0 +1,233 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">Cập Nhật Nhóm Quyền</h5>
+                    <!--end::Page Title-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!--begin::Card-->
+            <div class="card card-custom">
+                <div class="card-header flex-wrap border-0 pb-0">
+                    <div class="card-title">
+                        <h1 class="card-label">
+                            Biểu mẫu chỉnh sửa
+                        </h1>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!--begin::Form-->
+                    <form id="benh_nhan_form">
+                        <div class="form-group row">
+                            <div class="col-lg-12">
+                                <label>Tên Nhóm Quyền</label>
+                                <input class="form-control" id="groupNameInput" type="text" value="{{group.name}}" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-lg-12">
+                                <select id="kt_dual_listbox_3" class="dual-listbox" data-search="false" multiple>
+                                    {% comment %} {% for p in permissions %}
+                                    <option value="{{p.codename}}">{{p.name}}</option>
+                                    {% endfor %} {% endcomment %}
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-lg-12 text-center">
+                                <button data-id="{{group.id}}" type="button" class="btn btn-primary font-weight-bold mr-2" id="submitData" name="submitButton">Xác nhận</button>
+                                <a href="{% url 'danh_sach_nhom_quyen' %}" class="btn btn-light-primary font-weight-bold">Hủy</a>
+                            </div>
+                        </div>
+                    </form>
+                    <!--end::Form-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end::Entry-->
+</div>
+<!--end::Content-->
+
+{% endblock content %}
+
+
+{% block scripts %}
+{% comment %} <script>var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";</script> {% endcomment %}
+<!--begin::Global Theme Bundle(used by all pages)-->
+
+{% comment %} <script src="{% static 'assets/js/pages/crud/forms/widgets/bootstrap-datepicker9cd7.js' %} "></script> {% endcomment %}
+
+<!--end::Global Theme Bundle-->
+{% comment %} <script>var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";</script> {% endcomment %}
+{% comment %} <script src="{% static 'assets/js/pages/crud/ktdatatable/base/data-ajax9cd7.js' %} "></script> {% endcomment %}
+<script>
+
+"use strict";
+// Class definition
+
+var KTDatatableRemoteAjaxDemo = function() {
+    // Private functions
+    //set global data
+
+    let globalData = null;
+    // basic demo
+
+    var selectedOption = [];
+
+    var initData = function() {
+        var options = "";
+        var group_permissions = {{group_permissions|safe}};
+        var codename_permissions = {{code_name_permissions|safe}};
+        var permissions = {{permissions|safe}}
+
+        for (var i = 0; i < permissions.length; i++) {
+            var a = 1;
+            for (var j = 0; j < group_permissions.length; j++) {
+                // Appending "selected" attribute to the values which are already selected
+                if (codename_permissions[j] == permissions[i]["codename"]) {
+                    options += '<option value="' + permissions[i]["codename"] + '" selected="selected">' + permissions[i]["name"] + '</option>';
+                    a = 0;
+                    selectedOption.push(permissions[i]["codename"] )
+                }
+            }
+            if (a == 1) {
+                options += '<option value="' + permissions[i]["codename"] + '">' + permissions[i]["name"] + '</option>';
+            }
+        }
+
+        $("select#kt_dual_listbox_3").empty().append(options);
+    }
+
+    var initDualListBox = function() {
+
+        var $this = $('#kt_dual_listbox_3');
+        // get options
+        var options = [];
+
+        $this.children('option').each(function () {
+            var value = $(this).val();
+            var label = $(this).text();
+            options.push({
+                text: label,
+                value: value
+            });
+        });
+
+        function removeA(arr) {
+            var what, a = arguments, L = a.length, ax;
+            while (L > 1 && arr.length) {
+                what = a[--L];
+                while ((ax= arr.indexOf(what)) !== -1) {
+                    arr.splice(ax, 1);
+                }
+            }
+            return arr;
+        }
+
+        // init dual listbox
+        var dualListBox = new DualListbox($this.get(0), {
+            addEvent: function (value) {
+                console.log(value);
+                selectedOption.push(value)
+            },
+            removeEvent: function (value) {
+                console.log(value);
+                removeA(selectedOption, value);
+            },
+            availableTitle: 'Những quyền hiện có',
+            selectedTitle: 'Những quyền được chọn',
+            addButtonText: 'Thêm',
+            removeButtonText: 'Xóa',
+            addAllButtonText: 'Thêm tất cả',
+            removeAllButtonText: 'Xóa tất cả',
+            options: options,
+        });
+
+        // dualListBox.search.classList.add('dual-listbox__search--hidden')
+
+        $("#submitData").on('click', function() {
+            var formData = new FormData()
+            var ten_nhom_quyen = $("#groupNameInput").val()
+            var id_nhom_quyen = $(this).data('id')
+    
+            console.log(selectedOption)
+
+            formData.append('id', id_nhom_quyen)
+            formData.append('ten_nhom_quyen', ten_nhom_quyen)
+            formData.append('danh_sach_quyen', JSON.stringify(selectedOption))
+            formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
+
+            KTApp.blockPage({
+                overlayColor: '#000000',
+                state: 'primary',
+                message: 'Đang xử lý...'
+            });
+
+            $.ajax({
+                type: "POST",
+                url: "{% url 'update_nhom_quyen' %}",
+                data: formData,
+                cache: false,
+                processData: false,
+                contentType: false,
+                success: function(response){
+                    if (response.status == 200) {
+                        KTApp.unblockPage();
+                        toastr.success(response.message, "Thành Công"),
+                        setTimeout(function () {
+                            window.location.href = '/danh_sach_nhom_quyen/'; //redirect về danh sách chờ lâm sàng
+                        }, 1500);
+
+                    } else if (response.status == 404) {
+                        KTApp.unblockPage();
+                        toastr.warning(response.message, 'Cảnh báo')
+                    }
+                },
+                error: function(response){
+                    KTApp.unblockPage();
+                    toastr.warning("Không gửi được dữ liệu", 'Lỗi')
+                }
+            })
+        })
+  
+    }
+    
+
+    return {
+        init: function() {
+            initData();
+            initDualListBox();
+        },
+    };
+}();
+
+jQuery(document).ready(function() {
+    KTDatatableRemoteAjaxDemo.init();
+});
+</script>
+
+{% endblock scripts %}

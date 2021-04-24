@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">Tải Lên Kết Quả Khám</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="#" class="text-muted">Bác sĩ lâm sàng</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="#" class="text-muted">Bệnh nhân {{chuoi_kham.benh_nhan.ho_ten}}</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="#" class="text-muted">Kết Quả Tổng Quát</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+ 
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid" >
+        <!--begin::Container-->
+        <div class="container" >
+            <div class="card card-custom" id="mau_phieu">
+                <div class="form-group row">
+                    <div class="col-lg-2 col-md-2"><span></span></div>
+                    <div class="col-lg-9 col-md-9 table table-responsive w-auto mt-10" >
+                    <!--begin::Card-->
+                    <div id='phieu_ket_qua'>
+                        {{ noi_dung|safe }}
+                    </div>
+                    <!--end::Card-->
+                    </div>
+                    <div class="col-lg-1"></div>
+                </div>
+            </div>
+            <div class="row justify-content-center py-8 px-8 py-md-10 px-md-0">
+                <div class="col-md-9">
+                    <div class="text-right">
+                        {% comment %} <button type="button" class="btn btn-primary font-weight-bold" id="btn-thanh-toan">Thanh Toán</button> {% endcomment %}
+                        <button type="button" class="btn btn-light-primary font-weight-bold " onclick="printDiv()">In Phiếu</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+<!-- end::Content -->
+ 
+{% endblock content %}
+
+{% block scripts %}
+ 
+<!--begin::Global Theme Bundle(used by all pages)-->
+
+<!--end::Global Theme Bundle-->
+ 
+<script>
+ 
+"use strict";
+// Class definition
+
+function printDiv() 
+    {
+
+        var divToPrint=document.getElementById('phieu_ket_qua');
+
+        var newWin=window.open('','Print-Window');
+
+        newWin.document.open();
+
+        newWin.document.write('<html><body onload="window.print()">'+divToPrint.innerHTML+'</body></html>');
+
+        newWin.document.close();
+
+        setTimeout(function(){newWin.close();},10);
+
+    }
+
+var KTDropzoneDemo = function () {
+
+    return {
+        // public functions
+        init: function() {
+           
+        }
+    };
+}();
+ 
+KTUtil.ready(function() {
+    KTDropzoneDemo.init();
+});
+ 
+ 
+</script>
+ 
+{% endblock scripts %}
+ 

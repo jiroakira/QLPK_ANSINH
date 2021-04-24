@@ -1,0 +1,37 @@
+[
+{
+  "model": "clinic.trangthaikhoakham",
+  "pk": 1,
+  "fields": {
+    "trang_thai_khoa_kham": "Đang Thực Hiện"
+  }
+},
+{
+  "model": "clinic.trangthaikhoakham",
+  "pk": 2,
+  "fields": {
+    "trang_thai_khoa_kham": "Hoàn Thành"
+  }
+},
+{
+  "model": "clinic.trangthaikhoakham",
+  "pk": 4,
+  "fields": {
+    "trang_thai_khoa_kham": "Dừng Khám"
+  }
+},
+{
+  "model": "clinic.trangthaikhoakham",
+  "pk": 5,
+  "fields": {
+    "trang_thai_khoa_kham": "Chờ Khám"
+  }
+},
+{
+  "model": "clinic.trangthaikhoakham",
+  "pk": 6,
+  "fields": {
+    "trang_thai_khoa_kham": "Đã Tải Lên Kết Quả"
+  }
+}
+]

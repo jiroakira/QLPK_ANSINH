@@ -1,0 +1,137 @@
+[
+{
+  "model": "clinic.nhomchiphi",
+  "pk": 1,
+  "fields": {
+    "ma_nhom": "1",
+    "ten_nhom": "Xét nghiệm",
+    "ghi_chu": null
+  }
+},
+{
+  "model": "clinic.nhomchiphi",
+  "pk": 2,
+  "fields": {
+    "ma_nhom": "2",
+    "ten_nhom": "Chẩn đoán hình ảnh",
+    "ghi_chu": null
+  }
+},
+{
+  "model": "clinic.nhomchiphi",
+  "pk": 3,
+  "fields": {
+    "ma_nhom": "3",
+    "ten_nhom": "Thăm dò chức năng",
+    "ghi_chu": null
+  }
+},
+{
+  "model": "clinic.nhomchiphi",
+  "pk": 4,
+  "fields": {
+    "ma_nhom": "4",
+    "ten_nhom": "Thuốc trong danh mục BHYT",
+    "ghi_chu": null
+  }
+},
+{
+  "model": "clinic.nhomchiphi",
+  "pk": 5,
+  "fields": {
+    "ma_nhom": "5",
+    "ten_nhom": "Thuốc ngoài danh mục BHYT",
+    "ghi_chu": null
+  }
+},
+{
+  "model": "clinic.nhomchiphi",
+  "pk": 6,
+  "fields": {
+    "ma_nhom": "6",
+    "ten_nhom": "Thuốc thanh toán theo tỷ lệ",
+    "ghi_chu": null
+  }
+},
+{
+  "model": "clinic.nhomchiphi",
+  "pk": 7,
+  "fields": {
+    "ma_nhom": "7",
+    "ten_nhom": "Máu và chế phẩm máu",
+    "ghi_chu": null
+  }
+},
+{
+  "model": "clinic.nhomchiphi",
+  "pk": 8,
+  "fields": {
+    "ma_nhom": "8",
+    "ten_nhom": "Thủ thuật, phẫu thuật",
+    "ghi_chu": null
+  }
+},
+{
+  "model": "clinic.nhomchiphi",
+  "pk": 9,
+  "fields": {
+    "ma_nhom": "9",
+    "ten_nhom": "Dịch vụ kĩ thuật (DVKT) thanh toán theo tỷ lệ",
+    "ghi_chu": null
+  }
+},
+{
+  "model": "clinic.nhomchiphi",
+  "pk": 10,
+  "fields": {
+    "ma_nhom": "10",
+    "ten_nhom": "Vật tư y tế trong danh mục BHYT",
+    "ghi_chu": null
+  }
+},
+{
+  "model": "clinic.nhomchiphi",
+  "pk": 11,
+  "fields": {
+    "ma_nhom": "11",
+    "ten_nhom": "Vật tư y tế thanh toán theo tỷ lệ",
+    "ghi_chu": null
+  }
+},
+{
+  "model": "clinic.nhomchiphi",
+  "pk": 12,
+  "fields": {
+    "ma_nhom": "12",
+    "ten_nhom": "Vận chuyển",
+    "ghi_chu": null
+  }
+},
+{
+  "model": "clinic.nhomchiphi",
+  "pk": 13,
+  "fields": {
+    "ma_nhom": "13",
+    "ten_nhom": "Khám bệnh",
+    "ghi_chu": null
+  }
+},
+{
+  "model": "clinic.nhomchiphi",
+  "pk": 14,
+  "fields": {
+    "ma_nhom": "14",
+    "ten_nhom": "Ngày giường bệnh ban ngày",
+    "ghi_chu": null
+  }
+},
+{
+  "model": "clinic.nhomchiphi",
+  "pk": 15,
+  "fields": {
+    "ma_nhom": "15",
+    "ten_nhom": "Ngày giường bệnh điều trị nội trú, bao gồm cả giường lưu",
+    "ghi_chu": null
+  }
+}
+]

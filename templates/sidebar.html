@@ -1,0 +1,660 @@
+{% load static %}
+
+{% load custom_tags %}
+
+<!--begin::Aside-->
+
+<div class="aside aside-left aside-fixed d-flex flex-column flex-row-auto" id="kt_aside">
+	<!--begin::Brand-->	
+	<div class="brand flex-column-auto" id="kt_brand">
+		<!--begin::Logo-->
+		<a href="{% url 'index' %}" class="brand-logo pt-2">
+			<img alt="Logo" src="{% static 'assets/media/logos/logo1.png' %} " class="max-w-custom"/>
+		</a>
+		<!--end::Logo-->
+		<!--begin::Toggle-->
+		<button class="brand-toggle btn btn-sm px-0" id="kt_aside_toggle">
+			<span class="svg-icon svg-icon svg-icon-xl">
+				<!--begin::Svg Icon | path:/metronic/theme/html/demo1/dist/assets/media/svg/icons/Navigation/Angle-double-left.svg-->
+				<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+					<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+						<polygon points="0 0 24 0 24 24 0 24" />
+						<path d="M5.29288961,6.70710318 C4.90236532,6.31657888 4.90236532,5.68341391 5.29288961,5.29288961 C5.68341391,4.90236532 6.31657888,4.90236532 6.70710318,5.29288961 L12.7071032,11.2928896 C13.0856821,11.6714686 13.0989277,12.281055 12.7371505,12.675721 L7.23715054,18.675721 C6.86395813,19.08284 6.23139076,19.1103429 5.82427177,18.7371505 C5.41715278,18.3639581 5.38964985,17.7313908 5.76284226,17.3242718 L10.6158586,12.0300721 L5.29288961,6.70710318 Z" fill="#000000" fill-rule="nonzero" transform="translate(8.999997, 11.999999) scale(-1, 1) translate(-8.999997, -11.999999)" />
+						<path d="M10.7071009,15.7071068 C10.3165766,16.0976311 9.68341162,16.0976311 9.29288733,15.7071068 C8.90236304,15.3165825 8.90236304,14.6834175 9.29288733,14.2928932 L15.2928873,8.29289322 C15.6714663,7.91431428 16.2810527,7.90106866 16.6757187,8.26284586 L22.6757187,13.7628459 C23.0828377,14.1360383 23.1103407,14.7686056 22.7371482,15.1757246 C22.3639558,15.5828436 21.7313885,15.6103465 21.3242695,15.2371541 L16.0300699,10.3841378 L10.7071009,15.7071068 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" transform="translate(15.999997, 11.999999) scale(-1, 1) rotate(-270.000000) translate(-15.999997, -11.999999)" />
+					</g>
+				</svg>
+				<!--end::Svg Icon-->
+			</span>
+		</button>
+		<!--end::Toolbar-->
+	</div>
+	<!--end::Brand-->
+	<!--begin::Aside Menu-->
+	<div class="aside-menu-wrapper flex-column-fluid" id="kt_aside_menu_wrapper">
+		<!--begin::Menu Container-->
+		<div id="kt_aside_menu" class="aside-menu my-4" data-menu-vertical="1" data-menu-scroll="1" data-menu-dropdown-timeout="500">
+			<!--begin::Menu Nav-->
+			<ul class="menu-nav">
+
+				{% if perms.clinic.general_view or request.user.is_superuser %}
+				<li class="menu-item" aria-haspopup="true">
+					<a href="{% url 'index' %}" class="menu-link">
+						<span class="svg-icon menu-icon">
+							<!--begin::Svg Icon | path:/metronic/theme/html/demo1/dist/assets/media/svg/icons/Design/Layers.svg-->
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+									<polygon points="0 0 24 0 24 24 0 24" />
+									<path d="M12.9336061,16.072447 L19.36,10.9564761 L19.5181585,10.8312381 C20.1676248,10.3169571 20.2772143,9.3735535 19.7629333,8.72408713 C19.6917232,8.63415859 19.6104327,8.55269514 19.5206557,8.48129411 L12.9336854,3.24257445 C12.3871201,2.80788259 11.6128799,2.80788259 11.0663146,3.24257445 L4.47482784,8.48488609 C3.82645598,9.00054628 3.71887192,9.94418071 4.23453211,10.5925526 C4.30500305,10.6811601 4.38527899,10.7615046 4.47382636,10.8320511 L4.63,10.9564761 L11.0659024,16.0730648 C11.6126744,16.5077525 12.3871218,16.5074963 12.9336061,16.072447 Z" fill="#000000" fill-rule="nonzero" />
+									<path d="M11.0563554,18.6706981 L5.33593024,14.122919 C4.94553994,13.8125559 4.37746707,13.8774308 4.06710397,14.2678211 C4.06471678,14.2708238 4.06234874,14.2738418 4.06,14.2768747 L4.06,14.2768747 C3.75257288,14.6738539 3.82516916,15.244888 4.22214834,15.5523151 C4.22358765,15.5534297 4.2250303,15.55454 4.22647627,15.555646 L11.0872776,20.8031356 C11.6250734,21.2144692 12.371757,21.2145375 12.909628,20.8033023 L19.7677785,15.559828 C20.1693192,15.2528257 20.2459576,14.6784381 19.9389553,14.2768974 C19.9376429,14.2751809 19.9363245,14.2734691 19.935,14.2717619 L19.935,14.2717619 C19.6266937,13.8743807 19.0546209,13.8021712 18.6572397,14.1104775 C18.654352,14.112718 18.6514778,14.1149757 18.6486172,14.1172508 L12.9235044,18.6705218 C12.377022,19.1051477 11.6029199,19.1052208 11.0563554,18.6706981 Z" fill="#000000" opacity="0.3" />
+								</g>
+							</svg>
+							<!--end::Svg Icon-->
+						</span>
+						<span class="menu-text">Trang chủ</span>
+					</a>
+				</li>
+				{% endif %}
+
+				{% if request.user.is_superuser %}
+				<li class="menu-section">
+					<h4 class="menu-text">Chủ Phòng Khám</h4>
+					<i class="menu-icon ki ki-bold-more-hor icon-md"></i>
+				</li>
+				
+				<li class="menu-item" aria-haspopup="true">
+					<a href="{% url 'danh_sach_nhan_vien' %}" class="menu-link">
+						<span class="svg-icon menu-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+									<rect x="0" y="0" width="24" height="24"/>
+									<path d="M14.1124454,7.00625159 C14.0755336,7.00212117 14.0380145,7 14,7 L10,7 C9.96198549,7 9.92446641,7.00212117 9.88755465,7.00625159 L7.34761705,4.55799196 C6.95060373,4.17530866 6.9382927,3.54346816 7.32009765,3.14561006 L8.41948359,2 L15.5805164,2 L16.6799023,3.14561006 C17.0617073,3.54346816 17.0493963,4.17530866 16.6523829,4.55799196 L14.1124454,7.00625159 Z" fill="#000000"/>
+									<path d="M13.7640285,9 L15.4853424,18.1494183 C15.5450675,18.4668794 15.4477627,18.7936387 15.2240963,19.0267093 L12.7215131,21.6345146 C12.7120098,21.6444174 12.7023037,21.6541236 12.6924008,21.6636269 C12.2939201,22.0460293 11.6608893,22.0329953 11.2784869,21.6345146 L8.77590372,19.0267093 C8.55223728,18.7936387 8.45493249,18.4668794 8.5146576,18.1494183 L10.2359715,9 L13.7640285,9 Z" fill="#000000" opacity="0.3"/>
+								</g>
+							</svg>
+						</span>
+						<span class="menu-text">Danh sách nhân viên</span>
+					</a>
+				</li>
+
+				<li class="menu-item" aria-haspopup="true">
+					<a href="{% url 'view_danh_sach_bac_si' %}" class="menu-link">
+						<span class="svg-icon menu-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+									<rect x="0" y="0" width="24" height="24"/>
+									<path d="M14.1124454,7.00625159 C14.0755336,7.00212117 14.0380145,7 14,7 L10,7 C9.96198549,7 9.92446641,7.00212117 9.88755465,7.00625159 L7.34761705,4.55799196 C6.95060373,4.17530866 6.9382927,3.54346816 7.32009765,3.14561006 L8.41948359,2 L15.5805164,2 L16.6799023,3.14561006 C17.0617073,3.54346816 17.0493963,4.17530866 16.6523829,4.55799196 L14.1124454,7.00625159 Z" fill="#000000"/>
+									<path d="M13.7640285,9 L15.4853424,18.1494183 C15.5450675,18.4668794 15.4477627,18.7936387 15.2240963,19.0267093 L12.7215131,21.6345146 C12.7120098,21.6444174 12.7023037,21.6541236 12.6924008,21.6636269 C12.2939201,22.0460293 11.6608893,22.0329953 11.2784869,21.6345146 L8.77590372,19.0267093 C8.55223728,18.7936387 8.45493249,18.4668794 8.5146576,18.1494183 L10.2359715,9 L13.7640285,9 Z" fill="#000000" opacity="0.3"/>
+								</g>
+							</svg>
+						</span>
+						<span class="menu-text">Danh sách bác sĩ</span>
+					</a>
+				</li>
+
+				<li class="menu-item" aria-haspopup="true">
+					<a href="{% url 'danh_sach_nhom_quyen' %}" class="menu-link">
+						<span class="svg-icon menu-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+									<rect x="0" y="0" width="24" height="24"/>
+									<path d="M14.1124454,7.00625159 C14.0755336,7.00212117 14.0380145,7 14,7 L10,7 C9.96198549,7 9.92446641,7.00212117 9.88755465,7.00625159 L7.34761705,4.55799196 C6.95060373,4.17530866 6.9382927,3.54346816 7.32009765,3.14561006 L8.41948359,2 L15.5805164,2 L16.6799023,3.14561006 C17.0617073,3.54346816 17.0493963,4.17530866 16.6523829,4.55799196 L14.1124454,7.00625159 Z" fill="#000000"/>
+									<path d="M13.7640285,9 L15.4853424,18.1494183 C15.5450675,18.4668794 15.4477627,18.7936387 15.2240963,19.0267093 L12.7215131,21.6345146 C12.7120098,21.6444174 12.7023037,21.6541236 12.6924008,21.6636269 C12.2939201,22.0460293 11.6608893,22.0329953 11.2784869,21.6345146 L8.77590372,19.0267093 C8.55223728,18.7936387 8.45493249,18.4668794 8.5146576,18.1494183 L10.2359715,9 L13.7640285,9 Z" fill="#000000" opacity="0.3"/>
+								</g>
+							</svg>
+						</span>
+						<span class="menu-text">Danh Sách Nhóm Quyền</span>
+					</a>
+				</li>
+				{% endif %}	
+
+
+				{% if perms.clinic.reception_department_module_view %}
+				<li class="menu-section">
+					<h4 class="menu-text">Lễ tân</h4>
+					<i class="menu-icon ki ki-bold-more-hor icon-md"></i>
+				</li>
+				{% endif %}
+				<!-- Danh sách bệnh nhân -->
+				{% if perms.clinic.can_view_user_info %}
+				<li class="menu-item" aria-haspopup="true">
+					<a href="{% url 'danh_sach_benh_nhan' %}" class="menu-link">
+						<span class="svg-icon menu-icon"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2020-10-29-133027/theme/html/demo1/dist/../src/media/svg/icons/Files/User-folder.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+							<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+								<rect x="0" y="0" width="24" height="24"/>
+								<path d="M3.5,21 L20.5,21 C21.3284271,21 22,20.3284271 22,19.5 L22,8.5 C22,7.67157288 21.3284271,7 20.5,7 L10,7 L7.43933983,4.43933983 C7.15803526,4.15803526 6.77650439,4 6.37867966,4 L3.5,4 C2.67157288,4 2,4.67157288 2,5.5 L2,19.5 C2,20.3284271 2.67157288,21 3.5,21 Z" fill="#000000" opacity="0.3"/>
+								<path d="M12,13 C10.8954305,13 10,12.1045695 10,11 C10,9.8954305 10.8954305,9 12,9 C13.1045695,9 14,9.8954305 14,11 C14,12.1045695 13.1045695,13 12,13 Z" fill="#000000" opacity="0.3"/>
+								<path d="M7.00036205,18.4995035 C7.21569918,15.5165724 9.36772908,14 11.9907452,14 C14.6506758,14 16.8360465,15.4332455 16.9988413,18.5 C17.0053266,18.6221713 16.9988413,19 16.5815,19 C14.5228466,19 11.463736,19 7.4041679,19 C7.26484009,19 6.98863236,18.6619875 7.00036205,18.4995035 Z" fill="#000000" opacity="0.3"/>
+							</g>
+						</svg><!--end::Svg Icon--></span>
+						<span class="menu-text">Bệnh nhân</span>
+					</a>
+				</li>
+				{% endif %}
+				<!-- Lịch hẹn khám -->
+				{% if perms.clinic.can_view_appointment %}
+				<li class="menu-item" aria-haspopup="true">
+					<a href="{% url 'danh_sach_lich_hen' %}" class="menu-link">
+						<i class="la la-calendar icon-lg menu-icon"></i>
+						<span class="menu-text">Lịch hẹn khám</span>
+					</a>
+				</li>
+				{% endif %}
+				<!-- Danh sách phòng chức năng -->
+				{% if perms.clinic.can_view_consulting_room %}
+				<li class="menu-item" aria-haspopup="true">
+					<a href="{% url 'danh_sach_phong_chuc_nang' %}" class="menu-link">
+						<span class="svg-icon menu-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+									<rect opacity="0.300000012" x="0" y="0" width="24" height="24"/>
+									<polygon fill="#000000" fill-rule="nonzero" opacity="0.3" points="7 4.89473684 7 21 5 21 5 3 11 3 11 4.89473684"/>
+									<path d="M10.1782982,2.24743315 L18.1782982,3.6970464 C18.6540619,3.78325557 19,4.19751166 19,4.68102291 L19,19.3190064 C19,19.8025177 18.6540619,20.2167738 18.1782982,20.3029829 L10.1782982,21.7525962 C9.63486295,21.8510675 9.11449486,21.4903531 9.0160235,20.9469179 C9.00536265,20.8880837 9,20.8284119 9,20.7686197 L9,3.23140966 C9,2.67912491 9.44771525,2.23140966 10,2.23140966 C10.0597922,2.23140966 10.119464,2.2367723 10.1782982,2.24743315 Z M11.9166667,12.9060229 C12.6070226,12.9060229 13.1666667,12.2975724 13.1666667,11.5470105 C13.1666667,10.7964487 12.6070226,10.1879981 11.9166667,10.1879981 C11.2263107,10.1879981 10.6666667,10.7964487 10.6666667,11.5470105 C10.6666667,12.2975724 11.2263107,12.9060229 11.9166667,12.9060229 Z" fill="#000000"/>
+								</g>
+							</svg>
+						</span>
+						<span class="menu-text">Phòng chức năng</span>
+					</a>
+				</li>
+				{% endif %}
+
+				<!-- Đăng bài -->
+				{% if perms.clinic.can_view_news %}
+				<li class="menu-item" aria-haspopup="true">
+					<a href="{% url 'danh_sach_bai_dang' %}" class="menu-link">
+						<span class="svg-icon menu-icon">
+							<!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2020-10-29-133027/theme/html/demo1/dist/../src/media/svg/icons/General/Bookmark.svg-->
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+									<rect x="0" y="0" width="24" height="24"/>
+									<path d="M8,4 L16,4 C17.1045695,4 18,4.8954305 18,6 L18,17.726765 C18,18.2790497 17.5522847,18.726765 17,18.726765 C16.7498083,18.726765 16.5087052,18.6329798 16.3242754,18.4639191 L12.6757246,15.1194142 C12.2934034,14.7689531 11.7065966,14.7689531 11.3242754,15.1194142 L7.67572463,18.4639191 C7.26860564,18.8371115 6.63603827,18.8096086 6.26284586,18.4024896 C6.09378519,18.2180598 6,17.9769566 6,17.726765 L6,6 C6,4.8954305 6.8954305,4 8,4 Z" fill="#000000"/>
+								</g>
+							</svg>
+							<!--end::Svg Icon-->
+						</span>
+						<span class="menu-text">Bài đăng</span>
+					</a>
+				</li>
+				{% endif %}
+
+				{% if perms.clinic.can_view_analysis_note %}
+				<li class="menu-item" aria-haspopup="true">
+					<a href="{% url 'danh_sach_mau_phieu' %}" class="menu-link">
+						<span class="svg-icon menu-icon svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2020-10-29-133027/theme/html/demo1/dist/../src/media/svg/icons/Communication/Clipboard-list.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+							<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+								<rect x="0" y="0" width="24" height="24"/>
+								<path d="M8,3 L8,3.5 C8,4.32842712 8.67157288,5 9.5,5 L14.5,5 C15.3284271,5 16,4.32842712 16,3.5 L16,3 L18,3 C19.1045695,3 20,3.8954305 20,5 L20,21 C20,22.1045695 19.1045695,23 18,23 L6,23 C4.8954305,23 4,22.1045695 4,21 L4,5 C4,3.8954305 4.8954305,3 6,3 L8,3 Z" fill="#000000" opacity="0.3"/>
+								<path d="M11,2 C11,1.44771525 11.4477153,1 12,1 C12.5522847,1 13,1.44771525 13,2 L14.5,2 C14.7761424,2 15,2.22385763 15,2.5 L15,3.5 C15,3.77614237 14.7761424,4 14.5,4 L9.5,4 C9.22385763,4 9,3.77614237 9,3.5 L9,2.5 C9,2.22385763 9.22385763,2 9.5,2 L11,2 Z" fill="#000000"/>
+								<rect fill="#000000" opacity="0.3" x="10" y="9" width="7" height="2" rx="1"/>
+								<rect fill="#000000" opacity="0.3" x="7" y="9" width="2" height="2" rx="1"/>
+								<rect fill="#000000" opacity="0.3" x="7" y="13" width="2" height="2" rx="1"/>
+								<rect fill="#000000" opacity="0.3" x="10" y="13" width="7" height="2" rx="1"/>
+								<rect fill="#000000" opacity="0.3" x="7" y="17" width="2" height="2" rx="1"/>
+								<rect fill="#000000" opacity="0.3" x="10" y="17" width="7" height="2" rx="1"/>
+							</g>
+						</svg><!--end::Svg Icon--></span>
+						<span class="menu-text">Mẫu Phiếu</span>
+					</a>
+				</li>
+				{% endif %}
+			
+				{% if perms.clinic.can_view_test_values %}
+				<li class="menu-item" aria-haspopup="true">
+					<a href="{% url 'list_tieu_chuan_dich_vu' %}" class="menu-link">
+						<span class="svg-icon menu-icon svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2020-10-29-133027/theme/html/demo1/dist/../src/media/svg/icons/Communication/Clipboard-list.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+							<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+								<rect x="0" y="0" width="24" height="24"/>
+								<path d="M8,3 L8,3.5 C8,4.32842712 8.67157288,5 9.5,5 L14.5,5 C15.3284271,5 16,4.32842712 16,3.5 L16,3 L18,3 C19.1045695,3 20,3.8954305 20,5 L20,21 C20,22.1045695 19.1045695,23 18,23 L6,23 C4.8954305,23 4,22.1045695 4,21 L4,5 C4,3.8954305 4.8954305,3 6,3 L8,3 Z" fill="#000000" opacity="0.3"/>
+								<path d="M11,2 C11,1.44771525 11.4477153,1 12,1 C12.5522847,1 13,1.44771525 13,2 L14.5,2 C14.7761424,2 15,2.22385763 15,2.5 L15,3.5 C15,3.77614237 14.7761424,4 14.5,4 L9.5,4 C9.22385763,4 9,3.77614237 9,3.5 L9,2.5 C9,2.22385763 9.22385763,2 9.5,2 L11,2 Z" fill="#000000"/>
+								<rect fill="#000000" opacity="0.3" x="10" y="9" width="7" height="2" rx="1"/>
+								<rect fill="#000000" opacity="0.3" x="7" y="9" width="2" height="2" rx="1"/>
+								<rect fill="#000000" opacity="0.3" x="7" y="13" width="2" height="2" rx="1"/>
+								<rect fill="#000000" opacity="0.3" x="10" y="13" width="7" height="2" rx="1"/>
+								<rect fill="#000000" opacity="0.3" x="7" y="17" width="2" height="2" rx="1"/>
+								<rect fill="#000000" opacity="0.3" x="10" y="17" width="7" height="2" rx="1"/>
+							</g>
+						</svg><!--end::Svg Icon--></span>
+						<span class="menu-text">Tiêu Chuẩn DVKT</span>
+					</a>
+				</li>
+				{% endif %}
+
+				{% if perms.clinic.can_view_assignment_chain_result %}
+				<li class="menu-item" aria-haspopup="true">
+					<a href="{% url 'ket_qua_benh_nhan' %}" class="menu-link">
+						<span class="svg-icon menu-icon svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2020-10-29-133027/theme/html/demo1/dist/../src/media/svg/icons/General/Search.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+							<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+								<rect x="0" y="0" width="24" height="24"/>
+								<path d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+								<path d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z" fill="#000000" fill-rule="nonzero"/>
+							</g>
+						</svg><!--end::Svg Icon--></span>
+						<span class="menu-text">Kết Quả Bệnh Nhân</span>
+					</a>
+				</li>
+				{% endif %}
+
+				{% if perms.clinic.finance_department_module_view %}
+				<li class="menu-section">
+					<h4 class="menu-text">Phòng tài chính</h4>
+					<i class="menu-icon ki ki-bold-more-hor icon-md"></i>
+				</li>
+				{% endif %}
+				
+				<!-- Danh sách chờ -->
+				{% if perms.clinic.can_view_checkout_list %}
+				<li class="menu-item" aria-haspopup="true">
+					<a href="{% url 'phong_tai_chinh' %}" class="menu-link">
+						<span class="svg-icon menu-icon">
+							<!--begin::Svg Icon | path:/metronic/theme/html/demo1/dist/assets/media/svg/icons/Home/Library.svg-->
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+									<rect x="0" y="0" width="24" height="24" />
+									<path d="M5,3 L6,3 C6.55228475,3 7,3.44771525 7,4 L7,20 C7,20.5522847 6.55228475,21 6,21 L5,21 C4.44771525,21 4,20.5522847 4,20 L4,4 C4,3.44771525 4.44771525,3 5,3 Z M10,3 L11,3 C11.5522847,3 12,3.44771525 12,4 L12,20 C12,20.5522847 11.5522847,21 11,21 L10,21 C9.44771525,21 9,20.5522847 9,20 L9,4 C9,3.44771525 9.44771525,3 10,3 Z" fill="#000000" />
+									<rect fill="#000000" opacity="0.3" transform="translate(17.825568, 11.945519) rotate(-19.000000) translate(-17.825568, -11.945519)" x="16.3255682" y="2.94551858" width="3" height="18" rx="1" />
+								</g>
+							</svg>
+							<!--end::Svg Icon-->
+						</span>
+						<span class="menu-text">Danh sách chờ</span>
+					</a>
+				</li>
+				{% endif %}
+
+				<!-- Danh sách dịch vụ khám -->
+				{% if perms.clinic.can_view_service %}
+				<li class="menu-item" aria-haspopup="true">
+					<a href="{% url 'danh_sach_dich_vu_kham' %}" class="menu-link">
+						<span class="svg-icon menu-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+									<rect opacity="0.300000012" x="0" y="0" width="24" height="24"/>
+									<polygon fill="#000000" fill-rule="nonzero" opacity="0.3" points="7 4.89473684 7 21 5 21 5 3 11 3 11 4.89473684"/>
+									<path d="M10.1782982,2.24743315 L18.1782982,3.6970464 C18.6540619,3.78325557 19,4.19751166 19,4.68102291 L19,19.3190064 C19,19.8025177 18.6540619,20.2167738 18.1782982,20.3029829 L10.1782982,21.7525962 C9.63486295,21.8510675 9.11449486,21.4903531 9.0160235,20.9469179 C9.00536265,20.8880837 9,20.8284119 9,20.7686197 L9,3.23140966 C9,2.67912491 9.44771525,2.23140966 10,2.23140966 C10.0597922,2.23140966 10.119464,2.2367723 10.1782982,2.24743315 Z M11.9166667,12.9060229 C12.6070226,12.9060229 13.1666667,12.2975724 13.1666667,11.5470105 C13.1666667,10.7964487 12.6070226,10.1879981 11.9166667,10.1879981 C11.2263107,10.1879981 10.6666667,10.7964487 10.6666667,11.5470105 C10.6666667,12.2975724 11.2263107,12.9060229 11.9166667,12.9060229 Z" fill="#000000"/>
+								</g>
+							</svg>
+						</span>
+						<span class="menu-text">Danh sách dịch vụ khám </span>
+					</a>
+				</li>
+				{% endif %}
+				<!-- Danh sách thuốc -->
+				{% if perms.medicine.can_view_medicine %}
+				<li class="menu-item" aria-haspopup="true">
+					<a href="{% url 'danh_sach_thuoc_phong_tai_chinh' %}" class="menu-link">
+						<span class="svg-icon menu-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+									<rect x="0" y="0" width="24" height="24"/>
+									<path d="M8,3 L8,3.5 C8,4.32842712 8.67157288,5 9.5,5 L14.5,5 C15.3284271,5 16,4.32842712 16,3.5 L16,3 L18,3 C19.1045695,3 20,3.8954305 20,5 L20,21 C20,22.1045695 19.1045695,23 18,23 L6,23 C4.8954305,23 4,22.1045695 4,21 L4,5 C4,3.8954305 4.8954305,3 6,3 L8,3 Z" fill="#000000" opacity="0.3"/>
+									<path d="M11,2 C11,1.44771525 11.4477153,1 12,1 C12.5522847,1 13,1.44771525 13,2 L14.5,2 C14.7761424,2 15,2.22385763 15,2.5 L15,3.5 C15,3.77614237 14.7761424,4 14.5,4 L9.5,4 C9.22385763,4 9,3.77614237 9,3.5 L9,2.5 C9,2.22385763 9.22385763,2 9.5,2 L11,2 Z" fill="#000000"/>
+									<rect fill="#000000" opacity="0.3" x="7" y="10" width="5" height="2" rx="1"/>
+									<rect fill="#000000" opacity="0.3" x="7" y="14" width="9" height="2" rx="1"/>
+								</g>
+							</svg>
+						</span>
+						<span class="menu-text">Danh sách thuốc</span>
+					</a>
+				</li>
+				{% endif %}
+				
+				<!-- Danh sách nguồn cung -->
+				{% if perms.medicine.can_view_company %}
+				<li class="menu-item" aria-haspopup="true">
+					<a href="{% url 'nguon_cung' %}" class="menu-link">
+						<span class="svg-icon menu-icon">
+							<!--begin::Svg Icon | path:/metronic/theme/html/demo1/dist/assets/media/svg/icons/Home/Library.svg-->
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+									<rect x="0" y="0" width="24" height="24" />
+									<path d="M5,3 L6,3 C6.55228475,3 7,3.44771525 7,4 L7,20 C7,20.5522847 6.55228475,21 6,21 L5,21 C4.44771525,21 4,20.5522847 4,20 L4,4 C4,3.44771525 4.44771525,3 5,3 Z M10,3 L11,3 C11.5522847,3 12,3.44771525 12,4 L12,20 C12,20.5522847 11.5522847,21 11,21 L10,21 C9.44771525,21 9,20.5522847 9,20 L9,4 C9,3.44771525 9.44771525,3 10,3 Z" fill="#000000" />
+									<rect fill="#000000" opacity="0.3" transform="translate(17.825568, 11.945519) rotate(-19.000000) translate(-17.825568, -11.945519)" x="16.3255682" y="2.94551858" width="3" height="18" rx="1" />
+								</g>
+							</svg>
+							<!--end::Svg Icon-->
+						</span>
+						<span class="menu-text">Danh sách nguồn cung</span>
+					</a>
+				</li>
+				{% endif %}
+				
+				<!-- Danh sách vật tư -->
+				{% if perms.medicine.can_view_medical_supplies %}
+				<li class="menu-item" aria-haspopup="true">
+					<a href="{% url 'danh_sach_vat_tu' %}" class="menu-link">
+						<span class="svg-icon menu-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+									<rect x="0" y="0" width="24" height="24"/>
+									<path d="M11.2928932,5.63603897 L18.363961,12.7071068 L12,19.0710678 L4.92893219,12 L11.2928932,5.63603897 Z M8.46446609,11.2928932 C8.0739418,11.6834175 8.0739418,12.3165825 8.46446609,12.7071068 C8.85499039,13.0976311 9.48815536,13.0976311 9.87867966,12.7071068 C10.2692039,12.3165825 10.2692039,11.6834175 9.87867966,11.2928932 C9.48815536,10.9023689 8.85499039,10.9023689 8.46446609,11.2928932 Z M11.2928932,8.46446609 C10.9023689,8.85499039 10.9023689,9.48815536 11.2928932,9.87867966 C11.6834175,10.2692039 12.3165825,10.2692039 12.7071068,9.87867966 C13.0976311,9.48815536 13.0976311,8.85499039 12.7071068,8.46446609 C12.3165825,8.0739418 11.6834175,8.0739418 11.2928932,8.46446609 Z M11.2928932,14.1213203 C10.9023689,14.5118446 10.9023689,15.1450096 11.2928932,15.5355339 C11.6834175,15.9260582 12.3165825,15.9260582 12.7071068,15.5355339 C13.0976311,15.1450096 13.0976311,14.5118446 12.7071068,14.1213203 C12.3165825,13.7307961 11.6834175,13.7307961 11.2928932,14.1213203 Z M14.1213203,11.2928932 C13.7307961,11.6834175 13.7307961,12.3165825 14.1213203,12.7071068 C14.5118446,13.0976311 15.1450096,13.0976311 15.5355339,12.7071068 C15.9260582,12.3165825 15.9260582,11.6834175 15.5355339,11.2928932 C15.1450096,10.9023689 14.5118446,10.9023689 14.1213203,11.2928932 Z" fill="#000000"/>
+									<path d="M10.5150629,20.4145579 C8.57369375,21.7007639 5.93228695,21.4886361 4.22182541,19.7781746 C2.51136387,18.0677131 2.2992361,15.4263063 3.58544211,13.4849371 L10.5150629,20.4145579 Z" fill="#000000" opacity="0.3"/>
+									<path d="M12.7778303,4.29254889 C14.7191995,3.00634288 17.3606063,3.21847065 19.0710678,4.92893219 C20.7815294,6.63939373 20.9936571,9.28080053 19.7074511,11.2221697 L12.7778303,4.29254889 Z" fill="#000000" opacity="0.3"/>
+								</g>
+							</svg>
+						</span>
+						<span class="menu-text">Danh sách vật tư</span>
+					</a>
+				</li>
+				{% endif %}
+			
+				
+				<!-- Thống kê doanh thu phòng khám -->
+				{% if perms.clinic.general_revenue_view %}
+				<li class="menu-item" aria-haspopup="true">
+					<a href="{% url 'doanh_thu_phong_kham' %}" class="menu-link">
+						<span class="svg-icon menu-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+									<rect x="0" y="0" width="24" height="24"/>
+									<path d="M5,19 L20,19 C20.5522847,19 21,19.4477153 21,20 C21,20.5522847 20.5522847,21 20,21 L4,21 C3.44771525,21 3,20.5522847 3,20 L3,4 C3,3.44771525 3.44771525,3 4,3 C4.55228475,3 5,3.44771525 5,4 L5,19 Z" fill="#000000" fill-rule="nonzero"/>
+									<path d="M8.7295372,14.6839411 C8.35180695,15.0868534 7.71897114,15.1072675 7.31605887,14.7295372 C6.9131466,14.3518069 6.89273254,13.7189711 7.2704628,13.3160589 L11.0204628,9.31605887 C11.3857725,8.92639521 11.9928179,8.89260288 12.3991193,9.23931335 L15.358855,11.7649545 L19.2151172,6.88035571 C19.5573373,6.44687693 20.1861655,6.37289714 20.6196443,6.71511723 C21.0531231,7.05733733 21.1271029,7.68616551 20.7848828,8.11964429 L16.2848828,13.8196443 C15.9333973,14.2648593 15.2823707,14.3288915 14.8508807,13.9606866 L11.8268294,11.3801628 L8.7295372,14.6839411 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+								</g>
+							</svg>
+						</span>
+						<span class="menu-text">Doanh thu phòng khám</span>
+					</a>
+				</li>
+				{% endif %}
+
+				<!-- Xuất bảo hiểm cho bên bảo hiểm chi trả -->
+				{% comment %} <li class="menu-item" aria-haspopup="true">
+					<a href="{% url 'xuat_bao_hiem' %}" class="menu-link">
+						<span class="svg-icon menu-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+									<rect x="0" y="0" width="24" height="24"/>
+									<path d="M22,17 L22,21 C22,22.1045695 21.1045695,23 20,23 L4,23 C2.8954305,23 2,22.1045695 2,21 L2,17 L6.27924078,17 L6.82339262,18.6324555 C7.09562072,19.4491398 7.8598984,20 8.72075922,20 L15.381966,20 C16.1395101,20 16.8320364,19.5719952 17.1708204,18.8944272 L18.118034,17 L22,17 Z" fill="#000000"/>
+									<path d="M2.5625,15 L5.92654389,9.01947752 C6.2807805,8.38972356 6.94714834,8 7.66969497,8 L16.330305,8 C17.0528517,8 17.7192195,8.38972356 18.0734561,9.01947752 L21.4375,15 L18.118034,15 C17.3604899,15 16.6679636,15.4280048 16.3291796,16.1055728 L15.381966,18 L8.72075922,18 L8.17660738,16.3675445 C7.90437928,15.5508602 7.1401016,15 6.27924078,15 L2.5625,15 Z" fill="#000000" opacity="0.3"/>
+									<path d="M11.1288761,0.733697713 L11.1288761,2.69017121 L9.12120481,2.69017121 C8.84506244,2.69017121 8.62120481,2.91402884 8.62120481,3.19017121 L8.62120481,4.21346991 C8.62120481,4.48961229 8.84506244,4.71346991 9.12120481,4.71346991 L11.1288761,4.71346991 L11.1288761,6.66994341 C11.1288761,6.94608579 11.3527337,7.16994341 11.6288761,7.16994341 C11.7471877,7.16994341 11.8616664,7.12798964 11.951961,7.05154023 L15.4576222,4.08341738 C15.6683723,3.90498251 15.6945689,3.58948575 15.5161341,3.37873564 C15.4982803,3.35764848 15.4787093,3.33807751 15.4576222,3.32022374 L11.951961,0.352100892 C11.7412109,0.173666017 11.4257142,0.199862688 11.2472793,0.410612793 C11.1708299,0.500907473 11.1288761,0.615386087 11.1288761,0.733697713 Z" fill="#000000" fill-rule="nonzero" transform="translate(11.959697, 3.661508) rotate(-90.000000) translate(-11.959697, -3.661508) "/>
+								</g>
+							</svg>
+						</span>
+						<span class="menu-text">Xuất bảo hiểm</span>
+					</a>
+				</li> {% endcomment %}
+				{% if perms.clinic.export_insurance_data %}
+				<li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+					<a href="javascript:;" class="menu-link menu-toggle">
+						<span class="svg-icon menu-icon">
+							<!--begin::Svg Icon | path:/metronic/theme/html/demo1/dist/assets/media/svg/icons/Design/Bucket.svg-->
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+									<rect x="0" y="0" width="24" height="24" />
+									<path d="M5,5 L5,15 C5,15.5948613 5.25970314,16.1290656 5.6719139,16.4954176 C5.71978107,16.5379595 5.76682388,16.5788906 5.81365532,16.6178662 C5.82524933,16.6294602 15,7.45470952 15,7.45470952 C15,6.9962515 15,6.17801499 15,5 L5,5 Z M5,3 L15,3 C16.1045695,3 17,3.8954305 17,5 L17,15 C17,17.209139 15.209139,19 13,19 L7,19 C4.790861,19 3,17.209139 3,15 L3,5 C3,3.8954305 3.8954305,3 5,3 Z" fill="#000000" fill-rule="nonzero" transform="translate(10.000000, 11.000000) rotate(-315.000000) translate(-10.000000, -11.000000)" />
+									<path d="M20,22 C21.6568542,22 23,20.6568542 23,19 C23,17.8954305 22,16.2287638 20,14 C18,16.2287638 17,17.8954305 17,19 C17,20.6568542 18.3431458,22 20,22 Z" fill="#000000" opacity="0.3" />
+								</g>
+							</svg>
+							<!--end::Svg Icon-->
+						</span>
+						<span class="menu-text">Xuất bảo hiểm</span>
+						<i class="menu-arrow"></i>
+					</a>
+					<div class="menu-submenu">
+						<i class="menu-arrow"></i>
+						<ul class="menu-subnav">
+							<li class="menu-item menu-item-parent" aria-haspopup="true">
+								<span class="menu-link">
+									<span class="menu-text">Xuất bảo hiểm</span>
+								</span>
+							</li>
+							{% if perms.clinic.can_export_list_of_patient_insurance_coverage %}
+							<li class="menu-item" aria-haspopup="true">
+								<a href="{% url 'danh_sach_benh_nhan_bao_hiem' %}" class="menu-link">
+									<i class="menu-bullet menu-bullet-dot">
+										<span></span>
+									</i>
+									<span class="menu-text">Danh Sách Người Bệnh (BHYT MC79a)</span>
+								</a>
+							</li>
+							{% endif %}
+
+							{% if perms.finance.can_export_medical_supplies_expense_coverage %}
+							<li class="menu-item" aria-haspopup="true">
+								<a href="javascript:;" class="menu-link">
+									<i class="menu-bullet menu-bullet-dot">
+										<span></span>
+									</i>
+									<span class="menu-text">Vật Tư Y Tế (BHYT MC19)</span>
+								</a>
+							</li>
+							{% endif %}
+
+							{% if perms.finance.can_export_medicine_expense_coverage %}
+							<li class="menu-item" aria-haspopup="true">
+								<a href="{% url 'danh_sach_thuoc_bao_hiem' %}" class="menu-link">
+									<i class="menu-bullet menu-bullet-dot">
+										<span></span>
+									</i>
+									<span class="menu-text">Thuốc (BHYT MC20)</span>
+								</a>
+							</li>
+							{% endif %}
+
+							{% if perms.finance.can_export_service_expense_coverage %}
+							<li class="menu-item" aria-haspopup="true">
+								<a href="{% url 'danh_sach_dich_vu_bao_hiem' %}" class="menu-link">
+									<i class="menu-bullet menu-bullet-dot">
+										<span></span>
+									</i>
+									<span class="menu-text">Dịch Vụ Kỹ Thuật (BHYT MC21)</span>
+								</a>
+							</li>
+							{% endif %}
+
+						</ul>
+					</div>
+				</li>
+				{% endif %}
+
+				<li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+					<a href="javascript:;" class="menu-link menu-toggle">
+						<span class="svg-icon menu-icon">
+							<!--begin::Svg Icon | path:/metronic/theme/html/demo1/dist/assets/media/svg/icons/Design/Bucket.svg-->
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+									<rect x="0" y="0" width="24" height="24" />
+									<path d="M5,5 L5,15 C5,15.5948613 5.25970314,16.1290656 5.6719139,16.4954176 C5.71978107,16.5379595 5.76682388,16.5788906 5.81365532,16.6178662 C5.82524933,16.6294602 15,7.45470952 15,7.45470952 C15,6.9962515 15,6.17801499 15,5 L5,5 Z M5,3 L15,3 C16.1045695,3 17,3.8954305 17,5 L17,15 C17,17.209139 15.209139,19 13,19 L7,19 C4.790861,19 3,17.209139 3,15 L3,5 C3,3.8954305 3.8954305,3 5,3 Z" fill="#000000" fill-rule="nonzero" transform="translate(10.000000, 11.000000) rotate(-315.000000) translate(-10.000000, -11.000000)" />
+									<path d="M20,22 C21.6568542,22 23,20.6568542 23,19 C23,17.8954305 22,16.2287638 20,14 C18,16.2287638 17,17.8954305 17,19 C17,20.6568542 18.3431458,22 20,22 Z" fill="#000000" opacity="0.3" />
+								</g>
+							</svg>
+							<!--end::Svg Icon-->
+						</span>
+						<span class="menu-text">Báo Cáo</span>
+						<i class="menu-arrow"></i>
+					</a>
+					<div class="menu-submenu">
+						<i class="menu-arrow"></i>
+						<ul class="menu-subnav">
+							<li class="menu-item menu-item-parent" aria-haspopup="true">
+								<span class="menu-link">
+									<span class="menu-text">Báo Cáo</span>
+								</span>
+							</li>
+
+							<li class="menu-item" aria-haspopup="true">
+								<a href="{% url 'bao_cao_xnt_tong_hop_thuoc' %}" class="menu-link">
+									<i class="menu-bullet menu-bullet-dot">
+										<span></span>
+									</i>
+									<span class="menu-text">Xuất Nhập Tồn Tổng Hợp Thuốc</span>
+								</a>
+							</li>
+
+							<li class="menu-item" aria-haspopup="true">
+								<a href="{% url 'bao_cao_thuoc_sap_het_date' %}" class="menu-link">
+									<i class="menu-bullet menu-bullet-dot">
+										<span></span>
+									</i>
+									<span class="menu-text">Thuốc Sắp Hết Date</span>
+								</a>
+							</li>
+
+						</ul>
+					</div>
+				</li>
+			
+				{% if perms.clinic.preclinical_department_module_view %}
+				<li class="menu-section">
+					<h4 class="menu-text">Bác sĩ lâm sàng</h4>
+					<i class="menu-icon ki ki-bold-more-hor icon-md"></i>
+				</li>
+				{% endif %}
+				<!-- Danh sách chờ -->
+				
+				{% if perms.clinic.can_view_list_of_patient %}
+				<li class="menu-item" aria-haspopup="true">
+					<a href="{% url 'danh_sach_benh_nhan_cho' %}" class="menu-link">
+						<span class="svg-icon menu-icon">
+							<!--begin::Svg Icon | path:/metronic/theme/html/demo1/dist/assets/media/svg/icons/Home/Library.svg-->
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+									<rect x="0" y="0" width="24" height="24" />
+									<path d="M5,3 L6,3 C6.55228475,3 7,3.44771525 7,4 L7,20 C7,20.5522847 6.55228475,21 6,21 L5,21 C4.44771525,21 4,20.5522847 4,20 L4,4 C4,3.44771525 4.44771525,3 5,3 Z M10,3 L11,3 C11.5522847,3 12,3.44771525 12,4 L12,20 C12,20.5522847 11.5522847,21 11,21 L10,21 C9.44771525,21 9,20.5522847 9,20 L9,4 C9,3.44771525 9.44771525,3 10,3 Z" fill="#000000" />
+									<rect fill="#000000" opacity="0.3" transform="translate(17.825568, 11.945519) rotate(-19.000000) translate(-17.825568, -11.945519)" x="16.3255682" y="2.94551858" width="3" height="18" rx="1" />
+								</g>
+							</svg>
+							<!--end::Svg Icon-->
+						</span>
+						<span class="menu-text">Danh sách chờ</span>
+					</a>
+				</li>
+				{% endif %}
+				<!-- Kết quả khám chuyên khoa -->
+				{% if perms.clinic.can_view_specialty_result %}
+				<li class="menu-item" aria-haspopup="true">
+					<a href="{% url 'danh_sach_kham' %}" class="menu-link">
+						<span class="svg-icon menu-icon">
+							<!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2020-10-29-133027/theme/html/demo1/dist/../src/media/svg/icons/Communication/Clipboard-list.svg-->
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+									<rect x="0" y="0" width="24" height="24"/>
+									<path d="M8,3 L8,3.5 C8,4.32842712 8.67157288,5 9.5,5 L14.5,5 C15.3284271,5 16,4.32842712 16,3.5 L16,3 L18,3 C19.1045695,3 20,3.8954305 20,5 L20,21 C20,22.1045695 19.1045695,23 18,23 L6,23 C4.8954305,23 4,22.1045695 4,21 L4,5 C4,3.8954305 4.8954305,3 6,3 L8,3 Z" fill="#000000" opacity="0.3"/>
+									<path d="M11,2 C11,1.44771525 11.4477153,1 12,1 C12.5522847,1 13,1.44771525 13,2 L14.5,2 C14.7761424,2 15,2.22385763 15,2.5 L15,3.5 C15,3.77614237 14.7761424,4 14.5,4 L9.5,4 C9.22385763,4 9,3.77614237 9,3.5 L9,2.5 C9,2.22385763 9.22385763,2 9.5,2 L11,2 Z" fill="#000000"/>
+									<rect fill="#000000" opacity="0.3" x="10" y="9" width="7" height="2" rx="1"/>
+									<rect fill="#000000" opacity="0.3" x="7" y="9" width="2" height="2" rx="1"/>
+									<rect fill="#000000" opacity="0.3" x="7" y="13" width="2" height="2" rx="1"/>
+									<rect fill="#000000" opacity="0.3" x="10" y="13" width="7" height="2" rx="1"/>
+									<rect fill="#000000" opacity="0.3" x="7" y="17" width="2" height="2" rx="1"/>
+									<rect fill="#000000" opacity="0.3" x="10" y="17" width="7" height="2" rx="1"/>
+								</g>
+							</svg>
+							<!--end::Svg Icon-->
+						</span>
+						<span class="menu-text">Kết quả chuyên khoa</span>
+					</a>
+				</li>
+				{% endif %}
+				
+				{% if perms.clinic.specialist_department_module_view %}
+				<li class="menu-section">
+					<h4 class="menu-text">Bác sĩ chuyên khoa</h4>
+					<i class="menu-icon ki ki-bold-more-hor icon-md"></i>
+				</li>
+
+				<!-- Danh sách chờ khám chuyên khoa -->
+				{% for phong in phong_chuc_nang %}
+					<li class="menu-item" aria-haspopup="true">
+						<a href="{% url 'phong_chuyen_khoa' phong.id %}" class="menu-link">
+							<span class="svg-icon menu-icon">
+								<!--begin::Svg Icon | path:/metronic/theme/html/demo1/dist/assets/media/svg/icons/Home/Library.svg-->
+								<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+									<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+										<rect x="0" y="0" width="24" height="24" />
+										<path d="M5,3 L6,3 C6.55228475,3 7,3.44771525 7,4 L7,20 C7,20.5522847 6.55228475,21 6,21 L5,21 C4.44771525,21 4,20.5522847 4,20 L4,4 C4,3.44771525 4.44771525,3 5,3 Z M10,3 L11,3 C11.5522847,3 12,3.44771525 12,4 L12,20 C12,20.5522847 11.5522847,21 11,21 L10,21 C9.44771525,21 9,20.5522847 9,20 L9,4 C9,3.44771525 9.44771525,3 10,3 Z" fill="#000000" />
+										<rect fill="#000000" opacity="0.3" transform="translate(17.825568, 11.945519) rotate(-19.000000) translate(-17.825568, -11.945519)" x="16.3255682" y="2.94551858" width="3" height="18" rx="1" />
+									</g>
+								</svg>
+								<!--end::Svg Icon-->
+							</span>
+							<span class="menu-text">{{phong.ten_phong_chuc_nang}}</span>
+						</a>
+					</li>
+				{% endfor %}
+
+				{% endif %}
+
+
+				{% if perms.clinic.medicine_department_module_view %}
+				<li class="menu-section">
+					<h4 class="menu-text">Phòng thuốc</h4>
+					<i class="menu-icon ki ki-bold-more-hor icon-md"></i>
+				</li>
+
+				<!-- Danh sách bệnh nhân -->
+				<li class="menu-item" aria-haspopup="true">
+					<a href="{% url 'phong_thuoc' %}" class="menu-link">
+						<span class="svg-icon menu-icon">
+							<!--begin::Svg Icon | path:/metronic/theme/html/demo1/dist/assets/media/svg/icons/Home/Library.svg-->
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+									<rect x="0" y="0" width="24" height="24" />
+									<path d="M5,3 L6,3 C6.55228475,3 7,3.44771525 7,4 L7,20 C7,20.5522847 6.55228475,21 6,21 L5,21 C4.44771525,21 4,20.5522847 4,20 L4,4 C4,3.44771525 4.44771525,3 5,3 Z M10,3 L11,3 C11.5522847,3 12,3.44771525 12,4 L12,20 C12,20.5522847 11.5522847,21 11,21 L10,21 C9.44771525,21 9,20.5522847 9,20 L9,4 C9,3.44771525 9.44771525,3 10,3 Z" fill="#000000" />
+									<rect fill="#000000" opacity="0.3" transform="translate(17.825568, 11.945519) rotate(-19.000000) translate(-17.825568, -11.945519)" x="16.3255682" y="2.94551858" width="3" height="18" rx="1" />
+								</g>
+							</svg>
+							<!--end::Svg Icon-->
+						</span>
+						<span class="menu-text">Danh sách chờ</span>
+					</a>
+				</li>
+
+				<!-- Danh sách thuốc trong kho -->
+				<li class="menu-item" aria-haspopup="true">
+					<a href="{% url 'danh_sach_thuoc_phong_thuoc' %}" class="menu-link">
+						<span class="svg-icon menu-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+									<rect x="0" y="0" width="24" height="24"/>
+									<path d="M3,4 L20,4 C20.5522847,4 21,4.44771525 21,5 L21,7 C21,7.55228475 20.5522847,8 20,8 L3,8 C2.44771525,8 2,7.55228475 2,7 L2,5 C2,4.44771525 2.44771525,4 3,4 Z M10,10 L20,10 C20.5522847,10 21,10.4477153 21,11 L21,13 C21,13.5522847 20.5522847,14 20,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L20,16 C20.5522847,16 21,16.4477153 21,17 L21,19 C21,19.5522847 20.5522847,20 20,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000"/>
+									<rect fill="#000000" opacity="0.3" x="2" y="10" width="5" height="10" rx="1"/>
+								</g>
+							</svg>
+						</span>
+						<span class="menu-text">Thống kê thuốc trong kho</span>
+					</a>
+				</li>
+				{% endif %}
+
+				{% if perms.medicine.can_add_prescription %}
+				<!-- Thêm Đơn Thuốc Mới -->
+				<li class="menu-item" aria-haspopup="true">
+					<a href="{% url 'create_don_thuoc_rieng' %}" class="menu-link">
+						<span class="svg-icon menu-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+									<polygon points="0 0 24 0 24 24 0 24"/>
+									<path d="M5.85714286,2 L13.7364114,2 C14.0910962,2 14.4343066,2.12568431 14.7051108,2.35473959 L19.4686994,6.3839416 C19.8056532,6.66894833 20,7.08787823 20,7.52920201 L20,20.0833333 C20,21.8738751 19.9795521,22 18.1428571,22 L5.85714286,22 C4.02044787,22 4,21.8738751 4,20.0833333 L4,3.91666667 C4,2.12612489 4.02044787,2 5.85714286,2 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+									<path d="M11,14 L9,14 C8.44771525,14 8,13.5522847 8,13 C8,12.4477153 8.44771525,12 9,12 L11,12 L11,10 C11,9.44771525 11.4477153,9 12,9 C12.5522847,9 13,9.44771525 13,10 L13,12 L15,12 C15.5522847,12 16,12.4477153 16,13 C16,13.5522847 15.5522847,14 15,14 L13,14 L13,16 C13,16.5522847 12.5522847,17 12,17 C11.4477153,17 11,16.5522847 11,16 L11,14 Z" fill="#000000"/>
+								</g>
+							</svg>
+						</span>
+						<span class="menu-text">Thêm Đơn Thuốc Mới</span>
+					</a>
+				</li>
+				{% endif %}
+
+				{% if perms.clinic.can_bao_cao_thuoc %}
+				<li class="menu-item" aria-haspopup="true">
+					<a href="{% url 'bao_cao_thuoc' %}" class="menu-link">
+						<span class="svg-icon menu-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+									<rect x="0" y="0" width="24" height="24"/>
+									<path d="M8,3 L8,3.5 C8,4.32842712 8.67157288,5 9.5,5 L14.5,5 C15.3284271,5 16,4.32842712 16,3.5 L16,3 L18,3 C19.1045695,3 20,3.8954305 20,5 L20,21 C20,22.1045695 19.1045695,23 18,23 L6,23 C4.8954305,23 4,22.1045695 4,21 L4,5 C4,3.8954305 4.8954305,3 6,3 L8,3 Z" fill="#000000" opacity="0.3"/>
+									<path d="M11,2 C11,1.44771525 11.4477153,1 12,1 C12.5522847,1 13,1.44771525 13,2 L14.5,2 C14.7761424,2 15,2.22385763 15,2.5 L15,3.5 C15,3.77614237 14.7761424,4 14.5,4 L9.5,4 C9.22385763,4 9,3.77614237 9,3.5 L9,2.5 C9,2.22385763 9.22385763,2 9.5,2 L11,2 Z" fill="#000000"/>
+									<rect fill="#000000" opacity="0.3" x="7" y="10" width="5" height="2" rx="1"/>
+									<rect fill="#000000" opacity="0.3" x="7" y="14" width="9" height="2" rx="1"/>
+								</g>
+							</svg>
+						</span>
+						<span class="menu-text">Báo Cáo Thuốc</span>
+					</a>
+				</li>
+				{% endif %}
+			</ul>
+			<!--end::Menu Nav-->
+		</div>
+		<!--end::Menu Container-->
+	</div>
+	<!--end::Aside Menu-->
+</div>
+<!--end::Aside-->

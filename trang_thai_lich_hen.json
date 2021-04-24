@@ -1,0 +1,65 @@
+[
+{
+  "model": "clinic.trangthailichhen",
+  "pk": 1,
+  "fields": {
+    "ten_trang_thai": "Chờ Thanh Toán Lâm Sàng"
+  }
+},
+{
+  "model": "clinic.trangthailichhen",
+  "pk": 2,
+  "fields": {
+    "ten_trang_thai": "Đã Thanh Toán Lâm Sàng"
+  }
+},
+{
+  "model": "clinic.trangthailichhen",
+  "pk": 3,
+  "fields": {
+    "ten_trang_thai": "Đã đặt trước"
+  }
+},
+{
+  "model": "clinic.trangthailichhen",
+  "pk": 4,
+  "fields": {
+    "ten_trang_thai": "Xác Nhận"
+  }
+},
+{
+  "model": "clinic.trangthailichhen",
+  "pk": 5,
+  "fields": {
+    "ten_trang_thai": "Đã Đặt Trước"
+  }
+},
+{
+  "model": "clinic.trangthailichhen",
+  "pk": 6,
+  "fields": {
+    "ten_trang_thai": "Đã Phân Khoa"
+  }
+},
+{
+  "model": "clinic.trangthailichhen",
+  "pk": 7,
+  "fields": {
+    "ten_trang_thai": "Đã Thanh Toán Dịch Vụ"
+  }
+},
+{
+  "model": "clinic.trangthailichhen",
+  "pk": 8,
+  "fields": {
+    "ten_trang_thai": "Chờ Thanh Toán Hóa Đơn Thuốc"
+  }
+},
+{
+  "model": "clinic.trangthailichhen",
+  "pk": 9,
+  "fields": {
+    "ten_trang_thai": "Chờ Xác Nhận"
+  }
+}
+]

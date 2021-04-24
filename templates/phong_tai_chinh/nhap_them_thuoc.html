@@ -1,0 +1,505 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block stylesheet %}
+<!--begin::Global Theme Styles(used by all pages)-->
+<link href="{% static 'assets/plugins/global/plugins.bundle9cd7.css' %}" rel="stylesheet" type="text/css" />
+<link href="{% static 'assets/plugins/custom/prismjs/prismjs.bundle9cd7.css' %}" rel="stylesheet" type="text/css" />
+<link href="{% static 'assets/css/style.bundle9cd7.css' %} " rel="stylesheet" type="text/css" />
+<!--end::Global Theme Styles-->
+<!--begin::Layout Themes(used by all pages)-->
+<link href="{% static 'assets/css/themes/layout/header/base/light9cd7.css' %} " rel="stylesheet" type="text/css" />
+<link href="{% static 'assets/css/themes/layout/header/menu/light9cd7.css' %} " rel="stylesheet" type="text/css" />
+<link href="{% static 'assets/css/themes/layout/brand/dark9cd7.css' %} " rel="stylesheet" type="text/css" />
+<link href="{% static 'assets/css/themes/layout/aside/dark9cd7.css' %} " rel="stylesheet" type="text/css" />
+<!--end::Layout Themes-->
+{% endblock stylesheet %}
+
+{% block content %}
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">Nhập Thêm Thuốc Vào Kho</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="javascript:;" class="text-muted">Phòng Tài Chính</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="javascript:;" class="text-muted">Nhập Thêm Thuốc</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!--begin::Card-->
+            <div class="card card-custom">
+                <div class="card-header flex-wrap border-0 pt-6 pb-0">
+                    <div class="card-title">
+                        <span class="card-icon">
+                            <i class="la la-clipboard-list text-primary"></i>
+                        </span>
+                        <h3 class="card-label">Danh Sách Thuốc</h3>
+                    </div>
+                    <div class="card-toolbar">
+                        <!--begin::Button-->
+                        <a href="{% url 'phong_thuoc' %}" class="btn btn-light-primary font-weight-bolder">
+                            <span class="svg-icon svg-icon-md">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <polygon points="0 0 24 0 24 24 0 24"/>
+                                        <rect fill="#000000" opacity="0.3" transform="translate(12.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-12.000000, -12.000000) " x="11" y="5" width="2" height="14" rx="1"/>
+                                        <path d="M3.7071045,15.7071045 C3.3165802,16.0976288 2.68341522,16.0976288 2.29289093,15.7071045 C1.90236664,15.3165802 1.90236664,14.6834152 2.29289093,14.2928909 L8.29289093,8.29289093 C8.67146987,7.914312 9.28105631,7.90106637 9.67572234,8.26284357 L15.6757223,13.7628436 C16.0828413,14.136036 16.1103443,14.7686034 15.7371519,15.1757223 C15.3639594,15.5828413 14.7313921,15.6103443 14.3242731,15.2371519 L9.03007346,10.3841355 L3.7071045,15.7071045 Z" fill="#000000" fill-rule="nonzero" transform="translate(9.000001, 11.999997) scale(-1, -1) rotate(90.000000) translate(-9.000001, -11.999997) "/>
+                                    </g>
+                                </svg>
+                            </span>
+                            Quay Lại
+                        </a>
+                        <!--end::Button-->
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!--begin: Search Form-->
+                    <!--begin::Search Form-->
+                    <div class="mb-7">
+                        <div class="row align-items-center">
+                            <div class="col-lg-12 col-xl-12">
+                                <div class="row align-items-center">
+                                    <div class="col-md-6 my-2 my-md-0">
+                                        <div class="input-icon">
+                                            <input type="text" class="form-control" placeholder="Tìm kiếm..." id="kt_datatable_search_query_2" />
+                                            <span>
+                                                <i class="flaticon2-search-1 text-muted"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Search Form-->
+                    <!--begin: Selected Rows Group Action Form-->
+                    <div class="mt-10 mb-5 collapse" id="kt_datatable_group_action_form_2">
+                        <div class="d-flex align-items-center">
+                            <div class="font-weight-bold text-success mr-3">Đã chọn  
+                            <span id="kt_datatable_selected_records_2">0</span> loại thuốc</div>
+                        </div>
+                    </div>
+                    <!--end: Selected Rows Group Action Form-->
+                    <!--begin: Datatable-->
+                    <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable_2"></div>
+                    <!--end: Datatable-->
+                </div>
+            </div>
+            <!--end::Card-->
+
+            <!--begin::Card-->
+            <div class="card card-custom mt-7">
+                <div class="card-header">
+                    <div class="card-title">
+                        <span class="card-icon">
+                            <i class="flaticon-clipboard text-primary"></i>
+                        </span>
+                        <h3 class="card-label">Danh Sách Thuốc Được Nhập</h3>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!--begin: Table-->
+                    <table class="table table-bordered table-checkable" id="kt_datatable_3" style="margin-top: 13px !important;">
+                        <thead>
+                            <tr>
+                                <td>Tên Thuốc</td>
+                                <td>Bảo Hiểm</td>                                
+                                <td>Khả Dụng</td>
+                                <td>ĐVT</td>
+                                <td>Số Lượng</td>                               
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                    <!--end: Table-->
+                </div>
+                <div class="card-footer">
+                    <div class="card-toolbar">
+                        <!--begin::Button-->
+                        <a href="javascript:;" class="btn btn-primary font-weight-bolder" id="get-table-data" data-id="{{ user_id }}" >
+                            <i class="la la-plus"></i>Nhập Thuốc
+                        </a>
+                        <!--end::Button-->
+                    </div>
+                </div>
+            </div>
+            <!--end::Card-->
+        </div>
+        <!-- end::Container -->
+    </div>
+    <!-- end::Entry -->
+</div>
+<!-- end::Content -->
+
+{% endblock content %}
+
+{% block scripts %}
+
+
+<!--begin::Global Theme Bundle(used by all pages)-->
+
+<!--end::Global Theme Bundle-->
+
+<!--begin::Custom Javascripts(used by this page)-->
+<script>
+
+"use strict";
+// Class definition
+
+var KTDatatableRecordSelectionDemo = function() {
+    // Private functions
+
+    var options = {
+        // datasource definition
+        data: {
+            type: 'remote',
+            source: { 
+                read: {
+                    url: HOST_URL + '/router/api/danh_sach_thuoc/',
+                    method: 'GET',
+                },
+            },
+            pageSize: 10,
+            serverPaging: true,
+            // serverFiltering: true,
+            // serverSorting: true,
+        },
+
+        // layout definition
+        layout: {
+            scroll: false, // enable/disable datatable scroll both horizontal and
+            footer: false // display/hide footer
+        },
+
+        // column sorting
+        sortable: true,
+
+        pagination: true,
+
+        // columns definition
+        columns: [{
+            field: 'id',
+            title: '#',
+            sortable: false,
+            width: 20,
+            selector: {
+                class: ''
+            },
+            textAlign: 'center',
+        }, {
+            field: 'ten_thuoc',
+            title: 'Tên thuốc',
+            template: function(row) {
+                return '<a href id=' + '"' + row.id + '"' + ' data-title="This is my tooltip content for:'+row.ten_thuoc+'" data-toggle="tooltip" data-trigger="hover">'+row.ten_thuoc+'</a>'
+            }
+        }, {
+            field: 'loai_thuoc',
+            title: 'Loại',
+        }, {
+            field: 'ma_hoat_chat',
+            title: 'Mã hoạt chất',
+        }, {
+            field: 'ten_hoat_chat',
+            title: 'Tên hoạt chất',
+        }, {
+            field: 'duong_dung',
+            title: 'Cách dùng',
+        }, {
+            field: 'so_luong_kha_dung',
+            title: 'Số lượng khả dụng',
+        }, {
+            field: 'don_vi_tinh',
+            title: 'Đơn vị tính',
+        }],
+    };
+
+    var serverSelectorDemo = function() {
+        // enable extension
+        options.extensions = {
+            // boolean or object (extension options)
+            checkbox: true,
+        };
+        options.search = {
+            input: $('#kt_datatable_search_query_2'),
+            key: 'generalSearch'
+        };
+
+        var datatable = $('#kt_datatable_2').KTDatatable(options);
+
+        $('#kt_datatable_search_status_2').on('change', function() {
+            datatable.search($(this).val().toLowerCase(), 'Status');
+        });
+
+        $('#kt_datatable_search_type_2').on('change', function() {
+            datatable.search($(this).val().toLowerCase(), 'Type');
+        });
+
+        $('#kt_datatable_search_status_2, #kt_datatable_search_type_2').selectpicker();
+
+        datatable.on(
+            'datatable-on-click-checkbox',
+            function(e) {
+                // datatable.checkbox() access to extension methods
+                var ids = datatable.checkbox().getSelectedId();
+                var count = ids.length;
+                // console.log(datatable.checkbox())
+                // console.log(datatable.checkbox().selectedRows)
+
+                // var lst_ids = datatable.checkbox().selectedRows;
+                // console.log(datatable.getRecord(lst_ids).getColumn('Country').getValue())
+                $('#kt_datatable_selected_records_2').html(count);
+
+                if (count > 0) {
+                    $('#kt_datatable_group_action_form_2').collapse('show');
+                } else {
+                    $('#kt_datatable_group_action_form_2').collapse('hide');
+                }
+            });
+
+        datatable.on('mouseenter', 'tbody tr', function(){
+            // alert($(this).data());
+            $(this).find('[data-toggle="tooltip"]').tooltip({
+                delay: 300,
+
+                title: "<em>Tooltip</em> <u>with</u> <b>HTML</b>",
+                html: true,
+            });
+
+        })
+
+        var lstData = [];
+        var lstCheckbox = {};
+        var lstQuantity = {};
+        var lstUsage = {};
+        var lstNote = {};
+
+        $('#get-table-data').on('click', function (){
+            
+            var user_id = $(this).attr('data-id');
+            lstCheckbox = {};
+            lstQuantity = {};
+
+            getCheckbox();
+            getInputQuantity();
+
+            getPostData(user_id);
+            postData(user_id); 
+        })
+
+    
+        datatable.on('click', 'tbody input[type="checkbox"]', function () {
+            $(this).toggleClass('selected');
+            // console.log($(this).val())
+            var objList = [];
+            if($(this).is(":checked")){
+                var trVals = $(this).closest('tr').data();
+                // console.log($(this).val())
+                
+                console.log(trVals)
+                // console.log(objList)
+                lstData.push(trVals)
+                // $('#kt_datatable_3 tbody').empty();
+
+                console.log(lstData)
+
+                $(trVals).each(function () {
+                    $('#kt_datatable_3 tbody').append(`
+                        <tr class="${trVals.obj.id}" data-id = "${trVals.obj.id}" name="true" >
+                            <td>
+                            ${trVals.obj.ten_thuoc}
+                            </td>
+                            <td>
+                                <input type="checkbox" id="${trVals.obj.id}" class="checkbox checkbox-lg checkbox-light-success checkbox-inline flex-shrink-0 m-0 mx-4 big-checkbox" data-checked="True" data-unchecked="False" />
+                            </td>
+                            <td>
+                                <span>
+                                    ${trVals.obj.so_luong_kha_dung}
+                                </span>
+                            </td>
+                            <td>
+                                <span>
+                                    ${trVals.obj.don_vi_tinh}
+                                </span>
+                            </td>
+                            <td>
+                                <input type="number" class="big-input-quantity form-control" onwheel="return false;" min='0' oninput="this.value|=0" />
+                            </td>
+                        </tr>
+                    `);
+                })
+
+            } else {
+                var trVals = $(this).closest('tr').data();
+                $(`.${trVals.obj.id}`).remove();
+                lstData = lstData.filter((item) => item!==trVals)
+                lstQuantity = {}
+
+            }
+        })
+
+        $('#kt_datatable_3').on('click', 'tbody input[type="checkbox"]', function () {
+            if($(this).is(":checked")){
+                lstCheckbox = {};
+                getCheckbox();
+            } else {
+                lstCheckbox = {}; 
+                getCheckbox();
+            }
+        })
+
+        function postData(user_id, id_chuoi_kham){
+            var user_id = user_id
+            
+            var checkBoxObj = lstCheckbox;
+
+            var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+
+            function csrfSafeMethod(method) {
+                // these HTTP methods do not require CSRF protection
+                return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+            }
+
+            $.ajaxSetup({
+                beforeSend: function(xhr, settings) {
+                    function getCookie(name) {
+                        var cookieValue = null;
+                        if (document.cookie && document.cookie != '') {
+                            var cookies = document.cookie.split(';');
+                            for (var i = 0; i < cookies.length; i++) {
+                                var cookie = jQuery.trim(cookies[i]);
+                                // Does this cookie string begin with the name we want?
+                                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                                    break;
+                                }
+                            }
+                        }
+                        return cookieValue;
+                    }
+                    if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+                        // Only send the token to relative URLs i.e. locally.
+                        xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+                    }
+                } 
+            });
+
+            $.ajax({
+                type: "POST",
+                url: "{% url 'store_nhap_thuoc' %}",
+                data: {
+                    // here data should be a string so that
+                    // in your views.py you can fetch the value using get('data')
+                    'data': JSON.stringify(getPostData(user_id)),
+                    'csrfmiddlewaretoken': csrftoken,
+                    'user': user_id,
+                },
+                dataType: 'json',
+                safe: false,
+                success: function (response) {
+                    if (response.status == 200){
+                        toastr.success(response.message, "Thành Công")
+                        setTimeout(function () {
+                            window.history.back(); //redirect về danh sách chờ lâm sàng
+                        }, 1500);
+                    }
+
+                },
+                error: function (res) {
+                    toastr.warning("Có Lỗi Xảy Ra Trong Quá Trình Xử Lý")
+                }
+            });
+        }
+
+        function getPostData(user_id){
+            var user_id     = user_id
+            var rowData     = lstData;
+            var checkBoxObj = lstCheckbox;
+            var quantityObj = lstQuantity;
+
+
+            for (const each in checkBoxObj) {
+                for (let i = 0; i < rowData.length; i++) {
+                    if (rowData[i].obj.id == each) {
+
+                        rowData[i].obj.bao_hiem  = checkBoxObj[each];
+                        rowData[i].obj.so_luong  = quantityObj[each];
+                        rowData[i].obj.nguoi_phu_trach = user_id;
+                    }
+                }
+            }
+            console.log(rowData)
+            return rowData;
+        }
+
+        function getCheckbox(){
+            
+            $('#kt_datatable_3 tbody tr').each(function() {
+
+                var sectionId = $(this).data('id');
+
+                $(this).find('input.big-checkbox:checked').each(function() {
+                    console.log($(this).attr('data-checked'));
+                    lstCheckbox[sectionId] = $(this).attr('data-checked');
+                });
+
+                $(this).find('input.big-checkbox:not(:checked)').each(function() {
+                    lstCheckbox[sectionId] = $(this).attr('data-unchecked');
+                });
+            });
+        }
+
+        function getInputQuantity(){
+            $('#kt_datatable_3 tbody tr').each(function() {
+                var sectionId = $(this).data('id');
+                $(this).find('input.big-input-quantity').each(function(){
+                    lstQuantity[sectionId] = $(this).val();
+                })
+            });
+        }
+    };
+
+    return {
+        // public functions
+        init: function() {
+          
+            serverSelectorDemo();
+        },
+    };
+}();
+
+jQuery(document).ready(function() {
+    KTDatatableRecordSelectionDemo.init();
+});
+
+
+</script>
+<!--end::Custom Javascripts-->
+
+{% endblock scripts %}

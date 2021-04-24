@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!--begin::Card-->
+            <div class="card card-custom">
+                <div class="card-header flex-wrap border-0 pb-0">
+                    <div class="card-title">
+                        <h1>
+                            {{bai_dang.tieu_de}}
+                            <span class="form-text mt-5 font-size-sm text-muted">{{bai_dang.thoi_gian_bat_dau}} - {{bai_dang.thoi_gian_ket_thuc}}</span>
+                        </h1>
+                    </div>
+                </div>
+                <div class="card-body rounded">
+                    <div class="separator separator-solid mb-5 "></div>
+                    <!--begin::Image-->
+                    <div class="bgi-no-repeat bgi-size-cover rounded min-h-400px w-100" style="background-image: url({{bai_dang.hinh_anh.url}})"></div>
+                    <!--end::Image-->
+                    <h5 class="mt-5 ">
+                        {{bai_dang.noi_dung_chinh}}
+                    </h5>
+                    <div class="form-text font-size-md mt-4 ml-2">
+                        {{bai_dang.noi_dung|safe}}
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <blockquote class="blockquote text-right mb-0">
+                        <p class="mb-0">Người đăng bài</p>
+                        <footer class="blockquote-footer font-size-md text-right">
+                            <cite title="Source Title">{{bai_dang.nguoi_dang_bai.ho_ten}}</cite>
+                        </footer>
+                    </blockquote>
+                </div>
+            </div>
+            <!--end::Card-->
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+
+{% endblock content %}
+
+{% block scripts %}
+
+
+{% endblock scripts %}

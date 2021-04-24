@@ -1,0 +1,83 @@
+[
+{
+  "model": "clinic.nhomtainan",
+  "pk": 1,
+  "fields": {
+    "ma_nhom": "0",
+    "ten_nhom": "Không xác định",
+    "ghi_chu": null
+  }
+},
+{
+  "model": "clinic.nhomtainan",
+  "pk": 2,
+  "fields": {
+    "ma_nhom": "1",
+    "ten_nhom": "Tai nạn giao thông",
+    "ghi_chu": null
+  }
+},
+{
+  "model": "clinic.nhomtainan",
+  "pk": 3,
+  "fields": {
+    "ma_nhom": "2",
+    "ten_nhom": "Tai nạn lao động",
+    "ghi_chu": null
+  }
+},
+{
+  "model": "clinic.nhomtainan",
+  "pk": 4,
+  "fields": {
+    "ma_nhom": "3",
+    "ten_nhom": "Tai nạn dưới nước",
+    "ghi_chu": null
+  }
+},
+{
+  "model": "clinic.nhomtainan",
+  "pk": 5,
+  "fields": {
+    "ma_nhom": "4",
+    "ten_nhom": "Bỏng",
+    "ghi_chu": null
+  }
+},
+{
+  "model": "clinic.nhomtainan",
+  "pk": 6,
+  "fields": {
+    "ma_nhom": "5",
+    "ten_nhom": "Bạo lực, xung đột",
+    "ghi_chu": null
+  }
+},
+{
+  "model": "clinic.nhomtainan",
+  "pk": 7,
+  "fields": {
+    "ma_nhom": "6",
+    "ten_nhom": "Tự tử",
+    "ghi_chu": null
+  }
+},
+{
+  "model": "clinic.nhomtainan",
+  "pk": 8,
+  "fields": {
+    "ma_nhom": "7",
+    "ten_nhom": "Ngộ độc các loại",
+    "ghi_chu": null
+  }
+},
+{
+  "model": "clinic.nhomtainan",
+  "pk": 9,
+  "fields": {
+    "ma_nhom": "8",
+    "ten_nhom": "Khác",
+    "ghi_chu": null
+  }
+}
+]

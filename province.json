@@ -1,0 +1,506 @@
+[
+{
+  "model": "clinic.province",
+  "pk": 1,
+  "fields": {
+    "name": "Thành phố Hà Nội",
+    "type": "Thành phố Trung ương"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 2,
+  "fields": {
+    "name": "Tỉnh Hà Giang",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 4,
+  "fields": {
+    "name": "Tỉnh Cao Bằng",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 6,
+  "fields": {
+    "name": "Tỉnh Bắc Kạn",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 8,
+  "fields": {
+    "name": "Tỉnh Tuyên Quang",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 10,
+  "fields": {
+    "name": "Tỉnh Lào Cai",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 11,
+  "fields": {
+    "name": "Tỉnh Điện Biên",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 12,
+  "fields": {
+    "name": "Tỉnh Lai Châu",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 14,
+  "fields": {
+    "name": "Tỉnh Sơn La",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 15,
+  "fields": {
+    "name": "Tỉnh Yên Bái",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 17,
+  "fields": {
+    "name": "Tỉnh Hoà Bình",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 19,
+  "fields": {
+    "name": "Tỉnh Thái Nguyên",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 20,
+  "fields": {
+    "name": "Tỉnh Lạng Sơn",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 22,
+  "fields": {
+    "name": "Tỉnh Quảng Ninh",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 24,
+  "fields": {
+    "name": "Tỉnh Bắc Giang",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 25,
+  "fields": {
+    "name": "Tỉnh Phú Thọ",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 26,
+  "fields": {
+    "name": "Tỉnh Vĩnh Phúc",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 27,
+  "fields": {
+    "name": "Tỉnh Bắc Ninh",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 30,
+  "fields": {
+    "name": "Tỉnh Hải Dương",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 31,
+  "fields": {
+    "name": "Thành phố Hải Phòng",
+    "type": "Thành phố Trung ương"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 33,
+  "fields": {
+    "name": "Tỉnh Hưng Yên",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 34,
+  "fields": {
+    "name": "Tỉnh Thái Bình",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 35,
+  "fields": {
+    "name": "Tỉnh Hà Nam",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 36,
+  "fields": {
+    "name": "Tỉnh Nam Định",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 37,
+  "fields": {
+    "name": "Tỉnh Ninh Bình",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 38,
+  "fields": {
+    "name": "Tỉnh Thanh Hóa",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 40,
+  "fields": {
+    "name": "Tỉnh Nghệ An",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 42,
+  "fields": {
+    "name": "Tỉnh Hà Tĩnh",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 44,
+  "fields": {
+    "name": "Tỉnh Quảng Bình",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 45,
+  "fields": {
+    "name": "Tỉnh Quảng Trị",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 46,
+  "fields": {
+    "name": "Tỉnh Thừa Thiên Huế",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 48,
+  "fields": {
+    "name": "Thành phố Đà Nẵng",
+    "type": "Thành phố Trung ương"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 49,
+  "fields": {
+    "name": "Tỉnh Quảng Nam",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 51,
+  "fields": {
+    "name": "Tỉnh Quảng Ngãi",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 52,
+  "fields": {
+    "name": "Tỉnh Bình Định",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 54,
+  "fields": {
+    "name": "Tỉnh Phú Yên",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 56,
+  "fields": {
+    "name": "Tỉnh Khánh Hòa",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 58,
+  "fields": {
+    "name": "Tỉnh Ninh Thuận",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 60,
+  "fields": {
+    "name": "Tỉnh Bình Thuận",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 62,
+  "fields": {
+    "name": "Tỉnh Kon Tum",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 64,
+  "fields": {
+    "name": "Tỉnh Gia Lai",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 66,
+  "fields": {
+    "name": "Tỉnh Đắk Lắk",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 67,
+  "fields": {
+    "name": "Tỉnh Đắk Nông",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 68,
+  "fields": {
+    "name": "Tỉnh Lâm Đồng",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 70,
+  "fields": {
+    "name": "Tỉnh Bình Phước",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 72,
+  "fields": {
+    "name": "Tỉnh Tây Ninh",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 74,
+  "fields": {
+    "name": "Tỉnh Bình Dương",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 75,
+  "fields": {
+    "name": "Tỉnh Đồng Nai",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 77,
+  "fields": {
+    "name": "Tỉnh Bà Rịa - Vũng Tàu",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 79,
+  "fields": {
+    "name": "Thành phố Hồ Chí Minh",
+    "type": "Thành phố Trung ương"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 80,
+  "fields": {
+    "name": "Tỉnh Long An",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 82,
+  "fields": {
+    "name": "Tỉnh Tiền Giang",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 83,
+  "fields": {
+    "name": "Tỉnh Bến Tre",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 84,
+  "fields": {
+    "name": "Tỉnh Trà Vinh",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 86,
+  "fields": {
+    "name": "Tỉnh Vĩnh Long",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 87,
+  "fields": {
+    "name": "Tỉnh Đồng Tháp",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 89,
+  "fields": {
+    "name": "Tỉnh An Giang",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 91,
+  "fields": {
+    "name": "Tỉnh Kiên Giang",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 92,
+  "fields": {
+    "name": "Thành phố Cần Thơ",
+    "type": "Thành phố Trung ương"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 93,
+  "fields": {
+    "name": "Tỉnh Hậu Giang",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 94,
+  "fields": {
+    "name": "Tỉnh Sóc Trăng",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 95,
+  "fields": {
+    "name": "Tỉnh Bạc Liêu",
+    "type": "Tỉnh"
+  }
+},
+{
+  "model": "clinic.province",
+  "pk": 96,
+  "fields": {
+    "name": "Tỉnh Cà Mau",
+    "type": "Tỉnh"
+  }
+}
+]

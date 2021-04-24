@@ -1,0 +1,470 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">Tải Lên Kết Quả Khám</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="#" class="text-muted">Bác sĩ chuyên khoa</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="#" class="text-muted">Bệnh nhân {{chuoi_kham.benh_nhan.ho_ten}}</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="#" class="text-muted">Tải lên kết quả khám</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+ 
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--begin::Card-->
+                    <div class="card card-custom">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <h3 class="card-label">Dịch Vụ Kĩ Thuật: {{ dich_vu.ten_dvkt }}</h3>
+                            </div>
+                            
+                        </div>
+                        <!--begin::Form-->
+                        <form id="upload-form">
+                            <div class="card-body">
+                                
+                                <div id="result">
+                                    <div class="form-group row">
+                                        <label class="col-lg-2 col-form-label text-lg-right">Mã kết quả:</label>
+                                        <div class="col-lg-10">
+                                            <input type="text" id="ma_ket_qua" class="form-control" placeholder="Nhập mã kết quả" name="ma_ket_qua" value="{{ma_ket_qua}}" disabled />
+                                            <span class="form-text text-muted">Mã kết quả có dạng : <code>"Mã PCN" - "Tên Bệnh Nhân" - Thời gian khám</code></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-2 col-form-label text-lg-right">Mô tả:</label>
+                                        <div class="col-lg-10">
+                                            <input type="text" id="mo_ta" class="form-control" placeholder="Nhập mô tả bệnh" name="mo_ta" />       
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-2 col-form-label text-lg-right">Chụp ảnh:</label>
+                                        <div class="col-lg-10">
+                                            <div class="dropzone dropzone-multi" id="kt_dropzone_4">
+                                                <div class="dropzone-panel mb-lg-0 mb-2">
+                                                    <a href="javascript:;" class="btn btn-light-primary font-weight-bold btn-sm" id="openCamera" data-name="{{ ho_ten_benh_nhan }}">Mở máy ảnh</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-2 col-form-label text-lg-right">Kết quả:</label>
+                                        <div class="col-lg-10">
+                                            {% comment %} <textarea class="form-control" id="ket_qua" rows="3" placeholder="Nhập kết quả của bệnh nhân" name='ket_qua'></textarea>  {% endcomment %}
+                                            {% comment %} <textarea class="form-control" id="noi_dung" name="memo" placeholder="Nhập nội dung" rows="7"></textarea> {% endcomment %}
+                                            {% comment %} <textarea name="kt-ckeditor-5" id="kt-ckeditor-5"></textarea> {% endcomment %}
+                                            <div class="summernote" id="kt_summernote_1"></div>
+                                        </div>
+                                    </div>
+                                    <div id="divMauPhieu" style="display: none;">{{ mau_phieu.noi_dung|safe }}</div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-lg-3"></div>
+                                    <div class="col-lg-9">
+                                        <button type="button" id="upload" data-id-phan-khoa="{{id_phan_khoa}}" data-id-chuoi-kham="{{id_chuoi_kham}}" data-id-phong-chuc-nang="{{id_phong_chuc_nang}}" class="dropzone-upload btn btn-primary mr-2">Lưu</button>
+                                        <button type="reset" class="btn btn-light-primary">Hủy</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!--end::Form-->
+                    </div>
+                    <!--end::Card-->
+                </div>
+ 
+            </div>
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+<!-- end::Content -->
+
+<!-- Open Camera Modal-->
+<div class="modal fade" id="CameraModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Chụp ảnh siêu âm</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="card-body">
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <video id="webcam" autoplay playsinline width="640" height="480" class="ml-8"></video>
+                            <canvas id="canvas" class="d-none ml-8"></canvas>
+                            <div class="flash"></div>
+                            <audio id="snapSound" src="{% static 'assets/plugins/custom/webcam-easy/demo/audio/snap.wav' %}" preload="auto"></audio>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer row justify-content-center py-8 px-8 py-md-10 px-md-0">
+                <div id="cameraControls">
+                    <a href="javascript:;" id="take-photo" class="btn btn-primary font-weight-bold">Chụp Ảnh</a>
+                    <a href="javascript:;" id="download-photo" download="{{ ho_ten_benh_nhan }}.png" target="_blank" title="Save Photo" class="d-none"><i class="fas fa-download"></i>Tải Về</a>  
+                    <a href="javascript:;" id="resume-camera" title="Resume Camera" class="d-none"><i class="fas fa-camera-retro"></i>Chụp Thêm</a>
+                </div>
+                <button type="button" class="btn btn-light-primary font-weight-bold float-right" data-dismiss="modal">Đóng</button>
+            </div>     
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+
+{% block scripts %}
+
+<!--begin::Global Theme Bundle(used by all pages)-->
+
+
+<script src="{% static 'assets/js/summernote-image-attributes.js' %}"></script>
+<script src="{% static 'assets/js/lang_summernote/vi_VN.js' %}"></script>
+<script src="{% static 'assets/js/summernote-ext-print.js' %}"></script>
+
+<script src="{% static 'assets/plugins/custom/webcam-easy/dist/webcam-easy.min.js' %}"></script>
+<!--end::Global Theme Bundle-->
+
+<script>
+    $(document).ajaxStart(function() {
+        KTApp.blockPage({
+            overlayColor: '#000000',
+            state: 'primary',
+            message: 'Đang xử lý...'
+        });
+    })
+
+    $(document).ajaxStop(function() {
+        KTApp.unblockPage();
+    })
+
+</script>
+
+<script>
+// Class definition
+    var KTFormControls = function () {
+        // Private functions
+
+        var benh_nhan = {{ benh_nhan|safe }};
+        var dia_chi = {{ dia_chi|safe }};
+        var tuoi = {{ tuoi|safe }};
+        var gioi_tinh = {{ gioi_tinh|safe }};
+        var bac_si_chuyen_khoa = {{ bac_si_chuyen_khoa|safe }}
+        var bac_si_lam_sang = {{ bac_si_lam_sang|safe }}
+        var ngay_kham = {{ ngay_kham|safe }}
+        
+        var fillPatientInfo = function() {
+            var dataInfo = ""
+            var dataAddr = ""
+            var dataRes = ""
+            var dataDr = ""
+            var dataDateTime = ""
+            var dataDr2 = ""
+
+            $('table tr').each(function(){
+                if ($(this).find('td').eq(1).text() == '{benh_nhan}'){
+                    var innerHtml = $(this).html()
+            
+                    var start_tr = '<tr>'
+                    var end_tr = '</tr>'
+                    var c = start_tr + innerHtml + end_tr
+
+                    dataInfo += c.replace(/{benh_nhan}/, benh_nhan[0]).replace(/{tuoi}/, tuoi[0]).replace(/{gioi_tinh}/, gioi_tinh[0])
+                    $(this).replaceWith(dataInfo)
+                }
+                if ($(this).find('td').eq(1).text() == '{dia_chi}'){
+                    var innerHtml = $(this).html()
+                    var start_tr = '<tr>'
+                    var end_tr = '</tr>'
+                    var c = start_tr + innerHtml + end_tr
+
+                    dataAddr += c.replace(/{dia_chi}/, dia_chi[0])
+                    $(this).replaceWith(dataAddr)
+                }
+
+                if ($(this).find('td').eq(1).text() == '{bac_si_lam_sang}'){
+                    var innerHtml = $(this).html()
+            
+                    var start_tr = '<tr>'
+                    var end_tr = '</tr>'
+                    var c = start_tr + innerHtml + end_tr
+
+                    dataDr2 += c.replace(/{bac_si_lam_sang}/, bac_si_lam_sang[0])
+                    $(this).replaceWith(dataDr2)
+                }
+
+                if ($(this).find('td').eq(1).text() == '{bac_si_chuyen_khoa}'){
+                    var innerHtml = $(this).html()
+                    console.log(innerHtml)                    
+                    var start_tr = '<tr>'
+                    var end_tr = '</tr>'
+                    var c = start_tr + innerHtml + end_tr
+
+                    dataDr += c.replace(/{bac_si_chuyen_khoa}/, bac_si_chuyen_khoa[0])
+                    $(this).replaceWith(dataDr)
+                }
+
+                if ($(this).find('td').eq(1).text() == '{ngay_kham}'){
+                    var innerHtml = $(this).html()
+                    console.log(innerHtml)                    
+                    var start_tr = '<tr>'
+                    var end_tr = '</tr>'
+                    var c = start_tr + innerHtml + end_tr
+
+                    dataDateTime += c.replace(/{ngay_kham}/, ngay_kham[0])
+                    $(this).replaceWith(dataDateTime)
+                }
+                
+            })
+        }
+
+        var _initValidate = function () {
+            fillPatientInfo()
+            var html = $("#divMauPhieu").html()
+
+            $('.summernote').summernote({
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']],
+                    ['misc', ['print']]
+                ],
+                print: {
+                    'stylesheetUrl': 'url_of_stylesheet_for_printing'
+                },
+                imageAttributes: {
+                    icon: '<i class="note-icon-pencil"/>',
+                    figureClass: 'figureClass',
+                    figcaptionClass: 'captionClass',
+                    captionText: 'Caption Goes Here.',
+                    manageAspectRatio: true // true = Lock the Image Width/Height, Default to true
+                },
+                lang: 'vi_VN',
+                popover: {
+                    image: [
+                        ['image', ['resizeFull', 'resizeHalf', 'resizeQuarter', 'resizeNone']],
+                        ['float', ['floatLeft', 'floatRight', 'floatNone']],
+                        ['remove', ['removeMedia']],
+                        ['custom', ['imageAttributes']],
+                    ],
+                    link: [
+                        ['link', ['linkDialogShow', 'unlink']]
+                    ],
+                    table: [
+                        ['add', ['addRowDown', 'addRowUp', 'addColLeft', 'addColRight']],
+                        ['delete', ['deleteRow', 'deleteCol', 'deleteTable']],
+                    ],
+                    air: [
+                        ['color', ['color']],
+                        ['font', ['bold', 'underline', 'clear']],
+                        ['para', ['ul', 'paragraph']],
+                        ['table', ['table']],
+                        ['insert', ['link', 'picture']]
+                    ]
+                },
+            });
+
+            $('.summernote').summernote("code", html);
+
+        }
+
+        var send_content = function() {
+            
+            $(document).on('click', '#upload', function() {
+                var formData = new FormData()
+                var id_phan_khoa = $(this).data('id-phan-khoa')
+                var id_chuoi_kham = $(this).data('id-chuoi-kham')
+                var ma_ket_qua = $('#ma_ket_qua').val()
+                var mo_ta = $('#mo_ta').val()
+                var content = $(".summernote").summernote("code")
+
+                formData.append('id_phan_khoa', id_phan_khoa)
+                formData.append('id_chuoi_kham', id_chuoi_kham)
+                formData.append('noi_dung', content)
+                formData.append('mo_ta', mo_ta)
+                formData.append('ma_ket_qua', ma_ket_qua)
+                formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
+
+                $.ajax({
+                    type: "POST",
+                    url: "{% url 'store_ket_qua_chuyen_khoa_html' %}",
+                    data: formData,
+                    cache: false,
+                    processData: false,
+                    contentType: false,
+                    success: function(response){
+                        if (response.status == 200) {
+                            var id_phong_chuc_nang = $("#upload-form").find("#upload").data('id-phong-chuc-nang')
+                            toastr.success(response.message, "Thành Công")
+                            setTimeout(function () {
+                                window.location.href = '/phong_chuyen_khoa/' + id_phong_chuc_nang; //redirect về danh sách chờ lâm sàng
+                            }, 1500)
+                            
+                        } else if (response.status == 404) {
+                            toastr.warning(response.message, "Thất Bại")
+                        }
+                    },
+                    error: function(response){
+                        toastr.warning("Xảy ra lỗi khi gửi dữ liệu, vui lòng kiểm tra lại", "Thất Bại")
+                    }
+                }) 
+            })
+        }
+
+        var initCamera = function() {
+            $('#openCamera').click(function(){
+                $('#CameraModal').modal('show');
+                webcam.start()
+                    .then(result =>{
+                        cameraStarted();
+                        console.log("webcam started");
+                    })
+                    .catch(err => {
+                        displayError();
+                    });
+            });
+
+            var benh_nhan = $('#openCamera').attr('data-name');
+
+            const webcamElement = document.getElementById('webcam');
+
+            const canvasElement = document.getElementById('canvas');
+
+            const snapSoundElement = document.getElementById('snapSound');
+
+            const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
+
+            function cameraStarted(){
+                $("#errorMsg").addClass("d-none");
+                $('.flash').hide();
+                $("#webcam-caption").html("on");
+                $(".webcam-container").removeClass("d-none");
+                if( webcam.webcamList.length > 1){
+                    $("#cameraFlip").removeClass('d-none');
+                }
+                $('body').css('overflow-y','hidden');
+            }
+
+            function cameraStopped(){
+                $("#errorMsg").addClass("d-none");
+                $("#cameraFlip").addClass('d-none');
+                $(".webcam-container").addClass("d-none");
+                $("#webcam-caption").html("Click to Start Camera");
+                $('.md-modal').removeClass('md-show');
+            }
+
+            $('#take-photo').click(function(){
+                beforeTakePhoto();
+                var picture = webcam.snap();
+                document.querySelector('#download-photo').href = picture;
+                afterTakePhoto();
+            })
+
+            function beforeTakePhoto(){
+                $('.flash')
+                    .show() 
+                    .animate({opacity: 0.3}, 500) 
+                    .fadeOut(500)
+                    .css({'opacity': 0.7});
+                $('#cameraControls').addClass('d-none');
+            }
+
+            function afterTakePhoto(){
+                webcam.stop();
+                $('#canvas').removeClass('d-none');
+                $('#take-photo').addClass('d-none');
+                $('#exit-app').removeClass('d-none');
+                $('#download-photo').removeClass('d-none');
+                $('#download-photo').addClass('btn btn-success font-weight-bold');
+                $('#resume-camera').removeClass('d-none');
+                $('#resume-camera').addClass('btn btn-primary font-weight-bold');
+                $('#cameraControls').removeClass('d-none');
+                $('#webcam').addClass('d-none');
+            }
+
+            function removeCapture(){
+                $('#webcam').removeClass('d-none');
+                $('#canvas').addClass('d-none');
+                $('#cameraControls').removeClass('d-none');
+                $('#take-photo').removeClass('d-none');
+                $('#exit-app').addClass('d-none');
+                $('#download-photo').addClass('d-none');
+                $('#resume-camera').addClass('d-none');
+            }
+
+            $("#resume-camera").click(function () {
+                webcam.stream()
+                    .then(facingMode =>{
+                        removeCapture();
+                    });
+            });
+
+            $("#CameraModal").on('hide.bs.modal',function () {
+                {% comment %} removeCapture();
+                cameraStopped(); {% endcomment %}
+                webcam.stop();
+                {% comment %} const $body = $('body');
+                $body[0].style.setProperty('overflow-y', 'auto', '!important'); {% endcomment %}
+            });
+
+        }
+
+        return {
+            // public functions
+            init: function() {
+                _initValidate();
+                send_content();
+                initCamera();
+            }
+        };
+    }();
+ 
+    jQuery(document).ready(function() {
+        KTFormControls.init();
+    });
+</script>
+
+{% endblock scripts %}

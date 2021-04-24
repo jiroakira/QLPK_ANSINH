@@ -1,0 +1,228 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">Tải Lên Kết Quả Khám</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="#" class="text-muted">Bác sĩ chuyên khoa</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="#" class="text-muted">Bệnh nhân {{chuoi_kham.benh_nhan.ho_ten}}</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="#" class="text-muted">Tải lên kết quả khám</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+ 
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid" >
+        <!--begin::Container-->
+        <div class="container" >
+            <div class="card card-custom" id="mau_phieu">
+                <div class="form-group row">
+                    <div class="col-lg-2 col-md-2"><span></span></div>
+                    <div class="col-lg-9 col-md-9 table table-responsive w-auto mt-10" >
+                    <!--begin::Card-->
+                        {{ mau_phieu.noi_dung|safe }}
+                    <!--end::Card-->
+                    </div>
+                    <div class="col-lg-1"></div>
+                </div>
+            </div>
+            <div class="row justify-content-center py-8 px-8 py-md-10 px-md-0">
+                <div class="col-md-9">
+                    <div class="text-right">
+                        {% comment %} <button type="button" class="btn btn-primary font-weight-bold" id="btn-thanh-toan">Thanh Toán</button> {% endcomment %}
+                        <button type="button" class="btn btn-light-primary font-weight-bold" onclick="PrintElem('mau_phieu')" id="print_elem">In Phiếu</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+<!-- end::Content -->
+ 
+{% endblock content %}
+
+{% block scripts %}
+ 
+<!--begin::Global Theme Bundle(used by all pages)-->
+
+<!--end::Global Theme Bundle-->
+ 
+<script>
+ 
+"use strict";
+// Class definition
+
+function PrintElem(elem)
+{
+    var mywindow = window.open('', 'PRINT', 'height=400,width=600');
+
+    mywindow.document.write('<html><head><title>' + document.title  + '</title>');
+    mywindow.document.write('</head><body >');
+    mywindow.document.write('<p>' + document.title  + '</p>');
+    mywindow.document.write(document.getElementById(elem).innerHTML);
+    mywindow.document.write('</body></html>');
+    mywindow.document.close(); // necessary for IE >= 10
+    mywindow.focus(); // necessary for IE >= 10*/ 
+    
+    mywindow.print();
+    // mywindow.close();
+
+    return true;
+}
+
+{% comment %} $(document).on('click', "#print_elem", function(mau_phieu){
+    PrintElem('mau_phieu')
+    console.log(1)
+}) {% endcomment %}
+
+var KTDropzoneDemo = function () {
+
+    var list_chi_so = {{ list_ten_chi_so|safe }}
+    var list_chi_so_binh_thuong = {{ list_chi_so_binh_thuong|safe }}
+    var list_don_vi = {{ list_don_vi|safe }}
+    var list_ket_qua = {{ list_ket_qua|safe }}
+
+    var benh_nhan = {{ benh_nhan|safe }};
+    var dia_chi = {{ dia_chi|safe }};
+    var tuoi = {{ tuoi|safe }};
+    var gioi_tinh = {{ gioi_tinh|safe }};
+    var bac_si_chi_dinh = {{ bac_si_chi_dinh|safe }};
+    var chan_doan = {{ chan_doan|safe }};
+    var bac_si_chuyen_khoa = {{ bac_si_chuyen_khoa|safe }}
+    var ngay_kham = {{ ngay_kham|safe }}
+
+    var evaluate = function() {
+        var data_row = ""
+
+        $('table tr').each(function(){
+            
+            if($(this).find('td').eq(0).text() == '{ten_chi_so}'){
+                var innerHtml = $(this).html()
+                var start_tr = '<tr>'
+                var end_tr = '</tr>'
+                var c = start_tr + innerHtml + end_tr
+
+                for (var i=0; i<list_chi_so.length; i++) {
+                    data_row += c.replace(/{ten_chi_so}/, list_chi_so[i]).replace(/{chi_so}/, list_chi_so_binh_thuong[i]).replace(/{don_vi}/, list_don_vi[i]).replace(/{ket_qua_xet_nghiem}/, list_ket_qua[i])
+                }
+                $(this).replaceWith(data_row)
+            }
+        });
+    }
+
+    var fillPatientInfo = function() {
+        var dataInfo = ""
+        var dataAddr = ""
+        var dataRes = ""
+        var dataDr = ""
+        var dataDr2 = ""
+        var dataDateTime = ""
+        $('table tr').each(function(){
+            if ($(this).find('td').eq(1).text() == '{benh_nhan}'){
+                var innerHtml = $(this).html()
+                var start_tr = '<tr>'
+                var end_tr = '</tr>'
+                var c = start_tr + innerHtml + end_tr
+
+                dataInfo += c.replace(/{benh_nhan}/, benh_nhan[0]).replace(/{tuoi}/, tuoi[0]).replace(/{gioi_tinh}/, gioi_tinh[0])
+                $(this).replaceWith(dataInfo)
+            }
+            if ($(this).find('td').eq(1).text() == '{dia_chi}'){
+                var innerHtml = $(this).html()
+                var start_tr = '<tr>'
+                var end_tr = '</tr>'
+                var c = start_tr + innerHtml + end_tr
+
+                dataAddr += c.replace(/{dia_chi}/, dia_chi[0])
+                $(this).replaceWith(dataAddr)
+            }
+            if ($(this).find('td').eq(1).text() == '{ma_benh_chan_doan}'){
+                var innerHtml = $(this).html()
+                var start_tr = '<tr>'
+                var end_tr = '</tr>'
+                var c = start_tr + innerHtml + end_tr
+
+                dataRes += c.replace(/{ma_benh_chan_doan}/, chan_doan[0])
+                $(this).replaceWith(dataRes)
+            }
+            if ($(this).find('td').eq(1).text() == '{bac_si_lam_sang}'){
+                var innerHtml = $(this).html()
+                var start_tr = '<tr>'
+                var end_tr = '</tr>'
+                var c = start_tr + innerHtml + end_tr
+
+                dataDr += c.replace(/{bac_si_lam_sang}/, bac_si_chi_dinh[0])
+                $(this).replaceWith(dataDr)
+            }
+
+            if ($(this).find('td').eq(6).text() == '{bac_si_chuyen_khoa}'){
+                var innerHtml = $(this).html()
+                var start_tr = '<tr>'
+                var end_tr = '</tr>'
+                var c = start_tr + innerHtml + end_tr
+
+                dataDr2 += c.replace(/{bac_si_chuyen_khoa}/, bac_si_chuyen_khoa[0])
+                $(this).replaceWith(dataDr2)
+            }
+
+            if ($(this).find('td').eq(6).text() == '{ngay}'){
+                var innerHtml = $(this).html()
+                var start_tr = '<tr>'
+                var end_tr = '</tr>'
+                var c = start_tr + innerHtml + end_tr
+
+                dataDateTime += c.replace(/{ngay}/, ngay_kham[0])
+                console.log(dataDateTime)
+                $(this).replaceWith(dataDateTime)
+            }
+        })
+        
+    }
+
+    
+ 
+    return {
+        // public functions
+        init: function() {
+            fillPatientInfo();
+            evaluate();
+        }
+    };
+}();
+ 
+KTUtil.ready(function() {
+    KTDropzoneDemo.init();
+});
+ 
+ 
+</script>
+ 
+{% endblock scripts %}
+ 

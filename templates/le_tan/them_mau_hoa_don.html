@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">Thêm Mới Mẫu Hóa Đơn</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="{% url 'danh_sach_mau_phieu' %}" class="text-muted">Danh sách mẫu phiếu</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="javascript:;" class="text-muted">Thêm mẫu hóa đơn</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+
+    
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!--begin::Card-->
+            <div class="card card-custom">
+                <div class="card-header flex-wrap border-0 pt-6 pb-0">
+                    <div class="card-title">
+                        <h3 class="card-label">Biểu Mẫu Thêm Mới</h3>
+                    </div>
+                </div>
+                <form id="kt_form_1">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-6">
+                                <!--begin::Form-->
+                                <div class="form-group">
+                                    <label>Tên Mẫu Hóa Đơn </label>
+                                    <input type="text" class="form-control" id='ten_mau_hoa_don' placeholder="Nhập Tên Mẫu Hóa Đơn"/>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Codename </label>
+                                    <input type="text" class="form-control" id='codename' placeholder="Nhập Codename Của Mẫu Hóa Đơn"/>
+                                </div>
+                                               
+                                <div class="form-group">
+                                    <label>Nội Dung Mẫu Phiếu </label>
+                                    {% comment %} <div id="kt-ckeditor-1-toolbar"></div> {% endcomment %}
+                                    <textarea class="form-control" id="noi_dung" name="memo" placeholder="Nhập nội dung" rows="7"></textarea>
+                                </div>
+                            <!-- end::Form -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-lg-12 ml-lg-auto text-center">
+                                <button type="button" class="btn btn-primary font-weight-bold mr-2" id="submitData" name="submitButton">Xác nhận</button>
+                                <button type="button" class="btn btn-light-primary font-weight-bold" id="cancelButton">Hủy</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!--end::Card-->
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+
+</div>
+
+{% endblock content %}
+
+
+ 
+{% block scripts %}
+<!--begin::Global Theme Bundle(used by all pages)-->
+
+<script src="{% static 'assets/plugins/custom/ckeditor/ckeditor.js' %}"></script>
+
+<script>
+    $(document).ajaxStart(function() {
+        KTApp.blockPage({
+            overlayColor: '#000000',
+            state: 'primary',
+            message: 'Đang xử lý...'
+        });
+    })
+
+    $(document).ajaxStop(function() {
+        KTApp.unblockPage();
+    })
+</script>
+
+<script>
+// Class definition
+    var KTFormControls = function () {
+        // Private functions
+        CKEDITOR.replace( 'noi_dung' );
+
+        var store_mau_phieu = function() {
+            $('#submitData').on('click', function() {
+                
+                var ten_mau_hoa_don = $("#ten_mau_hoa_don").val()
+                var codename = $("#codename").val()
+                var noi_dung = CKEDITOR.instances.noi_dung.getData()
+                var formData = new FormData()
+
+                formData.append('ten_mau_hoa_don', ten_mau_hoa_don)
+                formData.append('codename', codename)
+                formData.append('noi_dung', noi_dung)
+                
+                formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
+
+                $.ajax({
+                    type: "POST",
+                    url: "{% url 'create_mau_hoa_don' %}", 
+                    data: formData,
+                    cache: false,
+                    processData: false,
+                    contentType: false,
+                    success: function(response){
+                        if (response.status == 200) {
+                            toastr.success(response.message, "Thành Công")
+                            setTimeout(function () {
+                                window.location.href = '/danh_sach_mau_phieu/'; //redirect về danh sách chờ lâm sàng
+                            }, 1500)
+                        } else if (response.status == 404) {
+                            toastr.warning(response.message, "Thất Bại")
+                        }
+                    },
+                    error: function(response){
+                        toastr.warning("Xảy ra lỗi khi gửi dữ liệu, vui lòng kiểm tra lại", "Thất Bại")
+                    }
+                })
+            })
+        }
+
+        $(document).on('click', '#cancelButton', function(){
+            window.history.back()
+        })
+
+        return {
+            // public functions
+            init: function() {
+                store_mau_phieu();
+            }
+        };
+    }();
+ 
+    jQuery(document).ready(function() {
+        KTFormControls.init();
+    });
+</script>
+{% endblock scripts %}

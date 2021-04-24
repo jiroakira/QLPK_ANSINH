@@ -1,0 +1,29 @@
+[
+{
+  "model": "clinic.dotuoixetnghiem",
+  "pk": 1,
+  "fields": {
+    "do_tuoi_min": 0,
+    "do_tuoi_max": 15,
+    "ghi_chu": "Độ Tuổi Trẻ con"
+  }
+},
+{
+  "model": "clinic.dotuoixetnghiem",
+  "pk": 2,
+  "fields": {
+    "do_tuoi_min": 16,
+    "do_tuoi_max": 55,
+    "ghi_chu": "Độ Tuổi Trưởng Thành"
+  }
+},
+{
+  "model": "clinic.dotuoixetnghiem",
+  "pk": 3,
+  "fields": {
+    "do_tuoi_min": 60,
+    "do_tuoi_max": null,
+    "ghi_chu": "Độ Tuổi Già"
+  }
+}
+]

@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">Chỉnh Sửa Thông Tin Khoa Khám</h5>
+                    <!--end::Page Title-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!--begin::Card-->
+            <div class="card card-custom">
+                <div class="card-header pb-0">
+                    <div class="card-title">
+                        <h1 class="card-label">
+                            Biểu mẫu chỉnh sửa
+                        </h1>
+                    </div>
+                </div>
+                <!--begin::Form-->
+                <form class="form" id="phong_chuc_nang_form">
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <label class="col-form-label text-right col-lg-4 col-sm-12">Tên Phòng Chức Năng *</label>
+                            <div class="col-lg-6 col-md-9 col-sm-12">
+                                {{ form.ten_phong_chuc_nang|attr:"class: form-control"|attr:"name: ten_phong_chuc_nang" }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-form-label text-right col-lg-4 col-sm-12">Dịch Vụ Khám *</label>
+                            <div class="col-lg-6 col-md-9 col-sm-12">
+                                {{ form.dich_vu_kham|attr:"class: form-control"|attr:"name: dich_vu_kham" }}
+                            </div>
+                        </div>
+                        {% comment %} <div class="form-group row">
+                            <label class="col-form-label text-right col-lg-4 col-sm-12">Bác sĩ phụ tr *</label>
+                            <div class="col-lg-6 col-md-9 col-sm-12">
+                                {{ form.dich_vu_kham|attr:"class: form-control"|attr:"name: dich_vu_kham" }}
+                            </div>
+                        </div> {% endcomment %}
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-lg-12 ml-lg-auto text-center">
+                                {% comment %} <button data-id="{{ id_cong_ty }}" type="button" class="btn btn-primary font-weight-bold mr-2" id="submitData" name="submitButton">Xác nhận</button> {% endcomment %}
+                                <button data-id="{{ id_phong_chuc_nang }}" type="button" class="btn btn-primary font-weight-bold mr-2" id="submitData" name="submitButton">Xác nhận</button>
+                                <button type="reset" class="btn btn-light-primary font-weight-bold">Hủy</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!--end::Form-->
+            </div>
+        </div>
+    </div>
+    <!--end::Entry-->
+</div>
+<!--end::Content-->
+
+
+{% endblock content %}
+
+{% block scripts %}
+<!--begin::Global Theme Bundle(used by all pages)-->
+<script src="{% static 'assets/plugins/global/plugins.bundle9cd7.js' %} "></script>
+<script src="{% static 'assets/plugins/custom/prismjs/prismjs.bundle9cd7.js' %} "></script>
+
+<!--end::Global Theme Bundle-->
+
+<script>
+
+$('#phong_chuc_nang_form').on('click', '#submitData', function(){
+    var id_phong_chuc_nang = $(this).data('id')
+    var formData = new FormData()
+    var id = $("#phong_chuc_nang_form").find(":selected").val()
+    console.log(id)
+
+    $("#phong_chuc_nang_form").find("input").each(function(){
+        formData.append($(this).attr("name"), $(this).val())
+    });
+    
+    
+    formData.append('id_phong_chuc_nang', id_phong_chuc_nang)
+    formData.append('id_dich_vu', id)
+    formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
+    console.log(formData)
+
+    $.ajax({
+        type: "POST",
+        url: "{% url 'chinh_sua_phong_chuc_nang' %}",
+        data: formData,
+        cache: false,
+        processData: false,
+        contentType: false,
+        success: function(response){
+            alert('thanhcong')
+        },
+        error: function(response){
+            
+        }
+    })
+})
+
+</script>
+
+{% endblock scripts %}
+

@@ -1,0 +1,50 @@
+[
+{
+  "model": "clinic.doituongxetnghiem",
+  "pk": 1,
+  "fields": {
+    "gioi_tinh": "1",
+    "do_tuoi": 1
+  }
+},
+{
+  "model": "clinic.doituongxetnghiem",
+  "pk": 2,
+  "fields": {
+    "gioi_tinh": "1",
+    "do_tuoi": 2
+  }
+},
+{
+  "model": "clinic.doituongxetnghiem",
+  "pk": 3,
+  "fields": {
+    "gioi_tinh": "1",
+    "do_tuoi": 3
+  }
+},
+{
+  "model": "clinic.doituongxetnghiem",
+  "pk": 4,
+  "fields": {
+    "gioi_tinh": "2",
+    "do_tuoi": 1
+  }
+},
+{
+  "model": "clinic.doituongxetnghiem",
+  "pk": 5,
+  "fields": {
+    "gioi_tinh": "2",
+    "do_tuoi": 2
+  }
+},
+{
+  "model": "clinic.doituongxetnghiem",
+  "pk": 6,
+  "fields": {
+    "gioi_tinh": "2",
+    "do_tuoi": 3
+  }
+}
+]

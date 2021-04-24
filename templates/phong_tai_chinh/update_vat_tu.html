@@ -1,0 +1,265 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load widget_tweaks %}
+
+{% block content %}
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">Phòng Tài Chính</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="{% url 'danh_sach_vat_tu' %}" class="text-muted">Danh sách vật tư</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="javascript:;" class="text-muted">Chỉnh Sửa Vật Tư</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!--begin::Card-->
+            <div class="card card-custom">
+                <div class="card-header pb-0">
+                    <div class="card-title">
+                        <h1 class="card-label">
+                            Chỉnh Sửa Thông Tin Vật Tư
+                        </h1>
+                    </div>
+                </div>
+                <!--begin::Form-->
+                <form class="form" id="kt_form_1">
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <div class="col-lg-12">
+                                <label>Nhà Thầu</label>
+                                {{ form.nha_thau|attr:"class:form-control selectpicker"|attr:"name:nha_thau"|attr:"id:nha_thau" }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-3">
+                                <label>Mã Hiệu</label>
+                                {% comment %} <input type="text" class="form-control" id="tenThuoc" name="text" placeholder="Nhập tên thuốc" /> {% endcomment %}
+                                {{ form.ma_hieu|attr:"class:form-control"|attr:"name:ma_hieu" }}
+                            </div>
+
+                            <div class="col-lg-3">
+                                <label>Mã Vật Tư Y Tế</label>
+                                {% comment %} <input type="text" class="form-control" id="tenThuoc" name="text" placeholder="Nhập tên thuốc" /> {% endcomment %}
+                                {{ form.ma_vtyt_bv|attr:"class:form-control"|attr:"name:ma_vtyt_bv" }}
+                            </div>
+                            
+                            <div class="col-lg-6">
+                                <label>Tên Vật Tư Y Tế</label>
+                                {% comment %} <input type="text" class="form-control" id="maThuoc" name="text" placeholder="Nhập mã thuốc" /> {% endcomment %}
+                                {{ form.ten_vtyt_bv|attr:"class:form-control"|attr:"name:ten_vtyt_bv" }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>Đơn Vị Tính</label>
+                                {{ form.don_vi_tinh|attr:"class:form-control"|attr:"name:don_vi_tinh" }}
+                                {% comment %} <textarea class="form-control" name="memo" id="moTa" placeholder="Thông tin và cách dùng của thuốc" rows="3"></textarea> {% endcomment %}
+                            </div>
+
+                            <div class="col-lg-6">
+                                <label>Quy Cách Đóng Gói</label>
+                                {{ form.quy_cach|attr:"class:form-control"|attr:"name:quy_cach" }}
+                                {% comment %} <textarea class="form-control" name="memo" id="moTa" placeholder="Thông tin và cách dùng của thuốc" rows="3"></textarea> {% endcomment %}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>Giá Nhập</label>
+                                {{ form.don_gia|attr:"class:form-control"|attr:"name:don_gia" }}
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Giá Bán</label>
+                                {{ form.don_gia_tt|attr:"class:form-control"|attr:"name:don_gia_tt" }}
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>Định Mức</label>
+                                {{ form.dinh_muc|attr:"class:form-control"|attr:"name:dinh_muc" }}
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Số Lượng Khả Dụng</label>
+                                {{ form.so_luong_kha_dung|attr:"class:form-control"|attr:"so_luong_kha_dung" }}
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>Hãng Sản Xuất</label>
+                                {{ form.hang_sx|attr:"class:form-control"|attr:"name:hang_sx" }}
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Nước Sản Xuất</label>
+                                {{ form.nuoc_sx|attr:"class:form-control"|attr:"nuoc_sx" }}
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <div class="col-lg-4">
+                                <label>Quyết Định</label>
+                                {{ form.quyet_dinh|attr:"class:form-control"|attr:"name:quyet_dinh" }}
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Nhóm Vật Tư</label>
+                                {{ form.nhom_vat_tu|attr:"class:form-control selectpicker"|attr:"id:nhom_vat_tu" }}
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Công Bố</label>
+                                {{ form.cong_bo|attr:"class:form-control"|attr:"cong_bo" }}
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-lg-12 ml-lg-auto text-center">
+                                <button type="button" class="btn btn-primary font-weight-bold mr-2" id="submitData" name="submitButton" data-id='{{id}}'>Xác nhận</button>
+                                <a href="{% url 'danh_sach_vat_tu' %}" type="button" class="btn btn-light-primary font-weight-bold">Hủy</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="form-group row">
+                    <table class="table" id="overview">
+                    </table>
+                </div>
+                <!--end::Form-->
+            </div>
+        </div>
+    </div>
+    <!--end::Entry-->
+</div>
+<!--end::Content-->
+{% endblock content %}
+
+{% block scripts %}
+
+
+{% comment %} <script src="{% static 'assets/js/pages/crud/forms/widgets/bootstrap-datetimepicker9cd7.js' %} "></script> {% endcomment %}
+
+
+<script>
+    // Class definition
+    var KTFormControls = function () {
+        // Private functions
+        var _initDemo1 = function () {
+            FormValidation.formValidation(
+                document.getElementById('kt_form_1'),
+                {
+                    fields: {
+                        text: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Không được để trống'
+                                },
+                            }
+                        },
+                        memo: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Không được để trống'
+                                },
+                                stringLength: {
+                                    min:10,
+                                    max:10000,
+                                }
+                            }
+                        },
+                    },
+
+                    plugins: { //Learn more: https://formvalidation.io/guide/plugins
+                        trigger: new FormValidation.plugins.Trigger(),
+                        // Bootstrap Framework Integration
+                        bootstrap: new FormValidation.plugins.Bootstrap(),
+                        // Validate fields when clicking the Submit button
+                        submitButton: new FormValidation.plugins.SubmitButton(),
+                        // Submit the form when all fields are valid
+                        defaultSubmit: new FormValidation.plugins.DefaultSubmit(),
+                    }
+                }
+            );
+
+        }
+
+        var _formAddThuocSubmit = function () {
+            var formData = new FormData();
+            $(document).on("click", "#submitData", function(){
+                $('#kt_form_1').find("input").each(function(){
+                    formData.append($(this).attr("name"), $(this).val())
+                });
+
+                var id = $(this).data('id')
+                console.log(id)
+                var id_cong_ty = $('#nha_thau').find(':selected').val()
+                var nhom_vat_tu = $('#nhom_vat_tu').find(':selected').val()
+                console.log(nhom_vat_tu, id_cong_ty)
+
+                formData.append('id', id)
+                formData.append('id_cong_ty', id_cong_ty)
+                formData.append('nhom_vat_tu', nhom_vat_tu)
+                formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
+
+                $.ajax({
+                    type       : "POST",
+                    url        : "{% url 'store_update_vat_tu' %}",
+                    data       : formData,
+                    cache      : false,
+                    processData: false,
+                    contentType: false,
+                    success: function(response){
+                        toastr.success(response.message, "Thành Công")
+                        setTimeout(function(){
+                            window.location.href = "/phong_tai_chinh/danh_sach_vat_tu/"
+                        },2500)
+                    },
+                    error: function(response){
+                        console.log(response.message)
+                        toastr.warning(response.message)
+                        $('#addServicesModal').modal('hide');
+                    }
+                })
+            })
+        }
+
+        return {
+            // public functions
+            init: function() {
+                _initDemo1();
+                _formAddThuocSubmit();
+            }
+        };
+    }();
+
+    jQuery(document).ready(function() {
+        KTFormControls.init();
+    });
+</script>
+{% endblock scripts %}

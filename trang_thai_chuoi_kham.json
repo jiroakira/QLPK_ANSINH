@@ -1,0 +1,37 @@
+[
+{
+  "model": "clinic.trangthaichuoikham",
+  "pk": 1,
+  "fields": {
+    "trang_thai_chuoi_kham": "Chờ Thanh Toán"
+  }
+},
+{
+  "model": "clinic.trangthaichuoikham",
+  "pk": 2,
+  "fields": {
+    "trang_thai_chuoi_kham": "Đã Thanh Toán"
+  }
+},
+{
+  "model": "clinic.trangthaichuoikham",
+  "pk": 3,
+  "fields": {
+    "trang_thai_chuoi_kham": "Đang Thực Hiện"
+  }
+},
+{
+  "model": "clinic.trangthaichuoikham",
+  "pk": 4,
+  "fields": {
+    "trang_thai_chuoi_kham": "Hoàn Thành"
+  }
+},
+{
+  "model": "clinic.trangthaichuoikham",
+  "pk": 5,
+  "fields": {
+    "trang_thai_chuoi_kham": "Dừng khám"
+  }
+}
+]

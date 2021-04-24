@@ -1,0 +1,37 @@
+[
+{
+  "model": "medicine.nhomthau",
+  "pk": 1,
+  "fields": {
+    "ten_nhom_thau": "N3"
+  }
+},
+{
+  "model": "medicine.nhomthau",
+  "pk": 2,
+  "fields": {
+    "ten_nhom_thau": "N2"
+  }
+},
+{
+  "model": "medicine.nhomthau",
+  "pk": 3,
+  "fields": {
+    "ten_nhom_thau": "N1"
+  }
+},
+{
+  "model": "medicine.nhomthau",
+  "pk": 4,
+  "fields": {
+    "ten_nhom_thau": "N4"
+  }
+},
+{
+  "model": "medicine.nhomthau",
+  "pk": 5,
+  "fields": {
+    "ten_nhom_thau": "N5"
+  }
+}
+]

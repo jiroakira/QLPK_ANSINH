@@ -1,0 +1,268 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">Hóa Đơn Thực Phẩm Hỗ Trợ</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="#" class="text-muted">Bệnh nhân: {{don_thuoc.benh_nhan.ho_ten}}</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="#" class="text-muted">Hóa đơn thực phẩm hỗ trợ</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!-- begin::Card-->
+            <div class="card card-custom overflow-hidden">
+                <!-- begin: Invoice-->
+                <div class="card-body p-0" id="hoa_don_thuoc">
+                    <!-- begin: Invoice header-->
+                    <div class="row justify-content-center bgi-size-cover bgi-no-repeat py-8 px-8 py-md-27 px-md-0" style="background-image: url({% static 'assets/media/bg/bg-6.jpg' %});">
+                        <div class="col-md-9">
+                            <div class="d-flex justify-content-between pb-10 pb-md-20 flex-column flex-md-row">
+                                <h1 class="display-4 text-white font-weight-boldest mb-10">HÓA ĐƠN THỰC PHẨM HỖ TRỢ</h1>
+                                <div class="d-flex flex-column align-items-md-end px-0">
+                                    <!--begin::Logo-->
+                                    <a href="javascript:;" class="mb-5">
+                                        <img src="{{phong_kham.logo.url}}" class="bgi-size-cover min-h-100px w-100px" />
+                                    </a>
+                                    <!--end::Logo-->
+                                    <span class="text-white d-flex flex-column align-items-md-end opacity-70">
+                                        <span>Phòng Khám {{phong_kham.ten_phong_kham}}</span>
+                                        <span>Địa chỉ: {{phong_kham.dia_chi}}</span>
+                                        <span>Hotline: {{phong_kham.so_dien_thoai}}</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="border-bottom w-100 opacity-20"></div>
+                            <div class="d-flex justify-content-between text-white pt-6">
+                                <div class="d-flex flex-column flex-root">
+                                    <span class="font-weight-bolde mb-2r">THỜI GIAN THANH TOÁN</span>
+                                    <span class="opacity-70"> {{don_thuoc.thoi_gian_tao}} </span>
+                                </div>
+                                <div class="d-flex flex-column flex-root">
+                                    <span class="font-weight-bolder mb-2">MÃ ĐƠN THUỐC.</span>
+                                    <span class="opacity-70">{{don_thuoc.ma_don_thuoc}}</span>
+                                </div>
+                                <div class="d-flex flex-column flex-root">
+                                    <span class="font-weight-bolder mb-2">NGƯỜI THANH TOÁN.</span>
+                                    <span class="opacity-70">
+                                        {{don_thuoc.benh_nhan.ho_ten}} - {{don_thuoc.benh_nhan.so_dien_thoai}}
+                                    <br />{{don_thuoc.benh_nhan.dia_chi}}
+                                    <br />{{don_thuoc.benh_nhan.cmnd_cccd}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end: Invoice header-->
+                    <!-- begin: Invoice body-->
+                    <div class="row justify-content-center py-8 px-8 py-md-10 px-md-0">
+                        <div class="col-md-9">
+                            <div class="table-responsive">
+                                <table class="table" id="invoice-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="pl-0 font-weight-bold text-muted text-uppercase">Tên Thuốc</th>
+
+                                            <th class="text-center font-weight-bold text-muted text-uppercase">Áp dụng bảo hiểm</th>
+                                            <th class="text-center font-weight-bold text-muted text-uppercase">Đơn giá</th>
+                                            <th class="text-center font-weight-bold text-muted text-uppercase">Số lượng</th>
+                                            <th class="text-center font-weight-bold text-muted text-uppercase">DVT</th>
+                                            <th class="text-right pr-0 font-weight-bold text-muted text-uppercase">Tổng tiền</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for thuoc in danh_sach_thuoc %}
+                                        {% if thuoc.thuoc.check_loai_thuoc %}
+                                        <tr class="font-weight-boldest font-size-lg">
+                                            <td class="pl-0 pt-7">{{ thuoc.thuoc.ten_thuoc }}</td>
+                                            <td class="text-right text-center pt-7">
+                                                {% if thuoc.bao_hiem == True %}
+                                                    Đã áp dụng
+                                                {% else %}
+                                                    Chưa áp dụng
+                                                {% endif %}    
+                                                <!--{{ thuoc.bao_hiem }}-->
+                                            </td>
+                                            <td class="format-gia text-center pt-7" data-id={{thuoc.thuoc.don_gia_tt}}>
+                                                {{ thuoc.thuoc.don_gia_tt }}
+                                            </td>
+                                            <td class="text-center pt-7">{{ thuoc.so_luong }}</td>
+                                            <td class="text-center pt-7" data-id={{thuoc.thuoc.don_vi_tinh}}>
+                                                {{ thuoc.thuoc.don_vi_tinh }}
+                                            </td>
+                                            <td class="format-gia text-danger pr-0 pt-7 text-right" data-id={{thuoc.gia_ban}}>
+                                                {{ thuoc.gia_ban }}
+                                            </td>
+                                        </tr>
+                                        {% endif %}
+                                    {% endfor %}
+                                    </tbody>
+                                    
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end: Invoice body-->
+                    <!-- begin: Invoice footer-->
+                    <div class="row justify-content-center bg-gray-100 py-8 px-8 py-md-10 px-md-0">
+                        <div class="col-md-9">
+                            <div class="d-flex justify-content-between flex-column flex-md-row font-size-lg">
+                                <div class="d-flex flex-column mb-10 mb-md-0">
+                                    <div class="font-weight-bolder font-size-lg mb-3">THÔNG TIN CHUYỂN KHOẢN</div>
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <span class="mr-15 font-weight-bold">Chủ Khoản:</span>
+                                        <span class="text-right">{{phong_kham.chu_khoan}}</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <span class="mr-15 font-weight-bold">Số Tài Khoản:</span>
+                                        <span class="text-right">{{phong_kham.so_tai_khoan}}</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <span class="mr-15 font-weight-bold">Ngân Hàng:</span>
+                                        <span class="text-right">{{phong_kham.thong_tin_ngan_hang}}</span>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-column text-md-right">
+                                    <div class="d-flex justify-content-between mb-3 font-size-h4">
+                                        <span class="mr-15 font-weight-bold">Tổng tiền</span>
+                                        <span class="text-right"><span id="format-money-tong-tien" class="font-weight-boldest text-danger mb-1" data-gia="{{tong_tien}}">{{tong_tien}}</span></span>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-3 font-size-h5">
+                                        <span class="mr-15 font-weight-bold">Bảo hiểm</span>
+                                        <span class="text-right"><span id="format-money-bao-hiem" class="font-weight-boldest text-danger mb-1" data-gia="{{tong_bao_hiem}}">{{tong_bao_hiem}}</span></span>
+                                    </div>
+                                    <div class="border-bottom border-bottom-warning w-100 mb-4"></div>
+                                    <span class="font-size-lg font-weight-bolder mb-1">TIỀN BỆNH NHÂN CẦN THANH TOÁN</span>
+                                    {% comment %} <span class="format-tien font-size-h2 font-weight-boldest text-danger mb-1">{{tong_tien}}</span> {% endcomment %}
+                                    <span id="format-money-thanh-tien" class="font-size-h2 font-weight-boldest text-danger mb-1">{{thanh_tien}}</span>
+                                    <span>VND</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end: Invoice footer-->
+                </div>
+                <!-- end: Invoice-->
+                <!-- begin: Invoice action-->
+                <div class="row justify-content-center py-8 px-8 py-md-10 px-md-0">
+                    <div class="col-md-9">
+                        <div class="d-flex justify-content-between">
+                            <button type="button" class="btn btn-light-primary font-weight-bold" onclick="printDiv('hoa_don_thuoc')">In Hóa Đơn</button>
+                            <button id="button-payment" data-tong-tien="{{tong_tien}}" data-id="{{ don_thuoc.id }}" type="button" class="btn btn-primary font-weight-bold">Thanh Toán</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- end: Invoice action-->
+            </div>
+            <!-- end::Card-->
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+<!--end::Content-->
+
+{% endblock content %}
+
+{% block scripts %}
+
+<script>
+
+    function formatMoney(amount, decimalCount = 0, decimal = ",", thousands = ".") {
+        try {
+            decimalCount = Math.abs(decimalCount);
+            decimalCount = isNaN(decimalCount) ? 2 : decimalCount;
+
+            const negativeSign = amount < 0 ? "-" : "";
+
+            let i = parseInt(amount = Math.abs(Number(amount) || 0).toFixed(decimalCount)).toString();
+            let j = (i.length > 3) ? i.length % 3 : 0;
+
+            return negativeSign + (j ? i.substr(0, j) + thousands : '') + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousands) + (decimalCount ? decimal + Math.abs(amount - i).toFixed(decimalCount).slice(2) : "");
+        } catch (e) {
+            console.log(e)
+        }
+    };
+
+    $('#invoice-table tbody tr').each(function(){
+        $(this).find(".format-gia").each(function(){
+            console.log($(this).data('id'))
+            $(this).html(formatMoney($(this).data('id')))
+        })  
+    });
+
+    $('#button-payment').on('click', function(){
+        var id_don_thuoc = $(this).attr('data-id')
+        var tong_tien = $(this).attr('data-tong-tien')
+        console.log(tong_tien)
+        $.ajax({
+            type: "GET",
+            url: "{% url 'thanh_toan_don_thuoc_api' %}",
+            data: {
+                'id': id_don_thuoc,
+                'tong_tien': tong_tien,
+            },
+            dataType: 'json',
+            safe: false,
+            success: function (response) {
+                if (response.status == 200) {
+                    toastr.success(response.message, "Thành Công")
+
+                    setTimeout(function () {
+                        window.location.href = '/phong_tai_chinh/'; 
+                    }, 1500);
+
+                } else if (response.status == 404) {
+                    toastr.warning(response.message, "Xảy Ra Lỗi")
+                }
+            },
+            error: function () {
+                toastr.warning("Xảy Ra Lỗi Trong Quá Trình Thanh Toán", "Xảy Ra Lỗi")
+
+            }
+        });
+
+    })
+
+    document.getElementById('format-money-tong-tien').innerText = formatMoney(document.getElementById('format-money-tong-tien').innerHTML)
+    document.getElementById('format-money-bao-hiem').innerText = formatMoney(document.getElementById('format-money-bao-hiem').innerHTML)
+    document.getElementById('format-money-thanh-tien').innerText = formatMoney(document.getElementById('format-money-thanh-tien').innerHTML)
+
+    function printDiv(hoa_don_thuoc){
+        var printContents = document.getElementById("hoa_don_thuoc").innerHTML;
+        var originalContents = document.body.innerHTML;
+
+        document.body.innerHTML = printContents;
+
+        window.print();
+
+        document.body.innerHTML = originalContents;
+    }
+</script>
+{% endblock scripts %}

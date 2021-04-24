@@ -1,0 +1,268 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<!-- begin::Content -->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">Bác Sĩ Lâm Sàng</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="#" class="text-muted">Chỉnh Sửa Đơn Thuốc</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!--begin::Card-->
+            <div class="card card-custom">
+                <div class="card-header flex-wrap border-0 pt-6 pb-0">
+                    <div class="card-title">
+                        <h3 class="card-label"> Đơn thuốc {{ don_thuoc.ma_don_thuoc }}
+                        <span class="d-block text-muted pt-2 font-size-sm">Bệnh nhân: {{don_thuoc.benh_nhan.ho_ten}} </span></h3>
+                    </div>
+                    <div class="card-toolbar">
+                        <!--begin::Button-->
+                        <a href="javascript:;" id="update" class="btn btn-light-primary font-weight-bolder" data-id="{{ don_thuoc.ma_don_thuoc }}" data-id-benh-nhan="{{ don_thuoc.benh_nhan.id }}">
+                            <i class="la la-pen"></i>Cập Nhật
+                        </a>
+                        <!--end::Button-->
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!--begin: Datatable-->
+                    <table class="table table-separate table-head-custom table-checkable" id="don_thuoc_table">
+                        <thead>
+                            <tr>
+                                <th>Tên thuốc</th>
+                                <th>Số lượng</th>
+                                <th>Cách dùng</th>
+                                <th>Tác dụng phụ</th>
+                                <th>Ghi chú</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for thuoc in danh_sach_thuoc %}
+                                <tr data-id-thuoc="{{thuoc.thuoc.id}}">
+                                    <td>
+                                        <input type="text" class="form-control" value="{{ thuoc.thuoc.ten_thuoc }} " disabled data-id-thuoc/>
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control big-input-quantity" value="{{ thuoc.so_luong }}" data-id-thuoc="{{thuoc.thuoc.id}}" data-ke-don="{{thuoc.id}}"/>
+                                        
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" value="{{ thuoc.cach_dung }}" disabled />
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" value="{{ thuoc.thuoc.tac_dung_phu }}" disabled />
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control big-input-note" value="{{ thuoc.ghi_chu }}" />
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <!--end: Datatable-->
+                </div>
+            </div>
+            <!--end::Card-->
+        </div>
+        <!-- end::Container -->
+    </div>
+    <!-- end::Entry -->
+</div>
+<!-- end::Content -->
+{% endblock content %}
+
+{% block scripts %}
+<script src="{% static 'assets/plugins/global/plugins.bundle9cd7.js' %} "></script>
+<script src="{% static 'assets/js/scripts.bundle9cd7.js' %} "></script>
+<script src="{% static 'assets/plugins/custom/prismjs/prismjs.bundle9cd7.js' %} "></script>
+
+<script>
+    $(document).ready(function(){
+        // var lstData = [];
+        var lstQuantity = {};
+        var lstNote = {};
+        var newObj = {};
+        var idObj = {};
+        var lstQuantityObj = []
+        var lstNoteObj = []
+        var lstIdObj = []
+        var newList = []
+        var IdList = []
+        
+
+
+        $('#update').on('click', function (){
+            var ma_don_thuoc = $(this).data('id');
+            // var id_thuoc = $('.big-input-quantity').data('id-thuoc')
+            // console.log(ma_don_thuoc)
+            lstQuantity = {};
+            lstNote = {};
+        
+            getInputQuantity();
+            
+            getInputNote();
+            getInputId();
+            console.log(lstQuantity)
+            console.log(lstNote)
+            console.log(lstQuantityObj)
+            console.log(lstNoteObj)
+
+            newList = lstQuantityObj.concat(lstNoteObj)
+            IdList = newList.concat(lstIdObj)
+
+            postData(ma_don_thuoc); 
+        })
+
+        function postData(ma_don_thuoc){
+            var ma_don_thuoc = ma_don_thuoc
+
+            var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+
+            function csrfSafeMethod(method) {
+                // these HTTP methods do not require CSRF protection
+                return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+            }
+
+            $.ajaxSetup({
+                beforeSend: function(xhr, settings) {
+                    function getCookie(name) {
+                        var cookieValue = null;
+                        if (document.cookie && document.cookie != '') {
+                            var cookies = document.cookie.split(';');
+                            for (var i = 0; i < cookies.length; i++) {
+                                var cookie = jQuery.trim(cookies[i]);
+                                // Does this cookie string begin with the name we want?
+                                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                                    break;
+                                }
+                            }
+                        }
+                        return cookieValue;
+                    }
+                    if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+                        // Only send the token to relative URLs i.e. locally.
+                        xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+                    }
+                } 
+            });
+
+            $.ajax({
+                type: "POST",
+                url: "{% url 'chinh_sua_don_thuoc' %}",
+                data: {
+                    // here data should be a string so that
+                    // in your views.py you can fetch the value using get('data')
+                    'data': JSON.stringify(IdList),
+                    'csrfmiddlewaretoken': csrftoken,
+                    'ma_don_thuoc': ma_don_thuoc,
+                },
+                dataType: 'json',
+                safe: false,
+                success: function (response) {
+                    if (response.status == 200){
+                        toastr.success(response.message, "Thành Công")
+                        setTimeout(function () {
+                            window.location.href = '/bac_si_lam_sang/ket_qua_kham/'; //redirect về danh sách chờ lâm sàng
+                        }, 1500);
+                    }
+
+                },
+                error: function (res) {
+                    alert(res)                         
+                }
+            });
+        }
+
+        function getPostData(){
+            
+            var rowData = lstData;
+            
+            var quantityObj = lstQuantity;
+            var noteObj = lstNote;
+
+            for (const each in quantityObj) {
+                for (let i = 0; i < rowData.length; i++) {
+                    if (rowData[i].obj.id == each) {               
+                        rowData[i].obj.so_luong = quantityObj[each];
+                        rowData[i].obj.ghi_chu = noteObj[each];
+                    }
+                }
+            }   
+            
+            return rowData;
+        }
+
+        function getInputQuantity(){
+            lstQuantityObj = []
+            $('#don_thuoc_table tbody tr').each(function() {
+                var sectionId = $(this).data('id-thuoc');
+                console.log(sectionId)
+                $(this).find('input.big-input-quantity').each(function(){
+                    lstQuantity[sectionId] = $(this).val();
+                    
+                    console.log($(this).val())
+                    var id_thuoc = $(this).data('id-thuoc')
+                    console.log(id_thuoc)
+                })
+            });
+            lstQuantityObj.push(lstQuantity)
+        }
+
+        function getInputNote(){
+            lstNoteObj = []
+            $('#don_thuoc_table tbody tr').each(function() {
+                var sectionId = $(this).data('id-thuoc');
+                $(this).find('input.big-input-note').each(function(){
+                    console.log($(this).val());
+                    lstNote[sectionId] = $(this).val();
+                })
+            });
+            lstNoteObj.push(lstNote)
+        }
+
+        function getInputId(){
+            lstIdObj = []
+            $('#don_thuoc_table tbody tr').each(function() {
+                {% comment %} var sectionId = $(this).data('ke-don'); {% endcomment %}
+                var id_thuoc = $(this).data('id-thuoc');
+                {% comment %} console.log(sectionId) {% endcomment %}
+                $(this).find('input.big-input-quantity').each(function(){
+                    var id_ke_don = $(this).data('ke-don')
+                    idObj[id_thuoc] = id_ke_don;
+                
+                })
+            });
+            lstIdObj.push(idObj)
+        }
+
+    })
+
+</script>
+
+
+{% endblock scripts %}

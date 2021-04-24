@@ -1,0 +1,1352 @@
+[
+{
+  "model": "auth.permission",
+  "pk": 1,
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": 1,
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 2,
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": 1,
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 3,
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": 1,
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 4,
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": 1,
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 5,
+  "fields": {
+    "name": "Can add permission",
+    "content_type": 2,
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 6,
+  "fields": {
+    "name": "Can change permission",
+    "content_type": 2,
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 7,
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": 2,
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 8,
+  "fields": {
+    "name": "Can view permission",
+    "content_type": 2,
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 9,
+  "fields": {
+    "name": "Can add group",
+    "content_type": 3,
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 10,
+  "fields": {
+    "name": "Can change group",
+    "content_type": 3,
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 11,
+  "fields": {
+    "name": "Can delete group",
+    "content_type": 3,
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 12,
+  "fields": {
+    "name": "Can view group",
+    "content_type": 3,
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 13,
+  "fields": {
+    "name": "Can add content type",
+    "content_type": 4,
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 14,
+  "fields": {
+    "name": "Can change content type",
+    "content_type": 4,
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 15,
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": 4,
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 16,
+  "fields": {
+    "name": "Can view content type",
+    "content_type": 4,
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 17,
+  "fields": {
+    "name": "Can add session",
+    "content_type": 5,
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 18,
+  "fields": {
+    "name": "Can change session",
+    "content_type": 5,
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 19,
+  "fields": {
+    "name": "Can delete session",
+    "content_type": 5,
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 20,
+  "fields": {
+    "name": "Can view session",
+    "content_type": 5,
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 285,
+  "fields": {
+    "name": "Thêm người dùng",
+    "content_type": 6,
+    "codename": "can_add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 286,
+  "fields": {
+    "name": "Thêm nhân viên",
+    "content_type": 6,
+    "codename": "can_add_staff_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 287,
+  "fields": {
+    "name": "Chỉnh sửa người dùng",
+    "content_type": 6,
+    "codename": "can_change_user_info"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 288,
+  "fields": {
+    "name": "Chỉnh sửa nhân viên",
+    "content_type": 6,
+    "codename": "can_change_staff_user_info"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 289,
+  "fields": {
+    "name": "Thay đổi mật khẩu người dùng",
+    "content_type": 6,
+    "codename": "can_change_password_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 290,
+  "fields": {
+    "name": "Thay đổi mật khẩu nhân viên",
+    "content_type": 6,
+    "codename": "can_change_password_staff_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 291,
+  "fields": {
+    "name": "Xem người dùng",
+    "content_type": 6,
+    "codename": "can_view_user_info"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 292,
+  "fields": {
+    "name": "Xem nhân viên",
+    "content_type": 6,
+    "codename": "can_view_staff_user_info"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 293,
+  "fields": {
+    "name": "Xóa người dùng",
+    "content_type": 6,
+    "codename": "can_delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 294,
+  "fields": {
+    "name": "Xóa nhân viên",
+    "content_type": 6,
+    "codename": "can_delete_staff_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 295,
+  "fields": {
+    "name": "Thêm chỉ số xét nghiệm",
+    "content_type": 7,
+    "codename": "can_add_test_values"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 296,
+  "fields": {
+    "name": "Thay đổi chỉ số xét nghiệm",
+    "content_type": 7,
+    "codename": "can_change_test_values"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 297,
+  "fields": {
+    "name": "Xem chỉ số xét nghiệm",
+    "content_type": 7,
+    "codename": "can_view_test_values"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 298,
+  "fields": {
+    "name": "Xóa chỉ số xét nghiệm",
+    "content_type": 7,
+    "codename": "can_delete_test_values"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 299,
+  "fields": {
+    "name": "Thêm chuỗi khám",
+    "content_type": 9,
+    "codename": "can_add_assignment_chain"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 300,
+  "fields": {
+    "name": "Thay đổi chuỗi khám",
+    "content_type": 9,
+    "codename": "can_change_assignment_chain"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 301,
+  "fields": {
+    "name": "Xem chuỗi khám",
+    "content_type": 9,
+    "codename": "can_view_assignment_chain"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 302,
+  "fields": {
+    "name": "Xem kết quả chuỗi khám",
+    "content_type": 9,
+    "codename": "can_view_assignment_chain_result"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 303,
+  "fields": {
+    "name": "Xóa chuỗi khám",
+    "content_type": 9,
+    "codename": "can_delete_assignment_chain"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 304,
+  "fields": {
+    "name": "Xóa kết quả chuỗi khám",
+    "content_type": 9,
+    "codename": "can_delete_assignment_chain_result"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 305,
+  "fields": {
+    "name": "Thêm dịch vụ kỹ thuật",
+    "content_type": 10,
+    "codename": "can_add_service"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 306,
+  "fields": {
+    "name": "Thay đổi dịch vụ kỹ thuật",
+    "content_type": 10,
+    "codename": "can_change_service"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 307,
+  "fields": {
+    "name": "Xem dịch vụ kỹ thuật",
+    "content_type": 10,
+    "codename": "can_view_service"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 308,
+  "fields": {
+    "name": "Xóa dịch vụ kỹ thuật",
+    "content_type": 10,
+    "codename": "can_delete_service"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 309,
+  "fields": {
+    "name": "Xem giá dịch vụ kỹ thuật",
+    "content_type": 10,
+    "codename": "can_view_service_price"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 310,
+  "fields": {
+    "name": "Thêm kết quả chuyên khoa",
+    "content_type": 13,
+    "codename": "can_add_specialty_result"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 311,
+  "fields": {
+    "name": "Xem kết quả chuyên khoa",
+    "content_type": 13,
+    "codename": "can_view_specialty_result"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 312,
+  "fields": {
+    "name": "Thay đổi kết quả chuyên khoa",
+    "content_type": 13,
+    "codename": "can_change_specialty_result"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 313,
+  "fields": {
+    "name": "Xóa kết quả chuyên khoa",
+    "content_type": 13,
+    "codename": "can_delete_specialty_result"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 314,
+  "fields": {
+    "name": "Thêm lịch hẹn",
+    "content_type": 14,
+    "codename": "can_add_appointment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 315,
+  "fields": {
+    "name": "Thay đổi lịch hẹn",
+    "content_type": 14,
+    "codename": "can_change_appointment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 316,
+  "fields": {
+    "name": "Xem lịch hẹn",
+    "content_type": 14,
+    "codename": "can_view_appointment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 317,
+  "fields": {
+    "name": "Xóa lịch hẹn",
+    "content_type": 14,
+    "codename": "can_delete_appointment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 318,
+  "fields": {
+    "name": "Thêm lịch hẹn tái khám",
+    "content_type": 14,
+    "codename": "can_make_reexamination"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 319,
+  "fields": {
+    "name": "Thêm phòng chức năng",
+    "content_type": 15,
+    "codename": "can_add_consulting_room"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 320,
+  "fields": {
+    "name": "Chỉnh sửa phòng chức năng",
+    "content_type": 15,
+    "codename": "can_change_consulting_room"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 321,
+  "fields": {
+    "name": "Xem phòng chức năng",
+    "content_type": 15,
+    "codename": "can_view_consulting_room"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 322,
+  "fields": {
+    "name": "Xóa phòng chức năng",
+    "content_type": 15,
+    "codename": "can_delete_consulting_room"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 323,
+  "fields": {
+    "name": "Thêm thông tin phòng khám",
+    "content_type": 21,
+    "codename": "can_add_clinic_info"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 324,
+  "fields": {
+    "name": "Thay đổi thông tin phòng khám",
+    "content_type": 21,
+    "codename": "can_change_clinic_info"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 325,
+  "fields": {
+    "name": "Thêm phân khoa khám",
+    "content_type": 22,
+    "codename": "can_add_service_assignment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 326,
+  "fields": {
+    "name": "Xem phân khoa khám",
+    "content_type": 22,
+    "codename": "can_view_service_assignment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 327,
+  "fields": {
+    "name": "Xóa phân khoa khám",
+    "content_type": 22,
+    "codename": "can_delete_service_assignment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 328,
+  "fields": {
+    "name": "Thêm kết quả xét nghiệm",
+    "content_type": 26,
+    "codename": "can_add_lab_result"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 329,
+  "fields": {
+    "name": "Thay đổi kết quả xét nghiệm",
+    "content_type": 26,
+    "codename": "can_change_lab_result"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 330,
+  "fields": {
+    "name": "Xem kết quả xét nghiệm",
+    "content_type": 26,
+    "codename": "can_view_lab_result"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 331,
+  "fields": {
+    "name": "Xóa kết quả xét nghiệm",
+    "content_type": 26,
+    "codename": "can_delete_lab_result"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 332,
+  "fields": {
+    "name": "Thêm kết quả tổng quát",
+    "content_type": 27,
+    "codename": "can_add_general_result"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 333,
+  "fields": {
+    "name": "Xem kết quả tổng quát",
+    "content_type": 27,
+    "codename": "can_view_general_result"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 334,
+  "fields": {
+    "name": "Thay đổi kết quả tổng quát",
+    "content_type": 27,
+    "codename": "can_change_general_result"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 335,
+  "fields": {
+    "name": "Xóa kết quả tổng quát",
+    "content_type": 27,
+    "codename": "can_delete_general_result"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 336,
+  "fields": {
+    "name": "Thêm bài đăng",
+    "content_type": 33,
+    "codename": "can_add_news"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 337,
+  "fields": {
+    "name": "Thay đổi bài đăng",
+    "content_type": 33,
+    "codename": "can_change_news"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 338,
+  "fields": {
+    "name": "Xem bài đăng",
+    "content_type": 33,
+    "codename": "can_view_news"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 339,
+  "fields": {
+    "name": "Xóa bài đăng",
+    "content_type": 33,
+    "codename": "can_delete_news"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 340,
+  "fields": {
+    "name": "Thêm mẫu phiếu",
+    "content_type": 65,
+    "codename": "can_add_analysis_note"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 341,
+  "fields": {
+    "name": "Thay đổi mẫu phiếu",
+    "content_type": 65,
+    "codename": "can_change_analysis_note"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 342,
+  "fields": {
+    "name": "Xem mấu phiếu",
+    "content_type": 65,
+    "codename": "can_view_analysis_note"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 343,
+  "fields": {
+    "name": "Xóa mẫu phiếu",
+    "content_type": 65,
+    "codename": "can_delete_analysis_note"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 344,
+  "fields": {
+    "name": "Thêm đơn thuốc",
+    "content_type": 36,
+    "codename": "can_add_prescription"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 345,
+  "fields": {
+    "name": "Thay đổi đơn thuốc",
+    "content_type": 36,
+    "codename": "can_change_prescription"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 346,
+  "fields": {
+    "name": "Xem đơn thuốc",
+    "content_type": 36,
+    "codename": "can_view_prescription"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 347,
+  "fields": {
+    "name": "Xóa đơn thuốc",
+    "content_type": 36,
+    "codename": "can_delete_prescription"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 348,
+  "fields": {
+    "name": "In đơn thuốc",
+    "content_type": 36,
+    "codename": "can_print_prescription"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 349,
+  "fields": {
+    "name": "Thêm thuốc",
+    "content_type": 39,
+    "codename": "can_add_medicine"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 350,
+  "fields": {
+    "name": "Thay đổi thuốc",
+    "content_type": 39,
+    "codename": "can_change_medicine"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 351,
+  "fields": {
+    "name": "Xem thuốc",
+    "content_type": 39,
+    "codename": "can_view_medicine"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 352,
+  "fields": {
+    "name": "Xóa thuốc",
+    "content_type": 39,
+    "codename": "can_delete_medicine"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 353,
+  "fields": {
+    "name": "Xem giá thuốc nhập",
+    "content_type": 39,
+    "codename": "can_view_import_medicine_price"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 354,
+  "fields": {
+    "name": "Xem giá thuốc bán ra",
+    "content_type": 39,
+    "codename": "can_view_export_medicine_price"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 355,
+  "fields": {
+    "name": "Xuất danh sách thuốc",
+    "content_type": 39,
+    "codename": "can_export_medicine_list"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 356,
+  "fields": {
+    "name": "Thêm vật tư y tế",
+    "content_type": 41,
+    "codename": "can_add_medical_supplies"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 357,
+  "fields": {
+    "name": "Thay đổi vật tư y tế",
+    "content_type": 41,
+    "codename": "can_change_medical_supplies"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 358,
+  "fields": {
+    "name": "Xem vật tư y tế",
+    "content_type": 41,
+    "codename": "can_view_medical_supplies"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 359,
+  "fields": {
+    "name": "Xóa vật tư y tế",
+    "content_type": 41,
+    "codename": "can_delete_medical_supplies"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 360,
+  "fields": {
+    "name": "Xuất danh sách vật tư y tế",
+    "content_type": 41,
+    "codename": "can_export_medical_supplies_list"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 361,
+  "fields": {
+    "name": "Kê vật tư",
+    "content_type": 44,
+    "codename": "can_list_medical_supplies"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 362,
+  "fields": {
+    "name": "Kê đơn",
+    "content_type": 45,
+    "codename": "can_prescribe"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 363,
+  "fields": {
+    "name": "Thanh toán hóa đơn dịch vụ kỹ thuật",
+    "content_type": 49,
+    "codename": "can_checkout_service_receipt"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 364,
+  "fields": {
+    "name": "Xem hóa đơn dịch vụ kỹ thuật",
+    "content_type": 49,
+    "codename": "can_view_service_receipt"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 365,
+  "fields": {
+    "name": "Xóa hóa đơn dịch vụ kỹ thuật",
+    "content_type": 49,
+    "codename": "can_delete_service_receipt"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 366,
+  "fields": {
+    "name": "In hóa đơn dịch vụ kỹ thuật",
+    "content_type": 49,
+    "codename": "can_print_service_receipt"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 367,
+  "fields": {
+    "name": "Xem danh sách dịch vụ kỹ thuật bảo hiểm chi trả",
+    "content_type": 49,
+    "codename": "can_view_service_expense_coverage"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 368,
+  "fields": {
+    "name": "Xuất danh sách dịch vụ kỹ thuật bảo hiểm chi trả",
+    "content_type": 49,
+    "codename": "can_export_service_expense_coverage"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 369,
+  "fields": {
+    "name": "Xem doanh thu dịch vụ kỹ thuật",
+    "content_type": 49,
+    "codename": "can_view_service_revenue"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 370,
+  "fields": {
+    "name": "Thanh toán hóa đơn lâm sàng",
+    "content_type": 50,
+    "codename": "can_checkout_clinical_receipt"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 371,
+  "fields": {
+    "name": "Xem hóa đơn lâm sàng",
+    "content_type": 50,
+    "codename": "can_view_clinical_receipt"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 372,
+  "fields": {
+    "name": "Xóa hóa đơn lâm sàng",
+    "content_type": 50,
+    "codename": "can_delete_clinical_receipt"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 373,
+  "fields": {
+    "name": "Xem doanh thu lâm sàng",
+    "content_type": 50,
+    "codename": "can_view_clinical_revenue"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 374,
+  "fields": {
+    "name": "Thanh toán hóa đơn thuốc",
+    "content_type": 51,
+    "codename": "can_checkout_medicine_receipt"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 375,
+  "fields": {
+    "name": "Xem hóa đơn thuốc",
+    "content_type": 51,
+    "codename": "can_view_medicine_receipt"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 376,
+  "fields": {
+    "name": "Xóa hóa đơn thuốc",
+    "content_type": 51,
+    "codename": "can_delete_medicine_receipt"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 377,
+  "fields": {
+    "name": "In hóa đơn thuốc",
+    "content_type": 51,
+    "codename": "can_print_medicine_receipt"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 378,
+  "fields": {
+    "name": "Xem danh sách thuốc bảo hiểm chi trả",
+    "content_type": 51,
+    "codename": "can_view_medicine_expense_coverage"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 379,
+  "fields": {
+    "name": "Xuất danh sách thuốc bảo hiểm chi trả",
+    "content_type": 51,
+    "codename": "can_export_medicine_expense_coverage"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 380,
+  "fields": {
+    "name": "Xem doanh thu thuốc",
+    "content_type": 51,
+    "codename": "can_view_medicine_revenue"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 381,
+  "fields": {
+    "name": "Thanh toán hóa đơn vật tư y tế",
+    "content_type": 52,
+    "codename": "can_checkout_medical_supplies_receipt"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 382,
+  "fields": {
+    "name": "Xem hóa đơn vật tư y tế",
+    "content_type": 52,
+    "codename": "can_view_medical_supplies_receipt"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 383,
+  "fields": {
+    "name": "Xóa hóa đơn vật tư y tế",
+    "content_type": 52,
+    "codename": "can_delete_medical_supplies_receipt"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 384,
+  "fields": {
+    "name": "In hóa đơn vật tư y tế",
+    "content_type": 52,
+    "codename": "can_print_medical_supplies_receipt"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 385,
+  "fields": {
+    "name": "Xem danh sách vật tư y tế bảo hiểm chi trả",
+    "content_type": 52,
+    "codename": "can_view_medical_supplies_expense_coverage"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 386,
+  "fields": {
+    "name": "Xuất danh sách vật tư y tế bảo hiểm chi trả",
+    "content_type": 52,
+    "codename": "can_export_medical_supplies_expense_coverage"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 387,
+  "fields": {
+    "name": "Xem doanh thu vật tư y tế",
+    "content_type": 52,
+    "codename": "can_view_medical_supplies_revenue"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 642,
+  "fields": {
+    "name": "Xem Tổng Quan Trang Chủ",
+    "content_type": 6,
+    "codename": "general_view"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 643,
+  "fields": {
+    "name": "Phòng Ban Lễ Tân",
+    "content_type": 6,
+    "codename": "reception_department_module_view"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 644,
+  "fields": {
+    "name": "Phòng Ban Tài Chính",
+    "content_type": 6,
+    "codename": "finance_department_module_view"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 645,
+  "fields": {
+    "name": "Phòng Ban Chuyên Gia",
+    "content_type": 6,
+    "codename": "specialist_department_module_view"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 646,
+  "fields": {
+    "name": "Phòng Ban Thuốc",
+    "content_type": 6,
+    "codename": "medicine_department_module_view"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 647,
+  "fields": {
+    "name": "Phòng Ban Lâm Sàng",
+    "content_type": 6,
+    "codename": "preclinical_department_module_view"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 652,
+  "fields": {
+    "name": "Xem Doanh Thu Phòng Khám",
+    "content_type": 6,
+    "codename": "general_revenue_view"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 653,
+  "fields": {
+    "name": "Xem Danh Sách Thanh Toán Tài Chính",
+    "content_type": 6,
+    "codename": "view_checkout_list"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 654,
+  "fields": {
+    "name": "Xuất Bảo Hiểm Tài Chính",
+    "content_type": 6,
+    "codename": "export_insurance_data"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 835,
+  "fields": {
+    "name": "Thêm nguồn cung",
+    "content_type": 35,
+    "codename": "can_add_company"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 836,
+  "fields": {
+    "name": "Thay đổi nguồn cung",
+    "content_type": 35,
+    "codename": "can_change_company"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 837,
+  "fields": {
+    "name": "Xem nguồn cung",
+    "content_type": 35,
+    "codename": "can_view_company"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 838,
+  "fields": {
+    "name": "Xóa nguồn cung",
+    "content_type": 35,
+    "codename": "can_delete_company"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 909,
+  "fields": {
+    "name": "Xuất Danh Sách Bệnh Nhân Bảo Hiểm Chi Trả",
+    "content_type": 6,
+    "codename": "can_export_list_of_patient_insurance_coverage"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 946,
+  "fields": {
+    "name": "Xác nhận lịch hẹn",
+    "content_type": 14,
+    "codename": "can_confirm_appoinment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 947,
+  "fields": {
+    "name": "Xác nhận khám",
+    "content_type": 14,
+    "codename": "can_confirm_do_examination"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 1148,
+  "fields": {
+    "name": "Can add Hóa Đơn Chuỗi Khám",
+    "content_type": 49,
+    "codename": "add_hoadonchuoikham"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 1168,
+  "fields": {
+    "name": "Xem Danh Sách Thanh Toán Tài Chính",
+    "content_type": 6,
+    "codename": "can_view_checkout_list"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 1169,
+  "fields": {
+    "name": "Xem Danh Sách Bệnh Nhân Chờ",
+    "content_type": 6,
+    "codename": "can_view_list_of_patient"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 1170,
+  "fields": {
+    "name": "Thêm dịch vụ kỹ thuật bằng Excel File",
+    "content_type": 10,
+    "codename": "can_add_service_with_excel_file"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 1171,
+  "fields": {
+    "name": "Xuất danh sách dịch vụ kỹ thuật",
+    "content_type": 10,
+    "codename": "can_export_list_of_service"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 1172,
+  "fields": {
+    "name": "Xuất danh sách nguồn cung",
+    "content_type": 35,
+    "codename": "can_export_list_of_company"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 1173,
+  "fields": {
+    "name": "Thống kê vật tư cuối tháng",
+    "content_type": 41,
+    "codename": "can_listed_supplies_at_the_end_of_month"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 1174,
+  "fields": {
+    "name": "Thêm vật tư bằng Excel File",
+    "content_type": 41,
+    "codename": "can_add_supplies_using_excel_file"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 1175,
+  "fields": {
+    "name": "Xem lịch sử khám chuyên khoa",
+    "content_type": 13,
+    "codename": "can_view_history_specialty_result"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 1176,
+  "fields": {
+    "name": "Dừng khám",
+    "content_type": 22,
+    "codename": "can_stop_serivce_assignment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 1177,
+  "fields": {
+    "name": "Có thể khám chuyên khoa",
+    "content_type": 22,
+    "codename": "can_do_specialist_examination"
+  }
+}
+]

@@ -1,0 +1,200 @@
+[
+{
+  "model": "clinic.danhmucchuongbenh",
+  "pk": 1,
+  "fields": {
+    "stt": "I",
+    "ma_chuong": "A00-B99",
+    "ten_chuong": "Bệnh nhiễm trùng và ký sinh trùng"
+  }
+},
+{
+  "model": "clinic.danhmucchuongbenh",
+  "pk": 2,
+  "fields": {
+    "stt": "II",
+    "ma_chuong": "C00-D48",
+    "ten_chuong": "U (U tân sinh)"
+  }
+},
+{
+  "model": "clinic.danhmucchuongbenh",
+  "pk": 3,
+  "fields": {
+    "stt": "III",
+    "ma_chuong": "D50-D89",
+    "ten_chuong": "Bệnh của máu, cơ quan tạo máu và các rối loạn liên quan đến cơ chế miễn dịch"
+  }
+},
+{
+  "model": "clinic.danhmucchuongbenh",
+  "pk": 4,
+  "fields": {
+    "stt": "IV",
+    "ma_chuong": "E00-E90",
+    "ten_chuong": "Bệnh nội tiết, dinh dưỡng và chuyển hóa"
+  }
+},
+{
+  "model": "clinic.danhmucchuongbenh",
+  "pk": 5,
+  "fields": {
+    "stt": "V",
+    "ma_chuong": "F00-F99",
+    "ten_chuong": "Rối loạn tâm thần và hành vi"
+  }
+},
+{
+  "model": "clinic.danhmucchuongbenh",
+  "pk": 6,
+  "fields": {
+    "stt": "VI",
+    "ma_chuong": "G00-G99",
+    "ten_chuong": "Bệnh hệ thần kinh"
+  }
+},
+{
+  "model": "clinic.danhmucchuongbenh",
+  "pk": 7,
+  "fields": {
+    "stt": "VII",
+    "ma_chuong": "H00-H59",
+    "ten_chuong": "Bệnh mắt và phần phụ"
+  }
+},
+{
+  "model": "clinic.danhmucchuongbenh",
+  "pk": 8,
+  "fields": {
+    "stt": "VIII",
+    "ma_chuong": "H60-H95",
+    "ten_chuong": "Bệnh của tai và xương chũm"
+  }
+},
+{
+  "model": "clinic.danhmucchuongbenh",
+  "pk": 9,
+  "fields": {
+    "stt": "IX",
+    "ma_chuong": "I00-I99",
+    "ten_chuong": "Bệnh hệ tuần hoàn"
+  }
+},
+{
+  "model": "clinic.danhmucchuongbenh",
+  "pk": 10,
+  "fields": {
+    "stt": "X",
+    "ma_chuong": "J00-J99",
+    "ten_chuong": "Bệnh Hô hấp"
+  }
+},
+{
+  "model": "clinic.danhmucchuongbenh",
+  "pk": 11,
+  "fields": {
+    "stt": "XI",
+    "ma_chuong": "K00-K93",
+    "ten_chuong": "Bệnh hệ tiêu hóa"
+  }
+},
+{
+  "model": "clinic.danhmucchuongbenh",
+  "pk": 12,
+  "fields": {
+    "stt": "XII",
+    "ma_chuong": "L00-L99",
+    "ten_chuong": "Nhiễm trùng da và tổ chức dưới da"
+  }
+},
+{
+  "model": "clinic.danhmucchuongbenh",
+  "pk": 13,
+  "fields": {
+    "stt": "XIII",
+    "ma_chuong": "M00-M99",
+    "ten_chuong": "Bệnh của hệ cơ - xương khớp và mô liên kết"
+  }
+},
+{
+  "model": "clinic.danhmucchuongbenh",
+  "pk": 14,
+  "fields": {
+    "stt": "XIV",
+    "ma_chuong": "N00-N99",
+    "ten_chuong": "Bệnh hệ sinh dục - Tiết niệu"
+  }
+},
+{
+  "model": "clinic.danhmucchuongbenh",
+  "pk": 15,
+  "fields": {
+    "stt": "XV",
+    "ma_chuong": "O00-O99",
+    "ten_chuong": "Thai nghén, sinh đẻ và hậu sản"
+  }
+},
+{
+  "model": "clinic.danhmucchuongbenh",
+  "pk": 16,
+  "fields": {
+    "stt": "XVI",
+    "ma_chuong": "P00-P96",
+    "ten_chuong": "Một số bệnh lý xuất phát trong thời kỳ chu sinh"
+  }
+},
+{
+  "model": "clinic.danhmucchuongbenh",
+  "pk": 17,
+  "fields": {
+    "stt": "XVII",
+    "ma_chuong": "Q00-Q99",
+    "ten_chuong": "Dị tật bẩm sinh, biến dạng và bất thường về nhiễm sắc thể"
+  }
+},
+{
+  "model": "clinic.danhmucchuongbenh",
+  "pk": 18,
+  "fields": {
+    "stt": "XVIII",
+    "ma_chuong": "R00-R99",
+    "ten_chuong": "Các triệu chứng, dấu hiệu và những biển hiện lâm sàng, cận lâm sàng bất thường, chưa được phân loại ở phần khác"
+  }
+},
+{
+  "model": "clinic.danhmucchuongbenh",
+  "pk": 19,
+  "fields": {
+    "stt": "XIX",
+    "ma_chuong": "S00-T98",
+    "ten_chuong": "Vết thương ngộ độc và hậu quả của 1 số nguyên nhân bên ngoài"
+  }
+},
+{
+  "model": "clinic.danhmucchuongbenh",
+  "pk": 20,
+  "fields": {
+    "stt": "XXII",
+    "ma_chuong": "U00-U99",
+    "ten_chuong": "Mã phục vụ những mục đích đặc biệt"
+  }
+},
+{
+  "model": "clinic.danhmucchuongbenh",
+  "pk": 21,
+  "fields": {
+    "stt": "XX",
+    "ma_chuong": "V01-Y98",
+    "ten_chuong": "Các nguyên nhân ngoại sinh của bệnh và tử vong"
+  }
+},
+{
+  "model": "clinic.danhmucchuongbenh",
+  "pk": 22,
+  "fields": {
+    "stt": "XXI",
+    "ma_chuong": "Z00-Z99",
+    "ten_chuong": "Các yếu tố ảnh hưởng đến tình trạng sức khỏe và tiếp xúc dịch vụ y tế"
+  }
+}
+]

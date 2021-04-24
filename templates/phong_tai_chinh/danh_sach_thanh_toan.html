@@ -1,0 +1,852 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">Phòng Tài Chính</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="#" class="text-muted">Danh Sách Chờ Thanh Toán</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!--begin::Card-->
+            <div class="card card-custom">
+                <div class="card-header flex-wrap border-0 pt-6 pb-0">
+                    <div class="card-title">
+                        <h3 class="card-label">Danh Sách Chờ Thanh Toán
+                        </h3>
+                    </div>
+                    <div class="card-toolbar">
+                        <!--begin::Dropdown-->
+                        <div class="dropdown dropdown-inline mr-2">
+                            <button type="button" class="btn btn-light-primary font-weight-bolder dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="svg-icon svg-icon-md">
+                                <!--begin::Svg Icon | path:/metronic/theme/html/demo1/dist/assets/media/svg/icons/Design/PenAndRuller.svg-->
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <rect x="0" y="0" width="24" height="24" />
+                                        <path d="M3,16 L5,16 C5.55228475,16 6,15.5522847 6,15 C6,14.4477153 5.55228475,14 5,14 L3,14 L3,12 L5,12 C5.55228475,12 6,11.5522847 6,11 C6,10.4477153 5.55228475,10 5,10 L3,10 L3,8 L5,8 C5.55228475,8 6,7.55228475 6,7 C6,6.44771525 5.55228475,6 5,6 L3,6 L3,4 C3,3.44771525 3.44771525,3 4,3 L10,3 C10.5522847,3 11,3.44771525 11,4 L11,19 C11,19.5522847 10.5522847,20 10,20 L4,20 C3.44771525,20 3,19.5522847 3,19 L3,16 Z" fill="#000000" opacity="0.3" />
+                                        <path d="M16,3 L19,3 C20.1045695,3 21,3.8954305 21,5 L21,15.2485298 C21,15.7329761 20.8241635,16.200956 20.5051534,16.565539 L17.8762883,19.5699562 C17.6944473,19.7777745 17.378566,19.7988332 17.1707477,19.6169922 C17.1540423,19.602375 17.1383289,19.5866616 17.1237117,19.5699562 L14.4948466,16.565539 C14.1758365,16.200956 14,15.7329761 14,15.2485298 L14,5 C14,3.8954305 14.8954305,3 16,3 Z" fill="#000000" />
+                                    </g>
+                                </svg>
+                                <!--end::Svg Icon-->
+                            </span>Tùy Chọn</button>
+                            <!--begin::Dropdown Menu-->
+                            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                                <!--begin::Navigation-->
+                                <ul class="navi flex-column navi-hover py-2">
+                                    <li class="navi-header font-weight-bolder text-uppercase font-size-sm text-primary pb-2">Chọn Loại hóa đơn:</li>
+                                    <li class="navi-item">
+                                        <a href="javascript:;" class="navi-link" id="btn-lam-sang">
+                                            <span class="navi-icon">
+                                                <i class="la la-print"></i>
+                                            </span>
+                                            <span class="navi-text">Lâm Sàng</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="navi-item">
+                                        <a href="javascript:;" class="navi-link" id="btn-hoa-don-dich-vu">
+                                            <span class="navi-icon">
+                                                <i class="la la-print"></i>
+                                            </span>
+                                            <span class="navi-text">Dịch Vụ Khám</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="navi-item">
+                                        <a href="javascript:;" class="navi-link" id="btn-hoa-don-thuoc">
+                                            <span class="navi-icon">
+                                                <i class="la la-copy"></i>
+                                            </span>
+                                            <span class="navi-text"> Đơn Thuốc</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <!--end::Navigation-->
+                            </div>
+                            <!--end::Dropdown Menu-->
+                        </div>
+                        <!--end::Dropdown-->
+                        <!--begin::Button-->
+                        <a href="#" class="btn btn-light-primary font-weight-bolder" id="btn-reload">
+                            <span class="svg-icon svg-icon-md">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <rect x="0" y="0" width="24" height="24"/>
+                                        <path d="M12,8 L8,8 C5.790861,8 4,9.790861 4,12 L4,13 C4,14.6568542 5.34314575,16 7,16 L7,18 C4.23857625,18 2,15.7614237 2,13 L2,12 C2,8.6862915 4.6862915,6 8,6 L12,6 L12,4.72799742 C12,4.62015048 12.0348702,4.51519416 12.0994077,4.42878885 C12.264656,4.2075478 12.5779675,4.16215674 12.7992086,4.32740507 L15.656242,6.46136716 C15.6951359,6.49041758 15.7295917,6.52497737 15.7585249,6.56395854 C15.9231063,6.78569617 15.876772,7.09886961 15.6550344,7.263451 L12.798001,9.3840407 C12.7118152,9.44801079 12.607332,9.48254921 12.5,9.48254921 C12.2238576,9.48254921 12,9.25869158 12,8.98254921 L12,8 Z" fill="#000000"/>
+                                        <path d="M12.0583175,16 L16,16 C18.209139,16 20,14.209139 20,12 L20,11 C20,9.34314575 18.6568542,8 17,8 L17,6 C19.7614237,6 22,8.23857625 22,11 L22,12 C22,15.3137085 19.3137085,18 16,18 L12.0583175,18 L12.0583175,18.9825492 C12.0583175,19.2586916 11.8344599,19.4825492 11.5583175,19.4825492 C11.4509855,19.4825492 11.3465023,19.4480108 11.2603165,19.3840407 L8.40328311,17.263451 C8.18154548,17.0988696 8.13521119,16.7856962 8.29979258,16.5639585 C8.32872576,16.5249774 8.36318164,16.4904176 8.40207551,16.4613672 L11.2591089,14.3274051 C11.48035,14.1621567 11.7936615,14.2075478 11.9589099,14.4287888 C12.0234473,14.5151942 12.0583175,14.6201505 12.0583175,14.7279974 L12.0583175,16 Z" fill="#000000" opacity="0.3"/>
+                                    </g>
+                                </svg>
+                            </span>
+                            Tải lại
+                        </a>
+                        <!--end::Button-->
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!--begin: Search Form-->
+                    <!--begin::Search Form-->
+                    <div class="mb-7">
+                        <div class="row align-items-center">
+                            <div class="col-lg-9 col-xl-12">
+                                <div class="row align-items-center">
+                                    <div class="col-md-5 my-2 my-md-0">
+                                        <div class="input-icon">
+                                            <input type="text" class="form-control" placeholder="Tìm kiếm..." id="kt_datatable_search_query" />
+                                            <span>
+                                                <i class="flaticon2-search-1 text-muted"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <label class="mr-3 mb-0 d-none d-md-block text-center">Trạng Thái</label>
+                                        <select class="form-control" id="kt_datatable_search_status">
+                                            <option value="">Tất Cả Trạng Thái</option>
+                                            <option value="False">Chờ Thanh Toán</option>
+                                            <option value="True">Đã Thanh Toán</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Search Form-->
+                    <!--begin: Datatable-->
+                    <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable"></div>
+                    <!--end: Datatable-->
+                </div>
+            </div>
+            <!--end::Card-->
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+<!--end::Content-->
+
+<!--begin::Thanh Toan Lam Sang Modal-->
+<div id="lam_sang_modal" class="modal fade" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-md modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header py-5">
+                <h5 class="modal-title"> 
+                    <span class="d-block font-size-nm">Nhập Số Tiền Khám Lâm Sàng</span>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group row">
+                    <div class="col-lg-12">
+                        <span class="mb-5">
+                            Tên bệnh nhân: <span id="ten_benh_nhan"></span>
+                        </span> <br>
+                        <label>
+                            Nhập số tiền khám lâm sàng
+                        </label>
+                        <input type="text" id="gia_tien" class="form-control" placeholder="Số tiền khám lâm sàng" />
+                        {% comment %} <textarea class="form-control" id="ly_do" rows="5"></textarea> {% endcomment %}
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                {% comment %} <div class="d-flex justify-content-between"> {% endcomment %}
+                <button type="button" id="printDiv" class="btn btn-light-success font-weight-bold text-uppercase mr-custom">In</button>
+                <button type="button" class="btn btn-light-primary font-weight-bold text-uppercase" data-dismiss="modal">Hủy</button>
+                <button type="button" id="btn_submit" class="btn btn-primary font-weight-bold text-uppercase">Xác nhận</button>
+                {% comment %} </div> {% endcomment %}
+            </div>
+        </div>
+    </div>
+</div>
+<!--end::Modal-->
+
+<!-- begin: Invoice-->
+<div class="card-body p-0" style="display: none;" >
+    <!-- begin: Invoice header-->
+    <div class="row justify-content-center py-8 px-8 py-md-16 px-md-0">    
+        <div id="hoa_don_lam_sang">
+            {{ mau_hoa_don.noi_dung|safe }}
+        </div>
+    </div>
+</div>
+<!-- end: Invoice-->
+{% endblock content %}
+
+{% block scripts %}
+{% comment %} <script>var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";</script> {% endcomment %}
+<!--begin::Global Theme Bundle(used by all pages)-->
+
+<!--end::Global Theme Bundle-->
+
+<script>
+"use strict";
+// Class definition
+
+var KTDatatableRemoteAjaxDemo = function() {
+    // Private functions
+
+    var thanh_toan_lam_sang = function() {
+
+        var datatable = $('#kt_datatable').KTDatatable({
+            // datasource definition
+            data: {
+                type: 'remote',
+                source: {
+                    read: {
+                        method: "GET",
+                        url: HOST_URL + '/api/danh_sach_lam_sang/',
+                        // sample custom headers
+                        // headers: {'x-my-custom-header': 'some value', 'x-test-header': 'the value'},
+                        map: function(raw) {
+                            // sample data mapping
+                            var dataSet = raw;
+                            if (typeof raw.data !== 'undefined') {
+                                dataSet = raw.data;
+                            }
+                            return dataSet;
+                        },
+                    },
+                },
+                pageSize: 10,
+                serverPaging: true,
+                //serverFiltering: true,
+                //serverSorting: true,
+            },
+
+            // layout definition
+            layout: {
+                scroll: false,
+                footer: false,
+            },
+
+            // column sorting
+            sortable: true,
+
+            pagination: true,
+
+            search: {
+                input: $('#kt_datatable_search_query'),
+                key: 'generalSearch'
+            },
+
+            // columns definition
+            columns: [{
+                field: 'id',
+                title: 'Stt',
+                sortable: 'asc',
+                width: 30,
+                type: 'number',
+                selector: false,
+                textAlign: 'center',
+            }, {
+                field: 'benh_nhan.ho_ten',
+                title: 'Bệnh Nhân',
+                
+            }, {
+                field: 'nguoi_phu_trach.ho_ten',
+                title: 'Người Phụ Trách',
+
+            }, {
+                field: 'ly_do',
+                title: 'Lý Do Khám',
+                autoHide: false,
+            }, {
+                field: 'thoi_gian_bat_dau',
+                title: 'Thời Gian Hẹn',
+                template: function(row) {
+                    var date = new Date(Date.parse(row.thoi_gian_bat_dau))
+
+                    if(!row.thoi_gian_bat_dau){
+                        return '<span class="label font-weight-bold label-lg ' + 'label-light-info' + ' label-inline">' + 'Không Có Thời Gian' + '</span>';
+                    } else {
+                        return date.toLocaleString('vi-VN')
+                    }
+                }
+            }, {
+                field: 'thoi_gian_tao',
+                title: 'Thời Gian Tạo',
+                template: function(row) {
+                    var date = new Date(Date.parse(row.thoi_gian_tao))
+
+                    if(!row.thoi_gian_tao){
+                        return '<span class="label font-weight-bold label-lg ' + 'label-light-info' + ' label-inline">' + 'Chưa Bắt Đầu' + '</span>';
+                    } else {
+                        return date.toLocaleString('vi-VN')
+                    }
+                }
+            }, {
+                field: 'trang_thai_thanh_toan',
+                title: 'Trạng Thái',
+                template: function(row) {
+
+                    if (row.trang_thai_thanh_toan == "True") {
+                        return '<span class="label font-weight-bold label-lg label-light-success label-inline">' + 'Đã Thanh Toán LS' + '</span>';
+                    } else if (row.trang_thai_thanh_toan == "False") {
+                        return '<span class="label font-weight-bold label-lg label-light-warning label-inline">' + 'Chờ Thanh Toán LS' + '</span>';
+                    }
+                },
+            }, {
+                field: 'Actions',
+                title: 'Thao tác',
+                sortable: false,
+                width: 125,
+                overflow: 'visible',
+                autoHide: false,
+                textAlign: 'center',
+                template: function(row) {
+                    if (row.trang_thai_thanh_toan == 'True') {
+                        return `
+                            <a href="/hoa_don_lam_sang/${row.id}/" id='xemLaiHoaDon' class="btn btn-sm btn-clean mr-2 btn-thanh-toan" data-ten="${row.benh_nhan.ho_ten}" data-id="${row.id}" data-time="${row.thoi_gian_tao}" data-phone="${row.benh_nhan.so_dien_thoai}" data-address="${row.benh_nhan.dia_chi}" title="Edit details">
+                                Xem Lại
+                            </a>
+                        `
+                    } else if (row.trang_thai_thanh_toan == 'False') {
+                        return `
+                            {% if perms.finance.can_checkout_clinical_receipt %}
+                            <a href="javascript:;" class="btn btn-sm btn-clean mr-2 btn-thanh-toan" data-ten="${row.benh_nhan.ho_ten}" data-id="${row.id}" data-time="${row.thoi_gian_tao}" data-phone="${row.benh_nhan.so_dien_thoai}" data-address="${row.benh_nhan.dia_chi}" title="Edit details">
+                                Thanh toán
+                            </a>
+                            {% endif %}
+                        `;
+
+                    }
+                },
+            }],
+
+        });
+
+        $('#btn-reload').on('click', function() {
+			// datatable.reload();
+			$('#kt_datatable').KTDatatable('reload');
+		});
+
+		$('#kt_datatable_search_status').on('change', function() {
+            datatable.search($(this).val(), 'trang_thai_thanh_toan');
+            // $('#kt_datatable').KTDatatable('destroy');
+        });
+
+        datatable.on('click', '.btn-thanh-toan', function(){
+            var ten = $(this).attr('data-ten')
+            var id  = $(this).data('id')
+
+            $('#lam_sang_modal').modal('show')
+            $('#lam_sang_modal').find('#ten_benh_nhan').html(ten)
+            $('#lam_sang_modal').find('#ten_benh_nhan').attr("data-lich-hen", id)
+        })
+
+        $('#lam_sang_modal').on('click', '#btn_submit', function(){
+            var id = $('#ten_benh_nhan').attr('data-lich-hen');
+            var gia_tien = $('#gia_tien').val();
+
+            var formData = new FormData();
+
+            formData.append('id', id);
+            formData.append('gia_tien', gia_tien);
+            formData.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+
+            $.ajax({
+                type: "POST",
+                url: "{% url 'store_thanh_toan_lam_sang' %}",
+                data: formData,
+                dataType: 'json',
+                processData: false,
+                contentType: false,
+                cache: false,
+                success: function (response) {
+                    if (response.status == 200){
+                        toastr.success(response.message, "Thành Công")
+                        //window.location = response.url;
+                        $('#kt_datatable').KTDatatable('reload');
+                    }
+                    $('#lam_sang_modal').modal('hide');
+                },
+                error: function (response) {
+                    alert(res)                         
+                }
+            })
+
+        })
+
+        $('#kt_datatable_search_status').selectpicker();
+
+        $('#printDiv').on('click', function(){
+            printDiv(hoa_don_dich_vu);
+        })
+
+        datatable.on('click', '.btn-thanh-toan', function(){
+            var ten = $(this).attr('data-ten')
+            var id  = $(this).data('id')
+            var thoi_gian = $(this).attr('data-time')
+            var sdt = $(this).attr('data-phone')
+            var add = $(this).attr('data-address')
+
+            $('#lam_sang_modal').modal('show')
+            $('#lam_sang_modal').find('#ten_benh_nhan').html(ten)
+            $('#lam_sang_modal').find('#ten_benh_nhan').attr("data-lich-hen", id)
+            $('#lam_sang_modal').find('#btn_submit').attr("data-time", thoi_gian)
+            $('#lam_sang_modal').find('#btn_submit').attr("data-name", ten)
+            $('#lam_sang_modal').find('#btn_submit').attr("data-phone", sdt)
+            $('#lam_sang_modal').find('#btn_submit').attr("data-address", add)
+        })
+
+        function printDiv(hoa_don_dich_vu){
+            function formatMoney(amount, decimalCount = 0, decimal = ".", thousands = ",") {
+                try {
+                    decimalCount = Math.abs(decimalCount);
+                    decimalCount = isNaN(decimalCount) ? 2 : decimalCount;
+
+                    const negativeSign = amount < 0 ? "-" : "";
+
+                    let i = parseInt(amount = Math.abs(Number(amount) || 0).toFixed(decimalCount)).toString();
+                    let j = (i.length > 3) ? i.length % 3 : 0;
+
+                    return negativeSign + (j ? i.substr(0, j) + thousands : '') + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousands) + (decimalCount ? decimal + Math.abs(amount - i).toFixed(decimalCount).slice(2) : "");
+                } catch (e) {
+                    console.log(e)
+                }
+            };
+            
+            var gia_tien = $('#gia_tien').val();
+            $('#lam_sang_modal').find('#ten_benh_nhan').attr("data-money", gia_tien);
+            var thoi_gian = $('#btn_submit').attr('data-time');
+            var ten_benh_nhan = $('#btn_submit').attr('data-name');
+            console.log(ten_benh_nhan)
+            var sdt = $('#btn_submit').attr('data-phone');
+            var add = $('#btn_submit').attr('data-address');
+            var id = $('#ten_benh_nhan').attr('data-lich-hen');
+
+            thoi_gian = new Date(Date.parse(thoi_gian));
+            thoi_gian = thoi_gian.toLocaleString('vi-VN');
+
+            $('#hoa_don_dich_vu').find('#tien_lam_sang').html(gia_tien);
+            $('#hoa_don_dich_vu').find('#format-money-thanh-tien').html(gia_tien);
+            $('#hoa_don_dich_vu').find('#thoi_gian_thanh_toan').html(thoi_gian);
+            $('#hoa_don_dich_vu').find('#nguoi_thanh_toan').html(nguoi_thanh_toan);
+            $('#hoa_don_dich_vu').find('#phone_number').html(sdt);
+            $('#hoa_don_dich_vu').find('#address').html(add);
+            var data_gia_tien = "";
+            var data_tien_thanh_toan = "";
+            var data_nguoi_thanh_toan = '';
+            var data_thoi_gian_thanh_toan = '';
+            var nguoi_thanh_toan = "{{ nguoi_thanh_toan|safe }}";
+            var thoi_gian_thanh_toan = "{{ thoi_gian_thanh_toan|safe }}";
+            var data_ten_benh_nhan = '';
+            var data_phone = '';
+            var data_dia_chi = '';
+
+            var format_tien = formatMoney(gia_tien)
+
+            $('#hoa_don_lam_sang table tbody tr').each(function(){
+                if($(this).find('td').eq(1).text() == `{gia_tien}`){
+                    // console.log($(this).html())
+                    var innerHtml = $(this).html();
+                    var start_tr = '<tr>';
+                    var end_tr = '</tr>';
+                    var c = start_tr + innerHtml + end_tr;
+                    data_gia_tien += c.replace(/{gia_tien}/, format_tien);
+                    $(this).replaceWith(data_gia_tien);
+                }
+
+                if($(this).find('td').eq(3).text() == `{tien_thanh_toan}`){
+                    // console.log($(this).html())
+                    var innerHtml = $(this).html();
+                    var start_tr = '<tr>';
+                    var end_tr = '</tr>';
+                    var c = start_tr + innerHtml + end_tr;
+                    data_tien_thanh_toan += c.replace(/{tien_thanh_toan}/, format_tien);
+                    $(this).replaceWith(data_tien_thanh_toan);
+                }
+
+                if($(this).find('td').eq(2).text() == `{nguoi_thanh_toan}`){
+                    // console.log($(this).html())
+                    var innerHtml = $(this).html();
+                    var start_tr = '<tr>';
+                    var end_tr = '</tr>';
+                    var c = start_tr + innerHtml + end_tr;
+                    data_nguoi_thanh_toan += c.replace(/{nguoi_thanh_toan}/, nguoi_thanh_toan);
+                    $(this).replaceWith(data_nguoi_thanh_toan);
+                }
+
+                if($(this).find('td').eq(0).text() == `{thoi_gian_thanh_toan}`){
+                    // console.log($(this).html())
+                    var innerHtml = $(this).html();
+                    var start_tr = '<tr>';
+                    var end_tr = '</tr>';
+                    var c = start_tr + innerHtml + end_tr;
+                    data_thoi_gian_thanh_toan += c.replace(/{thoi_gian_thanh_toan}/, thoi_gian_thanh_toan).replace(/{benh_nhan}/, ten_benh_nhan);
+                    $(this).replaceWith(data_thoi_gian_thanh_toan);
+                }
+
+                if($(this).find('td').eq(1).text() == `{so_dien_thoai}`){
+                    // console.log($(this).html())
+                    var innerHtml = $(this).html();
+                    var start_tr = '<tr>';
+                    var end_tr = '</tr>';
+                    var c = start_tr + innerHtml + end_tr;
+                    data_phone += c.replace(/{so_dien_thoai}/, sdt);
+                    $(this).replaceWith(data_phone);
+                }
+
+                if($(this).find('td').eq(1).text() == `{dia_chi}`){
+                    // console.log($(this).html())
+                    var innerHtml = $(this).html();
+                    var start_tr = '<tr>';
+                    var end_tr = '</tr>';
+                    var c = start_tr + innerHtml + end_tr;
+                    data_dia_chi += c.replace(/{dia_chi}/, add);
+                    $(this).replaceWith(data_dia_chi);
+                }
+
+            });
+
+
+            var printContents = document.getElementById("hoa_don_lam_sang").innerHTML;
+            var originalContents = document.body.innerHTML;
+
+            document.body.innerHTML = printContents;
+
+            window.print();
+
+            $('#lam_sang_modal').modal('hide');
+
+            document.body.innerHTML = originalContents;
+
+            window.onafterprint = $(document).ready(function(e) {
+                
+                var id = $('#lam_sang_modal').find('#ten_benh_nhan').data();
+                var gia_tien = id.money;
+                
+                var formData = new FormData();
+                formData.append('id', id.lichHen);
+                formData.append('gia_tien', gia_tien);
+                formData.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+            
+                $.ajax({
+                    type: "POST",
+                    url: "{% url 'store_thanh_toan_lam_sang' %}",
+                    data: formData,
+                    dataType: 'json',
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    success: function (response) {
+                        setTimeout(function () {
+                            location.reload(); //redirect về danh sách chờ lâm sàng
+                        }, 500);
+                    },
+                    error: function (response) {
+                        alert(res);                        
+                    }
+                })
+            });
+        }
+        
+    };
+
+    var hoa_don_dich_vu = function() {
+
+        var datatable = $('#kt_datatable').KTDatatable({
+            // datasource definition
+            data: {
+                type: 'remote',
+                source: {
+                    read: {
+                        method: "GET",
+                        url: HOST_URL + '/api/danh_sach_thanh_toan/',
+                        // sample custom headers
+                        // headers: {'x-my-custom-header': 'some value', 'x-test-header': 'the value'},
+                        map: function(raw) {
+                            // sample data mapping
+                            var dataSet = raw;
+                            if (typeof raw.data !== 'undefined') {
+                                dataSet = raw.data;
+                            }
+                            return dataSet;
+                        },
+                    },
+                },
+                pageSize: 10,
+                serverPaging: true,
+                //serverFiltering: true,
+                //serverSorting: true,
+            },
+
+            // layout definition
+            layout: {
+                scroll: false,
+                footer: false,
+            },
+
+            // column sorting
+            sortable: true,
+
+            pagination: true,
+
+            search: {
+                input: $('#kt_datatable_search_query'),
+                key: 'generalSearch'
+            },
+
+            // columns definition
+            columns: [{
+                field: 'id',
+                title: '#',
+                sortable: 'asc',
+                width: 30,
+                type: 'number',
+                selector: false,
+                textAlign: 'center',
+            }, {
+                field: 'benh_nhan.ho_ten',
+                title: 'Bệnh Nhân',
+                
+            }, {
+                field: 'bac_si_dam_nhan.ho_ten',
+                title: 'Bác Sĩ',
+
+            }, {
+                field: 'thoi_gian_tao',
+                title: 'Thời Gian Tạo',
+                template: function(row) {
+                    var date = new Date(Date.parse(row.thoi_gian_tao))
+
+                    if(!row.thoi_gian_tao){
+                        return '<span class="label font-weight-bold label-lg ' + 'label-light-info' + ' label-inline">' + 'Chưa Bắt Đầu' + '</span>';
+                    } else {
+                        return date.toLocaleString('vi-VN')
+                    }
+                }
+            }, {
+                field: 'trang_thai_thanh_toan',
+                title: 'Trạng Thái',
+                // callback function support for column rendering
+                template: function(row) {
+                    if (row.trang_thai_thanh_toan == "True") {
+                        return '<span class="label font-weight-bold label-lg label-light-success label-inline">' + 'Đã Thanh Toán' + '</span>';
+                    } else if (row.trang_thai_thanh_toan == "False") {
+                        return '<span class="label font-weight-bold label-lg label-light-warning label-inline">' + 'Chờ Thanh Toán' + '</span>';
+                    }
+                },
+            }, {
+                field: 'Actions',
+                title: 'Thao tác',
+                sortable: false,
+                width: 125,
+                overflow: 'visible',
+                autoHide: false,
+                template: function(row) {
+                    
+                    return `
+                        {% if perms.finance.can_checkout_service_receipt %}
+                        <a href="/phong_tai_chinh/hoa_don_dich_vu/${row.id}" class="btn btn-sm btn-clean mr-2" title="Edit details">
+                            Hóa Đơn
+                        </a>
+                        {% endif %}
+                    `;
+                },
+            }],
+
+        });
+
+        $('#btn-reload').on('click', function() {
+			// datatable.reload();
+			$('#kt_datatable').KTDatatable('reload');
+		});
+
+		$('#kt_datatable_search_status').on('change', function() {
+            datatable.search($(this).val(), 'trang_thai_thanh_toan');
+        });
+
+        //$('#kt_datatable_search_type').on('change', function() {
+        //    datatable.search($(this).val().toLowerCase(), 'Type');
+        //});
+
+        $('#kt_datatable_search_status, #kt_datatable_search_type').selectpicker();
+    };
+
+    var hoa_don_thuoc = function() {
+
+        var datatable = $('#kt_datatable').KTDatatable({
+            // datasource definition
+            data: {
+                type: 'remote',
+                source: {
+                    read: {
+                        method: "GET",
+                        url: HOST_URL + '/api/danh_sach_hoa_don_thuoc/',
+                        // sample custom headers
+                        // headers: {'x-my-custom-header': 'some value', 'x-test-header': 'the value'},
+                        map: function(raw) {
+                            // sample data mapping
+                            var dataSet = raw;
+                            if (typeof raw.data !== 'undefined') {
+                                dataSet = raw.data;
+                            }
+                            return dataSet;
+                        },
+                    },
+                },
+                pageSize: 10,
+                serverPaging: true,
+                //serverFiltering: true,
+                //serverSorting: true,
+            },
+
+            // layout definition
+            layout: {
+                scroll: false,
+                footer: false,
+            },
+
+            // column sorting
+            sortable: true,
+
+            pagination: true,
+
+            search: {
+                input: $('#kt_datatable_search_query'),
+                key: 'generalSearch'
+            },
+
+            // columns definition
+            columns: [{
+                field: 'id',
+                title: '#',
+                sortable: 'asc',
+                width: 30,
+                type: 'number',
+                selector: false,
+                textAlign: 'center',
+            }, {
+                field: 'ma_don_thuoc',
+                title: 'Mã Hóa Đơn',
+            }, {
+                field: 'benh_nhan.ho_ten',
+                title: 'Bệnh Nhân',
+                template: function(row) {
+                    if (row.benh_nhan === null) {
+                        return row.benh_nhan_vang_lai
+                    } else {
+                        return row.benh_nhan.ho_ten
+                    }
+                }
+            }, {
+                field: 'bac_si_ke_don.ho_ten',
+                title: 'Bác Sĩ',
+            }, {
+                field: 'thoi_gian_tao',
+                title: 'Thời Gian Tạo',
+                template: function(row) {
+                    var date = new Date(Date.parse(row.thoi_gian_tao))
+
+                    if(!row.thoi_gian_tao){
+                        return '<span class="label font-weight-bold label-lg ' + 'label-light-info' + ' label-inline">' + 'Chưa Bắt Đầu' + '</span>';
+                    } else {
+                        return date.toLocaleString('vi-VN')
+                    }
+                }
+            }, {
+                field: 'trang_thai_thanh_toan',
+                title: 'Trạng Thái',
+                // callback function support for column rendering
+                template: function(row) {
+                    if (row.trang_thai_thanh_toan == "True") {
+                        return '<span class="label font-weight-bold label-lg label-light-success label-inline">' + 'Đã Thanh Toán' + '</span>';
+                    } else if (row.trang_thai_thanh_toan == "False") {
+                        return '<span class="label font-weight-bold label-lg label-light-warning label-inline">' + 'Chờ Thanh Toán' + '</span>';
+                    }
+                },
+            }, {
+                field: 'HoaDonThuoc',
+                title: 'Hóa Đơn Thuốc + TPHTĐT',
+                sortable: false,
+                width: 125,
+                overflow: 'visible',
+                autoHide: false,
+                textAlign: 'center',
+                template: function(row) {
+                    return `
+                        {% if perms.finance.can_checkout_medicine_receipt %}
+                        <a href="/phong_tai_chinh/hoa_don_thuoc/${row.id}" class="btn btn-sm btn-clean mr-2" title="Hóa Đơn Thuốc">
+                            Hóa Đơn
+                        </a>
+                        {% endif %}
+                    `;
+                },
+            },
+            ],
+
+        });
+
+        $('#btn-reload').on('click', function() {
+			// datatable.reload();
+			$('#kt_datatable').KTDatatable('reload');
+		});
+
+		$('#kt_datatable_search_status').on('change', function() {
+            datatable.search($(this).val(), 'trang_thai_thanh_toan');
+        });
+
+        $('#kt_datatable_search_status').selectpicker();
+    };
+
+    var _initDatatable = function () {
+        $(document).on('click', '#btn-lam-sang', function (){ 
+            $('#kt_datatable').KTDatatable('destroy'); 
+            thanh_toan_lam_sang();
+        });
+
+        $(document).on('click', '#btn-hoa-don-dich-vu', function (){ 
+            $('#kt_datatable').KTDatatable('destroy'); 
+            hoa_don_dich_vu();
+        });
+
+        $(document).on('click', '#btn-hoa-don-thuoc', function (){ 
+            $('#kt_datatable').KTDatatable('destroy'); 
+            hoa_don_thuoc();
+        });
+    };
+
+    return {
+        // public functions
+        init: function() {
+            _initDatatable();
+            thanh_toan_lam_sang();
+        },
+    };
+}();
+
+jQuery(document).ready(function() {
+    KTDatatableRemoteAjaxDemo.init();
+});
+
+</script>
+
+{% endblock scripts %}

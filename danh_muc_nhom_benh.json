@@ -1,0 +1,2849 @@
+[
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 1,
+  "fields": {
+    "chuong_benh": 1,
+    "ma_nhom_chinh": "A00-A09",
+    "ten_nhom_chinh": "Bệnh nhiễm trùng đường ruột",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 2,
+  "fields": {
+    "chuong_benh": 1,
+    "ma_nhom_chinh": "A15-A19",
+    "ten_nhom_chinh": "Bệnh lao",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 3,
+  "fields": {
+    "chuong_benh": 1,
+    "ma_nhom_chinh": "A20-A28",
+    "ten_nhom_chinh": "Bệnh nhiễm khuẩn do động vật truyền sang người",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 4,
+  "fields": {
+    "chuong_benh": 1,
+    "ma_nhom_chinh": "A30-A49",
+    "ten_nhom_chinh": "Bệnh nhiễm khuẩn khác",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 5,
+  "fields": {
+    "chuong_benh": 1,
+    "ma_nhom_chinh": "A50-A64",
+    "ten_nhom_chinh": "Bệnh nhiễm trùng lây truyền chủ yếu qua đường tình dục",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 6,
+  "fields": {
+    "chuong_benh": 1,
+    "ma_nhom_chinh": "A65-A69",
+    "ten_nhom_chinh": "Bệnh do xoắn trùng khác",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 7,
+  "fields": {
+    "chuong_benh": 1,
+    "ma_nhom_chinh": "A70-A74",
+    "ten_nhom_chinh": "Các bệnh khác do Chlamydia",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 8,
+  "fields": {
+    "chuong_benh": 1,
+    "ma_nhom_chinh": "A75-A79",
+    "ten_nhom_chinh": "Bệnh do Rickettsia",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 9,
+  "fields": {
+    "chuong_benh": 1,
+    "ma_nhom_chinh": "A80-A89",
+    "ten_nhom_chinh": "Nhiễm virus ở hệ thần kinh trung ương",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 10,
+  "fields": {
+    "chuong_benh": 1,
+    "ma_nhom_chinh": "A90-A99",
+    "ten_nhom_chinh": "Sốt virus và sốt xuất huyết virus do tiết túc truyền",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 11,
+  "fields": {
+    "chuong_benh": 1,
+    "ma_nhom_chinh": "B00-B09",
+    "ten_nhom_chinh": "Nhiễm virus có đặc điểm tổn thương tại da và niêm mạc",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 12,
+  "fields": {
+    "chuong_benh": 1,
+    "ma_nhom_chinh": "B15-B19",
+    "ten_nhom_chinh": "Viêm gan virus",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 13,
+  "fields": {
+    "chuong_benh": 1,
+    "ma_nhom_chinh": "B20-B24",
+    "ten_nhom_chinh": "Bệnh do nhiễm virus suy giảm miễn dịch ở người [HIV]",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 14,
+  "fields": {
+    "chuong_benh": 1,
+    "ma_nhom_chinh": "B25-B34",
+    "ten_nhom_chinh": "Các bệnh nhiễm virus khác",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 15,
+  "fields": {
+    "chuong_benh": 1,
+    "ma_nhom_chinh": "B35-B49",
+    "ten_nhom_chinh": "Bệnh nhiễm nấm",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 16,
+  "fields": {
+    "chuong_benh": 1,
+    "ma_nhom_chinh": "B50-B64",
+    "ten_nhom_chinh": "Bệnh do ký sinh trùng đơn bào",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 17,
+  "fields": {
+    "chuong_benh": 1,
+    "ma_nhom_chinh": "B65-B83",
+    "ten_nhom_chinh": "Bệnh giun sán",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 18,
+  "fields": {
+    "chuong_benh": 1,
+    "ma_nhom_chinh": "B85-B89",
+    "ten_nhom_chinh": "Bệnh chấy rận, bệnh ghẻ và nhiễm ký sinh trùng khác",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 19,
+  "fields": {
+    "chuong_benh": 1,
+    "ma_nhom_chinh": "B90-B94",
+    "ten_nhom_chinh": "Di chứng của bệnh nhiễm trùng và ký sinh trùng",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 20,
+  "fields": {
+    "chuong_benh": 1,
+    "ma_nhom_chinh": "B95-B98",
+    "ten_nhom_chinh": "Các tác nhân vi khuẩn, virus và tác nhân gây nhiễm khuẩn khác",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 21,
+  "fields": {
+    "chuong_benh": 1,
+    "ma_nhom_chinh": "B99-B99",
+    "ten_nhom_chinh": "Bệnh nhiễm trùng khác",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 22,
+  "fields": {
+    "chuong_benh": 2,
+    "ma_nhom_chinh": "C00-C97",
+    "ten_nhom_chinh": "U ác tính",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 23,
+  "fields": {
+    "chuong_benh": 2,
+    "ma_nhom_chinh": "C00-C75",
+    "ten_nhom_chinh": "U ác được chẩn đoán xác định hay nghi ngờ là nguyên phát của các cơ quan xác định, ngoại trừ của mô bạch huyết, mô tạo huyết và mô liên",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 24,
+  "fields": {
+    "chuong_benh": 2,
+    "ma_nhom_chinh": "C00-C75",
+    "ten_nhom_chinh": "U ác tính",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 25,
+  "fields": {
+    "chuong_benh": 2,
+    "ma_nhom_chinh": "D00-D09",
+    "ten_nhom_chinh": "U tân sinh tại chỗ",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 26,
+  "fields": {
+    "chuong_benh": 2,
+    "ma_nhom_chinh": "D10-D36",
+    "ten_nhom_chinh": "U lành",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 27,
+  "fields": {
+    "chuong_benh": 2,
+    "ma_nhom_chinh": "D37-D48",
+    "ten_nhom_chinh": "U tân sinh không chắc chắn hoặc không biết tính chất",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 28,
+  "fields": {
+    "chuong_benh": 3,
+    "ma_nhom_chinh": "D50-D53",
+    "ten_nhom_chinh": "Bệnh thiếu máu dinh dưỡng",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 29,
+  "fields": {
+    "chuong_benh": 3,
+    "ma_nhom_chinh": "D55-D59",
+    "ten_nhom_chinh": "Thiếu máu tan máu",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 30,
+  "fields": {
+    "chuong_benh": 3,
+    "ma_nhom_chinh": "D60-D64",
+    "ten_nhom_chinh": "Suy tủy xương và các bệnh thiếu máu khác",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 31,
+  "fields": {
+    "chuong_benh": 3,
+    "ma_nhom_chinh": "D65-D69",
+    "ten_nhom_chinh": "Các rối loạn đông máu, ban xuất huyết và tình trạng xuất huyết khác",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 32,
+  "fields": {
+    "chuong_benh": 3,
+    "ma_nhom_chinh": "D70-D77",
+    "ten_nhom_chinh": "Các bệnh khác của máu và cơ quan tạo máu",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 33,
+  "fields": {
+    "chuong_benh": 3,
+    "ma_nhom_chinh": "D80-D89",
+    "ten_nhom_chinh": "Các rối loạn liên quan đến cơ chế miễn dịch",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 34,
+  "fields": {
+    "chuong_benh": 4,
+    "ma_nhom_chinh": "E00-E07",
+    "ten_nhom_chinh": "Bệnh tuyến giáp",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 35,
+  "fields": {
+    "chuong_benh": 4,
+    "ma_nhom_chinh": "E10-E14",
+    "ten_nhom_chinh": "Đái tháo đường",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 36,
+  "fields": {
+    "chuong_benh": 4,
+    "ma_nhom_chinh": "E15-E16",
+    "ten_nhom_chinh": "Các rối loạn khác về sự điều hoà glucose và bài tiết của tụy nội tiết",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 37,
+  "fields": {
+    "chuong_benh": 4,
+    "ma_nhom_chinh": "E20-E35",
+    "ten_nhom_chinh": "Rối loạn các tuyến nội tiết khác",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 38,
+  "fields": {
+    "chuong_benh": 4,
+    "ma_nhom_chinh": "E40-E46",
+    "ten_nhom_chinh": "Suy dinh dưỡng",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 39,
+  "fields": {
+    "chuong_benh": 4,
+    "ma_nhom_chinh": "E50-E64",
+    "ten_nhom_chinh": "Những bệnh thiếu dinh dưỡng khác",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 40,
+  "fields": {
+    "chuong_benh": 4,
+    "ma_nhom_chinh": "E65-E68",
+    "ten_nhom_chinh": "Béo phì và –tình trạng thừa dinh dưỡng khác",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 41,
+  "fields": {
+    "chuong_benh": 4,
+    "ma_nhom_chinh": "E70-E90",
+    "ten_nhom_chinh": "Rối loạn chuyển hóa",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 42,
+  "fields": {
+    "chuong_benh": 5,
+    "ma_nhom_chinh": "F00-F09",
+    "ten_nhom_chinh": "Rối loạn tâm thần thực tổn bao gồm rối loạn tâm thần triệu chứng",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 43,
+  "fields": {
+    "chuong_benh": 5,
+    "ma_nhom_chinh": "F10-F19",
+    "ten_nhom_chinh": "Rối loạn tâm thần và hành vi do sử dụng chất tác động tâm thần",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 44,
+  "fields": {
+    "chuong_benh": 5,
+    "ma_nhom_chinh": "F20-F29",
+    "ten_nhom_chinh": "Tâm thần phân liệt, rối loạn loại phân liệt và các rối loạn hoang tưởng",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 45,
+  "fields": {
+    "chuong_benh": 5,
+    "ma_nhom_chinh": "F30-F39",
+    "ten_nhom_chinh": "Rối loạn khí sắc [cảm xúc]",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 46,
+  "fields": {
+    "chuong_benh": 5,
+    "ma_nhom_chinh": "F40-F48",
+    "ten_nhom_chinh": "Các rối loạn bệnh tâm căn có liên quan đến stress và rối loạn dạng cơ thể",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 47,
+  "fields": {
+    "chuong_benh": 5,
+    "ma_nhom_chinh": "F50-F59",
+    "ten_nhom_chinh": "Hội chứng hành vi kết hợp với rối loạn sinh lý và nhân tố cơ thể",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 48,
+  "fields": {
+    "chuong_benh": 5,
+    "ma_nhom_chinh": "F60-F69",
+    "ten_nhom_chinh": "Rối loạn nhân cách và hành vi ở người trưởng thành",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 49,
+  "fields": {
+    "chuong_benh": 5,
+    "ma_nhom_chinh": "F70-F79",
+    "ten_nhom_chinh": "Chậm phát triển tâm thần",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 50,
+  "fields": {
+    "chuong_benh": 5,
+    "ma_nhom_chinh": "F70-F80",
+    "ten_nhom_chinh": "Chậm phát triển tâm thần",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 51,
+  "fields": {
+    "chuong_benh": 5,
+    "ma_nhom_chinh": "F70-F81",
+    "ten_nhom_chinh": "Chậm phát triển tâm thần",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 52,
+  "fields": {
+    "chuong_benh": 5,
+    "ma_nhom_chinh": "F70-F82",
+    "ten_nhom_chinh": "Chậm phát triển tâm thần",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 53,
+  "fields": {
+    "chuong_benh": 5,
+    "ma_nhom_chinh": "F70-F83",
+    "ten_nhom_chinh": "Chậm phát triển tâm thần",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 54,
+  "fields": {
+    "chuong_benh": 5,
+    "ma_nhom_chinh": "F70-F84",
+    "ten_nhom_chinh": "Chậm phát triển tâm thần",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 55,
+  "fields": {
+    "chuong_benh": 5,
+    "ma_nhom_chinh": "F80-F89",
+    "ten_nhom_chinh": "Các rối loạn về phát triển tâm lý",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 56,
+  "fields": {
+    "chuong_benh": 5,
+    "ma_nhom_chinh": "F90-F98",
+    "ten_nhom_chinh": "Các rối loạn hành vi và cảm xúc thường khởi phát ở tuổi trẻ em và thanh thiếu niên",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 57,
+  "fields": {
+    "chuong_benh": 5,
+    "ma_nhom_chinh": "F99-F99",
+    "ten_nhom_chinh": "Rối loạn tâm thần không biệt định",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 58,
+  "fields": {
+    "chuong_benh": 6,
+    "ma_nhom_chinh": "G00-G09",
+    "ten_nhom_chinh": "Bệnh viêm hệ thần kinh trung ương",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 59,
+  "fields": {
+    "chuong_benh": 6,
+    "ma_nhom_chinh": "G10-G13",
+    "ten_nhom_chinh": "Bệnh teo hệ thống ảnh hưởng chủ yếu tới hệ thần kinh trung ương",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 60,
+  "fields": {
+    "chuong_benh": 6,
+    "ma_nhom_chinh": "G10-G14",
+    "ten_nhom_chinh": "Bệnh teo hệ thống ảnh hưởng chủ yếu tới hệ thần kinh trung ương",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 61,
+  "fields": {
+    "chuong_benh": 6,
+    "ma_nhom_chinh": "G20-G26",
+    "ten_nhom_chinh": "Hội chứng ngoại tháp và rối loạn vận động",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 62,
+  "fields": {
+    "chuong_benh": 6,
+    "ma_nhom_chinh": "G30-G32",
+    "ten_nhom_chinh": "Bệnh thoái hóa khác của hệ thần kinh",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 63,
+  "fields": {
+    "chuong_benh": 6,
+    "ma_nhom_chinh": "G35-G37",
+    "ten_nhom_chinh": "Bệnh mất myelin của hệ thần kinh trung ướng",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 64,
+  "fields": {
+    "chuong_benh": 6,
+    "ma_nhom_chinh": "G40-G47",
+    "ten_nhom_chinh": "Bệnh chu kỳ và kịch phát",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 65,
+  "fields": {
+    "chuong_benh": 6,
+    "ma_nhom_chinh": "G50-G59",
+    "ten_nhom_chinh": "Bệnh dây, rễ và đám rối thần kinh",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 66,
+  "fields": {
+    "chuong_benh": 6,
+    "ma_nhom_chinh": "G60-G64",
+    "ten_nhom_chinh": "Viêm nhiều dây thần kinh và bệnh hệ thần kinh ngoại biên khác",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 67,
+  "fields": {
+    "chuong_benh": 6,
+    "ma_nhom_chinh": "G70-G73",
+    "ten_nhom_chinh": "Bệnh của khớp thần kinh - cơ và cơ",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 68,
+  "fields": {
+    "chuong_benh": 6,
+    "ma_nhom_chinh": "G80-G83",
+    "ten_nhom_chinh": "Bại não và những hội chứng liệt khác",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 69,
+  "fields": {
+    "chuong_benh": 6,
+    "ma_nhom_chinh": "G90-G99",
+    "ten_nhom_chinh": "Các bệnh khác của hệ thần kinh",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 70,
+  "fields": {
+    "chuong_benh": 7,
+    "ma_nhom_chinh": "H00-H06",
+    "ten_nhom_chinh": "Bệnh của mí mắt, lệ bộ và hốc mắt",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 71,
+  "fields": {
+    "chuong_benh": 7,
+    "ma_nhom_chinh": "H10-H13",
+    "ten_nhom_chinh": "Bệnh của kết mạc",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 72,
+  "fields": {
+    "chuong_benh": 7,
+    "ma_nhom_chinh": "H15-H22",
+    "ten_nhom_chinh": "Bệnh củng mạc, giác mạc, mống mắt và thể mi",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 73,
+  "fields": {
+    "chuong_benh": 7,
+    "ma_nhom_chinh": "H25-H28",
+    "ten_nhom_chinh": "Bệnh thủy tinh thể",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 74,
+  "fields": {
+    "chuong_benh": 7,
+    "ma_nhom_chinh": "H30-H36",
+    "ten_nhom_chinh": "Bệnh hắc mạc và võng mạc",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 75,
+  "fields": {
+    "chuong_benh": 7,
+    "ma_nhom_chinh": "H40-H42",
+    "ten_nhom_chinh": "Bệnh glôcôm",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 76,
+  "fields": {
+    "chuong_benh": 7,
+    "ma_nhom_chinh": "H43-H45",
+    "ten_nhom_chinh": "Bệnh dịch kính và nhãn cầu",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 77,
+  "fields": {
+    "chuong_benh": 7,
+    "ma_nhom_chinh": "H46-H48",
+    "ten_nhom_chinh": "Bệnh thần kinh thị và đường dẫn thị giác",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 78,
+  "fields": {
+    "chuong_benh": 7,
+    "ma_nhom_chinh": "H49-H52",
+    "ten_nhom_chinh": "Bệnh cơ vận nhãn, vận nhãn hai mắt điều tiết và khúc xạ",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 79,
+  "fields": {
+    "chuong_benh": 7,
+    "ma_nhom_chinh": "H53-H54",
+    "ten_nhom_chinh": "Rối loạn thị giác và mù lòa",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 80,
+  "fields": {
+    "chuong_benh": 7,
+    "ma_nhom_chinh": "H55-H59",
+    "ten_nhom_chinh": "Bệnh mắt và phần phụ",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 81,
+  "fields": {
+    "chuong_benh": 8,
+    "ma_nhom_chinh": "H60-H62",
+    "ten_nhom_chinh": "Bệnh của tai ngoài",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 82,
+  "fields": {
+    "chuong_benh": 8,
+    "ma_nhom_chinh": "H65-H75",
+    "ten_nhom_chinh": "Bệnh của tai giữa và xương chũm",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 83,
+  "fields": {
+    "chuong_benh": 8,
+    "ma_nhom_chinh": "H80-H83",
+    "ten_nhom_chinh": "Bệnh của tai trong",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 84,
+  "fields": {
+    "chuong_benh": 8,
+    "ma_nhom_chinh": "H90-H95",
+    "ten_nhom_chinh": "Bệnh khác của tai",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 85,
+  "fields": {
+    "chuong_benh": 9,
+    "ma_nhom_chinh": "I00-I02",
+    "ten_nhom_chinh": "Thấp khớp cấp",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 86,
+  "fields": {
+    "chuong_benh": 9,
+    "ma_nhom_chinh": "I05-I09",
+    "ten_nhom_chinh": "Bệnh tim mãn tính do thấp",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 87,
+  "fields": {
+    "chuong_benh": 9,
+    "ma_nhom_chinh": "I10-I15",
+    "ten_nhom_chinh": "Bệnh lý tăng huyết áp",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 88,
+  "fields": {
+    "chuong_benh": 9,
+    "ma_nhom_chinh": "I20-I25",
+    "ten_nhom_chinh": "Bệnh tim thiếu máu cục bộ",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 89,
+  "fields": {
+    "chuong_benh": 9,
+    "ma_nhom_chinh": "I26-I28",
+    "ten_nhom_chinh": "Bệnh tim do phổi và bệnh tuần hoàn phổi",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 90,
+  "fields": {
+    "chuong_benh": 9,
+    "ma_nhom_chinh": "I30-I52",
+    "ten_nhom_chinh": "Thể bệnh tim khác",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 91,
+  "fields": {
+    "chuong_benh": 9,
+    "ma_nhom_chinh": "I60-I69",
+    "ten_nhom_chinh": "Bệnh mạch máu não",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 92,
+  "fields": {
+    "chuong_benh": 9,
+    "ma_nhom_chinh": "I70-I79",
+    "ten_nhom_chinh": "Bệnh động mạch, tiểu động mạch và mao mạch",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 93,
+  "fields": {
+    "chuong_benh": 9,
+    "ma_nhom_chinh": "I80-I89",
+    "ten_nhom_chinh": "Bệnh tĩnh mạch, mạch bạch huyết và hạch bạch huyết không phân loại nơi khác",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 94,
+  "fields": {
+    "chuong_benh": 9,
+    "ma_nhom_chinh": "I95-I99",
+    "ten_nhom_chinh": "Rối loạn khác và không xác định của hệ tuần hoàn",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 95,
+  "fields": {
+    "chuong_benh": 10,
+    "ma_nhom_chinh": "J00-J06",
+    "ten_nhom_chinh": "Nhiễm trùng hô hấp trên cấp",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 96,
+  "fields": {
+    "chuong_benh": 10,
+    "ma_nhom_chinh": "J09-J18",
+    "ten_nhom_chinh": "Cúm và viêm phổi",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 97,
+  "fields": {
+    "chuong_benh": 10,
+    "ma_nhom_chinh": "J20-J22",
+    "ten_nhom_chinh": "Nhiễm trùng đường hô hấp dưới cấp khác",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 98,
+  "fields": {
+    "chuong_benh": 10,
+    "ma_nhom_chinh": "J30-J39",
+    "ten_nhom_chinh": "Các bệnh khác của đường hô hấp trên",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 99,
+  "fields": {
+    "chuong_benh": 10,
+    "ma_nhom_chinh": "J40-J47",
+    "ten_nhom_chinh": "Bệnh hô hấp dưới mãn tính",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 100,
+  "fields": {
+    "chuong_benh": 10,
+    "ma_nhom_chinh": "J60-J70",
+    "ten_nhom_chinh": "Các bệnh phổi do tác nhân bên ngoài",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 101,
+  "fields": {
+    "chuong_benh": 10,
+    "ma_nhom_chinh": "J80-J84",
+    "ten_nhom_chinh": "Các bệnh hô hấp khác ảnh hưởng chủ yếu đến mô kẽ",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 102,
+  "fields": {
+    "chuong_benh": 10,
+    "ma_nhom_chinh": "J85-J86",
+    "ten_nhom_chinh": "Tình trạng nung mủ và hoại tử của đường hô hấp dưới",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 103,
+  "fields": {
+    "chuong_benh": 10,
+    "ma_nhom_chinh": "J90-J94",
+    "ten_nhom_chinh": "Bệnh khác của màng phổi",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 104,
+  "fields": {
+    "chuong_benh": 10,
+    "ma_nhom_chinh": "J95-J99",
+    "ten_nhom_chinh": "Các bệnh lý khác của hệ hô hấp",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 105,
+  "fields": {
+    "chuong_benh": 11,
+    "ma_nhom_chinh": "K00-K14",
+    "ten_nhom_chinh": "Bệnh của khoang miệng, tuyến nước bọt và xương hàm",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 106,
+  "fields": {
+    "chuong_benh": 11,
+    "ma_nhom_chinh": "K20-K31",
+    "ten_nhom_chinh": "Bệnh của thực quản, dạ dày và tá tràng",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 107,
+  "fields": {
+    "chuong_benh": 11,
+    "ma_nhom_chinh": "K35-K38",
+    "ten_nhom_chinh": "Bệnh ruột thừa",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 108,
+  "fields": {
+    "chuong_benh": 11,
+    "ma_nhom_chinh": "K40-K46",
+    "ten_nhom_chinh": "Thóat vị",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 109,
+  "fields": {
+    "chuong_benh": 11,
+    "ma_nhom_chinh": "K50-K52",
+    "ten_nhom_chinh": "Viêm ruột non và đại tràng không do nhiễm trùng",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 110,
+  "fields": {
+    "chuong_benh": 11,
+    "ma_nhom_chinh": "K55-K64",
+    "ten_nhom_chinh": "Bệnh đường ruột khác",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 111,
+  "fields": {
+    "chuong_benh": 11,
+    "ma_nhom_chinh": "K65-K67",
+    "ten_nhom_chinh": "Bệnh của phúc mạc",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 112,
+  "fields": {
+    "chuong_benh": 11,
+    "ma_nhom_chinh": "K70-K77",
+    "ten_nhom_chinh": "Bệnh của gan",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 113,
+  "fields": {
+    "chuong_benh": 11,
+    "ma_nhom_chinh": "K80-K87",
+    "ten_nhom_chinh": "Bệnh túi mật, ống mật và tụy",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 114,
+  "fields": {
+    "chuong_benh": 11,
+    "ma_nhom_chinh": "K90-K93",
+    "ten_nhom_chinh": "Bệnh khác của hệ tiêu hóa",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 115,
+  "fields": {
+    "chuong_benh": 12,
+    "ma_nhom_chinh": "L00-L08",
+    "ten_nhom_chinh": "Nhiễm khuẩn da và mô dưới da",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 116,
+  "fields": {
+    "chuong_benh": 12,
+    "ma_nhom_chinh": "L10-L14",
+    "ten_nhom_chinh": "Bệnh da bọng nước",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 117,
+  "fields": {
+    "chuong_benh": 12,
+    "ma_nhom_chinh": "L20-L30",
+    "ten_nhom_chinh": "Viêm da và chàm",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 118,
+  "fields": {
+    "chuong_benh": 12,
+    "ma_nhom_chinh": "L40-L45",
+    "ten_nhom_chinh": "Bệnh sẩn có vảy",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 119,
+  "fields": {
+    "chuong_benh": 12,
+    "ma_nhom_chinh": "L50-L54",
+    "ten_nhom_chinh": "Mày đay và hồng ban",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 120,
+  "fields": {
+    "chuong_benh": 12,
+    "ma_nhom_chinh": "L55-L59",
+    "ten_nhom_chinh": "Các bệnh da và tổ chức dưới da liên quan đến bức xạ",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 121,
+  "fields": {
+    "chuong_benh": 12,
+    "ma_nhom_chinh": "L60-L75",
+    "ten_nhom_chinh": "Các bệnh phần phụ của da",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 122,
+  "fields": {
+    "chuong_benh": 12,
+    "ma_nhom_chinh": "L80-L99",
+    "ten_nhom_chinh": "Các bệnh khác của da và tổ chức dưới da",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 123,
+  "fields": {
+    "chuong_benh": 13,
+    "ma_nhom_chinh": "M00-M25",
+    "ten_nhom_chinh": "Bệnh khớp",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 124,
+  "fields": {
+    "chuong_benh": 13,
+    "ma_nhom_chinh": "M30-M36",
+    "ten_nhom_chinh": "Bệnh mô liên kết hệ thống",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 125,
+  "fields": {
+    "chuong_benh": 13,
+    "ma_nhom_chinh": "M40-M54",
+    "ten_nhom_chinh": "Bệnh cột sống",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 126,
+  "fields": {
+    "chuong_benh": 13,
+    "ma_nhom_chinh": "M60-M79",
+    "ten_nhom_chinh": "Các bệnh lý mô mềm",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 127,
+  "fields": {
+    "chuong_benh": 13,
+    "ma_nhom_chinh": "M80-M94",
+    "ten_nhom_chinh": "Bệnh của xương và sụn",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 128,
+  "fields": {
+    "chuong_benh": 13,
+    "ma_nhom_chinh": "M95-M99",
+    "ten_nhom_chinh": "Các bệnh khác của hệ cơ - xương - khớp và mô liên kết",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 129,
+  "fields": {
+    "chuong_benh": 14,
+    "ma_nhom_chinh": "N00-N08",
+    "ten_nhom_chinh": "Bệnh cầu thận",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 130,
+  "fields": {
+    "chuong_benh": 14,
+    "ma_nhom_chinh": "N10-N16",
+    "ten_nhom_chinh": "Bệnh kẽ ống thận",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 131,
+  "fields": {
+    "chuong_benh": 14,
+    "ma_nhom_chinh": "N17-N19",
+    "ten_nhom_chinh": "Suy thận",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 132,
+  "fields": {
+    "chuong_benh": 14,
+    "ma_nhom_chinh": "N20-N23",
+    "ten_nhom_chinh": "Sỏi tiết niệu",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 133,
+  "fields": {
+    "chuong_benh": 14,
+    "ma_nhom_chinh": "N25-N29",
+    "ten_nhom_chinh": "Các rối loạn khác của thận và niệu quản",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 134,
+  "fields": {
+    "chuong_benh": 14,
+    "ma_nhom_chinh": "N30-N39",
+    "ten_nhom_chinh": "Các bệnh khác của hệ tiết niệu",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 135,
+  "fields": {
+    "chuong_benh": 14,
+    "ma_nhom_chinh": "N40-N51",
+    "ten_nhom_chinh": "Bệnh cơ quan sinh dục nam",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 136,
+  "fields": {
+    "chuong_benh": 14,
+    "ma_nhom_chinh": "N60-N64",
+    "ten_nhom_chinh": "Các biến đổi của vú",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 137,
+  "fields": {
+    "chuong_benh": 14,
+    "ma_nhom_chinh": "N70-N77",
+    "ten_nhom_chinh": "Viêm cơ quan sinh dục vùng chậu nữ",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 138,
+  "fields": {
+    "chuong_benh": 14,
+    "ma_nhom_chinh": "N80-N98",
+    "ten_nhom_chinh": "Biến đổi không do viêm của đường sinh dục nữ",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 139,
+  "fields": {
+    "chuong_benh": 14,
+    "ma_nhom_chinh": "N99-N99",
+    "ten_nhom_chinh": "Các rối loạn khác của hệ sinh dục tiết niệu",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 140,
+  "fields": {
+    "chuong_benh": 15,
+    "ma_nhom_chinh": "O00-O08",
+    "ten_nhom_chinh": "Thai nghén và sẩy thai",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 141,
+  "fields": {
+    "chuong_benh": 15,
+    "ma_nhom_chinh": "O10-O16",
+    "ten_nhom_chinh": "Phù, protein niệu và tăng huyết áp trong khi có thai, khi đẻ và sau đẻ",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 142,
+  "fields": {
+    "chuong_benh": 15,
+    "ma_nhom_chinh": "O20-O29",
+    "ten_nhom_chinh": "Các bệnh lý khác của bà mẹ chủ yếu liên quan đến thai nghén",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 143,
+  "fields": {
+    "chuong_benh": 15,
+    "ma_nhom_chinh": "O30-O48",
+    "ten_nhom_chinh": "Chăm sóc bà mẹ liên quan đến thai, buồng ối và có thể là các vấn đề khi đẻ",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 144,
+  "fields": {
+    "chuong_benh": 15,
+    "ma_nhom_chinh": "O60-O75",
+    "ten_nhom_chinh": "Biến chứng của chuyển dạ và đẻ",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 145,
+  "fields": {
+    "chuong_benh": 15,
+    "ma_nhom_chinh": "O80-O84",
+    "ten_nhom_chinh": "Cuộc đẻ",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 146,
+  "fields": {
+    "chuong_benh": 15,
+    "ma_nhom_chinh": "O85-O92",
+    "ten_nhom_chinh": "Biến chứng chủ yếu liên quan đến sau đẻ",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 147,
+  "fields": {
+    "chuong_benh": 15,
+    "ma_nhom_chinh": "O94-O99",
+    "ten_nhom_chinh": "Các tình trạng sản khoa khác, chưa được phân loại ở phần khác (O94-O99)",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 148,
+  "fields": {
+    "chuong_benh": 16,
+    "ma_nhom_chinh": "P00-P04",
+    "ten_nhom_chinh": "Thai nhi và trẻ sơ sinh bị ảnh hưởng do các yếu tố về phía mẹ và bởi các biến chứng của thời kỳ thai nghén, chuyển dạ và cuộc đẻ",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 149,
+  "fields": {
+    "chuong_benh": 16,
+    "ma_nhom_chinh": "P05-P08",
+    "ten_nhom_chinh": "Các rối loạn liên quan đến tuổi thai và sự phát triển của thai",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 150,
+  "fields": {
+    "chuong_benh": 16,
+    "ma_nhom_chinh": "P10-P15",
+    "ten_nhom_chinh": "Chấn thương khi sinh",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 151,
+  "fields": {
+    "chuong_benh": 16,
+    "ma_nhom_chinh": "P20-P29",
+    "ten_nhom_chinh": "Rối loạn hô hấp và tim mạch đặc hiệu cho giai đoạn chu sinh",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 152,
+  "fields": {
+    "chuong_benh": 16,
+    "ma_nhom_chinh": "P35-P39",
+    "ten_nhom_chinh": "Nhiễm khuẩn đặc hiệu trong thời kỳ chu sinh",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 153,
+  "fields": {
+    "chuong_benh": 16,
+    "ma_nhom_chinh": "P50-P61",
+    "ten_nhom_chinh": "Rối loạn chảy máu và huyết học của thai và trẻ sơ sinh",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 154,
+  "fields": {
+    "chuong_benh": 16,
+    "ma_nhom_chinh": "P70-P74",
+    "ten_nhom_chinh": "Các rối loạn nội tiết, chuyển hóa tạm thời đặc hiệu cho thai và trẻ sơ sinh",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 155,
+  "fields": {
+    "chuong_benh": 16,
+    "ma_nhom_chinh": "P75-P78",
+    "ten_nhom_chinh": "Các rối loạn của hệ thống tiêu hóa ở thai và trẻ sơ sinh",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 156,
+  "fields": {
+    "chuong_benh": 16,
+    "ma_nhom_chinh": "P80-P83",
+    "ten_nhom_chinh": "Các bệnh lý của da và điều hòa thân nhiệt của thai và trẻ sơ sinh",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 157,
+  "fields": {
+    "chuong_benh": 16,
+    "ma_nhom_chinh": "P90-P96",
+    "ten_nhom_chinh": "Các bệnh lý khác xuất phát từ giai đoạn chu sinh",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 158,
+  "fields": {
+    "chuong_benh": 17,
+    "ma_nhom_chinh": "Q00-Q07",
+    "ten_nhom_chinh": "Dị tật bẩm sinh hệ thần kinh trung ương",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 159,
+  "fields": {
+    "chuong_benh": 17,
+    "ma_nhom_chinh": "Q10-Q18",
+    "ten_nhom_chinh": "Các dị tật bẩm sinh ở mắt, tai, mặt và cổ",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 160,
+  "fields": {
+    "chuong_benh": 17,
+    "ma_nhom_chinh": "Q20-Q28",
+    "ten_nhom_chinh": "Các dị tật bẩm sinh của hệ thống tuần hoàn",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 161,
+  "fields": {
+    "chuong_benh": 17,
+    "ma_nhom_chinh": "Q30-Q34",
+    "ten_nhom_chinh": "Các bất thường bẩm sinh của bộ máy hô hấp",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 162,
+  "fields": {
+    "chuong_benh": 17,
+    "ma_nhom_chinh": "Q35-Q37",
+    "ten_nhom_chinh": "Khe hở môi và khe hở vòm miệng",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 163,
+  "fields": {
+    "chuong_benh": 17,
+    "ma_nhom_chinh": "Q38-Q45",
+    "ten_nhom_chinh": "Các dị tật bẩm sinh khác của hệ tiêu hóa",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 164,
+  "fields": {
+    "chuong_benh": 17,
+    "ma_nhom_chinh": "Q50-Q56",
+    "ten_nhom_chinh": "Dị tật bẩm sinh của cơ quan sinh dục",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 165,
+  "fields": {
+    "chuong_benh": 17,
+    "ma_nhom_chinh": "Q60-Q64",
+    "ten_nhom_chinh": "Các dị tật bẩm sinh của hệ tiết niệu",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 166,
+  "fields": {
+    "chuong_benh": 17,
+    "ma_nhom_chinh": "Q65-Q79",
+    "ten_nhom_chinh": "Dị tật và biến dạng bẩm sinh của hệ cơ xương",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 167,
+  "fields": {
+    "chuong_benh": 17,
+    "ma_nhom_chinh": "Q80-Q89",
+    "ten_nhom_chinh": "Các dị tật bẩm sinh khác",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 168,
+  "fields": {
+    "chuong_benh": 17,
+    "ma_nhom_chinh": "Q90-Q99",
+    "ten_nhom_chinh": "Các bất thường nhiễm sắc thể, chưa được phân loại",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 169,
+  "fields": {
+    "chuong_benh": 18,
+    "ma_nhom_chinh": "R00-R09",
+    "ten_nhom_chinh": "Triệu chứng và dấu hiệu liên quan tới hệ tuần hoàn và hô hấp",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 170,
+  "fields": {
+    "chuong_benh": 18,
+    "ma_nhom_chinh": "R10-R19",
+    "ten_nhom_chinh": "Triệu chứng và dấu hiệu liên quan tới hệ tiêu hóa và bụng",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 171,
+  "fields": {
+    "chuong_benh": 18,
+    "ma_nhom_chinh": "R20-R23",
+    "ten_nhom_chinh": "Triệu chứng và dấu hiệu liên quan tới da và tổ chức dưới da",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 172,
+  "fields": {
+    "chuong_benh": 18,
+    "ma_nhom_chinh": "R25-R29",
+    "ten_nhom_chinh": "Triệu chứng và dấu hiệu liên quan tới hệ thần kinh và hệ cơ xương",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 173,
+  "fields": {
+    "chuong_benh": 18,
+    "ma_nhom_chinh": "R30-R39",
+    "ten_nhom_chinh": "Triệu chứng và dấu hiệu liên quan tới hệ tiết niệu",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 174,
+  "fields": {
+    "chuong_benh": 18,
+    "ma_nhom_chinh": "R40-R46",
+    "ten_nhom_chinh": "Triệu chứng và dấu hiệu liên quan tới nhận thức, tri giác và trạng thái cảm",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 175,
+  "fields": {
+    "chuong_benh": 18,
+    "ma_nhom_chinh": "R47-R49",
+    "ten_nhom_chinh": "Triệu chứng và dấu hiệu liên quan tới ngôn ngữ và giọng nói",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 176,
+  "fields": {
+    "chuong_benh": 18,
+    "ma_nhom_chinh": "R50-R69",
+    "ten_nhom_chinh": "Triệu chứng và dấu hiệu tổng quát",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 177,
+  "fields": {
+    "chuong_benh": 18,
+    "ma_nhom_chinh": "R70-R79",
+    "ten_nhom_chinh": "Phát hiện bất thường về xét nghiệm máu, không có chẩn đoán",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 178,
+  "fields": {
+    "chuong_benh": 18,
+    "ma_nhom_chinh": "R80-R82",
+    "ten_nhom_chinh": "Các phát hiện bất thường về xét nghiệm nước tiểu, không có chẩn đoán",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 179,
+  "fields": {
+    "chuong_benh": 18,
+    "ma_nhom_chinh": "R83-R89",
+    "ten_nhom_chinh": "Các phát hiện bất thường về xét nghiệm các dịch cơ thể các chất và mô, không có chẩn đoán",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 180,
+  "fields": {
+    "chuong_benh": 18,
+    "ma_nhom_chinh": "R90-R94",
+    "ten_nhom_chinh": "Các phát hiện bất thường về chẩn đoán hình ảnh và thăm dò chức năng, không có chẩn đoán",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 181,
+  "fields": {
+    "chuong_benh": 18,
+    "ma_nhom_chinh": "R95-R99",
+    "ten_nhom_chinh": "Nguyên nhân tử vong không xác định",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 182,
+  "fields": {
+    "chuong_benh": 19,
+    "ma_nhom_chinh": "S00-S09",
+    "ten_nhom_chinh": "Tổn thương ở đầu",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 183,
+  "fields": {
+    "chuong_benh": 19,
+    "ma_nhom_chinh": "S10-S19",
+    "ten_nhom_chinh": "Tổn thương của cổ",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 184,
+  "fields": {
+    "chuong_benh": 19,
+    "ma_nhom_chinh": "S20-S29",
+    "ten_nhom_chinh": "Tổn thương lồng ngực",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 185,
+  "fields": {
+    "chuong_benh": 19,
+    "ma_nhom_chinh": "S30-S39",
+    "ten_nhom_chinh": "Tổn thương bụng, lưng dưới, cột sống thắt lưng và chân hông",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 186,
+  "fields": {
+    "chuong_benh": 19,
+    "ma_nhom_chinh": "S40-S49",
+    "ten_nhom_chinh": "Vết thương vai và cánh tay",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 187,
+  "fields": {
+    "chuong_benh": 19,
+    "ma_nhom_chinh": "S50-S59",
+    "ten_nhom_chinh": "Tổn thương tại khuỷu tay và cẳng tay",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 188,
+  "fields": {
+    "chuong_benh": 19,
+    "ma_nhom_chinh": "S60-S69",
+    "ten_nhom_chinh": "Tổn thương ở cổ tay và bàn tay",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 189,
+  "fields": {
+    "chuong_benh": 19,
+    "ma_nhom_chinh": "S70-S79",
+    "ten_nhom_chinh": "Tổn thương tại háng và đùi",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 190,
+  "fields": {
+    "chuong_benh": 19,
+    "ma_nhom_chinh": "S80-S89",
+    "ten_nhom_chinh": "Tổn thương tại đầu gối và cẳng chân",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 191,
+  "fields": {
+    "chuong_benh": 19,
+    "ma_nhom_chinh": "S90-S99",
+    "ten_nhom_chinh": "Tổn thương tại cổ chân và bàn chân",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 192,
+  "fields": {
+    "chuong_benh": 19,
+    "ma_nhom_chinh": "T00-T07",
+    "ten_nhom_chinh": "Tổn thương tác động nhiều vùng cơ thể",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 193,
+  "fields": {
+    "chuong_benh": 19,
+    "ma_nhom_chinh": "T08-T14",
+    "ten_nhom_chinh": "Tổn thương phần chưa xác định của thân, các chi hoặc vùng cơ thể",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 194,
+  "fields": {
+    "chuong_benh": 19,
+    "ma_nhom_chinh": "T15-T19",
+    "ten_nhom_chinh": "Tác động của vật lạ vào qua lỗ tự nhiên",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 195,
+  "fields": {
+    "chuong_benh": 19,
+    "ma_nhom_chinh": "T20-T32",
+    "ten_nhom_chinh": "Bỏng và ăn mòn",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 196,
+  "fields": {
+    "chuong_benh": 19,
+    "ma_nhom_chinh": "T33-T35",
+    "ten_nhom_chinh": "Tổn thương do cóng lạnh",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 197,
+  "fields": {
+    "chuong_benh": 19,
+    "ma_nhom_chinh": "T36-T50",
+    "ten_nhom_chinh": "Ngộ độc do thuốc, dược phẩm và chất sinh học",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 198,
+  "fields": {
+    "chuong_benh": 19,
+    "ma_nhom_chinh": "T51-T65",
+    "ten_nhom_chinh": "Ngộ độc chất chủ yếu không có nguồn gốc y học",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 199,
+  "fields": {
+    "chuong_benh": 19,
+    "ma_nhom_chinh": "T66-T78",
+    "ten_nhom_chinh": "Tác dụng khác và chưa xác định của căn nguyên bên ngoài",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 200,
+  "fields": {
+    "chuong_benh": 19,
+    "ma_nhom_chinh": "T79-T79",
+    "ten_nhom_chinh": "Một vài biến chứng sớm của chấn thương",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 201,
+  "fields": {
+    "chuong_benh": 19,
+    "ma_nhom_chinh": "T80-T88",
+    "ten_nhom_chinh": "Biến chứng phẫu thuật và chăm sóc y tế không xếp loại ở nơi khác",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 202,
+  "fields": {
+    "chuong_benh": 19,
+    "ma_nhom_chinh": "T90-T98",
+    "ten_nhom_chinh": "Di chứng của tổn thương, của nhiễm độc và của hậu quả khác của căn nguyên từ bên ngoài",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 203,
+  "fields": {
+    "chuong_benh": 20,
+    "ma_nhom_chinh": "U00-U49",
+    "ten_nhom_chinh": "Mã tạm thời cho một số bệnh mới hoặc chưa rõ bệnh nguyên hoặc sử dụng trong cấp cứu",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 204,
+  "fields": {
+    "chuong_benh": 20,
+    "ma_nhom_chinh": "U82-U85",
+    "ten_nhom_chinh": "Kháng các thuốc kháng sinh và chống ung thư",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 205,
+  "fields": {
+    "chuong_benh": 21,
+    "ma_nhom_chinh": "V01-X59",
+    "ten_nhom_chinh": "Tai nạn",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 206,
+  "fields": {
+    "chuong_benh": 21,
+    "ma_nhom_chinh": "X60-X84",
+    "ten_nhom_chinh": "Cố tình tự hại",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 207,
+  "fields": {
+    "chuong_benh": 21,
+    "ma_nhom_chinh": "X85-Y09",
+    "ten_nhom_chinh": "Tấn công",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 208,
+  "fields": {
+    "chuong_benh": 21,
+    "ma_nhom_chinh": "Y10-Y34",
+    "ten_nhom_chinh": "Biến cố do ý đồ không xác định được.",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 209,
+  "fields": {
+    "chuong_benh": 21,
+    "ma_nhom_chinh": "Y35-Y36",
+    "ten_nhom_chinh": "Can thiệp pháp lý và hành động chiến tranh",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 210,
+  "fields": {
+    "chuong_benh": 21,
+    "ma_nhom_chinh": "Y40-Y84",
+    "ten_nhom_chinh": "Biến chứng do chăm sóc y tế và phẫu thuật",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 211,
+  "fields": {
+    "chuong_benh": 21,
+    "ma_nhom_chinh": "Y85-Y89",
+    "ten_nhom_chinh": "Di chứng của các nguyên nhân bên ngoài gây biến chứng và tử vong",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 212,
+  "fields": {
+    "chuong_benh": 21,
+    "ma_nhom_chinh": "Y90-Y98",
+    "ten_nhom_chinh": "Các yếu tố bổ sung liên quan đến các nguyên nhân gây ra biến chứng và tử vong được sắp xếp ở nơi khác",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 213,
+  "fields": {
+    "chuong_benh": 22,
+    "ma_nhom_chinh": "Z00-Z13",
+    "ten_nhom_chinh": "Những người đến cơ sở y tế để khám và kiểm tra sức khỏe",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 214,
+  "fields": {
+    "chuong_benh": 22,
+    "ma_nhom_chinh": "Z20-Z29",
+    "ten_nhom_chinh": "Những người có nguy cơ tiềm tàng về sức khỏe liên quan đến các bệnh lây truyền",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 215,
+  "fields": {
+    "chuong_benh": 22,
+    "ma_nhom_chinh": "Z30-Z39",
+    "ten_nhom_chinh": "Những người đến cơ quan y tế về các vấn đề liên quan đến sinh sản",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 216,
+  "fields": {
+    "chuong_benh": 22,
+    "ma_nhom_chinh": "Z40-Z54",
+    "ten_nhom_chinh": "Những người đến cơ sở y tế để được chăm sóc và tiến hành các thủ thuật đặc biệt",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 217,
+  "fields": {
+    "chuong_benh": 22,
+    "ma_nhom_chinh": "Z55-Z65",
+    "ten_nhom_chinh": "Những người có nguy cơ sức khỏe tiềm tàng liên quan đến những hoàn cảnh kinh tế xã hội và tâm lý xã hội",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 218,
+  "fields": {
+    "chuong_benh": 22,
+    "ma_nhom_chinh": "Z70-Z76",
+    "ten_nhom_chinh": "Người bệnh đến cơ sở y tế trong các hoàn cảnh khác",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+},
+{
+  "model": "clinic.danhmucnhombenh",
+  "pk": 219,
+  "fields": {
+    "chuong_benh": 22,
+    "ma_nhom_chinh": "Z80-Z99",
+    "ten_nhom_chinh": "Những người có nguy cơ sức khỏe tiềm ẩn liên quan đến bệnh sử gia đình và cá nhân và một số tình trạng ảnh hưởng đến sức khỏe",
+    "ma_nhom_phu_1": null,
+    "ten_nhom_phu_1": null,
+    "ma_nhom_phu_2": null,
+    "ten_nhom_phu_2": null
+  }
+}
+]

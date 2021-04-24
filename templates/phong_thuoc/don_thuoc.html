@@ -1,0 +1,277 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<!-- begin::Content -->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">Phòng Thuốc</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="#" class="text-muted">Đơn Thuốc</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!--begin::Card-->
+            <div class="card card-custom">
+                <div class="card-header flex-wrap border-0 pt-6 pb-0">
+                    <div class="card-title">
+                        <h3 class="card-label"> Đơn thuốc {{ don_thuoc.ma_don_thuoc }}
+                        <span class="d-block text-muted pt-2 font-size-sm"></span></h3>
+                    </div>
+                    <div class="card-toolbar">
+                        <!--begin::Button-->
+                        <a href="#" id='btn_print' class="btn btn-primary font-weight-bolder btn-print mr-2">
+                        <i class="la la-print"></i>In Đơn Thuốc</a>
+
+                        {% if don_thuoc.check_tphtdt %}
+                            <a href="#" id='btn_print_htdt' class="btn btn-primary font-weight-bolder btn-print mr-2">
+                            <i class="la la-print"></i>In Đơn Thuốc Hỗ Trợ ĐT</a>
+                        {% endif %}
+                        <!--end::Button-->
+
+                        {% if don_thuoc.check_hoan_thanh %}
+
+                        {% elif don_thuoc.check_cho_thanh_toan %}
+
+                        {% else %}
+                        <!--begin::Button-->
+                        <a href="#" class="btn btn-primary font-weight-bolder btn-submit" data-id={{id_don_thuoc}}>
+                        <i class="la la-plus"></i>Xác Nhận Đơn Thuốc</a>
+                        <!--end::Button-->
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!--begin: Datatable-->
+                    <table class="table table-separate table-head-custom table-checkable" id="kt_datatable_2">
+                        <thead>
+                            <tr>
+                                <th>Tên thuốc</th>
+                                <th>Số lượng</th>
+                                <th>Cách dùng</th>
+                                <th>Ghi chú</th>
+                            </tr>
+                        </thead>
+                            {% for thuoc in danh_sach_thuoc %}
+                                <tr>
+                                    <td>
+                                        {{ thuoc.thuoc.ten_thuoc }}
+                                    </td>
+                                    <td>
+                                        {{ thuoc.so_luong }}
+                                    </td>
+                                    <td>
+                                        {{ thuoc.cach_dung }}
+                                    </td>
+                                    <td>
+                                        {{ thuoc.ghi_chu }}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <!--end: Datatable-->
+                </div>
+                <div class="card-footer">
+                    <button type="button" class="btn btn-light-info btn-return float-right font-weight-bold"><i class="la la-arrow-left"></i>Quay lại</button>
+                </div>
+            </div>
+            <!--end::Card-->
+        </div>
+        <!-- end::Container -->
+    </div>
+    <!-- end::Entry -->
+</div>
+<!-- end::Content -->
+
+<div id='printDonThuoc' style="display: none;">
+    {{ mau_hoa_don.noi_dung|safe }}
+</div>
+
+<div id='printDonThuocHoTroDieuTri' style="display: none;">
+    {{ mau_hoa_don_thuc_pham_cn.noi_dung|safe }}
+</div>
+
+{% endblock content %}
+
+{% block scripts %}
+
+
+<script>
+
+    function printDiv(donThuoc){
+
+        var divToPrint=document.getElementById(donThuoc);
+
+        var newWin=window.open('','Print-Window');
+
+        newWin.document.open();
+
+        newWin.document.write('<html><body onload="window.print()">'+divToPrint.innerHTML+'</body></html>');
+
+        newWin.document.close();
+
+        setTimeout(function(){newWin.close();},10);
+
+    };
+
+    $(document).on('click', '.btn-submit', function(){
+        var id = $('.btn-submit').data('id');
+        var formData = new FormData();
+
+        formData.append('id',id);
+        formData.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+
+        $.ajax({
+            url: '{% url 'nhan_don_thuoc' %}',
+            type: 'POST',
+            data: formData,
+            dataType: 'json',
+            processData: false,
+            contentType: false,
+            cache: false,
+            success: function(response){
+                toastr.success(response.message, 'Đã Lấy Thuốc')
+                setTimeout(function(){
+                    window.location.href = "/phong_thuoc/"
+                },2500)
+            },
+            error: function(){
+                console.log("Could not write to server file ") 
+            }
+        });
+    });
+
+
+    $(document).on('click', '#btn_print', function() {
+        var data_thuoc = '';
+        var data_thoi_gian = '';
+        var data_nguoi_thuc_hien = '';
+        var ten_thuoc = {{ ten_thuoc|safe }};
+        var so_luong = {{ so_luong|safe }};
+        var duong_dung = {{ duong_dung|safe }};
+        var ghi_chu = {{ ghi_chu|safe }};
+        var thoi_gian_thanh_toan = "{{ thoi_gian_thanh_toan|safe }}";
+        var nguoi_thanh_toan = "{{nguoi_thanh_toan|safe}}";
+
+        $('#printDonThuoc table tbody tr').each(function(){
+            if ($(this).find('td').eq(0).text() == '{thoi_gian_thanh_toan}'){
+                var innerHtml = $(this).html();
+                var start_tr = '<tr>';
+                var end_tr = '</tr>';
+                var c = start_tr + innerHtml + end_tr;
+    
+                data_thoi_gian += c.replace(/{thoi_gian_thanh_toan}/, thoi_gian_thanh_toan);
+
+                $(this).replaceWith(data_thoi_gian);
+            };
+
+            if ($(this).find('td').eq(1).text() == '{nguoi_thanh_toan}'){
+                var innerHtml = $(this).html();
+                var start_tr = '<tr>';
+                var end_tr = '</tr>';
+                var c = start_tr + innerHtml + end_tr;
+
+                data_nguoi_thuc_hien += c.replace(/{nguoi_thanh_toan}/, nguoi_thanh_toan);
+
+                $(this).replaceWith(data_nguoi_thuc_hien);
+            };
+
+            if ($(this).find('td').eq(0).text() == '{ten_thuoc}'){
+                var innerHtml = $(this).html();
+                var start_tr = '<tr>';
+                var end_tr = '</tr>';
+                var c = start_tr + innerHtml + end_tr;
+
+                for (var i=0; i < ten_thuoc.length; i++) {
+                    data_thuoc += c.replace(/{ten_thuoc}/, ten_thuoc[i]).replace(/{so_luong}/, so_luong[i]).replace(/{duong_dung}/, duong_dung[i]).replace(/{cach_su_dung}/, ghi_chu[i]);
+                };
+                $(this).replaceWith(data_thuoc);
+            }
+
+            printDiv('printDonThuoc');
+        });
+    });
+
+    $(document).on('click', '#btn_print_htdt', function() {
+        console.log('hlllll')
+        var data_thuoc = '';
+        var data_thoi_gian = '';
+        var data_nguoi_thuc_hien = '';
+        var ten_thuoc = {{ ten_thuoc_cn|safe }};
+        var so_luong = {{ so_luong_thuoc_cn|safe }};
+        var duong_dung = {{ duong_dung_thuoc_cn|safe }};
+        var ghi_chu = {{ ghi_chu_thuoc_cn|safe }};
+        var thoi_gian_thanh_toan = "{{ thoi_gian_thanh_toan|safe }}";
+        var nguoi_thanh_toan = "{{nguoi_thanh_toan|safe}}";
+
+        $('#printDonThuocHoTroDieuTri table tbody tr').each(function(){
+            if ($(this).find('td').eq(0).text() == '{thoi_gian_thanh_toan}'){
+                var innerHtml = $(this).html();
+                var start_tr = '<tr>';
+                var end_tr = '</tr>';
+                var c = start_tr + innerHtml + end_tr;
+    
+                data_thoi_gian += c.replace(/{thoi_gian_thanh_toan}/, thoi_gian_thanh_toan);
+
+                $(this).replaceWith(data_thoi_gian);
+            };
+
+            if ($(this).find('td').eq(1).text() == '{nguoi_thanh_toan}'){
+                var innerHtml = $(this).html();
+                var start_tr = '<tr>';
+                var end_tr = '</tr>';
+                var c = start_tr + innerHtml + end_tr;
+
+                data_nguoi_thuc_hien += c.replace(/{nguoi_thanh_toan}/, nguoi_thanh_toan);
+
+                $(this).replaceWith(data_nguoi_thuc_hien);
+            };
+
+            if ($(this).find('td').eq(0).text() == '{ten_thuoc}'){
+                var innerHtml = $(this).html();
+                var start_tr = '<tr>';
+                var end_tr = '</tr>';
+                var c = start_tr + innerHtml + end_tr;
+
+                for (var i=0; i < ten_thuoc.length; i++) {
+                    data_thuoc += c.replace(/{ten_thuoc}/, ten_thuoc[i]).replace(/{so_luong}/, so_luong[i]).replace(/{duong_dung}/, duong_dung[i]).replace(/{cach_su_dung}/, ghi_chu[i]);
+                };
+                $(this).replaceWith(data_thuoc);
+            }
+
+            printDiv('printDonThuocHoTroDieuTri');
+        }); 
+        
+    });
+
+    $('.btn-return').click(function(){
+        window.history.back();
+    });
+
+</script>
+
+{% endblock scripts %}

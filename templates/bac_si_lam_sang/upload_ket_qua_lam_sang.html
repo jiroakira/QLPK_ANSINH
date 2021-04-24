@@ -1,0 +1,433 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">Tải Lên Kết Quả Khám</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="#" class="text-muted">Bác sĩ lâm sàng</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="#" class="text-muted">Chuỗi Khám: {{id_chuoi_kham}}</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="#" class="text-muted">Tải lên kết quả khám</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--begin::Card-->
+                    <div class="card card-custom">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <h3 class="card-label">Tải lên các kết quả khám</h3>
+                            </div>
+                        </div>
+                        <!--begin::Form-->
+                        <form id="upload-form">
+                            <div class="card-body">
+                                <div class="form-group row">
+                                    <label class="col-lg-2 col-form-label text-lg-right">Mã kết quả:</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" id="ma_ket_qua" class="form-control" value="{{ ma_ket_qua }}" name="ma_ket_qua" disabled />      
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-2 col-form-label text-lg-right">Mô tả:</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" id="mo_ta" class="form-control" placeholder="Nhập mô tả bệnh" name="mo_ta" />       
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-2 col-form-label text-lg-right">Kết quả:</label>
+                                    <div class="col-lg-10">
+                                        {% comment %} <textarea class="form-control" id="ket_qua" rows="3" placeholder="Nhập kết quả của bệnh nhân" name='ket_qua'></textarea>  {% endcomment %}
+                                        {% comment %} <textarea class="form-control" id="noi_dung" name="memo" placeholder="Nhập nội dung" rows="7"></textarea> {% endcomment %}
+                                        {% comment %} <textarea name="kt-ckeditor-5" id="kt-ckeditor-5"></textarea> {% endcomment %}
+                                        <div class="summernote" id="kt_summernote_1"></div>
+                                    </div>
+                                </div>
+                                <div id="divMauPhieu" style="display: none;">
+
+                                    <table align="center" border="0" cellpadding="1" cellspacing="1" style="width:800px">
+                                        <tbody>
+                                            <tr>
+                                                <td>SỞ Y TẾ NAM ĐỊNH</td>
+                                                <td>PID:</td>
+                                            </tr>
+                                            <tr>
+                                                <td>PH&Ograve;NG KH&Aacute;M ĐA KHOA AN NHI&Ecirc;N&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
+                                                <td>Số bệnh phẩm:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Khoa kh&aacute;m bệnh</td>
+                                                <td>Đơn vị:</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <table align="center" border="0" cellpadding="1" cellspacing="1" style="width:800px">
+                                        <tbody>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align:center; width:800px"><strong>KẾT QUẢ LÂM SÀNG</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <table align="center" border="0" cellpadding="1" cellspacing="1" style="width:800px">
+                                        <tbody>
+                                            <tr>
+                                                <td>Họ t&ecirc;n:</td>
+                                                <td><strong>{benh_nhan}</strong></td>
+                                                <td>Tuổi:</td>
+                                                <td>{tuoi}</td>
+                                                <td>Giới t&iacute;nh:</td>
+                                                <td>{gioi_tinh}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Địa chỉ:</td>
+                                                <td>{dia_chi}</td>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Chẩn đo&aacute;n:</td>
+                                                <td>{ma_benh_chan_doan}</td>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <table align="center" border="0" cellpadding="1" cellspacing="0" style="border-collapse:collapse; border-style:solid; border-width:2px 2px 2px 2px; width:800px">
+                                        <tbody>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width:80px">Kết luận:</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <table align="center" border="0" cellpadding="1" cellspacing="1" style="width:800px">
+                                        <tbody>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td style="width:300px">&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td style="width:300px">{ngay_kham}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td><strong>{bac_si_lam_sang}</strong></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <p>&nbsp;</p>
+
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-lg-3"></div>
+                                    <div class="col-lg-9">
+                                        <button type="button" id="upload" data-id-chuoi-kham="{{id_chuoi_kham}}" class="dropzone-upload btn btn-primary mr-2">Tải lên</button>
+                                        {% comment %} <button id="upload" class="dropzone-upload btn btn-primary mr-2">Submit</button> {% endcomment %}
+                                        <button type="reset" class="btn btn-light-primary">Hủy</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!--end::Form-->
+                    </div>
+                    <!--end::Card-->
+                </div>
+            
+            </div>
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+<!-- end::Content -->
+
+{% endblock content %}
+
+{% block scripts %}
+
+<!--begin::Global Theme Bundle(used by all pages)-->
+
+
+<script src="{% static 'assets/js/summernote-image-attributes.js' %}"></script>
+<script src="{% static 'assets/js/lang_summernote/vi_VN.js' %}"></script>
+<script src="{% static 'assets/js/summernote-ext-print.js' %}"></script>
+<!--end::Global Theme Bundle-->
+
+
+<script>
+    $(document).ajaxStart(function() {
+        KTApp.blockPage({
+            overlayColor: '#000000',
+            state: 'primary',
+            message: 'Đang xử lý...'
+        });
+    })
+
+    $(document).ajaxStop(function() {
+        KTApp.unblockPage();
+    })
+
+</script>
+
+
+<script>
+
+var KTDropzoneDemo = function () {
+
+    var benh_nhan = {{ benh_nhan|safe }};
+    var dia_chi = {{ dia_chi|safe }};
+    var tuoi = {{ tuoi|safe }};
+    var gioi_tinh = {{ gioi_tinh|safe }};
+    
+    var bac_si_lam_sang = {{ bac_si_lam_sang|safe }}
+    var ngay_kham = {{ ngay_kham|safe }}
+    
+    var fillPatientInfo = function() {
+        var dataInfo = ""
+        var dataAddr = ""
+        var dataRes = ""
+        var dataDr = ""
+        var dataDateTime = ""
+        var dataDr2 = ""
+
+        $('table tr').each(function(){
+            if ($(this).find('td').eq(1).text() == '{benh_nhan}'){
+                var innerHtml = $(this).html()
+        
+                var start_tr = '<tr>'
+                var end_tr = '</tr>'
+                var c = start_tr + innerHtml + end_tr
+
+                dataInfo += c.replace(/{benh_nhan}/, benh_nhan[0]).replace(/{tuoi}/, tuoi[0]).replace(/{gioi_tinh}/, gioi_tinh[0])
+                $(this).replaceWith(dataInfo)
+            }
+            if ($(this).find('td').eq(1).text() == '{dia_chi}'){
+                var innerHtml = $(this).html()
+                var start_tr = '<tr>'
+                var end_tr = '</tr>'
+                var c = start_tr + innerHtml + end_tr
+
+                dataAddr += c.replace(/{dia_chi}/, dia_chi[0])
+                $(this).replaceWith(dataAddr)
+            }
+
+            if ($(this).find('td').eq(1).text() == '{bac_si_lam_sang}'){
+                var innerHtml = $(this).html()
+        
+                var start_tr = '<tr>'
+                var end_tr = '</tr>'
+                var c = start_tr + innerHtml + end_tr
+
+                dataDr2 += c.replace(/{bac_si_lam_sang}/, bac_si_lam_sang[0])
+                $(this).replaceWith(dataDr2)
+            }
+
+            if ($(this).find('td').eq(1).text() == '{ngay_kham}'){
+                var innerHtml = $(this).html()
+                console.log(innerHtml)                    
+                var start_tr = '<tr>'
+                var end_tr = '</tr>'
+                var c = start_tr + innerHtml + end_tr
+
+                dataDateTime += c.replace(/{ngay_kham}/, ngay_kham[0])
+                $(this).replaceWith(dataDateTime)
+            }
+            
+        })
+    }
+
+    var _initValidate = function () {
+        fillPatientInfo()
+        var html = $("#divMauPhieu").html()
+
+        $('.summernote').summernote({
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['fontname', ['fontname']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'codeview', 'help']],
+                ['misc', ['print']]
+            ],
+            print: {
+                'stylesheetUrl': 'url_of_stylesheet_for_printing'
+            },
+            imageAttributes: {
+                icon: '<i class="note-icon-pencil"/>',
+                figureClass: 'figureClass',
+                figcaptionClass: 'captionClass',
+                captionText: 'Caption Goes Here.',
+                manageAspectRatio: true // true = Lock the Image Width/Height, Default to true
+            },
+            lang: 'vi_VN',
+            popover: {
+                image: [
+                    ['image', ['resizeFull', 'resizeHalf', 'resizeQuarter', 'resizeNone']],
+                    ['float', ['floatLeft', 'floatRight', 'floatNone']],
+                    ['remove', ['removeMedia']],
+                    ['custom', ['imageAttributes']],
+                ],
+                link: [
+                    ['link', ['linkDialogShow', 'unlink']]
+                ],
+                table: [
+                    ['add', ['addRowDown', 'addRowUp', 'addColLeft', 'addColRight']],
+                    ['delete', ['deleteRow', 'deleteCol', 'deleteTable']],
+                ],
+                air: [
+                    ['color', ['color']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['para', ['ul', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture']]
+                ]
+            },
+        });
+
+        $('.summernote').summernote("code", html);
+
+    }
+
+    var demo2 = function () {
+        // Setup the buttons for all transfers
+        $(document).on('click', '#upload', function(){
+            if($('.dropzone-item:visible').length == 0){
+                var formData = new FormData
+                var id_chuoi_kham = $("#upload-form").find("#upload").data('id-chuoi-kham')
+                $("#upload-form").find("input, textarea").each(function(){
+                    console.log($(this).attr("name"))
+                    console.log($(this).val())
+
+                    formData.append($(this).attr("name"), $(this).val())
+                });
+
+                var content = $(".summernote").summernote("code")
+                formData.append('id_chuoi_kham', id_chuoi_kham)
+                formData.append('noi_dung', content)
+                formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
+
+                $.ajax({
+                    type: "POST",
+                    url: "{% url 'upload_ket_qua_lam_sang' %}",
+                    data: formData,
+                    cache: false,
+                    processData: false,
+                    contentType: false,
+                    success: function(response){
+                        if (response.status == 200){
+                            toastr.success(response.message, "Thành Công")
+                            
+                            setTimeout(function () {
+                                window.location.href = '/bac_si_lam_sang/ket_qua_kham/'; //redirect về danh sách chờ lâm sàng
+                            }, 2000);
+                        } else if (response.status == 404) {
+                            toastr.warning(response.message, "Lỗi")
+                        }
+                    },
+                    error: function(response){
+                        toastr.warning("Lỗi upload")
+                    }
+                })
+            }else{
+                myDropzone4.enqueueFiles(myDropzone4.getFilesWithStatus(Dropzone.ADDED));
+            }
+        })
+        
+    
+    }
+
+    
+
+    return {
+        // public functions
+        init: function() {
+            demo2();
+            _initValidate();
+        }
+    };
+}();
+
+KTUtil.ready(function() {
+    KTDropzoneDemo.init();
+});
+
+
+</script>
+
+{% endblock scripts %}
+

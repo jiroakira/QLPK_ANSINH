@@ -1,0 +1,421 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">Cập Nhật Thông Tin Nhân Viên</h5>
+                    <!--end::Page Title-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!--begin::Card-->
+            <div class="card card-custom">
+                <div class="card-header flex-wrap border-0 pb-0">
+                    <div class="card-title">
+                        <h1 class="card-label">
+                            Biểu mẫu chỉnh sửa
+                        </h1>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!--begin::Form-->
+                    <form id="benh_nhan_form">
+                        <div class="form-group row">
+                            <div class="col-lg-12">
+                                <label>Họ Tên </label>
+                                {{ form.ho_ten|attr:"class:form-control"|attr:"name:ho_ten"|attr:"placeholder:Nhập Họ Tên Của Nhân Viên" }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>Số Điện Thoại </label>
+                                {{ form.so_dien_thoai|attr:"class:form-control"|attr:"name:so_dien_thoai"|attr:"placeholder:Nhập Số Điện Thoại Của Nhân Viên"|attr:"id:inputPhone" }}
+                                <span class="text-success" id="success_phone"></span>
+                                <span class="text-warning" id="error_phone"></span>    
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Username </label>
+                                {{ form.username|attr:"class:form-control"|attr:"name:username"|attr:"placeholder:Nhập Username Của Nhân Viên"|attr:"id:inputUsername" }}
+                                <span class="text-success" id="success_username"></span>
+                                <span class="text-warning" id="error_username"></span> 
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>CMND/CCCD </label>
+                                {{ form.cmnd_cccd|attr:"class:form-control"|attr:"name:cmnd_cccd"|attr:"placeholder:Nhập CCMD/CCCD Của Nhân Viên" }}
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Ngày sinh</label>
+                                {{ form.ngay_sinh|attr:"class:form-control"|attr:"name:ngay_sinh"|attr:"id:kt_datepicker_3"|attr:"placeholder:Chọn ngày sinh"}}
+                            </div>
+
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-4">
+                                <label>Tỉnh/Thành Phố</label>
+                                {% comment %} <input type="text" class="form-control" id="inputCmtModal" placeholder="Nhập CMND/CCCD"/> {% endcomment %}
+                                <select class="form-control selectpicker" id="kt_select2_1" data-live-search="true" name="param">
+                                    <option value="" selected disabled>Chọn Tỉnh/Thành phố</option>
+                                    {% for p in province %}
+                                        <option value="{{p.id}}">{{p.name}}</option>
+                                    {% endfor %}      
+                                </select>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Quận/Huyện</label>
+                                {% comment %} <input class="form-control" id="inputNgaySinhModal" type="text" /> {% endcomment %}
+                                {% comment %} {{ form.huyen|attr:"class:form-control"|attr:"class:selectpicker"|attr:"id:kt_select2_2"|attr:"data-live-search:true"|attr:"name:param"}} {% endcomment %}
+                                <select class="form-control selectpicker" id="kt_select2_2" data-live-search="true" name="param">
+                                    
+                                </select>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Phường/Xã</label>
+                                {% comment %} <input class="form-control" id="inputNgaySinhModal" type="text" /> {% endcomment %}
+                                {% comment %} {{ form.xa|attr:"class:form-control"|attr:"class:selectpicker"|attr:"id:kt_select2_3"|attr:"data-live-search:true"|attr:"name:param"}} {% endcomment %}
+                                <select class="form-control selectpicker" id="kt_select2_3" data-live-search="true" name="param">
+                                    
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Địa chỉ cụ thể (Đường/Số nhà) </label>
+                            {{ form.dia_chi|attr:"class:form-control"|attr:"name:dia_chi"|attr:"rows:3"|attr:"placeholder:Nhập Mã Số Bảo Hiểm Y Tế Của Bệnh Nhân"}}
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-12 text-center">
+                                <button data-id="{{ id }}" type="button" class="btn btn-primary font-weight-bold mr-2" id="submitData" name="submitButton">Xác nhận</button>
+                                <a href="{% url 'danh_sach_benh_nhan' %}" class="btn btn-light-primary font-weight-bold">Hủy</a>
+                            </div>
+                        </div>
+                    </form>
+                    <!--end::Form-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end::Entry-->
+</div>
+<!--end::Content-->
+
+{% endblock content %}
+
+{% block scripts %}
+<!--begin::Global Theme Bundle(used by all pages)-->
+
+<!--end::Global Theme Bundle-->
+
+<script>
+
+    
+
+    {% comment %} var ngay_sinh = $("input[name=ngay_sinh]").val();
+    ngay_sinh = new Date(ngay_sinh)
+    ngay_sinh = ngay_sinh.toLocaleDateString('vi-VN')
+    console.log(ngay_sinh)
+    if($('#inputNgaySinhModal').length){
+        $("#inputNgaySinhModal").inputmask("99/99/9999", {
+            "placeholder": "ng/th/nam ",
+            autoUnmask: false
+        });
+    } else {
+        ngay_sinh
+    } {% endcomment %}
+    
+    var arrows;
+    if (KTUtil.isRTL()) {
+        arrows = {
+            leftArrow: '<i class="la la-angle-right"></i>',
+            rightArrow: '<i class="la la-angle-left"></i>'
+        }
+    } else {
+        arrows = {
+            leftArrow: '<i class="la la-angle-left"></i>',
+            rightArrow: '<i class="la la-angle-right"></i>'
+        }
+    }
+
+    $('#kt_datepicker_3').datepicker({
+        rtl: KTUtil.isRTL(),
+        todayBtn: "linked",
+        clearBtn: true,
+        orientation: "bottom left",
+        todayHighlight: true,
+        templates: arrows,
+        format: 'dd/mm/yyyy',
+        autoclose:true,
+    });
+
+    $('#kt_datepicker_4').datepicker({
+        rtl: KTUtil.isRTL(),
+        todayBtn: "linked",
+        clearBtn: true,
+        orientation: "bottom left",
+        todayHighlight: true,
+        templates: arrows,
+        format: 'dd/mm/yyyy',
+        autoclose:true,
+    });
+
+    $('#kt_datepicker_5').datepicker({
+        rtl: KTUtil.isRTL(),
+        todayBtn: "linked",
+        clearBtn: true,
+        orientation: "bottom left",
+        todayHighlight: true,
+        templates: arrows,
+        format: 'dd/mm/yyyy',
+        autoclose:true,
+    });
+    
+    var ngay_sinh
+    ngay_sinh = $('#kt_datepicker_3').val()
+    if (ngay_sinh != '') {
+        ngay_sinh = new Date(ngay_sinh)
+        ngay_sinh = ngay_sinh.toLocaleDateString('vi-VN')
+        $('#kt_datepicker_3').val(ngay_sinh)
+    }
+
+    // initialize data for user's address
+    $('#kt_select2_1').val(`{{ benh_nhan.tinh.id }}`)
+
+    $('#kt_select2_1').on('changed.bs.select', function(e, clickedIndex, newValue, oldValue) {
+        console.log(this.value, clickedIndex, newValue, oldValue)
+        var id_province = this.value
+        $.ajax({
+            url        : HOST_URL + '/api/province/',
+            data       : {'id': id_province},
+            success: function(response){
+                console.log(response.data)
+                $('#kt_select2_2').empty()
+                var selectHtml = "";
+                selectHtml += `<option value="" selected disabled>Chọn Quận/Huyện</option>`
+                $.each(response.data, function(index, item) {
+                    selectHtml += "<option value='" + item.id + "' " + ">" + item.name + "</option>";
+                });
+                $('#kt_select2_2').html(selectHtml)
+                $('#kt_select2_2').selectpicker('refresh')
+            },
+            error: function(response){
+                
+            }
+        })
+    })
+
+    $('#kt_select2_2').on('changed.bs.select', function(e, clickedIndex, newValue, oldValue) {
+        console.log(this.value, clickedIndex, newValue, oldValue)
+        var id_district = this.value
+        $.ajax({
+            url        : HOST_URL + '/api/district/',
+            data       : {'id': id_district},
+            success: function(response){
+                console.log(response.data)
+                $('#kt_select2_3').empty()
+                var selectHtml = "";
+                selectHtml += `<option value="" selected disabled>Chọn Phường/Xã</option>`
+                $.each(response.data, function(index, item) {
+                    selectHtml += "<option value='" + item.id + "' " + ">" + item.name + "</option>";
+                });
+                $('#kt_select2_3').html(selectHtml)
+                $('#kt_select2_3').selectpicker('refresh')
+            },
+            error: function(response){
+                
+            }
+        })
+    })
+
+    $.when($.ajax({
+        url        : HOST_URL + '/api/province/',
+        data       : {'id': `{{ benh_nhan.tinh.id }}`},
+        success: function(response){
+            $('#kt_select2_2').empty()
+            var selectHtml = "";
+            selectHtml += `<option value="" selected disabled>Chọn Quận/Huyện</option>`
+            $.each(response.data, function(index, item) {
+                selectHtml += "<option value='" + item.id + "' " + ">" + item.name + "</option>";
+            });
+            $('#kt_select2_2').html(selectHtml)
+            $('#kt_select2_2').val(`{{ benh_nhan.huyen.id }}`)
+            $('#kt_select2_2').selectpicker('refresh')
+        },
+        error: function(response){
+            
+        }
+    })).then(function() {
+        $.ajax({
+            url        : HOST_URL + '/api/district/',
+            data       : {'id': `{{ benh_nhan.huyen.id }}`},
+            success: function(response){
+                $('#kt_select2_3').empty()
+                var selectHtml = "";
+                selectHtml += `<option value="" selected disabled>Chọn Phường/Xã</option>`
+                $.each(response.data, function(index, item) {
+                    selectHtml += "<option value='" + item.id + "' " + ">" + item.name + "</option>";
+                });
+                $('#kt_select2_3').html(selectHtml)
+                $('#kt_select2_3').val(`{{ benh_nhan.xa.id }}`)
+                $('#kt_select2_3').selectpicker('refresh')
+            },
+            error: function(response){
+                
+            }
+        })
+    })
+
+    $(document).on('click', '#submitData', function(){
+        var gioi_tinh = $('[name=gioi_tinh]').val()
+        var id = $(this).data('id')
+        var formData = new FormData()
+
+        $("#benh_nhan_form").find("input").each(function(){
+            formData.append($(this).attr("name"), $(this).val())
+        });
+
+        $("#benh_nhan_form").find("textarea").each(function(){
+            formData.append($(this).attr("name"), $(this).val())
+        });
+
+        var tinh_id = $('#kt_select2_1').val()
+        var huyen_id = $('#kt_select2_2').val()
+        var xa_id = $('#kt_select2_3').val()
+        var ngay_sinh = $('#kt_datepicker_3').val()
+
+        formData.append('gioi_tinh', gioi_tinh)
+        formData.append('id', id)
+        formData.append('tinh', tinh_id)
+        formData.append('huyen', huyen_id)
+        formData.append('xa', xa_id)
+        formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
+
+        if (!ngay_sinh) {
+            toastr.warning('Vui lòng cập nhật ngày tháng năm sinh', 'Cảnh Báo')
+        } else if (!tinh_id || !huyen_id || !xa_id) {
+            toastr.warning('Vui lòng cập nhật đầy đủ địa chỉ', 'Cảnh Báo') 
+        } else {
+            $.ajax({
+                type: "POST",
+                url: "{% url 'cap_nhat_thong_tin_nhan_vien' %}",
+                data: formData,
+                cache: false,
+                processData: false,
+                contentType: false,
+                success: function(response){
+                    toastr.success(`Cập nhật thành công`, 'Thành Công!')
+                    setTimeout(function () {
+                        window.history.back(); //redirect về danh sách chờ lâm sàng
+                    }, 1500); //sau 2 giây (1000 = 1s)
+                    //window.location = '/danh_sach_benh_nhan/'
+                },
+                error: function(response){
+                    console.log("error")
+                }
+            })
+        }  
+    })
+
+    $(document).ready(function() {
+        $('#inputPhone').on('keyup', function() {
+            var so_dien_thoai = $('#inputPhone').val().trim()
+            var formData = new FormData()
+            
+            if (so_dien_thoai != '') {
+                $("#success_phone").html("<img src='{% static 'assets/media/loader/loader.gif' %}' /> Đang kiểm tra...")
+                $("#error_phone").html("")
+                setTimeout(function () {
+                    formData.append('so_dien_thoai', so_dien_thoai)     
+                    $.ajax({
+                        type: "POST",
+                        url: "{% url 'check_exists_so_dien_thoai' %}",
+                        data: formData,
+                        cache: false,
+                        processData: false,
+                        contentType: false,
+                        success: function(response){
+                            if (response.status == 200) {
+                                $("#success_phone").html("") 
+                                $("#error_phone").html(response.message)
+                            } else if (response.status == 404) {
+                                $("#success_phone").html(response.message)
+                                $("#error_phone").html("")
+                            } else if (response.status == 406) {
+                                $("#success_phone").html("") 
+                                $("#error_phone").html(response.message)
+                            }
+                        }
+                    })
+                }, 1500);
+            } else {
+                $("#success_phone").html("")
+                $("#error_phone").html("")
+            }
+        })
+        
+    })
+
+    $(document).ready(function() {
+        $('#inputUsername').on('keyup', function() {
+            var username = $('#inputUsername').val().trim()
+            var formData = new FormData()
+            
+            if (username != '') {
+                $("#success_username").html("<img src='{% static 'assets/media/loader/loader.gif' %}' /> Đang kiểm tra...")
+                $("#error_username").html("")
+                setTimeout(function () {
+                    formData.append('username', username)     
+                    $.ajax({
+                        type: "POST",
+                        url: "{% url 'check_exists_username' %}",
+                        data: formData,
+                        cache: false,
+                        processData: false,
+                        contentType: false,
+                        success: function(response){
+                            if (response.status == 200) {
+                                $("#success_username").html("") 
+                                $("#error_username").html(response.message)
+                            } else if (response.status == 404) {
+                                $("#success_username").html(response.message)
+                                $("#error_username").html("")
+                            } else if (response.status == 406) {
+                                $("#success_username").html("") 
+                                $("#error_username").html(response.message)
+                            }
+                        }
+                    })
+                }, 1500);
+            } else {
+                $("#success_username").html("")
+                $("#error_username").html("")
+            }
+        })
+        
+    })
+
+</script>
+
+{% endblock scripts %}

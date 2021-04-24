@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+	<!--begin::Head-->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+    <meta charset="utf-8" />
+    <title>Quản lý phòng khám An Nhiên</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!--begin::Fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!--end::Fonts-->
+    
+    {% include 'stylesheet.html' %}
+
+    <link rel="shortcut icon" href="{% static 'assets/media/logos/logo1.ico' %} " />
+    
+    <style> 
+        {% comment %} @media 
+        only screen and (max-width: 760px),
+        (min-device-width: 768px) and (max-device-width: 1024px)  {
+
+            /* Force table to not be like tables anymore */
+            table, thead, tbody, th, td, tr { 
+                display: block; 
+                width: 20%; /* mobile device with have 70% reduction of width */
+            }
+
+        } {% endcomment %}
+    </style>
+</head>
+<!--end::Head-->
+
+<body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
+    <!--begin::Main-->
+    <div class="d-flex flex-column flex-root">
+        <!--begin::Page-->
+        <div class="d-flex flex-row flex-column-fluid page">				
+            <div class="container">
+                <div class="card table table-responsive">
+                    <div class="row">
+                        <div class="col-xl-12 col-xxl-6 col-sm-4">{{ noi_dung|safe }}</div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

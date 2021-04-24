@@ -1,0 +1,288 @@
+[
+{
+  "model": "clinic.chisoxetnghiem",
+  "pk": 1,
+  "fields": {
+    "dich_vu_kham": 1,
+    "doi_tuong_xet_nghiem": 2,
+    "ma_chi_so": "M01",
+    "ten_chi_so": "   WBC (NEUT - SL Bạch cầu)",
+    "chi_tiet": 1
+  }
+},
+{
+  "model": "clinic.chisoxetnghiem",
+  "pk": 2,
+  "fields": {
+    "dich_vu_kham": 1,
+    "doi_tuong_xet_nghiem": 2,
+    "ma_chi_so": "M01",
+    "ten_chi_so": "   LYM% (Tỷ lệ Bạch cầu Lympho)",
+    "chi_tiet": 2
+  }
+},
+{
+  "model": "clinic.chisoxetnghiem",
+  "pk": 3,
+  "fields": {
+    "dich_vu_kham": 1,
+    "doi_tuong_xet_nghiem": 2,
+    "ma_chi_so": "M01",
+    "ten_chi_so": "   *MID ( )",
+    "chi_tiet": 3
+  }
+},
+{
+  "model": "clinic.chisoxetnghiem",
+  "pk": 4,
+  "fields": {
+    "dich_vu_kham": 1,
+    "doi_tuong_xet_nghiem": 2,
+    "ma_chi_so": "M01",
+    "ten_chi_so": "   GRAN ( )",
+    "chi_tiet": 4
+  }
+},
+{
+  "model": "clinic.chisoxetnghiem",
+  "pk": 5,
+  "fields": {
+    "dich_vu_kham": 1,
+    "doi_tuong_xet_nghiem": 2,
+    "ma_chi_so": "M01",
+    "ten_chi_so": "   RBC (SL Hồng cầu)",
+    "chi_tiet": 5
+  }
+},
+{
+  "model": "clinic.chisoxetnghiem",
+  "pk": 6,
+  "fields": {
+    "dich_vu_kham": 1,
+    "doi_tuong_xet_nghiem": 2,
+    "ma_chi_so": "M01",
+    "ten_chi_so": "   HGB (Huyết sắc tố)",
+    "chi_tiet": 6
+  }
+},
+{
+  "model": "clinic.chisoxetnghiem",
+  "pk": 7,
+  "fields": {
+    "dich_vu_kham": 1,
+    "doi_tuong_xet_nghiem": 2,
+    "ma_chi_so": "M01",
+    "ten_chi_so": "   HCT (Hematocrit)",
+    "chi_tiet": 7
+  }
+},
+{
+  "model": "clinic.chisoxetnghiem",
+  "pk": 8,
+  "fields": {
+    "dich_vu_kham": 1,
+    "doi_tuong_xet_nghiem": 2,
+    "ma_chi_so": "M01",
+    "ten_chi_so": "   MCV (Thể tích Hồng cầu)",
+    "chi_tiet": 8
+  }
+},
+{
+  "model": "clinic.chisoxetnghiem",
+  "pk": 9,
+  "fields": {
+    "dich_vu_kham": 1,
+    "doi_tuong_xet_nghiem": 2,
+    "ma_chi_so": "M01",
+    "ten_chi_so": "   MCH (Lượng hst TB hồng cầu)",
+    "chi_tiet": 9
+  }
+},
+{
+  "model": "clinic.chisoxetnghiem",
+  "pk": 10,
+  "fields": {
+    "dich_vu_kham": 1,
+    "doi_tuong_xet_nghiem": 2,
+    "ma_chi_so": "M01",
+    "ten_chi_so": "   MCHC (Lượng hst TB khối HC)",
+    "chi_tiet": 10
+  }
+},
+{
+  "model": "clinic.chisoxetnghiem",
+  "pk": 11,
+  "fields": {
+    "dich_vu_kham": 1,
+    "doi_tuong_xet_nghiem": 2,
+    "ma_chi_so": "M01",
+    "ten_chi_so": "   RDW-CV (Dải phân bố HC- Hệ số biến thiên)",
+    "chi_tiet": 11
+  }
+},
+{
+  "model": "clinic.chisoxetnghiem",
+  "pk": 12,
+  "fields": {
+    "dich_vu_kham": 1,
+    "doi_tuong_xet_nghiem": 2,
+    "ma_chi_so": "M01",
+    "ten_chi_so": "   PLT (SL Tiểu cầu)",
+    "chi_tiet": 12
+  }
+},
+{
+  "model": "clinic.chisoxetnghiem",
+  "pk": 13,
+  "fields": {
+    "dich_vu_kham": 1,
+    "doi_tuong_xet_nghiem": 2,
+    "ma_chi_so": "M01",
+    "ten_chi_so": "   MPV (Thể tích trung bình TC)",
+    "chi_tiet": 13
+  }
+},
+{
+  "model": "clinic.chisoxetnghiem",
+  "pk": 14,
+  "fields": {
+    "dich_vu_kham": 1,
+    "doi_tuong_xet_nghiem": 2,
+    "ma_chi_so": "M01",
+    "ten_chi_so": "   WBC (NEUT - SL Bạch cầu)",
+    "chi_tiet": 14
+  }
+},
+{
+  "model": "clinic.chisoxetnghiem",
+  "pk": 15,
+  "fields": {
+    "dich_vu_kham": 1,
+    "doi_tuong_xet_nghiem": 2,
+    "ma_chi_so": "M01",
+    "ten_chi_so": "   LYM% (Tỷ lệ Bạch cầu Lympho)",
+    "chi_tiet": 15
+  }
+},
+{
+  "model": "clinic.chisoxetnghiem",
+  "pk": 16,
+  "fields": {
+    "dich_vu_kham": 1,
+    "doi_tuong_xet_nghiem": 2,
+    "ma_chi_so": "M01",
+    "ten_chi_so": "   *MID ( )",
+    "chi_tiet": 16
+  }
+},
+{
+  "model": "clinic.chisoxetnghiem",
+  "pk": 17,
+  "fields": {
+    "dich_vu_kham": 1,
+    "doi_tuong_xet_nghiem": 2,
+    "ma_chi_so": "M01",
+    "ten_chi_so": "   GRAN ( )",
+    "chi_tiet": 17
+  }
+},
+{
+  "model": "clinic.chisoxetnghiem",
+  "pk": 18,
+  "fields": {
+    "dich_vu_kham": 1,
+    "doi_tuong_xet_nghiem": 2,
+    "ma_chi_so": "M01",
+    "ten_chi_so": "   RBC (SL Hồng cầu)",
+    "chi_tiet": 18
+  }
+},
+{
+  "model": "clinic.chisoxetnghiem",
+  "pk": 19,
+  "fields": {
+    "dich_vu_kham": 1,
+    "doi_tuong_xet_nghiem": 2,
+    "ma_chi_so": "M01",
+    "ten_chi_so": "   HGB (Huyết sắc tố)",
+    "chi_tiet": 19
+  }
+},
+{
+  "model": "clinic.chisoxetnghiem",
+  "pk": 20,
+  "fields": {
+    "dich_vu_kham": 1,
+    "doi_tuong_xet_nghiem": 2,
+    "ma_chi_so": "M01",
+    "ten_chi_so": "   HCT (Hematocrit)",
+    "chi_tiet": 20
+  }
+},
+{
+  "model": "clinic.chisoxetnghiem",
+  "pk": 21,
+  "fields": {
+    "dich_vu_kham": 1,
+    "doi_tuong_xet_nghiem": 2,
+    "ma_chi_so": "M01",
+    "ten_chi_so": "   MCV (Thể tích Hồng cầu)",
+    "chi_tiet": 21
+  }
+},
+{
+  "model": "clinic.chisoxetnghiem",
+  "pk": 22,
+  "fields": {
+    "dich_vu_kham": 1,
+    "doi_tuong_xet_nghiem": 2,
+    "ma_chi_so": "M01",
+    "ten_chi_so": "   MCH (Lượng hst TB hồng cầu)",
+    "chi_tiet": 22
+  }
+},
+{
+  "model": "clinic.chisoxetnghiem",
+  "pk": 23,
+  "fields": {
+    "dich_vu_kham": 1,
+    "doi_tuong_xet_nghiem": 2,
+    "ma_chi_so": "M01",
+    "ten_chi_so": "   MCHC (Lượng hst TB khối HC)",
+    "chi_tiet": 23
+  }
+},
+{
+  "model": "clinic.chisoxetnghiem",
+  "pk": 24,
+  "fields": {
+    "dich_vu_kham": 1,
+    "doi_tuong_xet_nghiem": 2,
+    "ma_chi_so": "M01",
+    "ten_chi_so": "   RDW-CV (Dải phân bố HC- Hệ số biến thiên)",
+    "chi_tiet": 24
+  }
+},
+{
+  "model": "clinic.chisoxetnghiem",
+  "pk": 25,
+  "fields": {
+    "dich_vu_kham": 1,
+    "doi_tuong_xet_nghiem": 2,
+    "ma_chi_so": "M01",
+    "ten_chi_so": "   PLT (SL Tiểu cầu)",
+    "chi_tiet": 25
+  }
+},
+{
+  "model": "clinic.chisoxetnghiem",
+  "pk": 26,
+  "fields": {
+    "dich_vu_kham": 1,
+    "doi_tuong_xet_nghiem": 2,
+    "ma_chi_so": "M01",
+    "ten_chi_so": "   MPV (Thể tích trung bình TC)",
+    "chi_tiet": 26
+  }
+}
+]

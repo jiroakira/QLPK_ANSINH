@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">Cập Nhật Thông Tin Người Dùng</h5>
+                    <!--end::Page Title-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!--begin::Card-->
+            <div class="card card-custom">
+                <div class="card-header pb-0">
+                    <div class="card-title">
+                        <h1 class="card-label">
+                            Biểu mẫu chỉnh sửa
+                        </h1>
+                    </div>
+                </div>
+                <!--begin::Form-->
+                <form class="form" id="user_form">
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <label class="col-form-label text-right col-lg-4 col-sm-12">Họ tên *</label>
+                            <div class="col-lg-6 col-md-9 col-sm-12">
+                                {{ form.ho_ten|attr:"class: form-control"|attr:"name:ho_ten" }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-form-label text-right col-lg-4 col-sm-12">Số Điện Thoại *</label>
+                            <div class="col-lg-6 col-md-9 col-sm-12">
+                                {{ form.so_dien_thoai|attr:"class: form-control"|attr:"name:so_dien_thoai" }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-form-label text-right col-lg-4 col-sm-12">Email *</label>
+                            <div class="col-lg-6 col-md-9 col-sm-12">
+                                {{ form.email|attr:"class:form-control"|attr:"name:email" }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-form-label text-right col-lg-4 col-sm-12">CMND/CCCD *</label>
+                            <div class="col-lg-6 col-md-9 col-sm-12">
+                                {{ form.cmnd_cccd|attr:"class:form-control"|attr:"name:cmnd_cccd" }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-lg-12 text-center">
+                                <button data-id="{{ id_user }}" type="button" class="btn btn-primary font-weight-bold mr-2" id="submitData" name="submitButton">Xác nhận</button>
+                                <button type="reset" class="btn btn-light-primary font-weight-bold">Hủy</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!--end::Form-->
+            </div>
+        </div>
+    </div>
+    <!--end::Entry-->
+</div>
+<!--end::Content-->
+
+{% endblock content %}
+
+{% block scripts %}
+<!--begin::Global Theme Bundle(used by all pages)-->
+<script src="{% static 'assets/plugins/global/plugins.bundle9cd7.js' %} "></script>
+<script src="{% static 'assets/plugins/custom/prismjs/prismjs.bundle9cd7.js' %} "></script>
+
+<!--end::Global Theme Bundle-->
+
+<script>
+
+$('#user_form').on('click', '#submitData', function(){
+    var id_user = $(this).data('id')
+    var formData = new FormData()
+    $("#user_form").find("input").each(function(){
+        formData.append($(this).attr("name"), $(this).val())
+    });
+    formData.append('id_user', id_user)
+    formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
+
+    $.ajax({
+        type: "POST",
+        url: "{% url 'cap_nhat_user' %}",
+        data: formData,
+        cache: false,
+        processData: false,
+        contentType: false,
+        success: function(response){
+            toastr.success(response.message, "Thành Công!")
+
+            setTimeout(function(){
+                window.location.href = "/trang_chu/"
+            }, 2000)
+        },
+        error: function(response){
+            console.log("error")
+        }
+    })
+})
+
+</script>
+
+{% endblock scripts %}
+

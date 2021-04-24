@@ -1,0 +1,62 @@
+[
+{
+  "model": "clinic.phongchucnang",
+  "pk": 1,
+  "fields": {
+    "ten_phong_chuc_nang": "Phòng Xét Nghiệm",
+    "bac_si_phu_trach": null,
+    "thoi_gian_tao": "2021-03-28T19:51:56.998Z",
+    "thoi_gian_cap_nhat": "2021-03-28T19:51:56.998Z"
+  }
+},
+{
+  "model": "clinic.phongchucnang",
+  "pk": 2,
+  "fields": {
+    "ten_phong_chuc_nang": "Phòng Chẩn Đoán Hình Ảnh",
+    "bac_si_phu_trach": null,
+    "thoi_gian_tao": "2021-03-28T19:51:57.164Z",
+    "thoi_gian_cap_nhat": "2021-03-28T19:51:57.164Z"
+  }
+},
+{
+  "model": "clinic.phongchucnang",
+  "pk": 3,
+  "fields": {
+    "ten_phong_chuc_nang": "Phòng Siêu Âm",
+    "bac_si_phu_trach": null,
+    "thoi_gian_tao": "2021-03-28T19:51:57.327Z",
+    "thoi_gian_cap_nhat": "2021-03-28T19:51:57.327Z"
+  }
+},
+{
+  "model": "clinic.phongchucnang",
+  "pk": 4,
+  "fields": {
+    "ten_phong_chuc_nang": "Phòng Nội Soi",
+    "bac_si_phu_trach": null,
+    "thoi_gian_tao": "2021-03-28T19:51:57.359Z",
+    "thoi_gian_cap_nhat": "2021-03-28T19:51:57.359Z"
+  }
+},
+{
+  "model": "clinic.phongchucnang",
+  "pk": 5,
+  "fields": {
+    "ten_phong_chuc_nang": "Phòng Chuyên Khoa",
+    "bac_si_phu_trach": null,
+    "thoi_gian_tao": "2021-03-28T19:51:57.396Z",
+    "thoi_gian_cap_nhat": "2021-03-28T19:51:57.396Z"
+  }
+},
+{
+  "model": "clinic.phongchucnang",
+  "pk": 6,
+  "fields": {
+    "ten_phong_chuc_nang": "Phòng Thủ Thuật",
+    "bac_si_phu_trach": null,
+    "thoi_gian_tao": "2021-03-28T19:51:57.811Z",
+    "thoi_gian_cap_nhat": "2021-03-28T19:51:57.811Z"
+  }
+}
+]

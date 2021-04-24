@@ -1,0 +1,288 @@
+[
+{
+  "model": "clinic.chitietchisoxetnghiem",
+  "pk": 1,
+  "fields": {
+    "chi_so_binh_thuong_min": "4",
+    "chi_so_binh_thuong_max": "10",
+    "chi_so_binh_thuong": null,
+    "don_vi_do": "G/L",
+    "ghi_chu": ""
+  }
+},
+{
+  "model": "clinic.chitietchisoxetnghiem",
+  "pk": 2,
+  "fields": {
+    "chi_so_binh_thuong_min": "0",
+    "chi_so_binh_thuong_max": "0",
+    "chi_so_binh_thuong": null,
+    "don_vi_do": "%L",
+    "ghi_chu": ""
+  }
+},
+{
+  "model": "clinic.chitietchisoxetnghiem",
+  "pk": 3,
+  "fields": {
+    "chi_so_binh_thuong_min": "0",
+    "chi_so_binh_thuong_max": "0",
+    "chi_so_binh_thuong": null,
+    "don_vi_do": "%M",
+    "ghi_chu": ""
+  }
+},
+{
+  "model": "clinic.chitietchisoxetnghiem",
+  "pk": 4,
+  "fields": {
+    "chi_so_binh_thuong_min": "0",
+    "chi_so_binh_thuong_max": "0",
+    "chi_so_binh_thuong": null,
+    "don_vi_do": "%G",
+    "ghi_chu": ""
+  }
+},
+{
+  "model": "clinic.chitietchisoxetnghiem",
+  "pk": 5,
+  "fields": {
+    "chi_so_binh_thuong_min": "3.9",
+    "chi_so_binh_thuong_max": "5.4",
+    "chi_so_binh_thuong": null,
+    "don_vi_do": "T/L",
+    "ghi_chu": ""
+  }
+},
+{
+  "model": "clinic.chitietchisoxetnghiem",
+  "pk": 6,
+  "fields": {
+    "chi_so_binh_thuong_min": "12.5",
+    "chi_so_binh_thuong_max": "14.5",
+    "chi_so_binh_thuong": null,
+    "don_vi_do": "g/dL",
+    "ghi_chu": ""
+  }
+},
+{
+  "model": "clinic.chitietchisoxetnghiem",
+  "pk": 7,
+  "fields": {
+    "chi_so_binh_thuong_min": "35",
+    "chi_so_binh_thuong_max": "47",
+    "chi_so_binh_thuong": null,
+    "don_vi_do": "%",
+    "ghi_chu": ""
+  }
+},
+{
+  "model": "clinic.chitietchisoxetnghiem",
+  "pk": 8,
+  "fields": {
+    "chi_so_binh_thuong_min": "83",
+    "chi_so_binh_thuong_max": "92",
+    "chi_so_binh_thuong": null,
+    "don_vi_do": "fL",
+    "ghi_chu": ""
+  }
+},
+{
+  "model": "clinic.chitietchisoxetnghiem",
+  "pk": 9,
+  "fields": {
+    "chi_so_binh_thuong_min": "27",
+    "chi_so_binh_thuong_max": "32",
+    "chi_so_binh_thuong": null,
+    "don_vi_do": "pg",
+    "ghi_chu": ""
+  }
+},
+{
+  "model": "clinic.chitietchisoxetnghiem",
+  "pk": 10,
+  "fields": {
+    "chi_so_binh_thuong_min": "320",
+    "chi_so_binh_thuong_max": "356",
+    "chi_so_binh_thuong": null,
+    "don_vi_do": "g/L",
+    "ghi_chu": ""
+  }
+},
+{
+  "model": "clinic.chitietchisoxetnghiem",
+  "pk": 11,
+  "fields": {
+    "chi_so_binh_thuong_min": "0",
+    "chi_so_binh_thuong_max": "0",
+    "chi_so_binh_thuong": null,
+    "don_vi_do": "%",
+    "ghi_chu": ""
+  }
+},
+{
+  "model": "clinic.chitietchisoxetnghiem",
+  "pk": 12,
+  "fields": {
+    "chi_so_binh_thuong_min": "150",
+    "chi_so_binh_thuong_max": "500",
+    "chi_so_binh_thuong": null,
+    "don_vi_do": "G/L",
+    "ghi_chu": ""
+  }
+},
+{
+  "model": "clinic.chitietchisoxetnghiem",
+  "pk": 13,
+  "fields": {
+    "chi_so_binh_thuong_min": "0",
+    "chi_so_binh_thuong_max": "0",
+    "chi_so_binh_thuong": null,
+    "don_vi_do": "fL",
+    "ghi_chu": ""
+  }
+},
+{
+  "model": "clinic.chitietchisoxetnghiem",
+  "pk": 14,
+  "fields": {
+    "chi_so_binh_thuong_min": "4",
+    "chi_so_binh_thuong_max": "10",
+    "chi_so_binh_thuong": null,
+    "don_vi_do": "G/L",
+    "ghi_chu": ""
+  }
+},
+{
+  "model": "clinic.chitietchisoxetnghiem",
+  "pk": 15,
+  "fields": {
+    "chi_so_binh_thuong_min": "0",
+    "chi_so_binh_thuong_max": "0",
+    "chi_so_binh_thuong": null,
+    "don_vi_do": "%L",
+    "ghi_chu": ""
+  }
+},
+{
+  "model": "clinic.chitietchisoxetnghiem",
+  "pk": 16,
+  "fields": {
+    "chi_so_binh_thuong_min": "0",
+    "chi_so_binh_thuong_max": "0",
+    "chi_so_binh_thuong": null,
+    "don_vi_do": "%M",
+    "ghi_chu": ""
+  }
+},
+{
+  "model": "clinic.chitietchisoxetnghiem",
+  "pk": 17,
+  "fields": {
+    "chi_so_binh_thuong_min": "0",
+    "chi_so_binh_thuong_max": "0",
+    "chi_so_binh_thuong": null,
+    "don_vi_do": "%G",
+    "ghi_chu": ""
+  }
+},
+{
+  "model": "clinic.chitietchisoxetnghiem",
+  "pk": 18,
+  "fields": {
+    "chi_so_binh_thuong_min": "3.9",
+    "chi_so_binh_thuong_max": "5.4",
+    "chi_so_binh_thuong": null,
+    "don_vi_do": "T/L",
+    "ghi_chu": ""
+  }
+},
+{
+  "model": "clinic.chitietchisoxetnghiem",
+  "pk": 19,
+  "fields": {
+    "chi_so_binh_thuong_min": "12.5",
+    "chi_so_binh_thuong_max": "14.5",
+    "chi_so_binh_thuong": null,
+    "don_vi_do": "g/dL",
+    "ghi_chu": ""
+  }
+},
+{
+  "model": "clinic.chitietchisoxetnghiem",
+  "pk": 20,
+  "fields": {
+    "chi_so_binh_thuong_min": "35",
+    "chi_so_binh_thuong_max": "47",
+    "chi_so_binh_thuong": null,
+    "don_vi_do": "%",
+    "ghi_chu": ""
+  }
+},
+{
+  "model": "clinic.chitietchisoxetnghiem",
+  "pk": 21,
+  "fields": {
+    "chi_so_binh_thuong_min": "83",
+    "chi_so_binh_thuong_max": "92",
+    "chi_so_binh_thuong": null,
+    "don_vi_do": "fL",
+    "ghi_chu": ""
+  }
+},
+{
+  "model": "clinic.chitietchisoxetnghiem",
+  "pk": 22,
+  "fields": {
+    "chi_so_binh_thuong_min": "27",
+    "chi_so_binh_thuong_max": "32",
+    "chi_so_binh_thuong": null,
+    "don_vi_do": "pg",
+    "ghi_chu": ""
+  }
+},
+{
+  "model": "clinic.chitietchisoxetnghiem",
+  "pk": 23,
+  "fields": {
+    "chi_so_binh_thuong_min": "320",
+    "chi_so_binh_thuong_max": "356",
+    "chi_so_binh_thuong": null,
+    "don_vi_do": "g/L",
+    "ghi_chu": ""
+  }
+},
+{
+  "model": "clinic.chitietchisoxetnghiem",
+  "pk": 24,
+  "fields": {
+    "chi_so_binh_thuong_min": "0",
+    "chi_so_binh_thuong_max": "0",
+    "chi_so_binh_thuong": null,
+    "don_vi_do": "%",
+    "ghi_chu": ""
+  }
+},
+{
+  "model": "clinic.chitietchisoxetnghiem",
+  "pk": 25,
+  "fields": {
+    "chi_so_binh_thuong_min": "150",
+    "chi_so_binh_thuong_max": "500",
+    "chi_so_binh_thuong": null,
+    "don_vi_do": "G/L",
+    "ghi_chu": ""
+  }
+},
+{
+  "model": "clinic.chitietchisoxetnghiem",
+  "pk": 26,
+  "fields": {
+    "chi_so_binh_thuong_min": "0",
+    "chi_so_binh_thuong_max": "0",
+    "chi_so_binh_thuong": null,
+    "don_vi_do": "fL",
+    "ghi_chu": ""
+  }
+}
+]

@@ -1,0 +1,6383 @@
+[
+{
+  "model": "clinic.district",
+  "pk": 1,
+  "fields": {
+    "province": 1,
+    "name": "Quận Ba Đình",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 2,
+  "fields": {
+    "province": 1,
+    "name": "Quận Hoàn Kiếm",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 3,
+  "fields": {
+    "province": 1,
+    "name": "Quận Tây Hồ",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 4,
+  "fields": {
+    "province": 1,
+    "name": "Quận Long Biên",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 5,
+  "fields": {
+    "province": 1,
+    "name": "Quận Cầu Giấy",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 6,
+  "fields": {
+    "province": 1,
+    "name": "Quận Đống Đa",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 7,
+  "fields": {
+    "province": 1,
+    "name": "Quận Hai Bà Trưng",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 8,
+  "fields": {
+    "province": 1,
+    "name": "Quận Hoàng Mai",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 9,
+  "fields": {
+    "province": 1,
+    "name": "Quận Thanh Xuân",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 16,
+  "fields": {
+    "province": 1,
+    "name": "Huyện Sóc Sơn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 17,
+  "fields": {
+    "province": 1,
+    "name": "Huyện Đông Anh",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 18,
+  "fields": {
+    "province": 1,
+    "name": "Huyện Gia Lâm",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 19,
+  "fields": {
+    "province": 1,
+    "name": "Quận Nam Từ Liêm",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 20,
+  "fields": {
+    "province": 1,
+    "name": "Huyện Thanh Trì",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 21,
+  "fields": {
+    "province": 1,
+    "name": "Quận Bắc Từ Liêm",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 24,
+  "fields": {
+    "province": 2,
+    "name": "Thành phố Hà Giang",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 26,
+  "fields": {
+    "province": 2,
+    "name": "Huyện Đồng Văn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 27,
+  "fields": {
+    "province": 2,
+    "name": "Huyện Mèo Vạc",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 28,
+  "fields": {
+    "province": 2,
+    "name": "Huyện Yên Minh",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 29,
+  "fields": {
+    "province": 2,
+    "name": "Huyện Quản Bạ",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 30,
+  "fields": {
+    "province": 2,
+    "name": "Huyện Vị Xuyên",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 31,
+  "fields": {
+    "province": 2,
+    "name": "Huyện Bắc Mê",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 32,
+  "fields": {
+    "province": 2,
+    "name": "Huyện Hoàng Su Phì",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 33,
+  "fields": {
+    "province": 2,
+    "name": "Huyện Xín Mần",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 34,
+  "fields": {
+    "province": 2,
+    "name": "Huyện Bắc Quang",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 35,
+  "fields": {
+    "province": 2,
+    "name": "Huyện Quang Bình",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 40,
+  "fields": {
+    "province": 4,
+    "name": "Thành phố Cao Bằng",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 42,
+  "fields": {
+    "province": 4,
+    "name": "Huyện Bảo Lâm",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 43,
+  "fields": {
+    "province": 4,
+    "name": "Huyện Bảo Lạc",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 44,
+  "fields": {
+    "province": 4,
+    "name": "Huyện Thông Nông",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 45,
+  "fields": {
+    "province": 4,
+    "name": "Huyện Hà Quảng",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 46,
+  "fields": {
+    "province": 4,
+    "name": "Huyện Trà Lĩnh",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 47,
+  "fields": {
+    "province": 4,
+    "name": "Huyện Trùng Khánh",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 48,
+  "fields": {
+    "province": 4,
+    "name": "Huyện Hạ Lang",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 49,
+  "fields": {
+    "province": 4,
+    "name": "Huyện Quảng Uyên",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 50,
+  "fields": {
+    "province": 4,
+    "name": "Huyện Phục Hoà",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 51,
+  "fields": {
+    "province": 4,
+    "name": "Huyện Hoà An",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 52,
+  "fields": {
+    "province": 4,
+    "name": "Huyện Nguyên Bình",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 53,
+  "fields": {
+    "province": 4,
+    "name": "Huyện Thạch An",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 58,
+  "fields": {
+    "province": 6,
+    "name": "Thành Phố Bắc Kạn",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 60,
+  "fields": {
+    "province": 6,
+    "name": "Huyện Pác Nặm",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 61,
+  "fields": {
+    "province": 6,
+    "name": "Huyện Ba Bể",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 62,
+  "fields": {
+    "province": 6,
+    "name": "Huyện Ngân Sơn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 63,
+  "fields": {
+    "province": 6,
+    "name": "Huyện Bạch Thông",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 64,
+  "fields": {
+    "province": 6,
+    "name": "Huyện Chợ Đồn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 65,
+  "fields": {
+    "province": 6,
+    "name": "Huyện Chợ Mới",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 66,
+  "fields": {
+    "province": 6,
+    "name": "Huyện Na Rì",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 70,
+  "fields": {
+    "province": 8,
+    "name": "Thành phố Tuyên Quang",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 71,
+  "fields": {
+    "province": 8,
+    "name": "Huyện Lâm Bình",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 72,
+  "fields": {
+    "province": 8,
+    "name": "Huyện Nà Hang",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 73,
+  "fields": {
+    "province": 8,
+    "name": "Huyện Chiêm Hóa",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 74,
+  "fields": {
+    "province": 8,
+    "name": "Huyện Hàm Yên",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 75,
+  "fields": {
+    "province": 8,
+    "name": "Huyện Yên Sơn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 76,
+  "fields": {
+    "province": 8,
+    "name": "Huyện Sơn Dương",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 80,
+  "fields": {
+    "province": 10,
+    "name": "Thành phố Lào Cai",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 82,
+  "fields": {
+    "province": 10,
+    "name": "Huyện Bát Xát",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 83,
+  "fields": {
+    "province": 10,
+    "name": "Huyện Mường Khương",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 84,
+  "fields": {
+    "province": 10,
+    "name": "Huyện Si Ma Cai",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 85,
+  "fields": {
+    "province": 10,
+    "name": "Huyện Bắc Hà",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 86,
+  "fields": {
+    "province": 10,
+    "name": "Huyện Bảo Thắng",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 87,
+  "fields": {
+    "province": 10,
+    "name": "Huyện Bảo Yên",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 88,
+  "fields": {
+    "province": 10,
+    "name": "Huyện Sa Pa",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 89,
+  "fields": {
+    "province": 10,
+    "name": "Huyện Văn Bàn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 94,
+  "fields": {
+    "province": 11,
+    "name": "Thành phố Điện Biên Phủ",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 95,
+  "fields": {
+    "province": 11,
+    "name": "Thị Xã Mường Lay",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 96,
+  "fields": {
+    "province": 11,
+    "name": "Huyện Mường Nhé",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 97,
+  "fields": {
+    "province": 11,
+    "name": "Huyện Mường Chà",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 98,
+  "fields": {
+    "province": 11,
+    "name": "Huyện Tủa Chùa",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 99,
+  "fields": {
+    "province": 11,
+    "name": "Huyện Tuần Giáo",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 100,
+  "fields": {
+    "province": 11,
+    "name": "Huyện Điện Biên",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 101,
+  "fields": {
+    "province": 11,
+    "name": "Huyện Điện Biên Đông",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 102,
+  "fields": {
+    "province": 11,
+    "name": "Huyện Mường Ảng",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 103,
+  "fields": {
+    "province": 11,
+    "name": "Huyện Nậm Pồ",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 105,
+  "fields": {
+    "province": 12,
+    "name": "Thành phố Lai Châu",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 106,
+  "fields": {
+    "province": 12,
+    "name": "Huyện Tam Đường",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 107,
+  "fields": {
+    "province": 12,
+    "name": "Huyện Mường Tè",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 108,
+  "fields": {
+    "province": 12,
+    "name": "Huyện Sìn Hồ",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 109,
+  "fields": {
+    "province": 12,
+    "name": "Huyện Phong Thổ",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 110,
+  "fields": {
+    "province": 12,
+    "name": "Huyện Than Uyên",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 111,
+  "fields": {
+    "province": 12,
+    "name": "Huyện Tân Uyên",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 112,
+  "fields": {
+    "province": 12,
+    "name": "Huyện Nậm Nhùn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 116,
+  "fields": {
+    "province": 14,
+    "name": "Thành phố Sơn La",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 118,
+  "fields": {
+    "province": 14,
+    "name": "Huyện Quỳnh Nhai",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 119,
+  "fields": {
+    "province": 14,
+    "name": "Huyện Thuận Châu",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 120,
+  "fields": {
+    "province": 14,
+    "name": "Huyện Mường La",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 121,
+  "fields": {
+    "province": 14,
+    "name": "Huyện Bắc Yên",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 122,
+  "fields": {
+    "province": 14,
+    "name": "Huyện Phù Yên",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 123,
+  "fields": {
+    "province": 14,
+    "name": "Huyện Mộc Châu",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 124,
+  "fields": {
+    "province": 14,
+    "name": "Huyện Yên Châu",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 125,
+  "fields": {
+    "province": 14,
+    "name": "Huyện Mai Sơn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 126,
+  "fields": {
+    "province": 14,
+    "name": "Huyện Sông Mã",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 127,
+  "fields": {
+    "province": 14,
+    "name": "Huyện Sốp Cộp",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 128,
+  "fields": {
+    "province": 14,
+    "name": "Huyện Vân Hồ",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 132,
+  "fields": {
+    "province": 15,
+    "name": "Thành phố Yên Bái",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 133,
+  "fields": {
+    "province": 15,
+    "name": "Thị xã Nghĩa Lộ",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 135,
+  "fields": {
+    "province": 15,
+    "name": "Huyện Lục Yên",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 136,
+  "fields": {
+    "province": 15,
+    "name": "Huyện Văn Yên",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 137,
+  "fields": {
+    "province": 15,
+    "name": "Huyện Mù Căng Chải",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 138,
+  "fields": {
+    "province": 15,
+    "name": "Huyện Trấn Yên",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 139,
+  "fields": {
+    "province": 15,
+    "name": "Huyện Trạm Tấu",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 140,
+  "fields": {
+    "province": 15,
+    "name": "Huyện Văn Chấn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 141,
+  "fields": {
+    "province": 15,
+    "name": "Huyện Yên Bình",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 148,
+  "fields": {
+    "province": 17,
+    "name": "Thành phố Hòa Bình",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 150,
+  "fields": {
+    "province": 17,
+    "name": "Huyện Đà Bắc",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 151,
+  "fields": {
+    "province": 17,
+    "name": "Huyện Kỳ Sơn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 152,
+  "fields": {
+    "province": 17,
+    "name": "Huyện Lương Sơn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 153,
+  "fields": {
+    "province": 17,
+    "name": "Huyện Kim Bôi",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 154,
+  "fields": {
+    "province": 17,
+    "name": "Huyện Cao Phong",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 155,
+  "fields": {
+    "province": 17,
+    "name": "Huyện Tân Lạc",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 156,
+  "fields": {
+    "province": 17,
+    "name": "Huyện Mai Châu",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 157,
+  "fields": {
+    "province": 17,
+    "name": "Huyện Lạc Sơn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 158,
+  "fields": {
+    "province": 17,
+    "name": "Huyện Yên Thủy",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 159,
+  "fields": {
+    "province": 17,
+    "name": "Huyện Lạc Thủy",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 164,
+  "fields": {
+    "province": 19,
+    "name": "Thành phố Thái Nguyên",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 165,
+  "fields": {
+    "province": 19,
+    "name": "Thành phố Sông Công",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 167,
+  "fields": {
+    "province": 19,
+    "name": "Huyện Định Hóa",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 168,
+  "fields": {
+    "province": 19,
+    "name": "Huyện Phú Lương",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 169,
+  "fields": {
+    "province": 19,
+    "name": "Huyện Đồng Hỷ",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 170,
+  "fields": {
+    "province": 19,
+    "name": "Huyện Võ Nhai",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 171,
+  "fields": {
+    "province": 19,
+    "name": "Huyện Đại Từ",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 172,
+  "fields": {
+    "province": 19,
+    "name": "Thị xã Phổ Yên",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 173,
+  "fields": {
+    "province": 19,
+    "name": "Huyện Phú Bình",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 178,
+  "fields": {
+    "province": 20,
+    "name": "Thành phố Lạng Sơn",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 180,
+  "fields": {
+    "province": 20,
+    "name": "Huyện Tràng Định",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 181,
+  "fields": {
+    "province": 20,
+    "name": "Huyện Bình Gia",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 182,
+  "fields": {
+    "province": 20,
+    "name": "Huyện Văn Lãng",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 183,
+  "fields": {
+    "province": 20,
+    "name": "Huyện Cao Lộc",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 184,
+  "fields": {
+    "province": 20,
+    "name": "Huyện Văn Quan",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 185,
+  "fields": {
+    "province": 20,
+    "name": "Huyện Bắc Sơn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 186,
+  "fields": {
+    "province": 20,
+    "name": "Huyện Hữu Lũng",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 187,
+  "fields": {
+    "province": 20,
+    "name": "Huyện Chi Lăng",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 188,
+  "fields": {
+    "province": 20,
+    "name": "Huyện Lộc Bình",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 189,
+  "fields": {
+    "province": 20,
+    "name": "Huyện Đình Lập",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 193,
+  "fields": {
+    "province": 22,
+    "name": "Thành phố Hạ Long",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 194,
+  "fields": {
+    "province": 22,
+    "name": "Thành phố Móng Cái",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 195,
+  "fields": {
+    "province": 22,
+    "name": "Thành phố Cẩm Phả",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 196,
+  "fields": {
+    "province": 22,
+    "name": "Thành phố Uông Bí",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 198,
+  "fields": {
+    "province": 22,
+    "name": "Huyện Bình Liêu",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 199,
+  "fields": {
+    "province": 22,
+    "name": "Huyện Tiên Yên",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 200,
+  "fields": {
+    "province": 22,
+    "name": "Huyện Đầm Hà",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 201,
+  "fields": {
+    "province": 22,
+    "name": "Huyện Hải Hà",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 202,
+  "fields": {
+    "province": 22,
+    "name": "Huyện Ba Chẽ",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 203,
+  "fields": {
+    "province": 22,
+    "name": "Huyện Vân Đồn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 204,
+  "fields": {
+    "province": 22,
+    "name": "Huyện Hoành Bồ",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 205,
+  "fields": {
+    "province": 22,
+    "name": "Thị xã Đông Triều",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 206,
+  "fields": {
+    "province": 22,
+    "name": "Thị xã Quảng Yên",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 207,
+  "fields": {
+    "province": 22,
+    "name": "Huyện Cô Tô",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 213,
+  "fields": {
+    "province": 24,
+    "name": "Thành phố Bắc Giang",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 215,
+  "fields": {
+    "province": 24,
+    "name": "Huyện Yên Thế",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 216,
+  "fields": {
+    "province": 24,
+    "name": "Huyện Tân Yên",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 217,
+  "fields": {
+    "province": 24,
+    "name": "Huyện Lạng Giang",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 218,
+  "fields": {
+    "province": 24,
+    "name": "Huyện Lục Nam",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 219,
+  "fields": {
+    "province": 24,
+    "name": "Huyện Lục Ngạn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 220,
+  "fields": {
+    "province": 24,
+    "name": "Huyện Sơn Động",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 221,
+  "fields": {
+    "province": 24,
+    "name": "Huyện Yên Dũng",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 222,
+  "fields": {
+    "province": 24,
+    "name": "Huyện Việt Yên",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 223,
+  "fields": {
+    "province": 24,
+    "name": "Huyện Hiệp Hòa",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 227,
+  "fields": {
+    "province": 25,
+    "name": "Thành phố Việt Trì",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 228,
+  "fields": {
+    "province": 25,
+    "name": "Thị xã Phú Thọ",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 230,
+  "fields": {
+    "province": 25,
+    "name": "Huyện Đoan Hùng",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 231,
+  "fields": {
+    "province": 25,
+    "name": "Huyện Hạ Hoà",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 232,
+  "fields": {
+    "province": 25,
+    "name": "Huyện Thanh Ba",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 233,
+  "fields": {
+    "province": 25,
+    "name": "Huyện Phù Ninh",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 234,
+  "fields": {
+    "province": 25,
+    "name": "Huyện Yên Lập",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 235,
+  "fields": {
+    "province": 25,
+    "name": "Huyện Cẩm Khê",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 236,
+  "fields": {
+    "province": 25,
+    "name": "Huyện Tam Nông",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 237,
+  "fields": {
+    "province": 25,
+    "name": "Huyện Lâm Thao",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 238,
+  "fields": {
+    "province": 25,
+    "name": "Huyện Thanh Sơn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 239,
+  "fields": {
+    "province": 25,
+    "name": "Huyện Thanh Thuỷ",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 240,
+  "fields": {
+    "province": 25,
+    "name": "Huyện Tân Sơn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 243,
+  "fields": {
+    "province": 26,
+    "name": "Thành phố Vĩnh Yên",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 244,
+  "fields": {
+    "province": 26,
+    "name": "Thị xã Phúc Yên",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 246,
+  "fields": {
+    "province": 26,
+    "name": "Huyện Lập Thạch",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 247,
+  "fields": {
+    "province": 26,
+    "name": "Huyện Tam Dương",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 248,
+  "fields": {
+    "province": 26,
+    "name": "Huyện Tam Đảo",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 249,
+  "fields": {
+    "province": 26,
+    "name": "Huyện Bình Xuyên",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 250,
+  "fields": {
+    "province": 1,
+    "name": "Huyện Mê Linh",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 251,
+  "fields": {
+    "province": 26,
+    "name": "Huyện Yên Lạc",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 252,
+  "fields": {
+    "province": 26,
+    "name": "Huyện Vĩnh Tường",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 253,
+  "fields": {
+    "province": 26,
+    "name": "Huyện Sông Lô",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 256,
+  "fields": {
+    "province": 27,
+    "name": "Thành phố Bắc Ninh",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 258,
+  "fields": {
+    "province": 27,
+    "name": "Huyện Yên Phong",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 259,
+  "fields": {
+    "province": 27,
+    "name": "Huyện Quế Võ",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 260,
+  "fields": {
+    "province": 27,
+    "name": "Huyện Tiên Du",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 261,
+  "fields": {
+    "province": 27,
+    "name": "Thị xã Từ Sơn",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 262,
+  "fields": {
+    "province": 27,
+    "name": "Huyện Thuận Thành",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 263,
+  "fields": {
+    "province": 27,
+    "name": "Huyện Gia Bình",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 264,
+  "fields": {
+    "province": 27,
+    "name": "Huyện Lương Tài",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 268,
+  "fields": {
+    "province": 1,
+    "name": "Quận Hà Đông",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 269,
+  "fields": {
+    "province": 1,
+    "name": "Thị xã Sơn Tây",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 271,
+  "fields": {
+    "province": 1,
+    "name": "Huyện Ba Vì",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 272,
+  "fields": {
+    "province": 1,
+    "name": "Huyện Phúc Thọ",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 273,
+  "fields": {
+    "province": 1,
+    "name": "Huyện Đan Phượng",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 274,
+  "fields": {
+    "province": 1,
+    "name": "Huyện Hoài Đức",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 275,
+  "fields": {
+    "province": 1,
+    "name": "Huyện Quốc Oai",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 276,
+  "fields": {
+    "province": 1,
+    "name": "Huyện Thạch Thất",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 277,
+  "fields": {
+    "province": 1,
+    "name": "Huyện Chương Mỹ",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 278,
+  "fields": {
+    "province": 1,
+    "name": "Huyện Thanh Oai",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 279,
+  "fields": {
+    "province": 1,
+    "name": "Huyện Thường Tín",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 280,
+  "fields": {
+    "province": 1,
+    "name": "Huyện Phú Xuyên",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 281,
+  "fields": {
+    "province": 1,
+    "name": "Huyện Ứng Hòa",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 282,
+  "fields": {
+    "province": 1,
+    "name": "Huyện Mỹ Đức",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 288,
+  "fields": {
+    "province": 30,
+    "name": "Thành phố Hải Dương",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 290,
+  "fields": {
+    "province": 30,
+    "name": "Thành Phố Chí Linh",
+    "type": "Thành Phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 291,
+  "fields": {
+    "province": 30,
+    "name": "Huyện Nam Sách",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 292,
+  "fields": {
+    "province": 30,
+    "name": "Huyện Kinh Môn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 293,
+  "fields": {
+    "province": 30,
+    "name": "Huyện Kim Thành",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 294,
+  "fields": {
+    "province": 30,
+    "name": "Huyện Thanh Hà",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 295,
+  "fields": {
+    "province": 30,
+    "name": "Huyện Cẩm Giàng",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 296,
+  "fields": {
+    "province": 30,
+    "name": "Huyện Bình Giang",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 297,
+  "fields": {
+    "province": 30,
+    "name": "Huyện Gia Lộc",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 298,
+  "fields": {
+    "province": 30,
+    "name": "Huyện Tứ Kỳ",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 299,
+  "fields": {
+    "province": 30,
+    "name": "Huyện Ninh Giang",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 300,
+  "fields": {
+    "province": 30,
+    "name": "Huyện Thanh Miện",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 303,
+  "fields": {
+    "province": 31,
+    "name": "Quận Hồng Bàng",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 304,
+  "fields": {
+    "province": 31,
+    "name": "Quận Ngô Quyền",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 305,
+  "fields": {
+    "province": 31,
+    "name": "Quận Lê Chân",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 306,
+  "fields": {
+    "province": 31,
+    "name": "Quận Hải An",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 307,
+  "fields": {
+    "province": 31,
+    "name": "Quận Kiến An",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 308,
+  "fields": {
+    "province": 31,
+    "name": "Quận Đồ Sơn",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 309,
+  "fields": {
+    "province": 31,
+    "name": "Quận Dương Kinh",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 311,
+  "fields": {
+    "province": 31,
+    "name": "Huyện Thuỷ Nguyên",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 312,
+  "fields": {
+    "province": 31,
+    "name": "Huyện An Dương",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 313,
+  "fields": {
+    "province": 31,
+    "name": "Huyện An Lão",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 314,
+  "fields": {
+    "province": 31,
+    "name": "Huyện Kiến Thuỵ",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 315,
+  "fields": {
+    "province": 31,
+    "name": "Huyện Tiên Lãng",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 316,
+  "fields": {
+    "province": 31,
+    "name": "Huyện Vĩnh Bảo",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 317,
+  "fields": {
+    "province": 31,
+    "name": "Huyện Cát Hải",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 323,
+  "fields": {
+    "province": 33,
+    "name": "Thành phố Hưng Yên",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 325,
+  "fields": {
+    "province": 33,
+    "name": "Huyện Văn Lâm",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 326,
+  "fields": {
+    "province": 33,
+    "name": "Huyện Văn Giang",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 327,
+  "fields": {
+    "province": 33,
+    "name": "Huyện Yên Mỹ",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 328,
+  "fields": {
+    "province": 33,
+    "name": "Huyện Mỹ Hào",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 329,
+  "fields": {
+    "province": 33,
+    "name": "Huyện Ân Thi",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 330,
+  "fields": {
+    "province": 33,
+    "name": "Huyện Khoái Châu",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 331,
+  "fields": {
+    "province": 33,
+    "name": "Huyện Kim Động",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 332,
+  "fields": {
+    "province": 33,
+    "name": "Huyện Tiên Lữ",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 333,
+  "fields": {
+    "province": 33,
+    "name": "Huyện Phù Cừ",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 336,
+  "fields": {
+    "province": 34,
+    "name": "Thành phố Thái Bình",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 338,
+  "fields": {
+    "province": 34,
+    "name": "Huyện Quỳnh Phụ",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 339,
+  "fields": {
+    "province": 34,
+    "name": "Huyện Hưng Hà",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 340,
+  "fields": {
+    "province": 34,
+    "name": "Huyện Đông Hưng",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 341,
+  "fields": {
+    "province": 34,
+    "name": "Huyện Thái Thụy",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 342,
+  "fields": {
+    "province": 34,
+    "name": "Huyện Tiền Hải",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 343,
+  "fields": {
+    "province": 34,
+    "name": "Huyện Kiến Xương",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 344,
+  "fields": {
+    "province": 34,
+    "name": "Huyện Vũ Thư",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 347,
+  "fields": {
+    "province": 35,
+    "name": "Thành phố Phủ Lý",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 349,
+  "fields": {
+    "province": 35,
+    "name": "Huyện Duy Tiên",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 350,
+  "fields": {
+    "province": 35,
+    "name": "Huyện Kim Bảng",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 351,
+  "fields": {
+    "province": 35,
+    "name": "Huyện Thanh Liêm",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 352,
+  "fields": {
+    "province": 35,
+    "name": "Huyện Bình Lục",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 353,
+  "fields": {
+    "province": 35,
+    "name": "Huyện Lý Nhân",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 356,
+  "fields": {
+    "province": 36,
+    "name": "Thành phố Nam Định",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 358,
+  "fields": {
+    "province": 36,
+    "name": "Huyện Mỹ Lộc",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 359,
+  "fields": {
+    "province": 36,
+    "name": "Huyện Vụ Bản",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 360,
+  "fields": {
+    "province": 36,
+    "name": "Huyện Ý Yên",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 361,
+  "fields": {
+    "province": 36,
+    "name": "Huyện Nghĩa Hưng",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 362,
+  "fields": {
+    "province": 36,
+    "name": "Huyện Nam Trực",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 363,
+  "fields": {
+    "province": 36,
+    "name": "Huyện Trực Ninh",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 364,
+  "fields": {
+    "province": 36,
+    "name": "Huyện Xuân Trường",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 365,
+  "fields": {
+    "province": 36,
+    "name": "Huyện Giao Thủy",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 366,
+  "fields": {
+    "province": 36,
+    "name": "Huyện Hải Hậu",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 369,
+  "fields": {
+    "province": 37,
+    "name": "Thành phố Ninh Bình",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 370,
+  "fields": {
+    "province": 37,
+    "name": "Thành phố Tam Điệp",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 372,
+  "fields": {
+    "province": 37,
+    "name": "Huyện Nho Quan",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 373,
+  "fields": {
+    "province": 37,
+    "name": "Huyện Gia Viễn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 374,
+  "fields": {
+    "province": 37,
+    "name": "Huyện Hoa Lư",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 375,
+  "fields": {
+    "province": 37,
+    "name": "Huyện Yên Khánh",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 376,
+  "fields": {
+    "province": 37,
+    "name": "Huyện Kim Sơn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 377,
+  "fields": {
+    "province": 37,
+    "name": "Huyện Yên Mô",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 380,
+  "fields": {
+    "province": 38,
+    "name": "Thành phố Thanh Hóa",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 381,
+  "fields": {
+    "province": 38,
+    "name": "Thị xã Bỉm Sơn",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 382,
+  "fields": {
+    "province": 38,
+    "name": "Thành phố Sầm Sơn",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 384,
+  "fields": {
+    "province": 38,
+    "name": "Huyện Mường Lát",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 385,
+  "fields": {
+    "province": 38,
+    "name": "Huyện Quan Hóa",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 386,
+  "fields": {
+    "province": 38,
+    "name": "Huyện Bá Thước",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 387,
+  "fields": {
+    "province": 38,
+    "name": "Huyện Quan Sơn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 388,
+  "fields": {
+    "province": 38,
+    "name": "Huyện Lang Chánh",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 389,
+  "fields": {
+    "province": 38,
+    "name": "Huyện Ngọc Lặc",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 390,
+  "fields": {
+    "province": 38,
+    "name": "Huyện Cẩm Thủy",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 391,
+  "fields": {
+    "province": 38,
+    "name": "Huyện Thạch Thành",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 392,
+  "fields": {
+    "province": 38,
+    "name": "Huyện Hà Trung",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 393,
+  "fields": {
+    "province": 38,
+    "name": "Huyện Vĩnh Lộc",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 394,
+  "fields": {
+    "province": 38,
+    "name": "Huyện Yên Định",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 395,
+  "fields": {
+    "province": 38,
+    "name": "Huyện Thọ Xuân",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 396,
+  "fields": {
+    "province": 38,
+    "name": "Huyện Thường Xuân",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 397,
+  "fields": {
+    "province": 38,
+    "name": "Huyện Triệu Sơn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 398,
+  "fields": {
+    "province": 38,
+    "name": "Huyện Thiệu Hóa",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 399,
+  "fields": {
+    "province": 38,
+    "name": "Huyện Hoằng Hóa",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 400,
+  "fields": {
+    "province": 38,
+    "name": "Huyện Hậu Lộc",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 401,
+  "fields": {
+    "province": 38,
+    "name": "Huyện Nga Sơn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 402,
+  "fields": {
+    "province": 38,
+    "name": "Huyện Như Xuân",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 403,
+  "fields": {
+    "province": 38,
+    "name": "Huyện Như Thanh",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 404,
+  "fields": {
+    "province": 38,
+    "name": "Huyện Nông Cống",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 405,
+  "fields": {
+    "province": 38,
+    "name": "Huyện Đông Sơn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 406,
+  "fields": {
+    "province": 38,
+    "name": "Huyện Quảng Xương",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 407,
+  "fields": {
+    "province": 38,
+    "name": "Huyện Tĩnh Gia",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 412,
+  "fields": {
+    "province": 40,
+    "name": "Thành phố Vinh",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 413,
+  "fields": {
+    "province": 40,
+    "name": "Thị xã Cửa Lò",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 414,
+  "fields": {
+    "province": 40,
+    "name": "Thị xã Thái Hoà",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 415,
+  "fields": {
+    "province": 40,
+    "name": "Huyện Quế Phong",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 416,
+  "fields": {
+    "province": 40,
+    "name": "Huyện Quỳ Châu",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 417,
+  "fields": {
+    "province": 40,
+    "name": "Huyện Kỳ Sơn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 418,
+  "fields": {
+    "province": 40,
+    "name": "Huyện Tương Dương",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 419,
+  "fields": {
+    "province": 40,
+    "name": "Huyện Nghĩa Đàn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 420,
+  "fields": {
+    "province": 40,
+    "name": "Huyện Quỳ Hợp",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 421,
+  "fields": {
+    "province": 40,
+    "name": "Huyện Quỳnh Lưu",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 422,
+  "fields": {
+    "province": 40,
+    "name": "Huyện Con Cuông",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 423,
+  "fields": {
+    "province": 40,
+    "name": "Huyện Tân Kỳ",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 424,
+  "fields": {
+    "province": 40,
+    "name": "Huyện Anh Sơn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 425,
+  "fields": {
+    "province": 40,
+    "name": "Huyện Diễn Châu",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 426,
+  "fields": {
+    "province": 40,
+    "name": "Huyện Yên Thành",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 427,
+  "fields": {
+    "province": 40,
+    "name": "Huyện Đô Lương",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 428,
+  "fields": {
+    "province": 40,
+    "name": "Huyện Thanh Chương",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 429,
+  "fields": {
+    "province": 40,
+    "name": "Huyện Nghi Lộc",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 430,
+  "fields": {
+    "province": 40,
+    "name": "Huyện Nam Đàn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 431,
+  "fields": {
+    "province": 40,
+    "name": "Huyện Hưng Nguyên",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 432,
+  "fields": {
+    "province": 40,
+    "name": "Thị xã Hoàng Mai",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 436,
+  "fields": {
+    "province": 42,
+    "name": "Thành phố Hà Tĩnh",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 437,
+  "fields": {
+    "province": 42,
+    "name": "Thị xã Hồng Lĩnh",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 439,
+  "fields": {
+    "province": 42,
+    "name": "Huyện Hương Sơn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 440,
+  "fields": {
+    "province": 42,
+    "name": "Huyện Đức Thọ",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 441,
+  "fields": {
+    "province": 42,
+    "name": "Huyện Vũ Quang",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 442,
+  "fields": {
+    "province": 42,
+    "name": "Huyện Nghi Xuân",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 443,
+  "fields": {
+    "province": 42,
+    "name": "Huyện Can Lộc",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 444,
+  "fields": {
+    "province": 42,
+    "name": "Huyện Hương Khê",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 445,
+  "fields": {
+    "province": 42,
+    "name": "Huyện Thạch Hà",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 446,
+  "fields": {
+    "province": 42,
+    "name": "Huyện Cẩm Xuyên",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 447,
+  "fields": {
+    "province": 42,
+    "name": "Huyện Kỳ Anh",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 448,
+  "fields": {
+    "province": 42,
+    "name": "Huyện Lộc Hà",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 449,
+  "fields": {
+    "province": 42,
+    "name": "Thị xã Kỳ Anh",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 450,
+  "fields": {
+    "province": 44,
+    "name": "Thành Phố Đồng Hới",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 452,
+  "fields": {
+    "province": 44,
+    "name": "Huyện Minh Hóa",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 453,
+  "fields": {
+    "province": 44,
+    "name": "Huyện Tuyên Hóa",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 454,
+  "fields": {
+    "province": 44,
+    "name": "Huyện Quảng Trạch",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 455,
+  "fields": {
+    "province": 44,
+    "name": "Huyện Bố Trạch",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 456,
+  "fields": {
+    "province": 44,
+    "name": "Huyện Quảng Ninh",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 457,
+  "fields": {
+    "province": 44,
+    "name": "Huyện Lệ Thủy",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 458,
+  "fields": {
+    "province": 44,
+    "name": "Thị xã Ba Đồn",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 461,
+  "fields": {
+    "province": 45,
+    "name": "Thành phố Đông Hà",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 462,
+  "fields": {
+    "province": 45,
+    "name": "Thị xã Quảng Trị",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 464,
+  "fields": {
+    "province": 45,
+    "name": "Huyện Vĩnh Linh",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 465,
+  "fields": {
+    "province": 45,
+    "name": "Huyện Hướng Hóa",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 466,
+  "fields": {
+    "province": 45,
+    "name": "Huyện Gio Linh",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 467,
+  "fields": {
+    "province": 45,
+    "name": "Huyện Đa Krông",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 468,
+  "fields": {
+    "province": 45,
+    "name": "Huyện Cam Lộ",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 469,
+  "fields": {
+    "province": 45,
+    "name": "Huyện Triệu Phong",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 470,
+  "fields": {
+    "province": 45,
+    "name": "Huyện Hải Lăng",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 474,
+  "fields": {
+    "province": 46,
+    "name": "Thành phố Huế",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 476,
+  "fields": {
+    "province": 46,
+    "name": "Huyện Phong Điền",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 477,
+  "fields": {
+    "province": 46,
+    "name": "Huyện Quảng Điền",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 478,
+  "fields": {
+    "province": 46,
+    "name": "Huyện Phú Vang",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 479,
+  "fields": {
+    "province": 46,
+    "name": "Thị xã Hương Thủy",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 480,
+  "fields": {
+    "province": 46,
+    "name": "Thị xã Hương Trà",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 481,
+  "fields": {
+    "province": 46,
+    "name": "Huyện A Lưới",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 482,
+  "fields": {
+    "province": 46,
+    "name": "Huyện Phú Lộc",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 483,
+  "fields": {
+    "province": 46,
+    "name": "Huyện Nam Đông",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 490,
+  "fields": {
+    "province": 48,
+    "name": "Quận Liên Chiểu",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 491,
+  "fields": {
+    "province": 48,
+    "name": "Quận Thanh Khê",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 492,
+  "fields": {
+    "province": 48,
+    "name": "Quận Hải Châu",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 493,
+  "fields": {
+    "province": 48,
+    "name": "Quận Sơn Trà",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 494,
+  "fields": {
+    "province": 48,
+    "name": "Quận Ngũ Hành Sơn",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 495,
+  "fields": {
+    "province": 48,
+    "name": "Quận Cẩm Lệ",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 497,
+  "fields": {
+    "province": 48,
+    "name": "Huyện Hòa Vang",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 502,
+  "fields": {
+    "province": 49,
+    "name": "Thành phố Tam Kỳ",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 503,
+  "fields": {
+    "province": 49,
+    "name": "Thành phố Hội An",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 504,
+  "fields": {
+    "province": 49,
+    "name": "Huyện Tây Giang",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 505,
+  "fields": {
+    "province": 49,
+    "name": "Huyện Đông Giang",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 506,
+  "fields": {
+    "province": 49,
+    "name": "Huyện Đại Lộc",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 507,
+  "fields": {
+    "province": 49,
+    "name": "Thị xã Điện Bàn",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 508,
+  "fields": {
+    "province": 49,
+    "name": "Huyện Duy Xuyên",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 509,
+  "fields": {
+    "province": 49,
+    "name": "Huyện Quế Sơn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 510,
+  "fields": {
+    "province": 49,
+    "name": "Huyện Nam Giang",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 511,
+  "fields": {
+    "province": 49,
+    "name": "Huyện Phước Sơn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 512,
+  "fields": {
+    "province": 49,
+    "name": "Huyện Hiệp Đức",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 513,
+  "fields": {
+    "province": 49,
+    "name": "Huyện Thăng Bình",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 514,
+  "fields": {
+    "province": 49,
+    "name": "Huyện Tiên Phước",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 515,
+  "fields": {
+    "province": 49,
+    "name": "Huyện Bắc Trà My",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 516,
+  "fields": {
+    "province": 49,
+    "name": "Huyện Nam Trà My",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 517,
+  "fields": {
+    "province": 49,
+    "name": "Huyện Núi Thành",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 518,
+  "fields": {
+    "province": 49,
+    "name": "Huyện Phú Ninh",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 519,
+  "fields": {
+    "province": 49,
+    "name": "Huyện Nông Sơn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 522,
+  "fields": {
+    "province": 51,
+    "name": "Thành phố Quảng Ngãi",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 524,
+  "fields": {
+    "province": 51,
+    "name": "Huyện Bình Sơn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 525,
+  "fields": {
+    "province": 51,
+    "name": "Huyện Trà Bồng",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 526,
+  "fields": {
+    "province": 51,
+    "name": "Huyện Tây Trà",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 527,
+  "fields": {
+    "province": 51,
+    "name": "Huyện Sơn Tịnh",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 528,
+  "fields": {
+    "province": 51,
+    "name": "Huyện Tư Nghĩa",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 529,
+  "fields": {
+    "province": 51,
+    "name": "Huyện Sơn Hà",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 530,
+  "fields": {
+    "province": 51,
+    "name": "Huyện Sơn Tây",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 531,
+  "fields": {
+    "province": 51,
+    "name": "Huyện Minh Long",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 532,
+  "fields": {
+    "province": 51,
+    "name": "Huyện Nghĩa Hành",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 533,
+  "fields": {
+    "province": 51,
+    "name": "Huyện Mộ Đức",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 534,
+  "fields": {
+    "province": 51,
+    "name": "Huyện Đức Phổ",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 535,
+  "fields": {
+    "province": 51,
+    "name": "Huyện Ba Tơ",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 536,
+  "fields": {
+    "province": 51,
+    "name": "Huyện Lý Sơn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 540,
+  "fields": {
+    "province": 52,
+    "name": "Thành phố Qui Nhơn",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 542,
+  "fields": {
+    "province": 52,
+    "name": "Huyện An Lão",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 543,
+  "fields": {
+    "province": 52,
+    "name": "Huyện Hoài Nhơn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 544,
+  "fields": {
+    "province": 52,
+    "name": "Huyện Hoài Ân",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 545,
+  "fields": {
+    "province": 52,
+    "name": "Huyện Phù Mỹ",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 546,
+  "fields": {
+    "province": 52,
+    "name": "Huyện Vĩnh Thạnh",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 547,
+  "fields": {
+    "province": 52,
+    "name": "Huyện Tây Sơn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 548,
+  "fields": {
+    "province": 52,
+    "name": "Huyện Phù Cát",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 549,
+  "fields": {
+    "province": 52,
+    "name": "Thị xã An Nhơn",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 550,
+  "fields": {
+    "province": 52,
+    "name": "Huyện Tuy Phước",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 551,
+  "fields": {
+    "province": 52,
+    "name": "Huyện Vân Canh",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 555,
+  "fields": {
+    "province": 54,
+    "name": "Thành phố Tuy Hoà",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 557,
+  "fields": {
+    "province": 54,
+    "name": "Thị xã Sông Cầu",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 558,
+  "fields": {
+    "province": 54,
+    "name": "Huyện Đồng Xuân",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 559,
+  "fields": {
+    "province": 54,
+    "name": "Huyện Tuy An",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 560,
+  "fields": {
+    "province": 54,
+    "name": "Huyện Sơn Hòa",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 561,
+  "fields": {
+    "province": 54,
+    "name": "Huyện Sông Hinh",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 562,
+  "fields": {
+    "province": 54,
+    "name": "Huyện Tây Hoà",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 563,
+  "fields": {
+    "province": 54,
+    "name": "Huyện Phú Hoà",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 564,
+  "fields": {
+    "province": 54,
+    "name": "Huyện Đông Hòa",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 568,
+  "fields": {
+    "province": 56,
+    "name": "Thành phố Nha Trang",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 569,
+  "fields": {
+    "province": 56,
+    "name": "Thành phố Cam Ranh",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 570,
+  "fields": {
+    "province": 56,
+    "name": "Huyện Cam Lâm",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 571,
+  "fields": {
+    "province": 56,
+    "name": "Huyện Vạn Ninh",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 572,
+  "fields": {
+    "province": 56,
+    "name": "Thị xã Ninh Hòa",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 573,
+  "fields": {
+    "province": 56,
+    "name": "Huyện Khánh Vĩnh",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 574,
+  "fields": {
+    "province": 56,
+    "name": "Huyện Diên Khánh",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 575,
+  "fields": {
+    "province": 56,
+    "name": "Huyện Khánh Sơn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 576,
+  "fields": {
+    "province": 56,
+    "name": "Huyện Trường Sa",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 582,
+  "fields": {
+    "province": 58,
+    "name": "Thành phố Phan Rang-Tháp Chàm",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 584,
+  "fields": {
+    "province": 58,
+    "name": "Huyện Bác Ái",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 585,
+  "fields": {
+    "province": 58,
+    "name": "Huyện Ninh Sơn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 586,
+  "fields": {
+    "province": 58,
+    "name": "Huyện Ninh Hải",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 587,
+  "fields": {
+    "province": 58,
+    "name": "Huyện Ninh Phước",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 588,
+  "fields": {
+    "province": 58,
+    "name": "Huyện Thuận Bắc",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 589,
+  "fields": {
+    "province": 58,
+    "name": "Huyện Thuận Nam",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 593,
+  "fields": {
+    "province": 60,
+    "name": "Thành phố Phan Thiết",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 594,
+  "fields": {
+    "province": 60,
+    "name": "Thị xã La Gi",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 595,
+  "fields": {
+    "province": 60,
+    "name": "Huyện Tuy Phong",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 596,
+  "fields": {
+    "province": 60,
+    "name": "Huyện Bắc Bình",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 597,
+  "fields": {
+    "province": 60,
+    "name": "Huyện Hàm Thuận Bắc",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 598,
+  "fields": {
+    "province": 60,
+    "name": "Huyện Hàm Thuận Nam",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 599,
+  "fields": {
+    "province": 60,
+    "name": "Huyện Tánh Linh",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 600,
+  "fields": {
+    "province": 60,
+    "name": "Huyện Đức Linh",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 601,
+  "fields": {
+    "province": 60,
+    "name": "Huyện Hàm Tân",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 602,
+  "fields": {
+    "province": 60,
+    "name": "Huyện Phú Quí",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 608,
+  "fields": {
+    "province": 62,
+    "name": "Thành phố Kon Tum",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 610,
+  "fields": {
+    "province": 62,
+    "name": "Huyện Đắk Glei",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 611,
+  "fields": {
+    "province": 62,
+    "name": "Huyện Ngọc Hồi",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 612,
+  "fields": {
+    "province": 62,
+    "name": "Huyện Đắk Tô",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 613,
+  "fields": {
+    "province": 62,
+    "name": "Huyện Kon Plông",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 614,
+  "fields": {
+    "province": 62,
+    "name": "Huyện Kon Rẫy",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 615,
+  "fields": {
+    "province": 62,
+    "name": "Huyện Đắk Hà",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 616,
+  "fields": {
+    "province": 62,
+    "name": "Huyện Sa Thầy",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 617,
+  "fields": {
+    "province": 62,
+    "name": "Huyện Tu Mơ Rông",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 618,
+  "fields": {
+    "province": 62,
+    "name": "Huyện Ia H' Drai",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 622,
+  "fields": {
+    "province": 64,
+    "name": "Thành phố Pleiku",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 623,
+  "fields": {
+    "province": 64,
+    "name": "Thị xã An Khê",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 624,
+  "fields": {
+    "province": 64,
+    "name": "Thị xã Ayun Pa",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 625,
+  "fields": {
+    "province": 64,
+    "name": "Huyện KBang",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 626,
+  "fields": {
+    "province": 64,
+    "name": "Huyện Đăk Đoa",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 627,
+  "fields": {
+    "province": 64,
+    "name": "Huyện Chư Păh",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 628,
+  "fields": {
+    "province": 64,
+    "name": "Huyện Ia Grai",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 629,
+  "fields": {
+    "province": 64,
+    "name": "Huyện Mang Yang",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 630,
+  "fields": {
+    "province": 64,
+    "name": "Huyện Kông Chro",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 631,
+  "fields": {
+    "province": 64,
+    "name": "Huyện Đức Cơ",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 632,
+  "fields": {
+    "province": 64,
+    "name": "Huyện Chư Prông",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 633,
+  "fields": {
+    "province": 64,
+    "name": "Huyện Chư Sê",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 634,
+  "fields": {
+    "province": 64,
+    "name": "Huyện Đăk Pơ",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 635,
+  "fields": {
+    "province": 64,
+    "name": "Huyện Ia Pa",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 637,
+  "fields": {
+    "province": 64,
+    "name": "Huyện Krông Pa",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 638,
+  "fields": {
+    "province": 64,
+    "name": "Huyện Phú Thiện",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 639,
+  "fields": {
+    "province": 64,
+    "name": "Huyện Chư Pưh",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 643,
+  "fields": {
+    "province": 66,
+    "name": "Thành phố Buôn Ma Thuột",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 644,
+  "fields": {
+    "province": 66,
+    "name": "Thị Xã Buôn Hồ",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 645,
+  "fields": {
+    "province": 66,
+    "name": "Huyện Ea H'leo",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 646,
+  "fields": {
+    "province": 66,
+    "name": "Huyện Ea Súp",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 647,
+  "fields": {
+    "province": 66,
+    "name": "Huyện Buôn Đôn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 648,
+  "fields": {
+    "province": 66,
+    "name": "Huyện Cư M'gar",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 649,
+  "fields": {
+    "province": 66,
+    "name": "Huyện Krông Búk",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 650,
+  "fields": {
+    "province": 66,
+    "name": "Huyện Krông Năng",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 651,
+  "fields": {
+    "province": 66,
+    "name": "Huyện Ea Kar",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 652,
+  "fields": {
+    "province": 66,
+    "name": "Huyện M'Đrắk",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 653,
+  "fields": {
+    "province": 66,
+    "name": "Huyện Krông Bông",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 654,
+  "fields": {
+    "province": 66,
+    "name": "Huyện Krông Pắc",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 655,
+  "fields": {
+    "province": 66,
+    "name": "Huyện Krông A Na",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 656,
+  "fields": {
+    "province": 66,
+    "name": "Huyện Lắk",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 657,
+  "fields": {
+    "province": 66,
+    "name": "Huyện Cư Kuin",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 660,
+  "fields": {
+    "province": 67,
+    "name": "Thị xã Gia Nghĩa",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 661,
+  "fields": {
+    "province": 67,
+    "name": "Huyện Đăk Glong",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 662,
+  "fields": {
+    "province": 67,
+    "name": "Huyện Cư Jút",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 663,
+  "fields": {
+    "province": 67,
+    "name": "Huyện Đắk Mil",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 664,
+  "fields": {
+    "province": 67,
+    "name": "Huyện Krông Nô",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 665,
+  "fields": {
+    "province": 67,
+    "name": "Huyện Đắk Song",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 666,
+  "fields": {
+    "province": 67,
+    "name": "Huyện Đắk R'Lấp",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 667,
+  "fields": {
+    "province": 67,
+    "name": "Huyện Tuy Đức",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 672,
+  "fields": {
+    "province": 68,
+    "name": "Thành phố Đà Lạt",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 673,
+  "fields": {
+    "province": 68,
+    "name": "Thành phố Bảo Lộc",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 674,
+  "fields": {
+    "province": 68,
+    "name": "Huyện Đam Rông",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 675,
+  "fields": {
+    "province": 68,
+    "name": "Huyện Lạc Dương",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 676,
+  "fields": {
+    "province": 68,
+    "name": "Huyện Lâm Hà",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 677,
+  "fields": {
+    "province": 68,
+    "name": "Huyện Đơn Dương",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 678,
+  "fields": {
+    "province": 68,
+    "name": "Huyện Đức Trọng",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 679,
+  "fields": {
+    "province": 68,
+    "name": "Huyện Di Linh",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 680,
+  "fields": {
+    "province": 68,
+    "name": "Huyện Bảo Lâm",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 681,
+  "fields": {
+    "province": 68,
+    "name": "Huyện Đạ Huoai",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 682,
+  "fields": {
+    "province": 68,
+    "name": "Huyện Đạ Tẻh",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 683,
+  "fields": {
+    "province": 68,
+    "name": "Huyện Cát Tiên",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 688,
+  "fields": {
+    "province": 70,
+    "name": "Thị xã Phước Long",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 689,
+  "fields": {
+    "province": 70,
+    "name": "Thị xã Đồng Xoài",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 690,
+  "fields": {
+    "province": 70,
+    "name": "Thị xã Bình Long",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 691,
+  "fields": {
+    "province": 70,
+    "name": "Huyện Bù Gia Mập",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 692,
+  "fields": {
+    "province": 70,
+    "name": "Huyện Lộc Ninh",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 693,
+  "fields": {
+    "province": 70,
+    "name": "Huyện Bù Đốp",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 694,
+  "fields": {
+    "province": 70,
+    "name": "Huyện Hớn Quản",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 695,
+  "fields": {
+    "province": 70,
+    "name": "Huyện Đồng Phú",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 696,
+  "fields": {
+    "province": 70,
+    "name": "Huyện Bù Đăng",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 697,
+  "fields": {
+    "province": 70,
+    "name": "Huyện Chơn Thành",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 698,
+  "fields": {
+    "province": 70,
+    "name": "Huyện Phú Riềng",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 703,
+  "fields": {
+    "province": 72,
+    "name": "Thành phố Tây Ninh",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 705,
+  "fields": {
+    "province": 72,
+    "name": "Huyện Tân Biên",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 706,
+  "fields": {
+    "province": 72,
+    "name": "Huyện Tân Châu",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 707,
+  "fields": {
+    "province": 72,
+    "name": "Huyện Dương Minh Châu",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 708,
+  "fields": {
+    "province": 72,
+    "name": "Huyện Châu Thành",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 709,
+  "fields": {
+    "province": 72,
+    "name": "Huyện Hòa Thành",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 710,
+  "fields": {
+    "province": 72,
+    "name": "Huyện Gò Dầu",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 711,
+  "fields": {
+    "province": 72,
+    "name": "Huyện Bến Cầu",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 712,
+  "fields": {
+    "province": 72,
+    "name": "Huyện Trảng Bàng",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 718,
+  "fields": {
+    "province": 74,
+    "name": "Thành phố Thủ Dầu Một",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 719,
+  "fields": {
+    "province": 74,
+    "name": "Huyện Bàu Bàng",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 720,
+  "fields": {
+    "province": 74,
+    "name": "Huyện Dầu Tiếng",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 721,
+  "fields": {
+    "province": 74,
+    "name": "Thị xã Bến Cát",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 722,
+  "fields": {
+    "province": 74,
+    "name": "Huyện Phú Giáo",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 723,
+  "fields": {
+    "province": 74,
+    "name": "Thị xã Tân Uyên",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 724,
+  "fields": {
+    "province": 74,
+    "name": "Thị xã Dĩ An",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 725,
+  "fields": {
+    "province": 74,
+    "name": "Thị xã Thuận An",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 726,
+  "fields": {
+    "province": 74,
+    "name": "Huyện Bắc Tân Uyên",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 731,
+  "fields": {
+    "province": 75,
+    "name": "Thành phố Biên Hòa",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 732,
+  "fields": {
+    "province": 75,
+    "name": "Thị xã Long Khánh",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 734,
+  "fields": {
+    "province": 75,
+    "name": "Huyện Tân Phú",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 735,
+  "fields": {
+    "province": 75,
+    "name": "Huyện Vĩnh Cửu",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 736,
+  "fields": {
+    "province": 75,
+    "name": "Huyện Định Quán",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 737,
+  "fields": {
+    "province": 75,
+    "name": "Huyện Trảng Bom",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 738,
+  "fields": {
+    "province": 75,
+    "name": "Huyện Thống Nhất",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 739,
+  "fields": {
+    "province": 75,
+    "name": "Huyện Cẩm Mỹ",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 740,
+  "fields": {
+    "province": 75,
+    "name": "Huyện Long Thành",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 741,
+  "fields": {
+    "province": 75,
+    "name": "Huyện Xuân Lộc",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 742,
+  "fields": {
+    "province": 75,
+    "name": "Huyện Nhơn Trạch",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 747,
+  "fields": {
+    "province": 77,
+    "name": "Thành phố Vũng Tàu",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 748,
+  "fields": {
+    "province": 77,
+    "name": "Thành phố Bà Rịa",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 750,
+  "fields": {
+    "province": 77,
+    "name": "Huyện Châu Đức",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 751,
+  "fields": {
+    "province": 77,
+    "name": "Huyện Xuyên Mộc",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 752,
+  "fields": {
+    "province": 77,
+    "name": "Huyện Long Điền",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 753,
+  "fields": {
+    "province": 77,
+    "name": "Huyện Đất Đỏ",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 754,
+  "fields": {
+    "province": 77,
+    "name": "Huyện Tân Thành",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 760,
+  "fields": {
+    "province": 79,
+    "name": "Quận 1",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 761,
+  "fields": {
+    "province": 79,
+    "name": "Quận 12",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 762,
+  "fields": {
+    "province": 79,
+    "name": "Quận Thủ Đức",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 763,
+  "fields": {
+    "province": 79,
+    "name": "Quận 9",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 764,
+  "fields": {
+    "province": 79,
+    "name": "Quận Gò Vấp",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 765,
+  "fields": {
+    "province": 79,
+    "name": "Quận Bình Thạnh",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 766,
+  "fields": {
+    "province": 79,
+    "name": "Quận Tân Bình",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 767,
+  "fields": {
+    "province": 79,
+    "name": "Quận Tân Phú",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 768,
+  "fields": {
+    "province": 79,
+    "name": "Quận Phú Nhuận",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 769,
+  "fields": {
+    "province": 79,
+    "name": "Quận 2",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 770,
+  "fields": {
+    "province": 79,
+    "name": "Quận 3",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 771,
+  "fields": {
+    "province": 79,
+    "name": "Quận 10",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 772,
+  "fields": {
+    "province": 79,
+    "name": "Quận 11",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 773,
+  "fields": {
+    "province": 79,
+    "name": "Quận 4",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 774,
+  "fields": {
+    "province": 79,
+    "name": "Quận 5",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 775,
+  "fields": {
+    "province": 79,
+    "name": "Quận 6",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 776,
+  "fields": {
+    "province": 79,
+    "name": "Quận 8",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 777,
+  "fields": {
+    "province": 79,
+    "name": "Quận Bình Tân",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 778,
+  "fields": {
+    "province": 79,
+    "name": "Quận 7",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 783,
+  "fields": {
+    "province": 79,
+    "name": "Huyện Củ Chi",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 784,
+  "fields": {
+    "province": 79,
+    "name": "Huyện Hóc Môn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 785,
+  "fields": {
+    "province": 79,
+    "name": "Huyện Bình Chánh",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 786,
+  "fields": {
+    "province": 79,
+    "name": "Huyện Nhà Bè",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 787,
+  "fields": {
+    "province": 79,
+    "name": "Huyện Cần Giờ",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 794,
+  "fields": {
+    "province": 80,
+    "name": "Thành phố Tân An",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 795,
+  "fields": {
+    "province": 80,
+    "name": "Thị xã Kiến Tường",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 796,
+  "fields": {
+    "province": 80,
+    "name": "Huyện Tân Hưng",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 797,
+  "fields": {
+    "province": 80,
+    "name": "Huyện Vĩnh Hưng",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 798,
+  "fields": {
+    "province": 80,
+    "name": "Huyện Mộc Hóa",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 799,
+  "fields": {
+    "province": 80,
+    "name": "Huyện Tân Thạnh",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 800,
+  "fields": {
+    "province": 80,
+    "name": "Huyện Thạnh Hóa",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 801,
+  "fields": {
+    "province": 80,
+    "name": "Huyện Đức Huệ",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 802,
+  "fields": {
+    "province": 80,
+    "name": "Huyện Đức Hòa",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 803,
+  "fields": {
+    "province": 80,
+    "name": "Huyện Bến Lức",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 804,
+  "fields": {
+    "province": 80,
+    "name": "Huyện Thủ Thừa",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 805,
+  "fields": {
+    "province": 80,
+    "name": "Huyện Tân Trụ",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 806,
+  "fields": {
+    "province": 80,
+    "name": "Huyện Cần Đước",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 807,
+  "fields": {
+    "province": 80,
+    "name": "Huyện Cần Giuộc",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 808,
+  "fields": {
+    "province": 80,
+    "name": "Huyện Châu Thành",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 815,
+  "fields": {
+    "province": 82,
+    "name": "Thành phố Mỹ Tho",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 816,
+  "fields": {
+    "province": 82,
+    "name": "Thị xã Gò Công",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 817,
+  "fields": {
+    "province": 82,
+    "name": "Thị xã Cai Lậy",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 818,
+  "fields": {
+    "province": 82,
+    "name": "Huyện Tân Phước",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 819,
+  "fields": {
+    "province": 82,
+    "name": "Huyện Cái Bè",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 820,
+  "fields": {
+    "province": 82,
+    "name": "Huyện Cai Lậy",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 821,
+  "fields": {
+    "province": 82,
+    "name": "Huyện Châu Thành",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 822,
+  "fields": {
+    "province": 82,
+    "name": "Huyện Chợ Gạo",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 823,
+  "fields": {
+    "province": 82,
+    "name": "Huyện Gò Công Tây",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 824,
+  "fields": {
+    "province": 82,
+    "name": "Huyện Gò Công Đông",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 825,
+  "fields": {
+    "province": 82,
+    "name": "Huyện Tân Phú Đông",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 829,
+  "fields": {
+    "province": 83,
+    "name": "Thành phố Bến Tre",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 831,
+  "fields": {
+    "province": 83,
+    "name": "Huyện Châu Thành",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 832,
+  "fields": {
+    "province": 83,
+    "name": "Huyện Chợ Lách",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 833,
+  "fields": {
+    "province": 83,
+    "name": "Huyện Mỏ Cày Nam",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 834,
+  "fields": {
+    "province": 83,
+    "name": "Huyện Giồng Trôm",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 835,
+  "fields": {
+    "province": 83,
+    "name": "Huyện Bình Đại",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 836,
+  "fields": {
+    "province": 83,
+    "name": "Huyện Ba Tri",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 837,
+  "fields": {
+    "province": 83,
+    "name": "Huyện Thạnh Phú",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 838,
+  "fields": {
+    "province": 83,
+    "name": "Huyện Mỏ Cày Bắc",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 842,
+  "fields": {
+    "province": 84,
+    "name": "Thành phố Trà Vinh",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 844,
+  "fields": {
+    "province": 84,
+    "name": "Huyện Càng Long",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 845,
+  "fields": {
+    "province": 84,
+    "name": "Huyện Cầu Kè",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 846,
+  "fields": {
+    "province": 84,
+    "name": "Huyện Tiểu Cần",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 847,
+  "fields": {
+    "province": 84,
+    "name": "Huyện Châu Thành",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 848,
+  "fields": {
+    "province": 84,
+    "name": "Huyện Cầu Ngang",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 849,
+  "fields": {
+    "province": 84,
+    "name": "Huyện Trà Cú",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 850,
+  "fields": {
+    "province": 84,
+    "name": "Huyện Duyên Hải",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 851,
+  "fields": {
+    "province": 84,
+    "name": "Thị xã Duyên Hải",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 855,
+  "fields": {
+    "province": 86,
+    "name": "Thành phố Vĩnh Long",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 857,
+  "fields": {
+    "province": 86,
+    "name": "Huyện Long Hồ",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 858,
+  "fields": {
+    "province": 86,
+    "name": "Huyện Mang Thít",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 859,
+  "fields": {
+    "province": 86,
+    "name": "Huyện  Vũng Liêm",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 860,
+  "fields": {
+    "province": 86,
+    "name": "Huyện Tam Bình",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 861,
+  "fields": {
+    "province": 86,
+    "name": "Thị xã Bình Minh",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 862,
+  "fields": {
+    "province": 86,
+    "name": "Huyện Trà Ôn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 863,
+  "fields": {
+    "province": 86,
+    "name": "Huyện Bình Tân",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 866,
+  "fields": {
+    "province": 87,
+    "name": "Thành phố Cao Lãnh",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 867,
+  "fields": {
+    "province": 87,
+    "name": "Thành phố Sa Đéc",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 868,
+  "fields": {
+    "province": 87,
+    "name": "Thị xã Hồng Ngự",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 869,
+  "fields": {
+    "province": 87,
+    "name": "Huyện Tân Hồng",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 870,
+  "fields": {
+    "province": 87,
+    "name": "Huyện Hồng Ngự",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 871,
+  "fields": {
+    "province": 87,
+    "name": "Huyện Tam Nông",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 872,
+  "fields": {
+    "province": 87,
+    "name": "Huyện Tháp Mười",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 873,
+  "fields": {
+    "province": 87,
+    "name": "Huyện Cao Lãnh",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 874,
+  "fields": {
+    "province": 87,
+    "name": "Huyện Thanh Bình",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 875,
+  "fields": {
+    "province": 87,
+    "name": "Huyện Lấp Vò",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 876,
+  "fields": {
+    "province": 87,
+    "name": "Huyện Lai Vung",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 877,
+  "fields": {
+    "province": 87,
+    "name": "Huyện Châu Thành",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 883,
+  "fields": {
+    "province": 89,
+    "name": "Thành phố Long Xuyên",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 884,
+  "fields": {
+    "province": 89,
+    "name": "Thành phố Châu Đốc",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 886,
+  "fields": {
+    "province": 89,
+    "name": "Huyện An Phú",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 887,
+  "fields": {
+    "province": 89,
+    "name": "Thị xã Tân Châu",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 888,
+  "fields": {
+    "province": 89,
+    "name": "Huyện Phú Tân",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 889,
+  "fields": {
+    "province": 89,
+    "name": "Huyện Châu Phú",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 890,
+  "fields": {
+    "province": 89,
+    "name": "Huyện Tịnh Biên",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 891,
+  "fields": {
+    "province": 89,
+    "name": "Huyện Tri Tôn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 892,
+  "fields": {
+    "province": 89,
+    "name": "Huyện Châu Thành",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 893,
+  "fields": {
+    "province": 89,
+    "name": "Huyện Chợ Mới",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 894,
+  "fields": {
+    "province": 89,
+    "name": "Huyện Thoại Sơn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 899,
+  "fields": {
+    "province": 91,
+    "name": "Thành phố Rạch Giá",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 900,
+  "fields": {
+    "province": 91,
+    "name": "Thị xã Hà Tiên",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 902,
+  "fields": {
+    "province": 91,
+    "name": "Huyện Kiên Lương",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 903,
+  "fields": {
+    "province": 91,
+    "name": "Huyện Hòn Đất",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 904,
+  "fields": {
+    "province": 91,
+    "name": "Huyện Tân Hiệp",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 905,
+  "fields": {
+    "province": 91,
+    "name": "Huyện Châu Thành",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 906,
+  "fields": {
+    "province": 91,
+    "name": "Huyện Giồng Riềng",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 907,
+  "fields": {
+    "province": 91,
+    "name": "Huyện Gò Quao",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 908,
+  "fields": {
+    "province": 91,
+    "name": "Huyện An Biên",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 909,
+  "fields": {
+    "province": 91,
+    "name": "Huyện An Minh",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 910,
+  "fields": {
+    "province": 91,
+    "name": "Huyện Vĩnh Thuận",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 911,
+  "fields": {
+    "province": 91,
+    "name": "Huyện Phú Quốc",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 912,
+  "fields": {
+    "province": 91,
+    "name": "Huyện Kiên Hải",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 913,
+  "fields": {
+    "province": 91,
+    "name": "Huyện U Minh Thượng",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 914,
+  "fields": {
+    "province": 91,
+    "name": "Huyện Giang Thành",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 916,
+  "fields": {
+    "province": 92,
+    "name": "Quận Ninh Kiều",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 917,
+  "fields": {
+    "province": 92,
+    "name": "Quận Ô Môn",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 918,
+  "fields": {
+    "province": 92,
+    "name": "Quận Bình Thuỷ",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 919,
+  "fields": {
+    "province": 92,
+    "name": "Quận Cái Răng",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 923,
+  "fields": {
+    "province": 92,
+    "name": "Quận Thốt Nốt",
+    "type": "Quận"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 924,
+  "fields": {
+    "province": 92,
+    "name": "Huyện Vĩnh Thạnh",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 925,
+  "fields": {
+    "province": 92,
+    "name": "Huyện Cờ Đỏ",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 926,
+  "fields": {
+    "province": 92,
+    "name": "Huyện Phong Điền",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 927,
+  "fields": {
+    "province": 92,
+    "name": "Huyện Thới Lai",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 930,
+  "fields": {
+    "province": 93,
+    "name": "Thành phố Vị Thanh",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 931,
+  "fields": {
+    "province": 93,
+    "name": "Thị xã Ngã Bảy",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 932,
+  "fields": {
+    "province": 93,
+    "name": "Huyện Châu Thành A",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 933,
+  "fields": {
+    "province": 93,
+    "name": "Huyện Châu Thành",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 934,
+  "fields": {
+    "province": 93,
+    "name": "Huyện Phụng Hiệp",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 935,
+  "fields": {
+    "province": 93,
+    "name": "Huyện Vị Thuỷ",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 936,
+  "fields": {
+    "province": 93,
+    "name": "Huyện Long Mỹ",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 937,
+  "fields": {
+    "province": 93,
+    "name": "Thị xã Long Mỹ",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 941,
+  "fields": {
+    "province": 94,
+    "name": "Thành phố Sóc Trăng",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 942,
+  "fields": {
+    "province": 94,
+    "name": "Huyện Châu Thành",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 943,
+  "fields": {
+    "province": 94,
+    "name": "Huyện Kế Sách",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 944,
+  "fields": {
+    "province": 94,
+    "name": "Huyện Mỹ Tú",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 945,
+  "fields": {
+    "province": 94,
+    "name": "Huyện Cù Lao Dung",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 946,
+  "fields": {
+    "province": 94,
+    "name": "Huyện Long Phú",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 947,
+  "fields": {
+    "province": 94,
+    "name": "Huyện Mỹ Xuyên",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 948,
+  "fields": {
+    "province": 94,
+    "name": "Thị xã Ngã Năm",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 949,
+  "fields": {
+    "province": 94,
+    "name": "Huyện Thạnh Trị",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 950,
+  "fields": {
+    "province": 94,
+    "name": "Thị xã Vĩnh Châu",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 951,
+  "fields": {
+    "province": 94,
+    "name": "Huyện Trần Đề",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 954,
+  "fields": {
+    "province": 95,
+    "name": "Thành phố Bạc Liêu",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 956,
+  "fields": {
+    "province": 95,
+    "name": "Huyện Hồng Dân",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 957,
+  "fields": {
+    "province": 95,
+    "name": "Huyện Phước Long",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 958,
+  "fields": {
+    "province": 95,
+    "name": "Huyện Vĩnh Lợi",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 959,
+  "fields": {
+    "province": 95,
+    "name": "Thị xã Giá Rai",
+    "type": "Thị xã"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 960,
+  "fields": {
+    "province": 95,
+    "name": "Huyện Đông Hải",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 961,
+  "fields": {
+    "province": 95,
+    "name": "Huyện Hoà Bình",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 964,
+  "fields": {
+    "province": 96,
+    "name": "Thành phố Cà Mau",
+    "type": "Thành phố"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 966,
+  "fields": {
+    "province": 96,
+    "name": "Huyện U Minh",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 967,
+  "fields": {
+    "province": 96,
+    "name": "Huyện Thới Bình",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 968,
+  "fields": {
+    "province": 96,
+    "name": "Huyện Trần Văn Thời",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 969,
+  "fields": {
+    "province": 96,
+    "name": "Huyện Cái Nước",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 970,
+  "fields": {
+    "province": 96,
+    "name": "Huyện Đầm Dơi",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 971,
+  "fields": {
+    "province": 96,
+    "name": "Huyện Năm Căn",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 972,
+  "fields": {
+    "province": 96,
+    "name": "Huyện Phú Tân",
+    "type": "Huyện"
+  }
+},
+{
+  "model": "clinic.district",
+  "pk": 973,
+  "fields": {
+    "province": 96,
+    "name": "Huyện Ngọc Hiển",
+    "type": "Huyện"
+  }
+}
+]

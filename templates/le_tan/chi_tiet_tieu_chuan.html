@@ -1,0 +1,447 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">Chỉnh Sửa Chi Tiết Tiêu Chuẩn</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="{% url 'danh_sach_mau_phieu' %}" class="text-muted">Danh sách tiêu chuẩn</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="javascript:;" class="text-muted">Cập nhật tiêu chuẩn dịch vụ</a>
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+
+    
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!--begin::Card-->
+            <div class="card card-custom">
+                <div class="card-header flex-wrap border-0 pt-6 pb-0">
+                    <div class="card-title">
+                        <h3 class="card-label">Biểu Mẫu Chỉnh Sửa</h3>
+                    </div>
+                </div>
+                <form id="kt_form_1">
+                    <div class="card-body">
+
+                        <div class="form-group row">
+                            <div class="col-8">
+                                <label>Dịch Vụ Kĩ Thuật</label>
+                                <select class="form-control selectpicker" id="select_1" name="param" data-live-search="true" data-size="9" >
+                                    <option disabled selected>Chọn dịch vụ kiểm tra</option>
+                                    {% comment %} {% for dv in dich_vu %}
+                                        <option value="{{ dv.id }}">{{dv.ten_dvkt}}</option>
+                                    {% endfor %} {% endcomment %}
+                                    {% for dv in all_dich_vu %}
+                                        <option value="{{ dv.id }}">{{dv.ten_dvkt}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-4">
+                                <label>Đối tượng xét nghiệm </label>
+                                <select class="form-control selectpicker" id="select_2" data-live-search="true" data-size="9" name="param">
+                                    <option disabled selected>Chọn đối tượng</option>
+                                    {% comment %} {% for doi_tuong in doi_tuong_xet_nghiem %}
+                                        <option value="{{ doi_tuong.id }}">{{doi_tuong}}</option>
+                                    {% endfor %} {% endcomment %}
+                                    {% for doi_tuong in all_doi_tuong %}
+                                        <option value="{{ doi_tuong.id }}">{{doi_tuong}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div id='allRowValues'>
+                            {% for tieu_chuan in tieu_chuan_dich_vu %}
+                            <div class="divRow form-group row inputFormRow" data-id-chi-tiet="{{tieu_chuan.chi_tiet.id}}" data-id-chi-so="{{tieu_chuan.id}}">
+                                <div class="col-lg-1">
+                                    <input type="text" class="evaluate_field form-control" placeholder="Mã CS" name='ma_chi_so' value="{{tieu_chuan.ma_chi_so}}" data-id={{tieu_chuan.chi_tiet.id}} ></input> 
+                                </div>
+                                <div class="col-lg-3">
+                                    <input class="judment_field form-control" placeholder="Tên chỉ số" name='ten_chi_so' value="{{tieu_chuan.ten_chi_so}}"></input> 
+                                </div>
+                                <div class="col-lg-2">
+                                    <input type="number" step="0.01" class="evaluate_field form-control" placeholder="Chỉ số min" name='chi_so_min' value="{{tieu_chuan.chi_tiet.chi_so_binh_thuong_min}}"></input> 
+                                </div>
+                                <div class="col-lg-2 ">
+                                    <input type="number" step="0.01" class="evaluate_field form-control" placeholder="Chỉ số max" name='chi_so_max' value="{{tieu_chuan.chi_tiet.chi_so_binh_thuong_max}}"></input>  
+                                </div>
+                                <div class="col-lg-1 ">
+                                    <input type="text" class="evaluate_field form-control" placeholder="Đơn vị" name='don_vi' value='{% if tieu_chuan.chi_tiet.don_vi_do != None %}{{tieu_chuan.chi_tiet.don_vi_do}} {% else%}{% endif %}'></input>  
+                                </div>
+                                <div class="col-lg-2 ">
+                                    <input type="text" class="evaluate_field form-control" placeholder="Ghi chú" name='ghi_chu' value="{{tieu_chuan.chi_tiet.ghi_chu}}"></input>
+                                </div>
+                                <div class="col-lg-1 ">
+                                    <button type="button" data-id-chi-so="{{tieu_chuan.id}}" class="btn btn-danger removeStandard">Xóa</button>  
+                                </div>
+                            </div>
+                            {% endfor %}
+                            <div id="newRow"></div>
+                        </div>
+                        <div class="form-group">
+                            <button id="addRow" type="button" class="btn btn-info">Thêm dòng</button>
+                        </div>
+                        
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-lg-12 ml-lg-auto text-center">
+                                <button type="button" class="btn btn-primary font-weight-bold mr-2" id="submitData" name="submitButton">Xác nhận</button>
+                                <button type="button" class="btn btn-light-primary font-weight-bold" id='cancelButton'>Hủy</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!--end::Card-->
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+
+</div>
+
+{% endblock content %}
+
+
+ 
+{% block scripts %}
+<!--begin::Global Theme Bundle(used by all pages)-->
+
+
+<script>
+    $(document).ajaxStart(function() {
+        KTApp.blockPage({
+            overlayColor: '#000000',
+            state: 'primary',
+            message: 'Đang xử lý...'
+        });
+    })
+
+    $(document).ajaxStop(function() {
+        KTApp.unblockPage();
+    })
+</script>
+
+<script>
+    $('#select_1 option[value="{{dich_vu.id}}"]').attr("selected",true);
+    $('#select_2 option[value="{{doi_tuong.id}}"]').attr("selected",true);
+
+    $('#addRow').click(function() {
+        var html = '';
+        html += `<div class="divRow form-group row inputFormRow" data-id-chi-tiet="{{tieu_chuan.chi_tiet.id}}" data-id-chi-so="{{tieu_chuan.id}}">`
+        html += `<div class="col-lg-1">
+                    <input type="text" class="evaluate_field form-control" placeholder="Mã CS" name='ma_chi_so'></input> 
+                </div>`
+        html += `<div class="col-lg-3">
+                    <input class="judment_field form-control" placeholder="Tên chỉ số" name='ten_chi_so'></input> 
+                </div>`;
+        html += `<div class="col-lg-2">
+                    <input type="number" step="0.01" class="evaluate_field form-control" placeholder="Chỉ số min" name='chi_so_min'></input> 
+                </div>`;
+        html += `<div class="col-lg-2 ">
+                    <input type="number" step="0.01" class="evaluate_field form-control" placeholder="Chỉ số max" name='chi_so_max'></input>  
+                </div>`
+        html += `<div class="col-lg-1 ">
+                    <input type="text" class="evaluate_field form-control" placeholder="Đơn vị" name='don_vi'></input>  
+                </div>`
+        html += `<div class="col-lg-2 ">
+                    <input type="text" class="evaluate_field form-control" placeholder="Ghi chú" name='ghi_chu'></input>  
+                </div>`
+        html += `<div class="col-lg-1 ">
+                    <button id="removeRow" type="button" class="btn btn-danger ">Xóa</button>  
+                </div>`
+        html += `</div>`
+        $('#newRow').append(html);
+    })
+
+    $(document).on('click', '#removeRow', function () {
+        $(this).closest('.inputFormRow').remove();
+    });
+
+    $("#submitData").click(function(){
+        var chi_so = []
+        var formData = new FormData()
+        
+        var id_dich_vu = $("#select_1").val()
+        var id_doi_tuong = $("#select_2").val()
+
+        $(".divRow").each(function(){
+            var input = $(this).find('input')
+            var chi_so_1 = []
+            var startDict = "{"
+            var endDict = "}"
+            var dictStr = ""
+            for (var i = 0; i < input.length; i++) {
+                // chi_so_1.push({
+                //     id_chi_tiet: $(input[i]).closest('.divRow').attr('data-id-chi-tiet'),
+                //     id_chi_so : $(input[i]).closest('.divRow').data('id-chi-so'),
+                //     key: $(input[i]).attr("name"),
+                //     value: $(input[i]).val()
+                // })  
+                var element = `"${$(input[i]).attr("name")}": "${$(input[i]).val()}",`
+                dictStr += element
+            }
+            {% comment %} chi_so.push(chi_so_1) {% endcomment %}
+            var id_chi_tiet = `"id_chi_tiet": "${$(this).data('id-chi-tiet')}",`
+            var id_chi_so = `"id_chi_so": "${$(this).data('id-chi-so')}",`
+            var newDictStr =  dictStr + id_chi_tiet + id_chi_so
+            var dict = startDict + newDictStr + endDict
+            var editedDict = dict.substring(0, dict.length - 2)+ '}'
+            var obj = JSON.parse(editedDict)
+            chi_so.push(obj)
+            // listStr += dict
+            console.log(editedDict)
+
+        })
+        // var list = startList + listStr + endList
+
+        console.log(chi_so)
+        {% comment %} console.log(list) {% endcomment %}
+
+        formData.append('data', JSON.stringify(chi_so))
+        formData.append('id_dich_vu', id_dich_vu)
+        formData.append('id_doi_tuong', id_doi_tuong)
+        formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
+
+        $.ajax({
+            type: "POST",
+            url: "{% url 'chinh_sua_tieu_chuan_dich_vu' %}", 
+            data: formData,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function(response){
+                if (response.status == 200) {
+                    toastr.success(response.message, "Thành Công")
+                    setTimeout(function () {
+                        window.location.href = '/danh_sach_tieu_chuan/'; //redirect về danh sách chờ lâm sàng
+                    }, 1500);  
+                } else if (response.status == 404) {
+                    toastr.warning(response.message, "Thất Bại")
+                }
+            },
+            error: function(response){
+                toastr.warning("Xảy ra lỗi khi gửi dữ liệu, vui lòng kiểm tra lại", "Thất Bại")
+            }
+        })
+        
+    });
+</script>
+
+<script>
+// Class definition
+    var KTFormControls = function () {
+        // Private functions
+
+        var _initPreview = function(){
+            $('#kt_select2_4').select2({
+                placeholder: "Chọn dịch vụ kiểm tra",
+                allowClear: true
+                })
+
+            $('#kt_select2_5').select2({
+                placeholder: "Chọn đối tượng xét nghiệm",
+                allowClear: true
+                })
+            $('.input').keyup(function(){
+                var $this = $(this);
+                $('.'+$this.attr('id')+'').html($this.val());
+            });
+
+            {% comment %} $('.selectpicker').selectpicker({
+                selectedTextFormat: 'static',
+                width: '100%',
+                size: 10,
+                title: 'Options'
+            }); {% endcomment %}
+ 
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+ 
+                    reader.onload = function(e) {
+                    $('#blah').attr('src', e.target.result);
+                    }
+ 
+                    reader.readAsDataURL(input.files[0]); // convert to base64 string
+                }
+            }
+        }
+
+        var deleteRowTieuChuan = function() {
+            $(".removeStandard").on('click', function() {
+                var id_chi_so = $(this).attr('data-id-chi-so')
+ 
+                Swal.fire({
+                    title: "Xóa Tiêu Chuẩn DVKT Khỏi Danh Sách",
+                    text: "Bạn đã chắc chắn chưa?",
+                    icon: "warning",
+                    showCancelButton: true,
+                    cancelButtonText: "Hủy",
+                    confirmButtonText: "Xác Nhận!"
+                }).then(function(result) {
+                    if (result.value) {
+                     
+                        var formData = new FormData()
+                        formData.append('id', id_chi_so)
+                        formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
+    
+                        $.ajax({
+                            type: "POST",
+                            url: "{% url 'xoa_chi_so' %}",
+                            data: formData,
+                            cache: false,
+                            processData: false,
+                            contentType: false,
+                            success: function(response){
+                                if(response.status == 200) {
+                                    Swal.fire(
+                                        'Đã Xóa!',
+                                        response.message,
+                                        'success'
+                                    )
+                                    $("div").find(`[data-id-chi-so='${id_chi_so}']`).remove()
+                                } else if (response.status == 404) {
+                                    Swal.fire(
+                                        'Lỗi!',
+                                        response.message,
+                                        'error'
+                                    )
+                                }
+                                
+                            },
+                            error: function(response){
+                                Swal.fire(
+                                    'Đã Xóa!',
+                                    "response.message",
+                                    'success'
+                                )
+                            }
+                        })
+                    }else if (result.dismiss === 'cancel') {
+                        Swal.fire(
+                            'Đã Hủy',
+                            'Tiêu Chuẩn Vẫn An Toàn Nhé! :)',
+                            'error'
+                        )
+                    }
+                });
+            })
+        }
+
+        var _initValidate = function () {
+ 
+            FormValidation.formValidation(
+                document.getElementById('kt_form_1'),
+                {
+                    fields: {
+                        text: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Không được để trống'
+                                },
+                            }
+                        },
+                        memo: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Không được để trống'
+                                },
+                                stringLength: {
+                                    min:10,
+                                    max:10000,
+                                }
+                            }
+                        },
+                    },
+ 
+                    plugins: { //Learn more: https://formvalidation.io/guide/plugins
+                        trigger: new FormValidation.plugins.Trigger(),
+                        // Bootstrap Framework Integration
+                        bootstrap: new FormValidation.plugins.Bootstrap(),
+                        // Validate fields when clicking the Submit button
+                        submitButton: new FormValidation.plugins.SubmitButton(),
+                        // Submit the form when all fields are valid
+                        defaultSubmit: new FormValidation.plugins.DefaultSubmit(),
+                    }
+                }
+            );
+        }
+ 
+ 
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        var csrftoken = getCookie('csrftoken');
+ 
+        function csrfSafeMethod(method) {
+            // these HTTP methods do not require CSRF protection
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
+        $.ajaxSetup({
+            beforeSend: function(xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            }
+        });
+
+        $(document).on('click', '#cancelButton', function(){
+            window.history.back()
+        })
+ 
+        return {
+            // public functions
+            init: function() {
+                _initPreview();
+                _initValidate();
+                deleteRowTieuChuan();
+            }
+        };
+    }();
+ 
+
+    jQuery(document).ready(function() {
+        KTFormControls.init();
+    });
+</script>
+{% endblock scripts %}

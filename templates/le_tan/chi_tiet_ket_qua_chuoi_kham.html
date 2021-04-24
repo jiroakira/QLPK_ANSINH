@@ -1,0 +1,498 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+	<!--begin::Subheader-->
+	<div class="subheader py-2 py-lg-4 subheader-solid" id="kt_subheader">
+		<div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+			<!--begin::Details-->
+			<div class="d-flex align-items-center flex-wrap mr-2">
+				<!--begin::Title-->
+				<h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Mã Lần Khám: {{ chuoi_kham.ma_lk }}</h5>
+				<!--end::Title-->
+				<!--begin::Separator-->
+				<div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200"></div>
+				<!--end::Separator-->
+				
+			</div>
+			<!--end::Details-->
+		</div>
+	</div>
+	<!--end::Subheader-->
+	<!--begin::Entry-->
+	<div class="d-flex flex-column-fluid">
+		<!--begin::Container-->
+		<div class="container-fluid">
+			<!--begin::Card-->
+			<div class="card card-custom gutter-b">
+				<div class="card-body">
+					<div class="d-flex">
+						<!--begin: Pic-->
+						<div class="flex-shrink-0 mr-7 mt-lg-0 mt-3">
+							<div class="symbol symbol-50 symbol-lg-120">
+								<img alt="Pic" src="" />
+							</div>
+							<div class="symbol symbol-50 symbol-lg-120 symbol-primary d-none">
+								<span class="font-size-h3 symbol-label font-weight-boldest">JM</span>
+							</div>
+						</div>
+						<!--end: Pic-->
+						<!--begin: Info-->
+						<div class="flex-grow-1">
+							<!--begin: Title-->
+							<div class="d-flex align-items-center justify-content-between flex-wrap">
+								<div class="mr-3">
+									<!--begin::Name-->
+                                    <a href="#" class="d-flex align-items-center text-dark text-hover-primary font-size-h5 font-weight-bold mr-3">{{ benh_nhan.ho_ten }}
+									<i class="flaticon2-correct text-success icon-md ml-2"></i></a>
+									<!--end::Name-->
+									<!--begin::Contacts-->
+									<div class="d-flex flex-wrap my-2">
+										<a href="#" class="text-muted text-hover-primary font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
+										<span class="svg-icon svg-icon-md svg-icon-gray-500 mr-1">
+											<!--begin::Svg Icon | path:/metronic/theme/html/demo1/dist/assets/media/svg/icons/Communication/Mail-notification.svg-->
+											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <rect x="0" y="0" width="24" height="24"/>
+                                                    <path d="M7.13888889,4 L7.13888889,19 L16.8611111,19 L16.8611111,4 L7.13888889,4 Z M7.83333333,1 L16.1666667,1 C17.5729473,1 18.25,1.98121694 18.25,3.5 L18.25,20.5 C18.25,22.0187831 17.5729473,23 16.1666667,23 L7.83333333,23 C6.42705272,23 5.75,22.0187831 5.75,20.5 L5.75,3.5 C5.75,1.98121694 6.42705272,1 7.83333333,1 Z" fill="#000000" fill-rule="nonzero"/>
+                                                    <polygon fill="#000000" opacity="0.3" points="7 4 7 19 17 19 17 4"/>
+                                                    <circle fill="#000000" cx="12" cy="21" r="1"/>
+                                                </g>
+											</svg>
+											<!--end::Svg Icon-->
+										</span>{{ benh_nhan.so_dien_thoai }}</a>
+										{% comment %} <a href="#" class="text-muted text-hover-primary font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
+										<span class="svg-icon svg-icon-md svg-icon-gray-500 mr-1">
+											<!--begin::Svg Icon | path:/metronic/theme/html/demo1/dist/assets/media/svg/icons/General/Lock.svg-->
+											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+													<mask fill="white">
+														<use xlink:href="#path-1" />
+													</mask>
+													<g />
+													<path d="M7,10 L7,8 C7,5.23857625 9.23857625,3 12,3 C14.7614237,3 17,5.23857625 17,8 L17,10 L18,10 C19.1045695,10 20,10.8954305 20,12 L20,18 C20,19.1045695 19.1045695,20 18,20 L6,20 C4.8954305,20 4,19.1045695 4,18 L4,12 C4,10.8954305 4.8954305,10 6,10 L7,10 Z M12,5 C10.3431458,5 9,6.34314575 9,8 L9,10 L15,10 L15,8 C15,6.34314575 13.6568542,5 12,5 Z" fill="#000000" />
+												</g>
+											</svg>
+											<!--end::Svg Icon-->
+										</span>PR Manager</a> {% endcomment %}
+										<a href="#" class="text-muted text-hover-primary font-weight-bold">
+										<span class="svg-icon svg-icon-md svg-icon-gray-500 mr-1">
+											<!--begin::Svg Icon | path:/metronic/theme/html/demo1/dist/assets/media/svg/icons/Map/Marker2.svg-->
+											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+													<rect x="0" y="0" width="24" height="24" />
+													<path d="M9.82829464,16.6565893 C7.02541569,15.7427556 5,13.1079084 5,10 C5,6.13400675 8.13400675,3 12,3 C15.8659932,3 19,6.13400675 19,10 C19,13.1079084 16.9745843,15.7427556 14.1717054,16.6565893 L12,21 L9.82829464,16.6565893 Z M12,12 C13.1045695,12 14,11.1045695 14,10 C14,8.8954305 13.1045695,8 12,8 C10.8954305,8 10,8.8954305 10,10 C10,11.1045695 10.8954305,12 12,12 Z" fill="#000000" />
+												</g>
+											</svg>
+											<!--end::Svg Icon-->
+										</span>{{ benh_nhan.dia_chi }}</a>
+									</div>
+									<!--end::Contacts-->
+								</div>
+								{% comment %} <div class="my-lg-0 my-1">
+									<a href="#" class="btn btn-sm btn-light-success font-weight-bolder text-uppercase mr-3">Reports</a>
+									<a href="#" class="btn btn-sm btn-info font-weight-bolder text-uppercase">New Task</a>
+								</div> {% endcomment %}
+							</div>
+							<!--end: Title-->
+							<!--begin: Content-->
+							<div class="d-flex align-items-center flex-wrap justify-content-between">
+                                
+								<div class="flex-grow-1 font-weight-bold text-dark-50 py-5 py-lg-2 mr-5">{{ ket_qua_tong_quat.get_mo_ta }}
+								{% if ket_qua_tong_quat.check_html_ket_qua %}
+									<br><a href="{% url 'chi_tiet_phieu_ket_qua_tong_quat' ket_qua_tong_quat.id %}" class="text-muted text-hover-primary">Phiếu Kết Quả</a></div>
+								{% else %}
+									<br />{{ ket_qua_tong_quat.get_ket_luan }}</div>
+								{% endif %}
+								
+								<div class="d-flex flex-wrap align-items-center py-2">
+									<div class="d-flex align-items-center mr-10">
+										<div class="mr-6">
+											<div class="font-weight-bold mb-2">Bắt Đầu</div>
+											<span class="btn btn-sm btn-text btn-light-primary text-uppercase font-weight-bold">{{ chuoi_kham.thoi_gian_bat_dau }}</span>
+										</div>
+										<div class="">
+											<div class="font-weight-bold mb-2">Kết Thúc</div>
+											<span class="btn btn-sm btn-text btn-light-danger text-uppercase font-weight-bold">{{ chuoi_kham.thoi_gian_ket_thuc }}</span>
+										</div>
+									</div>
+									{% comment %} <div class="flex-grow-1 flex-shrink-0 w-150px w-xl-300px mt-4 mt-sm-0">
+										<span class="font-weight-bold">Progress</span>
+										<div class="progress progress-xs mt-2 mb-2">
+											<div class="progress-bar bg-success" role="progressbar" style="width: 63%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+										</div>
+										<span class="font-weight-bolder text-dark">78%</span>
+									</div> {% endcomment %}
+								</div>
+							</div>
+							<!--end: Content-->
+						</div>
+						<!--end: Info-->
+					</div>
+					<div class="separator separator-solid my-7"></div>
+					<!--begin: Items-->
+					<div class="d-flex align-items-center flex-wrap">
+						<!--begin: Item-->
+						<div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+							<span class="mr-4">
+								<i class="flaticon-piggy-bank icon-2x text-muted font-weight-bold"></i>
+							</span>
+							<div class="d-flex flex-column text-dark-75">
+								<span class="font-weight-bolder font-size-sm">Chi Phí Lâm Sàng</span>
+								<span class="font-weight-bolder font-size-h5">
+								<span class="text-dark-50 font-weight-bold">{{ chuoi_kham.get_chi_phi_lam_sang }}</span> vnđ</span>
+							</div>
+						</div>
+						<!--end: Item-->
+						<!--begin: Item-->
+						<div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+							<span class="mr-4">
+								<i class="flaticon-confetti icon-2x text-muted font-weight-bold"></i>
+							</span>
+							<div class="d-flex flex-column text-dark-75">
+								<span class="font-weight-bolder font-size-sm">Chi Phí Dịch Vụ</span>
+								<span class="font-weight-bolder font-size-h5">
+								<span class="text-dark-50 font-weight-bold">{{ chuoi_kham.get_chi_phi_dich_vu }}</span> vnđ</span>
+							</div>
+						</div>
+						<!--end: Item-->
+						<!--begin: Item-->
+						<div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+							<span class="mr-4">
+								<i class="flaticon-pie-chart icon-2x text-muted font-weight-bold"></i>
+							</span>
+							<div class="d-flex flex-column text-dark-75">
+								<span class="font-weight-bolder font-size-sm">Chi Phí Thuốc</span>
+								<span class="font-weight-bolder font-size-h5">
+								<span class="text-dark-50 font-weight-bold">{{ chuoi_kham.get_chi_phi_thuoc }}</span> vnđ</span>
+							</div>
+						</div>
+						<!--end: Item-->
+						<!--begin: Item-->
+						<div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+							<span class="mr-4">
+								<i class="flaticon-file-2 icon-2x text-muted font-weight-bold"></i>
+							</span>
+                            {% if chuoi_kham.check_don_thuoc_exist == True %}
+                                <div class="d-flex flex-column flex-lg-fill">
+								<span class="text-dark-75 font-weight-bolder font-size-sm"> Đơn Thuốc </span>
+								<a href="javascript:;" class="text-primary font-weight-bolder" id="xemDonThuoc" data-id-don-thuoc="{{chuoi_kham.get_id_don_thuoc}}">Xem</a>
+							</div>
+                            {% endif %}
+							
+						</div>
+						<!--end: Item-->
+						
+					</div>
+					<!--begin: Items-->
+				</div>
+			</div>
+			<!--end::Card-->
+			<div class="row">
+			{% for ket_qua in ket_qua_chuyen_khoa %}
+			<div class="col-xl-4">
+					<!--begin::Card-->
+					<div class="card card-custom gutter-b card-stretch">
+						<!--begin::Body-->
+						<div class="card-body">
+							<!--begin::Info-->
+							<div class="d-flex align-items-center">
+								<!--begin::Pic-->
+								{% comment %} <div class="flex-shrink-0 mr-4 symbol symbol-60 symbol-circle">
+									<img src="../../../../theme/html/demo1/dist/assets/media/project-logos/3.png" alt="image" />
+								</div> {% endcomment %}
+								<!--end::Pic-->
+								<!--begin::Info-->
+								<div class="d-flex flex-column mr-auto">
+									<!--begin: Title-->
+									<div class="d-flex flex-column mr-auto">
+										<a href="#" class="text-dark text-hover-primary font-size-h4 font-weight-bolder mb-1">{{ ket_qua.get_ten_dich_vu }}</a>
+										<span class="text-muted font-weight-bold">{{ ket_qua.get_mo_ta }}</span>
+									</div>
+									<!--end::Title-->
+								</div>
+								<!--end::Info-->
+								
+							</div>
+							<!--end::Info-->
+							<!--begin::Description-->
+							<div class="mb-5 mt-5 font-weight-bold">{{ ket_qua.get_ket_luan }}</div>
+							<!--end::Description-->
+							
+						</div>
+						<!--end::Body-->
+						<!--begin::Footer-->
+	
+						{% comment %} {% if ket_qua.chi_so == False %}
+						<div class="card-footer align-items-center mb-4">
+							{% for file in ket_qua.file_ket_qua_chuyen_khoa.all %}
+
+							<div class="mb-2 font-weight-bold">
+								<a href="#" class="text-muted text-hover-primary">{{file.file.filename}}</a>
+							</div>
+							{% endfor %} 
+						</div>
+						{% else %}
+							<div class="card-footer align-items-center mb-4">
+								<div class="mb-2 font-weight-bold">
+									<a href="{% url 'chi_tiet_ket_qua_xet_nghiem' ket_qua.id %}" class="text-muted text-hover-primary">File Xét Nghiệm</a>
+								</div>	
+							</div>
+						{% endif %} {% endcomment %}
+
+                        {% if ket_qua.chi_so == True %}
+                        <div class="card-footer align-items-center mb-4">
+                            <div class="mb-2 font-weight-bold">
+                                <a href="{% url 'chi_tiet_ket_qua_xet_nghiem' ket_qua.id %}" class="text-muted text-hover-primary">File Xét Nghiệm</a>
+                            </div>	
+                        </div>
+						{% elif ket_qua.html == True %}
+                            <div class="card-footer align-items-center mb-4">
+                                <div class="mb-2 font-weight-bold">
+                                    <a href="{% url 'chi_tiet_phieu_ket_qua' ket_qua.id %}" class="text-muted text-hover-primary">Phiếu Kết Quả</a>
+                                </div>	
+                            </div>
+						{% else %}
+							<div class="card-footer align-items-center mb-4">
+                                {% for file in ket_qua.file_ket_qua_chuyen_khoa.all %}
+
+                                <div class="mb-2 font-weight-bold">
+                                    <a href="{{file.file.get_url}}" download class="text-muted text-hover-primary">{{file.file.filename}}</a>
+                                </div>
+							{% endfor %} 
+						</div>
+						{% endif %}
+						<!--end::Footer-->
+					</div>
+					<!--end:: Card-->
+				</div>
+				{% endfor %}
+				</div>
+		</div>
+		<!--end::Container-->
+		
+	</div>
+	<!--end::Entry-->
+</div>
+<!--end::Content-->
+
+<!--begin::Modal-->
+<div id="kt_datatable_modal" class="modal fade" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content" style="min-height: 590px;">
+            <div class="modal-header py-5">
+                <h5 class="modal-title">
+                    Danh Sách Các Lần Khám
+                    <span class="d-block text-muted font-size-sm" id="ho_ten_benh_nhan"></span>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!--begin::Search Form-->
+                <div class="mb-5">
+                    <div class="row align-items-center">
+                        <div class="col-lg-9 col-xl-8">
+                            <div class="row align-items-center">
+                                <div class="col-md-6 my-2 my-md-0">
+                                    <div class="input-icon">
+                                        <input type="text" class="form-control" placeholder="Tìm Kiếm..." id="kt_datatable_search_query_2" />
+                                        <span>
+                                            <i class="flaticon2-search-1 text-muted"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end: Search Form-->
+                <!--begin: Datatable-->
+                <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable_sub"></div>
+                <!--end: Datatable-->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light-primary font-weight-bold text-uppercase" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end::Modal-->
+
+{% endblock content %}
+
+{% block scripts %}
+
+<!--begin::Global Theme Bundle(used by all pages)-->
+
+
+<script>
+"use strict";
+
+var KTDatatableRemoteAjaxDemo = function() {
+    // Private functions
+    //set global data
+
+    let globalData = null;
+    // basic demo
+    var demo = function() {
+        
+            
+        $('#xemDonThuoc').on('click', function(){
+            var id_don_thuoc = $(this).data('id-don-thuoc')
+            $('#kt_datatable_modal').modal('show');
+            initSubDatatable(id_don_thuoc)
+        })
+        
+
+        var initSubDatatable = function(id) {
+            var id_don_thuoc = id
+            var el = $('#kt_datatable_sub');
+            var modal = $('#kt_datatable_modal');
+            var datatable = el.KTDatatable({
+                data: {
+                    type: 'remote',
+                    source: {
+                        read: {
+                            method: "GET",
+                            url: HOST_URL + '/api/don_thuoc/',
+                            params: {
+                                id_don_thuoc: id_don_thuoc,
+                            },
+                            map: function(raw) {
+                                // sample data mapping
+                                var dataSet = raw;
+                                
+                                if (typeof raw.data !== 'undefined') {
+                                    dataSet = raw.data;
+                                }
+                                globalData = null;
+                                globalData = dataSet;
+                                console.log(dataSet)
+                                return dataSet;
+                            }
+                        },
+                    },
+                    pageSize: 10,
+                    serverPaging: true,
+                    // serverFiltering: true,
+                    // serverSorting: true,
+                },
+    
+                // layout definition
+                layout: {
+                    theme: 'default',
+                    scroll: true,
+                    footer: false,
+                },
+    
+                search: {
+                    input: '#kt_datatable_search_query_2',
+                    key: 'generalSearch1'
+                },
+    
+                sortable: true,
+                
+                pagination: true,
+    
+                // columns definition
+                columns: [{
+                    field: 'thuoc',
+                    title: 'Tên Thuốc',
+                    template: function(row) {
+                        return row.thuoc.ten_thuoc;
+                        
+                    }
+                }, {
+                    field: 'duong_dung',
+                    title: 'Đường Dùng',
+                    width: 100,
+                    template: function(row) {
+                        return row.thuoc.duong_dung;
+                        
+                    }
+                }, {
+                    field: 'don_vi_tinh',
+                    title: 'Đơn Vị Tính',
+                    width: 100,
+                    template: function(row) {
+                        return row.thuoc.don_vi_tinh;
+                        
+                    }
+                }, {
+                    field: 'ghi_chu',
+                    title: 'Cách Dùng',
+                    width: 100,
+                    template: function(row) {
+                        return row.ghi_chu;
+                        
+                    }
+                }, {
+                    field: 'so_luong',
+                    title: 'Số Lượng',
+                    width: 100,
+                    template: function(row) {
+                        return row.so_luong;
+                        
+                    }
+                }],
+            });
+    
+            
+            $('#kt_datatable_search_status_2').on('change', function() {
+                datatable.search($(this).val().toLowerCase(), 'trang_thai');
+            });
+    
+            $('#kt_datatable_search_type_2').on('change', function() {
+                datatable.search($(this).val().toLowerCase(), 'Type');
+            });
+    
+            $('#kt_datatable_search_status_2, #kt_datatable_search_type_2').selectpicker();
+    
+            // fix datatable layout after modal shown
+            //datatable.hide();
+            
+            datatable.hide();
+            modal.on('shown.bs.modal', function() {
+                var modalContent = $(this).find('.modal-content');
+                datatable.spinnerCallback(true, modalContent);
+
+                datatable.reload();
+
+                datatable.on('datatable-on-layout-updated', function() {
+                    datatable.show();
+                    datatable.spinnerCallback(false, modalContent);
+                    datatable.redraw();
+                });
+                
+            });
+
+            datatable.on('click', '.btn-xem-ket-qua', function(){
+                var ma_lk = $(this).data('ma-lk')
+                window.open(HOST_URL + `/ket_qua_benh_nhan/chuoi_kham/${ma_lk}/`, "_blank")
+            })
+            
+        };
+    }
+        
+    return {
+        init: function() {
+            demo();
+        },
+    };
+}();
+
+jQuery(document).ready(function() {
+    KTDatatableRemoteAjaxDemo.init();
+});
+
+</script>
+{% endblock scripts %}
+
+

@@ -1,0 +1,489 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">Danh Sách Phòng Chức Năng</h5>
+                    <!--end::Page Title-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!--begin::Card-->
+            <div class="card card-custom gutter-b">
+                <div class="card-header flex-wrap border-0 pt-6 pb-0">
+                    <div class="card-title">
+                        <h3 class="card-label">Danh Sách Phòng Chức Năng</h3>
+                    </div>
+                    <div class="card-toolbar">
+                        <!--begin::Button-->
+                        {% if perms.clinic.can_add_consulting_room %}
+                        <a href="{% url 'them_phong_chuc_nang' %}" class="btn btn-light-primary font-weight-bolder mr-3">
+                            <i class="la la-plus"></i>
+                            Thêm PCN
+                        </a>
+                        {% endif %}
+                        <!--end::Button-->
+
+                        <!--begin::Button-->
+                        <a href="#" id="btn-reload" class="btn btn-light-primary font-weight-bolder">
+                            <span class="svg-icon svg-icon-md">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <rect x="0" y="0" width="24" height="24"/>
+                                        <path d="M12,8 L8,8 C5.790861,8 4,9.790861 4,12 L4,13 C4,14.6568542 5.34314575,16 7,16 L7,18 C4.23857625,18 2,15.7614237 2,13 L2,12 C2,8.6862915 4.6862915,6 8,6 L12,6 L12,4.72799742 C12,4.62015048 12.0348702,4.51519416 12.0994077,4.42878885 C12.264656,4.2075478 12.5779675,4.16215674 12.7992086,4.32740507 L15.656242,6.46136716 C15.6951359,6.49041758 15.7295917,6.52497737 15.7585249,6.56395854 C15.9231063,6.78569617 15.876772,7.09886961 15.6550344,7.263451 L12.798001,9.3840407 C12.7118152,9.44801079 12.607332,9.48254921 12.5,9.48254921 C12.2238576,9.48254921 12,9.25869158 12,8.98254921 L12,8 Z" fill="#000000"/>
+                                        <path d="M12.0583175,16 L16,16 C18.209139,16 20,14.209139 20,12 L20,11 C20,9.34314575 18.6568542,8 17,8 L17,6 C19.7614237,6 22,8.23857625 22,11 L22,12 C22,15.3137085 19.3137085,18 16,18 L12.0583175,18 L12.0583175,18.9825492 C12.0583175,19.2586916 11.8344599,19.4825492 11.5583175,19.4825492 C11.4509855,19.4825492 11.3465023,19.4480108 11.2603165,19.3840407 L8.40328311,17.263451 C8.18154548,17.0988696 8.13521119,16.7856962 8.29979258,16.5639585 C8.32872576,16.5249774 8.36318164,16.4904176 8.40207551,16.4613672 L11.2591089,14.3274051 C11.48035,14.1621567 11.7936615,14.2075478 11.9589099,14.4287888 C12.0234473,14.5151942 12.0583175,14.6201505 12.0583175,14.7279974 L12.0583175,16 Z" fill="#000000" opacity="0.3"/>
+                                    </g>
+                                </svg>
+                            </span>
+                            Tải Lại
+                        </a>
+                        <!--end::Button-->
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!--begin::Search Form-->
+                    <div class="mb-7">
+                        <div class="row align-items-center">
+                            <div class="col-lg-9 col-xl-8">
+                                <div class="row align-items-center">
+                                    <div class="col-md-6 my-2 my-md-0">
+                                        <div class="input-icon">
+                                            <input type="text" class="form-control" placeholder="Tìm Kiếm..." id="kt_datatable_search_query" />
+                                            <span>
+                                                <i class="flaticon2-search-1 text-muted"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Search Form-->
+                    <!--begin: Datatable-->
+                    <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable"></div>
+                    <!--end: Datatable-->
+                </div>
+            </div>
+            <!--end::Card-->
+        </div>
+        <!-- end::Container -->
+    </div>
+    <!-- end::Entry -->
+</div>
+<!-- end::Content -->
+
+<!-- Modal Chỉnh sửa phòng chức năng -->
+<div class="modal fade" id="updatePhongChucNang" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog modal-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Chỉnh Sửa Phòng Chức Năng</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="formLichHen">
+                    <div class="card-body">
+                        <div class="form-group mb-8">
+                            <div class="alert alert-custom alert-default" role="alert">
+                                <div class="alert-icon"><i class="la la-cogs text-primary"></i></div>
+                                <div class="alert-text">
+                                    Chỉnh sửa thông tin phòng chức năng
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Tên Phòng Chức Năng</label>
+                            <input type="text" class="form-control" id="ten_phong_chuc_nang" placeholder="Tên Phòng Chức Năng"></input>
+                        </div>
+                        {% comment %} UPDATE {% endcomment %}
+                        <div class="form-group">
+                            <label>Bác Sĩ Phụ Trách </label>
+                            <select id="selectBacSi" class="form-control selectpicker">
+                                <option value="" disabled selected>Chọn bác sĩ phụ trách</option>
+                                {% for bac_si in bac_si_phu_trach %}
+                                    <option value="{{bac_si.id}}"> {{bac_si.ho_ten}} </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        {% comment %} END {% endcomment %}
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Đóng</button>
+                <button type="button" id="updatePhongChucNangSubmit" class="btn btn-primary font-weight-bold">Cập Nhật</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--begin::Modal-->
+<div id="kt_datatable_modal" class="modal fade" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content" style="min-height: 590px;">
+            <div class="modal-header py-5">
+                <h5 class="modal-title">
+                    Danh Sách Dịch Vụ Khám
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!--begin::Search Form-->
+                <div class="mb-5">
+                    <div class="row align-items-center">
+                        <div class="col-lg-9 col-xl-8">
+                            <div class="row align-items-center">
+                                <div class="col-md-6 my-2 my-md-0">
+                                    <div class="input-icon">
+                                        <input type="text" class="form-control" placeholder="Tìm kiếm..." id="kt_datatable_search_query_2" />
+                                        <span>
+                                            <i class="flaticon2-search-1 text-muted"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end::Search Form-->
+                <!--begin: Datatable-->
+                <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable_sub"></div>
+                <!--end: Datatable-->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light-primary font-weight-bold text-uppercase" data-dismiss="modal">Đóng</button>
+                {% comment %} <button type="button" class="btn btn-primary font-weight-bold text-uppercase">Xác Nhận</button> {% endcomment %}
+            </div>
+        </div>
+    </div>
+</div>
+<!--end::Modal-->
+
+{% endblock content %}
+
+{% block scripts %}
+{% comment %} <script>var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";</script> {% endcomment %}
+
+<!--begin::Global Config(global config for global JS scripts)-->
+<script>var KTAppSettings = { "breakpoints": { "sm": 576, "md": 768, "lg": 992, "xl": 1200, "xxl": 1400 }, "colors": { "theme": { "base": { "white": "#ffffff", "primary": "#3699FF", "secondary": "#E5EAEE", "success": "#1BC5BD", "info": "#8950FC", "warning": "#FFA800", "danger": "#F64E60", "light": "#E4E6EF", "dark": "#181C32" }, "light": { "white": "#ffffff", "primary": "#E1F0FF", "secondary": "#EBEDF3", "success": "#C9F7F5", "info": "#EEE5FF", "warning": "#FFF4DE", "danger": "#FFE2E5", "light": "#F3F6F9", "dark": "#D6D6E0" }, "inverse": { "white": "#ffffff", "primary": "#ffffff", "secondary": "#3F4254", "success": "#ffffff", "info": "#ffffff", "warning": "#ffffff", "danger": "#ffffff", "light": "#464E5F", "dark": "#ffffff" } }, "gray": { "gray-100": "#F3F6F9", "gray-200": "#EBEDF3", "gray-300": "#E4E6EF", "gray-400": "#D1D3E0", "gray-500": "#B5B5C3", "gray-600": "#7E8299", "gray-700": "#5E6278", "gray-800": "#3F4254", "gray-900": "#181C32" } }, "font-family": "Poppins" };</script>
+
+
+
+<script>
+
+"use strict";
+// Class definition
+
+var KTDatatableRemoteAjaxDemo = function() {
+    // Private functions
+
+    // basic demo
+    var demo = function(id) {
+        var func_room_id = id
+        var datatable = $('#kt_datatable').KTDatatable({
+            // datasource definition
+            data: {
+                type: 'remote',
+                source: {
+                    read: {
+                        url: HOST_URL + '/api/danh_sach_phong_chuc_nang/',
+                        method: "GET",
+                        // sample custom headers
+                        // headers: {'x-my-custom-header': 'some value', 'x-test-header': 'the value'},
+                        map: function(raw) {
+                            // sample data mapping
+                            var dataSet = raw;
+                            if (typeof raw.data !== 'undefined') {
+                                dataSet = raw.data;
+                            }
+                            console.log(dataSet)
+                            return dataSet;
+                        },
+                        params: {
+                            id_phong: func_room_id
+                        },
+
+                    },
+                },
+                pageSize: 10,
+                serverPaging: true,
+                // serverFiltering: true,
+                // serverSorting: true,
+            },
+
+            // layout definition
+            layout: {
+                scroll: false,
+                footer: false,
+            },
+
+            // column sorting
+            sortable: true,
+
+            pagination: true,
+
+            search: {
+                input: $('#kt_datatable_search_query'),
+                key: 'generalSearch'
+            },
+            // columns definition
+            columns: [{
+                field: 'id',
+                title: 'Stt',
+                sortable: 'asc',
+                width: 80,
+                type: 'number',
+                selector: false,
+                textAlign: 'center',
+            }, {
+                field: 'ten_phong_chuc_nang',
+                title: 'Phòng Chức Năng',
+                textAlign: 'center'
+            },
+            {% comment %} {
+                field: 'Update',
+                title: 'Chỉnh Sửa',
+                sortable: false,
+                width: 80,
+                textAlign: 'center',
+                //overflow: 'visible',
+                autoHide: false,
+                template: function(row) {
+                    return `
+                        {% if perms.clinic.can_change_consulting_room %}
+                        <a href="javascript:;" data-id="${row.id}" data-ten-phong-chuc-nang="${row.ten_phong_chuc_nang}" class="btn-update btn btn-clean btn-icon mr-2" title="Chỉnh sửa thông tin phòng chức năng">
+                            <i class="la la-edit icon-lg text-primary"></i>
+                        </a>
+                        {% endif %}
+                    `;
+                },
+            },  {% endcomment %}
+            {
+                field: 'List',
+                title: 'Danh Sách DVK',
+                sortable: false,
+                width: 120,
+                //overflow: 'visible',
+                autoHide: false,
+                textAlign: 'center',
+                template: function(row) {
+                    return `
+                        <a href="javascript:;" data-id="${row.id}" class="btn btn-clean btn-icon mr-2 btn-check" title="Danh sách dịch vụ trong phòng chức năng">
+                            <i class="la la-list icon-lg text-primary"></i>
+                        </a>
+                        
+                    `;
+                },
+            },],
+
+        });
+
+        datatable.on('click', '.btn-check', function() {
+            var id_phong_chuc_nang = $(this).data('id');
+            console.log(id_phong_chuc_nang)
+            initSubDatatable(id_phong_chuc_nang);
+            $('#kt_datatable_modal').modal('show');
+        });
+    };
+
+    var initSubDatatable = function(id_phong_chuc_nang) {
+        var id = id_phong_chuc_nang
+        var el = $('#kt_datatable_sub');
+        var datatable = $('#kt_datatable_sub').KTDatatable({
+            data: {
+                type: 'remote',
+                source: {
+                    read: {
+                        method: "GET",
+                        url: HOST_URL + '/api/danh_sach_dich_vu_theo_phong_chuc_nang/',
+                        params: {
+                            id_phong_chuc_nang: id,
+                        },
+                    },
+                },
+                pageSize: 10,
+                serverPaging: true,
+                //serverFiltering: true,
+                //serverSorting: true,
+            },
+
+            // layout definition
+            //layout: {
+            //    theme: 'default',
+            //    scroll: true,
+            //    height: 350,
+            //    footer: false,
+            //    header: true,
+            //},
+
+            layout: {
+                theme: 'default',
+                scroll: false,
+                footer: false,
+            },
+
+            // column sorting
+            sortable: true,
+
+            pagination: true,
+
+            search: {
+                input: '#kt_datatable_search_query_2',
+                key: 'generalSearch1'
+            },
+
+            sortable: true,
+
+            // columns definition
+            columns: [{
+                field: 'phong_chuc_nang.ten_phong_chuc_nang',
+                title: 'Tên Phòng Chức Năng',
+                autoHide: false,
+                width: 200,
+            }, {
+                field: 'phong_chuc_nang.bac_si_phu_trach.ho_ten',
+                title: 'Bác Sĩ Phụ Trách',
+                autoHide: false,
+                textAlign: 'center',
+                width: 100,
+            }, {
+                field: 'ma_dvkt',
+                title: 'Mã Dịch Vụ',
+                autoHide: false,
+                textAlign: 'center',
+                width: 100,
+            }, {
+                field: 'ten_dvkt',
+                title: 'Dịch Vụ Khám',
+                autoHide: false,
+                width: 200,
+                textAlign: 'center'
+            }, {
+                field: 'bao_hiem',
+                autoHide: false,
+                title: 'Bảo Hiểm',
+                width: 70,
+                textAlign: 'right',
+                template: function(row){
+                    if(row.bao_hiem == true){
+                        return '<span class="label font-weight-bold label-lg label-light-success label-inline">Áp dụng</span>'
+                    }else{
+                        return '<span class="label font-weight-bold label-lg label-light-warning label-inline">Không áp dụng</span>'
+                    }
+                }
+            }],
+        });
+
+        var modal = datatable.closest('.modal');
+
+        // fix datatable layout after modal shown
+        datatable.hide();
+
+        modal.on('shown.bs.modal', function() {
+            var modalContent = $(this).find('.modal-content');
+            datatable.spinnerCallback(true, modalContent);
+            datatable.spinnerCallback(false, modalContent);
+        }).on('hidden.bs.modal', function() {
+            el.KTDatatable('destroy');
+        });
+
+        datatable.on('datatable-on-layout-updated', function() {
+            datatable.show();
+            datatable.redraw();
+        });
+    };
+
+    $('#btn-reload').on('click', function() {
+		$('#kt_datatable').KTDatatable('reload');
+        console.log('reload');
+	});
+
+    var update_phong_chuc_nang = function(){
+        $('#kt_datatable').on('click', '.btn-update', function(){
+            var ten_phong_chuc_nang = $(this).attr('data-ten-phong-chuc-nang')
+            var id = $(this).data('id')
+
+            //console.log(ten_phong_chuc_nang)
+            //console.log(id)
+            $('#updatePhongChucNang').modal('show')
+            $('#updatePhongChucNang').find('#ten_phong_chuc_nang').val(ten_phong_chuc_nang)
+            $('#updatePhongChucNang').find('#ten_phong_chuc_nang').attr('data-ten-phong-chuc-nang', ten_phong_chuc_nang)
+            $('#updatePhongChucNang').find('#updatePhongChucNangSubmit').attr("data-id", id)
+        })
+
+        $('#updatePhongChucNangSubmit').on('click', function(){
+            var id = $(this).attr('data-id')
+            var ten_phong_chuc_nang = $('#ten_phong_chuc_nang').val()
+            var bac_si_phu_trach = $('#selectBacSi').val()
+            {% comment %} console.log(id)
+            console.log(ten_phong_chuc_nang)
+            console.log(bac_si_phu_trach) {% endcomment %}
+
+            var formData = new FormData()
+            formData.append('id',id)
+            formData.append('ten_phong_chuc_nang',ten_phong_chuc_nang)
+            formData.append('bac_si_phu_trach', bac_si_phu_trach)
+            formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
+            
+            $.ajax({
+                type: "POST",
+                url: "{% url 'chinh_sua_phong_chuc_nang' %}",
+                data: formData,
+                cache: false,
+                processData: false,
+                contentType: false,
+                success: function(response){
+                    toastr.success(response.message, "Thành Công!")
+                    $('#updatePhongChucNang').find("input").val("")
+                    $('#updatePhongChucNang').modal('hide')
+                    
+                    $('#kt_datatable').KTDatatable('reload')
+                },
+                error: function(response){
+                    toastr.warning(response.message)
+                    $('#updatePhongChucNang').modal('hide');
+                }
+            })
+        })
+    }
+
+    return {
+        // public functions
+        init: function() {
+            demo();
+            update_phong_chuc_nang();
+        },
+    };
+}();
+
+jQuery(document).ready(function() {
+    KTDatatableRemoteAjaxDemo.init();
+});
+
+</script>
+
+{% endblock scripts %}

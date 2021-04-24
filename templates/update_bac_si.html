@@ -1,0 +1,252 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">Cập Nhật Thông Tin Bác Sĩ</h5>
+                    <!--end::Page Title-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!--begin::Card-->
+            <div class="card card-custom">
+                <div class="card-header flex-wrap border-0 pb-0">
+                    <div class="card-title">
+                        <h1 class="card-label">
+                            Biểu mẫu chỉnh sửa
+                        </h1>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!--begin::Form-->
+                    <form id="benh_nhan_form">
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>Họ Tên </label>
+                                {{ form_user.ho_ten|attr:"class: form-control"|attr:"name:ho_ten" }}
+                                {% comment %} <input type="text" class="form-control" id="inputNameModal"  placeholder="Nhập Đầy Đủ Họ Tên Của Bác Sĩ"/> {% endcomment %}
+                            </div>
+                        {% comment %} </div>
+                        <div class="form-group row"> {% endcomment %}
+                            <div class="col-lg-6">
+                                <label>Số Điện Thoại </label>
+                                {{ form_user.so_dien_thoai|attr:"class: form-control"|attr:"name:so_dien_thoai"|attr:"id:inputPhone" }}
+                                {% comment %} <input type="text" class="form-control" id="inputPhoneModal"  placeholder="Nhập Số Điện Thoại"/> {% endcomment %}
+                                
+                                <span class="text-success" id="success_phone"></span>
+                                <span class="text-warning" id="error_phone"></span>    
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>CMND/CCCD </label>
+                                {{ form_user.cmnd_cccd|attr:"class:form-control"|attr:"name:cmnd_cccd" }}
+                                {% comment %} <input type="text" class="form-control" id="inputCmtModal" placeholder="Nhập CMND/CCCD"/> {% endcomment %}
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Ngày sinh</label>
+                                {{ form_user.ngay_sinh|attr:"class:form-control"|attr:"name:ngay_sinh"|attr:"id:inputNgaySinhModal"}}
+                                {% comment %} <input class="form-control" id="inputNgaySinhModal" type="text" /> {% endcomment %}
+                                <span class="form-text text-muted">Nhập ngày sinh dạng: 
+                                <code>ngày/tháng/năm</code></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>Giới Thiệu</label>
+                                {{form.gioi_thieu|attr:"class:form-control"|attr:"name:gioi_thieu"|attr:"rows:2"}}
+
+                                {% comment %} <input type="text" class="form-control" id="inputGioiThieuModal" placeholder="Giới thiệu về bác sĩ"/> {% endcomment %}
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Nơi Công Tác</label>
+                                {{form.noi_cong_tac|attr:"class:form-control"|attr:"name:noi_cong_tac"|attr:"rows:2"}}
+                                {% comment %} <input type="text" class="form-control" id="inputNoiCongTacModal" placeholder="Nơi công tác thường trực của bác sĩ"/> {% endcomment %}
+                            </div>
+                            
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>Chuyên Khoa</label>
+                                {{form.chuyen_khoa|attr:"class:form-control"|attr:"name:chuyen_khoa"}}
+
+                                {% comment %} <input type="text" class="form-control" id="inputChuyenKhoaModal" placeholder="Chuyên khoa của bác sĩ"/> {% endcomment %}
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Chức Danh</label>
+                                {{form.chuc_danh|attr:"class:form-control"|attr:"name:chuc_danh"}}
+
+                                {% comment %} <input type="text" class="form-control" id="inputChucDanhModal" placeholder="Chức danh của bác sĩ"/> {% endcomment %}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>Loại Công Việc</label>
+                                {{ form.loai_cong_viec|attr:"class:form-control selectpicker"|attr:"name:loai_cong_viec" }}
+                                    {% comment %} <label class="radio">
+                                        <input type="radio" name="loai_cong_viec" class="inputLoaiCongViecModal" value="part_time" />
+                                        <span></span>Part-Time
+                                    </label> {% endcomment %}
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Kinh Nghiệm </label>
+                                {{ form.kinh_nghiem|attr:"class:form-control selectpicker"|attr:"name:kinh_nghiem"|attr:"rows:1" }}
+
+                                {% comment %} <input type="text" class="form-control" id="inputKinhNghiemModal" placeholder="Kinh nghiệm làm việc của bác sĩ"/> {% endcomment %}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Địa chỉ </label>
+                            {{ form_user.dia_chi|attr:"class:form-control selectpicker"|attr:"name:dia_chi"|attr:"rows:3" }}
+
+                            {% comment %} <textarea class="form-control" id="inputDiaChiModal" placeholder="Địa chỉ người dùng" rows="3"></textarea> {% endcomment %}
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 text-center">
+                                <button data-id="{{ id_bac_si }}" data-user-id="{{ user_id }}" type="button" class="btn btn-primary font-weight-bold mr-2" id="submitData" name="submitButton">Xác nhận</button>
+                                <button type="button" id="cancelButton" class="btn btn-light-primary font-weight-bold">Hủy</button>
+                            </div>
+                        </div>
+                    </form>
+                    <!--end::Form-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end::Entry-->
+</div>
+<!--end::Content-->
+
+{% endblock content %}
+
+{% block scripts %}
+<!--begin::Global Theme Bundle(used by all pages)-->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+{% comment %} <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js" integrity="sha512-LGXaggshOkD/at6PFNcp2V2unf9LzFq6LE+sChH7ceMTDP0g2kn6Vxwgg7wkPP7AAtX+lmPqPdxB47A0Nz0cMQ==" crossorigin="anonymous"></script> {% endcomment %}
+
+<!--end::Global Theme Bundle-->
+
+<script>
+    var ngay_sinh = $("input[name=ngay_sinh]").val();
+    ngay_sinh = moment(new Date(ngay_sinh)).format('DD/MM/yyyy')
+    ngay_sinh = ngay_sinh
+    console.log(ngay_sinh)
+    if($('#inputNgaySinhModal').length){
+        $("#inputNgaySinhModal").inputmask("99/99/9999", {
+            "placeholder": "ng/th/nam ",
+            autoUnmask: false
+        });
+    }
+    else{
+        ngay_sinh
+    }
+    $('#inputNgaySinhModal').val(ngay_sinh)
+    
+    $('#cancelButton').click(function(){
+        window.history.back();
+    })
+
+    $(document).on('click', '#submitData', function(){
+        var loai_cong_viec = $('[name=loai_cong_viec]').val()
+        console.log(loai_cong_viec)
+        var id = $(this).data('id')
+        var user_id = $(this).data('user-id')
+        var formData = new FormData()
+        console.log($('#inputNgaySinhModal').val())
+
+        $("#benh_nhan_form").find("input").each(function(){
+            formData.append($(this).attr("name"), $(this).val())
+        });
+
+        $("#benh_nhan_form").find("textarea").each(function(){
+            formData.append($(this).attr("name"), $(this).val())
+        });
+
+        formData.append('loai_cong_viec', loai_cong_viec)
+        formData.append('id', id)
+        formData.append('user_id', user_id)
+        formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
+
+        $.ajax({
+            type: "POST",
+            url: "{% url 'cap_nhat_thong_tin_bac_si' %}",
+            data: formData,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function(response){
+                toastr.success('Cập Nhật Thành Công', 'Thành Công!')
+                setTimeout(function () {
+                    window.location.href = '/danh_sach_bac_si/'; //redirect về danh sách chờ lâm sàng
+                }, 1500); //sau 2 giây (1000 = 1s)
+                //window.location = '/danh_sach_benh_nhan/'
+            },
+            error: function(response){
+                console.log("error")
+            }
+        })
+    })
+
+    $(document).ready(function() {
+        $('#inputPhone').on('keyup', function() {
+            var so_dien_thoai = $('#inputPhone').val().trim()
+            var formData = new FormData()
+            
+            if (so_dien_thoai != '') {
+                $("#success_phone").html("<img src='{% static 'assets/media/loader/loader.gif' %}' /> Đang kiểm tra...")
+                $("#error_phone").html("")
+                setTimeout(function () {
+                    formData.append('so_dien_thoai', so_dien_thoai)     
+                    $.ajax({
+                        type: "POST",
+                        url: "{% url 'check_exists_so_dien_thoai' %}",
+                        data: formData,
+                        cache: false,
+                        processData: false,
+                        contentType: false,
+                        success: function(response){
+                            if (response.status == 200) {
+                                $("#success_phone").html("") 
+                                $("#error_phone").html(response.message)
+                            } else if (response.status == 404) {
+                                $("#success_phone").html(response.message)
+                                $("#error_phone").html("")
+                            } else if (response.status == 406) {
+                                $("#success_phone").html("") 
+                                $("#error_phone").html(response.message)
+                            }
+                        }
+                    })
+                }, 1500);
+            } else {
+                $("#success_phone").html("")
+                $("#error_phone").html("")
+            }
+        })
+        
+    })
+
+</script>
+
+{% endblock scripts %}
+

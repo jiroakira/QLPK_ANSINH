@@ -1,0 +1,1129 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">Danh sách bệnh nhân</h5>
+                    <!--end::Page Title-->
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!--begin::Card-->
+            <div id='resetPasswordNotification' class="alert alert-custom alert-notice alert-light-success fade show" role="alert" style="display: none">
+                <div class="alert-icon"><i class="flaticon2-writing"></i></div>
+                <div class="alert-text">
+                    <h5>Thành công</h5>
+                    Thông báo này sẽ có hiệu lực trong vòng 60 giây <br>
+                    Vui lòng ghi chú lại mật khẩu mới <br>
+                    Mật khẩu mới là: 
+                    <div id='newUserPassword'></div>
+                </div>
+                
+                <div class="alert-close">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true"><i class="ki ki-close"></i></span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="card card-custom">
+                <div class="card-header flex-wrap border-0 pt-6 pb-0">
+                    <div class="card-title">
+                        <h3 class="card-label">Danh sách bệnh nhân</h3>
+                    </div>
+                    
+                    <div class="card-toolbar">
+                        <!-- begin::Button -->
+                        {% if perms.clinic.can_add_user %}
+                        <a href="javascript:;" class="btn btn-light-primary font-weight-bolder mr-2" id="btn-them-benh-nhan">
+                            <span class="svg-icon svg-icon-sm">
+                                <svg xmlns="http:www.w3.org/2000/svg" xmlns:xlink="http:    www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <polygon points="0 0 24 0 24 24 0 24" />
+                                        <path d="M18,8 L16,8 C15.4477153,8 15,7.55228475 15,7 C15,6.44771525 15.4477153,6 16,6 L18,6 L18,4 C18,3.44771525 18.4477153,3 19,3 C19.5522847,3 20,3.44771525 20,4 L20,6 L22,6 C22.5522847,6 23,6.44771525 23,7 C23,7.55228475 22.5522847,8 22,8 L20,8 L20,10 C20,10.5522847 19.5522847,11 19,11 C18.4477153,11 18,10.5522847 18,10 L18,8 Z M9,11 C6.790861,11 5,9.209139 5,7 C5,4.790861 6.790861,3 9,3 C11.209139,3 13,4.790861 13,7 C13,9.209139 11.209139,11 9,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
+                                        <path d="M0.00065168429,20.1992055 C0.388258525,15.4265159 4.26191235,13 8.98334134,13 C13.7712164,13 17.7048837,15.2931929 17.9979143,20.2 C18.0095879,20.3954741 17.9979143,21 17.2466999,21 C13.541124,21 8.03472472,21 0.727502227,21 C0.476712155,21 -0.0204617505,20.45918 0.00065168429,20.1992055 Z" fill="#000000" fill-rule="nonzero" />
+                                    </g>
+                                </svg>
+                            </span>
+                            Thêm Bệnh Nhân
+                        </a>
+                        {% endif %}
+                        <!-- end::Button -->
+
+                        <!--begin::Button-->
+                        <a href="javascript:;" class="btn btn-light-primary font-weight-bolder" id="btn-reload">
+                            <span class="svg-icon svg-icon-md">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <rect x="0" y="0" width="24" height="24"/>
+                                        <path d="M12,8 L8,8 C5.790861,8 4,9.790861 4,12 L4,13 C4,14.6568542 5.34314575,16 7,16 L7,18 C4.23857625,18 2,15.7614237 2,13 L2,12 C2,8.6862915 4.6862915,6 8,6 L12,6 L12,4.72799742 C12,4.62015048 12.0348702,4.51519416 12.0994077,4.42878885 C12.264656,4.2075478 12.5779675,4.16215674 12.7992086,4.32740507 L15.656242,6.46136716 C15.6951359,6.49041758 15.7295917,6.52497737 15.7585249,6.56395854 C15.9231063,6.78569617 15.876772,7.09886961 15.6550344,7.263451 L12.798001,9.3840407 C12.7118152,9.44801079 12.607332,9.48254921 12.5,9.48254921 C12.2238576,9.48254921 12,9.25869158 12,8.98254921 L12,8 Z" fill="#000000"/>
+                                        <path d="M12.0583175,16 L16,16 C18.209139,16 20,14.209139 20,12 L20,11 C20,9.34314575 18.6568542,8 17,8 L17,6 C19.7614237,6 22,8.23857625 22,11 L22,12 C22,15.3137085 19.3137085,18 16,18 L12.0583175,18 L12.0583175,18.9825492 C12.0583175,19.2586916 11.8344599,19.4825492 11.5583175,19.4825492 C11.4509855,19.4825492 11.3465023,19.4480108 11.2603165,19.3840407 L8.40328311,17.263451 C8.18154548,17.0988696 8.13521119,16.7856962 8.29979258,16.5639585 C8.32872576,16.5249774 8.36318164,16.4904176 8.40207551,16.4613672 L11.2591089,14.3274051 C11.48035,14.1621567 11.7936615,14.2075478 11.9589099,14.4287888 C12.0234473,14.5151942 12.0583175,14.6201505 12.0583175,14.7279974 L12.0583175,16 Z" fill="#000000" opacity="0.3"/>
+                                    </g>
+                                </svg>
+                            </span>
+                            Tải lại
+                        </a>
+                        <!--end::Button-->
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!--begin::Search Form-->
+                    <div class="mb-7">
+                        <div class="row align-items-center">
+                            <div class="col-lg-9 col-xl-12">
+                                <div class="row">
+                                    <div class="col-md-5 my-2 my-md-0">
+                                        <div class="input-icon">
+                                            <input type="text" class="form-control" placeholder="Tìm Kiếm..." id="kt_datatable_search_query" />
+                                            <span>
+                                                <i class="flaticon2-search-1 text-muted"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% comment %} </div> {% endcomment %}
+                            </div>
+                        <!--end::Daterange-->
+                        </div>
+                        <!--begin::Daterange-->
+                    </div>
+                    <!--end::Search Form-->
+                    <!--begin: Datatable-->
+                    <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable"></div>
+                    <!--end: Datatable-->
+                </div>
+                <div class="card-footer text-right">
+                    <div>
+                        <a href="#" class="btn btn-light-success font-weight-bolder ml-2" id="excelExport">
+                            <span class="navi-icon">
+                                <i class="la la-file-excel-o"></i>
+                            </span>
+                            <span class="navi-text">Xuất file excel</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!--end::Card-->
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+<!--end::Content-->
+
+<!-- Register Modal-->
+<div class="modal fade" id="registerModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Thêm mới người dùng</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="card-body">
+                    <form id="form_register">
+                        <div class="form-group mb-8">
+                            <div class="alert alert-custom alert-default" role="alert">
+                                <div class="alert-icon"><i class="flaticon-user-add text-primary"></i></div>
+                                <div class="alert-text font-weight-bolder">
+                                    Đăng Kí Tài Khoản
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-12">
+                                <label>Họ Tên </label>
+                                <input type="text" class="form-control" id="inputNameModal"  placeholder="Nhập Đầy Đủ Họ Tên Của Bạn"/>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>Số Điện Thoại </label>
+                                <input type="text" class="form-control" id="inputPhoneModal"  placeholder="Nhập Số Điện Thoại"/>
+                                <span class="form-text text-muted" >Chúng tôi sẽ không chia sẻ dữ liệu này với bất kì ai</span>
+                                <span class="text-success" id="success_phone"></span>
+                                <span class="text-warning" id="error_phone"></span>    
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="inputPasswordModal">Mật khẩu </label>
+                                <input type="password" class="form-control" id="inputPasswordModal" placeholder="Nhập mật khẩu"/>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>CMND/CCCD </label>
+                                <input type="text" class="form-control" id="inputCmtModal" placeholder="Nhập CMND/CCCD"/>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Ngày sinh</label>
+                                <input type="text" class="form-control" id="inputNgaySinhModal" name="ngay_sinh" placeholder="Chọn ngày sinh"/>
+                                <span class="form-text text-muted">Nhập ngày sinh dạng: 
+                                <code>ngày/tháng/năm</code></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-2">
+                                <label>Giới tính</label>
+                                <div class="radio-inline">
+                                    <label class="radio">
+                                        <input type="radio" name="radio" class="inputGioiTinhModal" value="2" />
+                                        <span></span>Nữ
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" checked name="radio" class="inputGioiTinhModal" value="1" />
+                                        <span></span>Nam
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <label>Dân tộc </label>
+                                <input type="text" class="form-control" id="inputDanTocModal" placeholder="Nhập dân tộc của bệnh nhân"/>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Cân Nặng </label>
+                                <input type="number" min="0" class="form-control" id="inputCanNangModal" placeholder="Nhập cân nặng của bệnh nhân"/>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Mã số bảo hiểm </label>
+                                <input type="text" class="form-control" id="inputMaSoBaoHiemModal" placeholder="Nhập mã số bảo hiểm của bệnh nhân"/>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <div class="col-lg-4">
+                                <label>Mã Nơi ĐK KCB BĐ</label>
+                                {% comment %} {{ form.ma_dkbd|attr:"class:form-control"|attr:"name:ma_dkbd"|attr:"placeholder:Nhập mã nơi đăng kí khám chữa bệnh ban đầu"}} {% endcomment %}
+                                <input type="text" class="form-control" id="inputMaDkbdModal" placeholder="Nhập mã nơi đăng kí khám chữa bệnh ban đầu"/>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <label>Giá Trị Thẻ Từ</label>
+                                {% comment %} <div class="radio-inline">
+                                    {{ form.gioi_tinh|attr:"class:form-control selectpicker"|attr:"name:gioi_tinh" }}
+                                </div> {% endcomment %}
+                                {% comment %} {{ form.gt_the_tu|attr:"class:form-control"|attr:"name:gt_the_tu"|attr:"id:kt_datepicker_4"|attr:"readonly:readonly"|attr:"placeholder:Chọn thời điểm thẻ có giá trị"}} {% endcomment %}
+                                <input type="text" class="form-control" id="kt_datepicker_4" name="gt_the_tu" readonly="readonly" placeholder="Chọn thời điểm thẻ có giá trị"/>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Liên Tiếp 5 Năm Từ</label>
+                                {% comment %} {{ form.lien_tuc_5_nam_tu|attr:"class:form-control"|attr:"name:lien_tuc_5_nam_tu"|attr:"id:kt_datepicker_5"|attr:"readonly:readonly"|attr:"placeholder:Chọn thời điểm 5 năm liên tục từ"}} {% endcomment %}
+                                <input type="text" class="form-control" id="kt_datepicker_5" name="lien_tuc_5_nam_tu" readonly="readonly" placeholder="Chọn thời điểm 5 năm liên tục từ"/>
+                            </div>
+                            
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-lg-4">
+                                <label>Tỉnh/Thành Phố</label>
+                                {% comment %} <input type="text" class="form-control" id="inputCmtModal" placeholder="Nhập CMND/CCCD"/> {% endcomment %}
+                                <select class="form-control selectpicker" id="kt_select2_1" data-live-search="true" name="param">
+                                    <option value="" selected disabled>Chọn Tỉnh/Thành phố</option>
+                                    {% for p in province %}
+                                        <option value="{{p.id}}">{{p.name}}</option>
+                                    {% endfor %}      
+                                </select>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Quận/Huyện</label>
+                                {% comment %} <input class="form-control" id="inputNgaySinhModal" type="text" /> {% endcomment %}
+                                <select class="form-control selectpicker" id="kt_select2_2" data-live-search="true" name="param">
+                                    
+                                </select>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Phường/Xã</label>
+                                {% comment %} <input class="form-control" id="inputNgaySinhModal" type="text" /> {% endcomment %}
+                                <select class="form-control selectpicker" id="kt_select2_3" data-live-search="true" name="param">
+                                    
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Địa chỉ cụ thể (Đường/Số nhà)</label>
+                            <textarea class="form-control" id="inputDiaChiModal" placeholder="Địa chỉ người dùng" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Đóng</button>
+                <button type="button" class="registerModalSubmit btn btn-primary font-weight-bold">Tạo Tài Khoản</button>
+            </div>     
+        </div>
+    </div>
+</div>
+
+<!-- Modal Thêm Lịch Hẹn Khám -->
+<div class="modal fade" id="addLichHenKham" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Thêm Mới Lịch Hẹn Khám</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="formLichHen">
+                    <div class="card-body">
+                        <div class="form-group mb-8">
+                            <div class="alert alert-custom alert-default" role="alert">
+                                <div class="alert-icon"><i class="flaticon2-calendar-6 text-primary"></i></div>
+                                <div class="alert-text">
+                                    Thêm Lịch Hẹn Khám
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Bệnh Nhân</label>
+                            <span class="input-group-text" id="ten_benh_nhan"></span>
+                        </div>
+                        <div class="form-group" id="thongTinBenhNhan"></div>
+                        <div class="form-group">
+                            <label>Chọn Dịch Vụ Khám </label>
+                            <select id="selectDichVuKham" class="form-control selectpicker">
+                                <option value="kham_chua_benh" selected>Khám Chữa Bệnh</option>
+                                <option value="kham_sua_khoe">Khám Sức Khỏe</option>
+                            </select>
+                        </div>
+                        <div class="input-group date" id="kt_datetimepicker_1" data-target-input="nearest">
+                            <input type="text" id="inputLichHenKham" class="form-control datetimepicker-input" placeholder="Chọn thời gian bắt đầu" data-target="#kt_datetimepicker_1"/>
+                            <div class="input-group-append" data-target="#kt_datetimepicker_1" data-toggle="datetimepicker">
+                                <span class="input-group-text">
+                                    <i class="ki ki-calendar"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group mt-5">
+                            <label>Lý Do Đến Khám</label>
+                            <textarea class="form-control" id="ly_do" rows="3" placeholder="Nhập triệu chứng/lý do khám của bệnh nhân"></textarea>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Đóng</button>
+                        <button type="button" id="addLichSubmit" class="btn btn-primary font-weight-bold">Tạo</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Thay đổi mật khẩu</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="inputPassword1">Mật khẩu hiện tại </label>
+                            <input type="password" class="form-control" id="inputPassword1" placeholder="Mật khẩu hiện tại"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword2">Mật khẩu mới </label>
+                            <input type="password" class="form-control" id="inputPassword2" placeholder="Mật khẩu mới"/>
+                            <span class="form-text text-muted"><code>Mật khẩu phải có ít nhất 8 ký tự.</code></span>
+                            <span class="form-text text-muted"><code>Mật khẩu phải có các chữ cái từ a-z.</code></span>
+                            <span class="form-text text-muted"><code>Mật khẩu phải có ít nhất 1 chữ số từ 0-9.</code></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword3">Xác nhận mật khẩu </label>
+                            <input type="password" class="form-control" id="inputPassword3" placeholder="Xác nhận mật khẩu"/>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Đóng</button>
+                        <button type="button" id="changePasswordBtn" class="btn btn-primary font-weight-bold">Xác Nhận</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+
+{% block scripts %}
+<!--begin::Global Theme Bundle(used by all pages)-->
+
+<script src="{% static 'assets/js/pages/crud/forms/widgets/bootstrap-datetimepicker9cd7.js' %} "></script>
+<script src="{% static 'assets/js/excelexportjs.js' %} "></script>
+<!--end::Global Theme Bundle-->
+<script>
+
+"use strict";
+// Class definition
+
+// $(document).ajaxStart(function() {
+//     KTApp.blockPage({
+//         overlayColor: '#000000',
+//         state: 'primary',
+//         message: 'Đang xử lý...'
+//     });
+// })
+// 
+// $(document).ajaxStop(function() {
+//     KTApp.unblockPage();
+// })
+
+var KTDatatableRemoteAjaxDemo = function() {
+    // Private functions
+    //set global data
+
+    let globalData = null;
+    // basic demo
+
+    var demo = function() {
+        var arrows;
+        if (KTUtil.isRTL()) {
+            arrows = {
+                leftArrow: '<i class="la la-angle-right"></i>',
+                rightArrow: '<i class="la la-angle-left"></i>'
+            };
+        } else {
+            arrows = {
+                leftArrow: '<i class="la la-angle-left"></i>',
+                rightArrow: '<i class="la la-angle-right"></i>'
+            };
+        };
+
+        $("#inputNgaySinhModal").inputmask("31/12/9999", {
+            "placeholder": "dd/mm/yyyy",
+            autoUnmask: false
+        });
+
+        $('#kt_datepicker_3').datepicker({
+            rtl: KTUtil.isRTL(),
+            todayBtn: "linked",
+            clearBtn: true,
+            orientation: "bottom left",
+            todayHighlight: true,
+            templates: arrows,
+            format: 'dd/mm/yyyy',
+            autoclose:true,
+        });
+
+        $('#kt_datepicker_4').datepicker({
+            rtl: KTUtil.isRTL(),
+            todayBtn: "linked",
+            clearBtn: true,
+            orientation: "bottom left",
+            todayHighlight: true,
+            templates: arrows,
+            format: 'dd/mm/yyyy',
+            autoclose:true,
+        });
+
+        $('#kt_datepicker_5').datepicker({
+            rtl: KTUtil.isRTL(),
+            todayBtn: "linked",
+            clearBtn: true,
+            orientation: "bottom left",
+            todayHighlight: true,
+            templates: arrows,
+            format: 'dd/mm/yyyy',
+            autoclose:true,
+        });
+
+        $('#kt_select2_1').on('changed.bs.select', function(e, clickedIndex, newValue, oldValue) {
+            console.log(this.value, clickedIndex, newValue, oldValue)
+            var id_province = this.value
+            $.ajax({
+                url        : HOST_URL + '/api/province/',
+                data       : {'id': id_province},
+                success: function(response){
+                    console.log(response.data)
+                    $('#kt_select2_2').empty()
+                    var selectHtml = "";
+                    selectHtml += `<option value="" selected disabled>Chọn Quận/Huyện</option>`
+                    $.each(response.data, function(index, item) {
+                        selectHtml += "<option value='" + item.id + "' " + ">" + item.name + "</option>";
+                    });
+                    $('#kt_select2_2').html(selectHtml)
+                    $('#kt_select2_2').selectpicker('refresh')
+                },
+                error: function(response){
+                    
+                }
+            })
+        })
+
+        $('#kt_select2_2').on('changed.bs.select', function(e, clickedIndex, newValue, oldValue) {
+            console.log(this.value, clickedIndex, newValue, oldValue)
+            var id_district = this.value
+            $.ajax({
+                url        : HOST_URL + '/api/district/',
+                data       : {'id': id_district},
+                success: function(response){
+                    console.log(response.data)
+                    $('#kt_select2_3').empty()
+                    var selectHtml = "";
+                    selectHtml += `<option value="" selected disabled>Chọn Phường/Xã</option>`
+                    $.each(response.data, function(index, item) {
+                        selectHtml += "<option value='" + item.id + "' " + ">" + item.name + "</option>";
+                    });
+                    $('#kt_select2_3').html(selectHtml)
+                    $('#kt_select2_3').selectpicker('refresh')
+                },
+                error: function(response){
+                    
+                }
+            })
+        })
+
+        var datatable = $('#kt_datatable').KTDatatable({
+            // datasource definition
+            data: {
+                type: 'remote',
+                source: {
+                    read: {
+                        url: HOST_URL + '/api/danh_sach_benh_nhan/',
+                        method: 'GET',
+                        // sample custom headers
+                        // headers: {'x-my-custom-header': 'some value', 'x-test-header': 'the value'},
+                        map: function(raw) {
+                            // sample data mapping
+                            var dataSet = raw;
+                            if (typeof raw.data !== 'undefined') {
+                                dataSet = raw.data;
+                            }
+                            globalData = null;
+                            globalData = dataSet;
+                            console.log(dataSet)
+                            return dataSet;
+                        }
+                    },
+                },
+                pageSize: 10,
+                serverPaging: true,
+                serverFiltering: true,
+                serverSorting: true,
+            },
+
+            // layout definition
+            layout: {
+                scroll: true,
+                footer: false,
+            },
+
+            // column sorting
+            sortable: true,
+
+            pagination: true,
+
+            search: {
+                input: $('#kt_datatable_search_query'),
+                key: 'generalSearch'
+            },
+
+            // columns definition
+            columns: [
+            {
+                field: 'id',
+                title: 'STT',
+                width: 30,
+                type: 'number',
+                selector: false,
+                textAlign: 'center',
+            }, {
+                field: 'ho_ten',
+                title: 'Bệnh Nhân',
+                width: 180
+            }, {
+                field: 'so_dien_thoai',
+                title: 'Số điện thoại',
+            }, {
+                field: 'cmnd_cccd',
+                title: 'CMND/CCCD',
+                
+            }, {
+                field: 'dia_chi',
+                title: 'Địa chỉ',
+                width: 200,
+                autoHide: false,
+            }, {
+                field: 'dan_toc',
+                title: 'Dân tộc',
+                width: 50,
+                textAlign: 'center',
+                template: function(row){
+                    if (!row.dan_toc) {
+                        return '<span class="label font-weight-bold label-lg label-light-warning label-inline">Chưa có thông tin</span>'
+                    } else {
+                        return row.dan_toc
+                    }
+                }
+            }, {
+                field: 'email',
+                title: 'Email',
+                template: function(row) {
+                    if (!row.email) {
+                        return '<span class="label font-weight-bold label-lg label-light-warning label-inline">Chưa có thông tin</span>'
+                    } else {
+                        return row.email
+                    }
+                }
+            }, {
+                field: 'ngay_sinh',
+                title: 'Ngày sinh',
+                autoHide: false,
+                template: function(row) {
+                    var date = new Date(row.ngay_sinh)
+                    if(!row.ngay_sinh){
+                        return '<span class="label font-weight-bold label-lg label-light-info label-inline">Chưa Có Thông Tin</span>';
+                    } else {
+                        return date.toLocaleDateString('vi-VN')
+                    }
+                }
+            }, {
+                field: 'update',
+                title: 'Chỉnh Sửa',
+                sortable: false,
+                width: 60,
+                textAlign: 'center',
+                autoHide: false,
+                template: function(row) {
+                    return `
+                    {% if perms.clinic.can_change_user_info %}
+                        <a href="/danh_sach_benh_nhan/${row.id}/cap_nhat_thong_tin_benh_nhan" class="btn btn-lg btn-clean btn-icon" title="Chỉnh sửa thông tin bệnh nhân ${row.ho_ten}">
+                            <i class="la la-edit icon-lg text-primary"></i>
+                        </a>
+                    {% endif %}
+                    `;
+                },
+            }, {
+                field: 'lich_hen',
+                title: 'Lịch Hẹn',
+                sortable: false,
+                width: 60,
+                textAlign: 'center',
+                autoHide: false,
+                template: function(row) {
+                    return `
+                        {% if perms.clinic.can_add_appointment %}
+                        <a href="javascript:;" class="btn-add-lich-hen btn btn-lg btn-clean btn-icon" data-id="${row.id}" data-ten="${row.ho_ten}" title="Thêm lịch hẹn khám cho bệnh nhân ${row.ho_ten}">
+                            <i class="la la-calendar-plus icon-lg text-primary"></i>
+                        </a>
+                        {% endif %}
+                    `;
+                },
+            }, {
+                field: 'xoa_benh_nhan',
+                title: 'Xóa',
+                sortable: false,
+                width: 60,
+                textAlign: 'center',
+                autoHide: false,
+                template: function(row) {
+                    return `
+                        {% if perms.clinic.can_delete_user %}
+                        <a href="javascript:;" class="btn-xoa-benh-nhan btn btn-lg btn-clean btn-icon" data-id="${row.id}" data-ten="${row.ho_ten}" title="Xóa bệnh nhân ${row.ho_ten}">
+                            <i class="la la-trash-alt icon-lg text-danger"></i>
+                        </a>
+                        {% endif %}
+                    `;
+                },
+            }, {
+                field: 'reset_password',
+                title: 'Đặt lại mật khẩu',
+                sortable: false,
+                width: 60,
+                textAlign: 'center',
+                template: function(row) {
+                    return `
+                        {% if perms.clinic.can_change_password_user %}
+                        <a href="javascript:;" class="btn_reset_password btn btn-lg btn-clean btn-icon" data-id="${row.id}" data-ten="${row.ho_ten}" title="Đặt lại mật khẩu cho người dùng: ${row.ho_ten}">
+                            <i class="la la-lock-open icon-lg text-primary"></i>
+                        </a>
+                        {% endif %}
+                    `;
+                },
+            }, {
+                field: 'change_password',
+                title: 'Thay đổi mật khẩu',
+                sortable: false,
+                width: 60,
+                textAlign: 'center',
+                template: function(row) {
+                    return `
+                        {% if perms.clinic.can_change_password_user %}
+                        <a href="javascript:;" class="btn_change_password btn btn-lg btn-clean btn-icon" data-id="${row.id}" data-ten="${row.ho_ten}" title="Đổi mật khẩu cho người dùng: ${row.ho_ten}">
+                            <i class="la la-user-lock icon-lg text-primary"></i>
+                        </a>
+                        {% endif %}
+                    `;
+                },
+            }],
+
+        });
+
+        $('#excelExport').on('click', function(){
+            $('#kt_datatable').excelexportjs({
+                containerid: "kt_datatable",
+                datatype: 'json',
+                dataset: globalData,
+                columns: getColumns(globalData),
+                locale: 'vi-VN'
+            })
+        })
+
+		$('#kt_datatable_search_status').on('change', function() {
+            datatable.search($(this).val().toLowerCase(), 'trang_thai');
+        });
+
+        $('#btn-reload').on('click', function(){
+            $('#kt_datatable').KTDatatable('reload');
+        })
+
+        $('#kt_datatable_search_status, #kt_datatable_search_type').selectpicker();
+        
+        $(document).on("click", ".btn-edit", function () {
+            var ho_ten = $(this).data("benh_nhan")
+            var thoi_gian_bat_dau = $(this).data("thoi_gian_bat_dau")
+            var thoi_gian_ket_thuc = $(this).data("thoi_gian_ket_thuc")
+            var thoi_gian_tai_kham = $(this).data("thoi_gian_tai_kham")
+
+            $('.modal-ho_ten').val(ho_ten)
+            $('.modal-thoi_gian_bat_dau').val(thoi_gian_bat_dau)
+            $('.modal-thoi_gian_ket_thuc').val(thoi_gian_ket_thuc)
+            $('.modal-thoi_gian_tai_kham').val(thoi_gian_tai_kham)
+        });
+
+    };
+
+    var themLichHenKham = function(){
+        $('#kt_datatable').on('click', '.btn-add-lich-hen', function(){
+            var id = $(this).data('id')
+            var ten = $(this).data('ten')
+
+            $('#addLichHenKham').modal('show')
+            $('#addLichHenKham').find('#ten_benh_nhan').html(ten)
+            $('#addLichHenKham').find('#addLichSubmit').attr('data-id', id)
+
+        })
+        $('#addLichSubmit').on('click', function(){
+            var formData = new FormData();
+            var lich_hen_kham = $('#inputLichHenKham').val()
+            var id = $(this).attr('data-id')
+            var ly_do = $('#ly_do').val()
+            var loai_dich_vu = $('#selectDichVuKham').val()
+            // console.log(id)
+            // console.log(ly_do)
+            // console.log(loai_dich_vu)
+
+            formData.append('id_benh_nhan',id)
+            formData.append('loai_dich_vu', loai_dich_vu)
+            formData.append('ly_do', ly_do)
+            formData.append('thoi_gian_bat_dau', lich_hen_kham)
+            formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
+
+            $.ajax({
+                type: "POST",
+                url: "{% url 'add_lich_hen' %}",
+                data: formData,
+                cache: false,
+                processData: false,
+                contentType: false,
+                success: function(response){
+                    if (response.status == 400) {
+                        toastr.warning(response.message, "Xảy Ra Lỗi")
+                    } else if (response.status == 409) {
+                        toastr.info(response.message, "Lỗi")
+                    } else {
+                        toastr.success(response.message, "Tạo Lịch Hẹn Thành Công")
+                        $('#addLichHenKham').find("input, textarea").val("");
+                    }
+                    $('#addLichHenKham').modal('hide');
+                },
+                error: function(response){
+                    toastr.warning(response.message)
+                    $('#addLichHenKham').modal('hide');
+                }
+            })
+        })
+    }
+
+    var _initRegister = function(){
+        $('#btn-them-benh-nhan').on('click', function(){
+            $('#registerModal').modal('show')
+            
+            $("#inputNgaySinhModal").inputmask("99/99/9999", {
+                "placeholder": "dd/mm/yyyy",
+                autoUnmask: false
+            });
+        })
+    }
+
+    var _registerUser = function(){
+        //var formData = new FormData();
+        //$('#inputPhoneModal').on("change", function(){
+        //    console.log(1)
+        //    var phone = document.getElementById("inputPhoneModal").value;
+        //    if(phone== "") {
+        //        document.getElementById('error_phone').innerHTML = 'Không được để trống';
+        //        document.getElementById('success_phone').innerHTML = '';
+        //        return false;
+        //    }
+        //    else{
+        //        var regex_phone = /(84|0[3|5|7|8|9])+([0-9]{8})\b/gm;
+//
+        //        var test_phone = regex_phone.test(phone);
+//
+        //        if(test_phone==true){
+        //            document.getElementById('success_phone').innerHTML = 'Hợp lệ';
+        //            document.getElementById('error_phone').innerHTML = '';
+        //        }
+        //        else{
+        //            document.getElementById('success_phone').innerHTML = '';
+        //            document.getElementById('error_phone').innerHTML = 'Không hợp lệ';
+        //            return false;
+        //        }
+        //    }
+        //})
+        $(document).on("click", ".registerModalSubmit", function() {
+
+            var formData = new FormData()
+
+            var ele = document.getElementsByName('radio'); 
+            var i;
+            for(i = 0; i < ele.length; i++) { 
+                if(ele[i].checked)
+                var gioi_tinh = ele[i].value
+            }
+
+            formData.append('ho_ten', $("#inputNameModal").val())
+            formData.append('so_dien_thoai', $("#inputPhoneModal").val())
+            formData.append('password', $("#inputPasswordModal").val())
+            formData.append('cmnd_cccd', $("#inputCmtModal").val())
+            formData.append('dia_chi', $("#inputDiaChiModal").val())
+            formData.append('ngay_sinh', $("#inputNgaySinhModal").val())
+            formData.append('gioi_tinh', gioi_tinh)
+            formData.append('dan_toc', $("#inputDanTocModal").val())
+            formData.append('ma_so_bao_hiem', $("#inputMaSoBaoHiemModal").val())
+            formData.append('can_nang', $('#inputCanNangModal').val())
+            formData.append('ma_dkbd', $('#inputMaDkbdModal').val())
+            formData.append('tinh', $('#kt_select2_1').val())
+            formData.append('huyen', $('#kt_select2_2').val())
+            formData.append('xa', $('#kt_select2_3').val())
+            formData.append('gt_the_tu', $('#kt_datepicker_4').val())
+            formData.append('lien_tuc_5_nam_tu', $('#kt_datepicker_5').val())
+            formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
+
+            KTApp.blockPage({
+                overlayColor: '#000000',
+                state: 'primary',
+                message: 'Đang xử lý...'
+            });
+
+            $.ajax({
+                type: "POST",
+                url: "{% url 'dang_ki_nguoi_dung' %}",
+                data: formData,
+                cache: false,
+                processData: false,
+                contentType: false,
+                success: function(response){
+                    if (response.status == 404) {
+                        KTApp.unblockPage();
+                        toastr.warning(response.message, "Xảy Ra Lỗi")
+
+                    } else if (response.status == 409) {
+                        KTApp.unblockPage();
+                        toastr.info(response.message, "Lỗi")
+                    } else if (response.status == 403){
+                        KTApp.unblockPage();
+                        toastr.info(response.message, "Lỗi")
+                    } else if (response.status == 200) {
+                        KTApp.unblockPage();
+                        toastr.success(response.message, "Thành Công")
+                        $('#form_register').find('input:not([type="radio"]), textarea').val("");
+                        $('#error_phone').html('')
+                        $('#success_phone').html('')
+                        $('#registerModal').modal('hide');
+                        $('#kt_datatable').KTDatatable('reload');
+                    }
+                },
+                error: function(response){
+                    KTApp.unblockPage();
+                    $('#registerModal').modal('hide');
+                }
+            })
+        })
+    }
+
+    var deleteBenhNhan = function() {
+        $('#kt_datatable').on('click', '.btn-xoa-benh-nhan', function() {
+            var id = $(this).attr('data-id')
+            console.log(id)
+            var ten_benh_nhan = $(this).attr('data-ten')
+ 
+            Swal.fire({
+                title: "Xóa Bệnh Nhân " +ten_benh_nhan+ " khỏi danh sách",
+                text: "Bạn sẽ không thể hoàn tác!",
+                icon: "warning",
+                showCancelButton: true,
+                cancelButtonText: "Hủy",
+                confirmButtonText: "Xác Nhận!"
+            }).then(function(result) {
+                if (result.value) {
+                    console.log(id)
+                    var formData = new FormData()
+                    formData.append('id', id)
+                    formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
+                    KTApp.blockPage({
+                        overlayColor: '#000000',
+                        state: 'primary',
+                        message: 'Đang xử lý...'
+                    });
+
+                    $.ajax({
+                        type: "POST",
+                        url: "{% url 'xoa_benh_nhan' %}",
+                        data: formData,
+                        cache: false,
+                        processData: false,
+                        contentType: false,
+                        success: function(response){
+                            KTApp.unblockPage();
+                            if( response.status == 200 ){
+                                
+                                Swal.fire(
+                                    'Đã Xóa!',
+                                    'Bệnh Nhân Đã Được Xóa.',
+                                    'success'
+                                )
+                                $('#kt_datatable').KTDatatable('reload');
+                            } else if (response.status == 400) {
+                                toastr.warning(response.message, "Lỗi")
+                            }
+                        },
+                        error: function(response){
+                        }
+                    })
+                }else if (result.dismiss === 'cancel') {
+					Swal.fire(
+						'Đã Hủy',
+						'Bệnh Nhân Vẫn An Toàn Nhé! :)',
+						'error'
+					)
+				}
+            });
+ 
+        });
+    }
+
+    var resetPassword = function() {
+        $('#kt_datatable').on('click', '.btn_reset_password', function() {
+            var id = $(this).data('id')
+            var ten_benh_nhan = $(this).data('ten')
+            Swal.fire({
+                title: "Đặt lại mật khẩu cho bệnh nhân: " +ten_benh_nhan,
+                text: "Bạn sẽ không thể hoàn tác!",
+                icon: "warning",
+                showCancelButton: true,
+                cancelButtonText: "Hủy",
+                confirmButtonText: "Xác Nhận!"
+            }).then(function(result) {
+                if (result.value) {
+                    console.log(id)
+                    var formData = new FormData()
+                    formData.append('id', id)
+                    formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
+                    KTApp.blockPage({
+                        overlayColor: '#000000',
+                        state: 'primary',
+                        message: 'Đang xử lý...'
+                    });
+
+                    $.ajax({
+                        type: "POST",
+                        url: "{% url 'dat_lai_mat_khau' %}",
+                        data: formData,
+                        cache: false,
+                        processData: false,
+                        contentType: false,
+                        success: function(response){
+                            if( response.status == 200 ){
+                                KTApp.unblockPage();
+                                $('#newUserPassword').html(`<strong>${response.password}</strong>`)
+                                $('#resetPasswordNotification').show()
+                                window.setTimeout(function() {
+                                    $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                                        $(this).remove(); 
+                                    });
+                                }, 60000);
+                            } else if (response.status == 404) {
+                                toastr.warning(response.message, "Lỗi")
+                            }
+                        },
+                        error: function(response){
+                        }
+                    })
+                }else if (result.dismiss === 'cancel') {
+					Swal.fire(
+						'Đã Hủy',
+						'Mật Khẩu Của Bệnh Nhân Vẫn Y Nguyên Nhé! :)',
+						'error'
+					)
+				}
+            });
+        })
+    }
+
+    var changePassword = function() {
+        $('#kt_datatable').on('click', '.btn_change_password', function() {
+            $('#changePasswordModal').modal('show');
+            $('#changePasswordModal').find('#changePasswordBtn').attr("data-id", $(this).data('id'))
+
+        })
+
+        $('#changePasswordModal').on('click', '#changePasswordBtn', function() {
+            var currentPassword = $('#inputPassword1').val()
+            var newPassword = $("#inputPassword2").val()
+            var confirmPassword = $("#inputPassword3").val()
+            
+            var formData = new FormData()
+            if (currentPassword == ''){
+                toastr.info('Không thể thiếu mật khẩu hiện tại', 'Thông tin', {
+                    positionClass:'toast-top-center',
+                    timeOut: 2000,
+                })
+            } else if (currentPassword == newPassword) {
+                toastr.info('Mật khẩu mới phải khác với mật khẩu hiện tại', 'Thông tin', {
+                    positionClass:'toast-top-center',
+                    timeOut: 2000,
+                })
+            } else if (newPassword != confirmPassword) {
+                toastr.info('Xác nhận mật khẩu không khớp', 'Thông tin', {
+                    positionClass:'toast-top-center',
+                    timeOut: 2000,
+                })
+            } else {
+
+                formData.append('id', $(this).data('id'))
+                formData.append('current_password', currentPassword)
+                formData.append('new_password', newPassword)
+                formData.append('confirm_password', confirmPassword)
+                formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
+
+                $.ajax({
+                    type: "POST",
+                    url: "{% url 'change_password' %}",
+                    data: formData,
+                    cache: false,
+                    processData: false,
+                    contentType: false,
+                    success: function(response){
+                        if (response.status == 200) {
+                            toastr.success(response.message, 'Thành Công!')
+                            setTimeout(function () {
+                                window.location.href = '/danh_sach_benh_nhan/'; //redirect về danh sách chờ lâm sàng
+                            }, 1500); 
+                        } else if (response.status == 400) {
+                            toastr.warning(response.message, 'Lỗi')
+                        }
+                        //sau 2 giây (1000 = 1s)
+                        //window.location = '/danh_sach_benh_nhan/'
+                    },
+                    error: function(response){
+                        console.log("error")
+                    }
+                })
+            }
+            
+
+        })
+    }
+
+    var checkSoDienThoai = function() {
+        $(document).ready(function() {
+            $('#inputPhoneModal').on('keyup', function() {
+                var so_dien_thoai = $('#inputPhoneModal').val().trim()
+                var formData = new FormData()
+                
+                if (so_dien_thoai != '') {
+                    $("#success_phone").html("<img src='{% static 'assets/media/loader/loader.gif' %}' /> Đang kiểm tra...")
+                    $("#error_phone").html("")
+                    setTimeout(function () {
+                        formData.append('so_dien_thoai', so_dien_thoai)     
+                        $.ajax({
+                            type: "POST",
+                            url: "{% url 'check_exists_so_dien_thoai' %}",
+                            data: formData,
+                            cache: false,
+                            processData: false,
+                            contentType: false,
+                            success: function(response){
+                                if (response.status == 200) {
+                                    $("#success_phone").html("") 
+                                    $("#error_phone").html(response.message)
+                                } else if (response.status == 404) {
+                                    $("#success_phone").html(response.message)
+                                    $("#error_phone").html("")
+                                } else if (response.status == 406) {
+                                    $("#success_phone").html("") 
+                                    $("#error_phone").html(response.message)
+                                }
+                            }
+                        })
+                    }, 1500);
+                } else {
+                    $("#success_phone").html("")
+                    $("#error_phone").html("")
+                }
+            })
+            
+        })
+    }
+
+    return {
+        init: function() {
+            demo();
+            _initRegister();
+            _registerUser();
+            themLichHenKham();
+            deleteBenhNhan();
+            resetPassword();
+            changePassword();
+            checkSoDienThoai();
+        },
+    };
+}();
+
+jQuery(document).ready(function() {
+    KTDatatableRemoteAjaxDemo.init();
+});
+</script>
+
+{% endblock scripts %}
+
