@@ -64,7 +64,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://pkansinh.com"
+    "https://pkansinh.com"
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
