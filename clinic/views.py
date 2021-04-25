@@ -5656,7 +5656,12 @@ def store_nhap_thuoc(request):
             id = i['obj']['id']
 
             thuoc = Thuoc.objects.filter(id=id)
-            thuoc.update(so_luong_kha_dung=F('so_luong_kha_dung') + so_luong)
+
+            if thuoc[0].so_luong_kha_dung is not None:
+                thuoc.update(so_luong_kha_dung=F('so_luong_kha_dung') + so_luong)
+            else:
+                thuoc.update(so_luong_kha_dung = so_luong)
+                
             ThuocLog.objects.create(thuoc=thuoc[0], ngay=timezone.now(), quy_trinh=ThuocLog.IN, so_luong=so_luong)
 
             nhap_hang = NhapHang(hoa_don=hoa_don_nhap, thuoc=thuoc[0], so_luong=i['obj']['so_luong'], bao_hiem=i['obj']['bao_hiem'])
