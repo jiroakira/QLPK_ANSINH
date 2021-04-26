@@ -1,7 +1,6 @@
 from finance.models import HoaDonChuoiKham, HoaDonNhapHang, HoaDonThuoc, HoaDonLamSang, NhapHang
 from medicine.serializers import CongTySerializer, ThuocSerializer, ThuocSerializerSimple
 # from finance.serializers import HoaDonChuoiKhamSerializer, HoaDonThuocSerializer
-from os import set_inheritable
 from django.http.request import validate_host
 from rest_framework import fields, serializers
 from django.contrib.auth import get_user_model

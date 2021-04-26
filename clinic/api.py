@@ -11,7 +11,7 @@ from json import dump
 from rest_framework.parsers import FileUploadParser
 from rest_framework.parsers import MultiPartParser
 import json
-from medicine.models import CongTy, DonThuoc, KeDonThuoc, Thuoc, TrangThaiDonThuoc, VatTu
+from medicine.models import CongTy, DonThuoc, KeDonThuoc, NhomThuoc, Thuoc, TrangThaiDonThuoc, VatTu
 from django.http.response import Http404, HttpResponse, JsonResponse
 from rest_framework import views
 from rest_framework.views import APIView
@@ -300,9 +300,30 @@ class DichVuKhamListCreateAPIView(generics.ListCreateAPIView):
     pagination_class = CustomPagination
 
 class ThuocListCreateAPIView(generics.ListCreateAPIView):
-    queryset = Thuoc.objects.all()
     serializer_class = ThuocSerializer
     pagination_class = CustomPagination
+
+    def get_queryset(self):
+        queryset = Thuoc.objects.all()
+
+        term = self.request.query_params.get('query[search]')
+        id_nhom_thuoc = self.request.query_params.get('query[id_nhom_thuoc]')
+        bao_hiem = self.request.query_params.get('query[bao_hiem]')
+
+        if term is not None:
+            queryset = queryset.filter(Q(ten_thuoc__icontains=term) | Q(ten_hoat_chat__icontains=term) | Q(duong_dung__icontains=term) | Q(don_vi_tinh__icontains=term))
+
+        if id_nhom_thuoc is not None:
+            queryset = queryset.filter(nhom_thuoc__id=id_nhom_thuoc)
+
+        if bao_hiem is not None:
+            if bao_hiem == 'True':
+                bh = True
+            else:
+                bh = False
+            queryset = queryset.filter(bao_hiem = bh)
+
+        return queryset
 
 class PhongChucNangViewSet(viewsets.ModelViewSet):
     def list(self, request):

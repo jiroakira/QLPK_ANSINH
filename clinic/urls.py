@@ -434,4 +434,5 @@ urlpatterns = [
 
     path('bao_cao_xnt_tong_hop_thuoc/', bao_cao_xuat_nhap_ton_thuoc_view, name='bao_cao_xnt_tong_hop_thuoc'),
     path('bao_cao_thuoc_sap_het_date/', danh_sach_thuoc_sap_het_date_view, name='bao_cao_thuoc_sap_het_date'),
+
 ]

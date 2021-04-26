@@ -19,6 +19,7 @@ class ThuocSerializer(serializers.ModelSerializer):
     don_gia = serializers.CharField(source='get_don_gia')
     don_gia_tt = serializers.CharField(source='get_don_gia_tt')
     so_luong_kha_dung = serializers.CharField(source='get_so_luong_kha_dung')
+    
     class Meta:
         model = Thuoc
         fields = "__all__"

@@ -137,7 +137,10 @@ class Thuoc(models.Model):
 
     @property
     def kha_dung(self):
-        return self.so_luong_kha_dung > 0
+        if self.so_luong_kha_dung is not None:
+            return self.so_luong_kha_dung > 0
+        else:
+            return False
 
     @property
     def check_expiration(self):
@@ -178,6 +181,12 @@ class Thuoc(models.Model):
         else:
             so_luong_kha_dung = 0
         return so_luong_kha_dung
+
+    def get_bao_hiem(self):
+        if self.bao_hiem:
+            return "True"
+        else:
+            return "False"
 
 
 class NhomThuoc(models.Model):

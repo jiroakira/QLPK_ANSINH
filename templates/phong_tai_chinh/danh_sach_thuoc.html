@@ -42,6 +42,52 @@
                     </div>
                     <div class="card-toolbar">
                         <div class="dropdown dropdown-inline mr-2">
+                            <button type="button" class="btn btn-light-success font-weight-bolder dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="svg-icon svg-icon-md">
+                                <!--begin::Svg Icon | path:/metronic/theme/html/demo1/dist/assets/media/svg/icons/Design/PenAndRuller.svg-->
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <rect x="0" y="0" width="24" height="24" />
+                                        <path d="M3,16 L5,16 C5.55228475,16 6,15.5522847 6,15 C6,14.4477153 5.55228475,14 5,14 L3,14 L3,12 L5,12 C5.55228475,12 6,11.5522847 6,11 C6,10.4477153 5.55228475,10 5,10 L3,10 L3,8 L5,8 C5.55228475,8 6,7.55228475 6,7 C6,6.44771525 5.55228475,6 5,6 L3,6 L3,4 C3,3.44771525 3.44771525,3 4,3 L10,3 C10.5522847,3 11,3.44771525 11,4 L11,19 C11,19.5522847 10.5522847,20 10,20 L4,20 C3.44771525,20 3,19.5522847 3,19 L3,16 Z" fill="#000000" opacity="0.3" />
+                                        <path d="M16,3 L19,3 C20.1045695,3 21,3.8954305 21,5 L21,15.2485298 C21,15.7329761 20.8241635,16.200956 20.5051534,16.565539 L17.8762883,19.5699562 C17.6944473,19.7777745 17.378566,19.7988332 17.1707477,19.6169922 C17.1540423,19.602375 17.1383289,19.5866616 17.1237117,19.5699562 L14.4948466,16.565539 C14.1758365,16.200956 14,15.7329761 14,15.2485298 L14,5 C14,3.8954305 14.8954305,3 16,3 Z" fill="#000000" />
+                                    </g>
+                                </svg>
+                                <!--end::Svg Icon-->
+                            </span>Tùy Chọn</button>
+                            <!--begin::Dropdown Menu-->
+                            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                                <!--begin::Navigation-->
+                                <ul class="navi flex-column navi-hover py-2">
+                                    <li class="navi-header font-weight-bolder text-uppercase font-size-sm text-primary pb-2">Chọn Chức Năng:</li>
+                                    <li class="navi-item">
+                                       
+                                        <a href="{% url 'import_thuoc' %}" class="btn-them-thuoc navi-link" id="btn-them-thuoc">
+                                            <span class="navi-icon">
+                                                <i class="la la-file-import"></i>
+                                            </span>
+                                            <span class="navi-text">Thêm Thuốc Excel</span>
+                                        </a>
+                                        
+                                    </li>
+                                    <li class="navi-item">
+                                        <!-- begin::Button Thêm Thuốc -->
+                                        {% if perms.medicine.can_export_medicine_list %}
+                                        <a href="javascript:;" class="navi-link" id="excelExport">
+                                            <span class="navi-icon">
+                                                <i class="la la-file-excel-o"></i>
+                                            </span>
+                                            <span class="navi-text">Xuất Thuốc Excel</span>
+                                        </a>
+                                        {% endif %}
+                                        <!-- end::Button Thêm Thuốc -->
+                                    </li>
+                                </ul>
+                                <!--end::Navigation-->
+                            </div>
+                            <!--end::Dropdown Menu-->
+                        </div>
+
+                        <div class="dropdown dropdown-inline mr-2">
                             <button type="button" class="btn btn-light-primary font-weight-bolder dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="svg-icon svg-icon-md">
                                 <!--begin::Svg Icon | path:/metronic/theme/html/demo1/dist/assets/media/svg/icons/Design/PenAndRuller.svg-->
@@ -106,7 +152,7 @@
                         <div class="row align-items-center">
                             <div class="col-lg-9 col-xl-8">
                                 <div class="row align-items-center">
-                                    <div class="col-md-6 my-2 my-md-0">
+                                    <div class="col-md-4 my-2 my-md-0">
                                         <div class="input-icon">
                                             <input type="text" class="form-control" placeholder="Tìm kiếm..." id="kt_datatable_search_query" />
                                             <span>
@@ -114,55 +160,34 @@
                                             </span>
                                         </div>
                                     </div>
-                                    <div class="col-md-3 my-2 my-md-0">
-                                        <!--begin::Dropdown-->
-                                        <div class="dropdown dropdown-inline mr-2">
-                                            <button type="button" class="btn btn-light-success font-weight-bolder dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <span class="svg-icon svg-icon-md">
-                                                <!--begin::Svg Icon | path:/metronic/theme/html/demo1/dist/assets/media/svg/icons/Design/PenAndRuller.svg-->
-                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                        <rect x="0" y="0" width="24" height="24" />
-                                                        <path d="M3,16 L5,16 C5.55228475,16 6,15.5522847 6,15 C6,14.4477153 5.55228475,14 5,14 L3,14 L3,12 L5,12 C5.55228475,12 6,11.5522847 6,11 C6,10.4477153 5.55228475,10 5,10 L3,10 L3,8 L5,8 C5.55228475,8 6,7.55228475 6,7 C6,6.44771525 5.55228475,6 5,6 L3,6 L3,4 C3,3.44771525 3.44771525,3 4,3 L10,3 C10.5522847,3 11,3.44771525 11,4 L11,19 C11,19.5522847 10.5522847,20 10,20 L4,20 C3.44771525,20 3,19.5522847 3,19 L3,16 Z" fill="#000000" opacity="0.3" />
-                                                        <path d="M16,3 L19,3 C20.1045695,3 21,3.8954305 21,5 L21,15.2485298 C21,15.7329761 20.8241635,16.200956 20.5051534,16.565539 L17.8762883,19.5699562 C17.6944473,19.7777745 17.378566,19.7988332 17.1707477,19.6169922 C17.1540423,19.602375 17.1383289,19.5866616 17.1237117,19.5699562 L14.4948466,16.565539 C14.1758365,16.200956 14,15.7329761 14,15.2485298 L14,5 C14,3.8954305 14.8954305,3 16,3 Z" fill="#000000" />
-                                                    </g>
-                                                </svg>
-                                                <!--end::Svg Icon-->
-                                            </span>Tùy Chọn</button>
-                                            <!--begin::Dropdown Menu-->
-                                            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                                                <!--begin::Navigation-->
-                                                <ul class="navi flex-column navi-hover py-2">
-                                                    <li class="navi-header font-weight-bolder text-uppercase font-size-sm text-primary pb-2">Tùy chọn:</li>
- 
-                                                    <li class="navi-item">
-                                                        <a href="{% url 'import_thuoc' %}" class="btn-them-thuoc navi-link" id="btn-them-thuoc">
-                                                            <span class="navi-icon">
-                                                                <i class="la la-file-import"></i>
-                                                            </span>
-                                                            <span class="navi-text">Thêm Thuốc Excel</span>
-                                                        </a>
-                                                    </li>
-                                                    {% if perms.medicine.can_export_medicine_list %}
-                                                    <li class="navi-item">
-                                                        <a href="javascript:;" class="navi-link" id="excelExport">
-                                                            <span class="navi-icon">
-                                                                <i class="la la-file-excel-o"></i>
-                                                            </span>
-                                                            <span class="navi-text">Xuất Thuốc Excel</span>
-                                                        </a>
-                                                    </li>
-                                                    {% endif %}
-                                                </ul>
-                                                <!--end::Navigation-->
-                                            </div>
-                                            <!--end::Dropdown Menu-->
+                                    
+                                    <div class="col-md-4 my-2 my-md-0">
+                                        <div class="d-flex align-items-center">
+                                            <label class="mr-3 mb-0 d-none d-md-block">Nhóm:</label>
+                                            <select class="form-control" id="kt_datatable_search_group">
+                                                <option value="">Tất Cả</option>
+                                                {% for nhom in nhom_thuoc %}
+                                                <option value="{{ nhom.id }}">{{ nhom.ten_nhom }}</option>
+                                                {% endfor %}
+                                            </select>
                                         </div>
-                                        <!--end::Dropdown-->
                                     </div>
+
+                                    <div class="col-md-4 my-2 my-md-0">
+                                        <div class="d-flex align-items-center">
+                                            <label class="mr-3 mb-0 d-none d-md-block">Loại:</label>
+                                            <select class="form-control" id="kt_datatable_search_type">
+                                                <option value="">Tất Cả</option>
+                                                
+                                                <option value="True">Bảo Hiểm</option>
+                                                <option value="False">Dịch Vụ</option>
+                                                
+                                            </select>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
- 
                         </div>
                     </div>
                     <!--end::Search Form-->
@@ -196,9 +221,11 @@
 var KTDatatableRemoteAjaxDemo = function() {
     // Private functions
     let globalData = null;    
+
+    var id_nhom_thuoc;
     // basic demo
-    var demo = function() {
- 
+    var table = function(url) {
+        var url = url
         var datatable = $('#kt_datatable').KTDatatable({
             // datasource definition
             data: {
@@ -206,13 +233,13 @@ var KTDatatableRemoteAjaxDemo = function() {
                 source: {
                     read: {
                         method: "GET",
-                        url: HOST_URL + '/api/thuoc/',
+                        url: HOST_URL + url,
                     },
                 },
                 pageSize: 10,
                 serverPaging: true,
                 serverFiltering: true,
-                serverSorting: true,
+                serverSorting: false,
             },
  
             // layout definition
@@ -228,7 +255,7 @@ var KTDatatableRemoteAjaxDemo = function() {
  
             search: {
                 input: $('#kt_datatable_search_query'),
-                key: 'generalSearch'
+                key: 'search'
             },
  
             // columns definition
@@ -253,8 +280,14 @@ var KTDatatableRemoteAjaxDemo = function() {
                         return "Chế phẩm YHCT"
                     }else if (row.loai_thuoc == 3){
                         return "Vị thuốc YHCT"
-                    }else{
+                    }else if (row.loai_thuoc == 4){
                         return "Phóng Xạ"
+                    } else if (row.loai_thuoc == 5) {
+                        return "Thực Phẩm Bảo Vệ Sức Khỏe"
+                    } else if (row.loai_thuoc == 6) {
+                        return "Vật Tư Y Tế"
+                    } else if (!row.loai_thuoc) {
+                        return '-'
                     }
                 }
             }, {
@@ -319,6 +352,16 @@ var KTDatatableRemoteAjaxDemo = function() {
                 field: 'cong_ty.ten_cong_ty',
                 title: 'Nhà Cung Cấp',
             }, {
+                field: 'bao_hiem',
+                title: 'Loại Thuốc',
+                template: function(row){
+                    if(row.bao_hiem == true){
+                        return '<span class="label font-weight-bold label-lg label-light-info label-inline">Bảo Hiểm</span>';
+                    }else if(row.bao_hiem == false){
+                        return '<span class="label font-weight-bold label-lg label-light-success label-inline">Dịch Vụ</span>';
+                    }
+                }
+            }, {
                 field: 'update',
                 title: 'Cập Nhật',
                 sortable: false,
@@ -371,6 +414,17 @@ var KTDatatableRemoteAjaxDemo = function() {
 			// datatable.reload();
 			$('#kt_datatable').KTDatatable('reload');
 		});
+
+        $('#kt_datatable_search_type').on('change', function() {
+            datatable.search($(this).val(), 'bao_hiem');
+            // $('#kt_datatable').KTDatatable('destroy');
+        });
+
+        $('#kt_datatable_search_group').on('change', function() {
+			datatable.search($(this).val().toLowerCase(), 'id_nhom_thuoc');
+		});
+
+		$('#kt_datatable_search_group, #kt_datatable_search_type').selectpicker();
     };
  
     var deleteThuoc = function() {
@@ -421,11 +475,12 @@ var KTDatatableRemoteAjaxDemo = function() {
  
         });
     }
- 
+
     return {
         // public functions
         init: function() {
-            demo();
+            table('/api/thuoc/');
+            
             deleteThuoc();
         },
     };
