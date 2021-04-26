@@ -216,9 +216,7 @@ var KTDatatableRecordSelectionDemo = function() {
         }, {
             field: 'ten_thuoc',
             title: 'Tên thuốc',
-            template: function(row) {
-                return '<a href id=' + '"' + row.id + '"' + ' data-title="This is my tooltip content for:'+row.ten_thuoc+'" data-toggle="tooltip" data-trigger="hover">'+row.ten_thuoc+'</a>'
-            }
+    
         }, {
             field: 'loai_thuoc',
             title: 'Loại',
@@ -283,16 +281,6 @@ var KTDatatableRecordSelectionDemo = function() {
                 }
             });
 
-        datatable.on('mouseenter', 'tbody tr', function(){
-            // alert($(this).data());
-            $(this).find('[data-toggle="tooltip"]').tooltip({
-                delay: 300,
-
-                title: "<em>Tooltip</em> <u>with</u> <b>HTML</b>",
-                html: true,
-            });
-
-        })
 
         var lstData = [];
         var lstCheckbox = {};
@@ -426,7 +414,7 @@ var KTDatatableRecordSelectionDemo = function() {
                     if (response.status == 200){
                         toastr.success(response.message, "Thành Công")
                         setTimeout(function () {
-                            window.history.back(); //redirect về danh sách chờ lâm sàng
+                            window.location.href = '/phong_tai_chinh/danh_sach_thuoc/'; //redirect về danh sách chờ lâm sàng
                         }, 1500);
                     }
 

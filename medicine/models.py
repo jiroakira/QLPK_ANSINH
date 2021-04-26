@@ -72,7 +72,7 @@ class Thuoc(models.Model):
 
     id = models.AutoField(primary_key=True)
     stt = models.CharField(max_length=50, null=True, blank=True)
-    nhom_thuoc = models.ForeignKey("NhomThuoc", on_delete=models.CASCADE, null=True, blank=True, related_name='nhom_thuoc')
+    nhom_thuoc = models.ManyToManyField("NhomThuoc", related_name='nhom_thuoc')
     ma_thuoc = models.CharField(max_length=50, blank=True, null=True)
     ma_hoat_chat = models.CharField(max_length=15, null=True, blank=True, verbose_name="Mã hoạt chất")
     ten_hoat_chat = models.CharField(max_length=255, null=True, blank=True, verbose_name="Tên hoạt chất")

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline flex-wrap mr-5">
+
+                </div>
+                <!--end::Page Heading-->
+            </div>
+            <!--end::Info-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="d-flex flex-column container ">
+            <div class="error error-5 d-flex flex-row-fluid bgi-size-cover bgi-position-center" style="background-image: url({% static 'assets/media/error/bg5.jpg' %});">
+				<!--begin::Content-->
+				<div class="container d-flex flex-row-fluid flex-column justify-content-md-center p-12">
+					<p class="error-title font-weight-boldest text-info mt-10 mt-md-0 mb-10 display-1">403</p>
+					<p class="font-weight-boldest display-4">Hiện tại tài khoản của bạn chưa được phân quyền.</p>
+					<p class="font-size-h3">Vui lòng liên hệ với chủ phòng khám.</p>
+				</div>
+				<!--end::Content-->
+			</div>
+        </div>
+    </div>
+
+</div>
+<!-- end::Content -->
+
+{% endblock content %}
+
+{% block scripts %}
+
+
+
+{% endblock %}

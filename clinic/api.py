@@ -304,7 +304,6 @@ class ThuocListCreateAPIView(generics.ListCreateAPIView):
     serializer_class = ThuocSerializer
     pagination_class = CustomPagination
 
-
 class PhongChucNangViewSet(viewsets.ModelViewSet):
     def list(self, request):
         phong_chuc_nang = PhongChucNang.objects.all()
@@ -1358,6 +1357,7 @@ class DanhSachDoanhThuTheoThoiGian(APIView):
             danh_sach_dich_vu = PhanKhoaKham.objects.filter(thoi_gian_tao__lte=end, thoi_gian_tao__gt=start).values('dich_vu_kham__phong_chuc_nang__ten_phong_chuc_nang').annotate(tong_tien=Sum('dich_vu_kham__don_gia')).order_by('dich_vu_kham__phong_chuc_nang__ten_phong_chuc_nang').annotate(dich_vu_kham_count = Count('dich_vu_kham__phong_chuc_nang__ten_phong_chuc_nang'))
 
             list_tong_tien_without_format = [i['tong_tien'] for i in danh_sach_dich_vu]
+
             tong_tien_theo_phong = sum(list_tong_tien_without_format)
             tong_tien_theo_phong_formatted = "{:,}".format(int(tong_tien_theo_phong))
 

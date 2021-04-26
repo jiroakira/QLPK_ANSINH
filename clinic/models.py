@@ -235,7 +235,10 @@ class User(AbstractBaseUser, PermissionsMixin):
             ('export_insurance_data', 'Xuất Bảo Hiểm Tài Chính'),
             ('can_export_list_of_patient_insurance_coverage', 'Xuất Danh Sách Bệnh Nhân Bảo Hiểm Chi Trả'),
             ('can_view_list_of_patient', 'Xem Danh Sách Bệnh Nhân Chờ'),
-            ('can_bao_cao_thuoc', 'Báo Cáo Thuốc')
+            ('can_bao_cao_thuoc', 'Báo Cáo Thuốc'),
+            ('can_export_list_import_export_general_medicines', 'Xuất Danh Sách Xuất Nhập Tồn Tổng Hợp Thuốc'),
+            ('can_export_soon_expired_list_medicines', 'Xuất Danh Sách Thuốc Sắp Hết Hạn'),
+            ('can_see_general_medicine_list_report', 'Xem Báo Cáo Tổng Hợp Thuốc'),
         )
 
     def save(self, *args, **kwargs):
@@ -486,7 +489,7 @@ class DichVuKham(models.Model):
     objects = BulkUpdateOrCreateQuerySet.as_manager()
 
     def __str__(self):
-        return str(self.ten_dvkt)
+        return f'({self.id}){str(self.ten_dvkt)}'
 
     class Meta:
         verbose_name = "Dịch Vụ Khám"

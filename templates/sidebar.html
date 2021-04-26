@@ -8,8 +8,8 @@
 	<!--begin::Brand-->	
 	<div class="brand flex-column-auto" id="kt_brand">
 		<!--begin::Logo-->
-		<a href="{% url 'index' %}" class="brand-logo pt-2">
-			<img alt="Logo" src="{% static 'assets/media/logos/logo1.png' %} " class="max-w-custom"/>
+		<a href="{% url 'index' %}" class="brand-logo">
+			<img alt="Logo" src="{% static 'assets/media/logos/logo1.png' %} " class="max-w-100"/>
 		</a>
 		<!--end::Logo-->
 		<!--begin::Toggle-->
@@ -445,6 +445,7 @@
 				</li>
 				{% endif %}
 
+				{% if perms.clinic.can_see_general_medicine_list_report %}
 				<li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
 					<a href="javascript:;" class="menu-link menu-toggle">
 						<span class="svg-icon menu-icon">
@@ -470,6 +471,7 @@
 								</span>
 							</li>
 
+							{% if perms.clinic.can_export_list_import_export_general_medicines %}
 							<li class="menu-item" aria-haspopup="true">
 								<a href="{% url 'bao_cao_xnt_tong_hop_thuoc' %}" class="menu-link">
 									<i class="menu-bullet menu-bullet-dot">
@@ -478,7 +480,9 @@
 									<span class="menu-text">Xuất Nhập Tồn Tổng Hợp Thuốc</span>
 								</a>
 							</li>
+							{% endif %}
 
+							{% if perms.clinic.can_export_soon_expired_list_medicines %}
 							<li class="menu-item" aria-haspopup="true">
 								<a href="{% url 'bao_cao_thuoc_sap_het_date' %}" class="menu-link">
 									<i class="menu-bullet menu-bullet-dot">
@@ -487,10 +491,12 @@
 									<span class="menu-text">Thuốc Sắp Hết Date</span>
 								</a>
 							</li>
+							{% endif %}
 
 						</ul>
 					</div>
 				</li>
+				{% endif %}
 			
 				{% if perms.clinic.preclinical_department_module_view %}
 				<li class="menu-section">
