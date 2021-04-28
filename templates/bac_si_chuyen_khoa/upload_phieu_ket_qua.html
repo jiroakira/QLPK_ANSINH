@@ -359,6 +359,7 @@
                 $('#CameraModal').modal('show');
                 webcam.start()
                     .then(result =>{
+                        webcam.flip();
                         cameraStarted();
                         console.log("webcam started");
                     })
