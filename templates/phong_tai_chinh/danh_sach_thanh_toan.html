@@ -236,8 +236,8 @@ var KTDatatableRemoteAjaxDemo = function() {
                 },
                 pageSize: 10,
                 serverPaging: true,
-                //serverFiltering: true,
-                //serverSorting: true,
+                serverFiltering: true,
+                serverSorting: false,
             },
 
             // layout definition
@@ -253,14 +253,13 @@ var KTDatatableRemoteAjaxDemo = function() {
 
             search: {
                 input: $('#kt_datatable_search_query'),
-                key: 'generalSearch'
+                key: 'search'
             },
 
             // columns definition
             columns: [{
                 field: 'id',
                 title: 'Stt',
-                sortable: 'asc',
                 width: 30,
                 type: 'number',
                 selector: false,
@@ -305,11 +304,14 @@ var KTDatatableRemoteAjaxDemo = function() {
                 field: 'trang_thai_thanh_toan',
                 title: 'Trạng Thái',
                 template: function(row) {
-
-                    if (row.trang_thai_thanh_toan == "True") {
-                        return '<span class="label font-weight-bold label-lg label-light-success label-inline">' + 'Đã Thanh Toán LS' + '</span>';
-                    } else if (row.trang_thai_thanh_toan == "False") {
-                        return '<span class="label font-weight-bold label-lg label-light-warning label-inline">' + 'Chờ Thanh Toán LS' + '</span>';
+                    if (row.thanh_toan_sau != true) {
+                        if (row.trang_thai_thanh_toan == "True") {
+                            return '<span class="label font-weight-bold label-lg label-light-success label-inline">' + 'Đã Thanh Toán LS' + '</span>';
+                        } else if (row.trang_thai_thanh_toan == "False") {
+                            return '<span class="label font-weight-bold label-lg label-light-warning label-inline">' + 'Chờ Thanh Toán LS' + '</span>';
+                        }
+                    } else {
+                        return '<span class="label font-weight-bold label-lg label-light-warning label-inline">' + 'Thanh Toán Sau' + '</span>';
                     }
                 },
             }, {
@@ -321,21 +323,25 @@ var KTDatatableRemoteAjaxDemo = function() {
                 autoHide: false,
                 textAlign: 'center',
                 template: function(row) {
-                    if (row.trang_thai_thanh_toan == 'True') {
-                        return `
-                            <a href="/hoa_don_lam_sang/${row.id}/" id='xemLaiHoaDon' class="btn btn-sm btn-clean mr-2 btn-thanh-toan" data-ten="${row.benh_nhan.ho_ten}" data-id="${row.id}" data-time="${row.thoi_gian_tao}" data-phone="${row.benh_nhan.so_dien_thoai}" data-address="${row.benh_nhan.dia_chi}" title="Edit details">
-                                Xem Lại
-                            </a>
-                        `
-                    } else if (row.trang_thai_thanh_toan == 'False') {
-                        return `
-                            {% if perms.finance.can_checkout_clinical_receipt %}
-                            <a href="javascript:;" class="btn btn-sm btn-clean mr-2 btn-thanh-toan" data-ten="${row.benh_nhan.ho_ten}" data-id="${row.id}" data-time="${row.thoi_gian_tao}" data-phone="${row.benh_nhan.so_dien_thoai}" data-address="${row.benh_nhan.dia_chi}" title="Edit details">
-                                Thanh toán
-                            </a>
-                            {% endif %}
-                        `;
+                    if (row.thanh_toan_sau != true) {
+                        if (row.trang_thai_thanh_toan == 'True') {
+                            return `
+                                <a href="/hoa_don_lam_sang/${row.id}/" id='xemLaiHoaDon' class="btn btn-sm btn-clean mr-2 btn-thanh-toan" data-ten="${row.benh_nhan.ho_ten}" data-id="${row.id}" data-time="${row.thoi_gian_tao}" data-phone="${row.benh_nhan.so_dien_thoai}" data-address="${row.benh_nhan.dia_chi}" title="Edit details">
+                                    Xem Lại
+                                </a>
+                            `
+                        } else if (row.trang_thai_thanh_toan == 'False') {
+                            return `
+                                {% if perms.finance.can_checkout_clinical_receipt %}
+                                <a href="javascript:;" class="btn btn-sm btn-clean mr-2 btn-thanh-toan" data-ten="${row.benh_nhan.ho_ten}" data-id="${row.id}" data-time="${row.thoi_gian_tao}" data-phone="${row.benh_nhan.so_dien_thoai}" data-address="${row.benh_nhan.dia_chi}" title="Edit details">
+                                    Thanh toán
+                                </a>
+                                {% endif %}
+                            `;
 
+                        }
+                    } else {
+                        return ''
                     }
                 },
             }],
@@ -594,8 +600,8 @@ var KTDatatableRemoteAjaxDemo = function() {
                 },
                 pageSize: 10,
                 serverPaging: true,
-                //serverFiltering: true,
-                //serverSorting: true,
+                serverFiltering: true,
+                serverSorting: false,
             },
 
             // layout definition
@@ -611,7 +617,7 @@ var KTDatatableRemoteAjaxDemo = function() {
 
             search: {
                 input: $('#kt_datatable_search_query'),
-                key: 'generalSearch'
+                key: 'search'
             },
 
             // columns definition
@@ -648,10 +654,14 @@ var KTDatatableRemoteAjaxDemo = function() {
                 title: 'Trạng Thái',
                 // callback function support for column rendering
                 template: function(row) {
-                    if (row.trang_thai_thanh_toan == "True") {
-                        return '<span class="label font-weight-bold label-lg label-light-success label-inline">' + 'Đã Thanh Toán' + '</span>';
-                    } else if (row.trang_thai_thanh_toan == "False") {
-                        return '<span class="label font-weight-bold label-lg label-light-warning label-inline">' + 'Chờ Thanh Toán' + '</span>';
+                    if (row.thanh_toan_sau != true) {
+                        if (row.trang_thai_thanh_toan == "True") {
+                            return '<span class="label font-weight-bold label-lg label-light-success label-inline">' + 'Đã Thanh Toán' + '</span>';
+                        } else if (row.trang_thai_thanh_toan == "False") {
+                            return '<span class="label font-weight-bold label-lg label-light-warning label-inline">' + 'Chờ Thanh Toán' + '</span>';
+                        }
+                    } else {
+                        return '<span class="label font-weight-bold label-lg label-light-warning label-inline">' + 'Thanh Toán Sau' + '</span>';
                     }
                 },
             }, {
@@ -662,14 +672,18 @@ var KTDatatableRemoteAjaxDemo = function() {
                 overflow: 'visible',
                 autoHide: false,
                 template: function(row) {
-                    
-                    return `
-                        {% if perms.finance.can_checkout_service_receipt %}
-                        <a href="/phong_tai_chinh/hoa_don_dich_vu/${row.id}" class="btn btn-sm btn-clean mr-2" title="Edit details">
-                            Hóa Đơn
-                        </a>
-                        {% endif %}
-                    `;
+                    if (row.thanh_toan_sau != true) {
+
+                        return `
+                            {% if perms.finance.can_checkout_service_receipt %}
+                            <a href="/phong_tai_chinh/hoa_don_dich_vu/${row.id}" class="btn btn-sm btn-clean mr-2" title="Edit details">
+                                Hóa Đơn
+                            </a>
+                            {% endif %}
+                        `;
+                    } else {
+                        return ''
+                    }
                 },
             }],
 
@@ -688,7 +702,7 @@ var KTDatatableRemoteAjaxDemo = function() {
         //    datatable.search($(this).val().toLowerCase(), 'Type');
         //});
 
-        $('#kt_datatable_search_status, #kt_datatable_search_type').selectpicker();
+        $('#kt_datatable_search_status').selectpicker();
     };
 
     var hoa_don_thuoc = function() {

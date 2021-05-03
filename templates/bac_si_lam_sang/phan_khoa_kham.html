@@ -1,23 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block stylesheet %}
-
-<!--begin::Page Vendors Styles(used by this page)-->
-
-<!--begin::Global Theme Styles(used by all pages)-->
-<link href="{% static 'assets/plugins/global/plugins.bundle9cd7.css' %}" rel="stylesheet" type="text/css" />
-<link href="{% static 'assets/plugins/custom/prismjs/prismjs.bundle9cd7.css' %}" rel="stylesheet" type="text/css" />
-<link href="{% static 'assets/css/style.bundle9cd7.css' %} " rel="stylesheet" type="text/css" />
-<!--end::Global Theme Styles-->
-<!--begin::Layout Themes(used by all pages)-->
-<link href="{% static 'assets/css/themes/layout/header/base/light9cd7.css' %} " rel="stylesheet" type="text/css" />
-<link href="{% static 'assets/css/themes/layout/header/menu/light9cd7.css' %} " rel="stylesheet" type="text/css" />
-<link href="{% static 'assets/css/themes/layout/brand/dark9cd7.css' %} " rel="stylesheet" type="text/css" />
-<link href="{% static 'assets/css/themes/layout/aside/dark9cd7.css' %} " rel="stylesheet" type="text/css" />
-<!--end::Layout Themes-->
-{% endblock stylesheet %}
-
 {% block content %}
 
 <!--begin::Content-->
@@ -212,14 +195,14 @@ var KTDatatableRecordSelectionDemo = function() {
             type: 'remote',
             source: { 
                 read: {
-                    url: HOST_URL + '/router/api/dich_vu/',
+                    url: HOST_URL + '/api/dich_vu_kham/',
                     method: 'GET',
                 },
             },
             pageSize: 10,
             serverPaging: true,
-            // serverFiltering: true,
-            // serverSorting: true,
+            serverFiltering: true,
+            serverSorting: false,
         },
 
         // layout definition
@@ -278,35 +261,6 @@ var KTDatatableRecordSelectionDemo = function() {
         ],
     };
 
-    // basic demo
-    var localSelectorDemo = function() {
-        // enable extension
-        options.extensions = {
-            // boolean or object (extension options)
-            checkbox: true,
-        };
-
-        options.search = {
-            input: $('#kt_datatable_search_query'),
-            key: 'generalSearch'
-        };
-
-        var datatable = $('#kt_datatable').KTDatatable(options);
-
-        datatable.on(
-            'datatable-on-check datatable-on-uncheck',
-            function(e) {
-                var checkedNodes = datatable.rows('.datatable-row-active').nodes();
-                var count = checkedNodes.length;
-                $('#kt_datatable_selected_records').html(count);
-                if (count > 0) {
-                    $('#kt_datatable_group_action_form').collapse('show');
-                } else {
-                    $('#kt_datatable_group_action_form').collapse('hide');
-                }
-            });
-    };
-
     var serverSelectorDemo = function() {
         // enable extension
         options.extensions = {
@@ -315,7 +269,7 @@ var KTDatatableRecordSelectionDemo = function() {
         };
         options.search = {
             input: $('#kt_datatable_search_query_2'),
-            key: 'generalSearch',
+            key: 'search',
         };
 
         var datatable = $('#kt_datatable_2').KTDatatable(options);

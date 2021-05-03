@@ -117,7 +117,7 @@ var KTDatatableModal = function() {
                     read: {
                         url: HOST_URL + '/api/danh_sach_mau_phieu/',
                         method: "GET",
-                        {% comment %} map: function(raw) {
+                        map: function(raw) {
                                 // sample data mapping
                                 var dataSet = raw;
                                 if (typeof raw.data !== 'undefined') {
@@ -125,14 +125,14 @@ var KTDatatableModal = function() {
                                 }
                                 console.log(dataSet)
                                 return dataSet;
-                            }, {% endcomment %}
+                            }, 
                     },
                     
                 },
                 pageSize: 10, // display 20 records per page
                 serverPaging: true,
-                {% comment %} serverFiltering: false, {% endcomment %}
-                {% comment %} serverSorting: true, {% endcomment %}
+                serverFiltering: true, 
+                serverSorting: false,
             },
 
             // layout definition
@@ -146,11 +146,11 @@ var KTDatatableModal = function() {
             // column sorting
             sortable: true,
 
-            pagination: false,
+            pagination: true,
 
             search: {
                 input: $('#kt_datatable_search_query'),
-                key: 'generalSearch'
+                key: 'search'
             },
 
             // columns definition
