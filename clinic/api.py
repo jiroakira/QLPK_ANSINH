@@ -984,7 +984,7 @@ class DanhSachHoaDonDichVu(generics.ListCreateAPIView):
 
         return queryset
 
-class DanhSachHoaDonThuoc(APIView):
+class DanhSachHoaDonThuoc(generics.ListCreateAPIView):
     serializer_class = HoaDonThuocSerializerSimple
     pagination_class = CustomPagination
 
@@ -1018,21 +1018,6 @@ class DanhSachHoaDonThuoc(APIView):
                 queryset = list_cho_thanh_toan
 
         return queryset
-
-    # def get(self, request, format=None):
-    #     now = timezone.localtime(timezone.now())
-    #     tomorrow = now + timedelta(1)
-    #     today_start = now.replace(hour=0, minute=0, second=0)
-    #     today_end = tomorrow.replace(hour=0, minute=0, second=0)
-
-    #     danh_sach_don_thuoc = DonThuoc.objects.select_related('benh_nhan').filter(thoi_gian_tao__gte=today_start, thoi_gian_tao__lt=today_end)
-    #     serializer = HoaDonThuocSerializerSimple(danh_sach_don_thuoc, many=True, context={'request': request})
-    #     data = serializer.data
-    #     response_data = {
-    #         'error': False, 
-    #         'data': data
-    #     }
-    #     return Response(response_data)
         
 class DanhSachDonThuocPhongThuoc(APIView):
     def get(self, request, format=None):
@@ -1317,6 +1302,7 @@ class DanhSachBenhNhanListCreateAPIView(generics.ListCreateAPIView):
         queryset = User.objects.filter(chuc_nang=1)
 
         term = self.request.query_params.get('query[search]')
+
         if term is not None:
             queryset = queryset.filter(Q(ho_ten__icontains=term) | Q(so_dien_thoai__icontains=term) | Q(cmnd_cccd__contains=term))
         
