@@ -13,6 +13,7 @@ class HoaDonThuoc(models.Model):
     @field thoi_gian_cap_nhat: thời gian hóa đơn được cập nhật
     """
     don_thuoc = models.OneToOneField("medicine.DonThuoc", on_delete=models.CASCADE, null=True, related_name='hoa_don_thuoc')
+    nguoi_thanh_toan = models.ForeignKey("clinic.User", on_delete=models.SET_NULL, null=True, blank=True)
     ma_hoa_don = models.CharField(max_length=255, unique=True, null=True, blank=True)
     tong_tien = models.DecimalField(decimal_places=0, max_digits=10, null=True, blank=True)
     thoi_gian_tao = models.DateTimeField(editable=False, null=True, blank=True)
@@ -60,9 +61,11 @@ class HoaDonChuoiKham(models.Model):
     """
 
     chuoi_kham = models.OneToOneField("clinic.ChuoiKham", on_delete=models.CASCADE, null=True, related_name='hoa_don_dich_vu')
+    nguoi_thanh_toan = models.ForeignKey("clinic.User", on_delete=models.SET_NULL, null=True, blank=True)
     ma_hoa_don = models.CharField(max_length=255, null=True, blank=True, unique=True)
     tong_tien = models.DecimalField(decimal_places=3, max_digits=10, null=True, blank=True)
     discount = models.IntegerField(null=True, blank=True)
+
 
     thoi_gian_tao = models.DateTimeField(editable=False, null=True, blank=True)
     thoi_gian_cap_nhat = models.DateTimeField(null=True, blank=True)
@@ -163,6 +166,7 @@ class HoaDonChuoiKham(models.Model):
 
 class HoaDonLamSang(models.Model):
     lich_hen = models.ForeignKey("clinic.LichHenKham", on_delete=models.CASCADE, null=True, blank=True, related_name="hoa_don_lam_sang")
+    nguoi_thanh_toan = models.ForeignKey("clinic.User", on_delete=models.SET_NULL, null=True, blank=True)
     tong_tien = models.DecimalField(max_digits=20, decimal_places=3, null=True, blank=True)
     thoi_gian_tao = models.DateTimeField(editable=False, null=True, blank=True)
     thoi_gian_cap_nhat = models.DateTimeField(null=True, blank=True)

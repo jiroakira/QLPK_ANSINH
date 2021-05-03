@@ -114,6 +114,7 @@
                         <div class="d-flex justify-content-between">
                             <button type="button" class="btn font-weight-bold"></button>
                             <button id="button-payment" data-tong-tien="{{tong_tien_thanh_toan}}" data-id="{{ id_don_thuoc }}" type="button" class="btn btn-primary font-weight-bold">Thanh Toán</button>
+                            <button id="button-finish" data-id="{{ id_don_thuoc }}" type="button" class="btn btn-primary font-weight-bold">Hoàn Thành</button>
                         </div>
                     </div>
                 </div>
@@ -162,6 +163,33 @@
             }
         });
         
+    })
+
+    $(document).on('click', '#button-finish', function() {
+        var id_don_thuoc = $('#button-finish').data('id');
+        console.log(id_don_thuoc)
+        $.ajax({
+            type: "POST",
+            url: "{% url 'hoan_thanh_kham_don_thuoc' %}",
+            data: {
+                'id': id_don_thuoc,
+            },
+            dataType: 'json',
+            safe: false,
+            success: function (response) {
+                if (response.status == 200) {
+                    toastr.success(response.message, "Thành Công")
+                    setTimeout(function () {
+                        window.location.href = "/phong_tai_chinh/"
+                    }, 2000);
+                } else if (response.status == 404) {
+                    toastr.warning(response.message, "Xảy Ra Lỗi")
+                }
+            },
+            error: function () {
+                                                                                                                                  
+            }
+        });
     })
 
     function printDiv(hoa_don_thuoc){

@@ -37,7 +37,7 @@
             <div class="card card-custom">
                 <div class="card-header flex-wrap border-0 pt-6 pb-0">
                     <div class="card-title">
-                        <h3 class="card-label">Danh Sách Chờ Lấy Thuốc
+                        <h3 class="card-label">Danh Sách Chờ Lấy Thuốc Trong Ngày Hôm Nay
                         </h3>
                     </div>
                     <div class="card-toolbar">                        
@@ -140,8 +140,8 @@ var KTDatatableRemoteAjaxDemo = function() {
                 },
                 pageSize: 10,
                 serverPaging: true,
-                //serverFiltering: true,
-                //serverSorting: true,
+                serverFiltering: true,
+                serverSorting: false,
             },
 
             // layout definition
@@ -157,7 +157,7 @@ var KTDatatableRemoteAjaxDemo = function() {
 
             search: {
                 input: $('#kt_datatable_search_query'),
-                key: 'generalSearch'
+                key: 'search'
             },
 
             // columns definition
@@ -251,7 +251,7 @@ var KTDatatableRemoteAjaxDemo = function() {
 		});
 
 		$('#kt_datatable_search_status').on('change', function() {
-            datatable.search($(this).val().toLowerCase(), 'trang_thai.id');
+            datatable.search($(this).val(), 'trang_thai');
         });
 
         $('#kt_datatable_search_type').on('change', function() {

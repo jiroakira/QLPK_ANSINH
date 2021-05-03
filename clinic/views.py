@@ -1221,7 +1221,8 @@ def phong_thuoc_danh_sach_cho(request):
 def hoa_don_dich_vu(request, **kwargs):
     id_chuoi_kham = kwargs.get('id_chuoi_kham')
     chuoi_kham = get_object_or_404(ChuoiKham, id=id_chuoi_kham)
-    check_da_thanh_toan = chuoi_kham.check_da_thanh_toan()
+    check_da_thanh_toan = chuoi_kham.check_thanh_toan()
+
     if check_da_thanh_toan == True:
         hoa_don_dich_vu = chuoi_kham.hoa_don_dich_vu
         tong_tien_hoa_don = hoa_don_dich_vu.tong_tien
@@ -1249,7 +1250,7 @@ def hoa_don_dich_vu(request, **kwargs):
         bao_hiem.clear()
         phong_chuc_nang = PhongChucNang.objects.all()
         mau_hoa_don = MauPhieu.objects.filter(codename='hoa_don_dich_vu').first()
-        thoi_gian_thanh_toan = datetime.now()
+        thoi_gian_thanh_toan = hoa_don_dich_vu.thoi_gian_tao
         benh_nhan = chuoi_kham.benh_nhan
         danh_sach_dich_vu = [f"{i.dich_vu_kham.ten_dvkt}" for i in danh_sach_phan_khoa]
         danh_sach_bao_hiem = ['Áp Dụng' if i.bao_hiem else 'Không Áp Dụng' for i in danh_sach_phan_khoa]
@@ -1266,7 +1267,7 @@ def hoa_don_dich_vu(request, **kwargs):
             'danh_sach_gia_tien': danh_sach_gia_tien,
             'tong_tien': "{:,}".format(int(total_spent)),
             'tong_tien_bao_hiem': "{:,}".format(int(tong_bao_hiem)),        
-            'nguoi_thuc_hien': request.user.ho_ten,
+            'nguoi_thuc_hien': hoa_don_dich_vu.nguoi_thanh_toan.ho_ten,
             'data_tong_tien': total_spent,
             'ma_hoa_don': ma_hoa_don,
             'id_chuoi_kham': id_chuoi_kham,
@@ -1333,6 +1334,14 @@ def hoa_don_thuoc(request, **kwargs):
     danh_sach_thuoc = don_thuoc.ke_don.all()
     check_da_thanh_toan = don_thuoc.check_thanh_toan()
 
+    if check_da_thanh_toan == True:
+        hoa_don_thuoc = don_thuoc.hoa_don_thuoc
+        nguoi_thuc_hien = hoa_don_thuoc.nguoi_thanh_toan
+        thoi_gian_thanh_toan = hoa_don_thuoc.thoi_gian_tao
+    else:
+        nguoi_thuc_hien = request.user.ho_ten
+        thoi_gian_thanh_toan = datetime.now()
+
     _danh_sach_thuoc = []
     _danh_sach_thuc_pham_chuc_nang = []
     bao_hiem = []
@@ -1365,7 +1374,7 @@ def hoa_don_thuoc(request, **kwargs):
     mau_hoa_don_tphtdt = MauPhieu.objects.filter(codename='hoa_don_thuc_pham_ho_tro_dieu_tri').first()
 
     benh_nhan = don_thuoc.benh_nhan
-    thoi_gian_thanh_toan = datetime.now()
+    
     ds_thuoc = [f'{i.thuoc.ten_thuoc}' for i in _danh_sach_thuoc]
     ds_thuc_pham_chuc_nang = [f'{i.thuoc.ten_thuoc}' for i in _danh_sach_thuc_pham_chuc_nang]
     danh_sach_bao_hiem_thuoc = ['Áp Dụng' if i.bao_hiem else 'Không Áp Dụng' for i in _danh_sach_thuoc]
@@ -1390,7 +1399,7 @@ def hoa_don_thuoc(request, **kwargs):
     thanh_toan_thuoc_str = "{:,}".format(int(thanh_toan_thuoc))
     thanh_toan_thuc_pham_cn = sum(tong_tien_thuc_pham_cn) - sum(tong_bao_hiem_thuc_pham_cn)
     thanh_toan_thuc_pham_cn_str = "{:,}".format(int(thanh_toan_thuc_pham_cn))
-    nguoi_thuc_hien = request.user.ho_ten
+    
 
     if don_thuoc.benh_nhan is not None:
         ten_benh_nhan = f"Họ tên: {benh_nhan.ho_ten}"
@@ -1784,9 +1793,7 @@ class ThanhToanHoaDonThuocToggle(APIView):
         danh_sach_thuoc = don_thuoc.ke_don.all()
         tong_tien       = request.GET.get('tong_tien', None)
         bao_hiem = False
-        now             = datetime.now()
-        date_time       = now.strftime("%m%d%y%H%M%S")
-        ma_hoa_don      = "HDT-" + date_time
+        
         
         # try:
         for instance in danh_sach_thuoc:    
@@ -1802,7 +1809,10 @@ class ThanhToanHoaDonThuocToggle(APIView):
         don_thuoc.trang_thai=trang_thai
         don_thuoc.save()
 
-        hoa_don_thuoc, created = HoaDonThuoc.objects.get_or_create(don_thuoc=don_thuoc, ma_hoa_don=ma_hoa_don, tong_tien=tong_tien, bao_hiem=bao_hiem)
+        now             = datetime.now()
+        date_time       = now.strftime("%m%d%y%H%M%S")
+        ma_hoa_don      = "HDT-" + date_time
+        hoa_don_thuoc, created = HoaDonThuoc.objects.get_or_create(don_thuoc=don_thuoc, ma_hoa_don=ma_hoa_don, tong_tien=tong_tien, bao_hiem=bao_hiem, nguoi_thanh_toan=request.user)
         hoa_don_thuoc.save()
 
         if don_thuoc.benh_nhan is not None:
@@ -1831,6 +1841,7 @@ class ThanhToanHoaDonDichVuToggle(APIView):
 
         hoa_don_dich_vu.tong_tien = tong_tien
         hoa_don_dich_vu.discount  = discount
+        hoa_don_dich_vu.nguoi_thanh_toan = request.user
         hoa_don_dich_vu.save()
 
         # Set trạng thái chuỗi khám
@@ -2718,7 +2729,8 @@ def store_thanh_toan_lam_sang(request):
 
         hoa_don_lam_sang = HoaDonLamSang.objects.create(
             tong_tien = gia_tien, 
-            lich_hen = lich_hen
+            lich_hen = lich_hen,
+            nguoi_thanh_toan = request.user,
         )
 
         hoa_don_lam_sang.save()
@@ -3828,7 +3840,7 @@ def view_ket_qua_xet_nghiem(request, **kwargs):
             ho_ten_benh_nhan = benh_nhan.ho_ten
             now       = datetime.now()
             date_time = now.strftime("%m%d%y%H%M%S")
-            mau_phieu = dich_vu.mau_phieu.all()[0]
+            
             bac_si_chuyen_khoa = request.user
             ngay_kham = datetime.now()
             bac_si_lam_sang = chuoi_kham.bac_si_dam_nhan
@@ -3845,7 +3857,7 @@ def view_ket_qua_xet_nghiem(request, **kwargs):
                 'danh_sach_mau_phieu': danh_sach_mau_phieu,
                 'id_phan_khoa': id_phan_khoa,
                 'dich_vu': dich_vu,
-                'mau_phieu': mau_phieu,
+               
                 'bac_si_chuyen_khoa': ["Bác Sỹ " + bac_si_chuyen_khoa.ho_ten],
                 'bac_si_lam_sang': ["Bác Sỹ " + bac_si_lam_sang.ho_ten],
                 'ngay_kham': ["Ngày " + str(ngay_kham.strftime('%d')) + " Tháng " + str(ngay_kham.strftime('%m')) + " Năm " + str(ngay_kham.strftime('%Y'))],
@@ -6193,122 +6205,14 @@ def thay_doi_phan_khoa(request):
 
 @login_required(login_url='/dang_nhap/')
 def hoa_don_lam_sang(request, **kwargs):
-    id_chuoi_kham = kwargs.get('id_chuoi_kham')
-    chuoi_kham = get_object_or_404(ChuoiKham, id=id_chuoi_kham)
-    check_da_thanh_toan = chuoi_kham.check_da_thanh_toan()
-    if check_da_thanh_toan == True:
-        hoa_don_dich_vu = chuoi_kham.hoa_don_dich_vu
-        tong_tien_hoa_don = hoa_don_dich_vu.tong_tien
-        if hoa_don_dich_vu.discount is not None:
-            discount = hoa_don_dich_vu.discount
-            tien_giam_gia = int(tong_tien_hoa_don) * (int(discount) / 100)
-        else:
-            tien_giam_gia = 0
-
-        ma_hoa_don = hoa_don_dich_vu.ma_hoa_don
-        danh_sach_phan_khoa = chuoi_kham.phan_khoa_kham.all()
-        tong_tien = []
-        bao_hiem = []
-        for khoa_kham in danh_sach_phan_khoa:
-            if khoa_kham.bao_hiem:
-                gia = khoa_kham.dich_vu_kham.don_gia_bhyt
-                bao_hiem.append(gia)
-            else:
-                gia = khoa_kham.dich_vu_kham.don_gia
-            tong_tien.append(gia)
-        total_spent = sum(tong_tien)
-        tong_bao_hiem = sum(bao_hiem)
-        tien_phai_thanh_toan  = int(tong_tien_hoa_don) - int(tien_giam_gia) - int(tong_bao_hiem)
-        tong_tien.clear()
-        bao_hiem.clear()
-        phong_chuc_nang = PhongChucNang.objects.all()
-        mau_hoa_don = MauPhieu.objects.filter(codename='hoa_don_dich_vu').first()
-        thoi_gian_thanh_toan = datetime.now()
-        benh_nhan = chuoi_kham.benh_nhan
-        danh_sach_dich_vu = [f"{i.dich_vu_kham.ten_dvkt}" for i in danh_sach_phan_khoa]
-        danh_sach_bao_hiem = ['Áp Dụng' if i.bao_hiem else 'Không Áp Dụng' for i in danh_sach_phan_khoa]
-        danh_sach_gia_tien = [f"{i.get_dich_vu_gia()}" for i in danh_sach_phan_khoa]
-        data = {
-            'phong_chuc_nang'    : phong_chuc_nang,
-            'mau_hoa_don': mau_hoa_don,
-            'thoi_gian_thanh_toan': f"{thoi_gian_thanh_toan.strftime('%H:%m')} Ngày {thoi_gian_thanh_toan.strftime('%d')} Tháng {thoi_gian_thanh_toan.strftime('%m')} Năm {thoi_gian_thanh_toan.strftime('%Y')}",
-            'benh_nhan': f"Họ tên: {benh_nhan.ho_ten}",
-            'so_dien_thoai': f"SĐT: {benh_nhan.get_so_dien_thoai()}",
-            'dia_chi': f"Đ/C: {benh_nhan.get_dia_chi()}",
-            'danh_sach_dich_vu': danh_sach_dich_vu,
-            'danh_sach_bao_hiem': danh_sach_bao_hiem,
-            'danh_sach_gia_tien': danh_sach_gia_tien,
-            'tong_tien': "{:,}".format(int(total_spent)),
-            'tong_tien_bao_hiem': "{:,}".format(int(tong_bao_hiem)),        
-            'nguoi_thuc_hien': request.user.ho_ten,
-            'data_tong_tien': total_spent,
-            'ma_hoa_don': ma_hoa_don,
-            'id_chuoi_kham': id_chuoi_kham,
-            'check_da_thanh_toan': check_da_thanh_toan,
-            'discount': "{:,}".format(int(tien_giam_gia)),
-            'tien_phai_thanh_toan': "{:,}".format(int(tien_phai_thanh_toan)),
-
-        }
-        return render(request, 'phong_tai_chinh/hoa_don_dich_vu.html', context=data)
-    else:
-        hoa_don_dich_vu = chuoi_kham.hoa_don_dich_vu
-        ma_hoa_don = hoa_don_dich_vu.ma_hoa_don
-        danh_sach_phan_khoa = chuoi_kham.phan_khoa_kham.all()
-        tong_tien = []
-        bao_hiem = []
-        for khoa_kham in danh_sach_phan_khoa:
-            if khoa_kham.bao_hiem:
-                gia = khoa_kham.dich_vu_kham.don_gia_bhyt
-                bao_hiem.append(gia)
-            else:
-                gia = khoa_kham.dich_vu_kham.don_gia
-            tong_tien.append(gia)
-        total_spent = sum(tong_tien)
-        tong_bao_hiem = sum(bao_hiem)
-        thanh_tien = total_spent - tong_bao_hiem
-        tong_tien.clear()
-        bao_hiem.clear()
-        phong_chuc_nang = PhongChucNang.objects.all()
-        mau_hoa_don = MauPhieu.objects.filter(codename='hoa_don_dich_vu').first()
-        thoi_gian_thanh_toan = datetime.now()
-        benh_nhan = chuoi_kham.benh_nhan
-        danh_sach_dich_vu = [f"{i.dich_vu_kham.ten_dvkt}" for i in danh_sach_phan_khoa]
-        danh_sach_bao_hiem = ['Áp Dụng' if i.bao_hiem else 'Không Áp Dụng' for i in danh_sach_phan_khoa]
-        danh_sach_gia_tien = [f"{i.get_dich_vu_gia()}" for i in danh_sach_phan_khoa]
-
-        data = {
-            'phong_chuc_nang'    : phong_chuc_nang,
-            'mau_hoa_don': mau_hoa_don,
-            'thoi_gian_thanh_toan': f"{thoi_gian_thanh_toan.strftime('%H:%m')} Ngày {thoi_gian_thanh_toan.strftime('%d')} Tháng {thoi_gian_thanh_toan.strftime('%m')} Năm {thoi_gian_thanh_toan.strftime('%Y')}",
-            'benh_nhan': f"Họ tên: {benh_nhan.ho_ten}",
-            'so_dien_thoai': f"SĐT: {benh_nhan.get_so_dien_thoai()}",
-            'dia_chi': f"Đ/C: {benh_nhan.get_dia_chi()}",
-            'danh_sach_dich_vu': danh_sach_dich_vu,
-            'danh_sach_bao_hiem': danh_sach_bao_hiem,
-            'danh_sach_gia_tien': danh_sach_gia_tien,
-            'tong_tien': "{:,}".format(int(total_spent)),
-            'tong_tien_bao_hiem': "{:,}".format(int(tong_bao_hiem)),
-            'thanh_tien': "{:,}".format(int(thanh_tien)),
-            'nguoi_thuc_hien': request.user.ho_ten,
-            'data_tong_tien': total_spent,
-            'data_thanh_tien': thanh_tien,
-            'ma_hoa_don': ma_hoa_don,
-            'id_chuoi_kham': id_chuoi_kham,
-            'check_da_thanh_toan': check_da_thanh_toan,
-
-        }
-        return render(request, 'phong_tai_chinh/hoa_don_lam_sang.html', context=data)
-
-@login_required(login_url='/dang_nhap/')
-def hoa_don_lam_sang(request, **kwargs):
     mau_hoa_don = MauPhieu.objects.filter(codename='hoa_don_lam_sang').first()
     id_lich_hen = kwargs.get('id')
     lich_hen = get_object_or_404(LichHenKham, id=id_lich_hen)
     benh_nhan = lich_hen.benh_nhan
-    thoi_gian_thanh_toan = datetime.now()
+    thoi_gian_thanh_toan = hoa_don_lam_sang.thoi_gian_tao
     hoa_don_lam_sang = lich_hen.hoa_don_lam_sang.all().last()
     tong_tien = hoa_don_lam_sang.tong_tien
-    nguoi_thanh_toan = request.user
+    nguoi_thanh_toan = hoa_don_lam_sang.nguoi_thanh_toan
 
     context = {
         'mau_hoa_don': mau_hoa_don,
@@ -6454,7 +6358,6 @@ def hoan_thanh_kham(request):
     if request.method == "POST":
         id_chuoi_kham = request.POST.get('id_chuoi_kham')
         try:
-
             chuoi_kham = ChuoiKham.objects.get(id=id_chuoi_kham)
             lich_hen = chuoi_kham.lich_hen
 
@@ -6506,7 +6409,7 @@ def hoan_thanh_kham_hoa_don(request):
                 hoa_don_dich_vu.tong_tien = 0
                 hoa_don_dich_vu.discount = 0
                 hoa_don_dich_vu.save()
-                
+
             chuoi_kham.save()
             lich_hen.save()
 
@@ -6528,3 +6431,49 @@ def hoan_thanh_kham_hoa_don(request):
         }
     
     return HttpResponse(json.dumps(response), content_type='application/json; charset=utf-8')
+
+@csrf_exempt
+def hoan_thanh_chuoi_kham_hoa_don_thuoc(request):
+    if request.method == 'POST':
+        id = request.POST.get('id')
+        trang_thai_don_thuoc = TrangThaiDonThuoc.objects.get_or_create(trang_thai = "Hoàn Thành")[0]
+        don_thuoc = get_object_or_404(DonThuoc, id=id)
+        if don_thuoc.chuoi_kham is not None:
+            now             = datetime.now()
+            date_time       = now.strftime("%m%d%y%H%M%S")
+            ma_hoa_don      = "HDT-" + date_time
+            
+            chuoi_kham = don_thuoc.chuoi_kham
+            lich_hen = chuoi_kham.lich_hen
+            trang_thai_chuoi_kham = TrangThaiChuoiKham.objects.get_or_create(trang_thai_chuoi_kham = "Hoàn Thành")[0]
+            trang_thai_lich_hen = TrangThaiLichHen.objects.get_or_create(ten_trang_thai = "Hoàn Thành")[0]
+            chuoi_kham.trang_thai = trang_thai_chuoi_kham
+            lich_hen.trang_thai = trang_thai_lich_hen
+            lich_hen.save()
+            chuoi_kham.save()
+            don_thuoc.trang_thai = trang_thai_don_thuoc
+            don_thuoc.save()
+
+            hoa_don_thuoc, created = HoaDonThuoc.objects.get_or_create(don_thuoc=don_thuoc, ma_hoa_don=ma_hoa_don, tong_tien=0, nguoi_thanh_toan=request.user)
+            hoa_don_thuoc.save()
+            
+            channel_layer = get_channel_layer()
+            async_to_sync(channel_layer.group_send)(
+                f"process_accomplished_user_{don_thuoc.benh_nhan.id}", {
+                    'type':'process_accomplished_notification'
+                }
+            )
+        else:
+            don_thuoc.trang_thai = trang_thai_don_thuoc
+            don_thuoc.save()
+            response={
+                'status' : 200,
+                'message' : 'Đã Nhận Đơn Thuốc'
+            }
+            return HttpResponse(json.dumps(response), content_type="application/json, charset=utf-8")
+
+        response={
+            'status' : 200,
+            'message' : 'Đã Nhận Đơn Thuốc'
+        }
+        return HttpResponse(json.dumps(response), content_type="application/json, charset=utf-8")

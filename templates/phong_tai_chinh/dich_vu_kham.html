@@ -244,6 +244,30 @@ var KTDatatableRemoteAjaxDemo = function() {
                     `;
                 },
             }, {
+                field: 'Html',
+                title: 'HTML',
+                width: 50,
+                sortable: false,
+                textAlign: 'center',
+                autoHide: false,
+                template: function(row) {
+                    if (row.html == true) {
+                        var _input = `<input class='dichVuHtmlCheckbox' data-id-dich-vu="${row.id}" type="checkbox" name="Checkboxes15" checked/>`
+                    } else if (row.html == false) {
+                        var _input = `<input class='dichVuHtmlCheckbox' data-id-dich-vu="${row.id}" type="checkbox" name="Checkboxes15"/>`
+                    }
+
+                    return `
+                        <div class="d-flex align-items-center ml-5">
+                            <label class="checkbox checkbox-inline checkbox-success">
+                                ${_input}
+                                <span></span>
+                            </label>
+                        </div>
+                    `
+               
+                }
+            }, {
                 field: 'Delete',
                 title: 'Xóa',
                 sortable: false,
@@ -260,7 +284,7 @@ var KTDatatableRemoteAjaxDemo = function() {
                         {% endif %}
                     `;
                 },
-            }],
+            }, ],
 
         });
 
@@ -280,6 +304,34 @@ var KTDatatableRemoteAjaxDemo = function() {
         })
 
         $('#kt_datatable_search_status, #kt_datatable_search_type').selectpicker();
+
+        datatable.on('click', '.dichVuHtmlCheckbox', function() {
+            var id_dich_vu = $(this).data('id-dich-vu')
+            var flag
+
+            if ($(this).is(":checked")){
+                flag = "True"
+                console.log('true')
+            } else {
+                flag = "False"
+                console.log('false')
+            }
+
+            $.ajax({
+                type: "GET",
+                url: HOST_URL + "/api/set_dich_vu_html/", 
+                data: {
+                    "id_dich_vu": id_dich_vu,
+                    "flag": flag
+                },
+                success: function(response){
+                    
+                },
+                error: function(response){
+                    
+                }
+            })
+        })
         
         $(document).on("click", ".btn-edit", function () {
             var ho_ten = $(this).data("benh_nhan")

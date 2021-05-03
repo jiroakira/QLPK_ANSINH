@@ -99,14 +99,13 @@
                                             <div class="summernote" id="kt_summernote_1"></div>
                                         </div>
                                     </div>
-                                    <div id="divMauPhieu" style="display: none;">{{ mau_phieu.noi_dung|safe }}</div>
+                                    <div id="divMauPhieu" style="display: none;"></div>
                                 </div>
                             </div>
                             <div class="card-footer">
                                 <div class="row">
                                     <div class="col-lg-3"></div>
                                     <div class="col-lg-9">
-                                        <button type="button" id='finish_button' data-id-phan-khoa="{{id_phan_khoa}}" data-id-chuoi-kham="{{id_chuoi_kham}}" data-id-phong-chuc-nang="{{id_phong_chuc_nang}}" class="btn btn-warning mr-2">Hoàn Thành Khám</button>
                                         <button type="button" id='change_assignment' data-id-phan-khoa="{{id_phan_khoa}}" data-id-chuoi-kham="{{id_chuoi_kham}}" data-id-phong-chuc-nang="{{id_phong_chuc_nang}}" class="btn btn-info mr-2">Thay đổi chỉ định</button>
                                         <button type="reset" id='cancel_button' class="btn btn-light-primary">Hủy</button>
                                         <button type="button" id="upload" data-id-phan-khoa="{{id_phan_khoa}}" data-id-chuoi-kham="{{id_chuoi_kham}}" data-id-phong-chuc-nang="{{id_phong_chuc_nang}}" class="dropzone-upload btn btn-primary mr-2">Lưu</button>
@@ -918,31 +917,6 @@
                 },
                 error: function(response){
                     
-                }
-            })
-        })
-
-        $(document).on('click', '#finish_button', function() {
-            $.ajax({
-                type: "POST",
-                url: "{% url 'hoan_thanh_kham' %}",
-                data: {
-                    id_chuoi_kham : $(this).data('id-chuoi-kham'),
-                },
-                dataType: 'json',
-                success: function (response) {
-                    
-                    if (response.status == 200) {
-                        var id_phong_chuc_nang = $("#finish_button").data('id-phong-chuc-nang')
-                        toastr.success(response.message, "Thành Công")
-                        setTimeout(function () {
-                            window.location.href = '/phong_chuyen_khoa/' + id_phong_chuc_nang;
-                        }, 2000);
-                    } else if (response.status == 404) {
-                        toastr.warning(response.message, "Xảy Ra Lỗi")
-                    }
-                },
-                error: function (response) {                       
                 }
             })
         })
