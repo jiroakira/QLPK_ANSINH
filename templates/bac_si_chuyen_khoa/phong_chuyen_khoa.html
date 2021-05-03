@@ -42,7 +42,7 @@
             <div class="card card-custom">
                 <div class="card-header flex-wrap border-0 pt-6 pb-0">
                     <div class="card-title">
-                        <h3 class="card-label">Danh Sách Chờ </h3>
+                        <h3 class="card-label">Danh Sách Chờ Trong Ngày Hôm Nay</h3>
                     </div>
                     <div class="card-toolbar">
                         <!--begin::Button-->
@@ -186,8 +186,8 @@ var KTDatatableRemoteAjaxDemo = function() {
                 },
                 pageSize: 10,
                 serverPaging: true,
-                // serverFiltering: true,
-                // serverSorting: true,
+                serverFiltering: true,
+                serverSorting: false,
             },
 
             // layout definition
@@ -203,7 +203,7 @@ var KTDatatableRemoteAjaxDemo = function() {
 
             search: {
                 input: $('#kt_datatable_search_query'),
-                key: 'generalSearch'
+                key: 'search'
             },
 
             // columns definition
@@ -215,9 +215,7 @@ var KTDatatableRemoteAjaxDemo = function() {
                 type: 'number',
                 selector: false,
                 textAlign: 'center',
-                //template: function (row) {
-                //    return '' + row.benh_nhan + '';
-                //}
+
             }, {
                 field: 'benh_nhan.ho_ten',
                 title: 'Tên Bệnh Nhân',
@@ -343,6 +341,29 @@ var KTDatatableRemoteAjaxDemo = function() {
                     {% endif %}
                 },
             }, {
+                field: 'Finish',
+                title: 'Hoàn Thành',
+                sortable: false,
+                width: 50,
+                overflow: 'visible',
+                autoHide: false,
+                textAlign: 'center',
+                template: function(row) {
+                    return `
+                        {% if perms.clinic.can_stop_serivce_assignment %}
+                        <a href="javascript:;" data-ten="${row.benh_nhan.ho_ten}" data-id-chuoi-kham="${row.chuoi_kham.id}" data-id-phan-khoa="${row.id}" class="btn-hoan-thanh-kham btn btn-sm btn-clean btn-icon" title="Hoàn Thành Chuỗi Khám">
+                            <span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2020-10-29-133027/theme/html/demo1/dist/../src/media/svg/icons/General/Settings#3.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24"/>
+                                    <rect fill="#000000" opacity="0.3" x="2" y="6" width="21" height="12" rx="6"/>
+                                    <circle fill="#000000" cx="17" cy="12" r="4"/>
+                                </g>
+                            </svg><!--end::Svg Icon--></span>
+                        </a>
+                        {% endif %}
+                    `;
+                },
+            }, {
                 field: 'Stop',
                 title: 'Dừng khám',
                 sortable: false,
@@ -418,7 +439,7 @@ var KTDatatableRemoteAjaxDemo = function() {
 
 
 		$('#kt_datatable_search_status').on('change', function() {
-            datatable.search($(this).val().toLowerCase(), 'trang_thai.id');
+            datatable.search($(this).val(), 'trang_thai');
         });
 
         $('#kt_datatable_search_type').on('change', function() {
@@ -477,7 +498,52 @@ var KTDatatableRemoteAjaxDemo = function() {
             });
         })
 
-    
+        $("#kt_datatable").on('click', '.btn-hoan-thanh-kham', function(){
+            var id_chuoi_kham = $(this).attr('data-id-chuoi-kham')
+            var ten_benh_nhan = $(this).attr('data-ten')
+            console.log(id_chuoi_kham)
+
+            Swal.fire({
+                title: "Hoàn Thành Khám Cho Bệnh Nhân " + ten_benh_nhan,
+                text: "Bạn có chắc chắn muốn hoàn thành chuỗi khám không?",
+                icon: "warning",
+                cancelButtonText: "Hủy",
+                confirmButtonText: "Xác Nhận",
+                showCancelButton: true,
+            }).then(function(result) {
+                if (result.value) {
+                    $.ajax({
+                        type: "POST",
+                        url: "{% url 'hoan_thanh_kham' %}",
+                        data: {
+                            'id_chuoi_kham': id_chuoi_kham
+                        },
+                        dataType: 'json',
+                        safe: false,
+                        success: function (response) {
+                            if (response.status == 200) {
+                                toastr.success(response.message, "Thành Công")
+                                $('#kt_datatable').KTDatatable('reload');
+                            } else if (response.status == 404) {
+                                toastr.warning(response.message, "Xảy Ra Lỗi")
+                            }
+                        },
+                        error: function () {
+                                                                                                                                                
+                        }
+                    });
+                }else if (result.dismiss === 'cancel') {
+					Swal.fire(
+						'Đã Hủy',
+						'Hoàn Thành Khám Cho Chuỗi Khám Không Thành Công!',
+						'error'
+					)
+				}
+            });
+
+            
+        })
+
     };
 
     $('#btn-reload').on('click', function() {
