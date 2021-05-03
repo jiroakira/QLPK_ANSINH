@@ -256,27 +256,8 @@
 {% endblock content %}
 
 {% block scripts %}
-{% comment %} <script>var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";</script> {% endcomment %}
-<!--begin::Global Theme Bundle(used by all pages)-->
 
 <script src="{% static 'assets/js/pages/crud/forms/widgets/bootstrap-datetimepicker9cd7.js' %} "></script>
-
-<!--end::Global Theme Bundle-->
-{% comment %} <script>var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";</script> {% endcomment %}
-{% comment %} <script src="{% static 'assets/js/pages/crud/ktdatatable/base/data-ajax9cd7.js' %} "></script> {% endcomment %}
-{% comment %} <script>
-    $(document).ajaxStart(function() {
-        KTApp.blockPage({
-            overlayColor: '#000000',
-            state: 'primary',
-            message: 'Đang xử lý...'
-        });
-    })
-
-    $(document).ajaxStop(function() {
-        KTApp.unblockPage();
-    })
-</script> {% endcomment %}
 
 <script>
 
@@ -363,8 +344,10 @@ var KTDatatableRemoteAjaxDemo = function() {
                         return '<span class="label font-weight-bold label-2x label-light-primary label-inline"> Khám Sức Khỏe </span>'
                     }else if(row.loai_dich_vu == "kham_chua_benh"){
                         return '<span class="label font-weight-bold label-2x label-light-success label-inline"> Khám Chữa Bệnh </span>'
+                    }else if(row.loai_dich_vu == "kham_theo_yeu_cau"){
+                        return '<span class="label font-weight-bold label-2x label-light-info label-inline"> Khám Yêu Cầu </span>'
                     }else{
-                        return '<span class="label font-weight-bold label-2x label-light-info label-inline"> Chưa Có Thông Tin </span>'
+                        return '<span class="label font-weight-bold label-2x label-light-warning label-inline"> Chưa Có Thông Tin </span>'
                     }
                 }
             }, {
@@ -418,6 +401,10 @@ var KTDatatableRemoteAjaxDemo = function() {
                             'title': 'Đã Thanh Toán LS',
                             'class': ' label-light-success'
                         },
+                        3: {
+                            'title': 'Đã Đặt Trước',
+                            'class': ' label-light-primary'
+                        },
                         4: {
                             'title': 'Xác Nhận',
                             'class': ' label-light-primary'
@@ -443,7 +430,7 @@ var KTDatatableRemoteAjaxDemo = function() {
                             'class': ' label-light-warning'
                         },
                         10: {
-                            'title': 'Dừng Khám',
+                            'title': 'Chờ Phân Khoa',
                             'class': ' label-light-danger'
                         },
                         11: {
@@ -494,13 +481,24 @@ var KTDatatableRemoteAjaxDemo = function() {
                 textAlign: 'center',
                 autoHide: false,
                 template: function(row) {
-                    return `
-                        {% if perms.clinic.can_confirm_do_examination %}
-                        <a href="javascript:;" class="btn-set-status btn btn-clean btn-icon" data-id="${row.id}" title="Xác nhận đến khám và chờ thanh toán lâm sàng">
-                            <i class="la la-money-check icon-lg text-primary"></i>
-                        </a>
-                        {% endif %}
-                    `;
+                    if (row.loai_dich_vu == 'kham_theo_yeu_cau') {
+                        return `
+                            {% if perms.clinic.can_confirm_do_examination %}
+                            <a href="/danh_sach_benh_nhan_cho/phan_khoa_kham/${row.id}/" class="btn btn-clean btn-icon" data-id="${row.id}" title="Chỉ định cho bệnh nhân">
+                                <i class="la la-money-check icon-lg text-primary"></i>
+                            </a>
+                            {% endif %}
+                        `;
+
+                    } else {
+                        return `
+                            {% if perms.clinic.can_confirm_do_examination %}
+                            <a href="javascript:;" class="btn-set-status btn btn-clean btn-icon" data-id="${row.id}" title="Xác nhận đến khám và chờ thanh toán lâm sàng">
+                                <i class="la la-money-check icon-lg text-primary"></i>
+                            </a>
+                            {% endif %}
+                        `;
+                    }
                 },
             }, {
                 field: 'cancel',

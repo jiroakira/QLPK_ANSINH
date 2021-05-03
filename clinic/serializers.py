@@ -123,6 +123,7 @@ class LichHenKhamSerializer(serializers.ModelSerializer):
     nguoi_phu_trach = UserSerializer()
     trang_thai = TrangThaiLichHenSerializer()
     trang_thai_thanh_toan = serializers.CharField(source='check_thanh_toan')
+    hoan_thanh_kham = serializers.BooleanField(source='check_thanh_toan')
     class Meta:
         model = LichHenKham
         fields = (
@@ -140,6 +141,8 @@ class LichHenKhamSerializer(serializers.ModelSerializer):
             'thoi_gian_tao',
             'thoi_gian_chinh_sua',
             'trang_thai_thanh_toan',
+            'thanh_toan_sau',
+            'hoan_thanh_kham',
         )
 
     def create(self, validated_data):
@@ -174,9 +177,10 @@ class ChuoiKhamSerializerSimple(serializers.ModelSerializer):
     benh_nhan = UserSerializer()
     bac_si_dam_nhan = UserSerializer()
     trang_thai = TrangThaiChuoiKhamSerializer()
+    hoan_thanh_kham = serializers.CharField(source='lich_hen.check_hoan_thanh_kham')
     class Meta:
         model = ChuoiKham
-        fields = ('id', 'thoi_gian_bat_dau', 'thoi_gian_ket_thuc', 'benh_nhan', 'bac_si_dam_nhan', 'trang_thai')
+        fields = ('id', 'thoi_gian_bat_dau', 'thoi_gian_ket_thuc', 'benh_nhan', 'bac_si_dam_nhan', 'trang_thai', 'hoan_thanh_kham')
 
 class ChuoiKhamPhanKhoaSerializer(serializers.ModelSerializer):
     trang_thai = TrangThaiChuoiKhamSerializer()
@@ -579,6 +583,7 @@ class HoaDonChuoiKhamSerializerSimple(serializers.ModelSerializer):
     benh_nhan = UserSerializer()
     bac_si_dam_nhan = UserSerializer()  
     trang_thai_thanh_toan = serializers.CharField(source='check_thanh_toan')
+    thanh_toan_sau = serializers.BooleanField(source='lich_hen.thanh_toan_sau')
     class Meta:
         model = ChuoiKham
         fields = (
@@ -588,6 +593,7 @@ class HoaDonChuoiKhamSerializerSimple(serializers.ModelSerializer):
             'trang_thai',
             'thoi_gian_tao',
             'trang_thai_thanh_toan',
+            'thanh_toan_sau',
         )
 
 class DanhSachTinhTrangSerializer(serializers.ModelSerializer):

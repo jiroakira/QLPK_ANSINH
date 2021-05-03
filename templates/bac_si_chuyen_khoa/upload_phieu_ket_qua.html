@@ -80,6 +80,17 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
+                                        <label class="col-lg-2 col-form-label text-lg-right">Chọn mẫu phiếu:</label>
+                                        <div class="col-lg-10">
+                                            <select class="form-control selectpicker" id="selectMauPhieu" data-live-search="true" name="param">
+                                                <option value="" selected disabled>Chọn mẫu phiếu</option>
+                                                {% for mp in danh_sach_mau_phieu %}
+                                                    <option value="{{mp.codename}}">{{mp.ten_mau}}</option>
+                                                {% endfor %}      
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
                                         <label class="col-lg-2 col-form-label text-lg-right">Kết quả:</label>
                                         <div class="col-lg-10">
                                             {% comment %} <textarea class="form-control" id="ket_qua" rows="3" placeholder="Nhập kết quả của bệnh nhân" name='ket_qua'></textarea>  {% endcomment %}
@@ -95,8 +106,10 @@
                                 <div class="row">
                                     <div class="col-lg-3"></div>
                                     <div class="col-lg-9">
+                                        <button type="button" id='finish_button' data-id-phan-khoa="{{id_phan_khoa}}" data-id-chuoi-kham="{{id_chuoi_kham}}" data-id-phong-chuc-nang="{{id_phong_chuc_nang}}" class="btn btn-warning mr-2">Hoàn Thành Khám</button>
+                                        <button type="button" id='change_assignment' data-id-phan-khoa="{{id_phan_khoa}}" data-id-chuoi-kham="{{id_chuoi_kham}}" data-id-phong-chuc-nang="{{id_phong_chuc_nang}}" class="btn btn-info mr-2">Thay đổi chỉ định</button>
+                                        <button type="reset" id='cancel_button' class="btn btn-light-primary">Hủy</button>
                                         <button type="button" id="upload" data-id-phan-khoa="{{id_phan_khoa}}" data-id-chuoi-kham="{{id_chuoi_kham}}" data-id-phong-chuc-nang="{{id_phong_chuc_nang}}" class="dropzone-upload btn btn-primary mr-2">Lưu</button>
-                                        <button type="reset" class="btn btn-light-primary">Hủy</button>
                                     </div>
                                 </div>
                             </div>
@@ -148,6 +161,92 @@
     </div>
 </div>
 
+<!--begin::Thay Doi Phan Khoa Modal-->
+<div id="phan_khoa_modal" class="modal fade" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header py-5">
+                <h5 class="modal-title"> 
+                    <span class="d-block font-size-nm">Thay đổi chỉ định</span>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="card card-custom">
+                    <div class="card-body">
+                        <!--begin::Search Form-->
+                        <div class="mb-7">
+                            <div class="row align-items-center">
+                                <div class="col-lg-12 col-xl-9">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-6 my-2 my-md-0">
+                                            <div class="input-icon">
+                                                <input type="text" class="form-control" placeholder="Tìm kiếm..." id="kt_datatable_search_query_2" />
+                                                <span>
+                                                    <i class="flaticon2-search-1 text-muted"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end::Search Form-->
+                        <!--begin: Selected Rows Group Action Form-->
+                        <div class="mt-10 mb-5 collapse" id="kt_datatable_group_action_form_2">
+                            <div class="d-flex align-items-center">
+                                <div class="font-weight-bold text-success mr-3">Đã chọn 
+                                <span id="kt_datatable_selected_records_2"></span> khoa khám!</div>
+                            </div>
+                        </div>
+                        <!--end: Selected Rows Group Action Form-->
+                        <!--begin: Datatable-->
+                        <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable"></div>
+                        <!--end: Datatable-->
+                    </div>
+                </div>
+
+                <!--begin::Card-->
+                <div class="card card-custom mt-7">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <h3 class="card-label">Bảng phân khoa</h3>
+                        </div>
+                    </div>
+                    <div class="card-body" id='tablePhanKhoa'>
+                        <!--begin: Datatable-->
+                        <table class="table table-bordered table-hover table-checkable" id="kt_datatable_3" style="margin-top: 13px !important;">
+                            <thead>
+                                <tr>
+                                    <td>ID</td>
+                                    <td>Tên Dịch Vụ</td>
+                                    <td>Phòng Chức Năng</td>
+                                    <td>Bảo Hiểm</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                            </tbody>
+                        </table>
+                        <!--end: Datatable-->
+                    </div>
+                </div>
+                <!--end::Card-->
+            </div>
+            <div class="modal-footer">
+                {% comment %} <button type="button" id="printDiv" class="btn btn-light-success font-weight-bold text-uppercase float-left">In</button> {% endcomment %}
+                <button type="button" class="btn btn-light-primary font-weight-bold text-uppercase" data-dismiss="modal">Hủy</button>
+                <button type="button" id="btn_submit" data-id-chuoi-kham="{{ id_chuoi_kham }}" class="btn btn-primary font-weight-bold text-uppercase">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end::Modal-->
+
+<div id='newTableHtml' style="display: none;"></div>
+
 {% endblock content %}
 
 
@@ -180,18 +279,23 @@
 
 <script>
 // Class definition
+    var lstData = [];
+    var lstCheckbox = {};
+    var list_data_2 = [];
+
+    var benh_nhan = {{ benh_nhan|safe }};
+    var dia_chi = {{ dia_chi|safe }};
+    var tuoi = {{ tuoi|safe }};
+    var gioi_tinh = {{ gioi_tinh|safe }};
+    var bac_si_chuyen_khoa = {{ bac_si_chuyen_khoa|safe }}
+    var bac_si_lam_sang = {{ bac_si_lam_sang|safe }}
+    var ngay_kham = {{ ngay_kham|safe }}
+
     var KTFormControls = function () {
         // Private functions
+        var fillPatientInfo = function(id_div) {
+            var id_div = id_div
 
-        var benh_nhan = {{ benh_nhan|safe }};
-        var dia_chi = {{ dia_chi|safe }};
-        var tuoi = {{ tuoi|safe }};
-        var gioi_tinh = {{ gioi_tinh|safe }};
-        var bac_si_chuyen_khoa = {{ bac_si_chuyen_khoa|safe }}
-        var bac_si_lam_sang = {{ bac_si_lam_sang|safe }}
-        var ngay_kham = {{ ngay_kham|safe }}
-        
-        var fillPatientInfo = function() {
             var dataInfo = ""
             var dataAddr = ""
             var dataRes = ""
@@ -199,7 +303,7 @@
             var dataDateTime = ""
             var dataDr2 = ""
 
-            $('table tr').each(function(){
+            $(`${id_div} table tr`).each(function(){
                 if ($(this).find('td').eq(1).text() == '{benh_nhan}'){
                     var innerHtml = $(this).html()
             
@@ -257,7 +361,7 @@
         }
 
         var _initValidate = function () {
-            fillPatientInfo()
+            fillPatientInfo('#divMauPhieu')
             var html = $("#divMauPhieu").html()
 
             $('.summernote').summernote({
@@ -452,6 +556,396 @@
             });
 
         }
+
+        $("#cancel_button").on('click', function() {
+            window.history.back()
+        })
+
+        $(document).on('click', '#change_assignment', function(){
+            $('#phan_khoa_modal').modal('show');
+        
+            var ajax_data;
+            var id_chuoi_kham = $(this).data('id-chuoi-kham');
+
+            console.log(id_chuoi_kham)
+            $.ajax({
+                type: "GET",
+                url: "{% url 'danh_sach_phan_khoa_chuoi_kham' %}",
+                data: {
+                    id_chuoi_kham : $(this).data('id-chuoi-kham'),
+                },
+                dataType: 'json',
+                success: function (response) {
+                    var response_data = JSON.stringify(response.data)
+                    var data = JSON.parse(response_data)
+                    ajax_data = data
+                    for (var i=0; i<data.length; i++) {
+                        $('#kt_datatable_3 tbody').append(`
+                            <tr id="tr_${data[i].obj.id}" class="${data[i].obj.id}" data-id = "${data[i].obj.id}" name="true" data-checked="True" data-unchecked="False">
+                                <td>
+                                    ${data[i].obj.ma_dvkt}
+                                </td>
+                                <td>
+                                    ${data[i].obj.ten_dvkt}
+                                </td>
+                                <td>
+                                    ${data[i].obj.phong_chuc_nang.ten_phong_chuc_nang}
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="checkbox_${data[i].obj.id}" class="big-checkbox" checked data-checked="True" data-unchecked="False">
+                                </td>
+                            </tr>
+                        `);
+
+                        if (data[i].obj.bao_hiem == true) {
+                            $(`#checkbox_${data[i].obj.id}`).prop('checked', true)
+                        }else{
+                            $(`#checkbox_${data[i].obj.id}`).prop('checked', false)
+                        }
+
+                        lstData[i] = data[i]
+                        
+
+                    }
+                    
+                },
+                error: function (response) {                       
+                }
+            })
+
+            var options = {
+                // datasource definition
+                data: {
+                    type: 'remote',
+                    source: { 
+                        read: {
+                            url: HOST_URL + '/api/dich_vu_kham/',
+                            method: 'GET',
+                        },
+                    },
+                    pageSize: 10,
+                    serverPaging: true,
+                    serverFiltering: true,
+                    serverSorting: false,
+                },
+
+                // layout definition
+                layout: {
+                    scroll: false, // enable/disable datatable scroll both horizontal and
+                    footer: false // display/hide footer
+                },
+
+                // column sorting
+                sortable: true,
+
+                pagination: true,
+
+                // columns definition
+                columns: [{
+                    field: 'id',
+                    title: '#',
+                    sortable: false,
+                    width: 20,
+                    selector: {
+                        class: 'dvkt_checkbox',
+                    },
+                    textAlign: 'center',
+                }, {
+                    field: 'ten_dvkt',
+                    title: 'Tên Dịch Vụ',
+                    template: function(row) {
+                        return row.ten_dvkt
+                    }
+                }, {
+                    field: 'quyet_dinh',
+                    title: 'Quyết Định',
+                }, {
+                    field: 'cong_bo',
+                    title: 'Công Bố',
+                }, {
+                    field: 'bac_si_phu_trach.ho_ten',
+                    title: 'Bác Sĩ Phụ Trách',
+                    
+                }, {
+                    field: 'phong_chuc_nang.ten_phong_chuc_nang',
+                    title: 'Phòng Chức Năng',
+                    textAlign: 'center',
+                    autoHide: false
+                }, {
+                    field: 'bao hiem',
+                    title: 'Dùng Bảo Hiểm',
+                    textAlign: 'center',
+                    autoHide: false,
+                    template: function(row){
+                        if(row.bao_hiem_dich_vu == "True"){
+                            return '<span class="label font-weight-bold label-lg label-light-primary label-inline">Có áp dụng</span>'
+                        }else{
+                            return '<span class="label font-weight-bold label-lg label-light-warning label-inline">Không áp dụng</span>'
+                        }
+                    }
+                }]
+            };
+
+            // enable extension
+            options.extensions = {
+                // boolean or object (extension options)
+                checkbox: true,
+            };
+
+            options.search = {
+                input: $('#kt_datatable_search_query'),
+                key: 'generalSearch'
+            };
+            
+            var datatable = $('#kt_datatable').KTDatatable(options);    
+
+            datatable.on('datatable-on-check datatable-on-uncheck',function(e) {
+                var checkedNodes = datatable.rows('.datatable-row-active').nodes();
+                var count = checkedNodes.length;
+                $('#kt_datatable_selected_records').html(count);
+                if (count > 0) {
+                    $('#kt_datatable_group_action_form').collapse('show');
+                } else {
+                    $('#kt_datatable_group_action_form').collapse('hide');
+                }
+            });
+
+            datatable.on('datatable-on-init', function(){
+                
+                for (var i=0; i < ajax_data.length; i++) {
+                    datatable.setActive(cell=String(ajax_data[i].obj.id));
+                }
+                console.log(lstData)
+            });
+
+            datatable.on('click', 'tbody input[type="checkbox"]', function () {
+                $(this).toggleClass('selected');
+                // console.log($(this).val())
+                var objList = [];
+                
+                if($(this).is(":checked")){
+                    var trVals = $(this).closest('tr').data();
+                
+                    delete trVals['row']
+                
+                    lstData.push(trVals)
+                    console.log(trVals)
+                    console.log(lstData)
+                    $(trVals).each(function () {
+                        $('#kt_datatable_3 tbody').append(`
+                            <tr class="${trVals.obj.id}" data-id = "${trVals.obj.id}" name="true" data-checked="True" data-unchecked="False">
+                                <td>
+                                ${trVals.obj.ma_dvkt}
+                                </td>
+                                <td>
+                                ${trVals.obj.ten_dvkt}
+                                </td>
+                                <td>
+                                ${trVals.obj.phong_chuc_nang.ten_phong_chuc_nang}
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="${trVals.obj.id}" class="big-checkbox" data-checked="True" data-unchecked="False">
+                                </td>
+                            </tr>
+                        `);
+                    })
+
+                } else {
+                    var trVals = $(this).closest('tr').data();
+                    
+                    delete trVals['row']
+
+                    console.log(JSON.stringify(lstData[4]))
+                    console.log(JSON.stringify(trVals))
+                    
+                    $(`.${trVals.obj.id}`).remove();
+                    
+                    lstData = lstData.filter(function(item) {
+                        var item = item
+                        delete item['obj']['bao_hiem']
+                    
+                        return JSON.stringify(item) !== JSON.stringify(trVals);
+                    });
+
+                    console.log(lstData)
+                
+                    // replacePhanKhoaHtml(trVals)
+                    {% comment %} phanKhoaHtml = phanKhoaHtml.replace(`
+                            <tr class="${trVals.obj.id}">
+                                <td colspan="4" rowspan="1" style="border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:1px solid black; height:28px; text-align:left; vertical-align:bottom; white-space:nowrap"><span style="color:#000000; font-family:Times New Roman, serif"><span style="font-size:16px">${trVals.obj.ten_dvkt}</span></span></td>
+                                <td colspan="7" rowspan="1" style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:1px solid black; text-align:center; vertical-align:bottom; white-space:nowrap"><span style="font-size:16px"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="color:black">${trVals.obj.phong_chuc_nang.ten_phong_chuc_nang}</span></span></span></td>
+                                <td class="so-luong-dang-cho" colspan="7" rowspan="1" style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:1px solid black; text-align:center; vertical-align:bottom; white-space:nowrap"><span style="font-size:16px"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="color:black">${so_luong_dang_cho}</span></span></span></td>
+                            </tr>
+                            `, "") {% endcomment %}
+
+                }
+            });
+
+            $('#kt_datatable_3').on('click', 'tbody input[type="checkbox"]', function () {
+                if($(this).is(":checked")){
+                    lstCheckbox = {};
+                    getCheckbox();
+                    console.log(lstCheckbox);
+                } else {
+                    lstCheckbox = {}; 
+                    getCheckbox();
+                    console.log(lstCheckbox);
+                }
+            })
+
+            function postData(id_chuoi_kham){
+                var id_chuoi_kham = id_chuoi_kham
+                var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+
+                function csrfSafeMethod(method) {
+                    // these HTTP methods do not require CSRF protection
+                    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+                }
+
+                $.ajaxSetup({
+                    beforeSend: function(xhr, settings) {
+                        function getCookie(name) {
+                            var cookieValue = null;
+                            if (document.cookie && document.cookie != '') {
+                                var cookies = document.cookie.split(';');
+                                for (var i = 0; i < cookies.length; i++) {
+                                    var cookie = jQuery.trim(cookies[i]);
+                                    // Does this cookie string begin with the name we want?
+                                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                                        break;
+                                    }
+                                }
+                            }
+                            return cookieValue;
+                        }
+                        if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+                            // Only send the token to relative URLs i.e. locally.
+                            xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+                        }
+                    } 
+                });
+
+                $.ajax({
+                    type: "POST",
+                    url: "{% url 'thay_doi_phan_khoa' %}",
+                    data: {
+                        'data': JSON.stringify(getPostData()),
+                        'csrfmiddlewaretoken': csrftoken,
+                        'id_chuoi_kham': id_chuoi_kham,
+                    },
+                    dataType: 'json',
+                    safe: false,
+                    success: function(response) {
+                        if (response.status == 200) {
+                            toastr.success(response.message, "Thành Công")
+                            location.reload();
+                        
+                        } else if (response.status == 404) {
+                            toastr.warning(response.message, "Lỗi")
+                        }
+
+                    },
+                    error: function() {
+                        toastr.warning("Phân Khoa Không Thành Công", "Lỗi")                                                                                                                         
+                    }
+                });
+            }
+
+            function getPostData(){
+                var rowData = lstData;
+                var checkBoxObj = lstCheckbox;
+                for (const each in checkBoxObj) {
+                    for (let i = 0; i < rowData.length; i++) {
+                        if (rowData[i].obj.id == each) {
+                            rowData[i].obj.bao_hiem = checkBoxObj[each];
+                        }
+                    }
+                }
+                console.log(rowData);
+                return rowData;
+            }
+
+            function getCheckbox(){
+                
+                $('#kt_datatable_3 tbody tr').each(function() {
+
+                    var sectionId = $(this).data('id');
+                    console.log(sectionId)
+
+                    $(this).find('input.big-checkbox:checked').each(function() {
+                        console.log($(this).attr('data-checked'));
+                        lstCheckbox[sectionId] = $(this).attr('data-checked');
+                    });
+
+                    $(this).find('input.big-checkbox:not(:checked)').each(function() {
+                        lstCheckbox[sectionId] = $(this).attr('data-unchecked');
+                    });
+                });
+            }
+
+            $("#btn_submit").on('click', function() {
+                var id_chuoi_kham = $(this).data('id-chuoi-kham')
+                getCheckbox();
+                getPostData();
+                postData(id_chuoi_kham);
+            })
+
+        })
+
+        $('#selectMauPhieu').on('changed.bs.select', function(e, clickedIndex, newValue, oldValue) {
+            var codename = this.value
+            console.log(codename)
+            $.ajax({
+                url        : HOST_URL + '/api/chi_tiet_mau_phieu/',
+                data       : {'codename': codename},
+                success: function(response){
+                    if (response.status == 200) {
+                        var newTableHtml = response.data.noi_dung
+
+                        $("#newTableHtml").html(newTableHtml)
+
+                        fillPatientInfo('#newTableHtml')
+
+                        var html = $("#newTableHtml").html()
+
+                        $('.summernote').summernote("code", html);
+
+                    } else if (response.status == 404){
+                        toastr.warning(response.data, "Xảy Ra Lỗi")
+                    }
+                    
+                },
+                error: function(response){
+                    
+                }
+            })
+        })
+
+        $(document).on('click', '#finish_button', function() {
+            $.ajax({
+                type: "POST",
+                url: "{% url 'hoan_thanh_kham' %}",
+                data: {
+                    id_chuoi_kham : $(this).data('id-chuoi-kham'),
+                },
+                dataType: 'json',
+                success: function (response) {
+                    
+                    if (response.status == 200) {
+                        var id_phong_chuc_nang = $("#finish_button").data('id-phong-chuc-nang')
+                        toastr.success(response.message, "Thành Công")
+                        setTimeout(function () {
+                            window.location.href = '/phong_chuyen_khoa/' + id_phong_chuc_nang;
+                        }, 2000);
+                    } else if (response.status == 404) {
+                        toastr.warning(response.message, "Xảy Ra Lỗi")
+                    }
+                },
+                error: function (response) {                       
+                }
+            })
+        })
 
         return {
             // public functions

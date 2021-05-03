@@ -57,6 +57,7 @@
                         {% if check_da_thanh_toan == True %} 
                             <div></div>
                         {% else %}
+                            <button type="button" class="btn btn-light-primary font-weight-bold float-right mr-3" data-id-chuoi-kham="{{ id_chuoi_kham }}" id="btn_finish">Hoàn Thành</button>
                             <button type="button" class="btn btn-primary font-weight-bold float-right" data-tong-tien='{{data_tong_tien}}' data-ma-hoa-don='{{ma_hoa_don}}' id="btn-thanh-toan">Thanh Toán</button>
                             <button type="button" class="btn btn-light-primary font-weight-bold float-right mr-3" data-id-chuoi-kham="{{ id_chuoi_kham }}" id="btn_thay_doi">Thay Đổi</button>
                             <button type="button" class="btn btn-light-primary font-weight-bold float-right mr-3" data-id-chuoi-kham="{{ id_chuoi_kham }}" data-thanh-tien='{{data_thanh_tien}}' id="btn_giam_gia">Giảm giá</button>
@@ -303,14 +304,14 @@
                 type: 'remote',
                 source: { 
                     read: {
-                        url: HOST_URL + '/router/api/dich_vu/',
+                        url: HOST_URL + '/api/dich_vu_kham/',
                         method: 'GET',
                     },
                 },
                 pageSize: 10,
-                // serverPaging: true,
-                // serverFiltering: true,
-                // serverSorting: true,
+                serverPaging: true,
+                serverFiltering: true,
+                serverSorting: false,
             },
 
             // layout definition
@@ -575,6 +576,33 @@
             postData(id_chuoi_kham);
         })
 
+    })
+
+    $(document).on('click', '#btn_finish', function() {
+        var id_chuoi_kham = $(this).data('id-chuoi-kham');
+        console.log(id_chuoi_kham)
+        $.ajax({
+            type: "POST",
+            url: "{% url 'hoan_thanh_kham_hoa_don' %}",
+            data: {
+                'id_chuoi_kham': id_chuoi_kham,
+            },
+            dataType: 'json',
+            safe: false,
+            success: function (response) {
+                if (response.status == 200) {
+                    toastr.success(response.message, "Thành Công")
+                    setTimeout(function () {
+                        window.location.href = "/phong_tai_chinh/"
+                    }, 2000);
+                } else if (response.status == 404) {
+                    toastr.warning(response.message, "Xảy Ra Lỗi")
+                }
+            },
+            error: function () {
+                                                                                                                                  
+            }
+        });
     })
 
     function printDiv(hoa_don_dich_vu){
@@ -1063,6 +1091,7 @@
         });
 
     }
+
 
     
 </script>

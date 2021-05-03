@@ -178,7 +178,7 @@ var KTDatatableRemoteAjaxDemo = function() {
                         method: 'GET',
                         // sample custom headers
                         // headers: {'x-my-custom-header': 'some value', 'x-test-header': 'the value'},
-                        {% comment %} map: function(raw) {
+                        map: function(raw) {
                             // sample data mapping
                             var dataSet = raw;
                             if (typeof raw.data !== 'undefined') {
@@ -188,13 +188,13 @@ var KTDatatableRemoteAjaxDemo = function() {
                             globalData = dataSet;
                             console.log(dataSet)
                             return dataSet;
-                        } {% endcomment %}
+                        }
                     },
                 },
                 pageSize: 10,
                 serverPaging: true,
-                // serverFiltering: true,
-                //serverSorting: true,
+                serverFiltering: true,
+                serverSorting: false,
             },
 
             // layout definition
@@ -210,7 +210,7 @@ var KTDatatableRemoteAjaxDemo = function() {
 
             search: {
                 input: $('#kt_datatable_search_query'),
-                key: 'generalSearch'
+                key: 'search'
             },
 
             // columns definition
