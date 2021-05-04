@@ -730,13 +730,17 @@ var KTDatatableRemoteAjaxDemo = function() {
             var ten = $(this).data('ten')
 
             var current = new Date()
-            var day = current.getDay()
-            var month = current.getMonth()
+            var day = current.getDate()
+            var month = current.getMonth() + 1
             var year = current.getFullYear()
             var hour = current.getHours()
             var minute = current.getMinutes()
 
+            
             var current_time = `${day}/${month}/${year} ${hour}:${minute}`
+            console.log(current)
+            console.log(current_time)
+
             $('#inputLichHenKham').val(current_time)
 
             $('#addLichHenKham').modal('show')
