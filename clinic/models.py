@@ -46,7 +46,7 @@ def text_to_id(text):
     return text
 
 class UserManager(BaseUserManager):
-    def create_user(self, ho_ten, so_dien_thoai, cmnd_cccd, dia_chi, password=None):
+    def create_user(self, ho_ten, so_dien_thoai, dia_chi, password=None):
         """
         Creates and saves a User with the given email and password.
         """
@@ -59,7 +59,6 @@ class UserManager(BaseUserManager):
         user = self.model(
             so_dien_thoai=so_dien_thoai,
             ho_ten = ho_ten,
-            cmnd_cccd = cmnd_cccd,
             dia_chi = dia_chi,
         )
 
@@ -67,7 +66,7 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
         
-    def create_nguoi_dung(self, ho_ten, so_dien_thoai, cmnd_cccd, gioi_tinh, dan_toc, ngay_sinh, ma_so_bao_hiem, dia_chi, password=None):
+    def create_nguoi_dung(self, ho_ten, so_dien_thoai, gioi_tinh, dan_toc, ngay_sinh, ma_so_bao_hiem, dia_chi, password=None):
         """
         Creates and saves a User with the given email and password.
         """
@@ -80,7 +79,6 @@ class UserManager(BaseUserManager):
         user = self.model(
             so_dien_thoai  = so_dien_thoai,
             ho_ten         = ho_ten,
-            cmnd_cccd      = cmnd_cccd,
             dia_chi        = dia_chi,
             gioi_tinh      = gioi_tinh,
             dan_toc        = dan_toc,
@@ -683,7 +681,7 @@ class LichHenKham(models.Model):
                 trang_thai_chuoi_kham = TrangThaiChuoiKham.objects.get(trang_thai_chuoi_kham='Hoàn Thành')
                 if chuoi_kham.trang_thai == trang_thai_chuoi_kham:
                     hoan_thanh_kham = True
-                    
+
         return hoan_thanh_kham
 
 

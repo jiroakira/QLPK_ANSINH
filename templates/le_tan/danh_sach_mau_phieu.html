@@ -45,7 +45,7 @@
                         {% if perms.clinic.can_add_analysis_note %}
                         <a href="{% url 'them_mau_hoa_don' %}" class="btn btn-light-primary font-weight-bolder mr-3">
                             <i class="la la-plus icon-md"></i>
-                            Thêm Mẫu Hóa Đơn
+                            Thêm Mẫu Hóa Đơn/Mẫu Phiếu
                         </a>
                         {% endif %}
                         <!--end::Button-->
@@ -133,6 +133,7 @@ var KTDatatableModal = function() {
                 serverPaging: true,
                 serverFiltering: true, 
                 serverSorting: false,
+                saveState: false,
             },
 
             // layout definition
