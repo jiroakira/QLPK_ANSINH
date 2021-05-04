@@ -6220,8 +6220,8 @@ def hoa_don_lam_sang(request, **kwargs):
     id_lich_hen = kwargs.get('id')
     lich_hen = get_object_or_404(LichHenKham, id=id_lich_hen)
     benh_nhan = lich_hen.benh_nhan
-    thoi_gian_thanh_toan = hoa_don_lam_sang.thoi_gian_tao
     hoa_don_lam_sang = lich_hen.hoa_don_lam_sang.all().last()
+    thoi_gian_thanh_toan = hoa_don_lam_sang.thoi_gian_tao
     tong_tien = hoa_don_lam_sang.tong_tien
     nguoi_thanh_toan = hoa_don_lam_sang.nguoi_thanh_toan
 
