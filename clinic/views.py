@@ -459,13 +459,15 @@ def create_user(request):
                 ho_ten         = ho_ten, 
                 so_dien_thoai  = so_dien_thoai, 
                 password       = password,
-                cmnd_cccd      = cmnd_cccd,
                 dia_chi        = dia_chi,
                 ngay_sinh      = ngay_sinh,
                 gioi_tinh      = gioi_tinh,
                 dan_toc        = dan_toc,    
                 ma_so_bao_hiem = ma_so_bao_hiem,
             )
+
+            if cmnd_cccd != '':
+                benh_nhan.cmnd_cccd = cmnd_cccd
 
             benh_nhan.ngay_sinh      = ngay_sinh
             benh_nhan.gioi_tinh      = gioi_tinh
@@ -3720,9 +3722,10 @@ def create_user_index(request):
             ho_ten         = ho_ten, 
             so_dien_thoai  = so_dien_thoai, 
             password       = password,
-            cmnd_cccd      = cmnd_cccd,
             dia_chi        = dia_chi,
         )
+        if cmnd_cccd != '':
+            user.cmnd_cccd = cmnd_cccd
         user.save()
  
         response = {
