@@ -777,6 +777,9 @@ var KTDatatableRemoteAjaxDemo = function() {
                         $('#addLichHenKham').find("input, textarea").val("");
                     }
                     $('#addLichHenKham').modal('hide');
+                    setTimeout(function(){
+                        window.location.href = "/danh_sach_lich_hen/"
+                    },1000)
                 },
                 error: function(response){
                     toastr.warning(response.message)
