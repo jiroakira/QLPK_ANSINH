@@ -456,7 +456,7 @@ def create_user(request):
                 return HttpResponse(json.dumps(response), content_type="application/json, charset=utf-8")
 
             benh_nhan = User.objects.create_nguoi_dung(
-                ho_ten         = ho_ten, 
+                ho_ten         = ho_ten.upper(), 
                 so_dien_thoai  = so_dien_thoai, 
                 password       = password,
                 dia_chi        = dia_chi,
@@ -3719,7 +3719,7 @@ def create_user_index(request):
             return HttpResponse(json.dumps({'message': "Số chứng minh thư đã tồn tại", 'status': '403'}), content_type = 'application/json; charset=utf-8')
  
         user = User.objects.create_user(
-            ho_ten         = ho_ten, 
+            ho_ten         = ho_ten.upper(), 
             so_dien_thoai  = so_dien_thoai, 
             password       = password,
             dia_chi        = dia_chi,
