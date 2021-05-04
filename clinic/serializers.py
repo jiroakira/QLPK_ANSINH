@@ -402,7 +402,7 @@ class LichHenKhamSerializerSimple(serializers.ModelSerializer):
     trang_thai = TrangThaiLichHenSerializer()
     class Meta:
         model = LichHenKham
-        fields = ('id', 'thoi_gian_bat_dau', 'thoi_gian_ket_thuc', 'trang_thai', 'dia_diem', 'ly_do', 'loai_dich_vu')
+        fields = ('id', 'thoi_gian_bat_dau', 'thoi_gian_ket_thuc', 'trang_thai', 'ly_do', 'loai_dich_vu')
 
 class BookLichHenKhamSerializer(serializers.Serializer):
 
@@ -410,7 +410,6 @@ class BookLichHenKhamSerializer(serializers.Serializer):
     thoi_gian_bat_dau = serializers.CharField()
     loai_dich_vu = serializers.CharField()
     ly_do = serializers.CharField()
-    dia_diem = serializers.CharField()
 
     # class Meta:
     #     model = LichHenKham
