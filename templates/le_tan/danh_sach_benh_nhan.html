@@ -729,6 +729,16 @@ var KTDatatableRemoteAjaxDemo = function() {
             var id = $(this).data('id')
             var ten = $(this).data('ten')
 
+            var current = new Date()
+            var day = current.getDay()
+            var month = current.getMonth()
+            var year = current.getFullYear()
+            var hour = current.getHours()
+            var minute = current.getMinutes()
+
+            var current_time = `${day}/${month}/${year} ${hour}:${minute}`
+            $('#inputLichHenKham').val(current_time)
+
             $('#addLichHenKham').modal('show')
             $('#addLichHenKham').find('#ten_benh_nhan').html(ten)
             $('#addLichHenKham').find('#addLichSubmit').attr('data-id', id)

@@ -1462,6 +1462,16 @@ def don_thuoc(request, **kwargs):
 
     danh_sach_thuoc = don_thuoc.ke_don.all()
 
+    if don_thuoc.benh_nhan is not None:
+        benh_nhan = "Họ và tên: " + don_thuoc.benh_nhan.ho_ten.upper()
+        so_dien_thoai = 'SĐT: ' + str(don_thuoc.benh_nhan.get_so_dien_thoai())
+        dia_chi = "Đ/c: " + don_thuoc.benh_nhan.get_dia_chi()
+
+    elif don_thuoc.benh_nhan_vang_lai is not None:
+        benh_nhan = "Họ và tên: " + don_thuoc.benh_nhan_vang_lai.upper()
+        so_dien_thoai = 'SĐT: -'
+        dia_chi = "Đ/c: -"
+
     _danh_sach_thuoc = []
     _danh_sach_thuc_pham_chuc_nang = []
 
@@ -1476,8 +1486,8 @@ def don_thuoc(request, **kwargs):
     mau_hoa_don = MauPhieu.objects.filter(codename='don_thuoc').first()
     mau_hoa_don_thuc_pham_cn = MauPhieu.objects.filter(codename='don_thuoc_ho_tro_dieu_tri').first()
 
-    nguoi_thanh_toan = request.user.ho_ten
-    thoi_gian_thanh_toan = datetime.now()
+    nguoi_thanh_toan = don_thuoc.bac_si_ke_don.ho_ten
+    thoi_gian_thanh_toan = don_thuoc.thoi_gian_tao
 
     ds_thuoc = [f'{i.thuoc.ten_thuoc}' for i in _danh_sach_thuoc]
     ds_thuc_pham_chuc_nang = [f'{i.thuoc.ten_thuoc}' for i in _danh_sach_thuc_pham_chuc_nang]
@@ -1507,6 +1517,9 @@ def don_thuoc(request, **kwargs):
         'mau_hoa_don_thuc_pham_cn': mau_hoa_don_thuc_pham_cn,
         'nguoi_thanh_toan': nguoi_thanh_toan,
         "thoi_gian_thanh_toan": f"{thoi_gian_thanh_toan.strftime('%H:%m')} Ngày {thoi_gian_thanh_toan.strftime('%d')} Tháng {thoi_gian_thanh_toan.strftime('%m')} Năm {thoi_gian_thanh_toan.strftime('%Y')}",
+        'benh_nhan': benh_nhan,
+        'so_dien_thoai': so_dien_thoai,
+        'dia_chi': dia_chi,
     }
     return render(request, 'phong_thuoc/don_thuoc.html', context=data)
 

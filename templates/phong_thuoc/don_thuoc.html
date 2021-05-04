@@ -170,10 +170,15 @@
         var data_thuoc = '';
         var data_thoi_gian = '';
         var data_nguoi_thuc_hien = '';
+        var data_so_dien_thoai = '';
+        var data_dia_chi = '',
         var ten_thuoc = {{ ten_thuoc|safe }};
         var so_luong = {{ so_luong|safe }};
         var duong_dung = {{ duong_dung|safe }};
         var ghi_chu = {{ ghi_chu|safe }};
+        var benh_nhan = "{{ benh_nhan|safe }}";
+        var so_dien_thoai = "{{ so_dien_thoai|safe }}";
+        var dia_chi = "{{ dia_chi|safe }}";
         var thoi_gian_thanh_toan = "{{ thoi_gian_thanh_toan|safe }}";
         var nguoi_thanh_toan = "{{nguoi_thanh_toan|safe}}";
 
@@ -184,9 +189,31 @@
                 var end_tr = '</tr>';
                 var c = start_tr + innerHtml + end_tr;
     
-                data_thoi_gian += c.replace(/{thoi_gian_thanh_toan}/, thoi_gian_thanh_toan);
+                data_thoi_gian += c.replace(/{thoi_gian_thanh_toan}/, thoi_gian_thanh_toan).replace(/{benh_nhan}/, benh_nhan);
 
                 $(this).replaceWith(data_thoi_gian);
+            };
+
+            if ($(this).find('td').eq(1).text() == '{so_dien_thoai}'){
+                var innerHtml = $(this).html();
+                var start_tr = '<tr>';
+                var end_tr = '</tr>';
+                var c = start_tr + innerHtml + end_tr;
+    
+                data_so_dien_thoai += c.replace(/{so_dien_thoai}/, so_dien_thoai);
+
+                $(this).replaceWith(data_so_dien_thoai);
+            };
+
+            if ($(this).find('td').eq(1).text() == '{dia_chi}'){
+                var innerHtml = $(this).html();
+                var start_tr = '<tr>';
+                var end_tr = '</tr>';
+                var c = start_tr + innerHtml + end_tr;
+    
+                data_dia_chi += c.replace(/{dia_chi}/, dia_chi);
+
+                $(this).replaceWith(data_dia_chi);
             };
 
             if ($(this).find('td').eq(1).text() == '{nguoi_thanh_toan}'){
@@ -221,10 +248,15 @@
         var data_thuoc = '';
         var data_thoi_gian = '';
         var data_nguoi_thuc_hien = '';
+        var data_so_dien_thoai = '';
+        var data_dia_chi = '',
         var ten_thuoc = {{ ten_thuoc_cn|safe }};
         var so_luong = {{ so_luong_thuoc_cn|safe }};
         var duong_dung = {{ duong_dung_thuoc_cn|safe }};
         var ghi_chu = {{ ghi_chu_thuoc_cn|safe }};
+        var benh_nhan = "{{ benh_nhan|safe }}";
+        var so_dien_thoai = "{{ so_dien_thoai|safe }}";
+        var dia_chi = "{{ dia_chi|safe }}";
         var thoi_gian_thanh_toan = "{{ thoi_gian_thanh_toan|safe }}";
         var nguoi_thanh_toan = "{{nguoi_thanh_toan|safe}}";
 
@@ -235,9 +267,31 @@
                 var end_tr = '</tr>';
                 var c = start_tr + innerHtml + end_tr;
     
-                data_thoi_gian += c.replace(/{thoi_gian_thanh_toan}/, thoi_gian_thanh_toan);
+                data_thoi_gian += c.replace(/{thoi_gian_thanh_toan}/, thoi_gian_thanh_toan).replace(/{benh_nhan}/, benh_nhan);
 
                 $(this).replaceWith(data_thoi_gian);
+            };
+
+            if ($(this).find('td').eq(1).text() == '{so_dien_thoai}'){
+                var innerHtml = $(this).html();
+                var start_tr = '<tr>';
+                var end_tr = '</tr>';
+                var c = start_tr + innerHtml + end_tr;
+    
+                data_so_dien_thoai += c.replace(/{so_dien_thoai}/, so_dien_thoai);
+
+                $(this).replaceWith(data_so_dien_thoai);
+            };
+
+            if ($(this).find('td').eq(1).text() == '{dia_chi}'){
+                var innerHtml = $(this).html();
+                var start_tr = '<tr>';
+                var end_tr = '</tr>';
+                var c = start_tr + innerHtml + end_tr;
+    
+                data_dia_chi += c.replace(/{dia_chi}/, dia_chi);
+
+                $(this).replaceWith(data_dia_chi);
             };
 
             if ($(this).find('td').eq(1).text() == '{nguoi_thanh_toan}'){
