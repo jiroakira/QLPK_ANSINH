@@ -1889,8 +1889,7 @@ class DangKiLichHen(APIView):
             thoi_gian_bat_dau = serializer.validated_data['thoi_gian_bat_dau']
             loai_dich_vu = serializer.validated_data['loai_dich_vu']
             ly_do = serializer.validated_data['ly_do']
-            dia_diem = serializer.validated_data['dia_diem']
-            
+
             user = User.objects.get(id=user_id)
             date_time_str = datetime.strptime(thoi_gian_bat_dau, '%Y-%m-%d %H:%M:%S')
             trang_thai = TrangThaiLichHen.objects.get_or_create(ten_trang_thai='Đã Đặt Trước')[0]
@@ -1898,7 +1897,6 @@ class DangKiLichHen(APIView):
                 benh_nhan=user,
                 thoi_gian_bat_dau=date_time_str, 
                 trang_thai=trang_thai,
-                dia_diem=dia_diem,
                 loai_dich_vu=loai_dich_vu,
                 ly_do=ly_do,
                 
