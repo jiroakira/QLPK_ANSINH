@@ -6488,3 +6488,26 @@ def hoan_thanh_chuoi_kham_hoa_don_thuoc(request):
             'message' : 'Đã Nhận Đơn Thuốc'
         }
         return HttpResponse(json.dumps(response), content_type="application/json, charset=utf-8")
+
+def xoa_ket_qua_chuyen_khoa(request):
+    if request.method == "POST":
+        id = request.POST.get('id')
+        try:
+            ket_qua_chuyen_khoa = KetQuaChuyenKhoa.objects.get(id=id)
+            ket_qua_chuyen_khoa.delete()
+        except KetQuaChuyenKhoa.DoesNotExist:
+            response = {
+                'status': 404,
+                'message': "Kết Quả Chuyên Khoa Không Tồn Tại"
+            }
+            return HttpResponse(json.dumps(response), content_type="application/json, charset=utf-8")
+        response = {
+            'status': 200,
+            'message': "Kết Quả Chuyên Khoa Đã Được Xóa Thành Công"
+        }
+    else:
+        response = {
+            'status': 404,
+            'message': "Xảy Ra Lỗi Trong Quá Trình Xử Lý"
+        }
+    return HttpResponse(json.dumps(response), content_type="application/json, charset=utf-8")
