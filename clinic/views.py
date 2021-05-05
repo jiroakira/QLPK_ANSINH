@@ -3055,6 +3055,7 @@ def nhan_don_thuoc(request):
             trang_thai_lich_hen = TrangThaiLichHen.objects.get_or_create(ten_trang_thai = "Hoàn Thành")[0]
             chuoi_kham.trang_thai = trang_thai_chuoi_kham
             lich_hen.trang_thai = trang_thai_lich_hen
+            lich_hen.thoi_gian_ket_thuc = timezone.localtime(timezone.now())
             lich_hen.save()
             chuoi_kham.save()
             don_thuoc.trang_thai = trang_thai_don_thuoc
@@ -3392,6 +3393,7 @@ def upload_ket_qua_lam_sang(request):
                 trang_thai_chuoi_kham = TrangThaiChuoiKham.objects.get(trang_thai_chuoi_kham='Hoàn Thành')
                 lich_hen.thanh_toan_sau = False
                 chuoi_kham.trang_thai = trang_thai_chuoi_kham
+                lich_hen.thoi_gian_ket_thuc = timezone.localtime(timezone.now())
                 chuoi_kham.save()
                 lich_hen.save()
 
@@ -6390,6 +6392,7 @@ def hoan_thanh_kham(request):
 
             chuoi_kham.trang_thai = trang_thai_chuoi_kham
             lich_hen.trang_thai = trang_thai_lich_hen
+            lich_hen.thoi_gian_ket_thuc = timezone.localtime(timezone.now())
             lich_hen.thanh_toan_sau = False
             chuoi_kham.save()
             lich_hen.save()
@@ -6429,6 +6432,10 @@ def hoan_thanh_kham_hoa_don(request):
             chuoi_kham.trang_thai = trang_thai_chuoi_kham
             lich_hen.trang_thai = trang_thai_lich_hen
             lich_hen.thanh_toan_sau = False
+
+            if lich_hen.loai_dich_vu == 'kham_theo_yeu_cau':
+                lich_hen.thoi_gian_ket_thuc = timezone.localtime(timezone.now())
+
             if hoa_don_dich_vu is not None:
                 hoa_don_dich_vu.tong_tien = 0
                 hoa_don_dich_vu.discount = 0
@@ -6473,12 +6480,16 @@ def hoan_thanh_chuoi_kham_hoa_don_thuoc(request):
             trang_thai_lich_hen = TrangThaiLichHen.objects.get_or_create(ten_trang_thai = "Hoàn Thành")[0]
             chuoi_kham.trang_thai = trang_thai_chuoi_kham
             lich_hen.trang_thai = trang_thai_lich_hen
+
+            if lich_hen.loai_dich_vu == 'kham_theo_yeu_cau':
+                lich_hen.thoi_gian_ket_thuc = datetime.now()
+            
             lich_hen.save()
             chuoi_kham.save()
             don_thuoc.trang_thai = trang_thai_don_thuoc
             don_thuoc.save()
 
-            hoa_don_thuoc, created = HoaDonThuoc.objects.get_or_create(don_thuoc=don_thuoc, ma_hoa_don=ma_hoa_don, tong_tien=0, nguoi_thanh_toan=request.user)
+            hoa_don_thuoc = HoaDonThuoc.objects.create(don_thuoc=don_thuoc, ma_hoa_don=ma_hoa_don, tong_tien=0, nguoi_thanh_toan=request.user)
             hoa_don_thuoc.save()
             
             channel_layer = get_channel_layer()
