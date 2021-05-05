@@ -962,12 +962,12 @@ class DichVuKhamPhanKhoaSerializer(serializers.ModelSerializer):
             'phong_chuc_nang',
         )
 
-class DanhSachPhanKhoaSerializer(serializers.ModelSerializer):
-    dich_vu_kham = DichVuKhamPhanKhoaSerializer()
-    class Meta:
-        model = PhanKhoaKham
-        fields = (
-            'id',
-            'dich_vu_kham',
-            'bao_hiem',
-        )
+# class DanhSachPhanKhoaSerializer(serializers.ModelSerializer):
+#     dich_vu_kham = DichVuKhamPhanKhoaSerializer()
+#     class Meta:
+#         model = PhanKhoaKham
+#         fields = (
+#             'id',
+#             'dich_vu_kham',
+#             'bao_hiem',
+#         )
