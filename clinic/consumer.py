@@ -119,7 +119,6 @@ class CheckupProcessConsumer(AsyncJsonWebsocketConsumer):
                 'data': []  
             }
 
-            
         return context
 
 class FuncroomInfor(AsyncJsonWebsocketConsumer):

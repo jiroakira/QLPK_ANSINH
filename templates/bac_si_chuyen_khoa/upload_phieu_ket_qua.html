@@ -248,11 +248,9 @@
 
 {% endblock content %}
 
-
 {% block scripts %}
 
 <!--begin::Global Theme Bundle(used by all pages)-->
-
 
 <script src="{% static 'assets/js/summernote-image-attributes.js' %}"></script>
 <script src="{% static 'assets/js/lang_summernote/vi_VN.js' %}"></script>
@@ -281,6 +279,8 @@
     var lstData = [];
     var lstCheckbox = {};
     var list_data_2 = [];
+
+    var loaded = false;
 
     var benh_nhan = {{ benh_nhan|safe }};
     var dia_chi = {{ dia_chi|safe }};
@@ -408,11 +408,29 @@
                         ['insert', ['link', 'picture']]
                     ]
                 },
+                callbacks: {
+                    onImageUpload: function (files) {
+                        if (!files.length) return;
+                        var file = files[0];
+                        // create FileReader
+                        var reader = new FileReader();
+                        reader.onloadend = function () {
+                            // when loaded file, img's src set datauri
+              
+                            var img = $("<img>").attr({src: reader.result, width: "250px"}); // << Add here img attributes !
+                         
+                            $('.summernote').summernote("insertNode", img[0]);
+                        }
+                        if (file) {
+                            // convert fileObject to datauri
+                            reader.readAsDataURL(file);
+                        }
 
-                
+                    }
+                }
+
             });
 
-            
             $('.summernote').summernote("code", html);
 
         }
@@ -506,8 +524,14 @@
             $('#take-photo').click(function(){
                 beforeTakePhoto();
                 var picture = webcam.snap();
-                document.querySelector('#download-photo').href = picture;
+                // set fixed size for image after being taken
+                var img = $("<img>").attr({src: picture, width: "250px"});
+                // insert image into editor
+                $('.summernote').summernote("insertNode", img[0]);
+
+                {% comment %} document.querySelector('#download-photo').href = picture; {% endcomment %}
                 afterTakePhoto();
+                $('#CameraModal').modal('hide');
             })
 
             function beforeTakePhoto(){
@@ -524,8 +548,8 @@
                 $('#canvas').removeClass('d-none');
                 $('#take-photo').addClass('d-none');
                 $('#exit-app').removeClass('d-none');
-                $('#download-photo').removeClass('d-none');
-                $('#download-photo').addClass('btn btn-success font-weight-bold');
+                {% comment %} $('#download-photo').removeClass('d-none');
+                $('#download-photo').addClass('btn btn-success font-weight-bold'); {% endcomment %}
                 $('#resume-camera').removeClass('d-none');
                 $('#resume-camera').addClass('btn btn-primary font-weight-bold');
                 $('#cameraControls').removeClass('d-none');
@@ -565,55 +589,60 @@
 
         $(document).on('click', '#change_assignment', function(){
             $('#phan_khoa_modal').modal('show');
-        
+            
             var ajax_data;
             var id_chuoi_kham = $(this).data('id-chuoi-kham');
 
             console.log(id_chuoi_kham)
-            $.ajax({
-                type: "GET",
-                url: "{% url 'danh_sach_phan_khoa_chuoi_kham' %}",
-                data: {
-                    id_chuoi_kham : $(this).data('id-chuoi-kham'),
-                },
-                dataType: 'json',
-                success: function (response) {
-                    var response_data = JSON.stringify(response.data)
-                    var data = JSON.parse(response_data)
-                    ajax_data = data
-                    for (var i=0; i<data.length; i++) {
-                        $('#kt_datatable_3 tbody').append(`
-                            <tr id="tr_${data[i].obj.id}" class="${data[i].obj.id}" data-id = "${data[i].obj.id}" name="true" data-checked="True" data-unchecked="False">
-                                <td>
-                                    ${data[i].obj.ma_dvkt}
-                                </td>
-                                <td>
-                                    ${data[i].obj.ten_dvkt}
-                                </td>
-                                <td>
-                                    ${data[i].obj.phong_chuc_nang.ten_phong_chuc_nang}
-                                </td>
-                                <td>
-                                    <input type="checkbox" id="checkbox_${data[i].obj.id}" class="big-checkbox" checked data-checked="True" data-unchecked="False">
-                                </td>
-                            </tr>
-                        `);
+            if (!loaded) {
+                $.ajax({
+                    type: "GET",
+                    url: "{% url 'danh_sach_phan_khoa_chuoi_kham' %}",
+                    data: {
+                        id_chuoi_kham : $(this).data('id-chuoi-kham'),
+                    },
+                    dataType: 'json',
+                    success: function (response) {
+                        var response_data = JSON.stringify(response.data)
+                        var data = JSON.parse(response_data)
+                        ajax_data = data
 
-                        if (data[i].obj.bao_hiem == true) {
-                            $(`#checkbox_${data[i].obj.id}`).prop('checked', true)
-                        }else{
-                            $(`#checkbox_${data[i].obj.id}`).prop('checked', false)
+                        for (var i=0; i<ajax_data.length; i++) {
+                            $('#kt_datatable_3 tbody').append(`
+                                <tr id="tr_${data[i].obj.id}" class="${ajax_data[i].obj.id}" data-id = "${ajax_data[i].obj.id}" name="true" data-checked="True" data-unchecked="False">
+                                    <td>
+                                        ${ajax_data[i].obj.ma_dvkt}
+                                    </td>
+                                    <td>
+                                        ${ajax_data[i].obj.ten_dvkt}
+                                    </td>
+                                    <td>
+                                        ${ajax_data[i].obj.phong_chuc_nang.ten_phong_chuc_nang}
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="checkbox_${ajax_data[i].obj.id}" class="big-checkbox" checked data-checked="True" data-unchecked="False">
+                                    </td>
+                                </tr>
+                            `);
+
+                            if (ajax_data[i].obj.bao_hiem == true) {
+                                $(`#checkbox_${ajax_data[i].obj.id}`).prop('checked', true)
+                            }else{
+                                $(`#checkbox_${ajax_data[i].obj.id}`).prop('checked', false)
+                            }
+
+                            lstData[i] = ajax_data[i]
+                            
                         }
-
-                        lstData[i] = data[i]
                         
-
+                    },
+                    error: function (response) {                       
                     }
-                    
-                },
-                error: function (response) {                       
-                }
-            })
+                })
+
+            }
+
+            loaded = true;
 
             var options = {
                 // datasource definition
@@ -696,7 +725,7 @@
 
             options.search = {
                 input: $('#kt_datatable_search_query'),
-                key: 'generalSearch'
+                key: 'search'
             };
             
             var datatable = $('#kt_datatable').KTDatatable(options);    
@@ -731,6 +760,7 @@
                     delete trVals['row']
                 
                     lstData.push(trVals)
+
                     console.log(trVals)
                     console.log(lstData)
                     $(trVals).each(function () {
@@ -757,9 +787,6 @@
                     
                     delete trVals['row']
 
-                    console.log(JSON.stringify(lstData[4]))
-                    console.log(JSON.stringify(trVals))
-                    
                     $(`.${trVals.obj.id}`).remove();
                     
                     lstData = lstData.filter(function(item) {
