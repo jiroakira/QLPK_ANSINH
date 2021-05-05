@@ -1,0 +1,23 @@
+[
+{
+  "model": "medicine.trangthaidonthuoc",
+  "pk": 1,
+  "fields": {
+    "trang_thai": "Chờ Thanh Toán"
+  }
+},
+{
+  "model": "medicine.trangthaidonthuoc",
+  "pk": 2,
+  "fields": {
+    "trang_thai": "Đã Thanh Toán"
+  }
+},
+{
+  "model": "medicine.trangthaidonthuoc",
+  "pk": 3,
+  "fields": {
+    "trang_thai": "Hoàn Thành"
+  }
+}
+]

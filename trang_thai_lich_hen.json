@@ -61,5 +61,19 @@
   "fields": {
     "ten_trang_thai": "Chờ Xác Nhận"
   }
+},
+{
+  "model": "clinic.trangthailichhen",
+  "pk": 10,
+  "fields": {
+    "ten_trang_thai": "Chờ Phân Khoa"
+  }
+},
+{
+  "model": "clinic.trangthailichhen",
+  "pk": 11,
+  "fields": {
+    "ten_trang_thai": "Hoàn Thành"
+  }
 }
 ]

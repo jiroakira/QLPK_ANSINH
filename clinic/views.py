@@ -5561,6 +5561,7 @@ def store_thuoc_excel(request):
             ma_duong_dung = res['MA_DUONG_DUNG']
             duong_dung = res['DUONG_DUNG']
             ham_luong = res['HAM_LUONG']
+            ma_thuoc = res['MA_THUOC']
             ten_thuoc = res['TEN_THUOC']
             so_dang_ky = res['SO_DANG_KY']
             dong_goi = res['DONG_GOI']
@@ -5584,11 +5585,11 @@ def store_thuoc_excel(request):
                     
             model = Thuoc(
                 stt = stt,
-                ma_thuoc          = '',
                 ma_hoat_chat      = ma_hoat_chat, 
                 ten_hoat_chat     = hoat_chat, 
                 duong_dung        = duong_dung,
                 ham_luong         = ham_luong,
+                ma_thuoc = ma_thuoc,
                 ten_thuoc         = ten_thuoc,
                 so_dang_ky        = so_dang_ky, 
                 dong_goi          = dong_goi,
@@ -5614,11 +5615,11 @@ def store_thuoc_excel(request):
 
         Thuoc.objects.bulk_update_or_create(bulk_create_data, [
             'stt',
-            'ma_thuoc',
             'ma_hoat_chat', 
             'ten_hoat_chat', 
             'duong_dung', 
-            'ham_luong', 
+            'ham_luong',
+            'ma_thuoc', 
             'ten_thuoc', 
             'so_dang_ky', 
             'dong_goi', 
@@ -5634,7 +5635,7 @@ def store_thuoc_excel(request):
             'loai_thau',
             'nhom_thau', 
 
-        ], match_field = 'stt', batch_size=10)
+        ], match_field = 'ma_thuoc', batch_size=10)
 
         response = {
             'status': 200,
