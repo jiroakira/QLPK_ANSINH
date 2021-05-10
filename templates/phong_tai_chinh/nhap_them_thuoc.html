@@ -182,14 +182,15 @@ var KTDatatableRecordSelectionDemo = function() {
             type: 'remote',
             source: { 
                 read: {
-                    url: HOST_URL + '/router/api/danh_sach_thuoc/',
+                    url: HOST_URL + '/api/thuoc/',
                     method: 'GET',
                 },
             },
             pageSize: 10,
             serverPaging: true,
-            // serverFiltering: true,
-            // serverSorting: true,
+            serverFiltering: true,
+            serverSorting: false,
+            saveState: false,
         },
 
         // layout definition
@@ -246,7 +247,7 @@ var KTDatatableRecordSelectionDemo = function() {
         };
         options.search = {
             input: $('#kt_datatable_search_query_2'),
-            key: 'generalSearch'
+            key: 'search'
         };
 
         var datatable = $('#kt_datatable_2').KTDatatable(options);

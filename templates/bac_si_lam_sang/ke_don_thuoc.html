@@ -174,14 +174,15 @@ var KTDatatableRecordSelectionDemo = function() {
             type: 'remote',
             source: { 
                 read: {
-                    url: HOST_URL + '/router/api/danh_sach_thuoc/',
+                    url: HOST_URL + '/api/thuoc/',
                     method: 'GET',
                 },
             },
             pageSize: 10,
             serverPaging: true,
-            // serverFiltering: true,
-            // serverSorting: true,
+            serverFiltering: true,
+            serverSorting: false,
+            saveState: false,
         },
 
         // layout definition
@@ -209,12 +210,31 @@ var KTDatatableRecordSelectionDemo = function() {
             field: 'ten_thuoc',
             title: 'Tên thuốc',
             template: function(row) {
-                return '<a href id=' + '"' + row.id + '"' + ' data-title="This is my tooltip content for:'+row.ten_thuoc+'" data-toggle="tooltip" data-trigger="hover">'+row.ten_thuoc+'</a>'
+                return row.ten_thuoc
             }
         }, {
-            field: 'loai_thuoc',
-            title: 'Loại',
-        }, {
+                field: 'loai_thuoc',
+                title: 'Loại',
+                width: 40,
+                template: function(row){
+                    var thuoc = row.loai_thuoc;
+                    if (row.loai_thuoc == 1){
+                        return "Tân Dược"
+                    }else if (row.loai_thuoc == 2){
+                        return "Chế phẩm YHCT"
+                    }else if (row.loai_thuoc == 3){
+                        return "Vị thuốc YHCT"
+                    }else if (row.loai_thuoc == 4){
+                        return "Phóng Xạ"
+                    } else if (row.loai_thuoc == 5) {
+                        return "Thực Phẩm Bảo Vệ Sức Khỏe"
+                    } else if (row.loai_thuoc == 6) {
+                        return "Vật Tư Y Tế"
+                    } else if (!row.loai_thuoc) {
+                        return '-'
+                    }
+                }
+            }, {
             field: 'ma_hoat_chat',
             title: 'Mã hoạt chất',
         }, {
@@ -242,7 +262,7 @@ var KTDatatableRecordSelectionDemo = function() {
 
         options.search = {
             input: $('#kt_datatable_search_query'),
-            key: 'generalSearch'
+            key: 'search'
         };
 
         var datatable = $('#kt_datatable').KTDatatable(options);
@@ -310,7 +330,7 @@ var KTDatatableRecordSelectionDemo = function() {
         };
         options.search = {
             input: $('#kt_datatable_search_query_2'),
-            key: 'generalSearch'
+            key: 'search'
         };
 
         var datatable = $('#kt_datatable_2').KTDatatable(options);

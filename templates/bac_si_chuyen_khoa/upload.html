@@ -412,53 +412,11 @@ var KTDropzoneDemo = function () {
 
     $(document).on('click', '#change_assignment', function(){
         $('#phan_khoa_modal').modal('show');
-    
+    })
+
+    $('#phan_khoa_modal').on('shown.bs.modal', function() {
         var ajax_data;
-        var id_chuoi_kham = $(this).data('id-chuoi-kham');
-
-        console.log(id_chuoi_kham)
-        $.ajax({
-            type: "GET",
-            url: "{% url 'danh_sach_phan_khoa_chuoi_kham' %}",
-            data: {
-                id_chuoi_kham : $(this).data('id-chuoi-kham'),
-            },
-            dataType: 'json',
-            success: function (response) {
-                var response_data = JSON.stringify(response.data)
-                var data = JSON.parse(response_data)
-                ajax_data = data
-                for (var i=0; i<data.length; i++) {
-                    $('#kt_datatable_3 tbody').append(`
-                        <tr id="tr_${data[i].obj.id}" class="${data[i].obj.id}" data-id = "${data[i].obj.id}" name="true" data-checked="True" data-unchecked="False">
-                            <td>
-                                ${data[i].obj.ma_dvkt}
-                            </td>
-                            <td>
-                                ${data[i].obj.ten_dvkt}
-                            </td>
-                            <td>
-                                ${data[i].obj.phong_chuc_nang.ten_phong_chuc_nang}
-                            </td>
-                            <td>
-                                <input type="checkbox" id="checkbox_${data[i].obj.id}" class="big-checkbox" checked data-checked="True" data-unchecked="False">
-                            </td>
-                        </tr>
-                    `);
-
-                    if (data[i].obj.bao_hiem == true) {
-                        $(`#checkbox_${data[i].obj.id}`).prop('checked', true)
-                    }else{
-                        $(`#checkbox_${data[i].obj.id}`).prop('checked', false)
-                    }
-
-                    lstData[i] = data[i]
-                }
-                
-            },
-            error: function (response) {                       
-            }
-        })
+        var id_chuoi_kham = $("#change_assignment").data('id-chuoi-kham');
 
         var options = {
             // datasource definition
@@ -474,6 +432,7 @@ var KTDropzoneDemo = function () {
                 serverPaging: true,
                 serverFiltering: true,
                 serverSorting: false,
+                saveState: false,
             },
 
             // layout definition
@@ -532,7 +491,6 @@ var KTDropzoneDemo = function () {
                 }
             }]
         };
-
         // enable extension
         options.extensions = {
             // boolean or object (extension options)
@@ -541,29 +499,61 @@ var KTDropzoneDemo = function () {
 
         options.search = {
             input: $('#kt_datatable_search_query'),
-            key: 'generalSearch'
+            key: 'search'
         };
         
-        var datatable = $('#kt_datatable').KTDatatable(options);    
+        var datatable = $('#kt_datatable').KTDatatable(options);
+        
+        $.ajax({
+            type: "GET",
+            url: "{% url 'danh_sach_phan_khoa_chuoi_kham' %}",
+            data: {
+                id_chuoi_kham : $("#change_assignment").data('id-chuoi-kham'),
+            },
+            dataType: 'json',
+            success: function (response) {
+                var response_data = response.data
+                console.log(response_data)
+                var tr = ''
+                console.log(lstData)
 
-        datatable.on('datatable-on-check datatable-on-uncheck',function(e) {
-            var checkedNodes = datatable.rows('.datatable-row-active').nodes();
-            var count = checkedNodes.length;
-            $('#kt_datatable_selected_records').html(count);
-            if (count > 0) {
-                $('#kt_datatable_group_action_form').collapse('show');
-            } else {
-                $('#kt_datatable_group_action_form').collapse('hide');
-            }
-        });
+                for (var i = 0; i < response_data.length; i++) {
+                    var checkbox
 
-        datatable.on('datatable-on-init', function(){
-            
-            for (var i=0; i < ajax_data.length; i++) {
-                datatable.setActive(String(ajax_data[i].obj.id));
+                    if (response_data[i].obj.bao_hiem == true) {
+                        checkbox = `<input type="checkbox" id="checkbox_${response_data[i].obj.id}" class="big-checkbox" checked data-checked="True" data-unchecked="False">`
+                    } else {
+                        checkbox = `<input type="checkbox" id="checkbox_${response_data[i].obj.id}" class="big-checkbox" data-checked="True" data-unchecked="False">`
+                    }
+
+                    var initTr = `
+                        <tr id="tr_${response_data[i].obj.id}" class="${response_data[i].obj.id}" data-id = "${response_data[i].obj.id}" name="true" data-checked="True" data-unchecked="False">
+                            <td>
+                                ${response_data[i].obj.ma_dvkt}
+                            </td>
+                            <td>
+                                ${response_data[i].obj.ten_dvkt}
+                            </td>
+                            <td>
+                                ${response_data[i].obj.phong_chuc_nang.ten_phong_chuc_nang}
+                            </td>
+                            
+                            <td>
+                                ${checkbox}
+                            </td>
+
+                        </tr>
+                    `
+                    tr += initTr
+                    lstData.push(response_data[i])
+                    datatable.setActive(cell=String(response_data[i].obj.id))
+                }
+                $('#kt_datatable_3 tbody').html(tr)
+                console.log(lstData)
+            },
+            error: function (response) {                       
             }
-            console.log(lstData)
-        });
+        })
 
         datatable.on('click', 'tbody input[type="checkbox"]', function () {
             $(this).toggleClass('selected');
@@ -602,9 +592,6 @@ var KTDropzoneDemo = function () {
                 
                 delete trVals['row']
 
-                console.log(JSON.stringify(lstData[4]))
-                console.log(JSON.stringify(trVals))
-                
                 $(`.${trVals.obj.id}`).remove();
                 
                 lstData = lstData.filter(function(item) {
@@ -737,7 +724,12 @@ var KTDropzoneDemo = function () {
             getPostData();
             postData(id_chuoi_kham);
         })
+    })
 
+    $("#phan_khoa_modal").on('hidden.bs.modal', function() {
+        lstData = []
+        $("#phan_khoa_modal").removeData('bs.modal')
+        $('#kt_datatable').KTDatatable('destroy')    
     })
 
     return {
@@ -752,8 +744,7 @@ var KTDropzoneDemo = function () {
 KTUtil.ready(function() {
     KTDropzoneDemo.init();
 });
- 
- 
+
 </script>
  
 {% endblock scripts %}

@@ -248,9 +248,11 @@
 
 {% endblock content %}
 
+
 {% block scripts %}
 
 <!--begin::Global Theme Bundle(used by all pages)-->
+
 
 <script src="{% static 'assets/js/summernote-image-attributes.js' %}"></script>
 <script src="{% static 'assets/js/lang_summernote/vi_VN.js' %}"></script>
@@ -280,83 +282,30 @@
     var lstCheckbox = {};
     var list_data_2 = [];
 
-    var loaded = false;
-
+    {% comment %}   
     var benh_nhan = {{ benh_nhan|safe }};
     var dia_chi = {{ dia_chi|safe }};
     var tuoi = {{ tuoi|safe }};
     var gioi_tinh = {{ gioi_tinh|safe }};
     var bac_si_chuyen_khoa = {{ bac_si_chuyen_khoa|safe }}
     var bac_si_lam_sang = {{ bac_si_lam_sang|safe }}
-    var ngay_kham = {{ ngay_kham|safe }}
+    var ngay_kham = {{ ngay_kham|safe }} {% endcomment %}
+
+    const data_mau_phieu = {{ data|safe }};
 
     var KTFormControls = function () {
         // Private functions
         var fillPatientInfo = function(id_div) {
             var id_div = id_div
 
-            var dataInfo = ""
-            var dataAddr = ""
-            var dataRes = ""
-            var dataDr = ""
-            var dataDateTime = ""
-            var dataDr2 = ""
-
-            $(`${id_div} table tr`).each(function(){
-                if ($(this).find('td').eq(1).text() == '{benh_nhan}'){
-                    var innerHtml = $(this).html()
-            
-                    var start_tr = '<tr>'
-                    var end_tr = '</tr>'
-                    var c = start_tr + innerHtml + end_tr
-
-                    dataInfo += c.replace(/{benh_nhan}/, benh_nhan[0]).replace(/{tuoi}/, tuoi[0]).replace(/{gioi_tinh}/, gioi_tinh[0])
-                    $(this).replaceWith(dataInfo)
-                }
-                if ($(this).find('td').eq(1).text() == '{dia_chi}'){
-                    var innerHtml = $(this).html()
-                    var start_tr = '<tr>'
-                    var end_tr = '</tr>'
-                    var c = start_tr + innerHtml + end_tr
-
-                    dataAddr += c.replace(/{dia_chi}/, dia_chi[0])
-                    $(this).replaceWith(dataAddr)
-                }
-
-                if ($(this).find('td').eq(1).text() == '{bac_si_lam_sang}'){
-                    var innerHtml = $(this).html()
-            
-                    var start_tr = '<tr>'
-                    var end_tr = '</tr>'
-                    var c = start_tr + innerHtml + end_tr
-
-                    dataDr2 += c.replace(/{bac_si_lam_sang}/, bac_si_lam_sang[0])
-                    $(this).replaceWith(dataDr2)
-                }
-
-                if ($(this).find('td').eq(1).text() == '{bac_si_chuyen_khoa}'){
-                    var innerHtml = $(this).html()
-                    console.log(innerHtml)                    
-                    var start_tr = '<tr>'
-                    var end_tr = '</tr>'
-                    var c = start_tr + innerHtml + end_tr
-
-                    dataDr += c.replace(/{bac_si_chuyen_khoa}/, bac_si_chuyen_khoa[0])
-                    $(this).replaceWith(dataDr)
-                }
-
-                if ($(this).find('td').eq(1).text() == '{ngay_kham}'){
-                    var innerHtml = $(this).html()
-                    console.log(innerHtml)                    
-                    var start_tr = '<tr>'
-                    var end_tr = '</tr>'
-                    var c = start_tr + innerHtml + end_tr
-
-                    dataDateTime += c.replace(/{ngay_kham}/, ngay_kham[0])
-                    $(this).replaceWith(dataDateTime)
-                }
-                
-            })
+            for (const [key, value] of Object.entries(data_mau_phieu)) {
+                $(`${id_div} table tbody td:contains(${key})`).each(function() {
+                    var thisContent = $(this).html();
+                    var formattedContent = thisContent.replace(key, value)
+                    var td = `<td>${formattedContent}</td>`
+                    $(this).replaceWith(td);
+                });
+            }
         }
 
         var _initValidate = function () {
@@ -408,6 +357,7 @@
                         ['insert', ['link', 'picture']]
                     ]
                 },
+
                 callbacks: {
                     onImageUpload: function (files) {
                         if (!files.length) return;
@@ -430,6 +380,8 @@
                 }
 
             });
+
+
 
             $('.summernote').summernote("code", html);
 
@@ -513,6 +465,10 @@
                 $('body').css('overflow-y','hidden');
             }
 
+            function displayError(){
+                console.log("error");
+            }
+
             function cameraStopped(){
                 $("#errorMsg").addClass("d-none");
                 $("#cameraFlip").addClass('d-none');
@@ -589,60 +545,11 @@
 
         $(document).on('click', '#change_assignment', function(){
             $('#phan_khoa_modal').modal('show');
-            
+        })
+
+        $('#phan_khoa_modal').on('shown.bs.modal', function() {
             var ajax_data;
-            var id_chuoi_kham = $(this).data('id-chuoi-kham');
-
-            console.log(id_chuoi_kham)
-            if (!loaded) {
-                $.ajax({
-                    type: "GET",
-                    url: "{% url 'danh_sach_phan_khoa_chuoi_kham' %}",
-                    data: {
-                        id_chuoi_kham : $(this).data('id-chuoi-kham'),
-                    },
-                    dataType: 'json',
-                    success: function (response) {
-                        var response_data = JSON.stringify(response.data)
-                        var data = JSON.parse(response_data)
-                        ajax_data = data
-
-                        for (var i=0; i<ajax_data.length; i++) {
-                            $('#kt_datatable_3 tbody').append(`
-                                <tr id="tr_${data[i].obj.id}" class="${ajax_data[i].obj.id}" data-id = "${ajax_data[i].obj.id}" name="true" data-checked="True" data-unchecked="False">
-                                    <td>
-                                        ${ajax_data[i].obj.ma_dvkt}
-                                    </td>
-                                    <td>
-                                        ${ajax_data[i].obj.ten_dvkt}
-                                    </td>
-                                    <td>
-                                        ${ajax_data[i].obj.phong_chuc_nang.ten_phong_chuc_nang}
-                                    </td>
-                                    <td>
-                                        <input type="checkbox" id="checkbox_${ajax_data[i].obj.id}" class="big-checkbox" checked data-checked="True" data-unchecked="False">
-                                    </td>
-                                </tr>
-                            `);
-
-                            if (ajax_data[i].obj.bao_hiem == true) {
-                                $(`#checkbox_${ajax_data[i].obj.id}`).prop('checked', true)
-                            }else{
-                                $(`#checkbox_${ajax_data[i].obj.id}`).prop('checked', false)
-                            }
-
-                            lstData[i] = ajax_data[i]
-                            
-                        }
-                        
-                    },
-                    error: function (response) {                       
-                    }
-                })
-
-            }
-
-            loaded = true;
+            var id_chuoi_kham = $("#change_assignment").data('id-chuoi-kham');
 
             var options = {
                 // datasource definition
@@ -658,6 +565,7 @@
                     serverPaging: true,
                     serverFiltering: true,
                     serverSorting: false,
+                    saveState: false,
                 },
 
                 // layout definition
@@ -716,7 +624,6 @@
                     }
                 }]
             };
-
             // enable extension
             options.extensions = {
                 // boolean or object (extension options)
@@ -728,26 +635,58 @@
                 key: 'search'
             };
             
-            var datatable = $('#kt_datatable').KTDatatable(options);    
+            var datatable = $('#kt_datatable').KTDatatable(options);
+            
+            $.ajax({
+                type: "GET",
+                url: "{% url 'danh_sach_phan_khoa_chuoi_kham' %}",
+                data: {
+                    id_chuoi_kham : $("#change_assignment").data('id-chuoi-kham'),
+                },
+                dataType: 'json',
+                success: function (response) {
+                    var response_data = response.data
+                    console.log(response_data)
+                    var tr = ''
+                    console.log(lstData)
 
-            datatable.on('datatable-on-check datatable-on-uncheck',function(e) {
-                var checkedNodes = datatable.rows('.datatable-row-active').nodes();
-                var count = checkedNodes.length;
-                $('#kt_datatable_selected_records').html(count);
-                if (count > 0) {
-                    $('#kt_datatable_group_action_form').collapse('show');
-                } else {
-                    $('#kt_datatable_group_action_form').collapse('hide');
-                }
-            });
+                    for (var i = 0; i < response_data.length; i++) {
+                        var checkbox
 
-            datatable.on('datatable-on-init', function(){
-                
-                for (var i=0; i < ajax_data.length; i++) {
-                    datatable.setActive(cell=String(ajax_data[i].obj.id));
+                        if (response_data[i].obj.bao_hiem == true) {
+                            checkbox = `<input type="checkbox" id="checkbox_${response_data[i].obj.id}" class="big-checkbox" checked data-checked="True" data-unchecked="False">`
+                        } else {
+                            checkbox = `<input type="checkbox" id="checkbox_${response_data[i].obj.id}" class="big-checkbox" data-checked="True" data-unchecked="False">`
+                        }
+
+                        var initTr = `
+                            <tr id="tr_${response_data[i].obj.id}" class="${response_data[i].obj.id}" data-id = "${response_data[i].obj.id}" name="true" data-checked="True" data-unchecked="False">
+                                <td>
+                                    ${response_data[i].obj.ma_dvkt}
+                                </td>
+                                <td>
+                                    ${response_data[i].obj.ten_dvkt}
+                                </td>
+                                <td>
+                                    ${response_data[i].obj.phong_chuc_nang.ten_phong_chuc_nang}
+                                </td>
+                                
+                                <td>
+                                    ${checkbox}
+                                </td>
+
+                            </tr>
+                        `
+                        tr += initTr
+                        lstData.push(response_data[i])
+                        datatable.setActive(cell=String(response_data[i].obj.id))
+                    }
+                    $('#kt_datatable_3 tbody').html(tr)
+                    console.log(lstData)
+                },
+                error: function (response) {                       
                 }
-                console.log(lstData)
-            });
+            })
 
             datatable.on('click', 'tbody input[type="checkbox"]', function () {
                 $(this).toggleClass('selected');
@@ -760,7 +699,6 @@
                     delete trVals['row']
                 
                     lstData.push(trVals)
-
                     console.log(trVals)
                     console.log(lstData)
                     $(trVals).each(function () {
@@ -919,7 +857,12 @@
                 getPostData();
                 postData(id_chuoi_kham);
             })
+        })
 
+        $("#phan_khoa_modal").on('hidden.bs.modal', function() {
+            lstData = []
+            $("#phan_khoa_modal").removeData('bs.modal')
+            $('#kt_datatable').KTDatatable('destroy')    
         })
 
         $('#selectMauPhieu').on('changed.bs.select', function(e, clickedIndex, newValue, oldValue) {
@@ -934,7 +877,7 @@
 
                         $("#newTableHtml").html(newTableHtml)
 
-                        fillPatientInfo('#newTableHtml')
+                        fillPatientInfo("#newTableHtml")
 
                         var html = $("#newTableHtml").html()
 

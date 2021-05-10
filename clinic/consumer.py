@@ -107,7 +107,6 @@ class CheckupProcessConsumer(AsyncJsonWebsocketConsumer):
             # serializer = DanhSachPhanKhoaSerializer(danh_sach_phan_khoa, many=True, context={'request': request})
             serializer = DanhSachPhanKhoaSerializer(danh_sach_phan_khoa, many=True)
             data = serializer.data
-            print(data)
             context = {
                 'benh_nhan': user_id,
                 'data': data
@@ -118,7 +117,6 @@ class CheckupProcessConsumer(AsyncJsonWebsocketConsumer):
                 'benh_nhan': user_id,
                 'data': []  
             }
-
         return context
 
 class FuncroomInfor(AsyncJsonWebsocketConsumer):

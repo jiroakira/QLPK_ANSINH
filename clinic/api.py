@@ -16,11 +16,13 @@ from django.http.response import Http404, HttpResponse, JsonResponse
 from rest_framework import views
 from rest_framework.views import APIView
 from clinic.models import (
-    BaiDang, 
+    BaiDang,
+    ChiSoXetNghiem, 
     DichVuKham, District, 
     FileKetQua, 
     KetQuaTongQuat, 
-    LichHenKham, MauPhieu, 
+    LichHenKham, MauPhieu,
+    NhomChiSoXetNghiem, 
     PhanKhoaKham, 
     PhongChucNang, 
     PhongKham, Province, 
@@ -33,7 +35,7 @@ from clinic.models import (
 )
 from rest_framework import viewsets
 from django.contrib.auth import authenticate, get_user_model
-from .serializers import (BaiDangSerializer, BookLichHenKhamSerializer,DangKiSerializer, DanhSachDonThuocSerializer, DanhSachKetQuaChuoiKhamSerializer, DanhSachPhanKhoaSerializer, DanhSachPhongKhamSerializer,DichVuKhamSerializer, DichVuKhamSerializerFormatted, DichVuKhamSerializerSimple, DistrictSerializer, DonThuocSerializer, FileKetQuaSerializer, FilterChuoiKhamSerializer, FilterDichVuKhamBaoHiemSerializer, FilterDichVuSerializer, FilterDonThuocSerializer, FilterHoaDonChuoiKhamBaoHiemSerializer, GroupSerializer,HoaDonChuoiKhamSerializerSimple, HoaDonLamSangSerializerFormatted, HoaDonThuocSerializer,HoaDonThuocSerializerSimple, KetQuaTongQuatSerializer, KetQuaXetNghiemSerializer,LichHenKhamSerializer, LichHenKhamSerializerSimple, LichHenKhamUserSerializer, MauPhieuSerializer,PhanKhoaKhamDichVuSerializer, PhanKhoaKhamSerializer, PhieuKetQuaSerializer,PhongChucNangSerializer, PhongChucNangSerializerSimple, PhongKhamSerializer,ProfilePhongChucNangSerializer, StaffUserSerializer, TatCaLichHenSerializer, TrangThaiLichHenSerializer,UserLoginSerializer, UserSerializer, ChuoiKhamSerializer,UserUpdateInfoSerializer, UserUpdateInfoRequestSerializer,UploadAvatarSerializer, AppointmentUpdateDetailSerializer,UpdateLichHenKhamSerializer, DichVuKhamHoaDonSerializer,HoaDonChuoiKhamThanhToanSerializer, KetQuaChuyenKhoaSerializer,  ChuoiKhamSerializerSimple, UserSerializerSimple, VatTuSerializer,DanhSachDichVuSerializer, HoaDonLamSangSerializer, DanhSachBacSiSerializer, DanhSachThuocSerializerSimple, WardSerializer)
+from .serializers import (BaiDangSerializer, BookLichHenKhamSerializer, ChiSoXetNghiemSerializer,DangKiSerializer, DanhSachDonThuocSerializer, DanhSachKetQuaChuoiKhamSerializer, DanhSachPhanKhoaSerializer, DanhSachPhongKhamSerializer,DichVuKhamSerializer, DichVuKhamSerializerFormatted, DichVuKhamSerializerSimple, DistrictSerializer, DonThuocSerializer, FileKetQuaSerializer, FilterChuoiKhamSerializer, FilterDichVuKhamBaoHiemSerializer, FilterDichVuSerializer, FilterDonThuocSerializer, FilterHoaDonChuoiKhamBaoHiemSerializer, GroupSerializer,HoaDonChuoiKhamSerializerSimple, HoaDonLamSangSerializerFormatted, HoaDonThuocSerializer,HoaDonThuocSerializerSimple, KetQuaTongQuatSerializer, KetQuaXetNghiemSerializer,LichHenKhamSerializer, LichHenKhamSerializerSimple, LichHenKhamUserSerializer, MauPhieuSerializer, NhomChiSoTieuChuanSerializer,PhanKhoaKhamDichVuSerializer, PhanKhoaKhamSerializer, PhieuKetQuaSerializer,PhongChucNangSerializer, PhongChucNangSerializerSimple, PhongKhamSerializer,ProfilePhongChucNangSerializer, StaffUserSerializer, TatCaLichHenSerializer, TrangThaiLichHenSerializer,UserLoginSerializer, UserSerializer, ChuoiKhamSerializer,UserUpdateInfoSerializer, UserUpdateInfoRequestSerializer,UploadAvatarSerializer, AppointmentUpdateDetailSerializer,UpdateLichHenKhamSerializer, DichVuKhamHoaDonSerializer,HoaDonChuoiKhamThanhToanSerializer, KetQuaChuyenKhoaSerializer,  ChuoiKhamSerializerSimple, UserSerializerSimple, VatTuSerializer,DanhSachDichVuSerializer, HoaDonLamSangSerializer, DanhSachBacSiSerializer, DanhSachThuocSerializerSimple, WardSerializer)
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from rest_framework import status
@@ -2680,14 +2682,39 @@ class DanhSachLichSuKhamBenhNhan(APIView):
         return Response(response)
 # END UPDATE
 
-class ListTieuChuanDichVu(APIView):
-    def get(self, request, format=None):
-        dich_vu = DichVuKham.objects.filter(chi_so=True)
-        serializer = DichVuKhamSerializerSimple(dich_vu, many=True, context={'request': request})
-        response = {
-            'data': serializer.data
-        }
-        return Response(response)
+class ListTieuChuanDichVu(generics.ListCreateAPIView):
+    serializer_class = NhomChiSoTieuChuanSerializer
+    pagination_class = CustomPagination   
+
+    def get_queryset(self):
+        queryset = NhomChiSoXetNghiem.objects.all()
+
+        term = self.request.query_params.get('query[search]')
+
+        if term is not None:
+            queryset = queryset.filter(ten_nhom__icontains=term)
+
+        return queryset
+
+class DanhSachTieuChuanTheoNhomAPIview(generics.ListCreateAPIView):
+    serializer_class = ChiSoXetNghiemSerializer
+    pagination_class = CustomPagination   
+
+    def get_queryset(self):
+        queryset = ChiSoXetNghiem.objects.all()
+
+        id_nhom_chi_so = self.request.query_params.get('id_nhom_chi_so')
+        nhom_chi_so = NhomChiSoXetNghiem.objects.filter(id=id_nhom_chi_so).first()
+
+        term = self.request.query_params.get('query[search]')
+        if id_nhom_chi_so is not None:
+            queryset = queryset.filter(nhom_chi_so=nhom_chi_so)
+
+        if term is not None:
+            queryset = queryset.filter(ten_chi_so__icontains=term)
+
+        return queryset
+
 
 # class DanhSachKetQuaChuoiKhamBenhNhan(APIView):
 #     def get(self, request, format=None):
@@ -3379,14 +3406,28 @@ class SetHtmlDichVuKham(APIView):
     def get(self, request, format=None):
         id_dich_vu = self.request.query_params.get('id_dich_vu')
         flag = self.request.query_params.get('flag')
-        print(id_dich_vu)
-        print(flag)
-        print(type(flag))
         dich_vu = DichVuKham.objects.get(id=id_dich_vu)
         if flag == "True":
             dich_vu.html = True
         elif flag == "False":
             dich_vu.html = False
+
+        dich_vu.save()
+        response = {
+            'status': 200,
+            'message': 'OKE'
+        }
+        return Response(response)
+
+class SetChiSoDichVuKham(APIView):
+    def get(self, request, format=None):
+        id_dich_vu = self.request.query_params.get('id_dich_vu')
+        flag = self.request.query_params.get('flag')
+        dich_vu = DichVuKham.objects.get(id=id_dich_vu)
+        if flag == "True":
+            dich_vu.chi_so = True
+        elif flag == "False":
+            dich_vu.chi_so = False
 
         dich_vu.save()
         response = {

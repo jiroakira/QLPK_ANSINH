@@ -46,7 +46,6 @@
                             {{mau_hoa_don.noi_dung|safe}}
                         </div>
                     </div>
-
                 </div>
                 <!-- end: Invoice-->
                 <!-- begin: Invoice action-->
@@ -62,7 +61,6 @@
                             <button type="button" class="btn btn-light-primary font-weight-bold float-right mr-3" data-id-chuoi-kham="{{ id_chuoi_kham }}" id="btn_thay_doi">Thay Đổi</button>
                             <button type="button" class="btn btn-light-primary font-weight-bold float-right mr-3" data-id-chuoi-kham="{{ id_chuoi_kham }}" data-thanh-tien='{{data_thanh_tien}}' id="btn_giam_gia">Giảm giá</button>
                         {% endif %}
-                        
                     </div>
                 </div>
                 <!-- end: Invoice action-->
@@ -202,7 +200,6 @@
 
 {% block scripts %}
 
-
 <script>
     var tableHtml = `{{ mau_hoa_don.noi_dung|safe }}`
 
@@ -248,55 +245,11 @@
 
     $(document).on('click', '#btn_thay_doi', function(){
         $('#phan_khoa_modal').modal('show');
-    
+    })
+
+    $('#phan_khoa_modal').on('shown.bs.modal', function() {
         var ajax_data;
-        var id_chuoi_kham = $(this).data('id-chuoi-kham');
-
-        console.log(id_chuoi_kham)
-        $.ajax({
-            type: "GET",
-            url: "{% url 'danh_sach_phan_khoa_chuoi_kham' %}",
-            data: {
-                id_chuoi_kham : $(this).data('id-chuoi-kham'),
-            },
-            dataType: 'json',
-            success: function (response) {
-                response_data = JSON.stringify(response.data)
-                data = JSON.parse(response_data)
-                ajax_data = data
-                for (var i=0; i<data.length; i++) {
-                    $('#kt_datatable_3 tbody').append(`
-                        <tr id="tr_${data[i].obj.id}" class="${data[i].obj.id}" data-id = "${data[i].obj.id}" name="true" data-checked="True" data-unchecked="False">
-                            <td>
-                                ${data[i].obj.ma_dvkt}
-                            </td>
-                            <td>
-                                ${data[i].obj.ten_dvkt}
-                            </td>
-                            <td>
-                                ${data[i].obj.phong_chuc_nang.ten_phong_chuc_nang}
-                            </td>
-                            <td>
-                                <input type="checkbox" id="checkbox_${data[i].obj.id}" class="big-checkbox" checked data-checked="True" data-unchecked="False">
-                            </td>
-                        </tr>
-                    `);
-
-                    if (data[i].obj.bao_hiem == true) {
-                        $(`#checkbox_${data[i].obj.id}`).prop('checked', true)
-                    }else{
-                        $(`#checkbox_${data[i].obj.id}`).prop('checked', false)
-                    }
-
-                    lstData[i] = data[i]
-                    
-
-                }
-                
-            },
-            error: function (response) {                       
-            }
-        })
+        var id_chuoi_kham = $("#btn_thay_doi").data('id-chuoi-kham');
 
         var options = {
             // datasource definition
@@ -312,6 +265,7 @@
                 serverPaging: true,
                 serverFiltering: true,
                 serverSorting: false,
+                saveState: false,
             },
 
             // layout definition
@@ -370,7 +324,6 @@
                 }
             }]
         };
-
         // enable extension
         options.extensions = {
             // boolean or object (extension options)
@@ -379,29 +332,61 @@
 
         options.search = {
             input: $('#kt_datatable_search_query'),
-            key: 'generalSearch'
+            key: 'search'
         };
         
-        var datatable = $('#kt_datatable').KTDatatable(options);    
+        var datatable = $('#kt_datatable').KTDatatable(options);
+        
+        $.ajax({
+            type: "GET",
+            url: "{% url 'danh_sach_phan_khoa_chuoi_kham' %}",
+            data: {
+                id_chuoi_kham : $("#btn_thay_doi").data('id-chuoi-kham'),
+            },
+            dataType: 'json',
+            success: function (response) {
+                var response_data = response.data
+                console.log(response_data)
+                var tr = ''
+                console.log(lstData)
 
-        datatable.on('datatable-on-check datatable-on-uncheck',function(e) {
-            var checkedNodes = datatable.rows('.datatable-row-active').nodes();
-            var count = checkedNodes.length;
-            $('#kt_datatable_selected_records').html(count);
-            if (count > 0) {
-                $('#kt_datatable_group_action_form').collapse('show');
-            } else {
-                $('#kt_datatable_group_action_form').collapse('hide');
-            }
-        });
+                for (var i = 0; i < response_data.length; i++) {
+                    var checkbox
 
-        datatable.on('datatable-on-init', function(){
-            
-            for (var i=0; i < ajax_data.length; i++) {
-                datatable.setActive(cell=String(ajax_data[i].obj.id));
+                    if (response_data[i].obj.bao_hiem == true) {
+                        checkbox = `<input type="checkbox" id="checkbox_${response_data[i].obj.id}" class="big-checkbox" checked data-checked="True" data-unchecked="False">`
+                    } else {
+                        checkbox = `<input type="checkbox" id="checkbox_${response_data[i].obj.id}" class="big-checkbox" data-checked="True" data-unchecked="False">`
+                    }
+
+                    var initTr = `
+                        <tr id="tr_${response_data[i].obj.id}" class="${response_data[i].obj.id}" data-id = "${response_data[i].obj.id}" name="true" data-checked="True" data-unchecked="False">
+                            <td>
+                                ${response_data[i].obj.ma_dvkt}
+                            </td>
+                            <td>
+                                ${response_data[i].obj.ten_dvkt}
+                            </td>
+                            <td>
+                                ${response_data[i].obj.phong_chuc_nang.ten_phong_chuc_nang}
+                            </td>
+                            
+                            <td>
+                                ${checkbox}
+                            </td>
+
+                        </tr>
+                    `
+                    tr += initTr
+                    lstData.push(response_data[i])
+                    datatable.setActive(cell=String(response_data[i].obj.id))
+                }
+                $('#kt_datatable_3 tbody').html(tr)
+                console.log(lstData)
+            },
+            error: function (response) {                       
             }
-            console.log(lstData)
-        });
+        })
 
         datatable.on('click', 'tbody input[type="checkbox"]', function () {
             $(this).toggleClass('selected');
@@ -440,20 +425,17 @@
                 
                 delete trVals['row']
 
-                console.log(JSON.stringify(lstData[4]))
-                console.log(JSON.stringify(trVals))
-                
                 $(`.${trVals.obj.id}`).remove();
                 
                 lstData = lstData.filter(function(item) {
                     var item = item
                     delete item['obj']['bao_hiem']
-                  
+                
                     return JSON.stringify(item) !== JSON.stringify(trVals);
                 });
 
                 console.log(lstData)
-              
+            
                 // replacePhanKhoaHtml(trVals)
                 {% comment %} phanKhoaHtml = phanKhoaHtml.replace(`
                         <tr class="${trVals.obj.id}">
@@ -513,7 +495,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "{% url 'thay_doi_phan_khoa' %}",
+                url: "{% url 'thay_doi_phan_khoa_hoa_don_dich_vu' %}",
                 data: {
                     'data': JSON.stringify(getPostData()),
                     'csrfmiddlewaretoken': csrftoken,
@@ -575,7 +557,12 @@
             getPostData();
             postData(id_chuoi_kham);
         })
+    })
 
+    $("#phan_khoa_modal").on('hidden.bs.modal', function() {
+        lstData = []
+        $("#phan_khoa_modal").removeData('bs.modal')
+        $('#kt_datatable').KTDatatable('destroy')    
     })
 
     $(document).on('click', '#btn_finish', function() {
@@ -616,6 +603,8 @@
         document.body.innerHTML = originalContents;
     }
 
+    const data_mau_phieu = {{ data_dict|safe }};
+
     $(document).on('click', '#btn_giam_gia', function(){
         var thanh_tien = $(this).data('thanh-tien');
 
@@ -639,13 +628,21 @@
         };
 
         $('#btn_confirm_tien').on('click', function(){
+            var danh_sach_dich_vu = {{ danh_sach_dich_vu|safe }};
+            var danh_sach_bao_hiem = {{ danh_sach_bao_hiem|safe }};
+            var danh_sach_gia_tien = {{ danh_sach_gia_tien|safe }};
+
+            var _data_mau_phieu = data_mau_phieu
+
             var discount = $('#discount').val();
+            console.log(`discout: ${discount}`)
             var thanh_tien_cu = $(this).data('thanh-tien');
             thanh_tien = Number(thanh_tien);
             discount = Number(discount);
 
             var tien_can_thanh_toan = thanh_tien * (1 - (discount)/100);
             var so_tien_giam = thanh_tien * ((discount)/100);
+            console.log(`so_tien_giam; ${so_tien_giam}`)
             var data_thanh_tien = '';
             var data_giam_gia = '';
 
@@ -655,8 +652,11 @@
             var tempTableHtml = tableHtml
 
             $("#newTableHtml").html(tempTableHtml)
-            
-            $("#newTableHtml tbody tr").each(function() {
+
+            _data_mau_phieu['{giam_gia}'] = so_tien_giam
+            _data_mau_phieu['{tien_thanh_toan}'] = tien_can_thanh_toan
+
+            {% comment %} $("#newTableHtml tbody tr").each(function() {
                 var data_ten_mau = '';
                 var data_benh_nhan = '';
                 var data_so_dien_thoai = '';
@@ -672,9 +672,7 @@
                 var benh_nhan = "{{ benh_nhan|safe }}";
                 var so_dien_thoai = "{{ so_dien_thoai|safe }}";
                 var dia_chi = "{{ dia_chi|safe }}";
-                var danh_sach_dich_vu = {{ danh_sach_dich_vu|safe }};
-                var danh_sach_bao_hiem = {{ danh_sach_bao_hiem|safe }};
-                var danh_sach_gia_tien = {{ danh_sach_gia_tien|safe }};
+                
                 var tong_tien = "{{ tong_tien|safe }}";
                 var tong_tien_bao_hiem = "{{ tong_tien_bao_hiem|safe }}";
                 var thanh_tien = "{{ thanh_tien|safe }}";
@@ -791,309 +789,109 @@
                     data_giam_gia += c.replace(/{giam_gia}/, so_tien_giam)
                     $(this).replaceWith(data_giam_gia)
                 }
-            })
+            }) {% endcomment %}
+            
+            var _tr = ''
+            for (const [key, value] of Object.entries(_data_mau_phieu)) {
+                $(`#newTableHtml tbody td:contains(${key})`).each(function() {
+                    var thisContent = $(this).html();
+                    var formattedContent = thisContent.replace(key, value)
+                    
+                    $(this).html(formattedContent);
+                });
+            }
+
+            $(`#newTableHtml tbody td:contains("{ten_dich_vu}")`).each(function() {
+                var thisContent = $(this).closest('tr').html();
+                var start_tr = '<tr>'
+                var end_tr = '</tr>'
+                var c = start_tr + thisContent + end_tr
+
+                for (var i = 0; i < danh_sach_dich_vu.length; i++) {
+                    var formattedContent = c.replace(/{ten_dich_vu}/gi, danh_sach_dich_vu[i]).replace(/{bao_hiem}/gi, danh_sach_bao_hiem[i]).replace(/{gia_tien}/gi, danh_sach_gia_tien[i]).replace(/{thanh_tien}/, danh_sach_gia_tien[i])
+                    
+                    _tr += formattedContent
+                
+                }
+                $(this).closest('tr').replaceWith(_tr);
+            });
 
             var changedTable = $("#newTableHtml").html()
-            console.log(changedTable)
-            
+
             $("#mau_hoa_don").html(changedTable)
             $('#giam_gia_modal').modal('hide');
             $('#btn-thanh-toan').attr('data-discount', discount);
         });
     })
 
+
     if (check_da_thanh_toan == 'True') {
         $(document).ready(function(){
-            var data_ten_mau = '';
-            var data_benh_nhan = '';
-            var data_so_dien_thoai = '';
-            var data_dia_chi = '';
-            var data_ten_dich_vu = '';
-            var data_tong_tien = '';
-            var data_tong_tien_bao_hiem = '';
-            var data_thanh_tien = '';
-            var data_nguoi_thuc_hien = '';
-            var data_giam_gia = ''
-            var ten_mau_hoa_don = "{{ mau_hoa_don.ten_mau|safe }}";
-            var thoi_gian_thanh_toan = "{{ thoi_gian_thanh_toan|safe }}";
-            var benh_nhan = "{{ benh_nhan|safe }}";
-            var so_dien_thoai = "{{ so_dien_thoai|safe }}";
-            var dia_chi = "{{ dia_chi|safe }}";
+
             var danh_sach_dich_vu = {{ danh_sach_dich_vu|safe }};
             var danh_sach_bao_hiem = {{ danh_sach_bao_hiem|safe }};
             var danh_sach_gia_tien = {{ danh_sach_gia_tien|safe }};
-            var tong_tien = "{{ tong_tien|safe }}";
-            var tong_tien_bao_hiem = "{{ tong_tien_bao_hiem|safe }}";
-        
-            var nguoi_thuc_hien = "{{ nguoi_thuc_hien|safe }}";
-            var tien_phai_thanh_toan = "{{ tien_phai_thanh_toan|safe }}"
-            var discount = "{{ discount|safe }}"
 
-            $('table tbody tr').each(function(){
-                if($(this).find('td').eq(0).text() == '{ten_mau_hoa_don}'){
-                    console.log($(this).html());
-                    var innerHtml = $(this).html();
-                    var start_tr = '<tr>';
-                    var end_tr = '</tr>';
-                    var c = start_tr + innerHtml + end_tr;
 
-                    data_ten_mau += c.replace(/{ten_mau_hoa_don}/, ten_mau_hoa_don);
+            for (const [key, value] of Object.entries(data_mau_phieu)) {
+                $(`table tbody td:contains(${key})`).each(function() {
+                    var thisContent = $(this).html();
+                    var formattedContent = thisContent.replace(key, value)
+                    $(this).html(formattedContent );
+                });
+            }
 
-                    $(this).replaceWith(data_ten_mau);
+            var _tr = ''
+            
+            $(`table tbody td:contains("{ten_dich_vu}")`).each(function() {
+                var thisContent = $(this).closest('tr').html();
+                var start_tr = '<tr>'
+                var end_tr = '</tr>'
+                var c = start_tr + thisContent + end_tr
+
+                for (var i = 0; i < danh_sach_dich_vu.length; i++) {
+                    var formattedContent = c.replace(/{ten_dich_vu}/gi, danh_sach_dich_vu[i]).replace(/{bao_hiem}/gi, danh_sach_bao_hiem[i]).replace(/{gia_tien}/gi, danh_sach_gia_tien[i]).replace(/{thanh_tien}/, danh_sach_gia_tien[i])                   
+                    _tr += formattedContent
                 }
-
-                if($(this).find('td').eq(0).text() == '{thoi_gian_thanh_toan}'){
-                    console.log($(this).html());
-                    var innerHtml = $(this).html();
-                    var start_tr = '<tr>';
-                    var end_tr = '</tr>';
-                    var c = start_tr + innerHtml + end_tr;
-
-                    data_benh_nhan += c.replace(/{thoi_gian_thanh_toan}/, thoi_gian_thanh_toan).replace(/{benh_nhan}/, benh_nhan);
-
-                    $(this).replaceWith(data_benh_nhan);
-                }
-
-                if($(this).find('td').eq(1).text() == '{so_dien_thoai}'){
-                    console.log($(this).html())
-                    var innerHtml = $(this).html()
-                    var start_tr = '<tr>'
-                    var end_tr = '</tr>'
-                    var c = start_tr + innerHtml + end_tr
-
-                    data_so_dien_thoai += c.replace(/{so_dien_thoai}/, so_dien_thoai)
-
-                    $(this).replaceWith(data_so_dien_thoai)
-                }
-
-                if($(this).find('td').eq(1).text() == '{dia_chi}'){
-                    console.log($(this).html())
-                    var innerHtml = $(this).html()
-                    var start_tr = '<tr>'
-                    var end_tr = '</tr>'
-                    var c = start_tr + innerHtml + end_tr
-
-                    data_dia_chi += c.replace(/{dia_chi}/, dia_chi)
-
-                    $(this).replaceWith(data_dia_chi)
-                }
-
-                if($(this).find('td').eq(0).text() == '{ten_dich_vu}'){
-                    console.log($(this).html())
-                    var innerHtml = $(this).html()
-                    var start_tr = '<tr>'
-                    var end_tr = '</tr>'
-                    var c = start_tr + innerHtml + end_tr
-                    for (var i=0; i<danh_sach_dich_vu.length; i++) {
-
-                        data_ten_dich_vu += c.replace(/{ten_dich_vu}/, danh_sach_dich_vu[i]).replace(/{bao_hiem}/, danh_sach_bao_hiem[i]).replace(/{gia_tien}/, danh_sach_gia_tien[i]).replace(/{thanh_tien}/, danh_sach_gia_tien[i])
-                    }
-
-                    $(this).replaceWith(data_ten_dich_vu)
-                }
-
-                if($(this).find('td').eq(3).text() == '{tong_tien}'){
-                    console.log($(this).html())
-                    var innerHtml = $(this).html()
-                    var start_tr = '<tr>'
-                    var end_tr = '</tr>'
-                    var c = start_tr + innerHtml + end_tr
-                    data_tong_tien += c.replace(/{tong_tien}/, tong_tien)
-                    $(this).replaceWith(data_tong_tien)
-                }
-
-                if($(this).find('td').eq(3).text() == '{tong_tien_bao_hiem}'){
-                    console.log($(this).html())
-                    var innerHtml = $(this).html()
-                    var start_tr = '<tr>'
-                    var end_tr = '</tr>'
-                    var c = start_tr + innerHtml + end_tr
-                    data_tong_tien_bao_hiem += c.replace(/{tong_tien_bao_hiem}/, tong_tien_bao_hiem)
-                    $(this).replaceWith(data_tong_tien_bao_hiem)
-                }
-
-                if($(this).find('td').eq(3).text() == '{tien_thanh_toan}'){
-                    console.log($(this).html())
-                    var innerHtml = $(this).html()
-                    var start_tr = '<tr>'
-                    var end_tr = '</tr>'
-                    var c = start_tr + innerHtml + end_tr
-                    data_thanh_tien += c.replace(/{tien_thanh_toan}/, tien_phai_thanh_toan)
-                    $(this).replaceWith(data_thanh_tien)
-                }
-
-                if($(this).find('td').eq(2).text() == '{nguoi_thanh_toan}'){
-                    console.log($(this).html())
-                    var innerHtml = $(this).html()
-                    var start_tr = '<tr>'
-                    var end_tr = '</tr>'
-                    var c = start_tr + innerHtml + end_tr
-                    data_nguoi_thuc_hien += c.replace(/{nguoi_thanh_toan}/, nguoi_thuc_hien)
-                    $(this).replaceWith(data_nguoi_thuc_hien)
-                }
-
-                if($(this).find('td').eq(3).text() == '{giam_gia}'){
-                    console.log($(this).html())
-                    var innerHtml = $(this).html()
-                    var start_tr = '<tr>'
-                    var end_tr = '</tr>'
-                    var c = start_tr + innerHtml + end_tr
-                    data_giam_gia += c.replace(/{giam_gia}/, discount)
-                    $(this).replaceWith(data_giam_gia)
-                }
-                
+                $(this).closest('tr').replaceWith(_tr);
             });
-
-            
-            
         });
     } else {
         $(document).ready(function(){
-            var data_ten_mau = '';
-            var data_benh_nhan = '';
-            var data_so_dien_thoai = '';
-            var data_dia_chi = '';
-            var data_ten_dich_vu = '';
-            var data_tong_tien = '';
-            var data_tong_tien_bao_hiem = '';
-            var data_thanh_tien = '';
-            var data_nguoi_thuc_hien = '';
-            var data_giam_gia = ''
-            var ten_mau_hoa_don = "{{ mau_hoa_don.ten_mau|safe }}";
-            var thoi_gian_thanh_toan = "{{ thoi_gian_thanh_toan|safe }}";
-            var benh_nhan = "{{ benh_nhan|safe }}";
-            var so_dien_thoai = "{{ so_dien_thoai|safe }}";
-            var dia_chi = "{{ dia_chi|safe }}";
+
             var danh_sach_dich_vu = {{ danh_sach_dich_vu|safe }};
             var danh_sach_bao_hiem = {{ danh_sach_bao_hiem|safe }};
             var danh_sach_gia_tien = {{ danh_sach_gia_tien|safe }};
-            var tong_tien = "{{ tong_tien|safe }}";
-            var tong_tien_bao_hiem = "{{ tong_tien_bao_hiem|safe }}";
-            var thanh_tien = "{{ thanh_tien|safe }}";
-            var nguoi_thuc_hien = "{{ nguoi_thuc_hien|safe }}";
 
+            var _tr = ''
+            for (const [key, value] of Object.entries(data_mau_phieu)) {
+                $(`table tbody td:contains(${key})`).each(function() {
+                    var thisContent = $(this).html();
+                    var formattedContent = thisContent.replace(key, value)
+                    
+                    $(this).html(formattedContent);
+                });
+            }
 
-            $('table tbody tr').each(function(){
-                if($(this).find('td').eq(0).text() == '{ten_mau_hoa_don}'){
-                    console.log($(this).html());
-                    var innerHtml = $(this).html();
-                    var start_tr = '<tr>';
-                    var end_tr = '</tr>';
-                    var c = start_tr + innerHtml + end_tr;
+            $(`table tbody td:contains("{ten_dich_vu}")`).each(function() {
+                var thisContent = $(this).closest('tr').html();
+                var start_tr = '<tr>'
+                var end_tr = '</tr>'
+                var c = start_tr + thisContent + end_tr
 
-                    data_ten_mau += c.replace(/{ten_mau_hoa_don}/, ten_mau_hoa_don);
-
-                    $(this).replaceWith(data_ten_mau);
-                }
-
-                if($(this).find('td').eq(0).text() == '{thoi_gian_thanh_toan}'){
-                    console.log($(this).html());
-                    var innerHtml = $(this).html();
-                    var start_tr = '<tr>';
-                    var end_tr = '</tr>';
-                    var c = start_tr + innerHtml + end_tr;
-
-                    data_benh_nhan += c.replace(/{thoi_gian_thanh_toan}/, thoi_gian_thanh_toan).replace(/{benh_nhan}/, benh_nhan);
-
-                    $(this).replaceWith(data_benh_nhan);
-                }
-
-                if($(this).find('td').eq(1).text() == '{so_dien_thoai}'){
-                    console.log($(this).html())
-                    var innerHtml = $(this).html()
-                    var start_tr = '<tr>'
-                    var end_tr = '</tr>'
-                    var c = start_tr + innerHtml + end_tr
-
-                    data_so_dien_thoai += c.replace(/{so_dien_thoai}/, so_dien_thoai)
-
-                    $(this).replaceWith(data_so_dien_thoai)
-                }
-
-                if($(this).find('td').eq(1).text() == '{dia_chi}'){
-                    console.log($(this).html())
-                    var innerHtml = $(this).html()
-                    var start_tr = '<tr>'
-                    var end_tr = '</tr>'
-                    var c = start_tr + innerHtml + end_tr
-
-                    data_dia_chi += c.replace(/{dia_chi}/, dia_chi)
-
-                    $(this).replaceWith(data_dia_chi)
-                }
-
-                if($(this).find('td').eq(0).text() == '{ten_dich_vu}'){
-                    console.log($(this).html())
-                    var innerHtml = $(this).html()
-                    var start_tr = '<tr>'
-                    var end_tr = '</tr>'
-                    var c = start_tr + innerHtml + end_tr
-                    for (var i=0; i<danh_sach_dich_vu.length; i++) {
-
-                        data_ten_dich_vu += c.replace(/{ten_dich_vu}/, danh_sach_dich_vu[i]).replace(/{bao_hiem}/, danh_sach_bao_hiem[i]).replace(/{gia_tien}/, danh_sach_gia_tien[i]).replace(/{thanh_tien}/, danh_sach_gia_tien[i])
-                    }
-
-                    $(this).replaceWith(data_ten_dich_vu)
-                }
-
-                if($(this).find('td').eq(3).text() == '{tong_tien}'){
-                    console.log($(this).html())
-                    var innerHtml = $(this).html()
-                    var start_tr = '<tr>'
-                    var end_tr = '</tr>'
-                    var c = start_tr + innerHtml + end_tr
-                    data_tong_tien += c.replace(/{tong_tien}/, tong_tien)
-                    $(this).replaceWith(data_tong_tien)
-                }
-
-                if($(this).find('td').eq(3).text() == '{tong_tien_bao_hiem}'){
-                    console.log($(this).html())
-                    var innerHtml = $(this).html()
-                    var start_tr = '<tr>'
-                    var end_tr = '</tr>'
-                    var c = start_tr + innerHtml + end_tr
-                    data_tong_tien_bao_hiem += c.replace(/{tong_tien_bao_hiem}/, tong_tien_bao_hiem)
-                    $(this).replaceWith(data_tong_tien_bao_hiem)
-                }
-
-                if($(this).find('td').eq(3).text() == '{tien_thanh_toan}'){
-                    console.log($(this).html())
-                    var innerHtml = $(this).html()
-                    var start_tr = '<tr>'
-                    var end_tr = '</tr>'
-                    var c = start_tr + innerHtml + end_tr
-                    data_thanh_tien += c.replace(/{tien_thanh_toan}/, thanh_tien)
-                    $(this).replaceWith(data_thanh_tien)
-                }
-
-                if($(this).find('td').eq(2).text() == '{nguoi_thanh_toan}'){
-                    console.log($(this).html())
-                    var innerHtml = $(this).html()
-                    var start_tr = '<tr>'
-                    var end_tr = '</tr>'
-                    var c = start_tr + innerHtml + end_tr
-                    data_nguoi_thuc_hien += c.replace(/{nguoi_thanh_toan}/, nguoi_thuc_hien)
-                    $(this).replaceWith(data_nguoi_thuc_hien)
-                }
-
-                if($(this).find('td').eq(3).text() == '{giam_gia}'){
-                    console.log($(this).html())
-                    var innerHtml = $(this).html()
-                    var start_tr = '<tr>'
-                    var end_tr = '</tr>'
-                    var c = start_tr + innerHtml + end_tr
-                    data_giam_gia += c.replace(/{giam_gia}/, 'Không Áp Dụng')
-                    $(this).replaceWith(data_giam_gia)
-                }
+                for (var i = 0; i < danh_sach_dich_vu.length; i++) {
+                    var formattedContent = c.replace(/{ten_dich_vu}/gi, danh_sach_dich_vu[i]).replace(/{bao_hiem}/gi, danh_sach_bao_hiem[i]).replace(/{gia_tien}/gi, danh_sach_gia_tien[i]).replace(/{thanh_tien}/, danh_sach_gia_tien[i])
+                    
+                    _tr += formattedContent
                 
+                }
+                $(this).closest('tr').replaceWith(_tr);
             });
             
         });
 
     }
 
-
-    
 </script>
 {% endblock scripts %}
 

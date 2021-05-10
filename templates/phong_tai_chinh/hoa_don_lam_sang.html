@@ -81,6 +81,8 @@
         document.body.innerHTML = originalContents;
     }
 
+    var data_mau_phieu = {{ data_dict|safe }}
+
     $(document).ready(function(){
         var data_ten_mau = '';
         var data_benh_nhan = '';
@@ -98,86 +100,13 @@
         var tong_tien = "{{ tong_tien|safe }}";
         var nguoi_thuc_hien = "{{ nguoi_thanh_toan|safe }}";
 
-
-        $('#mau_hoa_don tbody tr').each(function(){
-            if($(this).find('td').eq(1).text() == `{gia_tien}`){
-                // console.log($(this).html())
-                var innerHtml = $(this).html();
-                var start_tr = '<tr>';
-                var end_tr = '</tr>';
-                var c = start_tr + innerHtml + end_tr;
-                data_gia_tien += c.replace(/{gia_tien}/, tong_tien);
-                $(this).replaceWith(data_gia_tien);
-            }
-
-            if($(this).find('td').eq(3).text() == `{tien_thanh_toan}`){
-                // console.log($(this).html())
-                var innerHtml = $(this).html();
-                var start_tr = '<tr>';
-                var end_tr = '</tr>';
-                var c = start_tr + innerHtml + end_tr;
-                data_tien_thanh_toan += c.replace(/{tien_thanh_toan}/, tong_tien);
-                $(this).replaceWith(data_tien_thanh_toan);
-            }
-
-            if($(this).find('td').eq(0).text() == '{thoi_gian_thanh_toan}'){
-                console.log($(this).html());
-                var innerHtml = $(this).html();
-                var start_tr = '<tr>';
-                var end_tr = '</tr>';
-                var c = start_tr + innerHtml + end_tr;
-
-                data_benh_nhan += c.replace(/{thoi_gian_thanh_toan}/, thoi_gian_thanh_toan).replace(/{benh_nhan}/, benh_nhan);
-
-                $(this).replaceWith(data_benh_nhan);
-            }
-
-            if($(this).find('td').eq(1).text() == '{so_dien_thoai}'){
-                console.log($(this).html())
-                var innerHtml = $(this).html()
-                var start_tr = '<tr>'
-                var end_tr = '</tr>'
-                var c = start_tr + innerHtml + end_tr
-
-                data_so_dien_thoai += c.replace(/{so_dien_thoai}/, so_dien_thoai)
-
-                $(this).replaceWith(data_so_dien_thoai)
-            }
-
-            if($(this).find('td').eq(1).text() == '{dia_chi}'){
-                console.log($(this).html())
-                var innerHtml = $(this).html()
-                var start_tr = '<tr>'
-                var end_tr = '</tr>'
-                var c = start_tr + innerHtml + end_tr
-
-                data_dia_chi += c.replace(/{dia_chi}/, dia_chi)
-
-                $(this).replaceWith(data_dia_chi)
-            }
-
-            if($(this).find('td').eq(3).text() == '{tien_thanh_toan}'){
-                console.log($(this).html())
-                var innerHtml = $(this).html()
-                var start_tr = '<tr>'
-                var end_tr = '</tr>'
-                var c = start_tr + innerHtml + end_tr
-                data_thanh_tien += c.replace(/{tien_thanh_toan}/, tong_tien)
-                $(this).replaceWith(data_thanh_tien)
-            }
-
-            if($(this).find('td').eq(2).text() == '{nguoi_thanh_toan}'){
-                console.log($(this).html())
-                var innerHtml = $(this).html()
-                var start_tr = '<tr>'
-                var end_tr = '</tr>'
-                var c = start_tr + innerHtml + end_tr
-                data_nguoi_thuc_hien += c.replace(/{nguoi_thanh_toan}/, nguoi_thuc_hien)
-                $(this).replaceWith(data_nguoi_thuc_hien)
-            }
-
-        });
-        
+        for (const [key, value] of Object.entries(data_mau_phieu)) {
+            $(`#mau_hoa_don table tbody td:contains(${key})`).each(function() {
+                var thisContent = $(this).html();
+                var formattedContent = thisContent.replace(key, value)
+                $(this).html(formattedContent );
+            });
+        }
     });
 
 
