@@ -14,15 +14,15 @@
                 <!--begin::Page Heading-->
                 <div class="d-flex align-items-baseline flex-wrap mr-5">
                     <!--begin::Page Title-->
-                    <h5 class="text-dark font-weight-bold my-1 mr-5">Thêm Mới Mẫu Phiếu</h5>
+                    <h5 class="text-dark font-weight-bold my-1 mr-5">Thêm Mới Tiêu Chuẩn Xét Nghiệm</h5>
                     <!--end::Page Title-->
                     <!--begin::Breadcrumb-->
                     <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
                         <li class="breadcrumb-item">
-                            <a href="{% url 'danh_sach_mau_phieu' %}" class="text-muted">Danh sách mẫu phiếu</a>
+                            <a href="{% url 'danh_sach_mau_phieu' %}" class="text-muted">Danh sách các tiêu chuẩn</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="javascript:;" class="text-muted">Thêm mẫu phiếu</a>
+                            <a href="javascript:;" class="text-muted">Thêm tiêu chuẩn</a>
                         </li>
                     </ul>
                     <!--end::Breadcrumb-->
@@ -34,7 +34,6 @@
     </div>
     <!--end::Subheader-->
 
-    
     <!--begin::Entry-->
     <div class="d-flex flex-column-fluid">
         <!--begin::Container-->
@@ -50,7 +49,7 @@
                     <div class="card-body">
 
                         <div class="form-group row">
-                            <div class="col-8">
+                            {% comment %} <div class="col-8">
                                 <label>Dịch Vụ Kĩ Thuật</label>
                                 <select class="form-control selectpicker" id="select_1" name="param" data-live-search="true" data-size="9" >
                                     <option disabled selected>Chọn dịch vụ kiểm tra</option>
@@ -67,6 +66,10 @@
                                         <option value="{{ doi_tuong.id }}">{{doi_tuong}}</option>
                                     {% endfor %}
                                 </select>
+                            </div> {% endcomment %}
+                            <div class='col-12'>
+                                <label>Tên Nhóm Tiêu Chuẩn Xét Nghiệm</label>
+                                <input id='nhom_chi_so_input' type="text" class="form-control" placeholder="Tên nhóm tiêu chuẩn xét nghiệm" ></input> 
                             </div>
                         </div>
 
@@ -180,8 +183,7 @@
         var chi_so = []
         var formData = new FormData()
 
-        var id_dich_vu = $("#select_1").val()
-        var id_doi_tuong = $("#select_2").val()
+        var nhom_chi_so = $("#nhom_chi_so_input").val()
 
         $(".divRow").each(function(){
             var input = $(this).find('input')
@@ -196,8 +198,8 @@
         })
 
         formData.append('data', JSON.stringify(chi_so))
-        formData.append('id_dich_vu', id_dich_vu)
-        formData.append('id_doi_tuong', id_doi_tuong)
+        formData.append('nhom_chi_so', nhom_chi_so)
+        
         formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
 
         $.ajax({
@@ -209,7 +211,10 @@
             contentType: false,
             success: function(response){
                 if (response.status == 200) {
-                    toastr.success(response.message, "Thành Công")    
+                    toastr.success(response.message, "Thành Công")
+                    setTimeout(function () {
+                        window.location.href = '/danh_sach_tieu_chuan/';
+                    }, 1500)  
                 } else if (response.status == 404) {
                     toastr.warning(response.message, "Thất Bại")
                 }

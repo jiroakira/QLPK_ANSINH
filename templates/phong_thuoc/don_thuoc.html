@@ -121,6 +121,7 @@
 
 
 <script>
+    var data_mau_phieu = {{ data_dict|safe }}
 
     function printDiv(donThuoc){
 
@@ -167,159 +168,68 @@
 
 
     $(document).on('click', '#btn_print', function() {
-        var data_thuoc = '';
-        var data_thoi_gian = '';
-        var data_nguoi_thuc_hien = '';
-        var data_so_dien_thoai = '';
-        var data_dia_chi = '';
+
         var ten_thuoc = {{ ten_thuoc|safe }};
         var so_luong = {{ so_luong|safe }};
         var duong_dung = {{ duong_dung|safe }};
         var ghi_chu = {{ ghi_chu|safe }};
-        var benh_nhan = "{{ benh_nhan|safe }}";
-        var so_dien_thoai = "{{ so_dien_thoai|safe }}";
-        var dia_chi = "{{ dia_chi|safe }}";
-        var thoi_gian_thanh_toan = "{{ thoi_gian_thanh_toan|safe }}";
-        var nguoi_thanh_toan = "{{nguoi_thanh_toan|safe}}";
+        var don_vi_tinh = {{ don_vi_tinh|safe }}
 
-        $('#printDonThuoc table tbody tr').each(function(){
-            if ($(this).find('td').eq(0).text() == '{thoi_gian_thanh_toan}'){
-                var innerHtml = $(this).html();
-                var start_tr = '<tr>';
-                var end_tr = '</tr>';
-                var c = start_tr + innerHtml + end_tr;
-    
-                data_thoi_gian += c.replace(/{thoi_gian_thanh_toan}/, thoi_gian_thanh_toan).replace(/{benh_nhan}/, benh_nhan);
+        for (const [key, value] of Object.entries(data_mau_phieu)) {
+            $(`#printDonThuoc table tbody td:contains(${key})`).each(function() {
+                var thisContent = $(this).html();
+                var formattedContent = thisContent.replace(key, value)
+                $(this).html(formattedContent );
+            }); 
+        }
 
-                $(this).replaceWith(data_thoi_gian);
-            };
+        var _tr = ''
+            
+        $(`#printDonThuoc table tbody td:contains("{ten_thuoc}")`).each(function() {
+            var thisContent = $(this).closest('tr').html();
+            var start_tr = '<tr>'
+            var end_tr = '</tr>'
+            var c = start_tr + thisContent + end_tr
 
-            if ($(this).find('td').eq(1).text() == '{so_dien_thoai}'){
-                var innerHtml = $(this).html();
-                var start_tr = '<tr>';
-                var end_tr = '</tr>';
-                var c = start_tr + innerHtml + end_tr;
-    
-                data_so_dien_thoai += c.replace(/{so_dien_thoai}/, so_dien_thoai);
-
-                $(this).replaceWith(data_so_dien_thoai);
-            };
-
-            if ($(this).find('td').eq(1).text() == '{dia_chi}'){
-                var innerHtml = $(this).html();
-                var start_tr = '<tr>';
-                var end_tr = '</tr>';
-                var c = start_tr + innerHtml + end_tr;
-    
-                data_dia_chi += c.replace(/{dia_chi}/, dia_chi);
-
-                $(this).replaceWith(data_dia_chi);
-            };
-
-            if ($(this).find('td').eq(1).text() == '{nguoi_thanh_toan}'){
-                var innerHtml = $(this).html();
-                var start_tr = '<tr>';
-                var end_tr = '</tr>';
-                var c = start_tr + innerHtml + end_tr;
-
-                data_nguoi_thuc_hien += c.replace(/{nguoi_thanh_toan}/, nguoi_thanh_toan);
-
-                $(this).replaceWith(data_nguoi_thuc_hien);
-            };
-
-            if ($(this).find('td').eq(0).text() == '{ten_thuoc}'){
-                var innerHtml = $(this).html();
-                var start_tr = '<tr>';
-                var end_tr = '</tr>';
-                var c = start_tr + innerHtml + end_tr;
-
-                for (var i=0; i < ten_thuoc.length; i++) {
-                    data_thuoc += c.replace(/{ten_thuoc}/, ten_thuoc[i]).replace(/{so_luong}/, so_luong[i]).replace(/{duong_dung}/, duong_dung[i]).replace(/{cach_su_dung}/, ghi_chu[i]);
-                };
-                $(this).replaceWith(data_thuoc);
+            for (var i = 0; i < ten_thuoc.length; i++) {
+                var formattedContent = c.replace(/{ten_thuoc}/gi, ten_thuoc[i]).replace(/{so_luong}/gi, so_luong[i]).replace(/{duong_dung}/gi, duong_dung[i]).replace(/{cach_su_dung}/gi, ghi_chu[i]).replace(/{don_vi_tinh}/gi, don_vi_tinh[i])                  
+                _tr += formattedContent
             }
-
-            printDiv('printDonThuoc');
+            $(this).closest('tr').replaceWith(_tr);
         });
+        printDiv('printDonThuoc');
     });
 
     $(document).on('click', '#btn_print_htdt', function() {
-        console.log('hlllll')
-        var data_thuoc = '';
-        var data_thoi_gian = '';
-        var data_nguoi_thuc_hien = '';
-        var data_so_dien_thoai = '';
-        var data_dia_chi = '';
         var ten_thuoc = {{ ten_thuoc_cn|safe }};
         var so_luong = {{ so_luong_thuoc_cn|safe }};
         var duong_dung = {{ duong_dung_thuoc_cn|safe }};
         var ghi_chu = {{ ghi_chu_thuoc_cn|safe }};
-        var benh_nhan = "{{ benh_nhan|safe }}";
-        var so_dien_thoai = "{{ so_dien_thoai|safe }}";
-        var dia_chi = "{{ dia_chi|safe }}";
-        var thoi_gian_thanh_toan = "{{ thoi_gian_thanh_toan|safe }}";
-        var nguoi_thanh_toan = "{{nguoi_thanh_toan|safe}}";
+        var don_vi_tinh = {{ don_vi_tinh_thuoc_cn|safe }}
 
-        $('#printDonThuocHoTroDieuTri table tbody tr').each(function(){
-            if ($(this).find('td').eq(0).text() == '{thoi_gian_thanh_toan}'){
-                var innerHtml = $(this).html();
-                var start_tr = '<tr>';
-                var end_tr = '</tr>';
-                var c = start_tr + innerHtml + end_tr;
-    
-                data_thoi_gian += c.replace(/{thoi_gian_thanh_toan}/, thoi_gian_thanh_toan).replace(/{benh_nhan}/, benh_nhan);
+        for (const [key, value] of Object.entries(data_mau_phieu)) {
+            $(`#printDonThuocHoTroDieuTri table tbody td:contains(${key})`).each(function() {
+                var thisContent = $(this).html();
+                var formattedContent = thisContent.replace(key, value)
+                $(this).html(formattedContent );
+            }); 
+        }
 
-                $(this).replaceWith(data_thoi_gian);
-            };
+        var _tr = ''
+            
+        $(`#printDonThuocHoTroDieuTri table tbody td:contains("{ten_thuoc}")`).each(function() {
+            var thisContent = $(this).closest('tr').html();
+            var start_tr = '<tr>'
+            var end_tr = '</tr>'
+            var c = start_tr + thisContent + end_tr
 
-            if ($(this).find('td').eq(1).text() == '{so_dien_thoai}'){
-                var innerHtml = $(this).html();
-                var start_tr = '<tr>';
-                var end_tr = '</tr>';
-                var c = start_tr + innerHtml + end_tr;
-    
-                data_so_dien_thoai += c.replace(/{so_dien_thoai}/, so_dien_thoai);
-
-                $(this).replaceWith(data_so_dien_thoai);
-            };
-
-            if ($(this).find('td').eq(1).text() == '{dia_chi}'){
-                var innerHtml = $(this).html();
-                var start_tr = '<tr>';
-                var end_tr = '</tr>';
-                var c = start_tr + innerHtml + end_tr;
-    
-                data_dia_chi += c.replace(/{dia_chi}/, dia_chi);
-
-                $(this).replaceWith(data_dia_chi);
-            };
-
-            if ($(this).find('td').eq(1).text() == '{nguoi_thanh_toan}'){
-                var innerHtml = $(this).html();
-                var start_tr = '<tr>';
-                var end_tr = '</tr>';
-                var c = start_tr + innerHtml + end_tr;
-
-                data_nguoi_thuc_hien += c.replace(/{nguoi_thanh_toan}/, nguoi_thanh_toan);
-
-                $(this).replaceWith(data_nguoi_thuc_hien);
-            };
-
-            if ($(this).find('td').eq(0).text() == '{ten_thuoc}'){
-                var innerHtml = $(this).html();
-                var start_tr = '<tr>';
-                var end_tr = '</tr>';
-                var c = start_tr + innerHtml + end_tr;
-
-                for (var i=0; i < ten_thuoc.length; i++) {
-                    data_thuoc += c.replace(/{ten_thuoc}/, ten_thuoc[i]).replace(/{so_luong}/, so_luong[i]).replace(/{duong_dung}/, duong_dung[i]).replace(/{cach_su_dung}/, ghi_chu[i]);
-                };
-                $(this).replaceWith(data_thuoc);
+            for (var i = 0; i < ten_thuoc.length; i++) {
+                var formattedContent = c.replace(/{ten_thuoc}/gi, ten_thuoc[i]).replace(/{so_luong}/gi, so_luong[i]).replace(/{duong_dung}/gi, duong_dung[i]).replace(/{cach_su_dung}/gi, ghi_chu[i]).replace(/{don_vi_tinh}/gi, don_vi_tinh[i])                  
+                _tr += formattedContent
             }
-
-            printDiv('printDonThuocHoTroDieuTri');
-        }); 
-        
+            $(this).closest('tr').replaceWith(_tr);
+        });
+        printDiv('printDonThuocHoTroDieuTri');
     });
 
     $('.btn-return').click(function(){

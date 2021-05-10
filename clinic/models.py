@@ -106,7 +106,7 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, ho_ten, so_dien_thoai, cmnd_cccd, dia_chi, password):
+    def create_superuser(self, ho_ten, so_dien_thoai, dia_chi, password):
         """
         Creates and saves a superuser with the given email and password.
         """
@@ -114,12 +114,12 @@ class UserManager(BaseUserManager):
             so_dien_thoai=so_dien_thoai,
             password=password,
             ho_ten=ho_ten,
-            cmnd_cccd = cmnd_cccd,
             dia_chi = dia_chi,
         )
         
         user.staff = True
         user.admin = True
+        user.superuser = True
         user.chuc_nang = 7
         user.save(using=self._db)
         return user
@@ -251,7 +251,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     USERNAME_FIELD = 'so_dien_thoai'
-    REQUIRED_FIELDS = ['ho_ten', 'cmnd_cccd', 'dia_chi',] # Email & Password are required by default.
+    REQUIRED_FIELDS = ['ho_ten', 'dia_chi',] # Email & Password are required by default.
 
     def __str__(self):       
         return f"({self.id}) {self.ho_ten}"
@@ -1183,9 +1183,20 @@ class BaiDang(models.Model):
 
 # * ------ Update 19/01 -------
 
+class NhomChiSoXetNghiem(models.Model):
+    ten_nhom = models.CharField(max_length=255, null=True, blank=True)
+
+    class Meta:
+        verbose_name = "Nhóm Chỉ Số Xét Nghiệm"
+        verbose_name_plural = "Nhóm Chỉ Số Xét Nghiệm"
+
+    def __str__(self):
+        return f"({self.id}){self.ten_nhom}"
+
 class ChiSoXetNghiem(models.Model):
     dich_vu_kham = models.ForeignKey(DichVuKham, on_delete=models.CASCADE, null=True, blank=True, related_name="chi_so_xet_nghiem")
     doi_tuong_xet_nghiem = models.ForeignKey("DoiTuongXetNghiem", on_delete=models.SET_NULL, null=True, blank=True)
+    nhom_chi_so = models.ForeignKey("NhomChiSoXetNghiem", on_delete=models.CASCADE, null=True, blank=True)
     ma_chi_so = models.CharField(max_length=10, null=True, blank=True)
     ten_chi_so = models.CharField(max_length=255, null=True, blank=True)
     chi_tiet = models.ForeignKey("ChiTietChiSoXetNghiem", on_delete=models.CASCADE, null=True, blank=True)
@@ -1199,7 +1210,6 @@ class ChiSoXetNghiem(models.Model):
             ('can_view_test_values', 'Xem chỉ số xét nghiệm'),
             ('can_delete_test_values', 'Xóa chỉ số xét nghiệm'),
         )
-
 
     def __str__(self):
         return f"({self.ma_chi_so}){self.ten_chi_so}/{self.doi_tuong_xet_nghiem}"

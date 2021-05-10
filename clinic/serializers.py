@@ -12,7 +12,7 @@ from .models import (
     FileKetQuaTongQuat, HtmlKetQua, 
     KetQuaChuyenKhoa, 
     KetQuaTongQuat, KetQuaXetNghiem, 
-    LichHenKham, MauPhieu, 
+    LichHenKham, MauPhieu, NhomChiSoXetNghiem, 
     PhanKhoaKham, 
     PhongChucNang, 
     PhongKham, 
@@ -856,6 +856,11 @@ class WardSerializer(serializers.ModelSerializer):
         model = Ward
         fields = '__all__'
 
+class NhomChiSoTieuChuanSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = NhomChiSoXetNghiem
+        fields = '__all__'
+
 class ChiTietChiSoXetNghiemSerializer(serializers.ModelSerializer):
     chi_so_binh_thuong_min = serializers.CharField(source='get_chi_so_binh_thuong_min')
     chi_so_binh_thuong_max = serializers.CharField(source='get_chi_so_binh_thuong_max')
@@ -875,6 +880,7 @@ class ChiTietChiSoXetNghiemSerializer(serializers.ModelSerializer):
 
 class ChiSoXetNghiemSerializer(serializers.ModelSerializer):
     chi_tiet = ChiTietChiSoXetNghiemSerializer()
+    nhom_chi_so = NhomChiSoTieuChuanSerializer()
     class Meta:
         model = ChiSoXetNghiem
         fields = (
@@ -883,7 +889,8 @@ class ChiSoXetNghiemSerializer(serializers.ModelSerializer):
             'ma_chi_so',
             'ten_chi_so',
             'dich_vu_kham',
-            'doi_tuong_xet_nghiem'
+            'doi_tuong_xet_nghiem',
+            'nhom_chi_so',
         )
 
 

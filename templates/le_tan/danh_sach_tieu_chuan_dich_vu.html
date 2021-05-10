@@ -118,8 +118,8 @@ var KTDatatableModal = function() {
                 },
                 pageSize: 10, // display 20 records per page
                 serverPaging: true,
-                {% comment %} serverFiltering: false, {% endcomment %}
-                {% comment %} serverSorting: true, {% endcomment %}
+                serverFiltering: true,
+                serverSorting: false,
                 saveState: false,
             },
 
@@ -138,7 +138,7 @@ var KTDatatableModal = function() {
 
             search: {
                 input: $('#kt_datatable_search_query'),
-                key: 'generalSearch'
+                key: 'search'
             },
 
             // columns definition
@@ -149,20 +149,8 @@ var KTDatatableModal = function() {
                 width: 30,
                 textAlign: 'center',
             }, {
-                field: 'ma_dvkt',
-                title: 'Mã DVKT',
-            }, {
-                field: 'ten_dvkt',
-                title: 'Tên DVKT',
-                
-            }, {
-                field: 'quyet_dinh',
-                title: 'Quyết Định',
-                
-            },  {
-                field: 'cong_bo',
-                title: 'Công Bố',
-                
+                field: 'ten_nhom',
+                title: 'Tên Nhóm',
             }, {
                 field: 'actions',
                 width: 130,

@@ -157,7 +157,7 @@ var KTDatatableRemoteAjaxDemo = function() {
                 source: {
                     read: {
                         method: "GET",
-                        url: HOST_URL + '/router/api/danh_sach_thuoc/',
+                        url: HOST_URL + '/api/thuoc/',
                         // sample custom headers
                         // headers: {'x-my-custom-header': 'some value', 'x-test-header': 'the value'},
                         map: function(raw) {
@@ -174,8 +174,8 @@ var KTDatatableRemoteAjaxDemo = function() {
                 },
                 pageSize: 10,
                 serverPaging: true,
-                //serverFiltering: true,
-                //serverSorting: true,
+                serverFiltering: true,
+                serverSorting: false,
                 saveState: false,
             },
 
@@ -192,7 +192,7 @@ var KTDatatableRemoteAjaxDemo = function() {
 
             search: {
                 input: $('#kt_datatable_search_query'),
-                key: 'generalSearch'
+                key: 'search'
             },
 
             // columns definition

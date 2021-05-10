@@ -134,66 +134,16 @@
 
 var KTDropzoneDemo = function () {
 
-    var benh_nhan = {{ benh_nhan|safe }};
-    var dia_chi = {{ dia_chi|safe }};
-    var tuoi = {{ tuoi|safe }};
-    var gioi_tinh = {{ gioi_tinh|safe }};
-    
-    var bac_si_lam_sang = {{ bac_si_lam_sang|safe }}
-    var ngay_kham = {{ ngay_kham|safe }}
+    var data_mau_phieu = {{ data_dict|safe }}
     
     var fillPatientInfo = function() {
-        var dataInfo = ""
-        var dataAddr = ""
-        var dataRes = ""
-        var dataDr = ""
-        var dataDateTime = ""
-        var dataDr2 = ""
-
-        $('table tr').each(function(){
-            if ($(this).find('td').eq(1).text() == '{benh_nhan}'){
-                var innerHtml = $(this).html()
-        
-                var start_tr = '<tr>'
-                var end_tr = '</tr>'
-                var c = start_tr + innerHtml + end_tr
-
-                dataInfo += c.replace(/{benh_nhan}/, benh_nhan[0]).replace(/{tuoi}/, tuoi[0]).replace(/{gioi_tinh}/, gioi_tinh[0])
-                $(this).replaceWith(dataInfo)
-            }
-            if ($(this).find('td').eq(1).text() == '{dia_chi}'){
-                var innerHtml = $(this).html()
-                var start_tr = '<tr>'
-                var end_tr = '</tr>'
-                var c = start_tr + innerHtml + end_tr
-
-                dataAddr += c.replace(/{dia_chi}/, dia_chi[0])
-                $(this).replaceWith(dataAddr)
-            }
-
-            if ($(this).find('td').eq(1).text() == '{bac_si_lam_sang}'){
-                var innerHtml = $(this).html()
-        
-                var start_tr = '<tr>'
-                var end_tr = '</tr>'
-                var c = start_tr + innerHtml + end_tr
-
-                dataDr2 += c.replace(/{bac_si_lam_sang}/, bac_si_lam_sang[0])
-                $(this).replaceWith(dataDr2)
-            }
-
-            if ($(this).find('td').eq(1).text() == '{ngay_kham}'){
-                var innerHtml = $(this).html()
-                console.log(innerHtml)                    
-                var start_tr = '<tr>'
-                var end_tr = '</tr>'
-                var c = start_tr + innerHtml + end_tr
-
-                dataDateTime += c.replace(/{ngay_kham}/, ngay_kham[0])
-                $(this).replaceWith(dataDateTime)
-            }
-            
-        })
+        for (const [key, value] of Object.entries(data_mau_phieu)) {
+            $(`table tbody td:contains(${key})`).each(function() {
+                var thisContent = $(this).html();
+                var formattedContent = thisContent.replace(key, value)
+                $(this).html(formattedContent );
+            }); 
+        }
     }
 
     var _initValidate = function () {
@@ -298,8 +248,6 @@ var KTDropzoneDemo = function () {
         
     
     }
-
-    
 
     return {
         // public functions

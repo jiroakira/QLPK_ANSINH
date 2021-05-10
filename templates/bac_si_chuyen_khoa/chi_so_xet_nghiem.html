@@ -104,32 +104,29 @@
                                             <textarea class="form-control" id="ket_qua" rows="3" placeholder="Nhập kết quả của bệnh nhân" name='ket_qua'></textarea> 
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class='data_field_section'>
-                                    {% for chi_so in chi_so_xet_nghiem %}
-                                    <div class="data_field form-group row">
-                                        <label class="col-lg-3 col-form-label text-lg-right">{{ chi_so.ten_chi_so }}:</label>
-                                        {% if chi_so.chi_tiet.chi_so_binh_thuong_min  !=  chi_so.chi_tiet.chi_so_binh_thuong_max %}
-                                        <div class="col-lg-5">
-                                            <input type="number" step="0.001" class="evaluate_field form-control" id="{{ chi_so.ma_chi_so }}" data-id="{{ chi_so.id }}" data-name="danh_gia_{{chi_so.ma_chi_so}}" data-ma-chi-so={{ chi_so.ma_chi_so }} data-chi-so-min={{ chi_so.chi_tiet.chi_so_binh_thuong_min }} data-chi-so-max={{ chi_so.chi_tiet.chi_so_binh_thuong_max }} placeholder="Nhập chỉ số" name={{ chi_so.ma_chi_so }}></input> 
-                                            <span class="form-text text-muted">Chỉ số : <code>{{ chi_so.chi_tiet.chi_so_binh_thuong_min }} - {{ chi_so.chi_tiet.chi_so_binh_thuong_max }}</code></span>
-                                            <span class="form-text text-muted">Đơn vị đo : <code> {% if chi_so.chi_tiet.don_vi_do is not None %}{{ chi_so.chi_tiet.don_vi_do }}{% else %}Không có{% endif %}</code></span>
-                                            <span class="form-text text-muted">Quy định nhập : <code>Phần này chỉ được nhập số</code></span>
-                                        </div>
-                                        {% else %}
-                                        <div class="col-lg-5">
-                                            <input type="text" class="evaluate_field form-control" id="{{ chi_so.ma_chi_so }}" data-id="{{ chi_so.id }}" data-name="danh_gia_{{chi_so.ma_chi_so}}" data-ma-chi-so={{ chi_so.ma_chi_so }} data-chi-so-min={{ chi_so.chi_tiet.chi_so_binh_thuong_min }} data-chi-so-max={{ chi_so.chi_tiet.chi_so_binh_thuong_max }} placeholder="Nhập chỉ số" name={{ chi_so.ma_chi_so }}></input> 
-                                            <span class="form-text text-muted">Chỉ số : <code>{{ chi_so.chi_tiet.chi_so_binh_thuong_min }} - {{ chi_so.chi_tiet.chi_so_binh_thuong_max }}</code></span>
-                                            <span class="form-text text-muted">Đơn vị đo : <code> {% if chi_so.chi_tiet.don_vi_do is not None %}{{ chi_so.chi_tiet.don_vi_do }}{% else %}Không có{% endif %}</code></span>
-                                            <span class="form-text text-muted">Quy định nhập : <code>Phần này chỉ được nhập chuỗi kí tự</code></span>
-                                        </div>
-                                        {% endif %}
-                                        <div class="col-lg-2">
-                                            <input class="judment_field form-control" placeholder="" name='danh_gia_{{chi_so.ma_chi_so}}' disabled></input> 
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label text-lg-right">Chọn nhóm chỉ số:</label>
+                                        <div class="col-lg-7">
+                                            <select class="form-control selectpicker" id="selectChiSo" data-live-search="true" name="param">
+                                                <option value="" selected disabled>Chọn nhóm chỉ số</option>
+                                                {% for nhom in nhom_chi_so %}
+                                                    <option value="{{nhom.id}}">{{nhom.ten_nhom}}</option>
+                                                {% endfor %}      
+                                            </select>
                                         </div>
                                     </div>
-                                    {% endfor %}
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label text-lg-right">DS Chỉ Số:</label>
+                                    <div class="col-lg-7">
+                                        <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable_1"></div>
+                                    </div>
+                                </div>
+
+                                <div class='data_field_section' id='data_field_section_div'>
+                                    
                                 </div>
                             <div class="card-footer">
                                 <div class="row">
@@ -250,6 +247,10 @@
  
 <script>
  
+var lstData = [];
+var lstCheckbox = {};
+var list_data_2 = [];
+
 "use strict";
 // Class definition
  
@@ -276,6 +277,7 @@ var KTDropzoneDemo = function () {
         // these HTTP methods do not require CSRF protection
         return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
     }
+
     $.ajaxSetup({
         beforeSend: function(xhr, settings) {
             if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
@@ -284,6 +286,188 @@ var KTDropzoneDemo = function () {
         }
     });
     // Private functions
+
+    var initDatatable = function(id) {
+        var id_nhom_chi_so = id
+        var el = $('#kt_datatable_1');
+
+        var datatable = el.KTDatatable({
+            // datasource definition
+            data: {
+                type: 'remote',
+                source: {
+                    read: {
+                        url: HOST_URL + '/api/danh_sach_tieu_chuan_theo_nhom/',
+                        method: "GET",
+                        params: {
+                            'id_nhom_chi_so': id_nhom_chi_so,
+                        },
+                    
+                    },
+                    
+                },
+                pageSize: 10, // display 20 records per page
+                serverPaging: true,
+                serverFiltering: true,
+                serverSorting: false,
+                saveState: false,
+            },
+
+            // layout definition
+            layout: {
+                theme: 'default',
+                scroll: false,
+                height: null,
+                footer: false,
+            },
+
+            // column sorting
+            sortable: true,
+
+            pagination: true,
+
+            search: {
+                input: $('#kt_datatable_search_query'),
+                key: 'search'
+            },
+
+            // columns definition
+            columns: [{
+                field: 'id',
+                title: 'STT',
+                sortable: true,
+                width: 30,
+                textAlign: 'center',
+                selector: {
+
+                }
+            }, {
+                field: 'ma_chi_so',
+                title: 'Mã Chỉ Số',
+            }, {
+                field: 'ten_chi_so',
+                title: 'Tên Chỉ Số',
+            }, {
+                field: 'chi_tiet.chi_so_binh_thuong_min',
+                title: 'Min',
+            }, {
+                field: 'chi_tiet.chi_so_binh_thuong_max',
+                title: 'Max',
+            }, {
+                field: 'chi_tiet.don_vi_do',
+                title: 'Đơn Vị',
+            }, {
+                field: 'chi_tiet.ghi_chu',
+                title: 'Ghi chú',
+            }, ],
+        });
+
+        $('#btn-reload').on("click", function(){
+            $('#kt_datatable').KTDatatable('reload');
+        })
+
+        //$('#kt_datatable_search_type').on('change', function() {
+        //    datatable.search($(this).val().toLowerCase(), 'Type');
+        //});
+
+        datatable.on('click', 'tbody input[type="checkbox"]', function () {
+                $(this).toggleClass('selected');
+                // console.log($(this).val())
+                var objList = [];
+                
+                if($(this).is(":checked")){
+                    var trVals = $(this).closest('tr').data();
+                
+                    delete trVals['row']
+                
+                    $(trVals).each(function () {
+                        $('#data_field_section_div').append(
+                            `
+                                <div id='row-${trVals.obj.id}' class="data_field form-group row">
+                                    <label class="col-lg-3 col-form-label text-lg-right">${trVals.obj.ten_chi_so}:</label>
+                                    
+                                    <div class="col-lg-5">
+                                        <input type="number" step="0.001" class="evaluate_field form-control" id="${trVals.obj.id}" data-id="${trVals.obj.id}" data-name="danh_gia_${trVals.obj.ma_chi_so}" data-ma-chi-so="${trVals.obj.ma_chi_so}" data-chi-so-min=${trVals.obj.chi_tiet.chi_so_binh_thuong_min} data-chi-so-max=${trVals.obj.chi_tiet.chi_so_binh_thuong_max} placeholder="Nhập chỉ số" name="${trVals.obj.ma_chi_so}"></input> 
+                                        <span class="form-text text-muted">Chỉ số : <code>${trVals.obj.chi_tiet.chi_so_binh_thuong_min} - ${trVals.obj.chi_tiet.chi_so_binh_thuong_max}</code></span>
+                                        <span class="form-text text-muted">Đơn vị đo : <code> ${trVals.obj.chi_tiet.don_vi_do}</code></span>
+                                        <span class="form-text text-muted">Quy định nhập : <code>Phần này chỉ được nhập số</code></span>
+                                    </div>
+                                    
+                                    <div class="col-lg-2">
+                                        <input class="judment_field form-control" placeholder="" name='danh_gia_${trVals.obj.ma_chi_so}' disabled></input> 
+                                    </div>
+                                </div>
+                            `
+                        )
+                    })
+
+                } else {
+                    var trVals = $(this).closest('tr').data();
+                    
+                    delete trVals['row']
+                    
+                    $(`row-${trVals.obj.id}`).remove();
+                    
+                }
+            });
+
+        {% comment %} var getDataFromDatatable = function(id){
+            var id = id
+            var ma_chi_so = ''
+            var ten_chi_so = ''
+            var chi_so_binh_thuong_min = ''
+            var chi_so_binh_thuong_max = ''
+            var don_vi_do = ''
+            var ghi_chu = ''
+            ma_chi_so = datatable.getRecord(id).getColumn('ma_chi_so').getValue()
+            ten_chi_so = datatable.getRecord(id).getColumn('ten_chi_so').getValue()
+            chi_so_binh_thuong_min = datatable.getRecord(id).getColumn('chi_tiet.chi_so_binh_thuong_min').getValue()
+            chi_so_binh_thuong_max = datatable.getRecord(id).getColumn('chi_tiet.chi_so_binh_thuong_max').getValue()
+            don_vi_do = datatable.getRecord(id).getColumn('chi_tiet.don_vi_do').getValue()
+            ghi_chu = datatable.getRecord(id).getColumn('chi_tiet.ghi_chu').getValue()
+
+            console.log(ma_chi_so)
+
+            $('#data_field_section_div').append(
+                `
+                    <div id='row-${id}' class="data_field form-group row">
+                        <label class="col-lg-3 col-form-label text-lg-right">${ten_chi_so}:</label>
+                        
+                        <div class="col-lg-5">
+                            <input type="number" step="0.001" class="evaluate_field form-control" id="${id}" data-id="${id}" data-name="danh_gia_${ma_chi_so}" data-ma-chi-so="${ma_chi_so}" data-chi-so-min=${chi_so_binh_thuong_min} data-chi-so-max=${chi_so_binh_thuong_max} placeholder="Nhập chỉ số" name="${ma_chi_so}"></input> 
+                            <span class="form-text text-muted">Chỉ số : <code>${chi_so_binh_thuong_min} - ${chi_so_binh_thuong_max}</code></span>
+                            <span class="form-text text-muted">Đơn vị đo : <code> ${don_vi_do}</code></span>
+                            <span class="form-text text-muted">Quy định nhập : <code>Phần này chỉ được nhập số</code></span>
+                        </div>
+                        
+                        <div class="col-lg-2">
+                            <input class="judment_field form-control" placeholder="" name='danh_gia_${ma_chi_so}' disabled></input> 
+                        </div>
+                    </div>
+                `
+            )
+
+            ma_chi_so = ''
+            ten_chi_so = ''
+            chi_so_binh_thuong_min = ''
+            chi_so_binh_thuong_max = ''
+            don_vi_do = ''
+            ghi_chu = ''
+        } {% endcomment %}
+
+        datatable.on('datatable-on-uncheck',function(e, args) {
+            var id = args.toString()
+            {% comment %} var ma_chi_so = datatable.getRecord(id).getColumn('ma_chi_so').getValue()
+            var ten_chi_so = datatable.getRecord(id).getColumn('ten_chi_so').getValue()
+            var chi_so_binh_thuong_min = datatable.getRecord(id).getColumn('chi_tiet.chi_so_binh_thuong_min').getValue()
+            var chi_so_binh_thuong_max = datatable.getRecord(id).getColumn('chi_tiet.chi_so_binh_thuong_max').getValue()
+            var don_vi_do = datatable.getRecord(id).getColumn('chi_tiet.don_vi_do').getValue()
+            var ghi_chu = datatable.getRecord(id).getColumn('chi_tiet.ghi_chu').getValue() {% endcomment %}
+
+            $(`#row-${id}`).remove()
+        });
+
+    };
    
     var evaluate = function() {
         $('.data_field_section').on('keyup', '.data_field', function(e) {
@@ -376,55 +560,11 @@ var KTDropzoneDemo = function () {
 
     $(document).on('click', '#change_assignment', function(){
         $('#phan_khoa_modal').modal('show');
-    
+    })
+
+    $('#phan_khoa_modal').on('shown.bs.modal', function() {
         var ajax_data;
-        var id_chuoi_kham = $(this).data('id-chuoi-kham');
-
-        console.log(id_chuoi_kham)
-        $.ajax({
-            type: "GET",
-            url: "{% url 'danh_sach_phan_khoa_chuoi_kham' %}",
-            data: {
-                id_chuoi_kham : $(this).data('id-chuoi-kham'),
-            },
-            dataType: 'json',
-            success: function (response) {
-                var response_data = JSON.stringify(response.data)
-                var data = JSON.parse(response_data)
-                ajax_data = data
-                for (var i=0; i<data.length; i++) {
-                    $('#kt_datatable_3 tbody').append(`
-                        <tr id="tr_${data[i].obj.id}" class="${data[i].obj.id}" data-id = "${data[i].obj.id}" name="true" data-checked="True" data-unchecked="False">
-                            <td>
-                                ${data[i].obj.ma_dvkt}
-                            </td>
-                            <td>
-                                ${data[i].obj.ten_dvkt}
-                            </td>
-                            <td>
-                                ${data[i].obj.phong_chuc_nang.ten_phong_chuc_nang}
-                            </td>
-                            <td>
-                                <input type="checkbox" id="checkbox_${data[i].obj.id}" class="big-checkbox" checked data-checked="True" data-unchecked="False">
-                            </td>
-                        </tr>
-                    `);
-
-                    if (data[i].obj.bao_hiem == true) {
-                        $(`#checkbox_${data[i].obj.id}`).prop('checked', true)
-                    }else{
-                        $(`#checkbox_${data[i].obj.id}`).prop('checked', false)
-                    }
-
-                    lstData[i] = data[i]
-                    
-
-                }
-                
-            },
-            error: function (response) {                       
-            }
-        })
+        var id_chuoi_kham = $("#change_assignment").data('id-chuoi-kham');
 
         var options = {
             // datasource definition
@@ -440,6 +580,7 @@ var KTDropzoneDemo = function () {
                 serverPaging: true,
                 serverFiltering: true,
                 serverSorting: false,
+                saveState: false,
             },
 
             // layout definition
@@ -498,7 +639,6 @@ var KTDropzoneDemo = function () {
                 }
             }]
         };
-
         // enable extension
         options.extensions = {
             // boolean or object (extension options)
@@ -507,29 +647,61 @@ var KTDropzoneDemo = function () {
 
         options.search = {
             input: $('#kt_datatable_search_query'),
-            key: 'generalSearch'
+            key: 'search'
         };
         
-        var datatable = $('#kt_datatable').KTDatatable(options);    
+        var datatable = $('#kt_datatable').KTDatatable(options);
+        
+        $.ajax({
+            type: "GET",
+            url: "{% url 'danh_sach_phan_khoa_chuoi_kham' %}",
+            data: {
+                id_chuoi_kham : $("#change_assignment").data('id-chuoi-kham'),
+            },
+            dataType: 'json',
+            success: function (response) {
+                var response_data = response.data
+                console.log(response_data)
+                var tr = ''
+                console.log(lstData)
 
-        datatable.on('datatable-on-check datatable-on-uncheck',function(e) {
-            var checkedNodes = datatable.rows('.datatable-row-active').nodes();
-            var count = checkedNodes.length;
-            $('#kt_datatable_selected_records').html(count);
-            if (count > 0) {
-                $('#kt_datatable_group_action_form').collapse('show');
-            } else {
-                $('#kt_datatable_group_action_form').collapse('hide');
-            }
-        });
+                for (var i = 0; i < response_data.length; i++) {
+                    var checkbox
 
-        datatable.on('datatable-on-init', function(){
-            
-            for (var i=0; i < ajax_data.length; i++) {
-                datatable.setActive(String(ajax_data[i].obj.id));
+                    if (response_data[i].obj.bao_hiem == true) {
+                        checkbox = `<input type="checkbox" id="checkbox_${response_data[i].obj.id}" class="big-checkbox" checked data-checked="True" data-unchecked="False">`
+                    } else {
+                        checkbox = `<input type="checkbox" id="checkbox_${response_data[i].obj.id}" class="big-checkbox" data-checked="True" data-unchecked="False">`
+                    }
+
+                    var initTr = `
+                        <tr id="tr_${response_data[i].obj.id}" class="${response_data[i].obj.id}" data-id = "${response_data[i].obj.id}" name="true" data-checked="True" data-unchecked="False">
+                            <td>
+                                ${response_data[i].obj.ma_dvkt}
+                            </td>
+                            <td>
+                                ${response_data[i].obj.ten_dvkt}
+                            </td>
+                            <td>
+                                ${response_data[i].obj.phong_chuc_nang.ten_phong_chuc_nang}
+                            </td>
+                            
+                            <td>
+                                ${checkbox}
+                            </td>
+
+                        </tr>
+                    `
+                    tr += initTr
+                    lstData.push(response_data[i])
+                    datatable.setActive(cell=String(response_data[i].obj.id))
+                }
+                $('#kt_datatable_3 tbody').html(tr)
+                console.log(lstData)
+            },
+            error: function (response) {                       
             }
-            console.log(lstData)
-        });
+        })
 
         datatable.on('click', 'tbody input[type="checkbox"]', function () {
             $(this).toggleClass('selected');
@@ -568,9 +740,6 @@ var KTDropzoneDemo = function () {
                 
                 delete trVals['row']
 
-                console.log(JSON.stringify(lstData[4]))
-                console.log(JSON.stringify(trVals))
-                
                 $(`.${trVals.obj.id}`).remove();
                 
                 lstData = lstData.filter(function(item) {
@@ -703,14 +872,27 @@ var KTDropzoneDemo = function () {
             getPostData();
             postData(id_chuoi_kham);
         })
-
     })
+
+    $("#phan_khoa_modal").on('hidden.bs.modal', function() {
+        lstData = []
+        $("#phan_khoa_modal").removeData('bs.modal')
+        $('#kt_datatable').KTDatatable('destroy')    
+    })
+
+    var groupStandardChoiceEvent = function() {
+        $('#selectChiSo').on('changed.bs.select', function(e, clickedIndex, newValue, oldValue) {
+            var id_nhom_chi_so = this.value
+            initDatatable(id_nhom_chi_so)
+        })
+    }
 
     return {
         // public functions
         init: function() {
-           evaluate();
-           gather_data_and_submit();
+            evaluate();
+            gather_data_and_submit();
+            groupStandardChoiceEvent();
         }
     };
 }();

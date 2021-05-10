@@ -237,6 +237,7 @@ var KTDatatableModal = function() {
                 serverPaging: true,
                 serverFiltering: true,
                 serverSorting: false,
+                saveState: false,
             },
 
             // layout definition
@@ -298,6 +299,10 @@ var KTDatatableModal = function() {
                 // callback function support for column rendering
                 template: function(row) {
                     var status = {
+                        1: {
+                            'title': 'Chờ Thanh Toán Lâm Sàng',
+                            'class': ' label-light-primary'
+                        },
                         2: {
                             'title': 'Đã Thanh Toán LS',
                             'class': ' label-light-primary'
