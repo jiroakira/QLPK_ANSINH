@@ -237,6 +237,7 @@ class User(AbstractBaseUser, PermissionsMixin):
             ('can_export_list_import_export_general_medicines', 'Xuất Danh Sách Xuất Nhập Tồn Tổng Hợp Thuốc'),
             ('can_export_soon_expired_list_medicines', 'Xuất Danh Sách Thuốc Sắp Hết Hạn'),
             ('can_see_general_medicine_list_report', 'Xem Báo Cáo Tổng Hợp Thuốc'),
+            ('can_view_general_features', "Phòng Tổng Hợp"),
         )
 
     def save(self, *args, **kwargs):
