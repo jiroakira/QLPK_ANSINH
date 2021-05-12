@@ -6605,3 +6605,11 @@ def xoa_ket_qua_chuyen_khoa(request):
             'message': "Xảy Ra Lỗi Trong Quá Trình Xử Lý"
         }
     return HttpResponse(json.dumps(response), content_type="application/json, charset=utf-8")
+
+def menu_view(request):
+    phong_chuc_nang = PhongChucNang.objects.all()
+    context = {
+        'phong_chuc_nang': phong_chuc_nang
+    }
+
+    return render(request, 'menu.html', context)
