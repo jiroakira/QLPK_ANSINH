@@ -1,6 +1,7 @@
 
 from medicine.serializers import ThuocSerializer
 import time
+import pytz
 
 from django.db.models.expressions import Func, OuterRef, Subquery
 from clinic.excelUtils import ExportExcelBaoCaoXNTThuoc, ExportExcelDSThuocSapHetDate, WriteToExcel, writeToExcelDichVu, writeToExcelThuoc
@@ -113,6 +114,10 @@ format = '%m/%d/%Y %H:%M %p'
 format_2 = '%d/%m/%Y %H:%M'
 
 format_3 = '%d/%m/%Y'
+
+timezone.activate(pytz.timezone("Asia/Ho_Chi_Minh"))
+
+local_time = timezone.localtime(timezone.now())
 
 def getSubName(name):
     lstChar = []
@@ -908,6 +913,12 @@ def store_phan_khoa(request):
         from actstream import action
         action.send(request.user, verb='phân khoa thành công cho bệnh nhân', target=user)
 
+        response = {
+            'status' : 200,
+            'message': "Phân Khoa Khám Thành Công!",
+            'url' : '/bac_si_lam_sang/danh_sach_benh_nhan_cho/'
+        }
+
         channel_layer = get_channel_layer()
         async_to_sync(channel_layer.group_send)(
             f"user_{user.id}", {
@@ -920,12 +931,13 @@ def store_phan_khoa(request):
             }
         )
 
+        
+        return HttpResponse(json.dumps(response), content_type='application/json; charset=utf-8')
+    else:
         response = {
-            'status' : 200,
-            'message': "Phân Khoa Khám Thành Công!",
-            'url' : '/bac_si_lam_sang/danh_sach_benh_nhan_cho/'
+            'status' : 404,
+            'message': "Xảy Ra Lỗi Trong Quá Trình Xử Lí",
         }
-
         return HttpResponse(json.dumps(response), content_type='application/json; charset=utf-8')
 
 def store_ke_don(request):
@@ -1233,8 +1245,11 @@ def hoa_don_dich_vu(request, **kwargs):
     chuoi_kham = get_object_or_404(ChuoiKham, id=id_chuoi_kham)
     check_da_thanh_toan = chuoi_kham.check_thanh_toan()
 
+    print(timezone.localtime(timezone.now()))
+
     if check_da_thanh_toan == True:
         hoa_don_dich_vu = chuoi_kham.hoa_don_dich_vu
+        print(hoa_don_dich_vu)
         tong_tien_hoa_don = hoa_don_dich_vu.tong_tien
         if hoa_don_dich_vu.nguoi_thanh_toan is not None:
             nguoi_thuc_hien = hoa_don_dich_vu.nguoi_thanh_toan.ho_ten.upper()
@@ -1265,7 +1280,9 @@ def hoa_don_dich_vu(request, **kwargs):
         bao_hiem.clear()
         phong_chuc_nang = PhongChucNang.objects.all()
         mau_hoa_don = MauPhieu.objects.filter(codename='hoa_don_dich_vu').first()
-        thoi_gian_thanh_toan = hoa_don_dich_vu.thoi_gian_tao
+        thoi_gian_thanh_toan = hoa_don_dich_vu.thoi_gian_thanh_toan + timedelta(hours=7)
+        print(thoi_gian_thanh_toan)
+        
         benh_nhan = chuoi_kham.benh_nhan
         danh_sach_dich_vu = [f"{i.dich_vu_kham.ten_dvkt}" for i in danh_sach_phan_khoa]
         danh_sach_bao_hiem = ['Áp Dụng' if i.bao_hiem else 'Không Áp Dụng' for i in danh_sach_phan_khoa]
@@ -1275,7 +1292,7 @@ def hoa_don_dich_vu(request, **kwargs):
         data_dict['{benh_nhan}'] = benh_nhan.ho_ten.upper()
         data_dict['{so_dien_thoai}'] = benh_nhan.get_so_dien_thoai()
         data_dict['{dia_chi}'] = benh_nhan.get_dia_chi()
-        data_dict['{thoi_gian_thanh_toan}'] = f"{thoi_gian_thanh_toan.strftime('%H:%m')} Ngày {thoi_gian_thanh_toan.strftime('%d')} Tháng {thoi_gian_thanh_toan.strftime('%m')} Năm {thoi_gian_thanh_toan.strftime('%Y')}"
+        data_dict['{thoi_gian_thanh_toan}'] = f"Ngày {thoi_gian_thanh_toan.strftime('%d')} Tháng {thoi_gian_thanh_toan.strftime('%m')} Năm {thoi_gian_thanh_toan.strftime('%Y')}"
         data_dict['{tong_tien}'] = "{:,}".format(int(total_spent))
         data_dict['{tong_tien_bao_hiem}'] = "{:,}".format(int(tong_bao_hiem))
         data_dict['{nguoi_thanh_toan}'] = nguoi_thuc_hien
@@ -1321,7 +1338,8 @@ def hoa_don_dich_vu(request, **kwargs):
         bao_hiem.clear()
         phong_chuc_nang = PhongChucNang.objects.all()
         mau_hoa_don = MauPhieu.objects.filter(codename='hoa_don_dich_vu').first()
-        thoi_gian_thanh_toan = datetime.now()
+        thoi_gian_thanh_toan = local_time
+       
         benh_nhan = chuoi_kham.benh_nhan
         danh_sach_dich_vu = [f"{i.dich_vu_kham.ten_dvkt}" for i in danh_sach_phan_khoa]
         danh_sach_bao_hiem = ['Áp Dụng' if i.bao_hiem else 'Không Áp Dụng' for i in danh_sach_phan_khoa]
@@ -1331,7 +1349,7 @@ def hoa_don_dich_vu(request, **kwargs):
         data_dict['{benh_nhan}'] = benh_nhan.ho_ten.upper()
         data_dict['{so_dien_thoai}'] = benh_nhan.get_so_dien_thoai()
         data_dict['{dia_chi}'] = benh_nhan.get_dia_chi()
-        data_dict['{thoi_gian_thanh_toan}'] = f"{thoi_gian_thanh_toan.strftime('%H:%m')} Ngày {thoi_gian_thanh_toan.strftime('%d')} Tháng {thoi_gian_thanh_toan.strftime('%m')} Năm {thoi_gian_thanh_toan.strftime('%Y')}"
+        data_dict['{thoi_gian_thanh_toan}'] = f"Ngày {thoi_gian_thanh_toan.strftime('%d')} Tháng {thoi_gian_thanh_toan.strftime('%m')} Năm {thoi_gian_thanh_toan.strftime('%Y')}"
         data_dict['{tong_tien}'] = "{:,}".format(int(total_spent))
         data_dict['{tong_tien_bao_hiem}'] = "{:,}".format(int(tong_bao_hiem))
         data_dict['{nguoi_thanh_toan}'] = request.user.ho_ten.upper()
@@ -1452,7 +1470,7 @@ def hoa_don_thuoc(request, **kwargs):
     data_dict['{tong_tien_bao_hiem}'] = bao_hiem_thuoc_str
     data_dict['{tien_thanh_toan}'] = thanh_toan_thuoc_str
     data_dict['{nguoi_thanh_toan}'] = nguoi_thuc_hien
-    data_dict['{thoi_gian_thanh_toan}'] = f"{thoi_gian_thanh_toan.strftime('%H:%m')} Ngày {thoi_gian_thanh_toan.strftime('%d')} Tháng {thoi_gian_thanh_toan.strftime('%m')} Năm {thoi_gian_thanh_toan.strftime('%Y')}"
+    data_dict['{thoi_gian_thanh_toan}'] = f"Ngày {thoi_gian_thanh_toan.strftime('%d')} Tháng {thoi_gian_thanh_toan.strftime('%m')} Năm {thoi_gian_thanh_toan.strftime('%Y')}"
 
     data = { 
         'phong_chuc_nang': phong_chuc_nang,
@@ -1539,7 +1557,7 @@ def don_thuoc(request, **kwargs):
     data_dict['{benh_nhan}'] = benh_nhan
     data_dict['{so_dien_thoai}'] = so_dien_thoai
     data_dict['{dia_chi}'] = dia_chi
-    data_dict['{thoi_gian_thanh_toan}'] = f"{thoi_gian_thanh_toan.strftime('%H:%m')} Ngày {thoi_gian_thanh_toan.strftime('%d')} Tháng {thoi_gian_thanh_toan.strftime('%m')} Năm {thoi_gian_thanh_toan.strftime('%Y')}"
+    data_dict['{thoi_gian_thanh_toan}'] = f"Ngày {thoi_gian_thanh_toan.strftime('%d')} Tháng {thoi_gian_thanh_toan.strftime('%m')} Năm {thoi_gian_thanh_toan.strftime('%Y')}"
     data_dict['{nguoi_thanh_toan}'] = nguoi_thanh_toan
 
     data = {
@@ -1586,14 +1604,15 @@ class BatDauChuoiKhamToggle(APIView):
         phan_khoa_kham = PhanKhoaKham.objects.get(id=id_phan_khoa)
         chuoi_kham = phan_khoa_kham.chuoi_kham
         trang_thai_chuoi_kham = TrangThaiChuoiKham.objects.get_or_create(trang_thai_chuoi_kham="Đang Thực Hiện")[0]
-        trang_thai_phan_khoa = TrangThaiKhoaKham.objects.get_or_create(trang_thai_khoa_kham="Đang Thực Hiện")[0]
-
+        trang_thai_phan_khoa = TrangThaiKhoaKham.objects.get_or_create(trang_thai_khoa_kham="Hoàn Thành")[0]
+        priotity = chuoi_kham.phan_khoa_kham.all().aggregate(Max('priority'))
         now = timezone.localtime(timezone.now())
         if phan_khoa_kham.priority == 1:
             chuoi_kham.thoi_gian_bat_dau = now
             chuoi_kham.trang_thai = trang_thai_chuoi_kham
             phan_khoa_kham.thoi_gian_bat_dau = now
             phan_khoa_kham.trang_thai = trang_thai_phan_khoa
+            phan_khoa_kham.thoi_gian_ket_thuc = now
             chuoi_kham.save()
             phan_khoa_kham.save()
             dich_vu = phan_khoa_kham.dich_vu_kham.ten_dvkt
@@ -1616,8 +1635,37 @@ class BatDauChuoiKhamToggle(APIView):
             )
             
             return HttpResponse(json.dumps(response), content_type="application/json, charset=utf-8")
+
+        elif phan_khoa_kham.priority == priotity['priority__max']:
+            chuoi_kham.thoi_gian_ket_thuc = now
+            phan_khoa_kham.thoi_gian_bat_dau = now
+            phan_khoa_kham.thoi_gian_ket_thuc = now
+            chuoi_kham.trang_thai = trang_thai_chuoi_kham
+            phan_khoa_kham.trang_thai = trang_thai_phan_khoa
+            chuoi_kham.save()
+            phan_khoa_kham.save()
+            dich_vu = phan_khoa_kham.dich_vu_kham.ten_dvkt
+            from actstream import action
+            action.send(request.user, verb='bắt đầu khám', action_object=phan_khoa_kham.dich_vu_kham, target=phan_khoa_kham.benh_nhan)
+
+            response = {'status': '200', 'message': f'Bắt Đầu Chuỗi Khám, Dịch Vụ Khám Đầu Tiên: {dich_vu}', 'time': f'{now}'}
+            
+            channel_layer = get_channel_layer()
+            async_to_sync(channel_layer.group_send)(
+                f"user_{phan_khoa_kham.benh_nhan.id}", {
+                    'type':'checkup_process_info'
+                }
+            )
+            async_to_sync(channel_layer.group_send)(
+                f"funcroom_service", {
+                    'type': 'funcroom_info'
+                }
+            )
+            
+            return HttpResponse(json.dumps(response), content_type="application/json, charset=utf-8")
         else:
             phan_khoa_kham.thoi_gian_bat_dau = now
+            phan_khoa_kham.thoi_gian_ket_thuc = now
             chuoi_kham.trang_thai = trang_thai_chuoi_kham
             phan_khoa_kham.trang_thai = trang_thai_phan_khoa
             chuoi_kham.save()
@@ -1905,6 +1953,7 @@ class ThanhToanHoaDonDichVuToggle(APIView):
         hoa_don_dich_vu.tong_tien = tong_tien
         hoa_don_dich_vu.discount  = discount
         hoa_don_dich_vu.nguoi_thanh_toan = request.user
+        
         hoa_don_dich_vu.save()
 
         # Set trạng thái chuỗi khám
@@ -2852,12 +2901,11 @@ def them_phong_chuc_nang(request):
 def them_pcn_kem_dich_vu(request):
     if request.method == "POST":
         ten_phong_chuc_nang = request.POST.get("ten_phong_chuc_nang")
-        id_bac_si           = request.POST.get('bac_si_phu_trach') # phan nay la phan id bac si m gui len o template, dat ten nao thi tuy
+        # id_bac_si           = request.POST.get('bac_si_phu_trach') # phan nay la phan id bac si m gui len o template, dat ten nao thi tuy
         request_data        = request.POST.get('data')
         data                = json.loads(request_data)
- 
-        bac_si_phu_trach = User.objects.get(id=id_bac_si)
-        phong_chuc_nang = PhongChucNang.objects.create(ten_phong_chuc_nang=ten_phong_chuc_nang, bac_si_phu_trach=bac_si_phu_trach)
+
+        phong_chuc_nang = PhongChucNang.objects.create(ten_phong_chuc_nang=ten_phong_chuc_nang)
 
         content_type = ContentType.objects.get_for_model(PhongChucNang)
 
@@ -2871,18 +2919,19 @@ def them_pcn_kem_dich_vu(request):
                 content_type=content_type
             )
             new_group.permissions.add(permission)
-        
-        list_id_dich_vu_kham = []
- 
-        for obj in data:
-            id = obj['obj']['id']
-            list_id_dich_vu_kham.append(id) # lay tat ca id cua dich vu kham va append vao list
- 
-        danh_sach_dich_vu = DichVuKham.objects.filter(id__in=list_id_dich_vu_kham) # filter tat ca dich vu co id nam trong               list_id_dich_vu_kham
 
-        for dich_vu in danh_sach_dich_vu:
-            dich_vu.phong_chuc_nang = phong_chuc_nang # cap nhat field phong_chuc_nang cho tung dich_vu
-        DichVuKham.objects.bulk_update(danh_sach_dich_vu, ['phong_chuc_nang']) # update tat ca cac ban ghi o tren bang 1 query
+        if data:
+            list_id_dich_vu_kham = []
+    
+            for obj in data:
+                id = obj['obj']['id']
+                list_id_dich_vu_kham.append(id) # lay tat ca id cua dich vu kham va append vao list
+    
+            danh_sach_dich_vu = DichVuKham.objects.filter(id__in=list_id_dich_vu_kham) # filter tat ca dich vu co id nam trong               list_id_dich_vu_kham
+
+            for dich_vu in danh_sach_dich_vu:
+                dich_vu.phong_chuc_nang = phong_chuc_nang # cap nhat field phong_chuc_nang cho tung dich_vu
+            DichVuKham.objects.bulk_update(danh_sach_dich_vu, ['phong_chuc_nang']) # update tat ca cac ban ghi o tren bang 1 query
         
         response = {
             'status': 200,
@@ -6472,6 +6521,7 @@ def hoan_thanh_kham(request):
             chuoi_kham.trang_thai = trang_thai_chuoi_kham
             lich_hen.trang_thai = trang_thai_lich_hen
             lich_hen.thanh_toan_sau = False
+            lich_hen.thoi_gian_ket_thuc = timezone.localtime(timezone.now())
             chuoi_kham.save()
             lich_hen.save()
 
@@ -6509,6 +6559,7 @@ def hoan_thanh_kham_hoa_don(request):
 
             chuoi_kham.trang_thai = trang_thai_chuoi_kham
             lich_hen.trang_thai = trang_thai_lich_hen
+            lich_hen.thoi_gian_ket_thuc = timezone.localtime(timezone.now())
             lich_hen.thanh_toan_sau = False
             if hoa_don_dich_vu is not None:
                 hoa_don_dich_vu.tong_tien = 0
@@ -6554,6 +6605,7 @@ def hoan_thanh_chuoi_kham_hoa_don_thuoc(request):
             trang_thai_lich_hen = TrangThaiLichHen.objects.get_or_create(ten_trang_thai = "Hoàn Thành")[0]
             chuoi_kham.trang_thai = trang_thai_chuoi_kham
             lich_hen.trang_thai = trang_thai_lich_hen
+            lich_hen.thoi_gian_ket_thuc = timezone.localtime(timezone.now())
             lich_hen.save()
             chuoi_kham.save()
             don_thuoc.trang_thai = trang_thai_don_thuoc
@@ -6613,3 +6665,72 @@ def menu_view(request):
     }
 
     return render(request, 'menu.html', context)
+
+def xoa_phan_khoa_kham(request):
+    if request.method == "POST":
+        id = request.POST.get('id')
+        try:
+            phan_khoa = PhanKhoaKham.objects.get(id=id)
+            phan_khoa.delete()
+            response = {
+                'status': 200,
+                'message': 'Đã Thu Hồi Chỉ Định'
+            }
+        except PhanKhoaKham.DoesNotExist:
+            response = {
+                'status': 404,
+                'message': 'Không Tìm Thấy Chỉ Định'
+            }
+        return HttpResponse(json.dumps(response), content_type="application/json, charset=utf-8")
+
+    else:
+        response = {
+            'status': 404,
+            'message': "Xảy Ra Lỗi Trong Quá Trình Thực Hiện"
+        }
+        return HttpResponse(json.dumps(response), content_type="application/json, charset=utf-8")
+
+def chinh_sua_phieu_ket_qua_view(request, **kwargs):
+    phong_chuc_nang = PhongChucNang.objects.all()
+    id_phan_khoa = kwargs.get('id_phan_khoa')
+    try:
+        phan_khoa = PhanKhoaKham.objects.get(id=id_phan_khoa)
+        ket_qua_chuyen_khoa = phan_khoa.ket_qua_chuyen_khoa.all().last()
+        html_ket_qua = ket_qua_chuyen_khoa.html_ket_qua.all().last()
+
+    except PhanKhoaKham.DoesNotExist:
+        pass
+    context = {
+        'phong_chuc_nang': phong_chuc_nang,
+        'mau_phieu': html_ket_qua.noi_dung,
+        'ket_qua_chuyen_khoa': ket_qua_chuyen_khoa,
+        'phan_khoa_kham': phan_khoa,
+        'html_ket_qua': html_ket_qua
+    }
+    return render(request, 'bac_si_chuyen_khoa/update_phieu_ket_qua.html', context)
+
+def store_update_phieu_ket_qua(request):
+    if request.method == "POST":
+        id_html_ket_qua = request.POST.get('id_html_ket_qua')
+        noi_dung = request.POST.get('noi_dung')
+        try:
+            html_ket_qua = HtmlKetQua.objects.get(id=id_html_ket_qua)
+            html_ket_qua.noi_dung = noi_dung
+            html_ket_qua.save()
+            response = {
+                'status': 200,
+                'message': "Cập Nhật Phiếu Kết Quả Thành Cống"
+            }
+        except HtmlKetQua.DoesNotExist:
+            response = {
+                'status': 404, 
+                'message': "Không Tìm Thấy Phiếu Kết Quả"
+            }
+        return HttpResponse(json.dumps(response), content_type="application/json, charset=utf-8")
+    else:
+        response = {
+            'status': 404,
+            'message': "Xảy Ra Lỗi Trong Quá Trình Xử Lí"
+        }
+        return HttpResponse(json.dumps(response), content_type="application/json, charset=utf-8")
+

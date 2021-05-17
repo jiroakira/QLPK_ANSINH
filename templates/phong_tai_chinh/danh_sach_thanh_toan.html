@@ -674,14 +674,24 @@ var KTDatatableRemoteAjaxDemo = function() {
                 autoHide: false,
                 template: function(row) {
                     if (row.thanh_toan_sau != true) {
+                        if (row.trang_thai_thanh_toan == "True") {
 
-                        return `
-                            {% if perms.finance.can_checkout_service_receipt %}
-                            <a href="/phong_tai_chinh/hoa_don_dich_vu/${row.id}" class="btn btn-sm btn-clean mr-2" title="Edit details">
-                                Hóa Đơn
-                            </a>
-                            {% endif %}
-                        `;
+                            return `
+                                {% if perms.finance.can_checkout_service_receipt %}
+                                <a href="/phong_tai_chinh/hoa_don_dich_vu/${row.id}" class="btn btn-sm btn-clean mr-2" title="Edit details">
+                                    Xem Lại
+                                </a>
+                                {% endif %}
+                            `;
+                        } else if (row.trang_thai_thanh_toan == "False") {
+                            return `
+                                {% if perms.finance.can_checkout_service_receipt %}
+                                <a href="/phong_tai_chinh/hoa_don_dich_vu/${row.id}" class="btn btn-sm btn-clean mr-2" title="Edit details">
+                                    Hóa Đơn
+                                </a>
+                                {% endif %}
+                            `;
+                        }
                     } else {
                         return ''
                     }

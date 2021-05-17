@@ -55,7 +55,7 @@
                             <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
                                 <!--begin::Navigation-->
                                 <ul class="navi flex-column navi-hover py-2">
-                                    {% if perms.clinic.can_add_appointment %}
+                                    {% comment %} {% if perms.clinic.can_add_appointment %}
                                     <li class="navi-item">
                                         <a href="javascript:;" class="navi-link addLichHenKhamBtn">
                                             <span class="navi-icon">
@@ -64,7 +64,7 @@
                                             <span class="navi-text">Thêm Lịch Hẹn Khám</span>
                                         </a>
                                     </li>
-                                    {% endif %}
+                                    {% endif %} {% endcomment %}
 
                                     <li class="navi-item">
                                         <a href="javascript:;" class="navi-link">
@@ -116,9 +116,9 @@
                                             <label class="mr-3 mb-0 d-none d-md-block text-center">Trạng Thái</label>
                                             <select class="form-control" id="kt_datatable_search_status">
                                                     <option value="">Tất Cả</option>
-                                                {% for status in trang_thai %}
-                                                    <option value="{{ status.id }}">{{ status.ten_trang_thai }}</option>
-                                                {% endfor %}
+                                                    {% for status in trang_thai %}
+                                                        <option value="{{ status.id }}">{{ status.ten_trang_thai }}</option>
+                                                    {% endfor %}
                                             </select>
                                         </div>
                                     </div>
@@ -288,7 +288,7 @@ var KTDatatableRemoteAjaxDemo = function() {
                             if (typeof raw.data !== 'undefined') {
                                 dataSet = raw.data;
                             }
-                            {% comment %} console.log(dataSet) {% endcomment %}
+                            console.log(dataSet);
                             return dataSet;
                         },
                         params: {
@@ -299,8 +299,8 @@ var KTDatatableRemoteAjaxDemo = function() {
                 },
                 pageSize: 10,
                 serverPaging: true,
-                // serverFiltering: true,
-                //serverSorting: true,
+                serverFiltering: true,
+                serverSorting: true,
                 saveState: false,
             },
 
@@ -317,14 +317,14 @@ var KTDatatableRemoteAjaxDemo = function() {
 
             search: {
                 input: $('#kt_datatable_search_query'),
-                key: 'generalSearch'
+                key: 'search'
             },
 
             // columns definition
             columns: [{
                 field: 'id',
                 title: 'Stt',
-                sortable: 'asc',
+                sortable: true,
                 width: 30,
                 type: 'number',
                 selector: false,
@@ -333,13 +333,16 @@ var KTDatatableRemoteAjaxDemo = function() {
                 field: 'benh_nhan.ho_ten',
                 autoHide: false,
                 title: 'Bệnh Nhân',
+                sortable: false,
             }, {
                 field: 'benh_nhan.so_dien_thoai',
                 autoHide: false,
                 title: 'Số Điện Thoại',
+                sortable: false,
             }, {
                 field: 'loai_dich_vu',
                 title: 'Loại Dịch Vụ',
+                sortable: false,
                 template: function(row){
                     if(row.loai_dich_vu == "kham_sua_khoe"){
                         return '<span class="label font-weight-bold label-2x label-light-primary label-inline"> Khám Sức Khỏe </span>'
@@ -378,9 +381,11 @@ var KTDatatableRemoteAjaxDemo = function() {
             }, {
                 field: 'nguoi_phu_trach.ho_ten',
                 title: 'Người Phụ Trách', 
+                sortable: false,
             }, {
                 field: 'ly_do',
-                title: 'Lý Do Khám', 
+                title: 'Lý Do Khám',
+                sortable: false,
                 template: function(row){
                     if(row.ly_do == null){
                         return '<span class="label font-weight-bold label-2x label-light-info label-inline"> Chưa Có Thông Tin </span>';
@@ -391,6 +396,7 @@ var KTDatatableRemoteAjaxDemo = function() {
             }, {
                 field: 'trang_thai.id',
                 title: 'Trạng Thái',
+                sortable: false,
                 // callback function support for column rendering
                 template: function(row) {
                     var status = {
@@ -509,32 +515,28 @@ var KTDatatableRemoteAjaxDemo = function() {
                 textAlign: 'center',
                 autoHide: false,
                 template: function(row) {
-                    var trang_thai = row.trang_thai.id
-                    if(trang_thai == 5 || trang_thai == 4 || trang_thai == 9){
-                        return `
-                            {% if perms.clinic.can_delete_appointment %}
-                            <a href="javascript:;" class="btn-cancel btn btn-clean btn-icon" data-id="${row.id}" data-ten="${row.benh_nhan.ho_ten}" title="Hủy lịch hẹn bệnh nhân ${row.benh_nhan.ho_ten}">
-                                <i class="la la-trash-alt icon-lg text-danger"></i>
-                            </a>
-                            {% endif %}
-                        `;
-                    }else{
-                        return '<span class="text text-info"></span>'
-                    }
+                    return `
+                        {% if perms.clinic.can_delete_appointment %}
+                        <a href="javascript:;" class="btn-cancel btn btn-clean btn-icon" data-id="${row.id}" data-ten="${row.benh_nhan.ho_ten}" title="Hủy lịch hẹn bệnh nhân ${row.benh_nhan.ho_ten}">
+                            <i class="la la-trash-alt icon-lg text-danger"></i>
+                        </a>
+                        {% endif %}
+                    `;
+                    
                 },
             },],
 
         });
 
 		$('#kt_datatable_search_status').on('change', function() {
-            datatable.search($(this).val().toLowerCase(), 'trang_thai.id');
+            datatable.search($(this).val(), 'trang_thai');
         });
 
         $('#btn-reload').on('click', function(){
             $('#kt_datatable').KTDatatable('reload');
         })
 
-        $('#kt_datatable_search_status, #kt_datatable_search_type').selectpicker();
+        $('#kt_datatable_search_status').selectpicker();
 
     };
 

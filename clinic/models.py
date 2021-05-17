@@ -854,6 +854,16 @@ class ChuoiKham(models.Model):
         else:
             return False
 
+    def get_tong_tien_phan_khoa(self):
+        total = 0
+        for phan_khoa in self.phan_khoa_kham.all():
+            total += phan_khoa.get_gia_dich_vu()
+        return total 
+
+class InPaidBilledManager(models.Manager):
+    def get_queryset(self):
+        return super(InPaidBilledManager, self).get_queryset().filter(check_exists_in_paid_bill=True)
+
 class PhanKhoaKham(models.Model):
     benh_nhan = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     dich_vu_kham = models.ForeignKey(DichVuKham, on_delete=models.SET_NULL, null=True, blank=True, related_name="phan_khoa_dich_vu")
@@ -870,6 +880,9 @@ class PhanKhoaKham(models.Model):
 
     thoi_gian_tao = models.DateTimeField(null=True, blank=True, auto_now_add=True)
     thoi_gian_cap_nhat = models.DateTimeField(null=True, blank=True, auto_now=True)
+
+    objects = models.Manager()
+    in_paid_bill = InPaidBilledManager()
 
     class Meta:
         verbose_name = "Phân Khoa Khám"
@@ -987,6 +1000,24 @@ class PhanKhoaKham(models.Model):
         else:
             return False
     
+    def get_gia_dich_vu(self):
+        if self.dich_vu_kham is not None:
+            tong_tien = int(self.dich_vu_kham.don_gia)
+        else:
+            tong_tien = 0
+
+        return tong_tien
+
+ 
+    def check_exists_in_paid_bill(self):
+        flag = False
+        if self.chuoi_kham is not None:
+            if self.chuoi_kham.hoa_don_dich_vu is not None:
+                if self.chuoi_kham.hoa_don_dich_vu.tong_tien is not None:
+                    flag = True
+        return flag
+
+
 @receiver(post_save, sender=PhanKhoaKham)
 def send_func_room_info(sender, instance, created, **kwargs):
     if created:
@@ -1155,6 +1186,10 @@ class FileKetQuaChuyenKhoa(models.Model):
     class Meta:
         verbose_name = "File Kết Quả Chuyên Khoa"
         verbose_name_plural = "File Kết Quả Chuyên Khoa"
+
+from django.db.models import CharField
+from django.db.models.functions import Lower
+CharField.register_lookup(Lower)
 
 class BaiDang(models.Model):
     file_prepend = 'bai_dang/'

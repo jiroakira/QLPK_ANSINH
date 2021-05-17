@@ -63,12 +63,7 @@
                                             <span class="form-text text-muted">Mã kết quả có dạng : <code>"Mã PCN" - "Tên Bệnh Nhân" - Thời gian khám</code></span>
                                         </div>
                                     </div>
-                                    {% comment %} <div class="form-group row">
-                                        <label class="col-lg-2 col-form-label text-lg-right">Mô tả:</label>
-                                        <div class="col-lg-10">
-                                            <input type="text" id="mo_ta" class="form-control" placeholder="Nhập mô tả bệnh" name="mo_ta" />       
-                                        </div>
-                                    </div> {% endcomment %}
+                                    
                                     <div class="form-group row">
                                         <label class="col-lg-2 col-form-label text-lg-right">Chụp ảnh:</label>
                                         <div class="col-lg-10">
@@ -79,17 +74,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-2 col-form-label text-lg-right">Chọn mẫu phiếu:</label>
-                                        <div class="col-lg-10">
-                                            <select class="form-control selectpicker" id="selectMauPhieu" data-live-search="true" name="param">
-                                                <option value="" selected disabled>Chọn mẫu phiếu</option>
-                                                {% for mp in danh_sach_mau_phieu %}
-                                                    <option value="{{mp.codename}}">{{mp.ten_mau}}</option>
-                                                {% endfor %}      
-                                            </select>
-                                        </div>
-                                    </div>
+
                                     <div class="form-group row">
                                         <label class="col-lg-2 col-form-label text-lg-right">Kết quả:</label>
                                         <div class="col-lg-10">
@@ -106,9 +91,8 @@
                                 <div class="row">
                                     <div class="col-lg-3"></div>
                                     <div class="col-lg-9">
-                                        <button type="button" id='change_assignment' data-id-phan-khoa="{{id_phan_khoa}}" data-id-chuoi-kham="{{id_chuoi_kham}}" data-id-phong-chuc-nang="{{id_phong_chuc_nang}}" class="btn btn-info mr-2">Thay đổi chỉ định</button>
                                         <button type="reset" id='cancel_button' class="btn btn-light-primary">Hủy</button>
-                                        <button type="button" id="upload" data-id-phan-khoa="{{id_phan_khoa}}" data-id-chuoi-kham="{{id_chuoi_kham}}" data-id-phong-chuc-nang="{{id_phong_chuc_nang}}" class="dropzone-upload btn btn-primary mr-2">Lưu</button>
+                                        <button type="button" id="upload" data-id-html-ket-qua="{{html_ket_qua.id}}" data-id-phan-khoa="{{phan_khoa_kham.id}}" data-id-phong-chuc-nang="{{phan_khoa_kham.dich_vu_kham.phong_chuc_nang.id}}" class="dropzone-upload btn btn-primary mr-2">Lưu</button>
                                     </div>
                                 </div>
                             </div>
@@ -278,39 +262,12 @@
 
 <script>
 // Class definition
-    var lstData = [];
-    var lstCheckbox = {};
-    var list_data_2 = [];
-
-    {% comment %}   
-    var benh_nhan = {{ benh_nhan|safe }};
-    var dia_chi = {{ dia_chi|safe }};
-    var tuoi = {{ tuoi|safe }};
-    var gioi_tinh = {{ gioi_tinh|safe }};
-    var bac_si_chuyen_khoa = {{ bac_si_chuyen_khoa|safe }}
-    var bac_si_lam_sang = {{ bac_si_lam_sang|safe }}
-    var ngay_kham = {{ ngay_kham|safe }} {% endcomment %}
-
-    const data_mau_phieu = {{ data|safe }};
-
+    var html = `{{ mau_phieu|safe }}`
+    var ma_ket_qua = `{{ ket_qua_chuyen_khoa.ma_ket_qua|safe }}`
     var KTFormControls = function () {
         // Private functions
-        var fillPatientInfo = function(id_div) {
-            var id_div = id_div
-
-            for (const [key, value] of Object.entries(data_mau_phieu)) {
-                $(`${id_div} table tbody td:contains(${key})`).each(function() {
-                    var thisContent = $(this).html();
-                    var formattedContent = thisContent.replace(key, value)
-                    var td = `<td>${formattedContent}</td>`
-                    $(this).replaceWith(td);
-                });
-            }
-        }
 
         var _initValidate = function () {
-            fillPatientInfo('#divMauPhieu')
-            var html = $("#divMauPhieu").html()
 
             $('.summernote').summernote({
                 toolbar: [
@@ -381,9 +338,8 @@
 
             });
 
-
-
             $('.summernote').summernote("code", html);
+            $('#ma_ket_qua').val(ma_ket_qua)
 
         }
 
@@ -391,22 +347,22 @@
             
             $(document).on('click', '#upload', function() {
                 var formData = new FormData()
-                var id_phan_khoa = $(this).data('id-phan-khoa')
-                var id_chuoi_kham = $(this).data('id-chuoi-kham')
+                var id_html_ket_qua = $(this).attr('data-id-html-ket-qua')
+         
                 var ma_ket_qua = $('#ma_ket_qua').val()
-                {% comment %} var mo_ta = $('#mo_ta').val() {% endcomment %}
+       
                 var content = $(".summernote").summernote("code")
 
-                formData.append('id_phan_khoa', id_phan_khoa)
-                formData.append('id_chuoi_kham', id_chuoi_kham)
+                formData.append('id_html_ket_qua', id_html_ket_qua)
+               
                 formData.append('noi_dung', content)
-                {% comment %} formData.append('mo_ta', mo_ta) {% endcomment %}
+                
                 formData.append('ma_ket_qua', ma_ket_qua)
                 formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
 
                 $.ajax({
                     type: "POST",
-                    url: "{% url 'store_ket_qua_chuyen_khoa_html' %}",
+                    url: "{% url 'store_update_phieu_ket_qua' %}",
                     data: formData,
                     cache: false,
                     processData: false,
@@ -541,357 +497,6 @@
 
         $("#cancel_button").on('click', function() {
             window.history.back()
-        })
-
-        $(document).on('click', '#change_assignment', function(){
-            $('#phan_khoa_modal').modal('show');
-        })
-
-        $('#phan_khoa_modal').on('shown.bs.modal', function() {
-            var ajax_data;
-            var id_chuoi_kham = $("#change_assignment").data('id-chuoi-kham');
-
-            var options = {
-                // datasource definition
-                data: {
-                    type: 'remote',
-                    source: { 
-                        read: {
-                            url: HOST_URL + '/api/dich_vu_kham/',
-                            method: 'GET',
-                        },
-                    },
-                    pageSize: 10,
-                    serverPaging: true,
-                    serverFiltering: true,
-                    serverSorting: false,
-                    saveState: false,
-                },
-
-                // layout definition
-                layout: {
-                    scroll: false, // enable/disable datatable scroll both horizontal and
-                    footer: false // display/hide footer
-                },
-
-                // column sorting
-                sortable: true,
-
-                pagination: true,
-
-                // columns definition
-                columns: [{
-                    field: 'id',
-                    title: '#',
-                    sortable: false,
-                    width: 20,
-                    selector: {
-                        class: 'dvkt_checkbox',
-                    },
-                    textAlign: 'center',
-                }, {
-                    field: 'ten_dvkt',
-                    title: 'Tên Dịch Vụ',
-                    template: function(row) {
-                        return row.ten_dvkt
-                    }
-                }, {
-                    field: 'quyet_dinh',
-                    title: 'Quyết Định',
-                }, {
-                    field: 'cong_bo',
-                    title: 'Công Bố',
-                }, {
-                    field: 'bac_si_phu_trach.ho_ten',
-                    title: 'Bác Sĩ Phụ Trách',
-                    
-                }, {
-                    field: 'phong_chuc_nang.ten_phong_chuc_nang',
-                    title: 'Phòng Chức Năng',
-                    textAlign: 'center',
-                    autoHide: false
-                }, {
-                    field: 'bao hiem',
-                    title: 'Dùng Bảo Hiểm',
-                    textAlign: 'center',
-                    autoHide: false,
-                    template: function(row){
-                        if(row.bao_hiem_dich_vu == "True"){
-                            return '<span class="label font-weight-bold label-lg label-light-primary label-inline">Có áp dụng</span>'
-                        }else{
-                            return '<span class="label font-weight-bold label-lg label-light-warning label-inline">Không áp dụng</span>'
-                        }
-                    }
-                }]
-            };
-            // enable extension
-            options.extensions = {
-                // boolean or object (extension options)
-                checkbox: true,
-            };
-
-            options.search = {
-                input: $('#kt_datatable_search_query_2'),
-                key: 'search'
-            };
-            
-            var datatable = $('#kt_datatable').KTDatatable(options);
-            
-            $.ajax({
-                type: "GET",
-                url: "{% url 'danh_sach_phan_khoa_chuoi_kham' %}",
-                data: {
-                    id_chuoi_kham : $("#change_assignment").data('id-chuoi-kham'),
-                },
-                dataType: 'json',
-                success: function (response) {
-                    var response_data = response.data
-                    console.log(response_data)
-                    var tr = ''
-                    console.log(lstData)
-
-                    for (var i = 0; i < response_data.length; i++) {
-                        var checkbox
-
-                        if (response_data[i].obj.bao_hiem == true) {
-                            checkbox = `<input type="checkbox" id="checkbox_${response_data[i].obj.id}" class="big-checkbox" checked data-checked="True" data-unchecked="False">`
-                        } else {
-                            checkbox = `<input type="checkbox" id="checkbox_${response_data[i].obj.id}" class="big-checkbox" data-checked="True" data-unchecked="False">`
-                        }
-
-                        var initTr = `
-                            <tr id="tr_${response_data[i].obj.id}" class="${response_data[i].obj.id}" data-id = "${response_data[i].obj.id}" name="true" data-checked="True" data-unchecked="False">
-                                <td>
-                                    ${response_data[i].obj.ma_dvkt}
-                                </td>
-                                <td>
-                                    ${response_data[i].obj.ten_dvkt}
-                                </td>
-                                <td>
-                                    ${response_data[i].obj.phong_chuc_nang.ten_phong_chuc_nang}
-                                </td>
-                                
-                                <td>
-                                    ${checkbox}
-                                </td>
-
-                            </tr>
-                        `
-                        tr += initTr
-                        lstData.push(response_data[i])
-                        datatable.setActive(cell=String(response_data[i].obj.id))
-                    }
-                    $('#kt_datatable_3 tbody').html(tr)
-                    console.log(lstData)
-                },
-                error: function (response) {                       
-                }
-            })
-
-            datatable.on('click', 'tbody input[type="checkbox"]', function () {
-                $(this).toggleClass('selected');
-                // console.log($(this).val())
-                var objList = [];
-                
-                if($(this).is(":checked")){
-                    var trVals = $(this).closest('tr').data();
-                
-                    delete trVals['row']
-                
-                    lstData.push(trVals)
-                    console.log(trVals)
-                    console.log(lstData)
-                    $(trVals).each(function () {
-                        $('#kt_datatable_3 tbody').append(`
-                            <tr class="${trVals.obj.id}" data-id = "${trVals.obj.id}" name="true" data-checked="True" data-unchecked="False">
-                                <td>
-                                ${trVals.obj.ma_dvkt}
-                                </td>
-                                <td>
-                                ${trVals.obj.ten_dvkt}
-                                </td>
-                                <td>
-                                ${trVals.obj.phong_chuc_nang.ten_phong_chuc_nang}
-                                </td>
-                                <td>
-                                    <input type="checkbox" id="${trVals.obj.id}" class="big-checkbox" data-checked="True" data-unchecked="False">
-                                </td>
-                            </tr>
-                        `);
-                    })
-
-                } else {
-                    var trVals = $(this).closest('tr').data();
-                    
-                    delete trVals['row']
-
-                    $(`.${trVals.obj.id}`).remove();
-                    
-                    lstData = lstData.filter(function(item) {
-                        var item = item
-                        delete item['obj']['bao_hiem']
-                    
-                        return JSON.stringify(item) !== JSON.stringify(trVals);
-                    });
-
-                    console.log(lstData)
-                
-                    // replacePhanKhoaHtml(trVals)
-                    {% comment %} phanKhoaHtml = phanKhoaHtml.replace(`
-                            <tr class="${trVals.obj.id}">
-                                <td colspan="4" rowspan="1" style="border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:1px solid black; height:28px; text-align:left; vertical-align:bottom; white-space:nowrap"><span style="color:#000000; font-family:Times New Roman, serif"><span style="font-size:16px">${trVals.obj.ten_dvkt}</span></span></td>
-                                <td colspan="7" rowspan="1" style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:1px solid black; text-align:center; vertical-align:bottom; white-space:nowrap"><span style="font-size:16px"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="color:black">${trVals.obj.phong_chuc_nang.ten_phong_chuc_nang}</span></span></span></td>
-                                <td class="so-luong-dang-cho" colspan="7" rowspan="1" style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:1px solid black; text-align:center; vertical-align:bottom; white-space:nowrap"><span style="font-size:16px"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="color:black">${so_luong_dang_cho}</span></span></span></td>
-                            </tr>
-                            `, "") {% endcomment %}
-
-                }
-            });
-
-            $('#kt_datatable_3').on('click', 'tbody input[type="checkbox"]', function () {
-                if($(this).is(":checked")){
-                    lstCheckbox = {};
-                    getCheckbox();
-                    console.log(lstCheckbox);
-                } else {
-                    lstCheckbox = {}; 
-                    getCheckbox();
-                    console.log(lstCheckbox);
-                }
-            })
-
-            function postData(id_chuoi_kham){
-                var id_chuoi_kham = id_chuoi_kham
-                var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
-
-                function csrfSafeMethod(method) {
-                    // these HTTP methods do not require CSRF protection
-                    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-                }
-
-                $.ajaxSetup({
-                    beforeSend: function(xhr, settings) {
-                        function getCookie(name) {
-                            var cookieValue = null;
-                            if (document.cookie && document.cookie != '') {
-                                var cookies = document.cookie.split(';');
-                                for (var i = 0; i < cookies.length; i++) {
-                                    var cookie = jQuery.trim(cookies[i]);
-                                    // Does this cookie string begin with the name we want?
-                                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
-                                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                                        break;
-                                    }
-                                }
-                            }
-                            return cookieValue;
-                        }
-                        if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
-                            // Only send the token to relative URLs i.e. locally.
-                            xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
-                        }
-                    } 
-                });
-
-                $.ajax({
-                    type: "POST",
-                    url: "{% url 'thay_doi_phan_khoa' %}",
-                    data: {
-                        'data': JSON.stringify(getPostData()),
-                        'csrfmiddlewaretoken': csrftoken,
-                        'id_chuoi_kham': id_chuoi_kham,
-                    },
-                    dataType: 'json',
-                    safe: false,
-                    success: function(response) {
-                        if (response.status == 200) {
-                            toastr.success(response.message, "Thành Công")
-                            location.reload();
-                        
-                        } else if (response.status == 404) {
-                            toastr.warning(response.message, "Lỗi")
-                        }
-
-                    },
-                    error: function() {
-                        toastr.warning("Phân Khoa Không Thành Công", "Lỗi")                                                                                                                         
-                    }
-                });
-            }
-
-            function getPostData(){
-                var rowData = lstData;
-                var checkBoxObj = lstCheckbox;
-                for (const each in checkBoxObj) {
-                    for (let i = 0; i < rowData.length; i++) {
-                        if (rowData[i].obj.id == each) {
-                            rowData[i].obj.bao_hiem = checkBoxObj[each];
-                        }
-                    }
-                }
-                console.log(rowData);
-                return rowData;
-            }
-
-            function getCheckbox(){
-                
-                $('#kt_datatable_3 tbody tr').each(function() {
-
-                    var sectionId = $(this).data('id');
-                    console.log(sectionId)
-
-                    $(this).find('input.big-checkbox:checked').each(function() {
-                        console.log($(this).attr('data-checked'));
-                        lstCheckbox[sectionId] = $(this).attr('data-checked');
-                    });
-
-                    $(this).find('input.big-checkbox:not(:checked)').each(function() {
-                        lstCheckbox[sectionId] = $(this).attr('data-unchecked');
-                    });
-                });
-            }
-
-            $("#btn_submit").on('click', function() {
-                var id_chuoi_kham = $(this).data('id-chuoi-kham')
-                getCheckbox();
-                getPostData();
-                postData(id_chuoi_kham);
-            })
-        })
-
-        $("#phan_khoa_modal").on('hidden.bs.modal', function() {
-            lstData = []
-            $("#phan_khoa_modal").removeData('bs.modal')
-            $('#kt_datatable').KTDatatable('destroy')    
-        })
-
-        $('#selectMauPhieu').on('changed.bs.select', function(e, clickedIndex, newValue, oldValue) {
-            var codename = this.value
-            console.log(codename)
-            $.ajax({
-                url        : HOST_URL + '/api/chi_tiet_mau_phieu/',
-                data       : {'codename': codename},
-                success: function(response){
-                    if (response.status == 200) {
-                        var newTableHtml = response.data.noi_dung
-
-                        $("#newTableHtml").html(newTableHtml)
-
-                        fillPatientInfo("#newTableHtml")
-
-                        var html = $("#newTableHtml").html()
-
-                        $('.summernote').summernote("code", html);
-
-                    } else if (response.status == 404){
-                        toastr.warning(response.data, "Xảy Ra Lỗi")
-                    }
-                    
-                },
-                error: function(response){
-                    
-                }
-            })
         })
 
         return {

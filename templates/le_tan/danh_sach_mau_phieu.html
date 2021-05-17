@@ -132,7 +132,7 @@ var KTDatatableModal = function() {
                 pageSize: 10, // display 20 records per page
                 serverPaging: true,
                 serverFiltering: true, 
-                serverSorting: false,
+                serverSorting: true,
                 saveState: false,
             },
 
@@ -164,9 +164,11 @@ var KTDatatableModal = function() {
             }, {
                 field: 'ten_mau',
                 title: 'Tên Mẫu',
+                sortable: true,
             }, {
                 field: 'thoi_gian_tao',
                 title: 'Thời gian tạo',
+                sortable: true,
                 template: function(row) {
                     var date = new Date(Date.parse(row.thoi_gian_tao))
 
@@ -179,6 +181,7 @@ var KTDatatableModal = function() {
             }, {
                 field: 'thoi_gian_cap_nhat',
                 title: 'Thời gian cập nhật',
+                sortable: true,
                 template: function(row) {
                     var date = new Date(Date.parse(row.thoi_gian_cap_nhat))
 

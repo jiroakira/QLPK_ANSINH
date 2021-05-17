@@ -209,7 +209,7 @@ var KTDatatableRemoteAjaxDemo = function() {
             columns: [{
                 field: 'id',
                 title: 'Stt',
-                sortable: 'asc',
+                sortable: false,
                 width: 30,
                 type: 'number',
                 selector: false,
@@ -218,16 +218,20 @@ var KTDatatableRemoteAjaxDemo = function() {
             }, {
                 field: 'benh_nhan.ho_ten',
                 title: 'Tên Bệnh Nhân',
+                sortable: false,
             }, {
                 field: 'bac_si_lam_sang.ho_ten',
                 title: 'Bác Sĩ Lâm Sàng',
+                sortable: false,
             }, {
                 field: 'dich_vu_kham.ten_dvkt',
                 title: 'DVK',
-                autoHide: false
+                autoHide: false,
+                sortable: false,
             }, {
                 field: 'thoi_gian_bat_dau',
                 title: 'Thời Gian Bắt Đầu',
+                sortable: false,
                 template: function(row) {
                     var date = new Date(Date.parse(row.thoi_gian_bat_dau))
 
@@ -240,6 +244,7 @@ var KTDatatableRemoteAjaxDemo = function() {
             }, {
                 field: 'thoi_gian_ket_thuc',
                 title: 'Thời Gian Kết Thúc',
+                sortable: false,
                 template: function(row) {
                     var date = new Date(Date.parse(row.thoi_gian_ket_thuc))
 
@@ -254,6 +259,7 @@ var KTDatatableRemoteAjaxDemo = function() {
                 field: 'trang_thai.id',
                 title: 'Trạng Thái',
                 width: 120,
+                sortable: false,
                 // callback function support for column rendering
                 template: function(row) {
                     var status = {
@@ -325,19 +331,36 @@ var KTDatatableRemoteAjaxDemo = function() {
                             
                         `;
                     }else{
-                        return `
-                            <a href="/phong_chuyen_khoa/${row.dich_vu_kham.id}/benh_nhan/${row.chuoi_kham.id}/upload/${row.id}/" data-id-chuoi-kham="${row.chuoi_kham.id}" data-id-phan-khoa="${row.id}" class="btn btn-sm btn-clean btn-icon" title="Tải lên kết quả khám">
-                                <span class="svg-icon svg-icon-primary svg-icon-2x">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                        if (row.trang_thai.id == 6) {
+                            return `
+                                <button data-id-dich-vu-kham="${row.dich_vu_kham.id}" data-id-chuoi-kham="${row.chuoi_kham.id}" data-id-phan-khoa="${row.id}" class="btn btn-sm btn-clean btn-icon btn-update" title="Cập nhật kết quả khám">
+                                    <span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2020-10-29-133027/theme/html/demo1/dist/../src/media/svg/icons/General/Clipboard.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <rect x="0" y="0" width="24" height="24"/>
-                                            <path d="M3.5,21 L20.5,21 C21.3284271,21 22,20.3284271 22,19.5 L22,8.5 C22,7.67157288 21.3284271,7 20.5,7 L10,7 L7.43933983,4.43933983 C7.15803526,4.15803526 6.77650439,4 6.37867966,4 L3.5,4 C2.67157288,4 2,4.67157288 2,5.5 L2,19.5 C2,20.3284271 2.67157288,21 3.5,21 Z" fill="#000000" opacity="0.3"/>
-                                            <path d="M8.54301601,14.4923287 L10.6661,14.4923287 L10.6661,16.5 C10.6661,16.7761424 10.8899576,17 11.1661,17 L12.33392,17 C12.6100624,17 12.83392,16.7761424 12.83392,16.5 L12.83392,14.4923287 L14.9570039,14.4923287 C15.2331463,14.4923287 15.4570039,14.2684711 15.4570039,13.9923287 C15.4570039,13.8681299 15.41078,13.7483766 15.3273331,13.6563877 L12.1203391,10.1211145 C11.934804,9.91658739 11.6185961,9.90119131 11.414069,10.0867264 C11.4020553,10.0976245 11.390579,10.1091008 11.3796809,10.1211145 L8.1726869,13.6563877 C7.98715181,13.8609148 8.00254789,14.1771227 8.20707501,14.3626578 C8.29906387,14.4461047 8.41881721,14.4923287 8.54301601,14.4923287 Z" fill="#000000"/>
+                                            <path d="M8,3 L8,3.5 C8,4.32842712 8.67157288,5 9.5,5 L14.5,5 C15.3284271,5 16,4.32842712 16,3.5 L16,3 L18,3 C19.1045695,3 20,3.8954305 20,5 L20,21 C20,22.1045695 19.1045695,23 18,23 L6,23 C4.8954305,23 4,22.1045695 4,21 L4,5 C4,3.8954305 4.8954305,3 6,3 L8,3 Z" fill="#000000" opacity="0.3"/>
+                                            <path d="M11,2 C11,1.44771525 11.4477153,1 12,1 C12.5522847,1 13,1.44771525 13,2 L14.5,2 C14.7761424,2 15,2.22385763 15,2.5 L15,3.5 C15,3.77614237 14.7761424,4 14.5,4 L9.5,4 C9.22385763,4 9,3.77614237 9,3.5 L9,2.5 C9,2.22385763 9.22385763,2 9.5,2 L11,2 Z" fill="#000000"/>
+                                            <rect fill="#000000" opacity="0.3" x="7" y="10" width="5" height="2" rx="1"/>
+                                            <rect fill="#000000" opacity="0.3" x="7" y="14" width="9" height="2" rx="1"/>
                                         </g>
-                                    </svg>
-                                </span>
-                            </a>
-                        `;
+                                    </svg><!--end::Svg Icon--></span>
+                                </button>
+                            `;
+                        } else {
+                            return `
+                                <button data-id-dich-vu-kham="${row.dich_vu_kham.id}" data-id-chuoi-kham="${row.chuoi_kham.id}" data-id-phan-khoa="${row.id}" class="btn btn-sm btn-clean btn-icon btn-upload" title="Tải lên kết quả khám">
+                                    <span class="svg-icon svg-icon-primary svg-icon-2x">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <rect x="0" y="0" width="24" height="24"/>
+                                                <path d="M3.5,21 L20.5,21 C21.3284271,21 22,20.3284271 22,19.5 L22,8.5 C22,7.67157288 21.3284271,7 20.5,7 L10,7 L7.43933983,4.43933983 C7.15803526,4.15803526 6.77650439,4 6.37867966,4 L3.5,4 C2.67157288,4 2,4.67157288 2,5.5 L2,19.5 C2,20.3284271 2.67157288,21 3.5,21 Z" fill="#000000" opacity="0.3"/>
+                                                <path d="M8.54301601,14.4923287 L10.6661,14.4923287 L10.6661,16.5 C10.6661,16.7761424 10.8899576,17 11.1661,17 L12.33392,17 C12.6100624,17 12.83392,16.7761424 12.83392,16.5 L12.83392,14.4923287 L14.9570039,14.4923287 C15.2331463,14.4923287 15.4570039,14.2684711 15.4570039,13.9923287 C15.4570039,13.8681299 15.41078,13.7483766 15.3273331,13.6563877 L12.1203391,10.1211145 C11.934804,9.91658739 11.6185961,9.90119131 11.414069,10.0867264 C11.4020553,10.0976245 11.390579,10.1091008 11.3796809,10.1211145 L8.1726869,13.6563877 C7.98715181,13.8609148 8.00254789,14.1771227 8.20707501,14.3626578 C8.29906387,14.4461047 8.41881721,14.4923287 8.54301601,14.4923287 Z" fill="#000000"/>
+                                            </g>
+                                        </svg>
+                                    </span>
+                                </button>
+                            `;
+                        }
+                        
                     }
                     {% else %}
                         return ''
@@ -386,6 +409,29 @@ var KTDatatableRemoteAjaxDemo = function() {
                                     </g>
                                 </svg>
                             </span>
+                        </a>
+                        {% endif %}
+                    `;
+                },
+            }, {
+                field: 'Delete',
+                title: 'Thu Hồi',
+                sortable: false,
+                width: 50,
+                overflow: 'visible',
+                autoHide: false,
+                textAlign: 'center',
+                template: function(row) {
+                    return `
+                        {% if perms.clinic.can_delete_service_assignment %}
+                        <a href="javascript:;" data-ten="${row.benh_nhan.ho_ten}" data-id-chuoi-kham="${row.chuoi_kham.id}" data-id-phan-khoa="${row.id}" class="btn-thu-hoi btn btn-sm btn-clean btn-icon" title="Dừng Khám Có Lý Do">
+                            <span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2020-10-29-133027/theme/html/demo1/dist/../src/media/svg/icons/Home/Trash.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24"/>
+                                    <path d="M6,8 L18,8 L17.106535,19.6150447 C17.04642,20.3965405 16.3947578,21 15.6109533,21 L8.38904671,21 C7.60524225,21 6.95358004,20.3965405 6.89346498,19.6150447 L6,8 Z M8,10 L8.45438229,14.0894406 L15.5517885,14.0339036 L16,10 L8,10 Z" fill="#000000" fill-rule="nonzero"/>
+                                    <path d="M14,4.5 L14,3.5 C14,3.22385763 13.7761424,3 13.5,3 L10.5,3 C10.2238576,3 10,3.22385763 10,3.5 L10,4.5 L5.5,4.5 C5.22385763,4.5 5,4.72385763 5,5 L5,5.5 C5,5.77614237 5.22385763,6 5.5,6 L18.5,6 C18.7761424,6 19,5.77614237 19,5.5 L19,5 C19,4.72385763 18.7761424,4.5 18.5,4.5 L14,4.5 Z" fill="#000000" opacity="0.3"/>
+                                </g>
+                            </svg><!--end::Svg Icon--></span>
                         </a>
                         {% endif %}
                     `;
@@ -483,8 +529,6 @@ var KTDatatableRemoteAjaxDemo = function() {
                 type: "GET",
                 url: "{% url 'ket_thuc_chuoi_kham_api' %}",
                 data: {
-                    // here data should be a string so that
-                    // in your views.py you can fetch the value using get('data')
                     'id': id_phan_khoa
                 },
                 dataType: 'json',
@@ -499,6 +543,26 @@ var KTDatatableRemoteAjaxDemo = function() {
                     alert();                                                                                                                          
                 }
             });
+        })
+
+        $("#kt_datatable").on('click', '.btn-upload', function() {
+            var id_dich_vu = $(this).attr('data-id-dich-vu-kham')
+            var id_chuoi_kham = $(this).attr('data-id-chuoi-kham')
+            var id_phan_khoa = $(this).attr('data-id-phan-khoa')
+
+            console.log(id_dich_vu, id_chuoi_kham, id_phan_khoa)
+            window.location.href = `/phong_chuyen_khoa/${id_dich_vu}/benh_nhan/${id_chuoi_kham}/upload/${id_phan_khoa}/`
+
+            
+        })
+
+        $("#kt_datatable").on('click', '.btn-update', function() {
+            var id_dich_vu = $(this).attr('data-id-dich-vu-kham')
+            var id_chuoi_kham = $(this).attr('data-id-chuoi-kham')
+            var id_phan_khoa = $(this).attr('data-id-phan-khoa')
+      
+            window.location.href = `/chinh_sua_ket_qua/phieu_ket_qua/${id_phan_khoa}/`
+
         })
 
         $("#kt_datatable").on('click', '.btn-hoan-thanh-kham', function(){
@@ -545,6 +609,53 @@ var KTDatatableRemoteAjaxDemo = function() {
             });
 
             
+        })
+
+        $("#kt_datatable").on('click', '.btn-thu-hoi', function() {
+            
+            var id = $(this).attr('data-id-phan-khoa')
+            Swal.fire({
+                title: "Thu hồi lại chỉ định",
+                text: "Bạn sẽ không thể hoàn tác!",
+                icon: "warning",
+                showCancelButton: true,
+                cancelButtonText: "Hủy",
+                confirmButtonText: "Xác Nhận!"
+            }).then(function(result) {
+                if (result.value) {
+                    console.log(id)
+                    var formData = new FormData()
+                    formData.append('id', id)
+                    formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
+ 
+                    $.ajax({
+                        type: "POST",
+                        url: "{% url 'xoa_chi_dinh' %}",
+                        data: formData,
+                        cache: false,
+                        processData: false,
+                        contentType: false,
+                        success: function(response){
+                           
+                            Swal.fire(
+                                'Đã Thu Hồi',
+                                'Chỉ Định Đã Được Thu Hồi',
+                                'success'
+                            )
+                            $('#kt_datatable').KTDatatable('reload');
+                            
+                        },
+                        error: function(response){
+                        }
+                    })
+                }else if (result.dismiss === 'cancel') {
+					Swal.fire(
+						'Đã Hủy',
+						'Thu Hồi Chỉ Định Không Thành Công',
+						'error'
+					)
+				}
+            });
         })
 
     };

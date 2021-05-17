@@ -1,23 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block stylesheet %}
-
-<!--begin::Page Vendors Styles(used by this page)-->
-
-<!--begin::Global Theme Styles(used by all pages)-->
-<link href="{% static 'assets/plugins/global/plugins.bundle9cd7.css' %}" rel="stylesheet" type="text/css" />
-<link href="{% static 'assets/plugins/custom/prismjs/prismjs.bundle9cd7.css' %}" rel="stylesheet" type="text/css" />
-<link href="{% static 'assets/css/style.bundle9cd7.css' %} " rel="stylesheet" type="text/css" />
-<!--end::Global Theme Styles-->
-<!--begin::Layout Themes(used by all pages)-->
-<link href="{% static 'assets/css/themes/layout/header/base/light9cd7.css' %} " rel="stylesheet" type="text/css" />
-<link href="{% static 'assets/css/themes/layout/header/menu/light9cd7.css' %} " rel="stylesheet" type="text/css" />
-<link href="{% static 'assets/css/themes/layout/brand/dark9cd7.css' %} " rel="stylesheet" type="text/css" />
-<link href="{% static 'assets/css/themes/layout/aside/dark9cd7.css' %} " rel="stylesheet" type="text/css" />
-<!--end::Layout Themes-->
-{% endblock stylesheet %}
-
 {% block content %}
 
 <!--begin::Content-->
@@ -135,7 +118,7 @@
                             <input class="form-control input" id="tenPhongChucNang" type="text" placeholder="Tên phòng chức năng" name="text"/>
                         </div>
                     </div>
-                    <div class="form-group row pt-2">
+                    {% comment %} <div class="form-group row pt-2">
                         <div class="col-lg-12">
                             <label>Bác Sĩ Phụ Trách </label>
                             <select id="selectBacSi" class="form-control selectpicker">
@@ -145,7 +128,7 @@
                                 {% endfor %}
                             </select>
                         </div>
-                    </div>
+                    </div> {% endcomment %}
                 </div>
                 <div class="card-footer">
                     <div class="card-toolbar text-right">
@@ -191,14 +174,15 @@ var KTDatatableRecordSelectionDemo = function() {
             type: 'remote',
             source: { 
                 read: {
-                    url: HOST_URL + '/router/api/dich_vu/',
+                    url: HOST_URL + '/api/dich_vu_kham/',
                     method: 'GET',
                 },
             },
             pageSize: 10,
             serverPaging: true,
-            // serverFiltering: true,
-            // serverSorting: true,
+            serverFiltering: true,
+            serverSorting: false,
+            saveState: false,
         },
 
         // layout definition
@@ -226,22 +210,27 @@ var KTDatatableRecordSelectionDemo = function() {
         }, {
             field: 'ten_dvkt',
             title: 'Tên Dịch Vụ',
+            sortable: false,
             template: function(row) {
                 return '<a href id=' + '"' + row.id + '"' + 'data-id="' + row.id + '"' + ' class="tooltip-ajax" data-title="This is my tooltip content for:'+row.ten_dvkt+'" data-toggle="tooltip" data-trigger="hover">'+row.ten_dvkt+'</a>'
             }
         }, {
             field: 'ma_dvkt',
             title: 'Mã Dịch Vụ',
+            sortable: false,
         }, {
             field: 'quyet_dinh',
             title: 'Quyết Định',
+            sortable: false,
         }, {
             field: 'cong_bo',
             title: 'Công Bố',
+            sortable: false,
         }, {
             field: 'bao_hiem',
             title: 'Dùng Bảo Hiểm',
             textAlign: 'center',
+            sortable: false,
             template: function(row) {
                 if (row.bao_hiem == true) {
                     return "Có áp dụng"
@@ -337,11 +326,11 @@ var KTDatatableRecordSelectionDemo = function() {
 
         $('#get_table_data').on('click', function (){
             var ten_phong_chuc_nang = $('#tenPhongChucNang').val()
-            var bac_si_phu_trach = $('#selectBacSi').val()
+            {% comment %} var bac_si_phu_trach = $('#selectBacSi').val() {% endcomment %}
             console.log(ten_phong_chuc_nang)
             // getCheckbox();
             // getPostData();
-            postData(ten_phong_chuc_nang, bac_si_phu_trach);
+            postData(ten_phong_chuc_nang);
         })
 
     
@@ -377,11 +366,11 @@ var KTDatatableRecordSelectionDemo = function() {
             }
         })
 
-        function postData(ten_phong_chuc_nang, bac_si_phu_trach){
+        function postData(ten_phong_chuc_nang){
             var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
             var ten_phong_chuc_nang = ten_phong_chuc_nang
-            var bac_si_phu_trach = bac_si_phu_trach
-            console.log(ten_phong_chuc_nang, bac_si_phu_trach)
+           
+            console.log(ten_phong_chuc_nang)
 
             function csrfSafeMethod(method) {
                 // these HTTP methods do not require CSRF protection
@@ -421,7 +410,7 @@ var KTDatatableRecordSelectionDemo = function() {
                     'data': JSON.stringify(getPostData()),
                     'csrfmiddlewaretoken': csrftoken,
                     'ten_phong_chuc_nang': ten_phong_chuc_nang,
-                    'bac_si_phu_trach' : bac_si_phu_trach
+             
                 },
                 dataType: 'json',
                 safe: false,
@@ -433,7 +422,7 @@ var KTDatatableRecordSelectionDemo = function() {
                     }, 1500); //sau 1,5 giây (1000 = 1s)
                 },
                 error: function() {
-                    alert("Sai vl")                                                                                                                         
+                                                                                                                                         
                 }
             });
         }

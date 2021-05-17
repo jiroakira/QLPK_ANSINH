@@ -124,8 +124,8 @@ var KTDatatableModal = function() {
                 },
                 pageSize: 10, // display 20 records per page
                 serverPaging: true,
-                {% comment %} serverFiltering: false, {% endcomment %}
-                {% comment %} serverSorting: true, {% endcomment %}
+                serverFiltering: true,
+                serverSorting: true,
                 saveState: false,
             },
 
@@ -144,7 +144,7 @@ var KTDatatableModal = function() {
 
             search: {
                 input: $('#kt_datatable_search_query'),
-                key: 'generalSearch'
+                key: 'search'
             },
 
             // columns definition
@@ -157,12 +157,15 @@ var KTDatatableModal = function() {
             }, {
                 field: 'tieu_de',
                 title: 'Tiêu Đề',
+                sortable: true,
             }, {
                 field: 'noi_dung_chinh',
                 title: 'Nội Dung Chính',
+                sortable: false,
             }, {
                 field: 'thoi_gian_bat_dau',
                 title: 'Thời Gian Bắt Đầu',
+                sortable: true,
                 template: function(row) {
                     var date = new Date(Date.parse(row.thoi_gian_bat_dau))
 
@@ -175,6 +178,7 @@ var KTDatatableModal = function() {
             }, {
                 field: 'thoi_gian_ket_thuc',
                 title: 'Thời Gian Kết Thúc',
+                sortable: true,
                 template: function(row) {
                     var date = new Date(Date.parse(row.thoi_gian_ket_thuc))
 

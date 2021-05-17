@@ -75,5 +75,12 @@
   "fields": {
     "ten_trang_thai": "Hoàn Thành"
   }
+},
+{
+  "model": "clinic.trangthailichhen",
+  "pk": 12,
+  "fields": {
+    "ten_trang_thai": "Dừng Khám"
+  }
 }
 ]
