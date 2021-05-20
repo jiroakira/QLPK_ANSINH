@@ -201,7 +201,7 @@ def index(request):
             'ds_bac_si': ds_bac_si,
             'danh_sach_dich_vu': danh_sach_dich_vu,
             'nguoi_dung': nguoi_dung,
-            'user_trong_ngay': user_trong_ngay,
+            'user_trong_ngay': user_trong_ngay[:10],
             'tong_tien_chuoi_kham' : tong_tien_chuoi_kham,
             'thoi_gian_chuoi_kham': days_chuoi_kham,
             'tong_tien_thuoc' : tong_tien_thuoc,
