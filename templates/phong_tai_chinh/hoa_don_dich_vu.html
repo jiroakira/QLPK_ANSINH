@@ -79,7 +79,7 @@
         <div class="modal-content">
             <div class="modal-header py-5">
                 <h5 class="modal-title"> 
-                    <span class="d-block font-size-nm">Nhập Số Tiền Khám Lâm Sàng</span>
+                    <span class="d-block font-size-nm">Thay đổi chỉ định</span>
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <i aria-hidden="true" class="ki ki-close"></i>
@@ -214,9 +214,9 @@
     }
 
     $(document).on('click', '#btn-thanh-toan', function(){
-        var tong_tien = $(this).data('tong-tien');
-        var ma_hoa_don = $(this).data('ma-hoa-don');
-        var discount = $(this).attr('data-discount');
+        var tong_tien = $('#btn-thanh-toan').data('tong-tien');
+        var ma_hoa_don = $('#btn-thanh-toan').data('ma-hoa-don');
+        var discount = $('#btn-thanh-toan').attr('data-discount');
         $.ajax({
             type: "GET",
             url: "{% url 'thanh_toan_hoa_don_dich_vu_api' %}",
@@ -292,29 +292,35 @@
             }, {
                 field: 'ten_dvkt',
                 title: 'Tên Dịch Vụ',
+                sortable: false,
                 template: function(row) {
                     return row.ten_dvkt
                 }
             }, {
                 field: 'quyet_dinh',
                 title: 'Quyết Định',
+                sortable: false,
             }, {
                 field: 'cong_bo',
                 title: 'Công Bố',
+                sortable: false,
             }, {
                 field: 'bac_si_phu_trach.ho_ten',
                 title: 'Bác Sĩ Phụ Trách',
+                sortable: false,
                 
             }, {
                 field: 'phong_chuc_nang.ten_phong_chuc_nang',
                 title: 'Phòng Chức Năng',
                 textAlign: 'center',
-                autoHide: false
+                autoHide: false,
+                sortable: false,
             }, {
                 field: 'bao hiem',
                 title: 'Dùng Bảo Hiểm',
                 textAlign: 'center',
                 autoHide: false,
+                sortable: false,
                 template: function(row){
                     if(row.bao_hiem_dich_vu == "True"){
                         return '<span class="label font-weight-bold label-lg label-light-primary label-inline">Có áp dụng</span>'
@@ -331,7 +337,7 @@
         };
 
         options.search = {
-            input: $('#kt_datatable_search_query'),
+            input: $('#kt_datatable_search_query_2'),
             key: 'search'
         };
         
@@ -568,28 +574,48 @@
     $(document).on('click', '#btn_finish', function() {
         var id_chuoi_kham = $(this).data('id-chuoi-kham');
         console.log(id_chuoi_kham)
-        $.ajax({
-            type: "POST",
-            url: "{% url 'hoan_thanh_kham_hoa_don' %}",
-            data: {
-                'id_chuoi_kham': id_chuoi_kham,
-            },
-            dataType: 'json',
-            safe: false,
-            success: function (response) {
-                if (response.status == 200) {
-                    toastr.success(response.message, "Thành Công")
-                    setTimeout(function () {
-                        window.location.href = "/phong_tai_chinh/"
-                    }, 2000);
-                } else if (response.status == 404) {
-                    toastr.warning(response.message, "Xảy Ra Lỗi")
-                }
-            },
-            error: function () {
-                                                                                                                                  
+
+        Swal.fire({
+            title: "Hoàn Thành Khám Cho Bệnh Nhân ",
+            text: "Bạn có chắc chắn muốn hoàn thành chuỗi khám không?",
+            icon: "warning",
+            cancelButtonText: "Hủy",
+            confirmButtonText: "Xác Nhận",
+            showCancelButton: true,
+        }).then(function(result) {
+            if (result.value) {
+                $.ajax({
+                    type: "POST",
+                    url: "{% url 'hoan_thanh_kham_hoa_don' %}",
+                    data: {
+                        'id_chuoi_kham': id_chuoi_kham,
+                    },
+                    dataType: 'json',
+                    safe: false,
+                    success: function (response) {
+                        if (response.status == 200) {
+                            toastr.success(response.message, "Thành Công")
+                            setTimeout(function () {
+                                window.location.href = "/phong_tai_chinh/"
+                            }, 2000);
+                        } else if (response.status == 404) {
+                            toastr.warning(response.message, "Xảy Ra Lỗi")
+                        }
+                    },
+                    error: function () {
+                                                                                                                                        
+                    }
+                });
+            }else if (result.dismiss === 'cancel') {
+                Swal.fire(
+                    'Đã Hủy',
+                    'Hoàn Thành Khám Cho Chuỗi Khám Không Thành Công!',
+                    'error'
+                )
             }
         });
+
+        
     })
 
     function printDiv(hoa_don_dich_vu){
@@ -656,141 +682,7 @@
             _data_mau_phieu['{giam_gia}'] = so_tien_giam
             _data_mau_phieu['{tien_thanh_toan}'] = tien_can_thanh_toan
 
-            {% comment %} $("#newTableHtml tbody tr").each(function() {
-                var data_ten_mau = '';
-                var data_benh_nhan = '';
-                var data_so_dien_thoai = '';
-                var data_dia_chi = '';
-                var data_ten_dich_vu = '';
-                var data_tong_tien = '';
-                var data_tong_tien_bao_hiem = '';
-                var data_thanh_tien = '';
-                var data_nguoi_thuc_hien = '';
-                var data_giam_gia = ''
-                var ten_mau_hoa_don = "{{ mau_hoa_don.ten_mau|safe }}";
-                var thoi_gian_thanh_toan = "{{ thoi_gian_thanh_toan|safe }}";
-                var benh_nhan = "{{ benh_nhan|safe }}";
-                var so_dien_thoai = "{{ so_dien_thoai|safe }}";
-                var dia_chi = "{{ dia_chi|safe }}";
-                
-                var tong_tien = "{{ tong_tien|safe }}";
-                var tong_tien_bao_hiem = "{{ tong_tien_bao_hiem|safe }}";
-                var thanh_tien = "{{ thanh_tien|safe }}";
-                var nguoi_thuc_hien = "{{ nguoi_thuc_hien|safe }}";
 
-                if($(this).find('td').eq(0).text() == '{ten_mau_hoa_don}'){
-                    console.log($(this).html());
-                    var innerHtml = $(this).html();
-                    var start_tr = '<tr>';
-                    var end_tr = '</tr>';
-                    var c = start_tr + innerHtml + end_tr;
-
-                    data_ten_mau += c.replace(/{ten_mau_hoa_don}/, ten_mau_hoa_don);
-
-                    $(this).replaceWith(data_ten_mau);
-                }
-
-                if($(this).find('td').eq(0).text() == '{thoi_gian_thanh_toan}'){
-                    console.log($(this).html());
-                    var innerHtml = $(this).html();
-                    var start_tr = '<tr>';
-                    var end_tr = '</tr>';
-                    var c = start_tr + innerHtml + end_tr;
-
-                    data_benh_nhan += c.replace(/{thoi_gian_thanh_toan}/, thoi_gian_thanh_toan).replace(/{benh_nhan}/, benh_nhan);
-
-                    $(this).replaceWith(data_benh_nhan);
-                }
-
-                if($(this).find('td').eq(1).text() == '{so_dien_thoai}'){
-                    console.log($(this).html())
-                    var innerHtml = $(this).html()
-                    var start_tr = '<tr>'
-                    var end_tr = '</tr>'
-                    var c = start_tr + innerHtml + end_tr
-
-                    data_so_dien_thoai += c.replace(/{so_dien_thoai}/, so_dien_thoai)
-
-                    $(this).replaceWith(data_so_dien_thoai)
-                }
-
-                if($(this).find('td').eq(1).text() == '{dia_chi}'){
-                    console.log($(this).html())
-                    var innerHtml = $(this).html()
-                    var start_tr = '<tr>'
-                    var end_tr = '</tr>'
-                    var c = start_tr + innerHtml + end_tr
-
-                    data_dia_chi += c.replace(/{dia_chi}/, dia_chi)
-
-                    $(this).replaceWith(data_dia_chi)
-                }
-
-                if($(this).find('td').eq(0).text() == '{ten_dich_vu}'){
-                    console.log($(this).html())
-                    var innerHtml = $(this).html()
-                    var start_tr = '<tr>'
-                    var end_tr = '</tr>'
-                    var c = start_tr + innerHtml + end_tr
-                    for (var i=0; i<danh_sach_dich_vu.length; i++) {
-
-                        data_ten_dich_vu += c.replace(/{ten_dich_vu}/, danh_sach_dich_vu[i]).replace(/{bao_hiem}/, danh_sach_bao_hiem[i]).replace(/{gia_tien}/, danh_sach_gia_tien[i]).replace(/{thanh_tien}/, danh_sach_gia_tien[i])
-                    }
-
-                    $(this).replaceWith(data_ten_dich_vu)
-                }
-
-                if($(this).find('td').eq(3).text() == '{tong_tien}'){
-                    console.log($(this).html())
-                    var innerHtml = $(this).html()
-                    var start_tr = '<tr>'
-                    var end_tr = '</tr>'
-                    var c = start_tr + innerHtml + end_tr
-                    data_tong_tien += c.replace(/{tong_tien}/, tong_tien)
-                    $(this).replaceWith(data_tong_tien)
-                }
-
-                if($(this).find('td').eq(3).text() == '{tong_tien_bao_hiem}'){
-                    console.log($(this).html())
-                    var innerHtml = $(this).html()
-                    var start_tr = '<tr>'
-                    var end_tr = '</tr>'
-                    var c = start_tr + innerHtml + end_tr
-                    data_tong_tien_bao_hiem += c.replace(/{tong_tien_bao_hiem}/, tong_tien_bao_hiem)
-                    $(this).replaceWith(data_tong_tien_bao_hiem)
-                }
-
-                if($(this).find('td').eq(3).text() == '{tien_thanh_toan}'){
-                    console.log($(this).html())
-                    var innerHtml = $(this).html()
-                    var start_tr = '<tr>'
-                    var end_tr = '</tr>'
-                    var c = start_tr + innerHtml + end_tr
-                    data_thanh_tien += c.replace(/{tien_thanh_toan}/, tien_can_thanh_toan)
-                    $(this).replaceWith(data_thanh_tien)
-                }
-
-                if($(this).find('td').eq(2).text() == '{nguoi_thanh_toan}'){
-                    console.log($(this).html())
-                    var innerHtml = $(this).html()
-                    var start_tr = '<tr>'
-                    var end_tr = '</tr>'
-                    var c = start_tr + innerHtml + end_tr
-                    data_nguoi_thuc_hien += c.replace(/{nguoi_thanh_toan}/, nguoi_thuc_hien)
-                    $(this).replaceWith(data_nguoi_thuc_hien)
-                }
-
-                if($(this).find('td').eq(3).text() == '{giam_gia}'){
-                    console.log($(this).html())
-                    var innerHtml = $(this).html()
-                    var start_tr = '<tr>'
-                    var end_tr = '</tr>'
-                    var c = start_tr + innerHtml + end_tr
-                    data_giam_gia += c.replace(/{giam_gia}/, so_tien_giam)
-                    $(this).replaceWith(data_giam_gia)
-                }
-            }) {% endcomment %}
-            
             var _tr = ''
             for (const [key, value] of Object.entries(_data_mau_phieu)) {
                 $(`#newTableHtml tbody td:contains(${key})`).each(function() {

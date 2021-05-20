@@ -1,4 +1,5 @@
 from django.db.models.expressions import Func, OuterRef, Subquery
+from django.db.models import Exists, OuterRef
 from clinic.pagination import CustomPagination, PaginationHandlerMixin
 from finance.models import (
     HoaDonChuoiKham, 
@@ -62,7 +63,6 @@ from django.contrib.auth.models import Group
 from rest_framework import generics
 from datetime import date, datetime
 from dateutil.relativedelta import relativedelta
-
 
 User = get_user_model()
 
@@ -963,7 +963,7 @@ class DanhSachHoaDonDichVu(generics.ListCreateAPIView):
         tomorrow = now + timedelta(1)
         today_start = now.replace(hour=0, minute=0, second=0)
         today_end = tomorrow.replace(hour=0, minute=0, second=0)
-        queryset = ChuoiKham.objects.select_related('benh_nhan').filter(thoi_gian_tao__lt=today_end, thoi_gian_tao__gte=today_start)
+        queryset = ChuoiKham.objects.select_related('benh_nhan').filter(thoi_gian_tao__lt=today_end, thoi_gian_tao__gte=today_start).order_by('-id')
 
         term = self.request.query_params.get('query[search]')
         trang_thai = self.request.query_params.get('query[trang_thai_thanh_toan]')
@@ -977,7 +977,7 @@ class DanhSachHoaDonDichVu(generics.ListCreateAPIView):
                 list_cho_thanh_toan.append(i)
 
         if term is not None:
-            queryset = queryset.filter(Q(benh_nhan__ho_ten__icontains=term))
+            queryset = queryset.filter(Q(benh_nhan__ho_ten__icontains=term)).order_by('-id')
 
         if trang_thai == "True":
             queryset = list_da_thanh_toan
@@ -1142,16 +1142,16 @@ class DanhSachKhamTrongNgay(generics.ListCreateAPIView):
         today_start = now.replace(hour=0, minute=0, second=0)
         today_end = tomorrow.replace(hour=0, minute=0, second=0)
 
-        queryset = ChuoiKham.objects.select_related('benh_nhan').filter(thoi_gian_tao__gte=today_start, thoi_gian_tao__lt=today_end)
+        queryset = ChuoiKham.objects.select_related('benh_nhan').filter(thoi_gian_tao__gte=today_start, thoi_gian_tao__lt=today_end).order_by('-id')
         term = self.request.query_params.get('query[search]')
         flag = self.request.query_params.get('query[trang_thai]')
 
         if term is not None:
-            queryset = queryset.filter(Q(benh_nhan__ho_ten__icontains=term) | Q(benh_nhan__so_dien_thoai__icontains=term))
+            queryset = queryset.filter(Q(benh_nhan__ho_ten__icontains=term) | Q(benh_nhan__so_dien_thoai__icontains=term)).order_by('-id')
     
         if flag is not None:
             trang_thai = TrangThaiChuoiKham.objects.get(id=flag)
-            queryset = queryset.filter(trang_thai=trang_thai)
+            queryset = queryset.filter(trang_thai=trang_thai).order_by('-id')
 
         return queryset
 
@@ -1195,39 +1195,35 @@ class DanhSachDoanhThuDichVu(APIView):
         range_start = self.request.query_params.get('range_start', None)
         range_end   = self.request.query_params.get('range_end', None)
 
-        start = datetime.strptime(range_start, "%d-%m-%Y")
-        tomorrow_start = start + timedelta(1)
+        today_start = datetime.strptime(range_start, "%d-%m-%Y")
         
-        if range_end == '':
-            danh_sach_dich_vu = PhanKhoaKham.objects.filter(thoi_gian_tao__lt=tomorrow_start, thoi_gian_tao__gte=start).values('dich_vu_kham__ten_dvkt').annotate(tong_tien=Sum('dich_vu_kham__don_gia')).order_by('dich_vu_kham__ten_dvkt').annotate(dich_vu_kham_count = Count('dich_vu_kham__ten_dvkt'))
-            list_dich_vu = []
-            for i in danh_sach_dich_vu:
-                list_dich_vu.append(i)
-            response = {
-                'data' : list_dich_vu,
-            }
-
-            return Response(response)
+        list_dich_vu = []
+        if range_end == '':       
+            today_end = today_start + timedelta(1)
         else: 
-            end = datetime.strptime(range_end, "%d-%m-%Y")
-            tomorrow_end = end + timedelta(1)
-
-            danh_sach_dich_vu = PhanKhoaKham.objects.filter(Q(thoi_gian_tao__lt=tomorrow_start, thoi_gian_tao__gte=start) | Q(thoi_gian_tao__lt=end, thoi_gian_tao__gte=start)).values('dich_vu_kham__ten_dvkt').annotate(tong_tien=Sum('dich_vu_kham__don_gia')).order_by('dich_vu_kham__ten_dvkt').annotate(dich_vu_kham_count = Count('dich_vu_kham__ten_dvkt'))
+            today_end = datetime.strptime(range_end, "%d-%m-%Y")
+            if range_start == range_end:
+                today_end = today_end + timedelta(1)
             
-            # danh_sach_dich_vu = PhanKhoaKham.objects.filter(Q(thoi_gian_tao__lt=tomorrow_start, thoi_gian_tao__gte=start) | Q(thoi_gian_tao__lt=end, thoi_gian_tao__gte=start)).values('dich_vu_kham__phong_chuc_nang__ten_phong_chuc_nang').annotate(tong_tien=Sum('dich_vu_kham__don_gia')).order_by('dich_vu_kham__phong_chuc_nang__ten_phong_chuc_nang').annotate(dich_vu_kham_count = Count('dich_vu_kham__phong_chuc_nang__ten_phong_chuc_nang'))
-
-            # list_tong_tien_without_format = [i['tong_tien'] for i in danh_sach_dich_vu]
-            list_tong_tien_formatted = ["{:,}".format(int(i['tong_tien'])) for i in danh_sach_dich_vu]
-
-            list_dich_vu = []
-            for idx, val in enumerate(danh_sach_dich_vu):
-                val['tong_tien'] = list_tong_tien_formatted[idx]
-                list_dich_vu.append(val)
+        hoa_don_chuoi_kham = HoaDonChuoiKham.objects.filter(thoi_gian_tao__lt=today_end, thoi_gian_tao__gte=today_start).exclude(tong_tien__isnull=True).values_list('chuoi_kham__phan_khoa_kham')
+        list_id = [item for t in list(hoa_don_chuoi_kham) for item in t]
+        
+        danh_sach_dich_vu = PhanKhoaKham.objects.filter(pk__in=list_id).values('dich_vu_kham__ten_dvkt').annotate(tong_tien=Sum('dich_vu_kham__don_gia')).order_by('dich_vu_kham__ten_dvkt').annotate(dich_vu_kham_count = Count('dich_vu_kham__ten_dvkt'))
             
-            response = {
-                'data' : list_dich_vu,
-            }
-            return Response(response)
+        # danh_sach_dich_vu = PhanKhoaKham.objects.filter(Q(thoi_gian_tao__lt=tomorrow_start, thoi_gian_tao__gte=start) | Q(thoi_gian_tao__lt=end, thoi_gian_tao__gte=start)).values('dich_vu_kham__phong_chuc_nang__ten_phong_chuc_nang').annotate(tong_tien=Sum('dich_vu_kham__don_gia')).order_by('dich_vu_kham__phong_chuc_nang__ten_phong_chuc_nang').annotate(dich_vu_kham_count = Count('dich_vu_kham__phong_chuc_nang__ten_phong_chuc_nang'))
+
+        # list_tong_tien_without_format = [i['tong_tien'] for i in danh_sach_dich_vu]
+        list_tong_tien_formatted = ["{:,}".format(int(i['tong_tien'])) for i in danh_sach_dich_vu]
+
+        list_dich_vu = []
+        for idx, val in enumerate(danh_sach_dich_vu):
+            val['tong_tien'] = list_tong_tien_formatted[idx]
+            list_dich_vu.append(val)
+        
+        response = {
+            'data' : list_dich_vu,
+        }
+        return Response(response)
 
 class DanhSachNguonCung(APIView):
     def get(self, request, format=None):
@@ -1273,25 +1269,20 @@ class DanhSachDoanhThuThuoc(APIView):
         range_end   = self.request.query_params.get('range_end', None)
 
         start = datetime.strptime(range_start, "%d-%m-%Y")
-        tomorrow_start = start + timedelta(1)
         
         if range_end == '':
-            danh_sach_hoa_don_thuoc = HoaDonThuoc.objects.filter(thoi_gian_tao__lt=tomorrow_start, thoi_gian_tao__gte=start)
-
-            serializer = HoaDonThuocSerializer(danh_sach_hoa_don_thuoc, many=True, context={'request': request})
-            data = serializer.data
-
-            return Response(data)
+            end = start + timedelta(1)
         else: 
             end = datetime.strptime(range_end, "%d-%m-%Y")
-            tomorrow_end = end + timedelta(1)
+            if range_start == range_end:
+                end = end + timedelta(1)
+        danh_sach_hoa_don_thuoc = HoaDonThuoc.objects.filter(thoi_gian_tao__lt=end, thoi_gian_tao__gte=start)
 
-            danh_sach_hoa_don_thuoc = HoaDonThuoc.objects.filter(Q(thoi_gian_tao__lt=tomorrow_end, thoi_gian_tao__gte=start) | Q(thoi_gian_tao__lt=end, thoi_gian_tao__gte=start))
+        serializer = HoaDonThuocSerializer(danh_sach_hoa_don_thuoc, many=True, context={'request': request})
+        data = serializer.data
 
-            serializer = HoaDonThuocSerializer(danh_sach_hoa_don_thuoc, many=True, context={'request': request})
-            data = serializer.data
-
-            return Response(data)
+        return Response(data)
+       
     # END UPDATE 
 class DanhSachBenhNhan(APIView):
     def get(self, request, format=None):
@@ -1310,10 +1301,19 @@ class DanhSachBenhNhanListCreateAPIView(generics.ListCreateAPIView):
         queryset = User.objects.filter(chuc_nang=1)
 
         term = self.request.query_params.get('query[search]')
+        sort_field = self.request.query_params.get('sort[field]')
+        sort_type = self.request.query_params.get('sort[sort]')
 
         if term is not None:
+            term = term.upper()
             queryset = queryset.filter(Q(ho_ten__icontains=term) | Q(so_dien_thoai__icontains=term) | Q(cmnd_cccd__contains=term))
         
+        if sort_field is not None and sort_type is not None:
+            if sort_type == "asc":
+                queryset = queryset.order_by(f'{sort_field}')
+            elif sort_type == "desc":
+                queryset = queryset.order_by(f'-{sort_field}')  
+
         return queryset
 
 from datetime import datetime, timedelta
@@ -1333,26 +1333,62 @@ class ThongTinBenhNhanTheoMa(APIView):
         # serializer = UserSerializer()
 
 
-class DanhSachLichHenTheoBenhNhan(APIView):
-    def get(self, request, format=None):
+class DanhSachLichHenTheoBenhNhan(generics.ListCreateAPIView):
+    serializer_class = LichHenKhamSerializer
+    pagination_class = CustomPagination
+
+    def get_queryset(self):
         range_start = self.request.query_params.get('range_start', None)
         range_end   = self.request.query_params.get('range_end', None)
 
+        term = self.request.query_params.get('query[search]')
+        sort_field = self.request.query_params.get('sort[field]')
+        sort_type = self.request.query_params.get('sort[sort]')
+        status = self.request.query_params.get('query[trang_thai]')
+
         start = datetime.strptime(range_start, "%d-%m-%Y")
-        tomorrow_start = start + timedelta(1)
-
         if range_end == '':
-            lich_hen = LichHenKham.objects.select_related('benh_nhan').filter(Q(thoi_gian_bat_dau__lt=tomorrow_start, thoi_gian_ket_thuc__gte=start) | Q(thoi_gian_bat_dau__lt=tomorrow_start, thoi_gian_bat_dau__gte=start))
-
+            end = start + timedelta(1)
         else:
             end = datetime.strptime(range_end, "%d-%m-%Y")
-            tomorrow_end = end + timedelta(1)
-            lich_hen = LichHenKham.objects.select_related('benh_nhan').filter(Q(thoi_gian_bat_dau__lt=end, thoi_gian_ket_thuc__gte=start) | Q(thoi_gian_bat_dau__lt=tomorrow_end, thoi_gian_bat_dau__gte=start))
-            
-        serializer = LichHenKhamSerializer(lich_hen, many=True, context={'request': request})
+            if range_start == range_end:
+                end = start + timedelta(1)
 
-        data = serializer.data
-        return Response(data)
+        queryset = LichHenKham.objects.select_related('benh_nhan').filter(thoi_gian_tao__gte=start, thoi_gian_tao__lt=end).order_by('-id')
+        
+        if term is not None:
+            term = term.upper()
+            queryset = queryset.filter(benh_nhan__ho_ten__icontains=term).order_by('-id')
+
+        if status is not None:
+            queryset = queryset.filter(trang_thai__id=status).order_by('-id')
+
+        if sort_field is not None and sort_type is not None:
+            if sort_type == 'asc':
+                queryset = queryset.order_by(f'{sort_field}')
+            elif sort_type == 'desc': 
+                queryset = queryset.order_by(f'-{sort_field}')
+
+        return queryset
+    # def get(self, request, format=None):
+    #     range_start = self.request.query_params.get('range_start', None)
+    #     range_end   = self.request.query_params.get('range_end', None)
+
+    #     start = datetime.strptime(range_start, "%d-%m-%Y")
+    #     tomorrow_start = start + timedelta(1)
+
+    #     if range_end == '':
+    #         lich_hen = LichHenKham.objects.select_related('benh_nhan').filter(Q(thoi_gian_bat_dau__lt=tomorrow_start, thoi_gian_ket_thuc__gte=start) | Q(thoi_gian_bat_dau__lt=tomorrow_start, thoi_gian_bat_dau__gte=start))
+
+    #     else:
+    #         end = datetime.strptime(range_end, "%d-%m-%Y")
+    #         tomorrow_end = end + timedelta(1)
+    #         lich_hen = LichHenKham.objects.select_related('benh_nhan').filter(Q(thoi_gian_bat_dau__lt=end, thoi_gian_ket_thuc__gte=start) | Q(thoi_gian_bat_dau__lt=tomorrow_end, thoi_gian_bat_dau__gte=start))
+            
+    #     serializer = LichHenKhamSerializer(lich_hen, many=True, context={'request': request})
+
+    #     data = serializer.data
+    #     return Response(data)
 
 class DanhSachDoanhThuTheoThoiGian(APIView):
     def get(self, request, format=None):
@@ -1367,6 +1403,7 @@ class DanhSachDoanhThuTheoThoiGian(APIView):
         if range_end == '':
 
             tong_tien_hoa_don_chuoi_kham_theo_thoi_gian = HoaDonChuoiKham.objects.filter(thoi_gian_tao__gt=start, thoi_gian_tao__lt=tomorrow_start).exclude(tong_tien__isnull=True).annotate(day=TruncDay("thoi_gian_tao")).values("day").annotate(c=Count("id")).annotate(total_spent=Sum(F("tong_tien")))
+            print(tong_tien_hoa_don_chuoi_kham_theo_thoi_gian)
 
             list_tong_tien = [x['total_spent'] for x in tong_tien_hoa_don_chuoi_kham_theo_thoi_gian]
             tong_tien_dich_vu_kham = sum(list_tong_tien)
@@ -1500,41 +1537,29 @@ class DoanhThuTheoPhongChucNang(APIView):
         range_end   = self.request.query_params.get('range_end', None)
 
         start = datetime.strptime(range_start, "%d-%m-%Y")
-        # today_end = datetime.strptime(today_end, "%d-%m-%Y")
-        tomorrow_start = start + timedelta(1)
+
         if range_end == '':
-
-            danh_sach_phong = PhanKhoaKham.objects.filter(thoi_gian_tao__lt=tomorrow_start, thoi_gian_tao__gte=start).values('dich_vu_kham__phong_chuc_nang__ten_phong_chuc_nang').annotate(tong_tien=Sum('dich_vu_kham__don_gia')).order_by('dich_vu_kham__phong_chuc_nang__ten_phong_chuc_nang').annotate(dich_vu_kham_count = Count('dich_vu_kham__phong_chuc_nang__ten_phong_chuc_nang'))
-            
-            list_tong_tien_formatted = ["{:,}".format(int(i['tong_tien'])) for i in danh_sach_phong]
-
-            list_phong = []
-            for idx, val in enumerate(danh_sach_phong):
-                val['tong_tien'] = list_tong_tien_formatted[idx]
-                list_phong.append(val)
-            
-            response = {
-                'data' : list_phong,
-            }
-
-            return Response(response)
+            end = start + timedelta(1)
         else: 
             end = datetime.strptime(range_end, "%d-%m-%Y")
-            tomorrow_end = end + timedelta(1)
-            
-            danh_sach_phong = PhanKhoaKham.objects.filter(Q(thoi_gian_tao__lt=tomorrow_start, thoi_gian_tao__gte=start) | Q(thoi_gian_tao__lt=end, thoi_gian_tao__gte=start)).values('dich_vu_kham__phong_chuc_nang__ten_phong_chuc_nang').annotate(tong_tien=Sum('dich_vu_kham__don_gia')).order_by('dich_vu_kham__phong_chuc_nang__ten_phong_chuc_nang').annotate(dich_vu_kham_count = Count('dich_vu_kham__phong_chuc_nang__ten_phong_chuc_nang'))
+            if range_start == range_end:
+                end = end + timedelta(1)
+        
+        hoa_don_chuoi_kham = HoaDonChuoiKham.objects.filter(thoi_gian_tao__lt=end, thoi_gian_tao__gte=start).exclude(tong_tien__isnull=True).values_list('chuoi_kham__phan_khoa_kham')
+        list_id = [item for t in list(hoa_don_chuoi_kham) for item in t]
+        danh_sach_phong = PhanKhoaKham.objects.filter(pk__in=list_id).values('dich_vu_kham__phong_chuc_nang__ten_phong_chuc_nang').annotate(tong_tien=Sum('dich_vu_kham__don_gia')).order_by('dich_vu_kham__phong_chuc_nang__ten_phong_chuc_nang').annotate(dich_vu_kham_count = Count('dich_vu_kham__phong_chuc_nang__ten_phong_chuc_nang'))
 
-            list_tong_tien_formatted = ["{:,}".format(int(i['tong_tien'])) for i in danh_sach_phong]
+        list_tong_tien_formatted = ["{:,}".format(int(i['tong_tien'])) for i in danh_sach_phong]
 
-            list_phong = []
-            for idx, val in enumerate(danh_sach_phong):
-                val['tong_tien'] = list_tong_tien_formatted[idx]
-                list_phong.append(val)
-            
-            response = {
-                'data' : list_phong,
-            }
-            return Response(response)
+        list_phong = []
+        for idx, val in enumerate(danh_sach_phong):
+            val['tong_tien'] = list_tong_tien_formatted[idx]
+            list_phong.append(val)
+        
+        response = {
+            'data' : list_phong,
+        }
+        return Response(response)
 
 
 class SetChoThanhToan(APIView):
@@ -1761,17 +1786,17 @@ class DanhSachBenhNhanTheoPhongChucNang(generics.ListCreateAPIView):
         id_phong = self.request.query_params.get('id')
         phong = PhongChucNang.objects.get(id=id_phong)
 
-        queryset = PhanKhoaKham.objects.filter(dich_vu_kham__phong_chuc_nang = phong, thoi_gian_tao__gte=today_start, thoi_gian_tao__lt=today_end)
+        queryset = PhanKhoaKham.objects.filter(dich_vu_kham__phong_chuc_nang = phong, thoi_gian_tao__gte=today_start, thoi_gian_tao__lt=today_end).order_by('-id')
     
         term = self.request.query_params.get('query[search]')
         flag = self.request.query_params.get('query[trang_thai]')
 
         if term is not None:
-            queryset = queryset.filter(Q(benh_nhan__ho_ten__icontains=term) | Q(dich_vu_kham__ten_dvkt__icontains=term) | Q(benh_nhan__so_dien_thoai__icontains=term))
+            queryset = queryset.filter(Q(benh_nhan__ho_ten__icontains=term) | Q(dich_vu_kham__ten_dvkt__icontains=term) | Q(benh_nhan__so_dien_thoai__icontains=term)).order_by('-id')
 
         if flag is not None:
             trang_thai = TrangThaiKhoaKham.objects.get(id=flag)
-            queryset = queryset.filter(trang_thai=trang_thai)
+            queryset = queryset.filter(trang_thai=trang_thai).order_by('-id')
 
         return queryset
                 
@@ -1942,18 +1967,28 @@ class DanhSachBacSi(APIView):
         return Response(response)
 
 
-class DanhSachBaiDang(APIView):
-    def get(self, request, format=None):
-        danh_sach_bai_dang = BaiDang.objects.all()
-        print(danh_sach_bai_dang)
+class DanhSachBaiDang(generics.ListCreateAPIView):
+    serializer_class = BaiDangSerializer
+    pagination_class = CustomPagination
 
-        serializer = BaiDangSerializer(danh_sach_bai_dang, many=True, context = {'request':request})
-        data = serializer.data
-        response = {
-            'data': data
-        }
-        return Response(response)
+    def get_queryset(self):
+        queryset = BaiDang.objects.all()
 
+        term = self.request.query_params.get('query[search]')
+        sort_field = self.request.query_params.get('sort[field]')
+        sort_type = self.request.query_params.get('sort[sort]')
+
+        if term is not None:
+            queryset = queryset.filter(Q(tieu_de__icontains=term) | Q(tieu_de__icontains=term.upper()))
+
+        if sort_field is not None and sort_type is not None:
+            if sort_type == 'asc':
+                queryset = queryset.order_by(f'{sort_field}')
+            elif sort_type == 'desc':
+                queryset = queryset.order_by(f'-{sort_field}')
+            
+        return queryset
+    
 class DanhSachDichVu(APIView):
     def get(self, request, format=None):
         danh_sach_dich_vu = DichVuKham.objects.all()
@@ -2516,17 +2551,17 @@ class DanhSachBenhNhanChoLamSang(generics.ListCreateAPIView):
         today_start = now.replace(hour=0, minute=0, second=0)
         today_end = tomorrow.replace(hour=0, minute=0, second=0)
 
-        queryset = LichHenKham.objects.filter(thoi_gian_tao__gte=today_start, thoi_gian_tao__lt=today_end)
+        queryset = LichHenKham.objects.filter(thoi_gian_tao__gte=today_start, thoi_gian_tao__lt=today_end).order_by('-id')
 
         term = self.request.query_params.get('query[search]')
         trang_thai = self.request.query_params.get('query[trang_thai]')
 
         if term is not None:
-            queryset = queryset.filter(Q(benh_nhan__ho_ten__icontains=term) | Q(benh_nhan__so_dien_thoai__icontains=term))
+            queryset = queryset.filter(Q(benh_nhan__ho_ten__icontains=term) | Q(benh_nhan__so_dien_thoai__icontains=term)).order_by('-id')
 
         if trang_thai is not None:
             trang_thai_lich_hen = TrangThaiLichHen.objects.get(id=trang_thai)
-            queryset = queryset.filter(trang_thai = trang_thai_lich_hen)
+            queryset = queryset.filter(trang_thai = trang_thai_lich_hen).order_by('-id')
 
         return queryset
     # def get(self, request, format=None):
@@ -2603,8 +2638,17 @@ class DanhSachMauPhieu(generics.ListCreateAPIView):
         queryset = MauPhieu.objects.all()
 
         term = self.request.query_params.get('query[search]')
+        sort_field = self.request.query_params.get('sort[field]')
+        sort_type = self.request.query_params.get('sort[sort]')
+
         if term is not None:
             queryset = queryset.filter(Q(ten_mau__icontains=term) | Q(codename__icontains=term))
+
+        if sort_field is not None and sort_type is not None:
+            if sort_type == 'asc': 
+                queryset = queryset.order_by(f'{sort_field}')
+            elif sort_type == 'desc':
+                queryset = queryset.order_by(f'-{sort_field}')
 
         return queryset
 

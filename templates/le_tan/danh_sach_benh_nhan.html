@@ -188,11 +188,11 @@
                                 <label>Giới tính</label>
                                 <div class="radio-inline">
                                     <label class="radio">
-                                        <input type="radio" name="radio" class="inputGioiTinhModal" value="2" />
+                                        <input type="radio" checked name="radio" class="inputGioiTinhModal" value="2" />
                                         <span></span>Nữ
                                     </label>
                                     <label class="radio">
-                                        <input type="radio" checked name="radio" class="inputGioiTinhModal" value="1" />
+                                        <input type="radio" name="radio" class="inputGioiTinhModal" value="1" />
                                         <span></span>Nam
                                     </label>
                                 </div>
@@ -529,7 +529,7 @@ var KTDatatableRemoteAjaxDemo = function() {
                 pageSize: 10,
                 serverPaging: true,
                 serverFiltering: true,
-                serverSorting: false,
+                serverSorting: true,
                 saveState: false,
             },
 
@@ -565,20 +565,22 @@ var KTDatatableRemoteAjaxDemo = function() {
             }, {
                 field: 'so_dien_thoai',
                 title: 'Số điện thoại',
+                sortable: false,
             }, {
                 field: 'cmnd_cccd',
                 title: 'CMND/CCCD',
-                
+                sortable: false,
             }, {
                 field: 'dia_chi',
                 title: 'Địa chỉ',
                 width: 200,
-                autoHide: false,
+                sortable: false,
             }, {
                 field: 'dan_toc',
                 title: 'Dân tộc',
                 width: 50,
                 textAlign: 'center',
+                sortable: false,
                 template: function(row){
                     if (!row.dan_toc) {
                         return '<span class="label font-weight-bold label-lg label-light-warning label-inline">Chưa có thông tin</span>'
@@ -589,6 +591,7 @@ var KTDatatableRemoteAjaxDemo = function() {
             }, {
                 field: 'email',
                 title: 'Email',
+                sortable: false,
                 template: function(row) {
                     if (!row.email) {
                         return '<span class="label font-weight-bold label-lg label-light-warning label-inline">Chưa có thông tin</span>'
@@ -600,6 +603,7 @@ var KTDatatableRemoteAjaxDemo = function() {
                 field: 'ngay_sinh',
                 title: 'Ngày sinh',
                 autoHide: false,
+                sortable: false,
                 template: function(row) {
                     var date = new Date(row.ngay_sinh)
                     if(!row.ngay_sinh){

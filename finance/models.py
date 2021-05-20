@@ -1,5 +1,11 @@
 from django.db import models
 from django.utils import timezone
+import pytz
+
+timezone.activate(pytz.timezone("Asia/Ho_Chi_Minh"))
+
+local_time = timezone.localtime(timezone.now())
+
 
 class HoaDonThuoc(models.Model):
     # benh_nhan = models.ForeignKey(NguoiDung, on_delete=models.SET(get_sentinel_user))
@@ -16,6 +22,7 @@ class HoaDonThuoc(models.Model):
     nguoi_thanh_toan = models.ForeignKey("clinic.User", on_delete=models.SET_NULL, null=True, blank=True)
     ma_hoa_don = models.CharField(max_length=255, unique=True, null=True, blank=True)
     tong_tien = models.DecimalField(decimal_places=0, max_digits=10, null=True, blank=True)
+
     thoi_gian_tao = models.DateTimeField(editable=False, null=True, blank=True)
     thoi_gian_cap_nhat = models.DateTimeField(null=True, blank=True)
     bao_hiem = models.BooleanField(default=False)
@@ -35,8 +42,8 @@ class HoaDonThuoc(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.id:
-            self.thoi_gian_tao = timezone.now()
-        self.thoi_gian_cap_nhat = timezone.now()
+            self.thoi_gian_tao = local_time
+        self.thoi_gian_cap_nhat = local_time
         return super(HoaDonThuoc, self).save(*args, **kwargs)
 
     def get_don_gia(self):
@@ -66,7 +73,6 @@ class HoaDonChuoiKham(models.Model):
     tong_tien = models.DecimalField(decimal_places=3, max_digits=10, null=True, blank=True)
     discount = models.IntegerField(null=True, blank=True)
 
-
     thoi_gian_tao = models.DateTimeField(editable=False, null=True, blank=True)
     thoi_gian_cap_nhat = models.DateTimeField(null=True, blank=True)
 
@@ -87,8 +93,8 @@ class HoaDonChuoiKham(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.id:
-            self.thoi_gian_tao = timezone.now()
-        self.thoi_gian_cap_nhat = timezone.now()
+            self.thoi_gian_tao = local_time
+        self.thoi_gian_cap_nhat = local_time
         return super(HoaDonChuoiKham, self).save(*args, **kwargs)
 
     def get_benh_nhan(self):
@@ -168,6 +174,7 @@ class HoaDonLamSang(models.Model):
     lich_hen = models.ForeignKey("clinic.LichHenKham", on_delete=models.CASCADE, null=True, blank=True, related_name="hoa_don_lam_sang")
     nguoi_thanh_toan = models.ForeignKey("clinic.User", on_delete=models.SET_NULL, null=True, blank=True)
     tong_tien = models.DecimalField(max_digits=20, decimal_places=3, null=True, blank=True)
+
     thoi_gian_tao = models.DateTimeField(editable=False, null=True, blank=True)
     thoi_gian_cap_nhat = models.DateTimeField(null=True, blank=True)
 

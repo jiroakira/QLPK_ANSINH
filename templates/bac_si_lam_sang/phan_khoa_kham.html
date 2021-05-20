@@ -230,26 +230,32 @@ var KTDatatableRecordSelectionDemo = function() {
         }, {
             field: 'ten_dvkt',
             title: 'Tên Dịch Vụ',
+            sortable: false,
         }, {
             field: 'quyet_dinh',
             title: 'Quyết Định',
+            sortable: false,
         }, {
             field: 'cong_bo',
             title: 'Công Bố',
+            sortable: false,
         }, {
             field: 'bac_si_phu_trach.ho_ten',
             title: 'Bác Sĩ Phụ Trách',
+            sortable: false,
             
         }, {
             field: 'phong_chuc_nang.ten_phong_chuc_nang',
             title: 'Phòng Chức Năng',
             textAlign: 'center',
-            autoHide: false
+            autoHide: false,
+            sortable: false,
         }, {
             field: 'bao hiem',
             title: 'Dùng Bảo Hiểm',
             textAlign: 'center',
             autoHide: false,
+            sortable: false,
             template: function(row){
                 if(row.bao_hiem == true){
                     return '<span class="label font-weight-bold label-lg label-light-primary label-inline">Có áp dụng</span>'
