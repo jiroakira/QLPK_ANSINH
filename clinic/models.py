@@ -20,6 +20,7 @@ from django.core.exceptions import PermissionDenied
 from django.contrib.auth.models import PermissionsMixin
 import re
 import unicodedata
+from django.db.models import Count, F, Sum, Q
 
 def file_url(self, filename): 
 
@@ -358,6 +359,10 @@ class User(AbstractBaseUser, PermissionsMixin):
         else:
             return False
 
+    @staticmethod
+    def get_count_in_day(queryset):
+        total_count = queryset.aggregate(Count('id'))['id__count'] if queryset else 0 
+        return total_count
         
 class BacSi(models.Model):
     Type = (

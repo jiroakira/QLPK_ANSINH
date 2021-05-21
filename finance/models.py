@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 import pytz
+from django.db.models import Count, F, Sum, Q
 
 timezone.activate(pytz.timezone("Asia/Ho_Chi_Minh"))
 
@@ -55,6 +56,11 @@ class HoaDonThuoc(models.Model):
         except ValueError:
             don_gia = "{:,}".format(float(self.tong_tien))
         return don_gia
+
+    @staticmethod
+    def analysis_total_value(queryset):
+        total_value = queryset.aggregate(Sum('tong_tien'))['tong_tien__sum'] if queryset else 0
+        return total_value
 
 class HoaDonChuoiKham(models.Model):
     """ 
@@ -170,6 +176,11 @@ class HoaDonChuoiKham(models.Model):
     def get_chi_phi_ngoai_ds(self):
         return 0
 
+    @staticmethod
+    def analysis_total_value(queryset):
+        total_value = queryset.aggregate(Sum('tong_tien'))['tong_tien__sum'] if queryset else 0
+        return total_value
+
 class HoaDonLamSang(models.Model):
     lich_hen = models.ForeignKey("clinic.LichHenKham", on_delete=models.CASCADE, null=True, blank=True, related_name="hoa_don_lam_sang")
     nguoi_thanh_toan = models.ForeignKey("clinic.User", on_delete=models.SET_NULL, null=True, blank=True)
@@ -198,6 +209,10 @@ class HoaDonLamSang(models.Model):
         don_gia = "{:,}".format(int(self.tong_tien))
         return don_gia
 
+    @staticmethod
+    def analysis_total_value(queryset):
+        total_value = queryset.aggregate(Sum('tong_tien'))['tong_tien__sum'] if queryset else 0
+        return total_value
     # benh_nhan = models.DecimalField(max_digits=10, decimal_places=3, null=True, blank=True)
 
 class HoaDonTong(models.Model):
