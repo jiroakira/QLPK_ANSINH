@@ -214,8 +214,8 @@
     }
 
     $(document).on('click', '#btn-thanh-toan', function(){
-        var tong_tien = $('#btn-thanh-toan').data('tong-tien');
-        var ma_hoa_don = $('#btn-thanh-toan').data('ma-hoa-don');
+        var tong_tien = $('#btn-thanh-toan').attr('data-tong-tien');
+        var ma_hoa_don = $('#btn-thanh-toan').attr('data-ma-hoa-don');
         var discount = $('#btn-thanh-toan').attr('data-discount');
         $.ajax({
             type: "GET",
