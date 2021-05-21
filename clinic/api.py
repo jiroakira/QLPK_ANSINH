@@ -1424,7 +1424,9 @@ class DanhSachDoanhThuTheoThoiGian(APIView):
             tong_doanh_thu = tong_tien_dich_vu + tong_tien_don_thuoc
             tong_doanh_thu_formatted = "{:,}".format(int(tong_doanh_thu))
 
-            danh_sach_dich_vu = PhanKhoaKham.objects.filter(thoi_gian_tao__lt=tomorrow_start, thoi_gian_tao__gte=start).values('dich_vu_kham__phong_chuc_nang__ten_phong_chuc_nang').annotate(tong_tien=Sum('dich_vu_kham__don_gia')).order_by('dich_vu_kham__phong_chuc_nang__ten_phong_chuc_nang').annotate(dich_vu_kham_count = Count('dich_vu_kham__phong_chuc_nang__ten_phong_chuc_nang'))
+            hoa_don_chuoi_kham = HoaDonChuoiKham.objects.filter(thoi_gian_tao__lt=tomorrow_start, thoi_gian_tao__gte=start).exclude(tong_tien__isnull=True).values_list('chuoi_kham__phan_khoa_kham')
+            list_id = [item for t in list(hoa_don_chuoi_kham) for item in t]
+            danh_sach_dich_vu = PhanKhoaKham.objects.filter(pk__in=list_id).values('dich_vu_kham__phong_chuc_nang__ten_phong_chuc_nang').annotate(tong_tien=Sum('dich_vu_kham__don_gia')).order_by('dich_vu_kham__phong_chuc_nang__ten_phong_chuc_nang').annotate(dich_vu_kham_count = Count('dich_vu_kham__phong_chuc_nang__ten_phong_chuc_nang'))
             list_tong_tien_without_format = [i['tong_tien'] for i in danh_sach_dich_vu]
             tong_tien_theo_phong = sum(list_tong_tien_without_format)
             tong_tien_theo_phong_formatted = "{:,}".format(int(tong_tien_theo_phong))
