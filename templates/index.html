@@ -153,7 +153,7 @@
                                 </span>
                                 <div class="d-flex flex-column text-right">
                                     {% comment %} <span class="text-dark-75 font-weight-bolder "></span> {% endcomment %}
-                                    <span class="font-weight-bold font-size-h5">Doanh thu dịch vụ 7 ngày gần đây</span>
+                                    <span class="font-weight-bold font-size-h5">Tổng Hợp Doanh Thu 7 Ngày Gần Đây</span>
                                 </div>
                             </div>
                             <div id="chart_3"></div>
@@ -185,7 +185,7 @@
                                 </span>
                                 <div class="d-flex flex-column text-right">
                                     {% comment %} <span class="text-dark-75 font-weight-bolder "></span> {% endcomment %}
-                                    <span class="font-weight-bold font-size-h5">Doanh thu thuốc 7 ngày gần đây</span>
+                                    <span class="font-weight-bold font-size-h5">Tổng Hợp Số Lượng Bệnh Nhân Mới 7 Ngày Gần Đây</span>
                                 </div>
                             </div>
                             <div id="chart_4"></div>
@@ -647,6 +647,12 @@
                 series: [{
                     name: 'Dịch vụ khám',
                     data: {{ tong_tien_chuoi_kham|safe }}
+                }, {
+                    name: 'Thuốc',
+                    data: {{ tong_tien_thuoc|safe }}
+                }, {
+                    name: 'Chi Phí Lâm Sàng',
+                    data: {{ tong_tien_lam_sang|safe }}
                 }],
                 chart: {
                     type: 'bar',
@@ -668,8 +674,7 @@
                     colors: ['transparent']
                 },
                 xaxis: {
-                    categories: {{ thoi_gian_chuoi_kham|safe }},
-
+                    categories: {{ thoi_gian|safe }},
                 },
                 yaxis: {
                     title: {
@@ -699,7 +704,7 @@
                         }
                     }
                 },
-                colors: ['#ff884b']
+                colors: ['#2E93fA', '#66DA26','#E91E63'],
             };
 
             var chart = new ApexCharts(document.querySelector(apexChart), options);
@@ -710,8 +715,8 @@
             const apexChart = "#chart_4";
             var options = {
                 series: [{
-                    name: 'Thuốc',
-                    data: {{ tong_tien_thuoc|safe }}
+                    name: 'Bệnh Nhân Mới',
+                    data: {{ so_luong_nguoi_dung|safe }}
                 }],
                 chart: {
                     type: 'bar',
@@ -733,11 +738,11 @@
                     colors: ['transparent']
                 },
                 xaxis: {
-                    categories: {{ thoi_gian_thuoc|safe }},
+                    categories: {{ thoi_gian|safe }},
                 },
                 yaxis: {
                     title: {
-                        text: 'VND'
+                        text: 'Người'
                     },
                     ticks: {
                         callback: function(label, index, labels) {
@@ -758,7 +763,7 @@
                             if (parseInt(val) >= 1000) {
                                 return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " VND";
                             } else {
-                                return val + " VND"
+                                return val + " Người"
                             }
                         }
                     }

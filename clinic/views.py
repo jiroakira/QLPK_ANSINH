@@ -92,7 +92,7 @@ from django.contrib.auth import authenticate, login as auth_login
 from rest_framework.views import APIView
 from django.utils import timezone
 from django.contrib import messages
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date
 import decimal
 from django.db.models import Max
 from django.contrib.auth.decorators import login_required, user_passes_test
@@ -106,7 +106,7 @@ from django.urls import reverse
 import locale 
 from django.contrib.auth.models import Group, Permission
 from django.contrib.contenttypes.models import ContentType
-from datetime import date, datetime
+
 from dateutil.relativedelta import relativedelta
 
 format = '%m/%d/%Y %H:%M %p'
@@ -137,23 +137,14 @@ def staff_user_required(view_func):
 def index(request):
     if request.user.is_superuser or request.user.is_admin or request.user.has_perm('clinic.general_view'):
         nguoi_dung = User.objects.filter(chuc_nang=1)
-        # * tổng số bệnh nhân
-        ds_bac_si = User.objects.filter(chuc_nang='3')
-
-        # * Danh sách dịch vụ khám
-        danh_sach_dich_vu = DichVuKham.objects.all()
 
         phong_chuc_nang = PhongChucNang.objects.all()
         # * danh sách bệnh nhân chưa được khám
         trang_thai = TrangThaiLichHen.objects.get_or_create(ten_trang_thai="Đã Đặt Trước")[0]
-        da_dat_truoc = TrangThaiLichHen.objects.get_or_create(ten_trang_thai="Đã Đặt Trước")[0]
-        danh_sach_benh_nhan = LichHenKham.objects.select_related("benh_nhan").filter(trang_thai = trang_thai)
-        danh_sach_lich_hen_chua_xac_nhan = LichHenKham.objects.select_related("benh_nhan").filter(trang_thai=da_dat_truoc)
 
         now = timezone.localtime(timezone.now())
         tomorrow = now + timedelta(1)
-        today_start = now.replace(hour=0, minute=0, second=0)
-        today_end = tomorrow.replace(hour=0, minute=0, second=0)
+
         lich_hen = LichHenKham.objects.filter(trang_thai = trang_thai).annotate(relevance=models.Case(
             models.When(thoi_gian_bat_dau__gte=now, then=1),
             models.When(thoi_gian_bat_dau__lt=now, then=2),
@@ -176,36 +167,49 @@ def index(request):
                 past_events.append(lich)
 
         now = datetime.now()
+        delta = timedelta(days=1)
 
         bai_dang = BaiDang.objects.filter(thoi_gian_ket_thuc__gt=now)
         starting_day = datetime.now() - timedelta(days=7)
 
         user_trong_ngay = User.objects.filter(thoi_gian_tao__gte=starting_day).order_by('-thoi_gian_tao')
-        
-        hoa_don_chuoi_kham = HoaDonChuoiKham.objects.filter(thoi_gian_tao__gte=starting_day).annotate(day=TruncDay("thoi_gian_tao")).values("day").annotate(c=Count("id")).annotate(total_spent=Sum(F("tong_tien")))
 
-        tong_tien_chuoi_kham = [str(x['total_spent']) for x in hoa_don_chuoi_kham]
-        days_chuoi_kham = [x["day"].strftime("%Y-%m-%d") for x in hoa_don_chuoi_kham ]
+        tong_tien_hoa_don_chuoi_kham = []
+        tong_tien_hoa_don_thuoc = []
+        tong_tien_hoa_don_lam_sang = []
+        so_luong_nguoi_dung = []
+        time_series = []
 
-        hoa_don_thuoc = HoaDonThuoc.objects.filter(thoi_gian_tao__gte=starting_day).annotate(day=TruncDay("thoi_gian_tao")).values("day").annotate(c=Count("id")).annotate(total_spent=Sum(F("tong_tien")))
-        # hoa_don_thuoc = HoaDonThuoc.objects.filter(thoi_gian_tao__gte=starting_day).annotate(day=TruncDay('thoi_gian_tao'), created_count=Count('thoi_gian_tao__date')).values('day', 'created_count')
-        tong_tien_thuoc = [str(x['total_spent']) for x in hoa_don_thuoc]
-        days_thuoc = [x["day"].strftime("%Y-%m-%d") for x in hoa_don_thuoc ]
+        while starting_day <= now:
+            starting_day += delta
+            time_start = starting_day.date()
+            time_end = (starting_day + delta).date()
+            time_str = starting_day.strftime("%d/%m/%Y")
+            danh_sach_hoa_don = HoaDonChuoiKham.objects.filter(thoi_gian_tao__range=[time_start, time_end]).exclude(Q(tong_tien__isnull=True) | Q(tong_tien=0.000))
+            danh_sach_hoa_don_thuoc = HoaDonThuoc.objects.filter(thoi_gian_tao__range=[time_start, time_end]).exclude(Q(tong_tien__isnull=True) | Q(tong_tien=0.000))
+            danh_sach_hoa_don_lam_sang = HoaDonLamSang.objects.filter(thoi_gian_tao__range=[time_start, time_end]).exclude(Q(tong_tien__isnull=True) | Q(tong_tien=0.000))
+            danh_sach_nguoi_dung = User.objects.filter(thoi_gian_tao__range=[time_start, time_end]).filter(chuc_nang = '1')
+            total_count_user = User.get_count_in_day(danh_sach_nguoi_dung)
+            total_value_chuoi_kham = HoaDonChuoiKham.analysis_total_value(danh_sach_hoa_don)
+            total_value_don_thuoc = HoaDonThuoc.analysis_total_value(danh_sach_hoa_don_thuoc)
+            total_value_lam_sang = HoaDonLamSang.analysis_total_value(danh_sach_hoa_don_lam_sang)
+            tong_tien_hoa_don_chuoi_kham.append(str(total_value_chuoi_kham))
+            tong_tien_hoa_don_thuoc.append(str(total_value_don_thuoc))
+            tong_tien_hoa_don_lam_sang.append(str(total_value_lam_sang))
+            so_luong_nguoi_dung.append(str(total_count_user))
+            time_series.append(time_str)
 
         data = {
             'user': request.user,
-            'danh_sach_benh_nhan': danh_sach_benh_nhan[:10],
-            'lich_hen_chua_xac_nhan': danh_sach_lich_hen_chua_xac_nhan,
             'upcoming_events': upcoming_events[:6],
             'past_events': past_events[:6],
-            'ds_bac_si': ds_bac_si,
-            'danh_sach_dich_vu': danh_sach_dich_vu,
             'nguoi_dung': nguoi_dung,
             'user_trong_ngay': user_trong_ngay[:10],
-            'tong_tien_chuoi_kham' : tong_tien_chuoi_kham,
-            'thoi_gian_chuoi_kham': days_chuoi_kham,
-            'tong_tien_thuoc' : tong_tien_thuoc,
-            'thoi_gian_thuoc': days_thuoc,
+            'tong_tien_chuoi_kham' : tong_tien_hoa_don_chuoi_kham,
+            'tong_tien_thuoc' : tong_tien_hoa_don_thuoc,
+            'tong_tien_lam_sang': tong_tien_hoa_don_lam_sang,
+            'so_luong_nguoi_dung': so_luong_nguoi_dung,
+            'thoi_gian': time_series,
             'bai_dang' : bai_dang,
             'phong_chuc_nang' : phong_chuc_nang,
         }
