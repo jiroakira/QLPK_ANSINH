@@ -1066,7 +1066,7 @@ class DanhSachThanhToanLamSang(generics.ListCreateAPIView):
         tomorrow = now + timedelta(1)
         today_start = now.replace(hour=0, minute=0, second=0)
         today_end = tomorrow.replace(hour=0, minute=0, second=0)
-        queryset = LichHenKham.objects.select_related('benh_nhan').filter(thoi_gian_tao__gte=today_start, thoi_gian_tao__lt=today_end)
+        queryset = LichHenKham.objects.select_related('benh_nhan').filter(thoi_gian_tao__gte=today_start, thoi_gian_tao__lt=today_end).order_by('-id')
         
         flag = self.request.query_params.get('query[trang_thai_thanh_toan]')
         term = self.request.query_params.get('query[search]')
@@ -1205,7 +1205,7 @@ class DanhSachDoanhThuDichVu(APIView):
             if range_start == range_end:
                 today_end = today_end + timedelta(1)
             
-        hoa_don_chuoi_kham = HoaDonChuoiKham.objects.filter(thoi_gian_tao__lt=today_end, thoi_gian_tao__gte=today_start).exclude(tong_tien__isnull=True).values_list('chuoi_kham__phan_khoa_kham')
+        hoa_don_chuoi_kham = HoaDonChuoiKham.objects.filter(thoi_gian_tao__lt=today_end, thoi_gian_tao__gte=today_start).exclude(Q(tong_tien__isnull=True) | Q(tong_tien=0.000)).values_list('chuoi_kham__phan_khoa_kham')
         list_id = [item for t in list(hoa_don_chuoi_kham) for item in t]
         
         danh_sach_dich_vu = PhanKhoaKham.objects.filter(pk__in=list_id).values('dich_vu_kham__ten_dvkt').annotate(tong_tien=Sum('dich_vu_kham__don_gia')).order_by('dich_vu_kham__ten_dvkt').annotate(dich_vu_kham_count = Count('dich_vu_kham__ten_dvkt'))
@@ -1402,7 +1402,7 @@ class DanhSachDoanhThuTheoThoiGian(APIView):
         # print(start)
         if range_end == '':
 
-            tong_tien_hoa_don_chuoi_kham_theo_thoi_gian = HoaDonChuoiKham.objects.filter(thoi_gian_tao__gt=start, thoi_gian_tao__lt=tomorrow_start).exclude(tong_tien__isnull=True).annotate(day=TruncDay("thoi_gian_tao")).values("day").annotate(c=Count("id")).annotate(total_spent=Sum(F("tong_tien")))
+            tong_tien_hoa_don_chuoi_kham_theo_thoi_gian = HoaDonChuoiKham.objects.filter(thoi_gian_tao__gt=start, thoi_gian_tao__lt=tomorrow_start).exclude(Q(tong_tien__isnull=True) | Q(tong_tien=0.000)).annotate(day=TruncDay("thoi_gian_tao")).values("day").annotate(c=Count("id")).annotate(total_spent=Sum(F("tong_tien")))
             print(tong_tien_hoa_don_chuoi_kham_theo_thoi_gian)
 
             list_tong_tien = [x['total_spent'] for x in tong_tien_hoa_don_chuoi_kham_theo_thoi_gian]
@@ -1424,7 +1424,7 @@ class DanhSachDoanhThuTheoThoiGian(APIView):
             tong_doanh_thu = tong_tien_dich_vu + tong_tien_don_thuoc
             tong_doanh_thu_formatted = "{:,}".format(int(tong_doanh_thu))
 
-            hoa_don_chuoi_kham = HoaDonChuoiKham.objects.filter(thoi_gian_tao__lt=tomorrow_start, thoi_gian_tao__gte=start).exclude(tong_tien__isnull=True).values_list('chuoi_kham__phan_khoa_kham')
+            hoa_don_chuoi_kham = HoaDonChuoiKham.objects.filter(thoi_gian_tao__lt=tomorrow_start, thoi_gian_tao__gte=start).exclude(Q(tong_tien__isnull=True) | Q(tong_tien=0.000)).values_list('chuoi_kham__phan_khoa_kham')
             list_id = [item for t in list(hoa_don_chuoi_kham) for item in t]
             danh_sach_dich_vu = PhanKhoaKham.objects.filter(pk__in=list_id).values('dich_vu_kham__phong_chuc_nang__ten_phong_chuc_nang').annotate(tong_tien=Sum('dich_vu_kham__don_gia')).order_by('dich_vu_kham__phong_chuc_nang__ten_phong_chuc_nang').annotate(dich_vu_kham_count = Count('dich_vu_kham__phong_chuc_nang__ten_phong_chuc_nang'))
             list_tong_tien_without_format = [i['tong_tien'] for i in danh_sach_dich_vu]
