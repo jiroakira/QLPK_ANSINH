@@ -1280,7 +1280,7 @@ def hoa_don_dich_vu(request, **kwargs):
         bao_hiem.clear()
         phong_chuc_nang = PhongChucNang.objects.all()
         mau_hoa_don = MauPhieu.objects.filter(codename='hoa_don_dich_vu').first()
-        thoi_gian_thanh_toan = hoa_don_dich_vu.thoi_gian_thanh_toan + timedelta(hours=7)
+        thoi_gian_thanh_toan = hoa_don_dich_vu.thoi_gian_cap_nhat + timedelta(hours=7)
         print(thoi_gian_thanh_toan)
         
         benh_nhan = chuoi_kham.benh_nhan
