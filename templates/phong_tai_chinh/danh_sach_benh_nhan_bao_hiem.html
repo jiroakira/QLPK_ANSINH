@@ -1,258 +1,369 @@
-{% extends 'base.html' %}
-
-{% load static %}
-
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 <!--begin::Content-->
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-    <!--begin::Subheader-->
-    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
-        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
-            <!--begin::Info-->
-            <div class="d-flex align-items-center flex-wrap mr-1">
-                <!--begin::Page Heading-->
-                <div class="d-flex align-items-baseline flex-wrap mr-5">
-                    <!--begin::Page Title-->
-                    <h5 class="text-dark font-weight-bold my-1 mr-5">Phòng Tài Chính</h5>
-                    <!--end::Page Title-->
-                    <!--begin::Breadcrumb-->
-                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
-                        <li class="breadcrumb-item">
-                            <a href="#" class="text-muted">Danh Sách Hóa Đơn Xuất Bảo Hiểm</a>
-                        </li>
-                    </ul>
-                    <!--end::Breadcrumb-->
-                </div>
-                <!--end::Page Heading-->
-            </div>
-            <!--end::Info-->
+  <!--begin::Subheader-->
+  <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+    <div
+      class="
+        container-fluid
+        d-flex
+        align-items-center
+        justify-content-between
+        flex-wrap flex-sm-nowrap
+      "
+    >
+      <!--begin::Info-->
+      <div class="d-flex align-items-center flex-wrap mr-1">
+        <!--begin::Page Heading-->
+        <div class="d-flex align-items-baseline flex-wrap mr-5">
+          <!--begin::Page Title-->
+          <h5 class="text-dark font-weight-bold my-1 mr-5">Phòng Tài Chính</h5>
+          <!--end::Page Title-->
+          <!--begin::Breadcrumb-->
+          <ul
+            class="
+              breadcrumb breadcrumb-transparent breadcrumb-dot
+              font-weight-bold
+              p-0
+              my-2
+              font-size-sm
+            "
+          >
+            <li class="breadcrumb-item">
+              <a href="#" class="text-muted">Danh Sách Hóa Đơn Xuất Bảo Hiểm</a>
+            </li>
+          </ul>
+          <!--end::Breadcrumb-->
         </div>
+        <!--end::Page Heading-->
+      </div>
+      <!--end::Info-->
     </div>
-    <!--end::Subheader-->
-    <!--begin::Entry-->
-    <div class="d-flex flex-column-fluid">
-        <!--begin::Container-->
-        <div class="container">
-            <!--begin::Card-->
-            <div class="card card-custom">
-                <div class="card-header flex-wrap border-0 pt-6 pb-0">
-                    <div class="card-title">
-                        <h3 class="card-label">Danh Sách Những Bệnh Nhân Được Hưởng Bảo Hiểm
-                        </h3>
-                    </div>
-                    <div class="card-toolbar">
-                        <!--begin::Dropdown-->
-                        <div class="dropdown dropdown-inline mr-2">
-                            <button type="button" class="btn btn-light-primary font-weight-bolder dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="svg-icon svg-icon-md">
-                                <!--begin::Svg Icon | path:/metronic/theme/html/demo1/dist/assets/media/svg/icons/Design/PenAndRuller.svg-->
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <rect x="0" y="0" width="24" height="24" />
-                                        <path d="M3,16 L5,16 C5.55228475,16 6,15.5522847 6,15 C6,14.4477153 5.55228475,14 5,14 L3,14 L3,12 L5,12 C5.55228475,12 6,11.5522847 6,11 C6,10.4477153 5.55228475,10 5,10 L3,10 L3,8 L5,8 C5.55228475,8 6,7.55228475 6,7 C6,6.44771525 5.55228475,6 5,6 L3,6 L3,4 C3,3.44771525 3.44771525,3 4,3 L10,3 C10.5522847,3 11,3.44771525 11,4 L11,19 C11,19.5522847 10.5522847,20 10,20 L4,20 C3.44771525,20 3,19.5522847 3,19 L3,16 Z" fill="#000000" opacity="0.3" />
-                                        <path d="M16,3 L19,3 C20.1045695,3 21,3.8954305 21,5 L21,15.2485298 C21,15.7329761 20.8241635,16.200956 20.5051534,16.565539 L17.8762883,19.5699562 C17.6944473,19.7777745 17.378566,19.7988332 17.1707477,19.6169922 C17.1540423,19.602375 17.1383289,19.5866616 17.1237117,19.5699562 L14.4948466,16.565539 C14.1758365,16.200956 14,15.7329761 14,15.2485298 L14,5 C14,3.8954305 14.8954305,3 16,3 Z" fill="#000000" />
-                                    </g>
-                                </svg>
-                                <!--end::Svg Icon-->
-                            </span>Tùy Chọn</button>
-                            <!--begin::Dropdown Menu-->
-                            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                                <!--begin::Navigation-->
-                                <ul class="navi flex-column navi-hover py-2">
-                                    <li class="navi-header font-weight-bolder text-uppercase font-size-sm text-primary pb-2">Chọn Loại hóa đơn:</li>
-                                    <li class="navi-item">
-                                        <a href="javascript:;" class="navi-link" id="btn-hoa-don-dich-vu">
-                                            <span class="navi-icon">
-                                                <i class="la la-print"></i>
-                                            </span>
-                                            <span class="navi-text">Xuất Excel</span>
-                                        </a>
-                                    </li>
-                                    
-                                </ul>
-                                <!--end::Navigation-->
-                            </div>
-                            <!--end::Dropdown Menu-->
-                        </div>
-                        <!--end::Dropdown-->
-                        <!--begin::Button-->
-                        <a href="#" class="btn btn-light-primary font-weight-bolder" id="btn-reload">
-                            <span class="svg-icon svg-icon-md">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <rect x="0" y="0" width="24" height="24"/>
-                                        <path d="M12,8 L8,8 C5.790861,8 4,9.790861 4,12 L4,13 C4,14.6568542 5.34314575,16 7,16 L7,18 C4.23857625,18 2,15.7614237 2,13 L2,12 C2,8.6862915 4.6862915,6 8,6 L12,6 L12,4.72799742 C12,4.62015048 12.0348702,4.51519416 12.0994077,4.42878885 C12.264656,4.2075478 12.5779675,4.16215674 12.7992086,4.32740507 L15.656242,6.46136716 C15.6951359,6.49041758 15.7295917,6.52497737 15.7585249,6.56395854 C15.9231063,6.78569617 15.876772,7.09886961 15.6550344,7.263451 L12.798001,9.3840407 C12.7118152,9.44801079 12.607332,9.48254921 12.5,9.48254921 C12.2238576,9.48254921 12,9.25869158 12,8.98254921 L12,8 Z" fill="#000000"/>
-                                        <path d="M12.0583175,16 L16,16 C18.209139,16 20,14.209139 20,12 L20,11 C20,9.34314575 18.6568542,8 17,8 L17,6 C19.7614237,6 22,8.23857625 22,11 L22,12 C22,15.3137085 19.3137085,18 16,18 L12.0583175,18 L12.0583175,18.9825492 C12.0583175,19.2586916 11.8344599,19.4825492 11.5583175,19.4825492 C11.4509855,19.4825492 11.3465023,19.4480108 11.2603165,19.3840407 L8.40328311,17.263451 C8.18154548,17.0988696 8.13521119,16.7856962 8.29979258,16.5639585 C8.32872576,16.5249774 8.36318164,16.4904176 8.40207551,16.4613672 L11.2591089,14.3274051 C11.48035,14.1621567 11.7936615,14.2075478 11.9589099,14.4287888 C12.0234473,14.5151942 12.0583175,14.6201505 12.0583175,14.7279974 L12.0583175,16 Z" fill="#000000" opacity="0.3"/>
-                                    </g>
-                                </svg>
-                            </span>
-                            Tải lại
-                        </a>
-                        <!--end::Button-->
-                    </div>
-                </div>
-                <div class="card-body">
-                    <!--begin: Search Form-->
-                    <!--begin::Search Form-->
-                    <div class="mb-7">
-                        <div class="row align-items-center">
-                            <div class="col-lg-9 col-xl-12">
-                                <div class="row align-items-center">
-                                    <div class="col-md-5 my-2 my-md-0">
-                                        <div class="input-icon">
-                                            <input type="text" class="form-control" placeholder="Tìm kiếm..." id="kt_datatable_search_query" />
-                                            <span>
-                                                <i class="flaticon2-search-1 text-muted"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="javascript:;" class="btn btn-md btn-light font-weight-bold" id="kt_dashboard_daterangepicker" data-toggle="tooltip" title="Chọn khoảng thời gian để hiển thị dữ liệu" data-placement="top">
-                                            <span class="font-size-base font-weight-bold mr-2" id="kt_dashboard_daterangepicker_title">Ngày hôm nay</span>
-                                            <span class="text-primary font-size-base font-weight-bolder" id="kt_dashboard_daterangepicker_date"></span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--end::Search Form-->
-                    <!--begin: Datatable-->
-                    <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable"></div>
-                    <!--end: Datatable-->
-                </div>
+  </div>
+  <!--end::Subheader-->
+  <!--begin::Entry-->
+  <div class="d-flex flex-column-fluid">
+    <!--begin::Container-->
+    <div class="container">
+      <!--begin::Card-->
+      <div class="card card-custom">
+        <div class="card-header flex-wrap border-0 pt-6 pb-0">
+          <div class="card-title">
+            <h3 class="card-label">
+              Danh Sách Những Bệnh Nhân Được Hưởng Bảo Hiểm
+            </h3>
+          </div>
+          <div class="card-toolbar">
+            <!--begin::Dropdown-->
+            <div class="dropdown dropdown-inline mr-2">
+              <button
+                type="button"
+                class="btn btn-light-primary font-weight-bolder dropdown-toggle"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <span class="svg-icon svg-icon-md">
+                  <!--begin::Svg Icon | path:/metronic/theme/html/demo1/dist/assets/media/svg/icons/Design/PenAndRuller.svg-->
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    width="24px"
+                    height="24px"
+                    viewBox="0 0 24 24"
+                    version="1.1"
+                  >
+                    <g
+                      stroke="none"
+                      stroke-width="1"
+                      fill="none"
+                      fill-rule="evenodd"
+                    >
+                      <rect x="0" y="0" width="24" height="24" />
+                      <path
+                        d="M3,16 L5,16 C5.55228475,16 6,15.5522847 6,15 C6,14.4477153 5.55228475,14 5,14 L3,14 L3,12 L5,12 C5.55228475,12 6,11.5522847 6,11 C6,10.4477153 5.55228475,10 5,10 L3,10 L3,8 L5,8 C5.55228475,8 6,7.55228475 6,7 C6,6.44771525 5.55228475,6 5,6 L3,6 L3,4 C3,3.44771525 3.44771525,3 4,3 L10,3 C10.5522847,3 11,3.44771525 11,4 L11,19 C11,19.5522847 10.5522847,20 10,20 L4,20 C3.44771525,20 3,19.5522847 3,19 L3,16 Z"
+                        fill="#000000"
+                        opacity="0.3"
+                      />
+                      <path
+                        d="M16,3 L19,3 C20.1045695,3 21,3.8954305 21,5 L21,15.2485298 C21,15.7329761 20.8241635,16.200956 20.5051534,16.565539 L17.8762883,19.5699562 C17.6944473,19.7777745 17.378566,19.7988332 17.1707477,19.6169922 C17.1540423,19.602375 17.1383289,19.5866616 17.1237117,19.5699562 L14.4948466,16.565539 C14.1758365,16.200956 14,15.7329761 14,15.2485298 L14,5 C14,3.8954305 14.8954305,3 16,3 Z"
+                        fill="#000000"
+                      />
+                    </g>
+                  </svg>
+                  <!--end::Svg Icon--> </span
+                >Tùy Chọn
+              </button>
+              <!--begin::Dropdown Menu-->
+              <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                <!--begin::Navigation-->
+                <ul class="navi flex-column navi-hover py-2">
+                  <li
+                    class="
+                      navi-header
+                      font-weight-bolder
+                      text-uppercase
+                      font-size-sm
+                      text-primary
+                      pb-2
+                    "
+                  >
+                    Chọn Loại hóa đơn:
+                  </li>
+                  <li class="navi-item">
+                    <a
+                      href="javascript:;"
+                      class="navi-link"
+                      id="btn-hoa-don-dich-vu"
+                    >
+                      <span class="navi-icon">
+                        <i class="la la-print"></i>
+                      </span>
+                      <span class="navi-text">Xuất Excel</span>
+                    </a>
+                  </li>
+                </ul>
+                <!--end::Navigation-->
+              </div>
+              <!--end::Dropdown Menu-->
             </div>
-            <!--end::Card-->
+            <!--end::Dropdown-->
+            <!--begin::Button-->
+            <a
+              href="#"
+              class="btn btn-light-primary font-weight-bolder"
+              id="btn-reload"
+            >
+              <span class="svg-icon svg-icon-md">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  width="24px"
+                  height="24px"
+                  viewBox="0 0 24 24"
+                  version="1.1"
+                >
+                  <g
+                    stroke="none"
+                    stroke-width="1"
+                    fill="none"
+                    fill-rule="evenodd"
+                  >
+                    <rect x="0" y="0" width="24" height="24" />
+                    <path
+                      d="M12,8 L8,8 C5.790861,8 4,9.790861 4,12 L4,13 C4,14.6568542 5.34314575,16 7,16 L7,18 C4.23857625,18 2,15.7614237 2,13 L2,12 C2,8.6862915 4.6862915,6 8,6 L12,6 L12,4.72799742 C12,4.62015048 12.0348702,4.51519416 12.0994077,4.42878885 C12.264656,4.2075478 12.5779675,4.16215674 12.7992086,4.32740507 L15.656242,6.46136716 C15.6951359,6.49041758 15.7295917,6.52497737 15.7585249,6.56395854 C15.9231063,6.78569617 15.876772,7.09886961 15.6550344,7.263451 L12.798001,9.3840407 C12.7118152,9.44801079 12.607332,9.48254921 12.5,9.48254921 C12.2238576,9.48254921 12,9.25869158 12,8.98254921 L12,8 Z"
+                      fill="#000000"
+                    />
+                    <path
+                      d="M12.0583175,16 L16,16 C18.209139,16 20,14.209139 20,12 L20,11 C20,9.34314575 18.6568542,8 17,8 L17,6 C19.7614237,6 22,8.23857625 22,11 L22,12 C22,15.3137085 19.3137085,18 16,18 L12.0583175,18 L12.0583175,18.9825492 C12.0583175,19.2586916 11.8344599,19.4825492 11.5583175,19.4825492 C11.4509855,19.4825492 11.3465023,19.4480108 11.2603165,19.3840407 L8.40328311,17.263451 C8.18154548,17.0988696 8.13521119,16.7856962 8.29979258,16.5639585 C8.32872576,16.5249774 8.36318164,16.4904176 8.40207551,16.4613672 L11.2591089,14.3274051 C11.48035,14.1621567 11.7936615,14.2075478 11.9589099,14.4287888 C12.0234473,14.5151942 12.0583175,14.6201505 12.0583175,14.7279974 L12.0583175,16 Z"
+                      fill="#000000"
+                      opacity="0.3"
+                    />
+                  </g>
+                </svg>
+              </span>
+              Tải lại
+            </a>
+            <!--end::Button-->
+          </div>
         </div>
-        <!--end::Container-->
+        <div class="card-body">
+          <!--begin: Search Form-->
+          <!--begin::Search Form-->
+          <div class="mb-7">
+            <div class="row align-items-center">
+              <div class="col-lg-9 col-xl-12">
+                <div class="row align-items-center">
+                  <div class="col-md-5 my-2 my-md-0">
+                    <div class="input-icon">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Tìm kiếm..."
+                        id="kt_datatable_search_query"
+                      />
+                      <span>
+                        <i class="flaticon2-search-1 text-muted"></i>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <a
+                      href="javascript:;"
+                      class="btn btn-md btn-light font-weight-bold"
+                      id="kt_dashboard_daterangepicker"
+                      data-toggle="tooltip"
+                      title="Chọn khoảng thời gian để hiển thị dữ liệu"
+                      data-placement="top"
+                    >
+                      <span
+                        class="font-size-base font-weight-bold mr-2"
+                        id="kt_dashboard_daterangepicker_title"
+                        >Ngày hôm nay</span
+                      >
+                      <span
+                        class="text-primary font-size-base font-weight-bolder"
+                        id="kt_dashboard_daterangepicker_date"
+                      ></span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--end::Search Form-->
+          <!--begin: Datatable-->
+          <div
+            class="datatable datatable-bordered datatable-head-custom"
+            id="kt_datatable"
+          ></div>
+          <!--end: Datatable-->
+        </div>
+      </div>
+      <!--end::Card-->
     </div>
-    <!--end::Entry-->
+    <!--end::Container-->
+  </div>
+  <!--end::Entry-->
 </div>
 <!--end::Content-->
 
-{% endblock content %}
-
-{% block scripts %}
-{% comment %} <script>var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";</script> {% endcomment %}
+{% endblock content %} {% block scripts %} {% comment %}
+<script>
+  var HOST_URL =
+    "https://preview.keenthemes.com/metronic/theme/html/tools/preview";
+</script>
+{% endcomment %}
 <!--begin::Global Theme Bundle(used by all pages)-->
 
-{% comment %} <script src="{% static 'assets/js/pages/crud/forms/widgets/bootstrap-datetimepicker9cd7.js' %} "></script> {% endcomment %}
+{% comment %}
+<script src="{% static 'assets/js/pages/crud/forms/widgets/bootstrap-datetimepicker9cd7.js' %} "></script>
+{% endcomment %}
 
 <!--end::Global Theme Bundle-->
 
 <script>
-"use strict";
-// Class definition
+  "use strict";
+  // Class definition
 
-var KTDatatableRemote = function() {
+  var KTDatatableRemote = (function () {
     // Private functions
     var startDate;
     var endDate;
 
-    var hoa_don_dich_vu = function(range_start, range_end) {
-        var range_start = range_start
-        var range_end = range_end
+    var hoa_don_dich_vu = function (range_start, range_end) {
+      var range_start = range_start;
+      var range_end = range_end;
 
-        var datatable = $('#kt_datatable').KTDatatable({
-            // datasource definition
-            data: {
-                type: 'remote',
-                source: {
-                    read: {
-                        method: "GET",
-                        url: HOST_URL + '/api/benh_nhan_huong_bao_hiem/export/',
-                        // sample custom headers
-                        // headers: {'x-my-custom-header': 'some value', 'x-test-header': 'the value'},
-                        map: function(raw) {
-                            // sample data mapping
-                            var dataSet = raw;
-                            if (typeof raw.data !== 'undefined') {
-                                dataSet = raw.data;
-                            }
-                            return dataSet;
-                        },
-                        params: {
-                            'range_start' : range_start,
-                            'range_end' : range_end,
-                        }
-                    },
-                },
-                pageSize: 10,
-                serverPaging: true,
-                //serverFiltering: true,
-                //serverSorting: true,
-            },
-
-            // layout definition
-            layout: {
-                scroll: false,
-                footer: false,
-            },
-
-            // column sorting
-            sortable: true,
-
-            pagination: true,
-
-            search: {
-                input: $('#kt_datatable_search_query'),
-                key: 'generalSearch'
-            },
-
-            // columns definition
-            columns: [{
-                field: 'benh_nhan',
-                title: 'Bệnh Nhân',
-                selector: false,
-                textAlign: 'center',
-            }, {
-                field: 'gioi_tinh',
-                title: 'Giới Tính',
-                template: function(row){
-                    if(row.gioi_tinh == '1') {
-                        return "Nam"
-                    } else if (row.gioi_tinh == '2') {
-                        return "Nữ"
-                    } else {
-                        return ""
-                    }
+      var datatable = $("#kt_datatable").KTDatatable({
+        // datasource definition
+        data: {
+          type: "remote",
+          source: {
+            read: {
+              method: "GET",
+              url: HOST_URL + "/api/benh_nhan_huong_bao_hiem/export/",
+              // sample custom headers
+              // headers: {'x-my-custom-header': 'some value', 'x-test-header': 'the value'},
+              map: function (raw) {
+                // sample data mapping
+                var dataSet = raw;
+                if (typeof raw.data !== "undefined") {
+                  dataSet = raw.data;
                 }
-            }, {
-                field: 'nam_sinh',
-                title: 'Năm Sinh',
+                return dataSet;
+              },
+              params: {
+                range_start: range_start,
+                range_end: range_end,
+              },
+            },
+          },
+          pageSize: 5,
+          serverPaging: true,
+          //serverFiltering: true,
+          //serverSorting: true,
+        },
 
-            }, {
-                field: 'ma_bhyt',
-                title: 'Mã BHYT',
-                
-            }, {
-                field: 'ma_benh',
-                title: 'Mã Bệnh',
-            }, {
-                field: 'ngay_kham',
-                title: 'Ngày Khám',
-            }, {
-                field: 'tong_cong_1',
-                title: 'Tổng cộng',
-            }, {
-                field: 'tien_kham',
-                title: 'Tiền Khám',
-            }, {
-                field: 'tu_chi_tra',
-                title: 'Tự chi trả',
-            }, {
-                field: 'bao_hiem_tra',
-                title: 'Bảo Hiểm Trả',
-            }, {
-                field: 'Actions',
-                title: 'Xem Chi Tiết',
-                sortable: false,
-                width: 125,
-                overflow: 'visible',
-                textAlign: 'center',
-                autoHide: false,
-                template: function(row) {
-                    return `
+        // layout definition
+        layout: {
+          scroll: false,
+          footer: false,
+        },
+
+        // column sorting
+        sortable: true,
+
+        pagination: true,
+
+        search: {
+          input: $("#kt_datatable_search_query"),
+          key: "generalSearch",
+        },
+
+        // columns definition
+        columns: [
+          {
+            field: "benh_nhan",
+            title: "Bệnh Nhân",
+            selector: false,
+            textAlign: "center",
+          },
+          {
+            field: "gioi_tinh",
+            title: "Giới Tính",
+            template: function (row) {
+              if (row.gioi_tinh == "1") {
+                return "Nam";
+              } else if (row.gioi_tinh == "2") {
+                return "Nữ";
+              } else {
+                return "";
+              }
+            },
+          },
+          {
+            field: "nam_sinh",
+            title: "Năm Sinh",
+          },
+          {
+            field: "ma_bhyt",
+            title: "Mã BHYT",
+          },
+          {
+            field: "ma_benh",
+            title: "Mã Bệnh",
+          },
+          {
+            field: "ngay_kham",
+            title: "Ngày Khám",
+          },
+          {
+            field: "tong_cong_1",
+            title: "Tổng cộng",
+          },
+          {
+            field: "tien_kham",
+            title: "Tiền Khám",
+          },
+          {
+            field: "tu_chi_tra",
+            title: "Tự chi trả",
+          },
+          {
+            field: "bao_hiem_tra",
+            title: "Bảo Hiểm Trả",
+          },
+          {
+            field: "Actions",
+            title: "Xem Chi Tiết",
+            sortable: false,
+            width: 125,
+            overflow: "visible",
+            textAlign: "center",
+            autoHide: false,
+            template: function (row) {
+              return `
                         <a href="/xuat_bao_hiem/dich_vu/${row.id}" class="btn btn-sm btn-clean mr-2" title="Hóa Đơn Chi Tiết">
                             Hóa Đơn
                         </a>
@@ -263,242 +374,268 @@ var KTDatatableRemote = function() {
                             XML
                         </a>
                     `;
-                },
-            }],
+            },
+          },
+        ],
+      });
 
-        });
+      $("#btn-reload").on("click", function () {
+        // datatable.reload();
+        $("#kt_datatable").KTDatatable("reload");
+      });
 
-        $('#btn-reload').on('click', function() {
-			// datatable.reload();
-			$('#kt_datatable').KTDatatable('reload');
-		});
+      $("#kt_datatable_search_status").on("change", function () {
+        datatable.search($(this).val().toLowerCase(), "Status");
+      });
 
+      //$('#kt_datatable_search_type').on('change', function() {
+      //    datatable.search($(this).val().toLowerCase(), 'Type');
+      //});
 
-		$('#kt_datatable_search_status').on('change', function() {
-            datatable.search($(this).val().toLowerCase(), 'Status');
-        });
-
-        //$('#kt_datatable_search_type').on('change', function() {
-        //    datatable.search($(this).val().toLowerCase(), 'Type');
-        //});
-
-        $('#kt_datatable_search_status, #kt_datatable_search_type').selectpicker();
+      $(
+        "#kt_datatable_search_status, #kt_datatable_search_type"
+      ).selectpicker();
     };
 
     var _initDaterangepicker = function () {
+      if ($("#kt_dashboard_daterangepicker").length == 0) {
+        return;
+      }
 
-        if ($('#kt_dashboard_daterangepicker').length == 0) {
-            return;
+      moment.locale("vi");
+      var picker = $("#kt_dashboard_daterangepicker");
+      var start = moment();
+      var end = moment();
+
+      function cb(start, end, label) {
+        var title = "";
+        var range = "";
+        var range_start = "";
+        var range_end = "";
+
+        if (end - start < 100 || label == "Today") {
+          title = "Ngày hôm nay:";
+          range = start.format("D MMM");
+          range_start = start.format("D-M-YYYY");
+        } else if (label == "Yesterday") {
+          title = "Yesterday:";
+          range = start.format("D MMM");
+          range_start = start.format("D-M-YYYY");
+        } else {
+          range = start.format("D MMM") + " - " + end.format("D MMM");
+          range_start = start.format("D-M-YYYY");
+          range_end = end.format("D-M-YYYY");
         }
 
-        moment.locale('vi');
-        var picker = $('#kt_dashboard_daterangepicker');
-        var start = moment();
-        var end = moment();
+        console.log(range_start, range_end);
+        $("#kt_datatable").KTDatatable("destroy");
+        hoa_don_dich_vu(range_start, range_end);
 
-        function cb(start, end, label) {
-            var title = '';
-            var range = '';
-            var range_start = '';
-            var range_end = '';
+        startDate = range_start;
+        endDate = range_end;
 
-            if ((end - start) < 100 || label == 'Today') {
-                title = 'Ngày hôm nay:';
-                range = start.format('D MMM');
-                range_start = start.format('D-M-YYYY');
-            } else if (label == 'Yesterday') {
-                title = 'Yesterday:';
-                range = start.format('D MMM');
-                range_start = start.format('D-M-YYYY');
+        $("#kt_dashboard_daterangepicker_date").html(range);
+        $("#kt_dashboard_daterangepicker_title").html(title);
+      }
+
+      picker.daterangepicker(
+        {
+          direction: KTUtil.isRTL(),
+          startDate: start,
+          endDate: end,
+          opens: "left",
+          applyClass: "btn-primary",
+          ranges: {
+            "Hôm nay": [moment(), moment()],
+            "Hôm qua": [
+              moment().subtract("days", 1),
+              moment().subtract("days", 1),
+            ],
+            "7 ngày trước": [moment().subtract(6, "days"), moment()],
+            "30 ngày trước": [moment().subtract(29, "days"), moment()],
+            "Trong tháng này": [
+              moment().startOf("month"),
+              moment().endOf("month"),
+            ],
+            "Tháng trước": [
+              moment().subtract("month", 1).startOf("month"),
+              moment().subtract("month", 1).endOf("month"),
+            ],
+          },
+          locale: {
+            applyLabel: "Xác nhận",
+            cancelLabel: "Hủy",
+            fromLabel: "Từ",
+            toLabel: "tới",
+            customRangeLabel: "Lựa chọn khoảng thời gian",
+            daysOfWeek: ["CN", "T2", "T3", "T4", "T5", "T6", "T7"],
+            monthNames: [
+              "Tháng 1",
+              "Tháng 2",
+              "Tháng 3",
+              "Tháng 4",
+              "Tháng 5",
+              "Tháng 6",
+              "Tháng 7",
+              "Tháng 8",
+              "Tháng 9",
+              "Tháng 10",
+              "Tháng 11",
+              "Tháng 12",
+            ],
+            firstDay: 1,
+          },
+          cancelClass: "btn-light-primary",
+        },
+        cb
+      );
+
+      cb(start, end, "");
+      // console.log(start.format('D MMMM YYYY') + ' - ' + end.format('D MMMM YYYY'))
+    };
+
+    var doExport = function (url) {
+      console.log(startDate, endDate);
+      var formData = new FormData();
+
+      formData.append("startDate", startDate);
+      formData.append("endDate", endDate);
+      formData.append("csrfmiddlewaretoken", "{{ csrf_token }}");
+
+      $.ajax({
+        type: "POST",
+        url: url,
+        data: formData,
+        cache: false,
+        processData: false,
+        contentType: false,
+        xhrFields: {
+          responseType: "blob", // to avoid binary data being mangled on charset conversion
+        },
+        success: function (blob, status, xhr) {
+          // check for a filename
+          var filename = "";
+          var disposition = xhr.getResponseHeader("Content-Disposition");
+          if (disposition && disposition.indexOf("attachment") !== -1) {
+            var filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+            var matches = filenameRegex.exec(disposition);
+            if (matches != null && matches[1])
+              filename = matches[1].replace(/['"]/g, "");
+          }
+
+          if (typeof window.navigator.msSaveBlob !== "undefined") {
+            // IE workaround for "HTML7007: One or more blob URLs were revoked by closing the blob for which they were created. These URLs will no longer resolve as the data backing the URL has been freed."
+            window.navigator.msSaveBlob(blob, filename);
+          } else {
+            var URL = window.URL || window.webkitURL;
+            var downloadUrl = URL.createObjectURL(blob);
+
+            if (filename) {
+              // use HTML5 a[download] attribute to specify filename
+              var a = document.createElement("a");
+              // safari doesn't support this yet
+              if (typeof a.download === "undefined") {
+                window.location.href = downloadUrl;
+              } else {
+                a.href = downloadUrl;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+              }
             } else {
-                range = start.format('D MMM') + ' - ' + end.format('D MMM');
-                range_start = start.format('D-M-YYYY');
-                range_end = end.format('D-M-YYYY');
+              window.location.href = downloadUrl;
             }
 
-            console.log(range_start, range_end);
-            $('#kt_datatable').KTDatatable('destroy');
-            hoa_don_dich_vu(range_start, range_end);
+            setTimeout(function () {
+              URL.revokeObjectURL(downloadUrl);
+            }, 100); // cleanup
+          }
+        },
+        error: function (response) {
+          toastr.warning("Xảy ra lỗi", "Lỗi");
+        },
+      });
+    };
 
-            startDate = range_start
-            endDate = range_end
+    var exportExcel = function () {
+      $("#btn-hoa-don-dich-vu").on("click", function () {
+        console.log(startDate, endDate);
+        var formData = new FormData();
 
-            $('#kt_dashboard_daterangepicker_date').html(range);
-            $('#kt_dashboard_daterangepicker_title').html(title);
-        }
-        
-
-        picker.daterangepicker({
-            direction: KTUtil.isRTL(),
-            startDate: start,
-            endDate: end,
-            opens: 'left',
-            applyClass: 'btn-primary',
-            ranges: {
-                'Hôm nay': [moment(), moment()],
-                'Hôm qua': [moment().subtract('days', 1), moment().subtract('days', 1)],
-                '7 ngày trước': [moment().subtract(6, 'days'), moment()],
-                '30 ngày trước': [moment().subtract(29, 'days'), moment()],
-                'Trong tháng này': [moment().startOf('month'), moment().endOf('month')],
-                'Tháng trước': [moment().subtract('month', 1).startOf('month'), moment().subtract('month', 1).endOf('month')]
-            },
-            locale: {
-                applyLabel: 'Xác nhận',
-                cancelLabel: 'Hủy',
-                fromLabel: 'Từ',
-                toLabel: 'tới',
-                customRangeLabel: 'Lựa chọn khoảng thời gian',
-                daysOfWeek: ['CN', 'T2', 'T3', 'T4', 'T5', 'T6','T7'],
-                monthNames: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
-                firstDay: 1
-            },
-            cancelClass: 'btn-light-primary',
-        }, cb);
-
-        cb(start, end, '');
-        // console.log(start.format('D MMMM YYYY') + ' - ' + end.format('D MMMM YYYY'))
-
-    }
-
-    var doExport = function(url) {
-        console.log(startDate, endDate)
-        var formData = new FormData()
-
-        formData.append('startDate', startDate)
-        formData.append('endDate', endDate)
-        formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
+        formData.append("startDate", startDate);
+        formData.append("endDate", endDate);
+        formData.append("csrfmiddlewaretoken", "{{ csrf_token }}");
 
         $.ajax({
-            type: "POST",
-            url: url,
-            data: formData,
-            cache      : false,
-            processData: false,
-            contentType: false,
-            xhrFields: {
-                responseType: 'blob' // to avoid binary data being mangled on charset conversion
-            },
-            success: function(blob, status, xhr) {
-                // check for a filename
-                var filename = "";
-                var disposition = xhr.getResponseHeader('Content-Disposition');
-                if (disposition && disposition.indexOf('attachment') !== -1) {
-                    var filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
-                    var matches = filenameRegex.exec(disposition);
-                    if (matches != null && matches[1]) filename = matches[1].replace(/['"]/g, '');
-                }
-
-                if (typeof window.navigator.msSaveBlob !== 'undefined') {
-                    // IE workaround for "HTML7007: One or more blob URLs were revoked by closing the blob for which they were created. These URLs will no longer resolve as the data backing the URL has been freed."
-                    window.navigator.msSaveBlob(blob, filename);
-                } else {
-                    var URL = window.URL || window.webkitURL;
-                    var downloadUrl = URL.createObjectURL(blob);
-
-                    if (filename) {
-                        // use HTML5 a[download] attribute to specify filename
-                        var a = document.createElement("a");
-                        // safari doesn't support this yet
-                        if (typeof a.download === 'undefined') {
-                            window.location.href = downloadUrl;
-                        } else {
-                            a.href = downloadUrl;
-                            a.download = filename;
-                            document.body.appendChild(a);
-                            a.click();
-                        }
-                    } else {
-                        window.location.href = downloadUrl;
-                    }
-
-                    setTimeout(function () { URL.revokeObjectURL(downloadUrl); }, 100); // cleanup
-                }
-            },
-            error: function(response){
-                toastr.warning("Xảy ra lỗi", 'Lỗi')
+          type: "POST",
+          url: "{% url 'export_excel' %}",
+          data: formData,
+          cache: false,
+          processData: false,
+          contentType: false,
+          xhrFields: {
+            responseType: "blob", // to avoid binary data being mangled on charset conversion
+          },
+          success: function (blob, status, xhr) {
+            // check for a filename
+            var filename = "";
+            var disposition = xhr.getResponseHeader("Content-Disposition");
+            if (disposition && disposition.indexOf("attachment") !== -1) {
+              var filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+              var matches = filenameRegex.exec(disposition);
+              if (matches != null && matches[1])
+                filename = matches[1].replace(/['"]/g, "");
             }
-        })   
-    }
 
+            if (typeof window.navigator.msSaveBlob !== "undefined") {
+              // IE workaround for "HTML7007: One or more blob URLs were revoked by closing the blob for which they were created. These URLs will no longer resolve as the data backing the URL has been freed."
+              window.navigator.msSaveBlob(blob, filename);
+            } else {
+              var URL = window.URL || window.webkitURL;
+              var downloadUrl = URL.createObjectURL(blob);
+              console.log(downloadUrl);
 
-    var exportExcel = function() {
-        $('#btn-hoa-don-dich-vu').on('click', function() {
-            console.log(startDate, endDate)
-            var formData = new FormData()
-
-            formData.append('startDate', startDate)
-            formData.append('endDate', endDate)
-            formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
-
-            $.ajax({
-                type: "POST",
-                url: "{% url 'export_excel' %}",
-                data: formData,
-                cache      : false,
-                processData: false,
-                contentType: false,
-                xhrFields: {
-                    responseType: 'blob' // to avoid binary data being mangled on charset conversion
-                },
-                success: function(blob, status, xhr) {
-                    // check for a filename
-                    var filename = "";
-                    var disposition = xhr.getResponseHeader('Content-Disposition');
-                    if (disposition && disposition.indexOf('attachment') !== -1) {
-                        var filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
-                        var matches = filenameRegex.exec(disposition);
-                        if (matches != null && matches[1]) filename = matches[1].replace(/['"]/g, '');
-                    }
-
-                    if (typeof window.navigator.msSaveBlob !== 'undefined') {
-                        // IE workaround for "HTML7007: One or more blob URLs were revoked by closing the blob for which they were created. These URLs will no longer resolve as the data backing the URL has been freed."
-                        window.navigator.msSaveBlob(blob, filename);
-                    } else {
-                        var URL = window.URL || window.webkitURL;
-                        var downloadUrl = URL.createObjectURL(blob);
-                        console.log(downloadUrl)
-
-                        if (filename) {
-                            // use HTML5 a[download] attribute to specify filename
-                            var a = document.createElement("a");
-                            // safari doesn't support this yet
-                            if (typeof a.download === 'undefined') {
-                                window.location.href = downloadUrl;
-                            } else {
-                                a.href = downloadUrl;
-                                a.download = filename;
-                                document.body.appendChild(a);
-                                a.click();
-                            }
-                        } else {
-                            window.location.href = downloadUrl;
-                        }
-
-                        setTimeout(function () { URL.revokeObjectURL(downloadUrl); }, 100); // cleanup
-                    }
-                },
-                error: function(response){
-                    toastr.warning("Xảy ra lỗi", 'Lỗi')
+              if (filename) {
+                // use HTML5 a[download] attribute to specify filename
+                var a = document.createElement("a");
+                // safari doesn't support this yet
+                if (typeof a.download === "undefined") {
+                  window.location.href = downloadUrl;
+                } else {
+                  a.href = downloadUrl;
+                  a.download = filename;
+                  document.body.appendChild(a);
+                  a.click();
                 }
-            })
-        })
-    }
+              } else {
+                window.location.href = downloadUrl;
+              }
 
+              setTimeout(function () {
+                URL.revokeObjectURL(downloadUrl);
+              }, 100); // cleanup
+            }
+          },
+          error: function (response) {
+            toastr.warning("Xảy ra lỗi", "Lỗi");
+          },
+        });
+      });
+    };
 
     return {
-        // public functions
-        init: function() {
-            _initDaterangepicker();
-            hoa_don_dich_vu();
-            exportExcel();
-        },
+      // public functions
+      init: function () {
+        _initDaterangepicker();
+        hoa_don_dich_vu();
+        exportExcel();
+      },
     };
-}();
+  })();
 
-jQuery(document).ready(function() {
+  jQuery(document).ready(function () {
     KTDatatableRemote.init();
-});
-
+  });
 </script>
 
 {% endblock scripts %}

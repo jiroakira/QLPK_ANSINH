@@ -1,622 +1,731 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% load activity_tags %}
-
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% load activity_tags %} {% block
+content %}
 <!--begin::Entry-->
 <div class="d-flex flex-column-fluid">
-    <!--begin::Container-->
-    <div class="container">
-        <!--begin::Profile 4-->
-        <div class="d-flex flex-row">
-            <!--begin::Aside-->
-            <div class="flex-row-auto offcanvas-mobile w-300px w-xl-350px" id="kt_profile_aside">
-                <!--begin::Card-->
-                <div class="card card-custom gutter-b">
-                    <!--begin::Body-->
-                    <div class="card-body pt-4">
-                        
-                        <!--begin::User-->
-                        <div class="d-flex align-items-center">
-                            <div class="symbol symbol-60 symbol-xxl-100 mr-5 align-self-start align-self-xxl-center">
-                                <div class="symbol-label" style="background-image:url('../../../../theme/html/demo1/dist/assets/media/users/300_13.jpg')"></div>
-                                <i class="symbol-badge bg-success"></i>
-                            </div>
-                            <div>
-                                <a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">{{ request.user.ho_ten }}</a>
-                                <div class="text-muted">{{ request.user.get_user_role }}</div>
-                            </div>
-                        </div>
-                        <!--end::User-->
-                        <!--begin::Contact-->
-                        <div class="pt-8 pb-6">
-                            <div class="d-flex align-items-center justify-content-between mb-2">
-                                <span class="font-weight-bold mr-2">Số Điện Thoại:</span>
-                                <span class="text-muted">{{ request.user.so_dien_thoai }}</span>
-                            </div>
-                            <div class="d-flex align-items-center justify-content-between">
-                                <span class="font-weight-bold mr-2">Địa Chỉ:</span>
-                                <span class="text-muted">{{ request.user.dia_chi }}</span>
-                            </div>
-                        </div>
-                        <!--end::Contact-->
-                        <!--begin::Contact-->
-                        <div class="pb-6">{{ request.user.get_mo_ta }}</div>
-                        <!--end::Contact-->
-                    </div>
-                    <!--end::Body-->
-                </div>
-                <!--end::Card-->
+  <!--begin::Container-->
+  <div class="container">
+    <!--begin::Profile 4-->
+    <div class="d-flex flex-row">
+      <!--begin::Aside-->
+      <div
+        class="flex-row-auto offcanvas-mobile w-300px w-xl-350px"
+        id="kt_profile_aside"
+      >
+        <!--begin::Card-->
+        <div class="card card-custom gutter-b">
+          <!--begin::Body-->
+          <div class="card-body pt-4">
+            <!--begin::User-->
+            <div class="d-flex align-items-center">
+              <div
+                class="
+                  symbol symbol-60 symbol-xxl-100
+                  mr-5
+                  align-self-start align-self-xxl-center
+                "
+              >
+                <div
+                  class="symbol-label"
+                  style="
+                    background-image: url('../../../../theme/html/demo1/dist/assets/media/users/300_13.jpg');
+                  "
+                ></div>
+                <i class="symbol-badge bg-success"></i>
+              </div>
+              <div>
+                <a
+                  href="#"
+                  class="
+                    font-weight-bold font-size-h5
+                    text-dark-75 text-hover-primary
+                  "
+                  >{{ request.user.ho_ten }}</a
+                >
+                <div class="text-muted">{{ request.user.get_user_role }}</div>
+              </div>
             </div>
-            <!--end::Aside-->
-            <!--begin::Content-->
-            <div class="flex-row-fluid ml-lg-8">
-                <!--begin::Row-->
-                <div class="row">
-                    <div class="col-lg-6">
-                        <!--begin::Mixed Widget 5-->
-                        <div class="card card-custom card-stretch gutter-b" id="kt_page_stretched_card">
-                            <!--begin::Header-->
-                            <div class="card-header align-items-center border-0 mt-4">
-                                <h3 class="card-title align-items-start flex-column">
-                                    <span class="font-weight-bolder text-dark">Lịch Sử Hoạt Động</span>
-                                    
-                                </h3>
-                            </div>
-                            <!--end::Header-->
-                            <!--begin::Body-->
-                            <div class="card-body pt-4">
-                                <!--begin::Timeline-->
-                                <div class="timeline timeline-6 mt-3 card-scroll">
-                                    <!--begin::Item-->
-                                    {% for activity in activities %}
-                                    <div class="timeline-item align-items-start">
-                                        <!--begin::Label-->
-                                        <div class="timeline-label font-weight-bolder text-dark-75 font-size-lg">{{activity.timestamp|time:"H:i"}}</div>
-                                        <!--end::Label-->
-                                        <!--begin::Badge-->
-                                        <div class="timeline-badge">
-                                            <i class="fa fa-genderless text-warning icon-xl"></i>
-                                        </div>
-                                        <!--end::Badge-->
-                                        <!--begin::Text-->
-                                        <div class="font-weight-mormal font-size-lg timeline-content text-muted pl-3">
-                                            {% if activity.target %}
-                                                {% if activity.action_object %}
-                                                    <a href="javascript:;">{{ activity.actor }}</a> {{ activity.verb }} <a href="javascript:;">{{ activity.action_object }}</a> của <a href="javascript:;">{{ activity.target }}</a> {{ activity.timesince }} trước
-                                                {% else %}
-                                                    <a href="javascript:;">{{ activity.actor }}</a> {{ activity.verb }} <a href="javascript:;">{{ activity.target }}</a> {{ activity.timesince }} trước
-
-                                                {% endif %}
-                                            
-                                            {% elif activity.action_object %}
-                                                <a href="javascript:;">{{ activity.actor }}</a> {{ activity.verb }} <a href="javascript:;">{{ activity.action_object }}</a> {{ activity.timesince }} trước
-                                            {% else %}
-                                                <a href="javascript:;">{{ activity.actor }}</a> {{ activity.verb }} {{ activity.timesince }} trước
-                                            {% endif %}
-                                        </div>
-                                        <!--end::Text-->
-                                    </div>
-                                    {% endfor %}
-                                    <!--end::Item-->
-                                </div>
-                                <!--end::Timeline-->
-                            </div>
-                            <!--end: Card Body-->
-                        </div>
-                        <!--end::Mixed Widget 5-->
-                    </div>
-                    {% if request.user.is_bac_si %}
-                    <div class="col-lg-6">
-                        <!--begin::Mixed Widget 5-->
-                        <div class="card card-custom bg-radial-gradient-primary card-stretch gutter-b">
-                            <!--begin::Header-->
-                            <div class="card-header border-0 py-5">
-                                <h3 class="card-title font-weight-bolder text-white">Số Lượng Bệnh Nhân Đã Khám Trong 7 ngày qua</h3>
-                               
-                            </div>
-                            <!--end::Header-->
-                            <!--begin::Body-->
-                            <div class="card-body d-flex flex-column p-0">
-                                <!--begin::Chart-->
-                                <div id="kt_mixed_widget_5_chart" style="height: 200px"></div>
-                                <!--end::Chart-->
-                                <!--begin::Stats-->
-                                <div class="card-spacer bg-white card-rounded flex-grow-1">
-                                    <!--begin::Row-->
-                                    <div class="row m-0">
-                                        <div class="col px-8 py-6 mr-8">
-                                            <div class="font-size-sm text-muted font-weight-bold">Trong Ngày</div>
-                                            <div class="font-size-h4 font-weight-bolder">$650</div>
-                                        </div>
-                                        <div class="col px-8 py-6">
-                                            <div class="font-size-sm text-muted font-weight-bold">Trong Tháng</div>
-                                            <div class="font-size-h4 font-weight-bolder">$233,600</div>
-                                        </div>
-                                    </div>
-                                    <!--end::Row-->
-                                
-                                </div>
-                                <!--end::Stats-->
-                            </div>
-                            <!--end::Body-->
-                        </div>
-                        <!--end::Mixed Widget 5-->
-                    </div>
-                    {% else %}
-                    <div class="col-lg-6">
-                        <!--begin::List Widget 10-->
-                        <div class="card card-custom card-stretch gutter-b">
-                            <!--begin::Header-->
-                            <div class="card-header border-0">
-                                <h3 class="card-title font-weight-bolder text-dark">Thông Báo</h3>
-                                
-                            </div>
-                            <!--end::Header-->
-                            <!--begin::Body-->
-                            <div class="card-body pt-0">
-                                <!--begin::Item-->
-                                <div class="mb-6">
-                                    <!--begin::Content-->
-                                    <div class="d-flex align-items-center flex-grow-1">
-                                        
-                                        <!--begin::Section-->
-                                        <div class="d-flex flex-wrap align-items-center justify-content-between w-100">
-                                            <!--begin::Info-->
-                                            <div class="d-flex flex-column align-items-cente py-2 w-75">
-                                                <!--begin::Title-->
-                                                <a href="#" class="text-dark-75 font-weight-bold text-hover-primary font-size-lg mb-1">Coming soon</a>
-                                                <!--end::Title-->
-                                               
-                                            </div>
-                                            <!--end::Info-->
-                                            
-                                        </div>
-                                        <!--end::Section-->
-                                    </div>
-                                    <!--end::Content-->
-                                </div>
-                                <!--end::Item-->
-                                
-                            </div>
-                            <!--end: Card Body-->
-                        </div>
-                        <!--end: Card-->
-                        <!--end: List Widget 10-->
-                    </div>
-                    {% endif %}
-                </div>
-                <!--end::Row-->
-                <!--begin::Card-->
-                <div class="card card-custom gutter-b">
-                    <div class="card-header flex-wrap border-0 pt-6 pb-0">
-                        <div class="card-title">
-                            <h3 class="card-label">Danh Sách Bệnh Nhân Đã Khám
-                            </h3>
-                        </div>
-                        
-                    </div>
-                    <div class="card-body">
-                        <!--begin: Search Form-->
-                        <!--begin::Search Form-->
-                        <div class="mb-7">
-                            <div class="row align-items-center">
-                                <div class="col-lg-9 col-xl-12">
-                                    <div class="row align-items-center">
-                                        <div class="col-md-5 my-2 my-md-0">
-                                            <div class="input-icon">
-                                                <input type="text" class="form-control" placeholder="Tìm kiếm..." id="kt_datatable_search_query" />
-                                                <span>
-                                                    <i class="flaticon2-search-1 text-muted"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <a href="javascript:;" class="btn btn-md btn-light font-weight-bold" id="kt_dashboard_daterangepicker" data-toggle="tooltip" title="Chọn khoảng thời gian để hiển thị dữ liệu" data-placement="top">
-                                                <span class="font-size-base font-weight-bold mr-2" id="kt_dashboard_daterangepicker_title">Ngày hôm nay</span>
-                                                <span class="text-primary font-size-base font-weight-bolder" id="kt_dashboard_daterangepicker_date"></span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--end::Search Form-->
-                        <!--begin: Datatable-->
-                        <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable"></div>
-                        <!--end: Datatable-->
-                    </div>
-                </div>
-            <!--end::Card-->
+            <!--end::User-->
+            <!--begin::Contact-->
+            <div class="pt-8 pb-6">
+              <div
+                class="d-flex align-items-center justify-content-between mb-2"
+              >
+                <span class="font-weight-bold mr-2">Số Điện Thoại:</span>
+                <span class="text-muted">{{ request.user.so_dien_thoai }}</span>
+              </div>
+              <div class="d-flex align-items-center justify-content-between">
+                <span class="font-weight-bold mr-2">Địa Chỉ:</span>
+                <span class="text-muted">{{ request.user.dia_chi }}</span>
+              </div>
             </div>
-            <!--end::Content-->
+            <!--end::Contact-->
+            <!--begin::Contact-->
+            <div class="pb-6">{{ request.user.get_mo_ta }}</div>
+            <!--end::Contact-->
+          </div>
+          <!--end::Body-->
         </div>
-        <!--end::Profile 4-->
+        <!--end::Card-->
+      </div>
+      <!--end::Aside-->
+      <!--begin::Content-->
+      <div class="flex-row-fluid ml-lg-8">
+        <!--begin::Row-->
+        <div class="row">
+          <div class="col-lg-6">
+            <!--begin::Mixed Widget 5-->
+            <div
+              class="card card-custom card-stretch gutter-b"
+              id="kt_page_stretched_card"
+            >
+              <!--begin::Header-->
+              <div class="card-header align-items-center border-0 mt-4">
+                <h3 class="card-title align-items-start flex-column">
+                  <span class="font-weight-bolder text-dark"
+                    >Lịch Sử Hoạt Động</span
+                  >
+                </h3>
+              </div>
+              <!--end::Header-->
+              <!--begin::Body-->
+              <div class="card-body pt-4">
+                <!--begin::Timeline-->
+                <div class="timeline timeline-6 mt-3 card-scroll">
+                  <!--begin::Item-->
+                  {% for activity in activities %}
+                  <div class="timeline-item align-items-start">
+                    <!--begin::Label-->
+                    <div
+                      class="
+                        timeline-label
+                        font-weight-bolder
+                        text-dark-75
+                        font-size-lg
+                      "
+                    >
+                      {{activity.timestamp|time:"H:i"}}
+                    </div>
+                    <!--end::Label-->
+                    <!--begin::Badge-->
+                    <div class="timeline-badge">
+                      <i class="fa fa-genderless text-warning icon-xl"></i>
+                    </div>
+                    <!--end::Badge-->
+                    <!--begin::Text-->
+                    <div
+                      class="
+                        font-weight-mormal font-size-lg
+                        timeline-content
+                        text-muted
+                        pl-3
+                      "
+                    >
+                      {% if activity.target %} {% if activity.action_object %}
+                      <a href="javascript:;">{{ activity.actor }}</a> {{
+                      activity.verb }}
+                      <a href="javascript:;">{{ activity.action_object }}</a>
+                      của <a href="javascript:;">{{ activity.target }}</a> {{
+                      activity.timesince }} trước {% else %}
+                      <a href="javascript:;">{{ activity.actor }}</a> {{
+                      activity.verb }}
+                      <a href="javascript:;">{{ activity.target }}</a> {{
+                      activity.timesince }} trước {% endif %} {% elif
+                      activity.action_object %}
+                      <a href="javascript:;">{{ activity.actor }}</a> {{
+                      activity.verb }}
+                      <a href="javascript:;">{{ activity.action_object }}</a> {{
+                      activity.timesince }} trước {% else %}
+                      <a href="javascript:;">{{ activity.actor }}</a> {{
+                      activity.verb }} {{ activity.timesince }} trước {% endif
+                      %}
+                    </div>
+                    <!--end::Text-->
+                  </div>
+                  {% endfor %}
+                  <!--end::Item-->
+                </div>
+                <!--end::Timeline-->
+              </div>
+              <!--end: Card Body-->
+            </div>
+            <!--end::Mixed Widget 5-->
+          </div>
+          {% if request.user.is_bac_si %}
+          <div class="col-lg-6">
+            <!--begin::Mixed Widget 5-->
+            <div
+              class="
+                card card-custom
+                bg-radial-gradient-primary
+                card-stretch
+                gutter-b
+              "
+            >
+              <!--begin::Header-->
+              <div class="card-header border-0 py-5">
+                <h3 class="card-title font-weight-bolder text-white">
+                  Số Lượng Bệnh Nhân Đã Khám Trong 7 ngày qua
+                </h3>
+              </div>
+              <!--end::Header-->
+              <!--begin::Body-->
+              <div class="card-body d-flex flex-column p-0">
+                <!--begin::Chart-->
+                <div id="kt_mixed_widget_5_chart" style="height: 200px"></div>
+                <!--end::Chart-->
+                <!--begin::Stats-->
+                <div class="card-spacer bg-white card-rounded flex-grow-1">
+                  <!--begin::Row-->
+                  <div class="row m-0">
+                    <div class="col px-8 py-6 mr-8">
+                      <div class="font-size-sm text-muted font-weight-bold">
+                        Trong Ngày
+                      </div>
+                      <div class="font-size-h4 font-weight-bolder">$650</div>
+                    </div>
+                    <div class="col px-8 py-6">
+                      <div class="font-size-sm text-muted font-weight-bold">
+                        Trong Tháng
+                      </div>
+                      <div class="font-size-h4 font-weight-bolder">
+                        $233,600
+                      </div>
+                    </div>
+                  </div>
+                  <!--end::Row-->
+                </div>
+                <!--end::Stats-->
+              </div>
+              <!--end::Body-->
+            </div>
+            <!--end::Mixed Widget 5-->
+          </div>
+          {% else %}
+          <div class="col-lg-6">
+            <!--begin::List Widget 10-->
+            <div class="card card-custom card-stretch gutter-b">
+              <!--begin::Header-->
+              <div class="card-header border-0">
+                <h3 class="card-title font-weight-bolder text-dark">
+                  Thông Báo
+                </h3>
+              </div>
+              <!--end::Header-->
+              <!--begin::Body-->
+              <div class="card-body pt-0">
+                <!--begin::Item-->
+                <div class="mb-6">
+                  <!--begin::Content-->
+                  <div class="d-flex align-items-center flex-grow-1">
+                    <!--begin::Section-->
+                    <div
+                      class="
+                        d-flex
+                        flex-wrap
+                        align-items-center
+                        justify-content-between
+                        w-100
+                      "
+                    >
+                      <!--begin::Info-->
+                      <div
+                        class="d-flex flex-column align-items-cente py-2 w-75"
+                      >
+                        <!--begin::Title-->
+                        <a
+                          href="#"
+                          class="
+                            text-dark-75
+                            font-weight-bold
+                            text-hover-primary
+                            font-size-lg
+                            mb-1
+                          "
+                          >Coming soon</a
+                        >
+                        <!--end::Title-->
+                      </div>
+                      <!--end::Info-->
+                    </div>
+                    <!--end::Section-->
+                  </div>
+                  <!--end::Content-->
+                </div>
+                <!--end::Item-->
+              </div>
+              <!--end: Card Body-->
+            </div>
+            <!--end: Card-->
+            <!--end: List Widget 10-->
+          </div>
+          {% endif %}
+        </div>
+        <!--end::Row-->
+        <!--begin::Card-->
+        <div class="card card-custom gutter-b">
+          <div class="card-header flex-wrap border-0 pt-6 pb-0">
+            <div class="card-title">
+              <h3 class="card-label">Danh Sách Bệnh Nhân Đã Khám</h3>
+            </div>
+          </div>
+          <div class="card-body">
+            <!--begin: Search Form-->
+            <!--begin::Search Form-->
+            <div class="mb-7">
+              <div class="row align-items-center">
+                <div class="col-lg-9 col-xl-12">
+                  <div class="row align-items-center">
+                    <div class="col-md-5 my-2 my-md-0">
+                      <div class="input-icon">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Tìm kiếm..."
+                          id="kt_datatable_search_query"
+                        />
+                        <span>
+                          <i class="flaticon2-search-1 text-muted"></i>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <a
+                        href="javascript:;"
+                        class="btn btn-md btn-light font-weight-bold"
+                        id="kt_dashboard_daterangepicker"
+                        data-toggle="tooltip"
+                        title="Chọn khoảng thời gian để hiển thị dữ liệu"
+                        data-placement="top"
+                      >
+                        <span
+                          class="font-size-base font-weight-bold mr-2"
+                          id="kt_dashboard_daterangepicker_title"
+                          >Ngày hôm nay</span
+                        >
+                        <span
+                          class="text-primary font-size-base font-weight-bolder"
+                          id="kt_dashboard_daterangepicker_date"
+                        ></span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--end::Search Form-->
+            <!--begin: Datatable-->
+            <div
+              class="datatable datatable-bordered datatable-head-custom"
+              id="kt_datatable"
+            ></div>
+            <!--end: Datatable-->
+          </div>
+        </div>
+        <!--end::Card-->
+      </div>
+      <!--end::Content-->
     </div>
-    <!--end::Container-->
+    <!--end::Profile 4-->
+  </div>
+  <!--end::Container-->
 </div>
 <!--end::Entry-->
 
-{% endblock content %}
-
-{% block scripts %}
+{% endblock content %} {% block scripts %}
 
 <script src="{% static 'assets/js/pages/crud/forms/widgets/bootstrap-datetimepicker9cd7.js' %} "></script>
 
 <script>
-var KTWidgets = function () {
-
-    var is_bac_si_lam_sang = "{{ is_bac_si_lam_sang|safe }}"
+  var KTWidgets = (function () {
+    var is_bac_si_lam_sang = "{{ is_bac_si_lam_sang|safe }}";
 
     var _initMixedWidget5 = function () {
-        var element = document.getElementById("kt_mixed_widget_5_chart");
-        var height = parseInt(KTUtil.css(element, 'height'));
+      var element = document.getElementById("kt_mixed_widget_5_chart");
+      var height = parseInt(KTUtil.css(element, "height"));
 
-        if (!element) {
-            return;
-        }
+      if (!element) {
+        return;
+      }
 
-        var options = {
-            series: [{
-                name: 'Net Profit',
-                data: [35, 65, 75, 55, 45, 60, 55]
-            }],
-            chart: {
-                type: 'bar',
-                height: height,
-                toolbar: {
-                    show: false
-                },
-                sparkline: {
-                    enabled: true
-                },
+      var options = {
+        series: [
+          {
+            name: "Net Profit",
+            data: [35, 65, 75, 55, 45, 60, 55],
+          },
+        ],
+        chart: {
+          type: "bar",
+          height: height,
+          toolbar: {
+            show: false,
+          },
+          sparkline: {
+            enabled: true,
+          },
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: ["30%"],
+            endingShape: "rounded",
+          },
+        },
+        legend: {
+          show: false,
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        stroke: {
+          show: true,
+          width: 1,
+          colors: ["white"],
+        },
+        xaxis: {
+          categories: ["Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+          axisBorder: {
+            show: false,
+          },
+          axisTicks: {
+            show: false,
+          },
+          labels: {
+            style: {
+              colors: KTApp.getSettings()["colors"]["gray"]["gray-500"],
+              fontSize: "12px",
+              fontFamily: KTApp.getSettings()["font-family"],
             },
-            plotOptions: {
-                bar: {
-                    horizontal: false,
-                    columnWidth: ['30%'],
-                    endingShape: 'rounded'
-                },
+          },
+        },
+        yaxis: {
+          min: 0,
+          max: 100,
+          labels: {
+            style: {
+              colors: KTApp.getSettings()["colors"]["gray"]["gray-500"],
+              fontSize: "12px",
+              fontFamily: KTApp.getSettings()["font-family"],
             },
-            legend: {
-                show: false
+          },
+        },
+        fill: {
+          type: ["solid", "solid"],
+          opacity: [1, 1],
+        },
+        states: {
+          normal: {
+            filter: {
+              type: "none",
+              value: 0,
             },
-            dataLabels: {
-                enabled: false
+          },
+          hover: {
+            filter: {
+              type: "none",
+              value: 0,
             },
-            stroke: {
-                show: true,
-                width: 1,
-                colors: ['white']
+          },
+          active: {
+            allowMultipleDataPointsSelection: false,
+            filter: {
+              type: "none",
+              value: 0,
             },
-            xaxis: {
-                categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-                axisBorder: {
-                    show: false,
-                },
-                axisTicks: {
-                    show: false
-                },
-                labels: {
-                    style: {
-                        colors: KTApp.getSettings()['colors']['gray']['gray-500'],
-                        fontSize: '12px',
-                        fontFamily: KTApp.getSettings()['font-family']
-                    }
-                }
+          },
+        },
+        tooltip: {
+          style: {
+            fontSize: "12px",
+            fontFamily: KTApp.getSettings()["font-family"],
+          },
+          y: {
+            formatter: function (val) {
+              return "$" + val + " thousands";
             },
-            yaxis: {
-                min: 0,
-                max: 100,
-                labels: {
-                    style: {
-                        colors: KTApp.getSettings()['colors']['gray']['gray-500'],
-                        fontSize: '12px',
-                        fontFamily: KTApp.getSettings()['font-family']
-                    }
-                }
+          },
+          marker: {
+            show: false,
+          },
+        },
+        colors: ["#ffffff", "#ffffff"],
+        grid: {
+          borderColor: KTApp.getSettings()["colors"]["gray"]["gray-200"],
+          strokeDashArray: 4,
+          yaxis: {
+            lines: {
+              show: true,
             },
-            fill: {
-                type: ['solid', 'solid'],
-                opacity: [1, 1]
-            },
-            states: {
-                normal: {
-                    filter: {
-                        type: 'none',
-                        value: 0
-                    }
-                },
-                hover: {
-                    filter: {
-                        type: 'none',
-                        value: 0
-                    }
-                },
-                active: {
-                    allowMultipleDataPointsSelection: false,
-                    filter: {
-                        type: 'none',
-                        value: 0
-                    }
-                }
-            },
-            tooltip: {
-                style: {
-                    fontSize: '12px',
-                    fontFamily: KTApp.getSettings()['font-family']
-                },
-                y: {
-                    formatter: function (val) {
-                        return "$" + val + " thousands"
-                    }
-                },
-                marker: {
-                    show: false
-                }
-            },
-            colors: ['#ffffff', '#ffffff'],
-            grid: {
-                borderColor: KTApp.getSettings()['colors']['gray']['gray-200'],
-                strokeDashArray: 4,
-                yaxis: {
-                    lines: {
-                        show: true
-                    }
-                },
-                padding: {
-                    left: 20,
-                    right: 20
-                }
-            }
-        };
+          },
+          padding: {
+            left: 20,
+            right: 20,
+          },
+        },
+      };
 
-        var chart = new ApexCharts(element, options);
-        chart.render();
-    }
+      var chart = new ApexCharts(element, options);
+      chart.render();
+    };
 
     var _initDaterangepicker = function () {
-        if ($('#kt_dashboard_daterangepicker').length == 0) {
-            return;
+      if ($("#kt_dashboard_daterangepicker").length == 0) {
+        return;
+      }
+
+      moment.locale("vi");
+      var picker = $("#kt_dashboard_daterangepicker");
+      var start = moment();
+      var end = moment();
+
+      function cb(start, end, label) {
+        var title = "";
+        var range = "";
+        var range_start = "";
+        var range_end = "";
+
+        if (end - start < 100 || label == "Today") {
+          title = "Ngày hôm nay:";
+          range = start.format("D MMM");
+          range_start = start.format("D-M-YYYY");
+        } else if (label == "Yesterday") {
+          title = "Yesterday:";
+          range = start.format("D MMM");
+          range_start = start.format("D-M-YYYY");
+        } else {
+          range = start.format("D MMM") + " - " + end.format("D MMM");
+          range_start = start.format("D-M-YYYY");
+          range_end = end.format("D-M-YYYY");
         }
 
-        moment.locale('vi');
-        var picker = $('#kt_dashboard_daterangepicker');
-        var start = moment();
-        var end = moment();
+        $("#kt_datatable").KTDatatable("destroy");
+        table(range_start, range_end);
+        $("#kt_dashboard_daterangepicker_date").html(range);
+        $("#kt_dashboard_daterangepicker_title").html(title);
+      }
 
-        function cb(start, end, label) {
-            var title = '';
-            var range = '';
-            var range_start = '';
-            var range_end = '';
+      picker.daterangepicker(
+        {
+          direction: KTUtil.isRTL(),
+          startDate: start,
+          endDate: end,
+          opens: "left",
+          applyClass: "btn-primary",
+          ranges: {
+            "Hôm nay": [moment(), moment()],
+            "Hôm qua": [
+              moment().subtract("days", 1),
+              moment().subtract("days", 1),
+            ],
+            "7 ngày gần đây": [moment().subtract("days", 6), moment()],
+            "30 ngày gần đây": [moment().subtract("days", 29), moment()],
+            "Trong tháng này": [
+              moment().startOf("month"),
+              moment().endOf("month"),
+            ],
+            "Tháng trước": [
+              moment().subtract("month", 1).startOf("month"),
+              moment().subtract("month", 1).endOf("month"),
+            ],
+          },
+          locale: {
+            applyLabel: "Xác nhận",
+            cancelLabel: "Hủy",
+            fromLabel: "Từ",
+            toLabel: "tới",
+            customRangeLabel: "Lựa chọn khoảng thời gian",
+            daysOfWeek: ["CN", "T2", "T3", "T4", "T5", "T6", "T7"],
+            monthNames: [
+              "Tháng 1",
+              "Tháng 2",
+              "Tháng 3",
+              "Tháng 4",
+              "Tháng 5",
+              "Tháng 6",
+              "Tháng 7",
+              "Tháng 8",
+              "Tháng 9",
+              "Tháng 10",
+              "Tháng 11",
+              "Tháng 12",
+            ],
+            firstDay: 1,
+          },
+          cancelClass: "btn-light-primary",
+        },
+        cb
+      );
 
-            if ((end - start) < 100 || label == 'Today') {
-                title = 'Ngày hôm nay:';
-                range = start.format('D MMM');
-                range_start = start.format('D-M-YYYY');
-            } else if (label == 'Yesterday') {
-                title = 'Yesterday:';
-                range = start.format('D MMM');
-                range_start = start.format('D-M-YYYY');
-            } else {
-                range = start.format('D MMM') + ' - ' + end.format('D MMM');
-                range_start = start.format('D-M-YYYY');
-                range_end = end.format('D-M-YYYY');
-            }
+      cb(start, end, "");
+    };
 
-            $('#kt_datatable').KTDatatable('destroy');
-            table(range_start, range_end);
-            $('#kt_dashboard_daterangepicker_date').html(range);
-            $('#kt_dashboard_daterangepicker_title').html(title);
-        }
-        
+    if (is_bac_si_lam_sang == "True") {
+      var table = function (range_start, range_end) {
+        var range_start = range_start;
+        var range_end = range_end;
 
-        picker.daterangepicker({
-            direction: KTUtil.isRTL(),
-            startDate: start,
-            endDate: end,
-            opens: 'left',
-            applyClass: 'btn-primary',
-            ranges: {
-                'Hôm nay': [moment(), moment()],
-                'Hôm qua': [moment().subtract('days', 1), moment().subtract('days', 1)],
-                '7 ngày gần đây': [moment().subtract('days', 6), moment()],
-                '30 ngày gần đây': [moment().subtract('days', 29), moment()],
-                'Trong tháng này': [moment().startOf('month'), moment().endOf('month')],
-                'Tháng trước': [moment().subtract('month', 1).startOf('month'), moment().subtract('month', 1).endOf('month')]
+        var datatable = $("#kt_datatable").KTDatatable({
+          // datasource definition
+          data: {
+            type: "remote",
+            source: {
+              read: {
+                url: HOST_URL + "/api/danh_sach_benh_nhan_da_kham_lam_sang/",
+                method: "GET",
+                // sample custom headers
+                // headers: {'x-my-custom-header': 'some value', 'x-test-header': 'the value'},
+                map: function (raw) {
+                  // sample data mapping
+                  var dataSet = raw;
+                  if (typeof raw.data !== "undefined") {
+                    dataSet = raw.data;
+                  }
+                  console.log(dataSet);
+                  return dataSet;
+                },
+                params: {
+                  range_start: range_start,
+                  range_end: range_end,
+                },
+              },
             },
-            locale: {
-                applyLabel: 'Xác nhận',
-                cancelLabel: 'Hủy',
-                fromLabel: 'Từ',
-                toLabel: 'tới',
-                customRangeLabel: 'Lựa chọn khoảng thời gian',
-                daysOfWeek: ['CN', 'T2', 'T3', 'T4', 'T5', 'T6','T7'],
-                monthNames: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
-                firstDay: 1
+            pageSize: 5,
+            serverPaging: true,
+            serverFiltering: true,
+            serverSorting: true,
+          },
+
+          // layout definition
+          layout: {
+            scroll: true,
+            footer: false,
+          },
+
+          // column sorting
+          sortable: false,
+
+          pagination: true,
+
+          search: {
+            input: $("#kt_datatable_search_query"),
+            key: "generalSearch",
+          },
+
+          // columns definition
+          columns: [
+            {
+              field: "bac_si_dam_nhan__ho_ten",
+              title: "Bác Sĩ",
             },
-            cancelClass: 'btn-light-primary',
-        }, cb);
+            {
+              field: "benh_nhan__ho_ten",
+              title: "Bệnh Nhân",
+            },
+            {
+              field: "benh_nhan__so_dien_thoai",
+              title: "Số Điện Thoại",
+            },
+            {
+              field: "count",
+              title: "Số Lượng Chuỗi Khám",
+            },
+          ],
+        });
 
-        cb(start, end, '');
-
-    }
-    
-    if (is_bac_si_lam_sang == 'True') {
-        var table = function (range_start, range_end) {
-            var range_start = range_start
-            var range_end = range_end
-
-            var datatable = $('#kt_datatable').KTDatatable({
-                // datasource definition
-                data: {
-                    type: 'remote',
-                    source: {
-                        read: {                        
-                            url: HOST_URL + '/api/danh_sach_benh_nhan_da_kham_lam_sang/',
-                            method: 'GET',
-                            // sample custom headers
-                            // headers: {'x-my-custom-header': 'some value', 'x-test-header': 'the value'},
-                            map: function(raw) {
-                                // sample data mapping
-                                var dataSet = raw;
-                                if (typeof raw.data !== 'undefined') {
-                                    dataSet = raw.data;
-                                }
-                                console.log(dataSet)
-                                return dataSet;
-                            },
-                            params: {
-                                'range_start': range_start,
-                                'range_end': range_end,
-                            }
-                        },
-                    },
-                    pageSize: 10,
-                    serverPaging: true,
-                    serverFiltering: true,
-                    serverSorting: true,
-                },
-
-                // layout definition
-                layout: {
-                    scroll: true,
-                    footer: false,
-                },
-
-                // column sorting
-                sortable: false,
-
-                pagination: true,
-
-                search: {
-                    input: $('#kt_datatable_search_query'),
-                    key: 'generalSearch'
-                },
-
-                // columns definition
-                columns: [{
-                    field: 'bac_si_dam_nhan__ho_ten',
-                    title: 'Bác Sĩ',
-                    
-
-                }, {
-                    field: 'benh_nhan__ho_ten',
-                    title: 'Bệnh Nhân',
-                    
-                }, {
-                    field: 'benh_nhan__so_dien_thoai',
-                    title: 'Số Điện Thoại',
-                }, {
-                    field: 'count',
-                    title: 'Số Lượng Chuỗi Khám',
-                }],
-
-            });
-
-            $('#btn-reload').on('click', function(){
-                $('#kt_datatable').KTDatatable('reload');
-            })
-        }
+        $("#btn-reload").on("click", function () {
+          $("#kt_datatable").KTDatatable("reload");
+        });
+      };
     } else {
-        var table = function (range_start, range_end) {
-            var range_start = range_start
-            var range_end = range_end
+      var table = function (range_start, range_end) {
+        var range_start = range_start;
+        var range_end = range_end;
 
-            var datatable = $('#kt_datatable').KTDatatable({
-                // datasource definition
-                data: {
-                    type: 'remote',
-                    source: {
-                        read: {                        
-                            url: HOST_URL + '/api/danh_sach_benh_nhan_da_kham/',
-                            method: 'GET',
-                            // sample custom headers
-                            // headers: {'x-my-custom-header': 'some value', 'x-test-header': 'the value'},
-                            map: function(raw) {
-                                // sample data mapping
-                                var dataSet = raw;
-                                if (typeof raw.data !== 'undefined') {
-                                    dataSet = raw.data;
-                                }
-                                console.log(dataSet)
-                                return dataSet;
-                            },
-                            params: {
-                                'range_start': range_start,
-                                'range_end': range_end,
-                            }
-                        },
-                    },
-                    pageSize: 10,
-                    serverPaging: true,
-                    serverFiltering: true,
-                    serverSorting: true,
+        var datatable = $("#kt_datatable").KTDatatable({
+          // datasource definition
+          data: {
+            type: "remote",
+            source: {
+              read: {
+                url: HOST_URL + "/api/danh_sach_benh_nhan_da_kham/",
+                method: "GET",
+                // sample custom headers
+                // headers: {'x-my-custom-header': 'some value', 'x-test-header': 'the value'},
+                map: function (raw) {
+                  // sample data mapping
+                  var dataSet = raw;
+                  if (typeof raw.data !== "undefined") {
+                    dataSet = raw.data;
+                  }
+                  console.log(dataSet);
+                  return dataSet;
                 },
-
-                // layout definition
-                layout: {
-                    scroll: true,
-                    footer: false,
+                params: {
+                  range_start: range_start,
+                  range_end: range_end,
                 },
+              },
+            },
+            pageSize: 5,
+            serverPaging: true,
+            serverFiltering: true,
+            serverSorting: true,
+          },
 
-                // column sorting
-                sortable: false,
+          // layout definition
+          layout: {
+            scroll: true,
+            footer: false,
+          },
 
-                pagination: true,
+          // column sorting
+          sortable: false,
 
-                search: {
-                    input: $('#kt_datatable_search_query'),
-                    key: 'generalSearch'
-                },
+          pagination: true,
 
-                // columns definition
-                columns: [{
-                    field: 'bac_si_chuyen_khoa__ho_ten',
-                    title: 'Bác Sĩ',
-                    
+          search: {
+            input: $("#kt_datatable_search_query"),
+            key: "generalSearch",
+          },
 
-                }, {
-                    field: 'phan_khoa_kham__benh_nhan__ho_ten',
-                    title: 'Bệnh Nhân',
-                    
-                }, {
-                    field: 'phan_khoa_kham__benh_nhan__so_dien_thoai',
-                    title: 'Số Điện Thoại',
-                    
-                    
-                }, {
-                    field: 'count',
-                    title: 'Số Lượng Dịch Vụ',
-                
-                }],
+          // columns definition
+          columns: [
+            {
+              field: "bac_si_chuyen_khoa__ho_ten",
+              title: "Bác Sĩ",
+            },
+            {
+              field: "phan_khoa_kham__benh_nhan__ho_ten",
+              title: "Bệnh Nhân",
+            },
+            {
+              field: "phan_khoa_kham__benh_nhan__so_dien_thoai",
+              title: "Số Điện Thoại",
+            },
+            {
+              field: "count",
+              title: "Số Lượng Dịch Vụ",
+            },
+          ],
+        });
 
-            });
-
-            $('#btn-reload').on('click', function(){
-                $('#kt_datatable').KTDatatable('reload');
-            })
-        }
+        $("#btn-reload").on("click", function () {
+          $("#kt_datatable").KTDatatable("reload");
+        });
+      };
     }
-    
 
     return {
-        init: function () {
-            _initMixedWidget5();
-            _initDaterangepicker();
-        }
-    }
+      init: function () {
+        _initMixedWidget5();
+        _initDaterangepicker();
+      },
+    };
+  })();
 
-}()
-
-jQuery(document).ready(function () {
+  jQuery(document).ready(function () {
     KTWidgets.init();
-});
+  });
 </script>
 
 {% endblock scripts %}
-
-
-

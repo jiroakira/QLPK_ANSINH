@@ -1,500 +1,634 @@
-
-{% extends 'base.html' %}
-
-{% load static %}
-
-{% block stylesheet %}
+{% extends 'base.html' %} {% load static %} {% block stylesheet %}
 <!--begin::Global Theme Styles(used by all pages)-->
-<link href="{% static 'assets/plugins/global/plugins.bundle9cd7.css' %}" rel="stylesheet" type="text/css" />
-<link href="{% static 'assets/plugins/custom/prismjs/prismjs.bundle9cd7.css' %}" rel="stylesheet" type="text/css" />
-<link href="{% static 'assets/css/style.bundle9cd7.css' %} " rel="stylesheet" type="text/css" />
+<link
+  href="{% static 'assets/plugins/global/plugins.bundle9cd7.css' %}"
+  rel="stylesheet"
+  type="text/css"
+/>
+<link
+  href="{% static 'assets/plugins/custom/prismjs/prismjs.bundle9cd7.css' %}"
+  rel="stylesheet"
+  type="text/css"
+/>
+<link
+  href="{% static 'assets/css/style.bundle9cd7.css' %} "
+  rel="stylesheet"
+  type="text/css"
+/>
 <!--end::Global Theme Styles-->
 <!--begin::Layout Themes(used by all pages)-->
-<link href="{% static 'assets/css/themes/layout/header/base/light9cd7.css' %} " rel="stylesheet" type="text/css" />
-<link href="{% static 'assets/css/themes/layout/header/menu/light9cd7.css' %} " rel="stylesheet" type="text/css" />
-<link href="{% static 'assets/css/themes/layout/brand/dark9cd7.css' %} " rel="stylesheet" type="text/css" />
-<link href="{% static 'assets/css/themes/layout/aside/dark9cd7.css' %} " rel="stylesheet" type="text/css" />
+<link
+  href="{% static 'assets/css/themes/layout/header/base/light9cd7.css' %} "
+  rel="stylesheet"
+  type="text/css"
+/>
+<link
+  href="{% static 'assets/css/themes/layout/header/menu/light9cd7.css' %} "
+  rel="stylesheet"
+  type="text/css"
+/>
+<link
+  href="{% static 'assets/css/themes/layout/brand/dark9cd7.css' %} "
+  rel="stylesheet"
+  type="text/css"
+/>
+<link
+  href="{% static 'assets/css/themes/layout/aside/dark9cd7.css' %} "
+  rel="stylesheet"
+  type="text/css"
+/>
 <!--end::Layout Themes-->
-{% endblock stylesheet %}
-
-{% block content %}
+{% endblock stylesheet %} {% block content %}
 
 <!--begin::Content-->
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-    <!--begin::Subheader-->
-    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
-        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
-            <!--begin::Info-->
-            <div class="d-flex align-items-center flex-wrap mr-1">
-                <!--begin::Page Heading-->
-                <div class="d-flex align-items-baseline flex-wrap mr-5">
-                    <!--begin::Page Title-->
-                    <h5 class="text-dark font-weight-bold my-1 mr-5">Tạo Đơn Thuốc Mới</h5>
-                    <!--end::Page Title-->
-                    <!--begin::Breadcrumb-->
-                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
-                        <li class="breadcrumb-item">
-                            <a href="javascript:;" class="text-muted">Phòng Thuốc</a>
-                        </li>
-                        <li class="breadcrumb-item">
-                            <a href="javascript:;" class="text-muted">Tạo Đơn Thuốc</a>
-                        </li>
-                    </ul>
-                    <!--end::Breadcrumb-->
-                </div>
-                <!--end::Page Heading-->
-            </div>
-            <!--end::Info-->
+  <!--begin::Subheader-->
+  <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+    <div
+      class="
+        container-fluid
+        d-flex
+        align-items-center
+        justify-content-between
+        flex-wrap flex-sm-nowrap
+      "
+    >
+      <!--begin::Info-->
+      <div class="d-flex align-items-center flex-wrap mr-1">
+        <!--begin::Page Heading-->
+        <div class="d-flex align-items-baseline flex-wrap mr-5">
+          <!--begin::Page Title-->
+          <h5 class="text-dark font-weight-bold my-1 mr-5">
+            Tạo Đơn Thuốc Mới
+          </h5>
+          <!--end::Page Title-->
+          <!--begin::Breadcrumb-->
+          <ul
+            class="
+              breadcrumb breadcrumb-transparent breadcrumb-dot
+              font-weight-bold
+              p-0
+              my-2
+              font-size-sm
+            "
+          >
+            <li class="breadcrumb-item">
+              <a href="javascript:;" class="text-muted">Phòng Thuốc</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="javascript:;" class="text-muted">Tạo Đơn Thuốc</a>
+            </li>
+          </ul>
+          <!--end::Breadcrumb-->
         </div>
+        <!--end::Page Heading-->
+      </div>
+      <!--end::Info-->
     </div>
-    <!--end::Subheader-->
+  </div>
+  <!--end::Subheader-->
 
-    <!--begin::Entry-->
-    <div class="d-flex flex-column-fluid">
-        <!--begin::Container-->
-        <div class="container">
-            <!--begin::Card-->
-            <div class="card card-custom">
-                <div class="card-header flex-wrap border-0 pt-6 pb-0">
-                    <div class="card-title">
-                        <span class="card-icon">
-                            <i class="la la-clipboard-list text-primary"></i>
-                        </span>
-                        <h3 class="card-label">Danh Sách Thuốc</h3>
-                    </div>
-                    <div class="card-toolbar">
-                        <!--begin::Button-->
-                        <a href="{% url 'phong_thuoc' %}" class="btn btn-light-primary font-weight-bolder">
-                            <span class="svg-icon svg-icon-md">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <polygon points="0 0 24 0 24 24 0 24"/>
-                                        <rect fill="#000000" opacity="0.3" transform="translate(12.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-12.000000, -12.000000) " x="11" y="5" width="2" height="14" rx="1"/>
-                                        <path d="M3.7071045,15.7071045 C3.3165802,16.0976288 2.68341522,16.0976288 2.29289093,15.7071045 C1.90236664,15.3165802 1.90236664,14.6834152 2.29289093,14.2928909 L8.29289093,8.29289093 C8.67146987,7.914312 9.28105631,7.90106637 9.67572234,8.26284357 L15.6757223,13.7628436 C16.0828413,14.136036 16.1103443,14.7686034 15.7371519,15.1757223 C15.3639594,15.5828413 14.7313921,15.6103443 14.3242731,15.2371519 L9.03007346,10.3841355 L3.7071045,15.7071045 Z" fill="#000000" fill-rule="nonzero" transform="translate(9.000001, 11.999997) scale(-1, -1) rotate(90.000000) translate(-9.000001, -11.999997) "/>
-                                    </g>
-                                </svg>
-                            </span>
-                            Quay Lại
-                        </a>
-                        <!--end::Button-->
-                    </div>
-                </div>
-                <div class="card-body">
-                    <!--begin: Search Form-->
-                    <!--begin::Search Form-->
-                    <div class="mb-7">
-                        <div class="row align-items-center">
-                            <div class="col-lg-12 col-xl-12">
-                                <div class="row align-items-center">
-                                    <div class="col-md-6 my-2 my-md-0">
-                                        <div class="input-icon">
-                                            <input type="text" class="form-control" placeholder="Tìm kiếm..." id="kt_datatable_search_query_2" />
-                                            <span>
-                                                <i class="flaticon2-search-1 text-muted"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--end::Search Form-->
-                    <!--begin: Selected Rows Group Action Form-->
-                    <div class="mt-10 mb-5 collapse" id="kt_datatable_group_action_form_2">
-                        <div class="d-flex align-items-center">
-                            <div class="font-weight-bold text-success mr-3">Đã chọn  
-                            <span id="kt_datatable_selected_records_2">0</span> loại thuốc</div>
-                        </div>
-                    </div>
-                    <!--end: Selected Rows Group Action Form-->
-                    <!--begin: Datatable-->
-                    <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable_2"></div>
-                    <!--end: Datatable-->
-                </div>
-            </div>
-            <!--end::Card-->
-
-            <!--begin::Card-->
-            <div class="card card-custom mt-7">
-                <div class="card-header">
-                    <div class="card-title">
-                        <span class="card-icon">
-                            <i class="flaticon-clipboard text-primary"></i>
-                        </span>
-                        <h3 class="card-label">Đơn thuốc của bệnh nhân</h3>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <!--begin: Table-->
-                    <table class="table table-bordered table-checkable" id="kt_datatable_3" style="margin-top: 13px !important;">
-                        <thead>
-                            <tr>
-                                <td>Tên Thuốc</td>
-                                <td>Bảo Hiểm</td>
-                                <td>Số Lượng</td>
-                                <td>Khả Dụng</td>
-                                <td>ĐVT</td>
-                                <td>Cách Dùng</td>
-                                <td>Ghi Chú</td>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                    <!--end: Table-->
-
-                    <div class="form-group mt-3">
-                        <label>Chọn kiểu</label>
-                        <select id="selectOption" class="form-control selectpicker" data-size="7" data-live-search="true" >
-                            <option value="" disabled selected>Chọn kiểu bệnh nhân</option>
-                            <option value="vang_lai">Khách Vãng Lai</option>
-                            <option value="benh_nhan">Bệnh Nhân Phòng Khám</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group mt-3" style="display: none" id="benh_nhan_pk">
-                        <label>Chọn Bệnh Nhân </label>
-                        <select id="selectBenhNhan" name="selectBenhNhan" class="form-control selectpicker" data-size="7" data-live-search="true">
-                            <option value selected>Chọn bệnh nhân</option>
-                            {% for p in nguoi_dung %}
-                                <option value="{{ p.id }}">{{ p.ho_ten }} - {{ p.cmnd_cccd }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div class="form-group" id="thongTinBenhNhan"></div>
-                     
-                    <div class="form-group mt-3 row" style="display: none" id="khach_vang_lai">
-                        <div class="col-lg-9">
-                            <label>Nhập tên người mua </label>
-                            <input type="text" class="form-control" id="ten_khach_vang_lai" />
-                        </div>
-                        <div class="col-lg-3">
-                            <label>Số điện thoại người mua </label>
-                            <input type="text" class="form-control" id="so_dien_thoai_khach" />
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <div class="card-toolbar">
-                        <!--begin::Button-->
-                        <a href="javascript:;" class="btn btn-primary font-weight-bolder" id="get-table-data">
-                            <i class="la la-plus"></i>Kê Đơn Thuốc
-                        </a>
-                        <a href="javascript:;" class="btn btn-primary font-weight-bolder" id="printDonThuoc">
-                            In Đơn Thuốc
-                        </a>
-                        <!--end::Button-->
-                    </div>
-                </div>
-            </div>
-            <!--end::Card-->
+  <!--begin::Entry-->
+  <div class="d-flex flex-column-fluid">
+    <!--begin::Container-->
+    <div class="container">
+      <!--begin::Card-->
+      <div class="card card-custom">
+        <div class="card-header flex-wrap border-0 pt-6 pb-0">
+          <div class="card-title">
+            <span class="card-icon">
+              <i class="la la-clipboard-list text-primary"></i>
+            </span>
+            <h3 class="card-label">Danh Sách Thuốc</h3>
+          </div>
+          <div class="card-toolbar">
+            <!--begin::Button-->
+            <a
+              href="{% url 'phong_thuoc' %}"
+              class="btn btn-light-primary font-weight-bolder"
+            >
+              <span class="svg-icon svg-icon-md">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  width="24px"
+                  height="24px"
+                  viewBox="0 0 24 24"
+                  version="1.1"
+                >
+                  <g
+                    stroke="none"
+                    stroke-width="1"
+                    fill="none"
+                    fill-rule="evenodd"
+                  >
+                    <polygon points="0 0 24 0 24 24 0 24" />
+                    <rect
+                      fill="#000000"
+                      opacity="0.3"
+                      transform="translate(12.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-12.000000, -12.000000) "
+                      x="11"
+                      y="5"
+                      width="2"
+                      height="14"
+                      rx="1"
+                    />
+                    <path
+                      d="M3.7071045,15.7071045 C3.3165802,16.0976288 2.68341522,16.0976288 2.29289093,15.7071045 C1.90236664,15.3165802 1.90236664,14.6834152 2.29289093,14.2928909 L8.29289093,8.29289093 C8.67146987,7.914312 9.28105631,7.90106637 9.67572234,8.26284357 L15.6757223,13.7628436 C16.0828413,14.136036 16.1103443,14.7686034 15.7371519,15.1757223 C15.3639594,15.5828413 14.7313921,15.6103443 14.3242731,15.2371519 L9.03007346,10.3841355 L3.7071045,15.7071045 Z"
+                      fill="#000000"
+                      fill-rule="nonzero"
+                      transform="translate(9.000001, 11.999997) scale(-1, -1) rotate(90.000000) translate(-9.000001, -11.999997) "
+                    />
+                  </g>
+                </svg>
+              </span>
+              Quay Lại
+            </a>
+            <!--end::Button-->
+          </div>
         </div>
-        <!-- end::Container -->
+        <div class="card-body">
+          <!--begin: Search Form-->
+          <!--begin::Search Form-->
+          <div class="mb-7">
+            <div class="row align-items-center">
+              <div class="col-lg-12 col-xl-12">
+                <div class="row align-items-center">
+                  <div class="col-md-6 my-2 my-md-0">
+                    <div class="input-icon">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Tìm kiếm..."
+                        id="kt_datatable_search_query_2"
+                      />
+                      <span>
+                        <i class="flaticon2-search-1 text-muted"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--end::Search Form-->
+          <!--begin: Selected Rows Group Action Form-->
+          <div
+            class="mt-10 mb-5 collapse"
+            id="kt_datatable_group_action_form_2"
+          >
+            <div class="d-flex align-items-center">
+              <div class="font-weight-bold text-success mr-3">
+                Đã chọn <span id="kt_datatable_selected_records_2">0</span> loại
+                thuốc
+              </div>
+            </div>
+          </div>
+          <!--end: Selected Rows Group Action Form-->
+          <!--begin: Datatable-->
+          <div
+            class="datatable datatable-bordered datatable-head-custom"
+            id="kt_datatable_2"
+          ></div>
+          <!--end: Datatable-->
+        </div>
+      </div>
+      <!--end::Card-->
+
+      <!--begin::Card-->
+      <div class="card card-custom mt-7">
+        <div class="card-header">
+          <div class="card-title">
+            <span class="card-icon">
+              <i class="flaticon-clipboard text-primary"></i>
+            </span>
+            <h3 class="card-label">Đơn thuốc của bệnh nhân</h3>
+          </div>
+        </div>
+        <div class="card-body">
+          <!--begin: Table-->
+          <table
+            class="table table-bordered table-checkable"
+            id="kt_datatable_3"
+            style="margin-top: 13px !important"
+          >
+            <thead>
+              <tr>
+                <td>Tên Thuốc</td>
+                <td>Bảo Hiểm</td>
+                <td>Số Lượng</td>
+                <td>Khả Dụng</td>
+                <td>ĐVT</td>
+                <td>Cách Dùng</td>
+                <td>Ghi Chú</td>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+          <!--end: Table-->
+
+          <div class="form-group mt-3">
+            <label>Chọn kiểu</label>
+            <select
+              id="selectOption"
+              class="form-control selectpicker"
+              data-size="7"
+              data-live-search="true"
+            >
+              <option value="" disabled selected>Chọn kiểu bệnh nhân</option>
+              <option value="vang_lai">Khách Vãng Lai</option>
+              <option value="benh_nhan">Bệnh Nhân Phòng Khám</option>
+            </select>
+          </div>
+
+          <div class="form-group mt-3" style="display: none" id="benh_nhan_pk">
+            <label>Chọn Bệnh Nhân </label>
+            <select
+              id="selectBenhNhan"
+              name="selectBenhNhan"
+              class="form-control selectpicker"
+              data-size="7"
+              data-live-search="true"
+            >
+              <option value selected>Chọn bệnh nhân</option>
+              {% for p in nguoi_dung %}
+              <option value="{{ p.id }}">
+                {{ p.ho_ten }} - {{ p.cmnd_cccd }}
+              </option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="form-group" id="thongTinBenhNhan"></div>
+
+          <div
+            class="form-group mt-3 row"
+            style="display: none"
+            id="khach_vang_lai"
+          >
+            <div class="col-lg-9">
+              <label>Nhập tên người mua </label>
+              <input type="text" class="form-control" id="ten_khach_vang_lai" />
+            </div>
+            <div class="col-lg-3">
+              <label>Số điện thoại người mua </label>
+              <input
+                type="text"
+                class="form-control"
+                id="so_dien_thoai_khach"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-toolbar">
+            <!--begin::Button-->
+            <a
+              href="javascript:;"
+              class="btn btn-primary font-weight-bolder"
+              id="get-table-data"
+            >
+              <i class="la la-plus"></i>Kê Đơn Thuốc
+            </a>
+            <a
+              href="javascript:;"
+              class="btn btn-primary font-weight-bolder"
+              id="printDonThuoc"
+            >
+              In Đơn Thuốc
+            </a>
+            <!--end::Button-->
+          </div>
+        </div>
+      </div>
+      <!--end::Card-->
     </div>
-    <!-- end::Entry -->
+    <!-- end::Container -->
+  </div>
+  <!-- end::Entry -->
 </div>
 <!-- end::Content -->
 
-<div id='divDonThuoc' style="display: none;">
-{{ mau_hoa_don.noi_dung|safe }}
+<div id="divDonThuoc" style="display: none">
+  {{ mau_hoa_don.noi_dung|safe }}
 </div>
 
-
-{% endblock content %}
-
-{% block scripts %}
+{% endblock content %} {% block scripts %}
 
 <script>
+  "use strict";
+  // Class definition
 
-"use strict";
-// Class definition
+  function printDiv() {
+    var divToPrint = document.getElementById("divDonThuoc");
 
-function printDiv() 
-{
-    var divToPrint=document.getElementById('divDonThuoc');
-
-    var newWin=window.open('','Print-Window');
+    var newWin = window.open("", "Print-Window");
 
     newWin.document.open();
 
-    newWin.document.write('<html><body onload="window.print()">'+divToPrint.innerHTML+'</body></html>');
+    newWin.document.write(
+      '<html><body onload="window.print()">' +
+        divToPrint.innerHTML +
+        "</body></html>"
+    );
 
     newWin.document.close();
 
-    setTimeout(function(){newWin.close();},10);
+    setTimeout(function () {
+      newWin.close();
+    }, 10);
+  }
 
-}
-
-var KTDatatableRecordSelectionDemo = function() {
+  var KTDatatableRecordSelectionDemo = (function () {
     // Private functions
 
-    var keDonHtml = ''
+    var keDonHtml = "";
 
     var options = {
-        // datasource definition
-        data: {
-            type: 'remote',
-            source: { 
-                read: {
-                    url: HOST_URL + '/router/api/danh_sach_thuoc/',
-                    method: 'GET',
-                },
-            },
-            pageSize: 10,
-            serverPaging: true,
-            serverFiltering: true,
-            serverSorting: true,
+      // datasource definition
+      data: {
+        type: "remote",
+        source: {
+          read: {
+            url: HOST_URL + "/router/api/danh_sach_thuoc/",
+            method: "GET",
+          },
         },
+        pageSize: 5,
+        serverPaging: true,
+        serverFiltering: true,
+        serverSorting: true,
+      },
 
-        // layout definition
-        layout: {
-            scroll: false, // enable/disable datatable scroll both horizontal and
-            footer: false // display/hide footer
+      // layout definition
+      layout: {
+        scroll: false, // enable/disable datatable scroll both horizontal and
+        footer: false, // display/hide footer
+      },
+
+      // column sorting
+      sortable: true,
+
+      pagination: true,
+
+      // columns definition
+      columns: [
+        {
+          field: "id",
+          title: "#",
+          sortable: false,
+          width: 20,
+          selector: {
+            class: "",
+          },
+          textAlign: "center",
         },
-
-        // column sorting
-        sortable: true,
-
-        pagination: true,
-
-        // columns definition
-        columns: [{
-            field: 'id',
-            title: '#',
-            sortable: false,
-            width: 20,
-            selector: {
-                class: ''
-            },
-            textAlign: 'center',
-        }, {
-            field: 'ten_thuoc',
-            title: 'Tên thuốc',
-        }, {
-            field: 'loai_thuoc',
-            title: 'Loại',
-        }, {
-            field: 'ma_hoat_chat',
-            title: 'Mã hoạt chất',
-        }, {
-            field: 'ten_hoat_chat',
-            title: 'Tên hoạt chất',
-        }, {
-            field: 'duong_dung',
-            title: 'Cách dùng',
-        }, {
-            field: 'so_luong_kha_dung',
-            title: 'Số lượng khả dụng',
-        }, {
-            field: 'don_vi_tinh',
-            title: 'Đơn vị tính',
-        }],
+        {
+          field: "ten_thuoc",
+          title: "Tên thuốc",
+        },
+        {
+          field: "loai_thuoc",
+          title: "Loại",
+        },
+        {
+          field: "ma_hoat_chat",
+          title: "Mã hoạt chất",
+        },
+        {
+          field: "ten_hoat_chat",
+          title: "Tên hoạt chất",
+        },
+        {
+          field: "duong_dung",
+          title: "Cách dùng",
+        },
+        {
+          field: "so_luong_kha_dung",
+          title: "Số lượng khả dụng",
+        },
+        {
+          field: "don_vi_tinh",
+          title: "Đơn vị tính",
+        },
+      ],
     };
 
     // basic demo
-    var localSelectorDemo = function() {
-        // enable extension
-        options.extensions = {
+    var localSelectorDemo = function () {
+      // enable extension
+      options.extensions = {
+        checkbox: true,
+      };
 
-            checkbox: true,
-        };
+      options.search = {
+        input: $("#kt_datatable_search_query"),
+        key: "generalSearch",
+      };
 
-        options.search = {
-            input: $('#kt_datatable_search_query'),
-            key: 'generalSearch'
-        };
+      var datatable = $("#kt_datatable").KTDatatable(options);
 
-        var datatable = $('#kt_datatable').KTDatatable(options);
+      $("#kt_datatable_search_status").on("change", function () {
+        datatable.search($(this).val().toLowerCase(), "Status");
+      });
 
-        $('#kt_datatable_search_status').on('change', function() {
-            datatable.search($(this).val().toLowerCase(), 'Status');
-        });
+      $("#kt_datatable_search_type").on("change", function () {
+        datatable.search($(this).val().toLowerCase(), "Type");
+      });
 
-        $('#kt_datatable_search_type').on('change', function() {
-            datatable.search($(this).val().toLowerCase(), 'Type');
-        });
+      $(
+        "#kt_datatable_search_status, #kt_datatable_search_type"
+      ).selectpicker();
 
-        $('#kt_datatable_search_status, #kt_datatable_search_type').selectpicker();
+      datatable.on("datatable-on-check datatable-on-uncheck", function (e) {
+        var checkedNodes = datatable.rows(".datatable-row-active").nodes();
+        var count = checkedNodes.length;
+        $("#kt_datatable_selected_records").html(count);
+        if (count > 0) {
+          $("#kt_datatable_group_action_form").collapse("show");
+        } else {
+          $("#kt_datatable_group_action_form").collapse("hide");
+        }
+      });
 
-        datatable.on(
-            'datatable-on-check datatable-on-uncheck',
-            function(e) {
-                var checkedNodes = datatable.rows('.datatable-row-active').nodes();
-                var count = checkedNodes.length;
-                $('#kt_datatable_selected_records').html(count);
-                if (count > 0) {
-                    $('#kt_datatable_group_action_form').collapse('show');
-                } else {
-                    $('#kt_datatable_group_action_form').collapse('hide');
-                }
+      $("#kt_datatable_fetch_modal")
+        .on("show.bs.modal", function (e) {
+          var ids = datatable
+            .rows(".datatable-row-active")
+            .nodes()
+            .find('.checkbox > [type="checkbox"]')
+            .map(function (i, chk) {
+              return $(chk).val();
             });
+          console.log(ids);
 
-        $('#kt_datatable_fetch_modal').on('show.bs.modal', function(e) {
-            var ids = datatable.rows('.datatable-row-active').
-            nodes().
-            find('.checkbox > [type="checkbox"]').
-            map(function(i, chk) {
-                return $(chk).val();
-            });
-            console.log(ids);
-        
-            var c = document.createDocumentFragment();
-            for (var i = 0; i < ids.length; i++) {
-                var li = document.createElement('li');
-                li.setAttribute('data-id', ids[i]);
-                li.innerHTML = 'Selected record ID: ' + ids[i];
-                c.appendChild(li);
-            }
-            $('#kt_datatable_fetch_display').append(c);
-        }).on('hide.bs.modal', function(e) {
-            $('#kt_datatable_fetch_display').empty();
+          var c = document.createDocumentFragment();
+          for (var i = 0; i < ids.length; i++) {
+            var li = document.createElement("li");
+            li.setAttribute("data-id", ids[i]);
+            li.innerHTML = "Selected record ID: " + ids[i];
+            c.appendChild(li);
+          }
+          $("#kt_datatable_fetch_display").append(c);
+        })
+        .on("hide.bs.modal", function (e) {
+          $("#kt_datatable_fetch_display").empty();
         });
     };
 
-    var serverSelectorDemo = function() {
-        // enable extension
-        options.extensions = {
-            // boolean or object (extension options)
-            checkbox: true,
-        };
-        options.search = {
-            input: $('#kt_datatable_search_query_2'),
-            key: 'generalSearch'
-        };
+    var serverSelectorDemo = function () {
+      // enable extension
+      options.extensions = {
+        // boolean or object (extension options)
+        checkbox: true,
+      };
+      options.search = {
+        input: $("#kt_datatable_search_query_2"),
+        key: "generalSearch",
+      };
 
-        var datatable = $('#kt_datatable_2').KTDatatable(options);
+      var datatable = $("#kt_datatable_2").KTDatatable(options);
 
-        $('#kt_datatable_search_status_2').on('change', function() {
-            datatable.search($(this).val().toLowerCase(), 'Status');
-        });
+      $("#kt_datatable_search_status_2").on("change", function () {
+        datatable.search($(this).val().toLowerCase(), "Status");
+      });
 
-        $('#kt_datatable_search_type_2').on('change', function() {
-            datatable.search($(this).val().toLowerCase(), 'Type');
-        });
+      $("#kt_datatable_search_type_2").on("change", function () {
+        datatable.search($(this).val().toLowerCase(), "Type");
+      });
 
-        $('#kt_datatable_search_status_2, #kt_datatable_search_type_2').selectpicker();
+      $(
+        "#kt_datatable_search_status_2, #kt_datatable_search_type_2"
+      ).selectpicker();
 
-        datatable.on(
-            'datatable-on-click-checkbox',
-            function(e) {
-                // datatable.checkbox() access to extension methods
-                var ids = datatable.checkbox().getSelectedId();
-                var count = ids.length;
+      datatable.on("datatable-on-click-checkbox", function (e) {
+        // datatable.checkbox() access to extension methods
+        var ids = datatable.checkbox().getSelectedId();
+        var count = ids.length;
 
-                $('#kt_datatable_selected_records_2').html(count);
+        $("#kt_datatable_selected_records_2").html(count);
 
-                if (count > 0) {
-                    $('#kt_datatable_group_action_form_2').collapse('show');
-                } else {
-                    $('#kt_datatable_group_action_form_2').collapse('hide');
-                }
-            });
+        if (count > 0) {
+          $("#kt_datatable_group_action_form_2").collapse("show");
+        } else {
+          $("#kt_datatable_group_action_form_2").collapse("hide");
+        }
+      });
 
-        var lstData = [];
-        var lstCheckbox = {};
-        var lstQuantity = {};
-        var lstUsage = {};
-        var lstNote = {};
-        var benh_nhan = ''
+      var lstData = [];
+      var lstCheckbox = {};
+      var lstQuantity = {};
+      var lstUsage = {};
+      var lstNote = {};
+      var benh_nhan = "";
 
-        $('#selectOption').change(function(){
-            if($(this).val() === "vang_lai"){
-                $('#khach_vang_lai').show();
-                $('#benh_nhan_pk').hide();
-                $('#selectBenhNhan').prop('selectedIndex', 0);
-            }else{
-                $('#benh_nhan_pk').show();
-                $('#khach_vang_lai').hide();
-                $('#ten_khach_vang_lai').val('');
+      $("#selectOption").change(function () {
+        if ($(this).val() === "vang_lai") {
+          $("#khach_vang_lai").show();
+          $("#benh_nhan_pk").hide();
+          $("#selectBenhNhan").prop("selectedIndex", 0);
+        } else {
+          $("#benh_nhan_pk").show();
+          $("#khach_vang_lai").hide();
+          $("#ten_khach_vang_lai").val("");
+        }
+      });
+
+      $("#get-table-data").on("click", function () {
+        var user_id = $("#selectBenhNhan").val();
+        var ten_khach_vang_lai = $("#ten_khach_vang_lai").val();
+        var so_dien_thoai_khach = $("#so_dien_thoai_khach").val();
+        lstCheckbox = {};
+        lstQuantity = {};
+        lstUsage = {};
+        lstNote = {};
+        getCheckbox();
+        getInputQuantity();
+        getInputUsage();
+        getInputNote();
+        getPostData();
+        postData(user_id, ten_khach_vang_lai, so_dien_thoai_khach);
+      });
+
+      $("#printDonThuoc").on("click", function () {
+        var ten_khach_vang_lai = $("#ten_khach_vang_lai").val();
+        var so_dien_thoai_khach = $("#so_dien_thoai_khach").val();
+        lstCheckbox = {};
+        lstQuantity = {};
+        lstUsage = {};
+        lstNote = {};
+        getCheckbox();
+        getInputQuantity();
+        getInputUsage();
+        getInputNote();
+        var data_thuoc = getPostData();
+        var data_thoi_gian = "";
+        var data_nguoi_thuc_hien = "";
+        var thoi_gian_thanh_toan = "{{ thoi_gian_thanh_toan|safe }}";
+        var nguoi_thanh_toan = "{{nguoi_thanh_toan|safe}}";
+
+        $("#divDonThuoc tbody tr").each(function () {
+          if ($(this).find("td").eq(0).text() == "{thoi_gian_thanh_toan}") {
+            var innerHtml = $(this).html();
+            var start_tr = "<tr>";
+            var end_tr = "</tr>";
+            var c = start_tr + innerHtml + end_tr;
+
+            data_thoi_gian += c.replace(
+              /{thoi_gian_thanh_toan}/,
+              thoi_gian_thanh_toan
+            );
+
+            $(this).replaceWith(data_thoi_gian);
+          }
+
+          if ($(this).find("td").eq(1).text() == "{nguoi_thanh_toan}") {
+            var innerHtml = $(this).html();
+            var start_tr = "<tr>";
+            var end_tr = "</tr>";
+            var c = start_tr + innerHtml + end_tr;
+
+            data_nguoi_thuc_hien += c.replace(
+              /{nguoi_thanh_toan}/,
+              nguoi_thanh_toan
+            );
+
+            $(this).replaceWith(data_nguoi_thuc_hien);
+          }
+
+          if ($(this).find("td").eq(0).text() == "{ten_thuoc}") {
+            var innerHtml = $(this).html();
+            var start_tr = "<tr>";
+            var end_tr = "</tr>";
+            var c = start_tr + innerHtml + end_tr;
+
+            for (var i = 0; i < data_thuoc.length; i++) {
+              keDonHtml += c
+                .replace(/{ten_thuoc}/, data_thuoc[i].obj.ten_thuoc)
+                .replace(/{so_luong}/, data_thuoc[i].obj.so_luong)
+                .replace(/{cach_su_dung}/, data_thuoc[i].obj.ghi_chu);
             }
-        })
 
-        $('#get-table-data').on('click', function (){
-            var user_id             = $('#selectBenhNhan').val();
-            var ten_khach_vang_lai  = $("#ten_khach_vang_lai").val();
-            var so_dien_thoai_khach = $("#so_dien_thoai_khach").val();
-            lstCheckbox             = {};
-            lstQuantity             = {};
-            lstUsage                = {};
-            lstNote                 = {};
-            getCheckbox();
-            getInputQuantity();
-            getInputUsage();
-            getInputNote();
-            getPostData();
-            postData(user_id, ten_khach_vang_lai, so_dien_thoai_khach); 
-        })
+            $(this).replaceWith(keDonHtml);
+          }
+        });
 
-        $('#printDonThuoc').on('click', function() {
-            var ten_khach_vang_lai  = $("#ten_khach_vang_lai").val();
-            var so_dien_thoai_khach = $("#so_dien_thoai_khach").val();
-            lstCheckbox             = {};
-            lstQuantity             = {};
-            lstUsage                = {};
-            lstNote                 = {};
-            getCheckbox();
-            getInputQuantity();
-            getInputUsage();
-            getInputNote();
-            var data_thuoc = getPostData();
-            var data_thoi_gian = '';
-            var data_nguoi_thuc_hien = '';
-            var thoi_gian_thanh_toan = "{{ thoi_gian_thanh_toan|safe }}";
-            var nguoi_thanh_toan = "{{nguoi_thanh_toan|safe}}";
+        printDiv();
+      });
 
-            $('#divDonThuoc tbody tr').each(function() {
-                if ($(this).find('td').eq(0).text() == '{thoi_gian_thanh_toan}'){
-                    var innerHtml = $(this).html()
-                    var start_tr = '<tr>'
-                    var end_tr = '</tr>'
-                    var c = start_tr + innerHtml + end_tr
-     
-                    data_thoi_gian += c.replace(/{thoi_gian_thanh_toan}/, thoi_gian_thanh_toan)
+      datatable.on("click", 'tbody input[type="checkbox"]', function () {
+        $(this).toggleClass("selected");
+        // console.log($(this).val())
+        var objList = [];
+        if ($(this).is(":checked")) {
+          var trVals = $(this).closest("tr").data();
+          // console.log($(this).val())
 
-                    $(this).replaceWith(data_thoi_gian) 
-                }
-
-                if ($(this).find('td').eq(1).text() == '{nguoi_thanh_toan}'){
-                    var innerHtml = $(this).html()
-                    var start_tr = '<tr>'
-                    var end_tr = '</tr>'
-                    var c = start_tr + innerHtml + end_tr
-
-                    data_nguoi_thuc_hien += c.replace(/{nguoi_thanh_toan}/, nguoi_thanh_toan)
-
-                    $(this).replaceWith(data_nguoi_thuc_hien) 
-                }
-
-                if ($(this).find('td').eq(0).text() == '{ten_thuoc}'){
-                    var innerHtml = $(this).html()
-                    var start_tr = '<tr>'
-                    var end_tr = '</tr>'
-                    var c = start_tr + innerHtml + end_tr
-
-                    for (var i=0; i < data_thuoc.length; i++) {
-                        keDonHtml += c.replace(/{ten_thuoc}/, data_thuoc[i].obj.ten_thuoc).replace(/{so_luong}/, data_thuoc[i].obj.so_luong).replace(/{cach_su_dung}/, data_thuoc[i].obj.ghi_chu)
-                    }
-
-                    $(this).replaceWith(keDonHtml) 
-                }
-            })
-            
-            printDiv();
-        })
-    
-        datatable.on('click', 'tbody input[type="checkbox"]', function () {
-            $(this).toggleClass('selected');
-            // console.log($(this).val())
-            var objList = [];
-            if($(this).is(":checked")){
-                var trVals = $(this).closest('tr').data();
-                // console.log($(this).val())
-                
-                console.log(trVals)
-                // console.log(objList)
-                lstData.push(trVals)
-                // $('#kt_datatable_3 tbody').empty();
-                $(trVals).each(function () {
-                    $('#kt_datatable_3 tbody').append(`
+          console.log(trVals);
+          // console.log(objList)
+          lstData.push(trVals);
+          // $('#kt_datatable_3 tbody').empty();
+          $(trVals).each(function () {
+            $("#kt_datatable_3 tbody").append(`
                         <tr class="${trVals.obj.id}" data-id = "${trVals.obj.id}" name="true" >
                             <td>
                             ${trVals.obj.ten_thuoc}
@@ -535,204 +669,211 @@ var KTDatatableRecordSelectionDemo = function() {
                             </td>
                         </tr>
                     `);
+          });
+        } else {
+          var trVals = $(this).closest("tr").data();
+          $(`.${trVals.obj.id}`).remove();
+          lstData = lstData.filter((item) => item !== trVals);
+          lstQuantity = {};
+          lstUsage = {};
+          lstNote = {};
+        }
+      });
 
-                })
+      $("#kt_datatable_3").on(
+        "click",
+        'tbody input[type="checkbox"]',
+        function () {
+          if ($(this).is(":checked")) {
+            lstCheckbox = {};
+            getCheckbox();
+            console.log(lstCheckbox);
+          } else {
+            lstCheckbox = {};
+            getCheckbox();
+            console.log(lstCheckbox);
+          }
+        }
+      );
 
-            } else {
-                var trVals = $(this).closest('tr').data();
-                $(`.${trVals.obj.id}`).remove();
-                lstData = lstData.filter((item) => item!==trVals)
-                lstQuantity = {}
-                lstUsage = {}
-                lstNote = {}
-            }
-        })
+      function postData(user_id, ten_khach_vang_lai, so_dien_thoai_khach) {
+        var user_id = user_id;
+        var ten_khach_vang_lai = ten_khach_vang_lai;
+        var so_dien_thoai_khach = so_dien_thoai_khach;
+        var checkBoxObj = lstCheckbox;
 
-        $('#kt_datatable_3').on('click', 'tbody input[type="checkbox"]', function () {
-            if($(this).is(":checked")){
-                lstCheckbox = {};
-                getCheckbox();
-                console.log(lstCheckbox);
-            } else {
-                lstCheckbox = {}; 
-                getCheckbox();
-                console.log(lstCheckbox);
-            }
-        })
+        var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
 
-        function postData(user_id, ten_khach_vang_lai, so_dien_thoai_khach){
-            var user_id             = user_id;
-            var ten_khach_vang_lai  = ten_khach_vang_lai;
-            var so_dien_thoai_khach = so_dien_thoai_khach;
-            var checkBoxObj         = lstCheckbox;
+        function csrfSafeMethod(method) {
+          // these HTTP methods do not require CSRF protection
+          return /^(GET|HEAD|OPTIONS|TRACE)$/.test(method);
+        }
 
-            var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
-
-            function csrfSafeMethod(method) {
-                // these HTTP methods do not require CSRF protection
-                return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-            }
-
-            $.ajaxSetup({
-                beforeSend: function(xhr, settings) {
-                    function getCookie(name) {
-                        var cookieValue = null;
-                        if (document.cookie && document.cookie != '') {
-                            var cookies = document.cookie.split(';');
-                            for (var i = 0; i < cookies.length; i++) {
-                                var cookie = jQuery.trim(cookies[i]);
-                                // Does this cookie string begin with the name we want?
-                                if (cookie.substring(0, name.length + 1) == (name + '=')) {
-                                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                                    break;
-                                }
-                            }
-                        }
-                        return cookieValue;
-                    }
-                    if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
-                        // Only send the token to relative URLs i.e. locally.
-                        xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
-                    }
-                } 
-            });
-
-            $.ajax({
-                type: "POST",
-                url: "{% url 'store_don_thuoc_rieng' %}",
-                data: {
-                    // here data should be a string so that
-                    // in your views.py you can fetch the value using get('data')
-                    'data': JSON.stringify(getPostData()),
-                    'csrfmiddlewaretoken': csrftoken,
-                    'user_id': user_id,
-                    'ten_khach_vang_lai' : ten_khach_vang_lai,
-                    'so_dien_thoai_khach' : so_dien_thoai_khach,
-                },
-                dataType: 'json',
-                safe: false,
-                success: function (response) {
-                    if (response.status == 200){
-                        toastr.success(response.message, "Thành Công")
-                        setTimeout(function () {
-                            window.location.href = '/phong_thuoc/'; //redirect về danh sách chờ lâm sàng
-                        }, 1500);
-                    } else if (response.status == 404) {
-                        toastr.warning(response.message, "Lỗi")
-                    }
-
-                },
-                error: function (res) {
-                    toastr.warning("Có Lỗi Xảy Ra Trong Quá Trình Xử Lý")
+        $.ajaxSetup({
+          beforeSend: function (xhr, settings) {
+            function getCookie(name) {
+              var cookieValue = null;
+              if (document.cookie && document.cookie != "") {
+                var cookies = document.cookie.split(";");
+                for (var i = 0; i < cookies.length; i++) {
+                  var cookie = jQuery.trim(cookies[i]);
+                  // Does this cookie string begin with the name we want?
+                  if (cookie.substring(0, name.length + 1) == name + "=") {
+                    cookieValue = decodeURIComponent(
+                      cookie.substring(name.length + 1)
+                    );
+                    break;
+                  }
                 }
-            });
-        }
-
-        function getPostData(){
-            var rowData            = lstData;
-            var checkBoxObj        = lstCheckbox;
-            var quantityObj        = lstQuantity;
-            var usageObj           = lstUsage;
-            var noteObj            = lstNote;
-
-            for (const each in checkBoxObj) {
-                for (let i = 0; i < rowData.length; i++) {
-                    if (rowData[i].obj.id == each) {
-                        rowData[i].obj.bao_hiem           = checkBoxObj[each];
-                        rowData[i].obj.so_luong           = quantityObj[each];
-                        rowData[i].obj.cach_dung          = usageObj[each];
-                        rowData[i].obj.ghi_chu            = noteObj[each];
-                    }
-                }
+              }
+              return cookieValue;
             }
-            console.log(rowData)
-            return rowData;
-        }
-
-        function getCheckbox(){
-            
-            $('#kt_datatable_3 tbody tr').each(function() {
-
-                var sectionId = $(this).data('id');
-
-                $(this).find('input.big-checkbox:checked').each(function() {
-                    console.log($(this).attr('data-checked'));
-                    lstCheckbox[sectionId] = $(this).attr('data-checked');
-                });
-
-                $(this).find('input.big-checkbox:not(:checked)').each(function() {
-                    lstCheckbox[sectionId] = $(this).attr('data-unchecked');
-                });
-            });
-        }
-
-        function getInputQuantity(){
-            $('#kt_datatable_3 tbody tr').each(function() {
-                var sectionId = $(this).data('id');
-                $(this).find('input.big-input-quantity').each(function(){
-                    lstQuantity[sectionId] = $(this).val();
-                })
-            });
-        }
-
-        function getInputUsage(){
-            $('#kt_datatable_3 tbody tr').each(function() {
-                var sectionId = $(this).data('id');
-                $(this).find('input.big-input-usage').each(function(){
-                    console.log($(this).val());
-                    lstUsage[sectionId] = $(this).val();
-                })
-            });
-        }
-
-        function getInputNote(){
-            $('#kt_datatable_3 tbody tr').each(function() {
-                var sectionId = $(this).data('id');
-                $(this).find('input.big-input-note').each(function(){
-                    console.log($(this).val());
-                    lstNote[sectionId] = $(this).val();
-                })
-            });
-        }
-
-        $('#kt_datatable_fetch_modal_2').on('show.bs.modal', function(e) {
-            var ids = datatable.checkbox().getSelectedId();
-            
-            var recordID = [];
-            var c = document.createDocumentFragment();
-            for (var i = 0; i < ids.length; i++) {
-                var li = document.createElement('li');
-                li.setAttribute('data-id', ids[i]);
-                li.innerHTML = 'Selected record ID: ' + ids[i];
-                c.appendChild(li);
+            if (
+              !(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))
+            ) {
+              // Only send the token to relative URLs i.e. locally.
+              xhr.setRequestHeader("X-CSRFToken", getCookie("csrftoken"));
             }
+          },
+        });
 
-            $('#kt_datatable_fetch_display_2').append(c);
-        }).on('hide.bs.modal', function(e) {
-            $('#kt_datatable_fetch_display_2').empty();
+        $.ajax({
+          type: "POST",
+          url: "{% url 'store_don_thuoc_rieng' %}",
+          data: {
+            // here data should be a string so that
+            // in your views.py you can fetch the value using get('data')
+            data: JSON.stringify(getPostData()),
+            csrfmiddlewaretoken: csrftoken,
+            user_id: user_id,
+            ten_khach_vang_lai: ten_khach_vang_lai,
+            so_dien_thoai_khach: so_dien_thoai_khach,
+          },
+          dataType: "json",
+          safe: false,
+          success: function (response) {
+            if (response.status == 200) {
+              toastr.success(response.message, "Thành Công");
+              setTimeout(function () {
+                window.location.href = "/phong_thuoc/"; //redirect về danh sách chờ lâm sàng
+              }, 1500);
+            } else if (response.status == 404) {
+              toastr.warning(response.message, "Lỗi");
+            }
+          },
+          error: function (res) {
+            toastr.warning("Có Lỗi Xảy Ra Trong Quá Trình Xử Lý");
+          },
+        });
+      }
+
+      function getPostData() {
+        var rowData = lstData;
+        var checkBoxObj = lstCheckbox;
+        var quantityObj = lstQuantity;
+        var usageObj = lstUsage;
+        var noteObj = lstNote;
+
+        for (const each in checkBoxObj) {
+          for (let i = 0; i < rowData.length; i++) {
+            if (rowData[i].obj.id == each) {
+              rowData[i].obj.bao_hiem = checkBoxObj[each];
+              rowData[i].obj.so_luong = quantityObj[each];
+              rowData[i].obj.cach_dung = usageObj[each];
+              rowData[i].obj.ghi_chu = noteObj[each];
+            }
+          }
+        }
+        console.log(rowData);
+        return rowData;
+      }
+
+      function getCheckbox() {
+        $("#kt_datatable_3 tbody tr").each(function () {
+          var sectionId = $(this).data("id");
+
+          $(this)
+            .find("input.big-checkbox:checked")
+            .each(function () {
+              console.log($(this).attr("data-checked"));
+              lstCheckbox[sectionId] = $(this).attr("data-checked");
+            });
+
+          $(this)
+            .find("input.big-checkbox:not(:checked)")
+            .each(function () {
+              lstCheckbox[sectionId] = $(this).attr("data-unchecked");
+            });
+        });
+      }
+
+      function getInputQuantity() {
+        $("#kt_datatable_3 tbody tr").each(function () {
+          var sectionId = $(this).data("id");
+          $(this)
+            .find("input.big-input-quantity")
+            .each(function () {
+              lstQuantity[sectionId] = $(this).val();
+            });
+        });
+      }
+
+      function getInputUsage() {
+        $("#kt_datatable_3 tbody tr").each(function () {
+          var sectionId = $(this).data("id");
+          $(this)
+            .find("input.big-input-usage")
+            .each(function () {
+              console.log($(this).val());
+              lstUsage[sectionId] = $(this).val();
+            });
+        });
+      }
+
+      function getInputNote() {
+        $("#kt_datatable_3 tbody tr").each(function () {
+          var sectionId = $(this).data("id");
+          $(this)
+            .find("input.big-input-note")
+            .each(function () {
+              console.log($(this).val());
+              lstNote[sectionId] = $(this).val();
+            });
+        });
+      }
+
+      $("#kt_datatable_fetch_modal_2")
+        .on("show.bs.modal", function (e) {
+          var ids = datatable.checkbox().getSelectedId();
+
+          var recordID = [];
+          var c = document.createDocumentFragment();
+          for (var i = 0; i < ids.length; i++) {
+            var li = document.createElement("li");
+            li.setAttribute("data-id", ids[i]);
+            li.innerHTML = "Selected record ID: " + ids[i];
+            c.appendChild(li);
+          }
+
+          $("#kt_datatable_fetch_display_2").append(c);
+        })
+        .on("hide.bs.modal", function (e) {
+          $("#kt_datatable_fetch_display_2").empty();
         });
     };
 
-
-
     return {
-        // public functions
-        init: function() {
-          
-            serverSelectorDemo();
-        },
+      // public functions
+      init: function () {
+        serverSelectorDemo();
+      },
     };
-}();
+  })();
 
-jQuery(document).ready(function() {
+  jQuery(document).ready(function () {
     KTDatatableRecordSelectionDemo.init();
-});
-
-
+  });
 </script>
 <!--end::Custom Javascripts-->
 
 {% endblock scripts %}
-
-
-

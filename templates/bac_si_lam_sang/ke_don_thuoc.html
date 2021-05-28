@@ -1,420 +1,492 @@
-
-{% extends 'base.html' %}
-
-{% load static %}
-
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 
 <!--begin::Content-->
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-    <!--begin::Subheader-->
-    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
-        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
-            <!--begin::Info-->
-            <div class="d-flex align-items-center flex-wrap mr-1">
-                <!--begin::Page Heading-->
-                <div class="d-flex align-items-baseline flex-wrap mr-5">
-                    <!--begin::Page Title-->
-                    <h5 class="text-dark font-weight-bold my-1 mr-5">Kê Đơn Thuốc</h5>
-                    <!--end::Page Title-->
-                    <!--begin::Breadcrumb-->
-                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
-                        <li class="breadcrumb-item">
-                            <a href="javascript:;" class="text-muted">Bác sĩ lâm sàng</a>
-                        </li>
-                        <li class="breadcrumb-item">
-                            <a href="javascript:;" class="text-muted">Bệnh nhân</a>
-                        </li>
-                        <li class="breadcrumb-item">
-                            <a href="javascript:;" class="text-muted">Kê đơn thuốc</a>
-                        </li>
-                    </ul>
-                    <!--end::Breadcrumb-->
-                </div>
-                <!--end::Page Heading-->
-            </div>
-            <!--end::Info-->
+  <!--begin::Subheader-->
+  <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+    <div
+      class="
+        container-fluid
+        d-flex
+        align-items-center
+        justify-content-between
+        flex-wrap flex-sm-nowrap
+      "
+    >
+      <!--begin::Info-->
+      <div class="d-flex align-items-center flex-wrap mr-1">
+        <!--begin::Page Heading-->
+        <div class="d-flex align-items-baseline flex-wrap mr-5">
+          <!--begin::Page Title-->
+          <h5 class="text-dark font-weight-bold my-1 mr-5">Kê Đơn Thuốc</h5>
+          <!--end::Page Title-->
+          <!--begin::Breadcrumb-->
+          <ul
+            class="
+              breadcrumb breadcrumb-transparent breadcrumb-dot
+              font-weight-bold
+              p-0
+              my-2
+              font-size-sm
+            "
+          >
+            <li class="breadcrumb-item">
+              <a href="javascript:;" class="text-muted">Bác sĩ lâm sàng</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="javascript:;" class="text-muted">Bệnh nhân</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="javascript:;" class="text-muted">Kê đơn thuốc</a>
+            </li>
+          </ul>
+          <!--end::Breadcrumb-->
         </div>
+        <!--end::Page Heading-->
+      </div>
+      <!--end::Info-->
     </div>
-    <!--end::Subheader-->
+  </div>
+  <!--end::Subheader-->
 
-    <!--begin::Entry-->
-    <div class="d-flex flex-column-fluid">
-        <!--begin::Container-->
-        <div class="container">
-            <!--begin::Card-->
-            <div class="card card-custom">
-                <div class="card-header flex-wrap border-0 pt-6 pb-0">
-                    <div class="card-title">
-                        <span class="card-icon">
-                            <i class="la la-clipboard-list text-primary"></i>
-                        </span>
-                        <h3 class="card-label">Danh Sách Thuốc</h3>
-                    </div>
-                    <div class="card-toolbar">
-                        <!--begin::Button-->
-                        <a href="{% url 'danh_sach_kham' %}" class="btn btn-light-primary font-weight-bolder">
-                            <span class="svg-icon svg-icon-md">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <polygon points="0 0 24 0 24 24 0 24"/>
-                                        <rect fill="#000000" opacity="0.3" transform="translate(12.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-12.000000, -12.000000) " x="11" y="5" width="2" height="14" rx="1"/>
-                                        <path d="M3.7071045,15.7071045 C3.3165802,16.0976288 2.68341522,16.0976288 2.29289093,15.7071045 C1.90236664,15.3165802 1.90236664,14.6834152 2.29289093,14.2928909 L8.29289093,8.29289093 C8.67146987,7.914312 9.28105631,7.90106637 9.67572234,8.26284357 L15.6757223,13.7628436 C16.0828413,14.136036 16.1103443,14.7686034 15.7371519,15.1757223 C15.3639594,15.5828413 14.7313921,15.6103443 14.3242731,15.2371519 L9.03007346,10.3841355 L3.7071045,15.7071045 Z" fill="#000000" fill-rule="nonzero" transform="translate(9.000001, 11.999997) scale(-1, -1) rotate(90.000000) translate(-9.000001, -11.999997) "/>
-                                    </g>
-                                </svg>
-                            </span>
-                            Quay Lại
-                        </a>
-                        <!--end::Button-->
-                    </div>
-                </div>
-                <div class="card-body">
-                    <!--begin: Search Form-->
-                    <!--begin::Search Form-->
-                    <div class="mb-7">
-                        <div class="row align-items-center">
-                            <div class="col-lg-12 col-xl-12">
-                                <div class="row align-items-center">
-                                    <div class="col-md-6 my-2 my-md-0">
-                                        <div class="input-icon">
-                                            <input type="text" class="form-control" placeholder="Tìm kiếm..." id="kt_datatable_search_query_2" />
-                                            <span>
-                                                <i class="flaticon2-search-1 text-muted"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--end::Search Form-->
-                    <!--begin: Selected Rows Group Action Form-->
-                    <div class="mt-10 mb-5 collapse" id="kt_datatable_group_action_form_2">
-                        <div class="d-flex align-items-center">
-                            <div class="font-weight-bold text-success mr-3">Đã chọn  
-                            <span id="kt_datatable_selected_records_2">0</span> loại thuốc</div>
-                        </div>
-                    </div>
-                    <!--end: Selected Rows Group Action Form-->
-                    <!--begin: Datatable-->
-                    <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable_2"></div>
-                    <!--end: Datatable-->
-                </div>
-            </div>
-            <!--end::Card-->
-
-            <!--begin::Card-->
-            <div class="card card-custom mt-7">
-                <div class="card-header">
-                    <div class="card-title">
-                        <span class="card-icon">
-                            <i class="flaticon-clipboard text-primary"></i>
-                        </span>
-                        <h3 class="card-label">Đơn thuốc của bệnh nhân</h3>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <!--begin: Datatable-->
-                    <table class="table table-bordered table-checkable" id="kt_datatable_3" style="margin-top: 13px !important;">
-                        <thead>
-                            <tr>
-                                <td>Tên Thuốc</td>
-                                <td>Bảo Hiểm</td>
-                                <td>Số Lượng</td>
-                                <td>ĐVT</td>
-                                <td>Cách Dùng</td>
-                                <td>Ghi Chú</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            
-                        </tbody>
-                    </table>
-                    <!--end: Datatable-->
-                </div>
-                <div class="card-footer">
-                    <div class="card-toolbar">
-                        <!--begin::Button-->
-                        <a href="javascript:;" class="btn btn-primary font-weight-bolder" id="get-table-data" data-user-id="{{ user_id }}" data-chuoi-kham-id="{{id_chuoi_kham}}">
-                            <i class="la la-plus"></i>Kê Đơn Thuốc
-                        </a>
-                        <!--end::Button-->
-                    </div>
-                </div>
-            </div>
-            <!--end::Card-->
+  <!--begin::Entry-->
+  <div class="d-flex flex-column-fluid">
+    <!--begin::Container-->
+    <div class="container">
+      <!--begin::Card-->
+      <div class="card card-custom">
+        <div class="card-header flex-wrap border-0 pt-6 pb-0">
+          <div class="card-title">
+            <span class="card-icon">
+              <i class="la la-clipboard-list text-primary"></i>
+            </span>
+            <h3 class="card-label">Danh Sách Thuốc</h3>
+          </div>
+          <div class="card-toolbar">
+            <!--begin::Button-->
+            <a
+              href="{% url 'danh_sach_kham' %}"
+              class="btn btn-light-primary font-weight-bolder"
+            >
+              <span class="svg-icon svg-icon-md">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  width="24px"
+                  height="24px"
+                  viewBox="0 0 24 24"
+                  version="1.1"
+                >
+                  <g
+                    stroke="none"
+                    stroke-width="1"
+                    fill="none"
+                    fill-rule="evenodd"
+                  >
+                    <polygon points="0 0 24 0 24 24 0 24" />
+                    <rect
+                      fill="#000000"
+                      opacity="0.3"
+                      transform="translate(12.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-12.000000, -12.000000) "
+                      x="11"
+                      y="5"
+                      width="2"
+                      height="14"
+                      rx="1"
+                    />
+                    <path
+                      d="M3.7071045,15.7071045 C3.3165802,16.0976288 2.68341522,16.0976288 2.29289093,15.7071045 C1.90236664,15.3165802 1.90236664,14.6834152 2.29289093,14.2928909 L8.29289093,8.29289093 C8.67146987,7.914312 9.28105631,7.90106637 9.67572234,8.26284357 L15.6757223,13.7628436 C16.0828413,14.136036 16.1103443,14.7686034 15.7371519,15.1757223 C15.3639594,15.5828413 14.7313921,15.6103443 14.3242731,15.2371519 L9.03007346,10.3841355 L3.7071045,15.7071045 Z"
+                      fill="#000000"
+                      fill-rule="nonzero"
+                      transform="translate(9.000001, 11.999997) scale(-1, -1) rotate(90.000000) translate(-9.000001, -11.999997) "
+                    />
+                  </g>
+                </svg>
+              </span>
+              Quay Lại
+            </a>
+            <!--end::Button-->
+          </div>
         </div>
-        <!-- end::Container -->
+        <div class="card-body">
+          <!--begin: Search Form-->
+          <!--begin::Search Form-->
+          <div class="mb-7">
+            <div class="row align-items-center">
+              <div class="col-lg-12 col-xl-12">
+                <div class="row align-items-center">
+                  <div class="col-md-6 my-2 my-md-0">
+                    <div class="input-icon">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Tìm kiếm..."
+                        id="kt_datatable_search_query_2"
+                      />
+                      <span>
+                        <i class="flaticon2-search-1 text-muted"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--end::Search Form-->
+          <!--begin: Selected Rows Group Action Form-->
+          <div
+            class="mt-10 mb-5 collapse"
+            id="kt_datatable_group_action_form_2"
+          >
+            <div class="d-flex align-items-center">
+              <div class="font-weight-bold text-success mr-3">
+                Đã chọn <span id="kt_datatable_selected_records_2">0</span> loại
+                thuốc
+              </div>
+            </div>
+          </div>
+          <!--end: Selected Rows Group Action Form-->
+          <!--begin: Datatable-->
+          <div
+            class="datatable datatable-bordered datatable-head-custom"
+            id="kt_datatable_2"
+          ></div>
+          <!--end: Datatable-->
+        </div>
+      </div>
+      <!--end::Card-->
+
+      <!--begin::Card-->
+      <div class="card card-custom mt-7">
+        <div class="card-header">
+          <div class="card-title">
+            <span class="card-icon">
+              <i class="flaticon-clipboard text-primary"></i>
+            </span>
+            <h3 class="card-label">Đơn thuốc của bệnh nhân</h3>
+          </div>
+        </div>
+        <div class="card-body">
+          <!--begin: Datatable-->
+          <table
+            class="table table-bordered table-checkable"
+            id="kt_datatable_3"
+            style="margin-top: 13px !important"
+          >
+            <thead>
+              <tr>
+                <td>Tên Thuốc</td>
+                <td>Bảo Hiểm</td>
+                <td>Số Lượng</td>
+                <td>ĐVT</td>
+                <td>Cách Dùng</td>
+                <td>Ghi Chú</td>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+          <!--end: Datatable-->
+        </div>
+        <div class="card-footer">
+          <div class="card-toolbar">
+            <!--begin::Button-->
+            <a
+              href="javascript:;"
+              class="btn btn-primary font-weight-bolder"
+              id="get-table-data"
+              data-user-id="{{ user_id }}"
+              data-chuoi-kham-id="{{id_chuoi_kham}}"
+            >
+              <i class="la la-plus"></i>Kê Đơn Thuốc
+            </a>
+            <!--end::Button-->
+          </div>
+        </div>
+      </div>
+      <!--end::Card-->
     </div>
-    <!-- end::Entry -->
+    <!-- end::Container -->
+  </div>
+  <!-- end::Entry -->
 </div>
 <!-- end::Content -->
 
-{% endblock content %}
-
-{% block scripts %}
-
-{% comment %} <script>var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";</script> {% endcomment %}
+{% endblock content %} {% block scripts %} {% comment %}
+<script>
+  var HOST_URL =
+    "https://preview.keenthemes.com/metronic/theme/html/tools/preview";
+</script>
+{% endcomment %}
 <!--begin::Global Theme Bundle(used by all pages)-->
 
 <!--end::Global Theme Bundle-->
 
 <!--begin::Custom Javascripts(used by this page)-->
 <script>
+  "use strict";
+  // Class definition
 
-"use strict";
-// Class definition
-
-var KTDatatableRecordSelectionDemo = function() {
+  var KTDatatableRecordSelectionDemo = (function () {
     // Private functions
 
     var options = {
-        // datasource definition
-        data: {
-            type: 'remote',
-            source: { 
-                read: {
-                    url: HOST_URL + '/api/thuoc/',
-                    method: 'GET',
-                },
-            },
-            pageSize: 10,
-            serverPaging: true,
-            serverFiltering: true,
-            serverSorting: false,
-            saveState: false,
+      // datasource definition
+      data: {
+        type: "remote",
+        source: {
+          read: {
+            url: HOST_URL + "/api/thuoc/",
+            method: "GET",
+          },
         },
+        pageSize: 5,
+        serverPaging: true,
+        serverFiltering: true,
+        serverSorting: false,
+        saveState: false,
+      },
 
-        // layout definition
-        layout: {
-            scroll: false, // enable/disable datatable scroll both horizontal and
-            footer: false // display/hide footer
+      // layout definition
+      layout: {
+        scroll: false, // enable/disable datatable scroll both horizontal and
+        footer: false, // display/hide footer
+      },
+
+      // column sorting
+      sortable: true,
+
+      pagination: true,
+
+      // columns definition
+      columns: [
+        {
+          field: "id",
+          title: "#",
+          sortable: false,
+          width: 20,
+          selector: {
+            class: "",
+          },
+          textAlign: "center",
         },
-
-        // column sorting
-        sortable: true,
-
-        pagination: true,
-
-        // columns definition
-        columns: [{
-            field: 'id',
-            title: '#',
-            sortable: false,
-            width: 20,
-            selector: {
-                class: ''
-            },
-            textAlign: 'center',
-        }, {
-            field: 'ten_thuoc',
-            title: 'Tên thuốc',
-            template: function(row) {
-                return row.ten_thuoc
+        {
+          field: "ten_thuoc",
+          title: "Tên thuốc",
+          template: function (row) {
+            return row.ten_thuoc;
+          },
+        },
+        {
+          field: "loai_thuoc",
+          title: "Loại",
+          width: 40,
+          template: function (row) {
+            var thuoc = row.loai_thuoc;
+            if (row.loai_thuoc == 1) {
+              return "Tân Dược";
+            } else if (row.loai_thuoc == 2) {
+              return "Chế phẩm YHCT";
+            } else if (row.loai_thuoc == 3) {
+              return "Vị thuốc YHCT";
+            } else if (row.loai_thuoc == 4) {
+              return "Phóng Xạ";
+            } else if (row.loai_thuoc == 5) {
+              return "Thực Phẩm Bảo Vệ Sức Khỏe";
+            } else if (row.loai_thuoc == 6) {
+              return "Vật Tư Y Tế";
+            } else if (!row.loai_thuoc) {
+              return "-";
             }
-        }, {
-                field: 'loai_thuoc',
-                title: 'Loại',
-                width: 40,
-                template: function(row){
-                    var thuoc = row.loai_thuoc;
-                    if (row.loai_thuoc == 1){
-                        return "Tân Dược"
-                    }else if (row.loai_thuoc == 2){
-                        return "Chế phẩm YHCT"
-                    }else if (row.loai_thuoc == 3){
-                        return "Vị thuốc YHCT"
-                    }else if (row.loai_thuoc == 4){
-                        return "Phóng Xạ"
-                    } else if (row.loai_thuoc == 5) {
-                        return "Thực Phẩm Bảo Vệ Sức Khỏe"
-                    } else if (row.loai_thuoc == 6) {
-                        return "Vật Tư Y Tế"
-                    } else if (!row.loai_thuoc) {
-                        return '-'
-                    }
-                }
-            }, {
-            field: 'ma_hoat_chat',
-            title: 'Mã hoạt chất',
-        }, {
-            field: 'ten_hoat_chat',
-            title: 'Tên hoạt chất',
-        }, {
-            field: 'duong_dung',
-            title: 'Cách dùng',
-        }, {
-            field: 'so_luong_kha_dung',
-            title: 'Số lượng khả dụng',
-        }, {
-            field: 'don_vi_tinh',
-            title: 'Đơn vị tính',
-        }],
+          },
+        },
+        {
+          field: "ma_hoat_chat",
+          title: "Mã hoạt chất",
+        },
+        {
+          field: "ten_hoat_chat",
+          title: "Tên hoạt chất",
+        },
+        {
+          field: "duong_dung",
+          title: "Cách dùng",
+        },
+        {
+          field: "so_luong_kha_dung",
+          title: "Số lượng khả dụng",
+        },
+        {
+          field: "don_vi_tinh",
+          title: "Đơn vị tính",
+        },
+      ],
     };
 
     // basic demo
-    var localSelectorDemo = function() {
-        // enable extension
-        options.extensions = {
-            // boolean or object (extension options)
-            checkbox: true,
-        };
+    var localSelectorDemo = function () {
+      // enable extension
+      options.extensions = {
+        // boolean or object (extension options)
+        checkbox: true,
+      };
 
-        options.search = {
-            input: $('#kt_datatable_search_query'),
-            key: 'search'
-        };
+      options.search = {
+        input: $("#kt_datatable_search_query"),
+        key: "search",
+      };
 
-        var datatable = $('#kt_datatable').KTDatatable(options);
+      var datatable = $("#kt_datatable").KTDatatable(options);
 
-        $('#kt_datatable_search_status').on('change', function() {
-            datatable.search($(this).val().toLowerCase(), 'Status');
-        });
+      $("#kt_datatable_search_status").on("change", function () {
+        datatable.search($(this).val().toLowerCase(), "Status");
+      });
 
-        $('#kt_datatable_search_type').on('change', function() {
-            datatable.search($(this).val().toLowerCase(), 'Type');
-        });
+      $("#kt_datatable_search_type").on("change", function () {
+        datatable.search($(this).val().toLowerCase(), "Type");
+      });
 
-        $('#kt_datatable_search_status, #kt_datatable_search_type').selectpicker();
+      $(
+        "#kt_datatable_search_status, #kt_datatable_search_type"
+      ).selectpicker();
 
-        datatable.on(
-            'datatable-on-check datatable-on-uncheck',
-            function(e) {
-                var checkedNodes = datatable.rows('.datatable-row-active').nodes();
-                var count = checkedNodes.length;
-                $('#kt_datatable_selected_records').html(count);
-                if (count > 0) {
-                    $('#kt_datatable_group_action_form').collapse('show');
-                } else {
-                    $('#kt_datatable_group_action_form').collapse('hide');
-                }
+      datatable.on("datatable-on-check datatable-on-uncheck", function (e) {
+        var checkedNodes = datatable.rows(".datatable-row-active").nodes();
+        var count = checkedNodes.length;
+        $("#kt_datatable_selected_records").html(count);
+        if (count > 0) {
+          $("#kt_datatable_group_action_form").collapse("show");
+        } else {
+          $("#kt_datatable_group_action_form").collapse("hide");
+        }
+      });
+
+      datatable.on("mouseenter", "tbody tr", function () {
+        // alert($(this).data());
+        $(this)
+          .find('[data-toggle="tooltip"]')
+          .tooltip({
+            delay: 300,
+            title: $(this).data().obj.Country,
+            html: true,
+          });
+      });
+
+      $("#kt_datatable_fetch_modal")
+        .on("show.bs.modal", function (e) {
+          var ids = datatable
+            .rows(".datatable-row-active")
+            .nodes()
+            .find('.checkbox > [type="checkbox"]')
+            .map(function (i, chk) {
+              return $(chk).val();
             });
+          console.log(ids);
 
-        datatable.on('mouseenter', 'tbody tr', function(){
-            // alert($(this).data());
-            $(this).find('[data-toggle="tooltip"]').tooltip({
-                delay: 300,
-                title: $(this).data().obj.Country,
-                html: true,
-            });
-
+          var c = document.createDocumentFragment();
+          for (var i = 0; i < ids.length; i++) {
+            var li = document.createElement("li");
+            li.setAttribute("data-id", ids[i]);
+            li.innerHTML = "Selected record ID: " + ids[i];
+            c.appendChild(li);
+          }
+          $("#kt_datatable_fetch_display").append(c);
         })
-
-        $('#kt_datatable_fetch_modal').on('show.bs.modal', function(e) {
-            var ids = datatable.rows('.datatable-row-active').
-            nodes().
-            find('.checkbox > [type="checkbox"]').
-            map(function(i, chk) {
-                return $(chk).val();
-            });
-            console.log(ids);
-        
-            var c = document.createDocumentFragment();
-            for (var i = 0; i < ids.length; i++) {
-                var li = document.createElement('li');
-                li.setAttribute('data-id', ids[i]);
-                li.innerHTML = 'Selected record ID: ' + ids[i];
-                c.appendChild(li);
-            }
-            $('#kt_datatable_fetch_display').append(c);
-        }).on('hide.bs.modal', function(e) {
-            $('#kt_datatable_fetch_display').empty();
+        .on("hide.bs.modal", function (e) {
+          $("#kt_datatable_fetch_display").empty();
         });
     };
 
-    var serverSelectorDemo = function() {
-        // enable extension
-        options.extensions = {
-            // boolean or object (extension options)
-            checkbox: true,
-        };
-        options.search = {
-            input: $('#kt_datatable_search_query_2'),
-            key: 'search'
-        };
+    var serverSelectorDemo = function () {
+      // enable extension
+      options.extensions = {
+        // boolean or object (extension options)
+        checkbox: true,
+      };
+      options.search = {
+        input: $("#kt_datatable_search_query_2"),
+        key: "search",
+      };
 
-        var datatable = $('#kt_datatable_2').KTDatatable(options);
+      var datatable = $("#kt_datatable_2").KTDatatable(options);
 
-        $('#kt_datatable_search_status_2').on('change', function() {
-            datatable.search($(this).val().toLowerCase(), 'Status');
+      $("#kt_datatable_search_status_2").on("change", function () {
+        datatable.search($(this).val().toLowerCase(), "Status");
+      });
+
+      $("#kt_datatable_search_type_2").on("change", function () {
+        datatable.search($(this).val().toLowerCase(), "Type");
+      });
+
+      $(
+        "#kt_datatable_search_status_2, #kt_datatable_search_type_2"
+      ).selectpicker();
+
+      datatable.on("datatable-on-click-checkbox", function (e) {
+        // datatable.checkbox() access to extension methods
+        var ids = datatable.checkbox().getSelectedId();
+        var count = ids.length;
+        // console.log(datatable.checkbox())
+        // console.log(datatable.checkbox().selectedRows)
+
+        // var lst_ids = datatable.checkbox().selectedRows;
+        // console.log(datatable.getRecord(lst_ids).getColumn('Country').getValue())
+        $("#kt_datatable_selected_records_2").html(count);
+
+        if (count > 0) {
+          $("#kt_datatable_group_action_form_2").collapse("show");
+        } else {
+          $("#kt_datatable_group_action_form_2").collapse("hide");
+        }
+      });
+
+      datatable.on("mouseenter", "tbody tr", function () {
+        // alert($(this).data());
+        $(this).find('[data-toggle="tooltip"]').tooltip({
+          delay: 300,
+
+          title: "<em>Tooltip</em> <u>with</u> <b>HTML</b>",
+          html: true,
         });
+      });
 
-        $('#kt_datatable_search_type_2').on('change', function() {
-            datatable.search($(this).val().toLowerCase(), 'Type');
-        });
+      var lstData = [];
+      var lstCheckbox = {};
+      var lstQuantity = {};
+      var lstUsage = {};
+      var lstNote = {};
 
-        $('#kt_datatable_search_status_2, #kt_datatable_search_type_2').selectpicker();
+      $("#get-table-data").on("click", function () {
+        var user_id = $(this).data("user-id");
+        var id_chuoi_kham = $(this).data("chuoi-kham-id");
+        lstCheckbox = {};
+        lstQuantity = {};
+        lstUsage = {};
+        lstNote = {};
+        getCheckbox();
+        getInputQuantity();
+        getInputUsage();
+        getInputNote();
+        getPostData(user_id);
+        postData(user_id, id_chuoi_kham);
+      });
 
-        datatable.on(
-            'datatable-on-click-checkbox',
-            function(e) {
-                // datatable.checkbox() access to extension methods
-                var ids = datatable.checkbox().getSelectedId();
-                var count = ids.length;
-                // console.log(datatable.checkbox())
-                // console.log(datatable.checkbox().selectedRows)
+      datatable.on("click", 'tbody input[type="checkbox"]', function () {
+        $(this).toggleClass("selected");
+        // console.log($(this).val())
+        var objList = [];
+        if ($(this).is(":checked")) {
+          var trVals = $(this).closest("tr").data();
+          // console.log($(this).val())
 
-                // var lst_ids = datatable.checkbox().selectedRows;
-                // console.log(datatable.getRecord(lst_ids).getColumn('Country').getValue())
-                $('#kt_datatable_selected_records_2').html(count);
+          console.log(trVals);
+          // console.log(objList)
+          lstData.push(trVals);
+          // $('#kt_datatable_3 tbody').empty();
 
-                if (count > 0) {
-                    $('#kt_datatable_group_action_form_2').collapse('show');
-                } else {
-                    $('#kt_datatable_group_action_form_2').collapse('hide');
-                }
-            });
+          console.log(lstData);
 
-        datatable.on('mouseenter', 'tbody tr', function(){
-            // alert($(this).data());
-            $(this).find('[data-toggle="tooltip"]').tooltip({
-                delay: 300,
-
-                title: "<em>Tooltip</em> <u>with</u> <b>HTML</b>",
-                html: true,
-            });
-
-        })
-
-        var lstData = [];
-        var lstCheckbox = {};
-        var lstQuantity = {};
-        var lstUsage = {};
-        var lstNote = {};
-
-        $('#get-table-data').on('click', function (){
-            var user_id = $(this).data('user-id');
-            var id_chuoi_kham = $(this).data('chuoi-kham-id');
-            lstCheckbox = {};
-            lstQuantity = {};
-            lstUsage = {};
-            lstNote = {};
-            getCheckbox();
-            getInputQuantity();
-            getInputUsage();
-            getInputNote();
-            getPostData(user_id);
-            postData(user_id, id_chuoi_kham); 
-        })
-
-    
-        datatable.on('click', 'tbody input[type="checkbox"]', function () {
-            $(this).toggleClass('selected');
-            // console.log($(this).val())
-            var objList = [];
-            if($(this).is(":checked")){
-                var trVals = $(this).closest('tr').data();
-                // console.log($(this).val())
-                
-                console.log(trVals)
-                // console.log(objList)
-                lstData.push(trVals)
-                // $('#kt_datatable_3 tbody').empty();
-
-                console.log(lstData)
-
-                $(trVals).each(function () {
-                    $('#kt_datatable_3 tbody').append(`
+          $(trVals).each(function () {
+            $("#kt_datatable_3 tbody").append(`
                         <tr class="${trVals.obj.id}" data-id = "${trVals.obj.id}" name="true" >
                             <td>
                             ${trVals.obj.ten_thuoc}
@@ -452,221 +524,231 @@ var KTDatatableRecordSelectionDemo = function() {
                             </td>
                         </tr>
                     `);
-                })
+          });
+        } else {
+          var trVals = $(this).closest("tr").data();
+          $(`.${trVals.obj.id}`).remove();
+          lstData = lstData.filter((item) => item !== trVals);
+          lstQuantity = {};
+          lstUsage = {};
+          lstNote = {};
+        }
+      });
 
-            } else {
-                var trVals = $(this).closest('tr').data();
-                $(`.${trVals.obj.id}`).remove();
-                lstData = lstData.filter((item) => item!==trVals)
-                lstQuantity = {}
-                lstUsage = {}
-                lstNote = {}
-            }
-        })
+      $("#kt_datatable_3").on(
+        "click",
+        'tbody input[type="checkbox"]',
+        function () {
+          if ($(this).is(":checked")) {
+            lstCheckbox = {};
+            getCheckbox();
+            console.log(lstCheckbox);
+          } else {
+            lstCheckbox = {};
+            getCheckbox();
+            console.log(lstCheckbox);
+          }
+        }
+      );
 
-        $('#kt_datatable_3').on('click', 'tbody input[type="checkbox"]', function () {
-            if($(this).is(":checked")){
-                lstCheckbox = {};
-                getCheckbox();
-                console.log(lstCheckbox);
-            } else {
-                lstCheckbox = {}; 
-                getCheckbox();
-                console.log(lstCheckbox);
-            }
-        })
+      function postData(user_id, id_chuoi_kham) {
+        var id_chuoi_kham = id_chuoi_kham;
+        var user_id = user_id;
+        console.log(getPostData(user_id));
 
-        function postData(user_id, id_chuoi_kham){
-            var id_chuoi_kham = id_chuoi_kham
-            var user_id = user_id
-            console.log(getPostData(user_id));
+        var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
 
-            var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+        function csrfSafeMethod(method) {
+          // these HTTP methods do not require CSRF protection
+          return /^(GET|HEAD|OPTIONS|TRACE)$/.test(method);
+        }
 
-            function csrfSafeMethod(method) {
-                // these HTTP methods do not require CSRF protection
-                return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-            }
-
-            $.ajaxSetup({
-                beforeSend: function(xhr, settings) {
-                    function getCookie(name) {
-                        var cookieValue = null;
-                        if (document.cookie && document.cookie != '') {
-                            var cookies = document.cookie.split(';');
-                            for (var i = 0; i < cookies.length; i++) {
-                                var cookie = jQuery.trim(cookies[i]);
-                                // Does this cookie string begin with the name we want?
-                                if (cookie.substring(0, name.length + 1) == (name + '=')) {
-                                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                                    break;
-                                }
-                            }
-                        }
-                        return cookieValue;
-                    }
-                    if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
-                        // Only send the token to relative URLs i.e. locally.
-                        xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
-                    }
-                } 
-            });
-
-            $.ajax({
-                type: "POST",
-                url: "{% url 'store_ke_don' %}",
-                data: {
-                    // here data should be a string so that
-                    // in your views.py you can fetch the value using get('data')
-                    'data': JSON.stringify(getPostData(user_id)),
-                    'csrfmiddlewaretoken': csrftoken,
-                    'user': user_id,
-                    'id_chuoi_kham': id_chuoi_kham,
-                },
-                dataType: 'json',
-                safe: false,
-                success: function (response) {
-                    if (response.status == 200){
-                        toastr.success(response.message, "Thành Công")
-                        setTimeout(function () {
-                            window.location.href = '/bac_si_lam_sang/ket_qua_kham/'; //redirect về danh sách chờ lâm sàng
-                        }, 1500);
-                    } else if (response.status == 404){
-                        toastr.warning(response.message, "Cảnh Báo")
-                        setTimeout(function () {
-                            window.location.reload();
-                        }, 1500);
-                    }
-
-                },
-                error: function (res) {
-                    toastr.warning("Có Lỗi Xảy Ra Trong Quá Trình Xử Lý")
+        $.ajaxSetup({
+          beforeSend: function (xhr, settings) {
+            function getCookie(name) {
+              var cookieValue = null;
+              if (document.cookie && document.cookie != "") {
+                var cookies = document.cookie.split(";");
+                for (var i = 0; i < cookies.length; i++) {
+                  var cookie = jQuery.trim(cookies[i]);
+                  // Does this cookie string begin with the name we want?
+                  if (cookie.substring(0, name.length + 1) == name + "=") {
+                    cookieValue = decodeURIComponent(
+                      cookie.substring(name.length + 1)
+                    );
+                    break;
+                  }
                 }
-            });
-        }
-
-        function getPostData(user_id){
-            var user_id = user_id
-            console.log(user_id)
-            var rowData = lstData;
-            var checkBoxObj = lstCheckbox;
-            var quantityObj = lstQuantity;
-            var usageObj = lstUsage;
-            var noteObj = lstNote;
-
-            for (const each in checkBoxObj) {
-                for (let i = 0; i < rowData.length; i++) {
-                    if (rowData[i].obj.id == each) {
-                        rowData[i].obj.bao_hiem = checkBoxObj[each];
-                        rowData[i].obj.so_luong = quantityObj[each];
-                        rowData[i].obj.cach_dung = usageObj[each];
-                        rowData[i].obj.ghi_chu = noteObj[each];
-                        rowData[i].obj.benh_nhan = user_id;
-                    }
-                }
+              }
+              return cookieValue;
             }
-            console.log(rowData)
-            return rowData;
-        }
-
-        // function getPostData(){
-        //     var rowData = lstData;
-        //     var checkBoxArr = Object.values(lstCheckbox);
-        //     var quantityArr = Object.values(lstQuantity);
-        //     var usageArr = Object.values(lstUsage);
-        //     var noteArr = Object.values(lstNote);
-        //     for (let i = 0; i < checkBoxArr.length; i++) {
-        //         rowData[i].obj["bao_hiem"] = checkBoxArr[i];
-        //         rowData[i].obj["so_luong"] = quantityArr[i];
-        //         rowData[i].obj["cach_dung"] = usageArr[i];
-        //         rowData[i].obj["ghi_chu"] = noteArr[i];
-        //     }
-        //     console.log(rowData)
-        //     return rowData;
-        // }
-
-        function getCheckbox(){
-            
-            $('#kt_datatable_3 tbody tr').each(function() {
-
-                var sectionId = $(this).data('id');
-
-                $(this).find('input.big-checkbox:checked').each(function() {
-                    console.log($(this).attr('data-checked'));
-                    lstCheckbox[sectionId] = $(this).attr('data-checked');
-                });
-
-                $(this).find('input.big-checkbox:not(:checked)').each(function() {
-                    lstCheckbox[sectionId] = $(this).attr('data-unchecked');
-                });
-            });
-        }
-
-        function getInputQuantity(){
-            $('#kt_datatable_3 tbody tr').each(function() {
-                var sectionId = $(this).data('id');
-                $(this).find('input.big-input-quantity').each(function(){
-                    lstQuantity[sectionId] = $(this).val();
-                })
-            });
-        }
-
-        function getInputUsage(){
-            $('#kt_datatable_3 tbody tr').each(function() {
-                var sectionId = $(this).data('id');
-                $(this).find('input.big-input-usage').each(function(){
-                    console.log($(this).val());
-                    lstUsage[sectionId] = $(this).val();
-                })
-            });
-        }
-
-        function getInputNote(){
-            $('#kt_datatable_3 tbody tr').each(function() {
-                var sectionId = $(this).data('id');
-                $(this).find('input.big-input-note').each(function(){
-                    console.log($(this).val());
-                    lstNote[sectionId] = $(this).val();
-                })
-            });
-        }
-
-        $('#kt_datatable_fetch_modal_2').on('show.bs.modal', function(e) {
-            var ids = datatable.checkbox().getSelectedId();
-            
-            var recordID = [];
-            var c = document.createDocumentFragment();
-            for (var i = 0; i < ids.length; i++) {
-                var li = document.createElement('li');
-                li.setAttribute('data-id', ids[i]);
-                li.innerHTML = 'Selected record ID: ' + ids[i];
-                c.appendChild(li);
+            if (
+              !(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))
+            ) {
+              // Only send the token to relative URLs i.e. locally.
+              xhr.setRequestHeader("X-CSRFToken", getCookie("csrftoken"));
             }
+          },
+        });
 
-            $('#kt_datatable_fetch_display_2').append(c);
-        }).on('hide.bs.modal', function(e) {
-            $('#kt_datatable_fetch_display_2').empty();
+        $.ajax({
+          type: "POST",
+          url: "{% url 'store_ke_don' %}",
+          data: {
+            // here data should be a string so that
+            // in your views.py you can fetch the value using get('data')
+            data: JSON.stringify(getPostData(user_id)),
+            csrfmiddlewaretoken: csrftoken,
+            user: user_id,
+            id_chuoi_kham: id_chuoi_kham,
+          },
+          dataType: "json",
+          safe: false,
+          success: function (response) {
+            if (response.status == 200) {
+              toastr.success(response.message, "Thành Công");
+              setTimeout(function () {
+                window.location.href = "/bac_si_lam_sang/ket_qua_kham/"; //redirect về danh sách chờ lâm sàng
+              }, 1500);
+            } else if (response.status == 404) {
+              toastr.warning(response.message, "Cảnh Báo");
+              setTimeout(function () {
+                window.location.reload();
+              }, 1500);
+            }
+          },
+          error: function (res) {
+            toastr.warning("Có Lỗi Xảy Ra Trong Quá Trình Xử Lý");
+          },
+        });
+      }
+
+      function getPostData(user_id) {
+        var user_id = user_id;
+        console.log(user_id);
+        var rowData = lstData;
+        var checkBoxObj = lstCheckbox;
+        var quantityObj = lstQuantity;
+        var usageObj = lstUsage;
+        var noteObj = lstNote;
+
+        for (const each in checkBoxObj) {
+          for (let i = 0; i < rowData.length; i++) {
+            if (rowData[i].obj.id == each) {
+              rowData[i].obj.bao_hiem = checkBoxObj[each];
+              rowData[i].obj.so_luong = quantityObj[each];
+              rowData[i].obj.cach_dung = usageObj[each];
+              rowData[i].obj.ghi_chu = noteObj[each];
+              rowData[i].obj.benh_nhan = user_id;
+            }
+          }
+        }
+        console.log(rowData);
+        return rowData;
+      }
+
+      // function getPostData(){
+      //     var rowData = lstData;
+      //     var checkBoxArr = Object.values(lstCheckbox);
+      //     var quantityArr = Object.values(lstQuantity);
+      //     var usageArr = Object.values(lstUsage);
+      //     var noteArr = Object.values(lstNote);
+      //     for (let i = 0; i < checkBoxArr.length; i++) {
+      //         rowData[i].obj["bao_hiem"] = checkBoxArr[i];
+      //         rowData[i].obj["so_luong"] = quantityArr[i];
+      //         rowData[i].obj["cach_dung"] = usageArr[i];
+      //         rowData[i].obj["ghi_chu"] = noteArr[i];
+      //     }
+      //     console.log(rowData)
+      //     return rowData;
+      // }
+
+      function getCheckbox() {
+        $("#kt_datatable_3 tbody tr").each(function () {
+          var sectionId = $(this).data("id");
+
+          $(this)
+            .find("input.big-checkbox:checked")
+            .each(function () {
+              console.log($(this).attr("data-checked"));
+              lstCheckbox[sectionId] = $(this).attr("data-checked");
+            });
+
+          $(this)
+            .find("input.big-checkbox:not(:checked)")
+            .each(function () {
+              lstCheckbox[sectionId] = $(this).attr("data-unchecked");
+            });
+        });
+      }
+
+      function getInputQuantity() {
+        $("#kt_datatable_3 tbody tr").each(function () {
+          var sectionId = $(this).data("id");
+          $(this)
+            .find("input.big-input-quantity")
+            .each(function () {
+              lstQuantity[sectionId] = $(this).val();
+            });
+        });
+      }
+
+      function getInputUsage() {
+        $("#kt_datatable_3 tbody tr").each(function () {
+          var sectionId = $(this).data("id");
+          $(this)
+            .find("input.big-input-usage")
+            .each(function () {
+              console.log($(this).val());
+              lstUsage[sectionId] = $(this).val();
+            });
+        });
+      }
+
+      function getInputNote() {
+        $("#kt_datatable_3 tbody tr").each(function () {
+          var sectionId = $(this).data("id");
+          $(this)
+            .find("input.big-input-note")
+            .each(function () {
+              console.log($(this).val());
+              lstNote[sectionId] = $(this).val();
+            });
+        });
+      }
+
+      $("#kt_datatable_fetch_modal_2")
+        .on("show.bs.modal", function (e) {
+          var ids = datatable.checkbox().getSelectedId();
+
+          var recordID = [];
+          var c = document.createDocumentFragment();
+          for (var i = 0; i < ids.length; i++) {
+            var li = document.createElement("li");
+            li.setAttribute("data-id", ids[i]);
+            li.innerHTML = "Selected record ID: " + ids[i];
+            c.appendChild(li);
+          }
+
+          $("#kt_datatable_fetch_display_2").append(c);
+        })
+        .on("hide.bs.modal", function (e) {
+          $("#kt_datatable_fetch_display_2").empty();
         });
     };
 
     return {
-        // public functions
-        init: function() {
-          
-            serverSelectorDemo();
-        },
+      // public functions
+      init: function () {
+        serverSelectorDemo();
+      },
     };
-}();
+  })();
 
-jQuery(document).ready(function() {
+  jQuery(document).ready(function () {
     KTDatatableRecordSelectionDemo.init();
-});
-
-
+  });
 </script>
 <!--end::Custom Javascripts-->
 
 {% endblock scripts %}
-
-
-

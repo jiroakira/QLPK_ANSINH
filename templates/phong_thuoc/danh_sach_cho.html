@@ -1,280 +1,346 @@
-{% extends 'base.html' %}
-
-{% load static %}
-
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 <!--begin::Content-->
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-    <!--begin::Subheader-->
-    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
-        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
-            <!--begin::Info-->
-            <div class="d-flex align-items-center flex-wrap mr-1">
-                <!--begin::Page Heading-->
-                <div class="d-flex align-items-baseline flex-wrap mr-5">
-                    <!--begin::Page Title-->
-                    <h5 class="text-dark font-weight-bold my-1 mr-5">Phòng Thuốc</h5>
-                    <!--end::Page Title-->
-                    <!--begin::Breadcrumb-->
-                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
-                        <li class="breadcrumb-item">
-                            <a href="#" class="text-muted">Danh Sách Chờ Lấy Thuốc</a>
-                        </li>
-                    </ul>
-                    <!--end::Breadcrumb-->
-                </div>
-                <!--end::Page Heading-->
-            </div>
-            <!--end::Info-->
+  <!--begin::Subheader-->
+  <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+    <div
+      class="
+        container-fluid
+        d-flex
+        align-items-center
+        justify-content-between
+        flex-wrap flex-sm-nowrap
+      "
+    >
+      <!--begin::Info-->
+      <div class="d-flex align-items-center flex-wrap mr-1">
+        <!--begin::Page Heading-->
+        <div class="d-flex align-items-baseline flex-wrap mr-5">
+          <!--begin::Page Title-->
+          <h5 class="text-dark font-weight-bold my-1 mr-5">Phòng Thuốc</h5>
+          <!--end::Page Title-->
+          <!--begin::Breadcrumb-->
+          <ul
+            class="
+              breadcrumb breadcrumb-transparent breadcrumb-dot
+              font-weight-bold
+              p-0
+              my-2
+              font-size-sm
+            "
+          >
+            <li class="breadcrumb-item">
+              <a href="#" class="text-muted">Danh Sách Chờ Lấy Thuốc</a>
+            </li>
+          </ul>
+          <!--end::Breadcrumb-->
         </div>
+        <!--end::Page Heading-->
+      </div>
+      <!--end::Info-->
     </div>
-    <!--end::Subheader-->
-    <!--begin::Entry-->
-    <div class="d-flex flex-column-fluid">
-        <!--begin::Container-->
-        <div class="container">
-            <!--begin::Card-->
-            <div class="card card-custom">
-                <div class="card-header flex-wrap border-0 pt-6 pb-0">
-                    <div class="card-title">
-                        <h3 class="card-label">Danh Sách Chờ Lấy Thuốc Trong Ngày Hôm Nay
-                        </h3>
-                    </div>
-                    <div class="card-toolbar">                        
-                        <!--begin::Button-->
-                        <a href="#" class="btn btn-primary font-weight-bolder" id="btn-reload">
-                            <span class="svg-icon svg-icon-md">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <g>
-                                            <polygon points="0 0 24 0 24 24 0 24"/>
-                                        </g>
-                                        <path d="M12,4 L12,6 C8.6862915,6 6,8.6862915 6,12 C6,15.3137085 8.6862915,18 12,18 C15.3137085,18 18,15.3137085 18,12 C18,10.9603196 17.7360885,9.96126435 17.2402578,9.07513926 L18.9856052,8.09853149 C19.6473536,9.28117708 20,10.6161442 20,12 C20,16.418278 16.418278,20 12,20 C7.581722,20 4,16.418278 4,12 C4,7.581722 7.581722,4 12,4 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" transform="translate(12.000000, 12.000000) scale(-1, 1) translate(-12.000000, -12.000000) "/>
-                                    </g>
-                                </svg><!--end::Svg Icon-->
-                            </span>
-                            Tải Lại
-                        </a>
-                        <!--end::Button-->
-                    </div>
-                </div>
-                <div class="card-body">
-                    <!--begin::Search Form-->
-                    <div class="mb-7">
-                        <div class="row align-items-center">
-                            <div class="col-lg-9 col-xl-8">
-                                <div class="row align-items-center">
-                                    <div class="col-md-6 my-2 my-md-0">
-                                        <div class="input-icon">
-                                            <input type="text" class="form-control" placeholder="Tìm kiếm..." id="kt_datatable_search_query" />
-                                            <span>
-                                                <i class="flaticon2-search-1 text-muted"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 my-2 my-md-0">
-                                        <div class="d-flex align-items-center">
-                                            <label class="mr-3 mb-0 d-none d-md-block">Trạng Thái:</label>
-                                            <select class="form-control" id="kt_datatable_search_status">
-                                                <option value="">Tất Cả</option>
-                                                {% for t in trang_thai %}
-                                                    <option value="{{ t.id }}">{{ t.trang_thai }}</option>
-                                                {% endfor %}
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--end::Search Form-->
-                    <!--begin: Datatable-->
-                    <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable"></div>
-                    <!--end: Datatable-->
-                </div>
-            </div>
-            <!--end::Card-->
+  </div>
+  <!--end::Subheader-->
+  <!--begin::Entry-->
+  <div class="d-flex flex-column-fluid">
+    <!--begin::Container-->
+    <div class="container">
+      <!--begin::Card-->
+      <div class="card card-custom">
+        <div class="card-header flex-wrap border-0 pt-6 pb-0">
+          <div class="card-title">
+            <h3 class="card-label">
+              Danh Sách Chờ Lấy Thuốc Trong Ngày Hôm Nay
+            </h3>
+          </div>
+          <div class="card-toolbar">
+            <!--begin::Button-->
+            <a
+              href="#"
+              class="btn btn-primary font-weight-bolder"
+              id="btn-reload"
+            >
+              <span class="svg-icon svg-icon-md">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  width="24px"
+                  height="24px"
+                  viewBox="0 0 24 24"
+                  version="1.1"
+                >
+                  <g
+                    stroke="none"
+                    stroke-width="1"
+                    fill="none"
+                    fill-rule="evenodd"
+                  >
+                    <g>
+                      <polygon points="0 0 24 0 24 24 0 24" />
+                    </g>
+                    <path
+                      d="M12,4 L12,6 C8.6862915,6 6,8.6862915 6,12 C6,15.3137085 8.6862915,18 12,18 C15.3137085,18 18,15.3137085 18,12 C18,10.9603196 17.7360885,9.96126435 17.2402578,9.07513926 L18.9856052,8.09853149 C19.6473536,9.28117708 20,10.6161442 20,12 C20,16.418278 16.418278,20 12,20 C7.581722,20 4,16.418278 4,12 C4,7.581722 7.581722,4 12,4 Z"
+                      fill="#000000"
+                      fill-rule="nonzero"
+                      opacity="0.3"
+                      transform="translate(12.000000, 12.000000) scale(-1, 1) translate(-12.000000, -12.000000) "
+                    />
+                  </g></svg
+                ><!--end::Svg Icon-->
+              </span>
+              Tải Lại
+            </a>
+            <!--end::Button-->
+          </div>
         </div>
-        <!--end::Container-->
+        <div class="card-body">
+          <!--begin::Search Form-->
+          <div class="mb-7">
+            <div class="row align-items-center">
+              <div class="col-lg-9 col-xl-8">
+                <div class="row align-items-center">
+                  <div class="col-md-6 my-2 my-md-0">
+                    <div class="input-icon">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Tìm kiếm..."
+                        id="kt_datatable_search_query"
+                      />
+                      <span>
+                        <i class="flaticon2-search-1 text-muted"></i>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-md-4 my-2 my-md-0">
+                    <div class="d-flex align-items-center">
+                      <label class="mr-3 mb-0 d-none d-md-block"
+                        >Trạng Thái:</label
+                      >
+                      <select
+                        class="form-control"
+                        id="kt_datatable_search_status"
+                      >
+                        <option value="">Tất Cả</option>
+                        {% for t in trang_thai %}
+                        <option value="{{ t.id }}">{{ t.trang_thai }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--end::Search Form-->
+          <!--begin: Datatable-->
+          <div
+            class="datatable datatable-bordered datatable-head-custom"
+            id="kt_datatable"
+          ></div>
+          <!--end: Datatable-->
+        </div>
+      </div>
+      <!--end::Card-->
     </div>
-    <!--end::Entry-->
+    <!--end::Container-->
+  </div>
+  <!--end::Entry-->
 </div>
 <!--end::Content-->
 
-{% endblock content %}
-
-{% block scripts %}
-{% comment %} <script>var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";</script> {% endcomment %}
+{% endblock content %} {% block scripts %} {% comment %}
+<script>
+  var HOST_URL =
+    "https://preview.keenthemes.com/metronic/theme/html/tools/preview";
+</script>
+{% endcomment %}
 <!--begin::Global Theme Bundle(used by all pages)-->
 
 <!--end::Global Theme Bundle-->
 
 <script>
-"use strict";
-// Class definition
+  "use strict";
+  // Class definition
 
-var KTDatatableRemoteAjaxDemo = function() {
+  var KTDatatableRemoteAjaxDemo = (function () {
     // Private functions
 
-    var demo = function() {
-
-        var datatable = $('#kt_datatable').KTDatatable({
-            // datasource definition
-            data: {
-                type: 'remote',
-                source: {
-                    read: {
-                        method: "GET",
-                        url: HOST_URL + '/api/danh_sach_don_thuoc_phong_thuoc/',
-                        // sample custom headers
-                        // headers: {'x-my-custom-header': 'some value', 'x-test-header': 'the value'},
-                        map: function(raw) {
-                            // sample data mapping
-                            var dataSet = raw;
-                            if (typeof raw.data !== 'undefined') {
-                                dataSet = raw.data;
-                            }
-                            return dataSet;
-                        },
-                    },
-                },
-                pageSize: 10,
-                serverPaging: true,
-                serverFiltering: true,
-                serverSorting: false,
-                saveState: false,
-            },
-
-            // layout definition
-            layout: {
-                scroll: false,
-                footer: false,
-            },
-
-            // column sorting
-            sortable: true,
-
-            pagination: true,
-
-            search: {
-                input: $('#kt_datatable_search_query'),
-                key: 'search'
-            },
-
-            // columns definition
-            columns: [{
-                field: 'id',
-                title: 'Stt',
-                sortable: 'asc',
-                width: 30,
-                type: 'number',
-                selector: false,
-                textAlign: 'center',
-            }, {
-                field: 'ma_don_thuoc',
-                title: 'Mã Đơn Thuốc',
-            }, {
-                field: 'benh_nhan.ho_ten',
-                title: 'Bệnh Nhân',
-                template: function(row) {
-                    if (row.benh_nhan === null) {
-                        return row.benh_nhan_vang_lai
-                    } else {
-                        return row.benh_nhan.ho_ten
-                    }
+    var demo = function () {
+      var datatable = $("#kt_datatable").KTDatatable({
+        // datasource definition
+        data: {
+          type: "remote",
+          source: {
+            read: {
+              method: "GET",
+              url: HOST_URL + "/api/danh_sach_don_thuoc_phong_thuoc/",
+              // sample custom headers
+              // headers: {'x-my-custom-header': 'some value', 'x-test-header': 'the value'},
+              map: function (raw) {
+                // sample data mapping
+                var dataSet = raw;
+                if (typeof raw.data !== "undefined") {
+                  dataSet = raw.data;
                 }
-            }, {
-                field: 'bac_si_ke_don.ho_ten',
-                title: 'Bác Sĩ',
+                return dataSet;
+              },
+            },
+          },
+          pageSize: 5,
+          serverPaging: true,
+          serverFiltering: true,
+          serverSorting: false,
+          saveState: false,
+        },
 
-            }, {
-                field: 'thoi_gian_tao',
-                title: 'Thời Gian Tạo',
-                template: function(row) {
-                    var date = new Date(Date.parse(row.thoi_gian_tao))
+        // layout definition
+        layout: {
+          scroll: false,
+          footer: false,
+        },
 
-                    if(!row.thoi_gian_tao){
-                        return '<span class="label font-weight-bold label-lg ' + 'label-light-danger' + ' label-inline">' + 'Chưa Kết Thúc' + '</span>';
-                    } else {
-                        return date.toLocaleString('vi-VN')
-                        //console.log
-                    }
-                }
-            }, {
-                field: 'trang_thai.id',
-                title: 'Trạng Thái',
-                // callback function support for column rendering
-                template: function(row) {
-                    var status = {
-                        1: {
-                            'title': 'Chờ Thanh Toán',
-                            'class': ' label-light-primary'
-                        },
-                        2: {
-                            'title': 'Đã Thanh Toán',
-                            'class': ' label-light-warning'
-                        },
-                        3: {
-                            'title': 'Hoàn Thành',
-                            'class': ' label-light-success'
-                        },
-                        4: {
-                            'title': 'Chờ Thanh Toán',
-                            'class': ' label-light-success'
-                        },
-                        
-                    };
-                    return '<span class="label font-weight-bold label-lg ' + status[row.trang_thai.id].class + ' label-inline">' + status[row.trang_thai.id].title + '</span>';
+        // column sorting
+        sortable: true,
+
+        pagination: true,
+
+        search: {
+          input: $("#kt_datatable_search_query"),
+          key: "search",
+        },
+
+        // columns definition
+        columns: [
+          {
+            field: "id",
+            title: "Stt",
+            sortable: "asc",
+            width: 30,
+            type: "number",
+            selector: false,
+            textAlign: "center",
+          },
+          {
+            field: "ma_don_thuoc",
+            title: "Mã Đơn Thuốc",
+          },
+          {
+            field: "benh_nhan.ho_ten",
+            title: "Bệnh Nhân",
+            template: function (row) {
+              if (row.benh_nhan === null) {
+                return row.benh_nhan_vang_lai;
+              } else {
+                return row.benh_nhan.ho_ten;
+              }
+            },
+          },
+          {
+            field: "bac_si_ke_don.ho_ten",
+            title: "Bác Sĩ",
+          },
+          {
+            field: "thoi_gian_tao",
+            title: "Thời Gian Tạo",
+            template: function (row) {
+              var date = new Date(Date.parse(row.thoi_gian_tao));
+
+              if (!row.thoi_gian_tao) {
+                return (
+                  '<span class="label font-weight-bold label-lg ' +
+                  "label-light-danger" +
+                  ' label-inline">' +
+                  "Chưa Kết Thúc" +
+                  "</span>"
+                );
+              } else {
+                return date.toLocaleString("vi-VN");
+                //console.log
+              }
+            },
+          },
+          {
+            field: "trang_thai.id",
+            title: "Trạng Thái",
+            // callback function support for column rendering
+            template: function (row) {
+              var status = {
+                1: {
+                  title: "Chờ Thanh Toán",
+                  class: " label-light-primary",
                 },
-            }, {
-                field: 'Actions',
-                title: 'Thao Tác',
-                sortable: false,
-                width: 125,
-                overflow: 'visible',
-                autoHide: false,
-                template: function(row) {
-                    return `
+                2: {
+                  title: "Đã Thanh Toán",
+                  class: " label-light-warning",
+                },
+                3: {
+                  title: "Hoàn Thành",
+                  class: " label-light-success",
+                },
+                4: {
+                  title: "Chờ Thanh Toán",
+                  class: " label-light-success",
+                },
+              };
+              return (
+                '<span class="label font-weight-bold label-lg ' +
+                status[row.trang_thai.id].class +
+                ' label-inline">' +
+                status[row.trang_thai.id].title +
+                "</span>"
+              );
+            },
+          },
+          {
+            field: "Actions",
+            title: "Thao Tác",
+            sortable: false,
+            width: 125,
+            overflow: "visible",
+            autoHide: false,
+            template: function (row) {
+              return `
                         {% if perms.medicine.can_view_prescription %}
                         <a href="/phong_thuoc/don_thuoc/${row.id}" class="btn btn-sm btn-clean mr-2" title="Xem đơn thuốc">
                             Xem
                         </a>
                         {% endif %}
                     `;
-                },
-            }],
+            },
+          },
+        ],
+      });
 
-        });
+      $("#btn-reload").on("click", function () {
+        // datatable.reload();
+        $("#kt_datatable").KTDatatable("reload");
+      });
 
-        $('#btn-reload').on('click', function() {
-			// datatable.reload();
-			$('#kt_datatable').KTDatatable('reload');
-		});
+      $("#kt_datatable_search_status").on("change", function () {
+        datatable.search($(this).val(), "trang_thai");
+      });
 
-		$('#kt_datatable_search_status').on('change', function() {
-            datatable.search($(this).val(), 'trang_thai');
-        });
+      $("#kt_datatable_search_type").on("change", function () {
+        datatable.search($(this).val().toLowerCase(), "Type");
+      });
 
-        $('#kt_datatable_search_type').on('change', function() {
-            datatable.search($(this).val().toLowerCase(), 'Type');
-        });
-
-        $('#kt_datatable_search_status, #kt_datatable_search_type').selectpicker();
+      $(
+        "#kt_datatable_search_status, #kt_datatable_search_type"
+      ).selectpicker();
     };
-
 
     return {
-        // public functions
-        init: function() {
-            demo();
-        },
+      // public functions
+      init: function () {
+        demo();
+      },
     };
-}();
+  })();
 
-jQuery(document).ready(function() {
+  jQuery(document).ready(function () {
     KTDatatableRemoteAjaxDemo.init();
-});
-
+  });
 </script>
 
 {% endblock scripts %}

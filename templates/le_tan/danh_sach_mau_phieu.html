@@ -1,301 +1,348 @@
-{% extends 'base.html' %}
-
-{% load static %}
-
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 <!-- begin::Content -->
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-    <!--begin::Subheader-->
-    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
-        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
-            <!--begin::Info-->
-            <div class="d-flex align-items-center flex-wrap mr-1">
-                <!--begin::Page Heading-->
-                <div class="d-flex align-items-baseline flex-wrap mr-5">
-                    <!--begin::Page Title-->
-                    <h5 class="text-dark font-weight-bold my-1 mr-5">Danh Sách Mẫu Phiếu</h5>
-                    <!--end::Page Title-->
-                </div>
-                <!--end::Page Heading-->
-            </div>
-            <!--end::Info-->
+  <!--begin::Subheader-->
+  <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+    <div
+      class="
+        container-fluid
+        d-flex
+        align-items-center
+        justify-content-between
+        flex-wrap flex-sm-nowrap
+      "
+    >
+      <!--begin::Info-->
+      <div class="d-flex align-items-center flex-wrap mr-1">
+        <!--begin::Page Heading-->
+        <div class="d-flex align-items-baseline flex-wrap mr-5">
+          <!--begin::Page Title-->
+          <h5 class="text-dark font-weight-bold my-1 mr-5">
+            Danh Sách Mẫu Phiếu
+          </h5>
+          <!--end::Page Title-->
         </div>
+        <!--end::Page Heading-->
+      </div>
+      <!--end::Info-->
     </div>
-    <!--end::Subheader-->
+  </div>
+  <!--end::Subheader-->
 
-    <!--begin::Entry-->
-    <div class="d-flex flex-column-fluid">
-        <!--begin::Container-->
-        <div class="container">
-            <!--begin::Card-->
-            <div class="card card-custom gutter-b">
-                <div class="card-header flex-wrap border-0 pt-6 pb-0">
-                    <div class="card-title">
-                        <h3 class="card-label">Danh Sách Các Mẫu Phiếu Trong Phòng Khám</h3>
-                    </div>
-                    <div class="card-toolbar">
-                        <!--begin::Button-->
-                        {% if perms.clinic.can_add_analysis_note %}
-                        <a href="{% url 'them_mau_phieu' %}" class="btn btn-light-primary font-weight-bolder mr-3">
-                            <i class="la la-plus icon-md"></i>
-                            Thêm Mẫu Phiếu Chỉ Số
-                        </a>
-                        {% endif %}
+  <!--begin::Entry-->
+  <div class="d-flex flex-column-fluid">
+    <!--begin::Container-->
+    <div class="container">
+      <!--begin::Card-->
+      <div class="card card-custom gutter-b">
+        <div class="card-header flex-wrap border-0 pt-6 pb-0">
+          <div class="card-title">
+            <h3 class="card-label">Danh Sách Các Mẫu Phiếu Trong Phòng Khám</h3>
+          </div>
+          <div class="card-toolbar">
+            <!--begin::Button-->
+            {% if perms.clinic.can_add_analysis_note %}
+            <a
+              href="{% url 'them_mau_phieu' %}"
+              class="btn btn-light-primary font-weight-bolder mr-3"
+            >
+              <i class="la la-plus icon-md"></i>
+              Thêm Mẫu Phiếu Chỉ Số
+            </a>
+            {% endif %} {% if perms.clinic.can_add_analysis_note %}
+            <a
+              href="{% url 'them_mau_hoa_don' %}"
+              class="btn btn-light-primary font-weight-bolder mr-3"
+            >
+              <i class="la la-plus icon-md"></i>
+              Thêm Mẫu Hóa Đơn/Mẫu Phiếu
+            </a>
+            {% endif %}
+            <!--end::Button-->
 
-                        {% if perms.clinic.can_add_analysis_note %}
-                        <a href="{% url 'them_mau_hoa_don' %}" class="btn btn-light-primary font-weight-bolder mr-3">
-                            <i class="la la-plus icon-md"></i>
-                            Thêm Mẫu Hóa Đơn/Mẫu Phiếu
-                        </a>
-                        {% endif %}
-                        <!--end::Button-->
-                        
-                        <!--begin::Button-->
-                        <a href="javascript:;" id="btn-reload" class="btn btn-light-primary font-weight-bolder">
-                        <span class="svg-icon svg-icon-md">
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <rect x="0" y="0" width="24" height="24"/>
-                                    <path d="M12,8 L8,8 C5.790861,8 4,9.790861 4,12 L4,13 C4,14.6568542 5.34314575,16 7,16 L7,18 C4.23857625,18 2,15.7614237 2,13 L2,12 C2,8.6862915 4.6862915,6 8,6 L12,6 L12,4.72799742 C12,4.62015048 12.0348702,4.51519416 12.0994077,4.42878885 C12.264656,4.2075478 12.5779675,4.16215674 12.7992086,4.32740507 L15.656242,6.46136716 C15.6951359,6.49041758 15.7295917,6.52497737 15.7585249,6.56395854 C15.9231063,6.78569617 15.876772,7.09886961 15.6550344,7.263451 L12.798001,9.3840407 C12.7118152,9.44801079 12.607332,9.48254921 12.5,9.48254921 C12.2238576,9.48254921 12,9.25869158 12,8.98254921 L12,8 Z" fill="#000000"/>
-                                    <path d="M12.0583175,16 L16,16 C18.209139,16 20,14.209139 20,12 L20,11 C20,9.34314575 18.6568542,8 17,8 L17,6 C19.7614237,6 22,8.23857625 22,11 L22,12 C22,15.3137085 19.3137085,18 16,18 L12.0583175,18 L12.0583175,18.9825492 C12.0583175,19.2586916 11.8344599,19.4825492 11.5583175,19.4825492 C11.4509855,19.4825492 11.3465023,19.4480108 11.2603165,19.3840407 L8.40328311,17.263451 C8.18154548,17.0988696 8.13521119,16.7856962 8.29979258,16.5639585 C8.32872576,16.5249774 8.36318164,16.4904176 8.40207551,16.4613672 L11.2591089,14.3274051 C11.48035,14.1621567 11.7936615,14.2075478 11.9589099,14.4287888 C12.0234473,14.5151942 12.0583175,14.6201505 12.0583175,14.7279974 L12.0583175,16 Z" fill="#000000" opacity="0.3"/>
-                                </g>
-                            </svg>
-                        </span>Tải Lại</a>
-                        <!--end::Button-->
-                    </div>
-                </div>
-                <div class="card-body">
-                    <!--begin::Search Form-->
-                    <div class="mb-7">
-                        <div class="row align-items-center">
-                            <div class="col-lg-9 col-xl-12">
-                                <div class="row align-items-center">
-                                    <div class="col-md-5 my-2 my-md-0">
-                                        <div class="input-icon">
-                                            <input type="text" class="form-control" placeholder="Tìm Kiếm..." id="kt_datatable_search_query" />
-                                            <span>
-                                                <i class="flaticon2-search-1 text-muted"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--end::Search Form-->
-
-                    <!--begin: Datatable-->
-                    <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable"></div>
-                    <!--end: Datatable-->
-                </div>
-            </div>
-            <!--end::Card-->
+            <!--begin::Button-->
+            <a
+              href="javascript:;"
+              id="btn-reload"
+              class="btn btn-light-primary font-weight-bolder"
+            >
+              <span class="svg-icon svg-icon-md">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  width="24px"
+                  height="24px"
+                  viewBox="0 0 24 24"
+                  version="1.1"
+                >
+                  <g
+                    stroke="none"
+                    stroke-width="1"
+                    fill="none"
+                    fill-rule="evenodd"
+                  >
+                    <rect x="0" y="0" width="24" height="24" />
+                    <path
+                      d="M12,8 L8,8 C5.790861,8 4,9.790861 4,12 L4,13 C4,14.6568542 5.34314575,16 7,16 L7,18 C4.23857625,18 2,15.7614237 2,13 L2,12 C2,8.6862915 4.6862915,6 8,6 L12,6 L12,4.72799742 C12,4.62015048 12.0348702,4.51519416 12.0994077,4.42878885 C12.264656,4.2075478 12.5779675,4.16215674 12.7992086,4.32740507 L15.656242,6.46136716 C15.6951359,6.49041758 15.7295917,6.52497737 15.7585249,6.56395854 C15.9231063,6.78569617 15.876772,7.09886961 15.6550344,7.263451 L12.798001,9.3840407 C12.7118152,9.44801079 12.607332,9.48254921 12.5,9.48254921 C12.2238576,9.48254921 12,9.25869158 12,8.98254921 L12,8 Z"
+                      fill="#000000"
+                    />
+                    <path
+                      d="M12.0583175,16 L16,16 C18.209139,16 20,14.209139 20,12 L20,11 C20,9.34314575 18.6568542,8 17,8 L17,6 C19.7614237,6 22,8.23857625 22,11 L22,12 C22,15.3137085 19.3137085,18 16,18 L12.0583175,18 L12.0583175,18.9825492 C12.0583175,19.2586916 11.8344599,19.4825492 11.5583175,19.4825492 C11.4509855,19.4825492 11.3465023,19.4480108 11.2603165,19.3840407 L8.40328311,17.263451 C8.18154548,17.0988696 8.13521119,16.7856962 8.29979258,16.5639585 C8.32872576,16.5249774 8.36318164,16.4904176 8.40207551,16.4613672 L11.2591089,14.3274051 C11.48035,14.1621567 11.7936615,14.2075478 11.9589099,14.4287888 C12.0234473,14.5151942 12.0583175,14.6201505 12.0583175,14.7279974 L12.0583175,16 Z"
+                      fill="#000000"
+                      opacity="0.3"
+                    />
+                  </g>
+                </svg> </span
+              >Tải Lại</a
+            >
+            <!--end::Button-->
+          </div>
         </div>
-        <!-- end::Container -->
+        <div class="card-body">
+          <!--begin::Search Form-->
+          <div class="mb-7">
+            <div class="row align-items-center">
+              <div class="col-lg-9 col-xl-12">
+                <div class="row align-items-center">
+                  <div class="col-md-5 my-2 my-md-0">
+                    <div class="input-icon">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Tìm Kiếm..."
+                        id="kt_datatable_search_query"
+                      />
+                      <span>
+                        <i class="flaticon2-search-1 text-muted"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--end::Search Form-->
+
+          <!--begin: Datatable-->
+          <div
+            class="datatable datatable-bordered datatable-head-custom"
+            id="kt_datatable"
+          ></div>
+          <!--end: Datatable-->
+        </div>
+      </div>
+      <!--end::Card-->
     </div>
-    <!-- end::Entry -->
+    <!-- end::Container -->
+  </div>
+  <!-- end::Entry -->
 </div>
 <!-- end::Content -->
-{% endblock content %}
-
-{% block scripts %}
-
+{% endblock content %} {% block scripts %}
 
 <script>
+  "use strict";
 
-'use strict';
+  var KTDatatableModal = (function () {
+    var initDatatable = function () {
+      var el = $("#kt_datatable");
 
-var KTDatatableModal = function() {
-    var initDatatable = function() {
-        var el = $('#kt_datatable');
-
-        var datatable = el.KTDatatable({
-            // datasource definition
-            data: {
-                type: 'remote',
-                source: {
-                    read: {
-                        url: HOST_URL + '/api/danh_sach_mau_phieu/',
-                        method: "GET",
-                        map: function(raw) {
-                                // sample data mapping
-                                var dataSet = raw;
-                                if (typeof raw.data !== 'undefined') {
-                                    dataSet = raw.data;
-                                }
-                                console.log(dataSet)
-                                return dataSet;
-                            }, 
-                    },
-                    
-                },
-                pageSize: 10, // display 20 records per page
-                serverPaging: true,
-                serverFiltering: true, 
-                serverSorting: true,
-                saveState: false,
+      var datatable = el.KTDatatable({
+        // datasource definition
+        data: {
+          type: "remote",
+          source: {
+            read: {
+              url: HOST_URL + "/api/danh_sach_mau_phieu/",
+              method: "GET",
+              map: function (raw) {
+                // sample data mapping
+                var dataSet = raw;
+                if (typeof raw.data !== "undefined") {
+                  dataSet = raw.data;
+                }
+                console.log(dataSet);
+                return dataSet;
+              },
             },
+          },
+          pageSize: 5, // display 20 records per page
+          serverPaging: true,
+          serverFiltering: true,
+          serverSorting: true,
+          saveState: false,
+        },
 
-            // layout definition
-            layout: {
-                theme: 'default',
-                scroll: false,
-                height: null,
-                footer: false,
-            },
+        // layout definition
+        layout: {
+          theme: "default",
+          scroll: false,
+          height: null,
+          footer: false,
+        },
 
-            // column sorting
+        // column sorting
+        sortable: true,
+
+        pagination: true,
+
+        search: {
+          input: $("#kt_datatable_search_query"),
+          key: "search",
+        },
+
+        // columns definition
+        columns: [
+          {
+            field: "id",
+            title: "Stt",
             sortable: true,
+            width: 30,
+            textAlign: "center",
+          },
+          {
+            field: "ten_mau",
+            title: "Tên Mẫu",
+            sortable: true,
+          },
+          {
+            field: "thoi_gian_tao",
+            title: "Thời gian tạo",
+            sortable: true,
+            template: function (row) {
+              var date = new Date(Date.parse(row.thoi_gian_tao));
 
-            pagination: true,
-
-            search: {
-                input: $('#kt_datatable_search_query'),
-                key: 'search'
+              if (!row.thoi_gian_tao) {
+                return (
+                  '<span class="label font-weight-bold label-lg ' +
+                  "label-light-info" +
+                  ' label-inline">' +
+                  "Chưa Bắt Đầu" +
+                  "</span>"
+                );
+              } else {
+                return date.toLocaleString("vi-VN");
+              }
             },
+          },
+          {
+            field: "thoi_gian_cap_nhat",
+            title: "Thời gian cập nhật",
+            sortable: true,
+            template: function (row) {
+              var date = new Date(Date.parse(row.thoi_gian_cap_nhat));
 
-            // columns definition
-            columns: [{
-                field: 'id',
-                title: 'Stt',
-                sortable: true,
-                width: 30,
-                textAlign: 'center',
-            }, {
-                field: 'ten_mau',
-                title: 'Tên Mẫu',
-                sortable: true,
-            }, {
-                field: 'thoi_gian_tao',
-                title: 'Thời gian tạo',
-                sortable: true,
-                template: function(row) {
-                    var date = new Date(Date.parse(row.thoi_gian_tao))
-
-                    if(!row.thoi_gian_tao){
-                        return '<span class="label font-weight-bold label-lg ' + 'label-light-info' + ' label-inline">' + 'Chưa Bắt Đầu' + '</span>';
-                    } else {
-                        return date.toLocaleString('vi-VN')
-                    }
-                }
-            }, {
-                field: 'thoi_gian_cap_nhat',
-                title: 'Thời gian cập nhật',
-                sortable: true,
-                template: function(row) {
-                    var date = new Date(Date.parse(row.thoi_gian_cap_nhat))
-
-                    if(!row.thoi_gian_cap_nhat){
-                        return '<span class="label font-weight-bold label-lg ' + 'label-light-info' + ' label-inline">' + 'Chưa cập nhật' + '</span>';
-                    } else {
-                        return date.toLocaleString('vi-VN')
-                    }
-                }
-            }, {
-                field: 'actions',
-                width: 130,
-                title: 'Chỉnh Sửa',
-                sortable: false,
-                overflow: 'visible',
-                textAlign: 'center',
-                autoHide: false,
-                template: function(row) {
-                    return `
+              if (!row.thoi_gian_cap_nhat) {
+                return (
+                  '<span class="label font-weight-bold label-lg ' +
+                  "label-light-info" +
+                  ' label-inline">' +
+                  "Chưa cập nhật" +
+                  "</span>"
+                );
+              } else {
+                return date.toLocaleString("vi-VN");
+              }
+            },
+          },
+          {
+            field: "actions",
+            width: 130,
+            title: "Chỉnh Sửa",
+            sortable: false,
+            overflow: "visible",
+            textAlign: "center",
+            autoHide: false,
+            template: function (row) {
+              return `
                         {% if perms.clinic.can_change_analysis_note %}
                         <a href="/mau_phieu/${row.id}" class="btn btn-sm btn-clean" title="Xem Chi Tiết">
                             <i class="la la-edit icon-lg text-primary"></i>
                         </a>
                         {% endif %}
                     `;
-                },
-            }, {
-                field: 'delete',
-                width: 130,
-                title: 'Xóa',
-                sortable: false,
-                overflow: 'visible',
-                textAlign: 'center',
-                autoHide: false,
-                template: function(row) {
-                    return `
+            },
+          },
+          {
+            field: "delete",
+            width: 130,
+            title: "Xóa",
+            sortable: false,
+            overflow: "visible",
+            textAlign: "center",
+            autoHide: false,
+            template: function (row) {
+              return `
                         {% if perms.clinic.can_delete_analysis_note %}
                         <a href="#" id="btn_delete" data-id="${row.id}" data-ten="${row.ten_mau}" class="btn_delete btn-sm btn-clean btn-icon" title="Xóa Mẫu Phiếu">
                             <i class="la la-trash-alt icon-lg text-danger"></i>
                         </a>
                         {% endif %}
                     `;
-                },
-            }],
-        });
+            },
+          },
+        ],
+      });
 
-        $('#btn-reload').on("click", function(){
-            $('#kt_datatable').KTDatatable('reload');
-        })
-        //$('#kt_datatable_search_type').on('change', function() {
-        //    datatable.search($(this).val().toLowerCase(), 'Type');
-        //});
+      $("#btn-reload").on("click", function () {
+        $("#kt_datatable").KTDatatable("reload");
+      });
+      //$('#kt_datatable_search_type').on('change', function() {
+      //    datatable.search($(this).val().toLowerCase(), 'Type');
+      //});
     };
 
-    var deleteMauPhieu = function() {
-        $('#kt_datatable').on('click', '.btn_delete', function() {
-            var id = $(this).attr('data-id')
-            var ten_mau = $(this).attr('data-ten')
-            Swal.fire({
-                title: "Xóa Mẫu Phiếu " +ten_mau+ " khỏi danh sách",
-                text: "Bạn sẽ không thể hoàn tác lại mẫu phiếu này!",
-                icon: "warning",
-                cancelButtonText: "Hủy",
-                confirmButtonText: "Xác Nhận",
-                showCancelButton: true,
-            }).then(function(result) {
-                if (result.value) {
-                    var formData = new FormData()
-                    formData.append('id', id)
-                    formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
+    var deleteMauPhieu = function () {
+      $("#kt_datatable").on("click", ".btn_delete", function () {
+        var id = $(this).attr("data-id");
+        var ten_mau = $(this).attr("data-ten");
+        Swal.fire({
+          title: "Xóa Mẫu Phiếu " + ten_mau + " khỏi danh sách",
+          text: "Bạn sẽ không thể hoàn tác lại mẫu phiếu này!",
+          icon: "warning",
+          cancelButtonText: "Hủy",
+          confirmButtonText: "Xác Nhận",
+          showCancelButton: true,
+        }).then(function (result) {
+          if (result.value) {
+            var formData = new FormData();
+            formData.append("id", id);
+            formData.append("csrfmiddlewaretoken", "{{ csrf_token }}");
 
-                    $.ajax({
-                        type: "POST",
-                        url: "{% url 'xoa_mau_phieu' %}",
-                        data: formData,
-                        cache: false,
-                        processData: false,
-                        contentType: false,
-                        success: function(response){
-                            Swal.fire(
-                                'Đã Xóa!',
-                                'Mẫu Phiếu Đã Được Xóa Thành Công.',
-                                'success'
-                            )
-                            $('#kt_datatable').KTDatatable('reload');
-                        },
-                        error: function(response){
-                        }
-                    })
-                }else if (result.dismiss === 'cancel') {
-					Swal.fire(
-						'Đã Hủy',
-						'Xóa Mẫu Phiếu Không Thành Công',
-						'error'
-					)
-				}
+            $.ajax({
+              type: "POST",
+              url: "{% url 'xoa_mau_phieu' %}",
+              data: formData,
+              cache: false,
+              processData: false,
+              contentType: false,
+              success: function (response) {
+                Swal.fire(
+                  "Đã Xóa!",
+                  "Mẫu Phiếu Đã Được Xóa Thành Công.",
+                  "success"
+                );
+                $("#kt_datatable").KTDatatable("reload");
+              },
+              error: function (response) {},
             });
-            
+          } else if (result.dismiss === "cancel") {
+            Swal.fire("Đã Hủy", "Xóa Mẫu Phiếu Không Thành Công", "error");
+          }
         });
-    
-    }
-    return {
-        init: function(){
-            initDatatable();
-            deleteMauPhieu();
-        }
+      });
     };
+    return {
+      init: function () {
+        initDatatable();
+        deleteMauPhieu();
+      },
+    };
+  })();
 
-}();
-
-jQuery(document).ready(function() {
+  jQuery(document).ready(function () {
     KTDatatableModal.init();
-});
-
+  });
 </script>
 
 {% endblock scripts %}

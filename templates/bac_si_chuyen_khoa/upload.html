@@ -1,751 +1,912 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 <!--begin::Content-->
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-    <!--begin::Subheader-->
-    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
-        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
-            <!--begin::Info-->
-            <div class="d-flex align-items-center flex-wrap mr-1">
-                <!--begin::Page Heading-->
-                <div class="d-flex align-items-baseline flex-wrap mr-5">
-                    <!--begin::Page Title-->
-                    <h5 class="text-dark font-weight-bold my-1 mr-5">Tải Lên Kết Quả Khám</h5>
-                    <!--end::Page Title-->
-                    <!--begin::Breadcrumb-->
-                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
-                        <li class="breadcrumb-item">
-                            <a href="#" class="text-muted">Bác sĩ chuyên khoa</a>
-                        </li>
-                        <li class="breadcrumb-item">
-                            <a href="#" class="text-muted">Bệnh nhân {{chuoi_kham.benh_nhan.ho_ten}}</a>
-                        </li>
-                        <li class="breadcrumb-item">
-                            <a href="#" class="text-muted">Tải lên kết quả khám</a>
-                        </li>
-                    </ul>
-                    <!--end::Breadcrumb-->
-                </div>
-                <!--end::Page Heading-->
-            </div>
-            <!--end::Info-->
+  <!--begin::Subheader-->
+  <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+    <div
+      class="
+        container-fluid
+        d-flex
+        align-items-center
+        justify-content-between
+        flex-wrap flex-sm-nowrap
+      "
+    >
+      <!--begin::Info-->
+      <div class="d-flex align-items-center flex-wrap mr-1">
+        <!--begin::Page Heading-->
+        <div class="d-flex align-items-baseline flex-wrap mr-5">
+          <!--begin::Page Title-->
+          <h5 class="text-dark font-weight-bold my-1 mr-5">
+            Tải Lên Kết Quả Khám
+          </h5>
+          <!--end::Page Title-->
+          <!--begin::Breadcrumb-->
+          <ul
+            class="
+              breadcrumb breadcrumb-transparent breadcrumb-dot
+              font-weight-bold
+              p-0
+              my-2
+              font-size-sm
+            "
+          >
+            <li class="breadcrumb-item">
+              <a href="#" class="text-muted">Bác sĩ chuyên khoa</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="#" class="text-muted"
+                >Bệnh nhân {{chuoi_kham.benh_nhan.ho_ten}}</a
+              >
+            </li>
+            <li class="breadcrumb-item">
+              <a href="#" class="text-muted">Tải lên kết quả khám</a>
+            </li>
+          </ul>
+          <!--end::Breadcrumb-->
         </div>
+        <!--end::Page Heading-->
+      </div>
+      <!--end::Info-->
     </div>
-    <!--end::Subheader-->
- 
-    <!--begin::Entry-->
-    <div class="d-flex flex-column-fluid">
-        <!--begin::Container-->
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <!--begin::Card-->
-                    <div class="card card-custom">
-                        <div class="card-header">
-                            <div class="card-title">
-                                <h3 class="card-label">Tải lên các kết quả khám</h3>
+  </div>
+  <!--end::Subheader-->
+
+  <!--begin::Entry-->
+  <div class="d-flex flex-column-fluid">
+    <!--begin::Container-->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <!--begin::Card-->
+          <div class="card card-custom">
+            <div class="card-header">
+              <div class="card-title">
+                <h3 class="card-label">Tải lên các kết quả khám</h3>
+              </div>
+            </div>
+            <!--begin::Form-->
+            <form id="upload-form">
+              <div class="card-body">
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label text-lg-right"
+                    >Mã kết quả:</label
+                  >
+                  <div class="col-lg-7">
+                    <input
+                      type="text"
+                      id="ma_ket_qua"
+                      class="form-control"
+                      placeholder="Nhập mã kết quả"
+                      name="ma_ket_qua"
+                      value="{{ma_ket_qua}}"
+                      disabled
+                    />
+                    <span class="form-text text-muted"
+                      >Mã kết quả có dạng :
+                      <code
+                        >"Mã PCN" - "Tên Bệnh Nhân" - Thời gian khám</code
+                      ></span
+                    >
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label text-lg-right"
+                    >Mô tả:</label
+                  >
+                  <div class="col-lg-7">
+                    <input
+                      type="text"
+                      id="mo_ta"
+                      class="form-control"
+                      placeholder="Nhập mô tả bệnh"
+                      name="mo_ta"
+                    />
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label text-lg-right"
+                    >Kết quả:</label
+                  >
+                  <div class="col-lg-7">
+                    <textarea
+                      class="form-control"
+                      id="ket_qua"
+                      rows="3"
+                      placeholder="Nhập kết quả của bệnh nhân"
+                      name="ket_qua"
+                    ></textarea>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label text-lg-right"
+                    >Tải lên kết quả:</label
+                  >
+                  <div class="col-lg-9">
+                    <div class="dropzone dropzone-multi" id="kt_dropzone_4">
+                      <div class="dropzone-panel mb-lg-0 mb-2">
+                        <a
+                          class="
+                            dropzone-select
+                            btn btn-light-primary
+                            font-weight-bold
+                            btn-sm
+                          "
+                          >Đính kèm</a
+                        >
+                        <a
+                          class="
+                            dropzone-upload
+                            btn btn-light-primary
+                            font-weight-bold
+                            btn-sm
+                          "
+                          >Upload All</a
+                        >
+                        <a
+                          class="
+                            dropzone-remove-all
+                            btn btn-light-primary
+                            font-weight-bold
+                            btn-sm
+                          "
+                          >Xóa hết</a
+                        >
+                      </div>
+                      <div class="dropzone-items">
+                        <div class="dropzone-item" style="display: none">
+                          <div class="dropzone-file">
+                            <div
+                              class="dropzone-filename"
+                              title="some_image_file_name.jpg"
+                            >
+                              <span data-dz-name=""
+                                >some_image_file_name.jpg</span
+                              >
+                              <strong
+                                >( <span data-dz-size="">340kb</span>)</strong
+                              >
                             </div>
-                            
+                            <div
+                              class="dropzone-error"
+                              data-dz-errormessage=""
+                            ></div>
+                          </div>
+                          <div class="dropzone-progress">
+                            <div class="progress">
+                              <div
+                                class="progress-bar bg-primary"
+                                role="progressbar"
+                                aria-valuemin="0"
+                                aria-valuemax="100"
+                                aria-valuenow="0"
+                                data-dz-uploadprogress=""
+                              ></div>
+                            </div>
+                          </div>
+                          <div class="dropzone-toolbar">
+                            <span class="dropzone-start">
+                              <i class="flaticon2-arrow"></i>
+                            </span>
+                            <span
+                              class="dropzone-cancel"
+                              data-dz-remove=""
+                              style="display: none"
+                            >
+                              <i class="flaticon2-cross"></i>
+                            </span>
+                            <span class="dropzone-delete" data-dz-remove="">
+                              <i class="flaticon2-cross"></i>
+                            </span>
+                          </div>
                         </div>
-                        <!--begin::Form-->
-                        <form id="upload-form">
-                            <div class="card-body">
-                                <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label text-lg-right">Mã kết quả:</label>
-                                    <div class="col-lg-7">
-                                        <input type="text" id="ma_ket_qua" class="form-control" placeholder="Nhập mã kết quả" name="ma_ket_qua" value="{{ma_ket_qua}}" disabled />
-                                        <span class="form-text text-muted">Mã kết quả có dạng : <code>"Mã PCN" - "Tên Bệnh Nhân" - Thời gian khám</code></span>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label text-lg-right">Mô tả:</label>
-                                    <div class="col-lg-7">
-                                        <input type="text" id="mo_ta" class="form-control" placeholder="Nhập mô tả bệnh" name="mo_ta" />       
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label text-lg-right">Kết quả:</label>
-                                    <div class="col-lg-7">
-                                        <textarea class="form-control" id="ket_qua" rows="3" placeholder="Nhập kết quả của bệnh nhân" name='ket_qua'></textarea> 
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label text-lg-right">Tải lên kết quả:</label>
-                                    <div class="col-lg-9">
-                                        <div class="dropzone dropzone-multi" id="kt_dropzone_4">
-                                            <div class="dropzone-panel mb-lg-0 mb-2">
-                                                <a class="dropzone-select btn btn-light-primary font-weight-bold btn-sm">Đính kèm</a>
-                                                <a class="dropzone-upload btn btn-light-primary font-weight-bold btn-sm">Upload All</a>
-                                                <a class="dropzone-remove-all btn btn-light-primary font-weight-bold btn-sm">Xóa hết</a>
-                                            </div>
-                                            <div class="dropzone-items">
-                                                <div class="dropzone-item" style="display:none">
-                                                    <div class="dropzone-file">
-                                                        <div class="dropzone-filename" title="some_image_file_name.jpg">
-                                                            <span data-dz-name="">some_image_file_name.jpg</span>
-                                                            <strong>( 
-                                                            <span data-dz-size="">340kb</span>)</strong>
-                                                        </div>
-                                                        <div class="dropzone-error" data-dz-errormessage=""></div>
-                                                    </div>
-                                                    <div class="dropzone-progress">
-                                                        <div class="progress">
-                                                            <div class="progress-bar bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-dz-uploadprogress=""></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="dropzone-toolbar">
-                                                        <span class="dropzone-start">
-                                                            <i class="flaticon2-arrow"></i>
-                                                        </span>
-                                                        <span class="dropzone-cancel" data-dz-remove="" style="display: none;">
-                                                            <i class="flaticon2-cross"></i>
-                                                        </span>
-                                                        <span class="dropzone-delete" data-dz-remove="">
-                                                            <i class="flaticon2-cross"></i>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <span class="form-text text-muted">Dung lượng tối đa mỗi file là 1Mb và có thể tải lên tối đa 5 file.</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="row">
-                                    <div class="col-lg-3"></div>
-                                    <div class="col-lg-9">
-                                        <button type="button" id='change_assignment' data-id-phan-khoa="{{id_phan_khoa}}" data-id-chuoi-kham="{{id_chuoi_kham}}" data-id-phong-chuc-nang="{{id_phong_chuc_nang}}" class="btn btn-info mr-2">Thay đổi chỉ định</button>
-                                        <button type="button" id="upload" data-id-phan-khoa="{{id_phan_khoa}}" data-id-chuoi-kham="{{id_chuoi_kham}}" data-id-phong-chuc-nang="{{id_phong_chuc_nang}}" class="dropzone-upload btn btn-primary mr-2">Tải lên</button>
-                                        <button type="button" class="btn btn-light-primary" id='cancelButton'>Hủy</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                        <!--end::Form-->
+                      </div>
                     </div>
-                    <!--end::Card-->
+                    <span class="form-text text-muted"
+                      >Dung lượng tối đa mỗi file là 1Mb và có thể tải lên tối
+                      đa 5 file.</span
+                    >
+                  </div>
                 </div>
- 
-            </div>
+              </div>
+              <div class="card-footer">
+                <div class="row">
+                  <div class="col-lg-3"></div>
+                  <div class="col-lg-9">
+                    <button
+                      type="button"
+                      id="change_assignment"
+                      data-id-phan-khoa="{{id_phan_khoa}}"
+                      data-id-chuoi-kham="{{id_chuoi_kham}}"
+                      data-id-phong-chuc-nang="{{id_phong_chuc_nang}}"
+                      class="btn btn-info mr-2"
+                    >
+                      Thay đổi chỉ định
+                    </button>
+                    <button
+                      type="button"
+                      id="upload"
+                      data-id-phan-khoa="{{id_phan_khoa}}"
+                      data-id-chuoi-kham="{{id_chuoi_kham}}"
+                      data-id-phong-chuc-nang="{{id_phong_chuc_nang}}"
+                      class="dropzone-upload btn btn-primary mr-2"
+                    >
+                      Tải lên
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-light-primary"
+                      id="cancelButton"
+                    >
+                      Hủy
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <!--end::Form-->
+          </div>
+          <!--end::Card-->
         </div>
-        <!--end::Container-->
+      </div>
     </div>
-    <!--end::Entry-->
+    <!--end::Container-->
+  </div>
+  <!--end::Entry-->
 </div>
 <!-- end::Content -->
 
 <!--begin::Thay Doi Phan Khoa Modal-->
 <div id="phan_khoa_modal" class="modal fade" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header py-5">
-                <h5 class="modal-title"> 
-                    <span class="d-block font-size-nm">Thay đổi chỉ định</span>
-                </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <i aria-hidden="true" class="ki ki-close"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="card card-custom">
-                    <div class="card-body">
-                        <!--begin::Search Form-->
-                        <div class="mb-7">
-                            <div class="row align-items-center">
-                                <div class="col-lg-12 col-xl-9">
-                                    <div class="row align-items-center">
-                                        <div class="col-md-6 my-2 my-md-0">
-                                            <div class="input-icon">
-                                                <input type="text" class="form-control" placeholder="Tìm kiếm..." id="kt_datatable_search_query_2" />
-                                                <span>
-                                                    <i class="flaticon2-search-1 text-muted"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--end::Search Form-->
-                        <!--begin: Selected Rows Group Action Form-->
-                        <div class="mt-10 mb-5 collapse" id="kt_datatable_group_action_form_2">
-                            <div class="d-flex align-items-center">
-                                <div class="font-weight-bold text-success mr-3">Đã chọn 
-                                <span id="kt_datatable_selected_records_2"></span> khoa khám!</div>
-                            </div>
-                        </div>
-                        <!--end: Selected Rows Group Action Form-->
-                        <!--begin: Datatable-->
-                        <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable"></div>
-                        <!--end: Datatable-->
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header py-5">
+        <h5 class="modal-title">
+          <span class="d-block font-size-nm">Thay đổi chỉ định</span>
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <i aria-hidden="true" class="ki ki-close"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card card-custom">
+          <div class="card-body">
+            <!--begin::Search Form-->
+            <div class="mb-7">
+              <div class="row align-items-center">
+                <div class="col-lg-12 col-xl-9">
+                  <div class="row align-items-center">
+                    <div class="col-md-6 my-2 my-md-0">
+                      <div class="input-icon">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Tìm kiếm..."
+                          id="kt_datatable_search_query_2"
+                        />
+                        <span>
+                          <i class="flaticon2-search-1 text-muted"></i>
+                        </span>
+                      </div>
                     </div>
+                  </div>
                 </div>
-
-                <!--begin::Card-->
-                <div class="card card-custom mt-7">
-                    <div class="card-header">
-                        <div class="card-title">
-                            <h3 class="card-label">Bảng phân khoa</h3>
-                        </div>
-                    </div>
-                    <div class="card-body" id='tablePhanKhoa'>
-                        <!--begin: Datatable-->
-                        <table class="table table-bordered table-hover table-checkable" id="kt_datatable_3" style="margin-top: 13px !important;">
-                            <thead>
-                                <tr>
-                                    <td>ID</td>
-                                    <td>Tên Dịch Vụ</td>
-                                    <td>Phòng Chức Năng</td>
-                                    <td>Bảo Hiểm</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                
-                            </tbody>
-                        </table>
-                        <!--end: Datatable-->
-                    </div>
+              </div>
+            </div>
+            <!--end::Search Form-->
+            <!--begin: Selected Rows Group Action Form-->
+            <div
+              class="mt-10 mb-5 collapse"
+              id="kt_datatable_group_action_form_2"
+            >
+              <div class="d-flex align-items-center">
+                <div class="font-weight-bold text-success mr-3">
+                  Đã chọn
+                  <span id="kt_datatable_selected_records_2"></span> khoa khám!
                 </div>
-                <!--end::Card-->
+              </div>
             </div>
-            <div class="modal-footer">
-                {% comment %} <button type="button" id="printDiv" class="btn btn-light-success font-weight-bold text-uppercase float-left">In</button> {% endcomment %}
-                <button type="button" class="btn btn-light-primary font-weight-bold text-uppercase" data-dismiss="modal">Hủy</button>
-                <button type="button" id="btn_submit" data-id-chuoi-kham="{{ id_chuoi_kham }}" class="btn btn-primary font-weight-bold text-uppercase">Xác nhận</button>
-            </div>
+            <!--end: Selected Rows Group Action Form-->
+            <!--begin: Datatable-->
+            <div
+              class="datatable datatable-bordered datatable-head-custom"
+              id="kt_datatable"
+            ></div>
+            <!--end: Datatable-->
+          </div>
         </div>
+
+        <!--begin::Card-->
+        <div class="card card-custom mt-7">
+          <div class="card-header">
+            <div class="card-title">
+              <h3 class="card-label">Bảng phân khoa</h3>
+            </div>
+          </div>
+          <div class="card-body" id="tablePhanKhoa">
+            <!--begin: Datatable-->
+            <table
+              class="table table-bordered table-hover table-checkable"
+              id="kt_datatable_3"
+              style="margin-top: 13px !important"
+            >
+              <thead>
+                <tr>
+                  <td>ID</td>
+                  <td>Tên Dịch Vụ</td>
+                  <td>Phòng Chức Năng</td>
+                  <td>Bảo Hiểm</td>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+            <!--end: Datatable-->
+          </div>
+        </div>
+        <!--end::Card-->
+      </div>
+      <div class="modal-footer">
+        {% comment %}
+        <button
+          type="button"
+          id="printDiv"
+          class="
+            btn btn-light-success
+            font-weight-bold
+            text-uppercase
+            float-left
+          "
+        >
+          In
+        </button>
+        {% endcomment %}
+        <button
+          type="button"
+          class="btn btn-light-primary font-weight-bold text-uppercase"
+          data-dismiss="modal"
+        >
+          Hủy
+        </button>
+        <button
+          type="button"
+          id="btn_submit"
+          data-id-chuoi-kham="{{ id_chuoi_kham }}"
+          class="btn btn-primary font-weight-bold text-uppercase"
+        >
+          Xác nhận
+        </button>
+      </div>
     </div>
+  </div>
 </div>
 <!--end::Modal-->
- 
-{% endblock content %}
- 
-{% block scripts %}
- 
+
+{% endblock content %} {% block scripts %}
+
 <!--begin::Global Theme Bundle(used by all pages)-->
 
 <!--end::Global Theme Bundle-->
- 
+
 <script>
- 
-"use strict";
-// Class definition
-var lstData = [];
-var lstCheckbox = {};
-var list_data_2 = [];
- 
-var KTDropzoneDemo = function () {
- 
-    function getCookie(name) {
-        var cookieValue = null;
-        if (document.cookie && document.cookie !== '') {
-            var cookies = document.cookie.split(';');
-            for (var i = 0; i < cookies.length; i++) {
-                var cookie = jQuery.trim(cookies[i]);
-                // Does this cookie string begin with the name we want?
-                if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                    break;
-                }
-            }
-        }
-        return cookieValue;
-    }
-    var csrftoken = getCookie('csrftoken');
- 
-    function csrfSafeMethod(method) {
-        // these HTTP methods do not require CSRF protection
-        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-    }
-    $.ajaxSetup({
-        beforeSend: function(xhr, settings) {
-            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-                xhr.setRequestHeader("X-CSRFToken", csrftoken);
-            }
-        }
-    });
-    // Private functions
-    
-    var demo2 = function () {
-        $('#cancelButton').click(function(){
-            window.history.back()
-        })
-        // set the dropzone container id
-        var id = '#kt_dropzone_4';
-        // set the preview element template
-        var previewNode = $(id + " .dropzone-item");
-        previewNode.id = "";
-        var previewTemplate = previewNode.parent('.dropzone-items').html();
-        previewNode.remove();
 
-        var myDropzone4 = new Dropzone(id, { // Make the whole body a dropzone
-            url: HOST_URL + "/upload_files_chuyen_khoa/", // Set the url for your upload script location
-            parallelUploads: 20,
-            previewTemplate: previewTemplate,
-            maxFilesize: 10, // Max filesize in MB
-            autoQueue: false, // Make sure the files aren't queued until manually added
-            previewsContainer: id + " .dropzone-items", // Define the container to display the previews
-            clickable: id + " .dropzone-select", // Define the element that should be used as click trigger to select files.
-            uploadMultiple: true,
-            acceptedFiles:".xls, .xlsx, .pdf, .doc, .docx, .jpg, .jpeg, .png, .txt",
-            init: function() {
-                var _this = this;
+  "use strict";
+  // Class definition
+  var lstData = [];
+  var lstCheckbox = {};
+  var list_data_2 = [];
 
-                this.on("sendingmultiple", function(file, xhr, formData){
-                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
-                    var id_chuoi_kham = $("#upload-form").find("#upload").data('id-chuoi-kham')
-                    $("#upload-form").find("input, textarea").each(function(){
-                        console.log($(this).attr("name"))
-                        console.log($(this).val())
+  var KTDropzoneDemo = function () {
 
-                        formData.append($(this).attr("name"), $(this).val())
+      function getCookie(name) {
+          var cookieValue = null;
+          if (document.cookie && document.cookie !== '') {
+              var cookies = document.cookie.split(';');
+              for (var i = 0; i < cookies.length; i++) {
+                  var cookie = jQuery.trim(cookies[i]);
+                  // Does this cookie string begin with the name we want?
+                  if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                      cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                      break;
+                  }
+              }
+          }
+          return cookieValue;
+      }
+      var csrftoken = getCookie('csrftoken');
 
-                    });
-                    formData.append('id_chuoi_kham', id_chuoi_kham) 
-                });
+      function csrfSafeMethod(method) {
+          // these HTTP methods do not require CSRF protection
+          return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+      }
+      $.ajaxSetup({
+          beforeSend: function(xhr, settings) {
+              if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                  xhr.setRequestHeader("X-CSRFToken", csrftoken);
+              }
+          }
+      });
+      // Private functions
 
-            },
-            success: function(response){
-                var id_phong_chuc_nang = $("#upload-form").find("#upload").data('id-phong-chuc-nang')
-                toastr.success('Upload file thành công', "Thành Công!")
+      var demo2 = function () {
+          $('#cancelButton').click(function(){
+              window.history.back()
+          })
+          // set the dropzone container id
+          var id = '#kt_dropzone_4';
+          // set the preview element template
+          var previewNode = $(id + " .dropzone-item");
+          previewNode.id = "";
+          var previewTemplate = previewNode.parent('.dropzone-items').html();
+          previewNode.remove();
 
-                setTimeout(function () {
-                    window.location.href = '/phong_chuyen_khoa/' + id_phong_chuc_nang; //redirect về danh sách chờ lâm sàng
-                }, 1500); //sau 2 giây (1000 = 1s)
-            }
-        });
+          var myDropzone4 = new Dropzone(id, { // Make the whole body a dropzone
+              url: HOST_URL + "/upload_files_chuyen_khoa/", // Set the url for your upload script location
+              parallelUploads: 20,
+              previewTemplate: previewTemplate,
+              maxFilesize: 10, // Max filesize in MB
+              autoQueue: false, // Make sure the files aren't queued until manually added
+              previewsContainer: id + " .dropzone-items", // Define the container to display the previews
+              clickable: id + " .dropzone-select", // Define the element that should be used as click trigger to select files.
+              uploadMultiple: true,
+              acceptedFiles:".xls, .xlsx, .pdf, .doc, .docx, .jpg, .jpeg, .png, .txt",
+              init: function() {
+                  var _this = this;
 
-        myDropzone4.on("addedfile", function(file) {
-            // Hookup the start button
-            file.previewElement.querySelector(id + " .dropzone-start").onclick = function() { myDropzone4.enqueueFile(file); };
-            $(document).find( id + ' .dropzone-item').css('display', '');
-            $(id + " .dropzone-remove-all").css('display', 'inline-block');
-        });
+                  this.on("sendingmultiple", function(file, xhr, formData){
+                      xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                      var id_chuoi_kham = $("#upload-form").find("#upload").data('id-chuoi-kham')
+                      $("#upload-form").find("input, textarea").each(function(){
+                          console.log($(this).attr("name"))
+                          console.log($(this).val())
 
-        // Update the total progress bar
-        myDropzone4.on("totaluploadprogress", function(progress) {
-            $(this).find( id + " .progress-bar").css('width', progress + "%");
-        });
+                          formData.append($(this).attr("name"), $(this).val())
 
-        myDropzone4.on("send", function(file, xhr, formData) {
-            // Show the total progress bar when upload starts
-            $( id + " .progress-bar").css('opacity', '1');
-            // And disable the start button
-            file.previewElement.querySelector(id + " .dropzone-start").setAttribute("disabled", "disabled");
+                      });
+                      formData.append('id_chuoi_kham', id_chuoi_kham)
+                  });
 
-        });
+              },
+              success: function(response){
+                  var id_phong_chuc_nang = $("#upload-form").find("#upload").data('id-phong-chuc-nang')
+                  toastr.success('Upload file thành công', "Thành Công!")
 
-        // Hide the total progress bar when nothing's uploading anymore
-        myDropzone4.on("complete", function(progress) {
-            var thisProgressBar = id + " .dz-complete";
-            setTimeout(function(){
-                $( thisProgressBar + " .progress-bar, " + thisProgressBar + " .progress, " + thisProgressBar + " .dropzone-start").css('opacity', '0');
-            }, 700)
+                  setTimeout(function () {
+                      window.location.href = '/phong_chuyen_khoa/' + id_phong_chuc_nang; //redirect về danh sách chờ lâm sàng
+                  }, 1500); //sau 2 giây (1000 = 1s)
+              }
+          });
 
-        });
+          myDropzone4.on("addedfile", function(file) {
+              // Hookup the start button
+              file.previewElement.querySelector(id + " .dropzone-start").onclick = function() { myDropzone4.enqueueFile(file); };
+              $(document).find( id + ' .dropzone-item').css('display', '');
+              $(id + " .dropzone-remove-all").css('display', 'inline-block');
+          });
 
-            // Setup the buttons for all transfers
-        $(document).on('click', '#upload', function(){
-            if($('.dropzone-item:visible').length == 0){
-                var formData = new FormData
-                var id_chuoi_kham = $("#upload-form").find("#upload").data('id-chuoi-kham')
-                var id_phan_khoa = $("#upload-form").find("#upload").data('id-phan-khoa')  
+          // Update the total progress bar
+          myDropzone4.on("totaluploadprogress", function(progress) {
+              $(this).find( id + " .progress-bar").css('width', progress + "%");
+          });
 
-                console.log(id_phan_khoa)              
-                $("#upload-form").find("input, textarea").each(function(){
-                    console.log($(this).attr("name"))
-                    console.log($(this).val())
+          myDropzone4.on("send", function(file, xhr, formData) {
+              // Show the total progress bar when upload starts
+              $( id + " .progress-bar").css('opacity', '1');
+              // And disable the start button
+              file.previewElement.querySelector(id + " .dropzone-start").setAttribute("disabled", "disabled");
 
-                    formData.append($(this).attr("name"), $(this).val())
-                    
-                });
-                formData.append('id_chuoi_kham', id_chuoi_kham)
-                formData.append('id_phan_khoa', id_phan_khoa)
-                formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
+          });
 
-                $.ajax({
-                    type: "POST",
-                    url: "{% url 'upload_ket_qua_chuyen_khoa' %}",
-                    data: formData,
-                    cache: false,
-                    processData: false,
-                    contentType: false,
-                    success: function(response){
-                        var id_phong_chuc_nang = $("#upload-form").find("#upload").data('id-phong-chuc-nang')
-                        toastr.success(response.message, "Thành Công")
+          // Hide the total progress bar when nothing's uploading anymore
+          myDropzone4.on("complete", function(progress) {
+              var thisProgressBar = id + " .dz-complete";
+              setTimeout(function(){
+                  $( thisProgressBar + " .progress-bar, " + thisProgressBar + " .progress, " + thisProgressBar + " .dropzone-start").css('opacity', '0');
+              }, 700)
 
-                        setTimeout(function () {
-                            window.location.href = '/phong_chuyen_khoa/' + id_phong_chuc_nang; //redirect về danh sách chờ lâm sàng
-                        }, 1500);
-                        
-                    },
-                    error: function(response){
-                        toastr.warning("Lỗi upload")
-                    }
-                })
-            }else{
-                myDropzone4.enqueueFiles(myDropzone4.getFilesWithStatus(Dropzone.ADDED));
-            }
-        })
+          });
 
-        // Setup the button for remove all files
-        document.querySelector(id + " .dropzone-remove-all").onclick = function() {
-            $( id + " .dropzone-upload, " + id + " .dropzone-remove-all").css('display', 'none');
-            myDropzone4.removeAllFiles(true);
-        };
+              // Setup the buttons for all transfers
+          $(document).on('click', '#upload', function(){
+              if($('.dropzone-item:visible').length == 0){
+                  var formData = new FormData
+                  var id_chuoi_kham = $("#upload-form").find("#upload").data('id-chuoi-kham')
+                  var id_phan_khoa = $("#upload-form").find("#upload").data('id-phan-khoa')
 
-        // On all files completed upload
-        myDropzone4.on("queuecomplete", function(progress){
-            $( id + " .dropzone-upload").css('display', 'none');
-        });
+                  console.log(id_phan_khoa)
+                  $("#upload-form").find("input, textarea").each(function(){
+                      console.log($(this).attr("name"))
+                      console.log($(this).val())
 
-        // On all files removed
-        myDropzone4.on("removedfile", function(file){
-            if(myDropzone4.files.length < 1){
-                $( id + " .dropzone-upload, " + id + " .dropzone-remove-all").css('display', 'none');
-            }
-        });
-    }
+                      formData.append($(this).attr("name"), $(this).val())
 
-    $(document).on('click', '#change_assignment', function(){
-        $('#phan_khoa_modal').modal('show');
-    })
+                  });
+                  formData.append('id_chuoi_kham', id_chuoi_kham)
+                  formData.append('id_phan_khoa', id_phan_khoa)
+                  formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
 
-    $('#phan_khoa_modal').on('shown.bs.modal', function() {
-        var ajax_data;
-        var id_chuoi_kham = $("#change_assignment").data('id-chuoi-kham');
+                  $.ajax({
+                      type: "POST",
+                      url: "{% url 'upload_ket_qua_chuyen_khoa' %}",
+                      data: formData,
+                      cache: false,
+                      processData: false,
+                      contentType: false,
+                      success: function(response){
+                          var id_phong_chuc_nang = $("#upload-form").find("#upload").data('id-phong-chuc-nang')
+                          toastr.success(response.message, "Thành Công")
 
-        var options = {
-            // datasource definition
-            data: {
-                type: 'remote',
-                source: { 
-                    read: {
-                        url: HOST_URL + '/api/dich_vu_kham/',
-                        method: 'GET',
-                    },
-                },
-                pageSize: 10,
-                serverPaging: true,
-                serverFiltering: true,
-                serverSorting: false,
-                saveState: false,
-            },
+                          setTimeout(function () {
+                              window.location.href = '/phong_chuyen_khoa/' + id_phong_chuc_nang; //redirect về danh sách chờ lâm sàng
+                          }, 1500);
 
-            // layout definition
-            layout: {
-                scroll: false, // enable/disable datatable scroll both horizontal and
-                footer: false // display/hide footer
-            },
+                      },
+                      error: function(response){
+                          toastr.warning("Lỗi upload")
+                      }
+                  })
+              }else{
+                  myDropzone4.enqueueFiles(myDropzone4.getFilesWithStatus(Dropzone.ADDED));
+              }
+          })
 
-            // column sorting
-            sortable: true,
+          // Setup the button for remove all files
+          document.querySelector(id + " .dropzone-remove-all").onclick = function() {
+              $( id + " .dropzone-upload, " + id + " .dropzone-remove-all").css('display', 'none');
+              myDropzone4.removeAllFiles(true);
+          };
 
-            pagination: true,
+          // On all files completed upload
+          myDropzone4.on("queuecomplete", function(progress){
+              $( id + " .dropzone-upload").css('display', 'none');
+          });
 
-            // columns definition
-            columns: [{
-                field: 'id',
-                title: '#',
-                sortable: false,
-                width: 20,
-                selector: {
-                    class: 'dvkt_checkbox',
-                },
-                textAlign: 'center',
-            }, {
-                field: 'ten_dvkt',
-                title: 'Tên Dịch Vụ',
-                template: function(row) {
-                    return row.ten_dvkt
-                }
-            }, {
-                field: 'quyet_dinh',
-                title: 'Quyết Định',
-            }, {
-                field: 'cong_bo',
-                title: 'Công Bố',
-            }, {
-                field: 'bac_si_phu_trach.ho_ten',
-                title: 'Bác Sĩ Phụ Trách',
-                
-            }, {
-                field: 'phong_chuc_nang.ten_phong_chuc_nang',
-                title: 'Phòng Chức Năng',
-                textAlign: 'center',
-                autoHide: false
-            }, {
-                field: 'bao hiem',
-                title: 'Dùng Bảo Hiểm',
-                textAlign: 'center',
-                autoHide: false,
-                template: function(row){
-                    if(row.bao_hiem_dich_vu == "True"){
-                        return '<span class="label font-weight-bold label-lg label-light-primary label-inline">Có áp dụng</span>'
-                    }else{
-                        return '<span class="label font-weight-bold label-lg label-light-warning label-inline">Không áp dụng</span>'
-                    }
-                }
-            }]
-        };
-        // enable extension
-        options.extensions = {
-            // boolean or object (extension options)
-            checkbox: true,
-        };
+          // On all files removed
+          myDropzone4.on("removedfile", function(file){
+              if(myDropzone4.files.length < 1){
+                  $( id + " .dropzone-upload, " + id + " .dropzone-remove-all").css('display', 'none');
+              }
+          });
+      }
 
-        options.search = {
-            input: $('#kt_datatable_search_query'),
-            key: 'search'
-        };
-        
-        var datatable = $('#kt_datatable').KTDatatable(options);
-        
-        $.ajax({
-            type: "GET",
-            url: "{% url 'danh_sach_phan_khoa_chuoi_kham' %}",
-            data: {
-                id_chuoi_kham : $("#change_assignment").data('id-chuoi-kham'),
-            },
-            dataType: 'json',
-            success: function (response) {
-                var response_data = response.data
-                console.log(response_data)
-                var tr = ''
-                console.log(lstData)
+      $(document).on('click', '#change_assignment', function(){
+          $('#phan_khoa_modal').modal('show');
+      })
 
-                for (var i = 0; i < response_data.length; i++) {
-                    var checkbox
+      $('#phan_khoa_modal').on('shown.bs.modal', function() {
+          var ajax_data;
+          var id_chuoi_kham = $("#change_assignment").data('id-chuoi-kham');
 
-                    if (response_data[i].obj.bao_hiem == true) {
-                        checkbox = `<input type="checkbox" id="checkbox_${response_data[i].obj.id}" class="big-checkbox" checked data-checked="True" data-unchecked="False">`
-                    } else {
-                        checkbox = `<input type="checkbox" id="checkbox_${response_data[i].obj.id}" class="big-checkbox" data-checked="True" data-unchecked="False">`
-                    }
+          var options = {
+              // datasource definition
+              data: {
+                  type: 'remote',
+                  source: {
+                      read: {
+                          url: HOST_URL + '/api/dich_vu_kham/',
+                          method: 'GET',
+                      },
+                  },
+                  pageSize: 5,
+                  serverPaging: true,
+                  serverFiltering: true,
+                  serverSorting: false,
+                  saveState: false,
+              },
 
-                    var initTr = `
-                        <tr id="tr_${response_data[i].obj.id}" class="${response_data[i].obj.id}" data-id = "${response_data[i].obj.id}" name="true" data-checked="True" data-unchecked="False">
-                            <td>
-                                ${response_data[i].obj.ma_dvkt}
-                            </td>
-                            <td>
-                                ${response_data[i].obj.ten_dvkt}
-                            </td>
-                            <td>
-                                ${response_data[i].obj.phong_chuc_nang.ten_phong_chuc_nang}
-                            </td>
-                            
-                            <td>
-                                ${checkbox}
-                            </td>
+              // layout definition
+              layout: {
+                  scroll: false, // enable/disable datatable scroll both horizontal and
+                  footer: false // display/hide footer
+              },
 
-                        </tr>
-                    `
-                    tr += initTr
-                    lstData.push(response_data[i])
-                    datatable.setActive(cell=String(response_data[i].obj.id))
-                }
-                $('#kt_datatable_3 tbody').html(tr)
-                console.log(lstData)
-            },
-            error: function (response) {                       
-            }
-        })
+              // column sorting
+              sortable: true,
 
-        datatable.on('click', 'tbody input[type="checkbox"]', function () {
-            $(this).toggleClass('selected');
-            // console.log($(this).val())
-            var objList = [];
-            
-            if($(this).is(":checked")){
-                var trVals = $(this).closest('tr').data();
-            
-                delete trVals['row']
-            
-                lstData.push(trVals)
-                console.log(trVals)
-                console.log(lstData)
-                $(trVals).each(function () {
-                    $('#kt_datatable_3 tbody').append(`
-                        <tr class="${trVals.obj.id}" data-id = "${trVals.obj.id}" name="true" data-checked="True" data-unchecked="False">
-                            <td>
-                            ${trVals.obj.ma_dvkt}
-                            </td>
-                            <td>
-                            ${trVals.obj.ten_dvkt}
-                            </td>
-                            <td>
-                            ${trVals.obj.phong_chuc_nang.ten_phong_chuc_nang}
-                            </td>
-                            <td>
-                                <input type="checkbox" id="${trVals.obj.id}" class="big-checkbox" data-checked="True" data-unchecked="False">
-                            </td>
-                        </tr>
-                    `);
-                })
+              pagination: true,
 
-            } else {
-                var trVals = $(this).closest('tr').data();
-                
-                delete trVals['row']
+              // columns definition
+              columns: [{
+                  field: 'id',
+                  title: '#',
+                  sortable: false,
+                  width: 20,
+                  selector: {
+                      class: 'dvkt_checkbox',
+                  },
+                  textAlign: 'center',
+              }, {
+                  field: 'ten_dvkt',
+                  title: 'Tên Dịch Vụ',
+                  template: function(row) {
+                      return row.ten_dvkt
+                  }
+              }, {
+                  field: 'quyet_dinh',
+                  title: 'Quyết Định',
+              }, {
+                  field: 'cong_bo',
+                  title: 'Công Bố',
+              }, {
+                  field: 'bac_si_phu_trach.ho_ten',
+                  title: 'Bác Sĩ Phụ Trách',
 
-                $(`.${trVals.obj.id}`).remove();
-                
-                lstData = lstData.filter(function(item) {
-                    var item = item
-                    delete item['obj']['bao_hiem']
-                
-                    return JSON.stringify(item) !== JSON.stringify(trVals);
-                });
+              }, {
+                  field: 'phong_chuc_nang.ten_phong_chuc_nang',
+                  title: 'Phòng Chức Năng',
+                  textAlign: 'center',
+                  autoHide: false
+              }, {
+                  field: 'bao hiem',
+                  title: 'Dùng Bảo Hiểm',
+                  textAlign: 'center',
+                  autoHide: false,
+                  template: function(row){
+                      if(row.bao_hiem_dich_vu == "True"){
+                          return '<span class="label font-weight-bold label-lg label-light-primary label-inline">Có áp dụng</span>'
+                      }else{
+                          return '<span class="label font-weight-bold label-lg label-light-warning label-inline">Không áp dụng</span>'
+                      }
+                  }
+              }]
+          };
+          // enable extension
+          options.extensions = {
+              // boolean or object (extension options)
+              checkbox: true,
+          };
 
-                console.log(lstData)
-            
-                // replacePhanKhoaHtml(trVals)
-                {% comment %} phanKhoaHtml = phanKhoaHtml.replace(`
-                        <tr class="${trVals.obj.id}">
-                            <td colspan="4" rowspan="1" style="border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:1px solid black; height:28px; text-align:left; vertical-align:bottom; white-space:nowrap"><span style="color:#000000; font-family:Times New Roman, serif"><span style="font-size:16px">${trVals.obj.ten_dvkt}</span></span></td>
-                            <td colspan="7" rowspan="1" style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:1px solid black; text-align:center; vertical-align:bottom; white-space:nowrap"><span style="font-size:16px"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="color:black">${trVals.obj.phong_chuc_nang.ten_phong_chuc_nang}</span></span></span></td>
-                            <td class="so-luong-dang-cho" colspan="7" rowspan="1" style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:1px solid black; text-align:center; vertical-align:bottom; white-space:nowrap"><span style="font-size:16px"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="color:black">${so_luong_dang_cho}</span></span></span></td>
-                        </tr>
-                        `, "") {% endcomment %}
+          options.search = {
+              input: $('#kt_datatable_search_query'),
+              key: 'search'
+          };
 
-            }
-        });
+          var datatable = $('#kt_datatable').KTDatatable(options);
 
-        $('#kt_datatable_3').on('click', 'tbody input[type="checkbox"]', function () {
-            if($(this).is(":checked")){
-                lstCheckbox = {};
-                getCheckbox();
-                console.log(lstCheckbox);
-            } else {
-                lstCheckbox = {}; 
-                getCheckbox();
-                console.log(lstCheckbox);
-            }
-        })
+          $.ajax({
+              type: "GET",
+              url: "{% url 'danh_sach_phan_khoa_chuoi_kham' %}",
+              data: {
+                  id_chuoi_kham : $("#change_assignment").data('id-chuoi-kham'),
+              },
+              dataType: 'json',
+              success: function (response) {
+                  var response_data = response.data
+                  console.log(response_data)
+                  var tr = ''
+                  console.log(lstData)
 
-        function postData(id_chuoi_kham){
-            var id_chuoi_kham = id_chuoi_kham
-            var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+                  for (var i = 0; i < response_data.length; i++) {
+                      var checkbox
 
-            function csrfSafeMethod(method) {
-                // these HTTP methods do not require CSRF protection
-                return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-            }
+                      if (response_data[i].obj.bao_hiem == true) {
+                          checkbox = `<input type="checkbox" id="checkbox_${response_data[i].obj.id}" class="big-checkbox" checked data-checked="True" data-unchecked="False">`
+                      } else {
+                          checkbox = `<input type="checkbox" id="checkbox_${response_data[i].obj.id}" class="big-checkbox" data-checked="True" data-unchecked="False">`
+                      }
 
-            $.ajaxSetup({
-                beforeSend: function(xhr, settings) {
-                    function getCookie(name) {
-                        var cookieValue = null;
-                        if (document.cookie && document.cookie != '') {
-                            var cookies = document.cookie.split(';');
-                            for (var i = 0; i < cookies.length; i++) {
-                                var cookie = jQuery.trim(cookies[i]);
-                                // Does this cookie string begin with the name we want?
-                                if (cookie.substring(0, name.length + 1) == (name + '=')) {
-                                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                                    break;
-                                }
-                            }
-                        }
-                        return cookieValue;
-                    }
-                    if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
-                        // Only send the token to relative URLs i.e. locally.
-                        xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
-                    }
-                } 
-            });
+                      var initTr = `
+                          <tr id="tr_${response_data[i].obj.id}" class="${response_data[i].obj.id}" data-id = "${response_data[i].obj.id}" name="true" data-checked="True" data-unchecked="False">
+                              <td>
+                                  ${response_data[i].obj.ma_dvkt}
+                              </td>
+                              <td>
+                                  ${response_data[i].obj.ten_dvkt}
+                              </td>
+                              <td>
+                                  ${response_data[i].obj.phong_chuc_nang.ten_phong_chuc_nang}
+                              </td>
 
-            $.ajax({
-                type: "POST",
-                url: "{% url 'thay_doi_phan_khoa' %}",
-                data: {
-                    'data': JSON.stringify(getPostData()),
-                    'csrfmiddlewaretoken': csrftoken,
-                    'id_chuoi_kham': id_chuoi_kham,
-                },
-                dataType: 'json',
-                safe: false,
-                success: function(response) {
-                    if (response.status == 200) {
-                        toastr.success(response.message, "Thành Công")
-                        location.reload();
-                    
-                    } else if (response.status == 404) {
-                        toastr.warning(response.message, "Lỗi")
-                    }
+                              <td>
+                                  ${checkbox}
+                              </td>
 
-                },
-                error: function() {
-                    toastr.warning("Phân Khoa Không Thành Công", "Lỗi")                                                                                                                         
-                }
-            });
-        }
+                          </tr>
+                      `
+                      tr += initTr
+                      lstData.push(response_data[i])
+                      datatable.setActive(cell=String(response_data[i].obj.id))
+                  }
+                  $('#kt_datatable_3 tbody').html(tr)
+                  console.log(lstData)
+              },
+              error: function (response) {
+              }
+          })
 
-        function getPostData(){
-            var rowData = lstData;
-            var checkBoxObj = lstCheckbox;
-            for (const each in checkBoxObj) {
-                for (let i = 0; i < rowData.length; i++) {
-                    if (rowData[i].obj.id == each) {
-                        rowData[i].obj.bao_hiem = checkBoxObj[each];
-                    }
-                }
-            }
-            console.log(rowData);
-            return rowData;
-        }
+          datatable.on('click', 'tbody input[type="checkbox"]', function () {
+              $(this).toggleClass('selected');
+              // console.log($(this).val())
+              var objList = [];
 
-        function getCheckbox(){
-            
-            $('#kt_datatable_3 tbody tr').each(function() {
+              if($(this).is(":checked")){
+                  var trVals = $(this).closest('tr').data();
 
-                var sectionId = $(this).data('id');
-                console.log(sectionId)
+                  delete trVals['row']
 
-                $(this).find('input.big-checkbox:checked').each(function() {
-                    console.log($(this).attr('data-checked'));
-                    lstCheckbox[sectionId] = $(this).attr('data-checked');
-                });
+                  lstData.push(trVals)
+                  console.log(trVals)
+                  console.log(lstData)
+                  $(trVals).each(function () {
+                      $('#kt_datatable_3 tbody').append(`
+                          <tr class="${trVals.obj.id}" data-id = "${trVals.obj.id}" name="true" data-checked="True" data-unchecked="False">
+                              <td>
+                              ${trVals.obj.ma_dvkt}
+                              </td>
+                              <td>
+                              ${trVals.obj.ten_dvkt}
+                              </td>
+                              <td>
+                              ${trVals.obj.phong_chuc_nang.ten_phong_chuc_nang}
+                              </td>
+                              <td>
+                                  <input type="checkbox" id="${trVals.obj.id}" class="big-checkbox" data-checked="True" data-unchecked="False">
+                              </td>
+                          </tr>
+                      `);
+                  })
 
-                $(this).find('input.big-checkbox:not(:checked)').each(function() {
-                    lstCheckbox[sectionId] = $(this).attr('data-unchecked');
-                });
-            });
-        }
+              } else {
+                  var trVals = $(this).closest('tr').data();
 
-        $("#btn_submit").on('click', function() {
-            var id_chuoi_kham = $(this).data('id-chuoi-kham')
-            getCheckbox();
-            getPostData();
-            postData(id_chuoi_kham);
-        })
-    })
+                  delete trVals['row']
 
-    $("#phan_khoa_modal").on('hidden.bs.modal', function() {
-        lstData = []
-        $("#phan_khoa_modal").removeData('bs.modal')
-        $('#kt_datatable').KTDatatable('destroy')    
-    })
+                  $(`.${trVals.obj.id}`).remove();
 
-    return {
-        // public functions
-        init: function() {
-            demo2();
+                  lstData = lstData.filter(function(item) {
+                      var item = item
+                      delete item['obj']['bao_hiem']
 
-        }
-    };
-}();
- 
-KTUtil.ready(function() {
-    KTDropzoneDemo.init();
-});
+                      return JSON.stringify(item) !== JSON.stringify(trVals);
+                  });
 
+                  console.log(lstData)
+
+                  // replacePhanKhoaHtml(trVals)
+                  {% comment %} phanKhoaHtml = phanKhoaHtml.replace(`
+                          <tr class="${trVals.obj.id}">
+                              <td colspan="4" rowspan="1" style="border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:1px solid black; height:28px; text-align:left; vertical-align:bottom; white-space:nowrap"><span style="color:#000000; font-family:Times New Roman, serif"><span style="font-size:16px">${trVals.obj.ten_dvkt}</span></span></td>
+                              <td colspan="7" rowspan="1" style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:1px solid black; text-align:center; vertical-align:bottom; white-space:nowrap"><span style="font-size:16px"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="color:black">${trVals.obj.phong_chuc_nang.ten_phong_chuc_nang}</span></span></span></td>
+                              <td class="so-luong-dang-cho" colspan="7" rowspan="1" style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:1px solid black; text-align:center; vertical-align:bottom; white-space:nowrap"><span style="font-size:16px"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="color:black">${so_luong_dang_cho}</span></span></span></td>
+                          </tr>
+                          `, "") {% endcomment %}
+
+              }
+          });
+
+          $('#kt_datatable_3').on('click', 'tbody input[type="checkbox"]', function () {
+              if($(this).is(":checked")){
+                  lstCheckbox = {};
+                  getCheckbox();
+                  console.log(lstCheckbox);
+              } else {
+                  lstCheckbox = {};
+                  getCheckbox();
+                  console.log(lstCheckbox);
+              }
+          })
+
+          function postData(id_chuoi_kham){
+              var id_chuoi_kham = id_chuoi_kham
+              var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+
+              function csrfSafeMethod(method) {
+                  // these HTTP methods do not require CSRF protection
+                  return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+              }
+
+              $.ajaxSetup({
+                  beforeSend: function(xhr, settings) {
+                      function getCookie(name) {
+                          var cookieValue = null;
+                          if (document.cookie && document.cookie != '') {
+                              var cookies = document.cookie.split(';');
+                              for (var i = 0; i < cookies.length; i++) {
+                                  var cookie = jQuery.trim(cookies[i]);
+                                  // Does this cookie string begin with the name we want?
+                                  if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                                      cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                                      break;
+                                  }
+                              }
+                          }
+                          return cookieValue;
+                      }
+                      if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+                          // Only send the token to relative URLs i.e. locally.
+                          xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+                      }
+                  }
+              });
+
+              $.ajax({
+                  type: "POST",
+                  url: "{% url 'thay_doi_phan_khoa' %}",
+                  data: {
+                      'data': JSON.stringify(getPostData()),
+                      'csrfmiddlewaretoken': csrftoken,
+                      'id_chuoi_kham': id_chuoi_kham,
+                  },
+                  dataType: 'json',
+                  safe: false,
+                  success: function(response) {
+                      if (response.status == 200) {
+                          toastr.success(response.message, "Thành Công")
+                          location.reload();
+
+                      } else if (response.status == 404) {
+                          toastr.warning(response.message, "Lỗi")
+                      }
+
+                  },
+                  error: function() {
+                      toastr.warning("Phân Khoa Không Thành Công", "Lỗi")
+                  }
+              });
+          }
+
+          function getPostData(){
+              var rowData = lstData;
+              var checkBoxObj = lstCheckbox;
+              for (const each in checkBoxObj) {
+                  for (let i = 0; i < rowData.length; i++) {
+                      if (rowData[i].obj.id == each) {
+                          rowData[i].obj.bao_hiem = checkBoxObj[each];
+                      }
+                  }
+              }
+              console.log(rowData);
+              return rowData;
+          }
+
+          function getCheckbox(){
+
+              $('#kt_datatable_3 tbody tr').each(function() {
+
+                  var sectionId = $(this).data('id');
+                  console.log(sectionId)
+
+                  $(this).find('input.big-checkbox:checked').each(function() {
+                      console.log($(this).attr('data-checked'));
+                      lstCheckbox[sectionId] = $(this).attr('data-checked');
+                  });
+
+                  $(this).find('input.big-checkbox:not(:checked)').each(function() {
+                      lstCheckbox[sectionId] = $(this).attr('data-unchecked');
+                  });
+              });
+          }
+
+          $("#btn_submit").on('click', function() {
+              var id_chuoi_kham = $(this).data('id-chuoi-kham')
+              getCheckbox();
+              getPostData();
+              postData(id_chuoi_kham);
+          })
+      })
+
+      $("#phan_khoa_modal").on('hidden.bs.modal', function() {
+          lstData = []
+          $("#phan_khoa_modal").removeData('bs.modal')
+          $('#kt_datatable').KTDatatable('destroy')
+      })
+
+      return {
+          // public functions
+          init: function() {
+              demo2();
+
+          }
+      };
+  }();
+
+  KTUtil.ready(function() {
+      KTDropzoneDemo.init();
+  });
 </script>
- 
+
 {% endblock scripts %}
- 
