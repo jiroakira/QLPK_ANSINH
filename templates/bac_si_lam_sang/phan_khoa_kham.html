@@ -207,9 +207,7 @@
               class="btn btn-primary font-weight-bolder"
               id="get-table-data"
               data-id="{{ id_lich_hen }}"
-              data-user-id="{{"
-              lich_hen.benh_nhan.id
-              }}
+              data-user-id="{{ lich_hen.benh_nhan.id }}"
             >
               <i class="la la-plus"></i>
               Phân khoa khám
@@ -227,12 +225,7 @@
 </div>
 <!-- end::Content -->
 
-{% endblock content %} {% block scripts %} {% comment %}
-<script>
-  var HOST_URL =
-    "https://preview.keenthemes.com/metronic/theme/html/tools/preview";
-</script>
-{% endcomment %}
+{% endblock content %} {% block scripts %} 
 <!--begin::Global Theme Bundle(used by all pages)-->
 
 <!--end::Global Theme Bundle-->
