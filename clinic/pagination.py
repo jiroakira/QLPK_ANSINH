@@ -1,14 +1,15 @@
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 
+
 class CustomPagination(PageNumberPagination):
-    page_size = 10
+    page_size = 5
     page_query_param = 'pagination[page]'
     page_size_query_param = 'pagination[perpage]'
     max_page_size = 1000
 
     def get_paginated_response(self, data):
-        return Response({           
+        return Response({
             'meta': {
                 'page': self.page.number,
                 'pages': self.page.paginator.num_pages,
@@ -17,6 +18,7 @@ class CustomPagination(PageNumberPagination):
             },
             'data': data,
         })
+
 
 class PaginationHandlerMixin(object):
     @property
@@ -29,12 +31,14 @@ class PaginationHandlerMixin(object):
         else:
             pass
         return self._paginator
+
     def paginate_queryset(self, queryset):
-        
+
         if self.paginator is None:
             return None
         return self.paginator.paginate_queryset(queryset,
-                   self.request, view=self)
+                                                self.request, view=self)
+
     def get_paginated_response(self, data):
         assert self.paginator is not None
         return self.paginator.get_paginated_response(data)
