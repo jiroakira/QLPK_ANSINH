@@ -204,33 +204,11 @@
             }else if (result.dismiss === 'cancel') {
                 Swal.fire(
                     'Đã Hủy',
-                    'Hoàn Thành Khám Cho Chuỗi Khám Không Thành Công!',
+                    'Hoàn Thành Khám Cho Chuỗi Khám Có Đơn Thuốc Không Thành Công!',
                     'error'
                 )
             }
         });
-        {% comment %} $.ajax({
-            type: "POST",
-            url: "{% url 'hoan_thanh_kham_don_thuoc' %}",
-            data: {
-                'id': id_don_thuoc,
-            },
-            dataType: 'json',
-            safe: false,
-            success: function (response) {
-                if (response.status == 200) {
-                    toastr.success(response.message, "Thành Công")
-                    setTimeout(function () {
-                        window.location.href = "/phong_tai_chinh/"
-                    }, 2000);
-                } else if (response.status == 404) {
-                    toastr.warning(response.message, "Xảy Ra Lỗi")
-                }
-            },
-            error: function () {
-                                                                                                                                  
-            }
-        }); {% endcomment %}
     })
 
     function printDiv(hoa_don_thuoc){
