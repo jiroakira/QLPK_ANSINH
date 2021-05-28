@@ -1,466 +1,535 @@
-{% extends 'base.html' %}
-
-{% load static %}
-
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 <!--begin::Content-->
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-    <!--begin::Subheader-->
-    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
-        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
-            <!--begin::Info-->
-            <div class="d-flex align-items-center flex-wrap mr-1">
-                <!--begin::Page Heading-->
-                <div class="d-flex align-items-baseline flex-wrap mr-5">
-                    <!--begin::Page Title-->
-                    <h5 class="text-dark font-weight-bold my-1 mr-5">Danh Sách Dịch Vụ Khám</h5>
-                    <!--end::Page Title-->
-                </div>
-                <!--end::Page Heading-->
-            </div>
-            <!--end::Info-->
-           
+  <!--begin::Subheader-->
+  <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+    <div
+      class="
+        container-fluid
+        d-flex
+        align-items-center
+        justify-content-between
+        flex-wrap flex-sm-nowrap
+      "
+    >
+      <!--begin::Info-->
+      <div class="d-flex align-items-center flex-wrap mr-1">
+        <!--begin::Page Heading-->
+        <div class="d-flex align-items-baseline flex-wrap mr-5">
+          <!--begin::Page Title-->
+          <h5 class="text-dark font-weight-bold my-1 mr-5">
+            Danh Sách Dịch Vụ Khám
+          </h5>
+          <!--end::Page Title-->
         </div>
+        <!--end::Page Heading-->
+      </div>
+      <!--end::Info-->
     </div>
-    <!--end::Subheader-->
-    <!--begin::Entry-->
-    <div class="d-flex flex-column-fluid">
-        <!--begin::Container-->
-        <div class="container">
-            <!--begin::Card-->
-            <div class="card card-custom">
-                <div class="card-header flex-wrap border-0 pt-6 pb-0">
-                    <div class="card-title">
-                        <h3 class="card-label">Danh Sách Dịch Vụ Khám</h3>
+  </div>
+  <!--end::Subheader-->
+  <!--begin::Entry-->
+  <div class="d-flex flex-column-fluid">
+    <!--begin::Container-->
+    <div class="container">
+      <!--begin::Card-->
+      <div class="card card-custom">
+        <div class="card-header flex-wrap border-0 pt-6 pb-0">
+          <div class="card-title">
+            <h3 class="card-label">Danh Sách Dịch Vụ Khám</h3>
+          </div>
+          <div class="card-toolbar">
+            <!--begin::Dropdown-->
+            <div class="dropdown dropdown-inline mr-2">
+              <button
+                type="button"
+                class="btn btn-light-primary font-weight-bolder dropdown-toggle"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <span class="svg-icon svg-icon-md">
+                  <!--begin::Svg Icon | path:/metronic/theme/html/demo1/dist/assets/media/svg/icons/Design/PenAndRuller.svg-->
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    width="24px"
+                    height="24px"
+                    viewBox="0 0 24 24"
+                    version="1.1"
+                  >
+                    <g
+                      stroke="none"
+                      stroke-width="1"
+                      fill="none"
+                      fill-rule="evenodd"
+                    >
+                      <rect x="0" y="0" width="24" height="24" />
+                      <path
+                        d="M3,16 L5,16 C5.55228475,16 6,15.5522847 6,15 C6,14.4477153 5.55228475,14 5,14 L3,14 L3,12 L5,12 C5.55228475,12 6,11.5522847 6,11 C6,10.4477153 5.55228475,10 5,10 L3,10 L3,8 L5,8 C5.55228475,8 6,7.55228475 6,7 C6,6.44771525 5.55228475,6 5,6 L3,6 L3,4 C3,3.44771525 3.44771525,3 4,3 L10,3 C10.5522847,3 11,3.44771525 11,4 L11,19 C11,19.5522847 10.5522847,20 10,20 L4,20 C3.44771525,20 3,19.5522847 3,19 L3,16 Z"
+                        fill="#000000"
+                        opacity="0.3"
+                      />
+                      <path
+                        d="M16,3 L19,3 C20.1045695,3 21,3.8954305 21,5 L21,15.2485298 C21,15.7329761 20.8241635,16.200956 20.5051534,16.565539 L17.8762883,19.5699562 C17.6944473,19.7777745 17.378566,19.7988332 17.1707477,19.6169922 C17.1540423,19.602375 17.1383289,19.5866616 17.1237117,19.5699562 L14.4948466,16.565539 C14.1758365,16.200956 14,15.7329761 14,15.2485298 L14,5 C14,3.8954305 14.8954305,3 16,3 Z"
+                        fill="#000000"
+                      />
+                    </g>
+                  </svg>
+                  <!--end::Svg Icon--> </span
+                >Tùy Chọn
+              </button>
+              <!--begin::Dropdown Menu-->
+              <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                <!--begin::Navigation-->
+                <ul class="navi flex-column navi-hover py-2">
+                  <li
+                    class="
+                      navi-header
+                      font-weight-bolder
+                      text-uppercase
+                      font-size-sm
+                      text-primary
+                      pb-2
+                    "
+                  >
+                    Tùy chọn:
+                  </li>
+                  {% if perms.clinic.can_add_service %}
+                  <li class="navi-item">
+                    <a
+                      href="{% url 'them_dich_vu_kham' %}"
+                      class="navi-link addLichHenKhamBtn"
+                    >
+                      <span class="navi-icon">
+                        <i class="la la-file-import"></i>
+                      </span>
+                      <span class="navi-text">Thêm DVK thường</span>
+                    </a>
+                  </li>
+                  {% endif %} {% if perms.clinic.can_add_service_with_excel_file
+                  %}
+                  <li class="navi-item">
+                    <a
+                      href="{% url 'import_dich_vu_ky_thuat' %}"
+                      class="navi-link addLichHenKhamBtn"
+                    >
+                      <span class="navi-icon">
+                        <i class="la la-file-excel-o"></i>
+                      </span>
+                      <span class="navi-text">Thêm DVK bằng Excel</span>
+                    </a>
+                  </li>
+                  {% endif %}
+                </ul>
+                <!--end::Navigation-->
+              </div>
+              <!--end::Dropdown Menu-->
+            </div>
+            <!--end::Dropdown-->
+            <!--begin::Button-->
+            <a
+              href="#"
+              class="btn btn-primary font-weight-bolder"
+              id="btn-reload"
+            >
+              <span class="svg-icon svg-icon-md">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  width="24px"
+                  height="24px"
+                  viewBox="0 0 24 24"
+                  version="1.1"
+                >
+                  <g
+                    stroke="none"
+                    stroke-width="1"
+                    fill="none"
+                    fill-rule="evenodd"
+                  >
+                    <rect x="0" y="0" width="24" height="24" />
+                    <path
+                      d="M12,8 L8,8 C5.790861,8 4,9.790861 4,12 L4,13 C4,14.6568542 5.34314575,16 7,16 L7,18 C4.23857625,18 2,15.7614237 2,13 L2,12 C2,8.6862915 4.6862915,6 8,6 L12,6 L12,4.72799742 C12,4.62015048 12.0348702,4.51519416 12.0994077,4.42878885 C12.264656,4.2075478 12.5779675,4.16215674 12.7992086,4.32740507 L15.656242,6.46136716 C15.6951359,6.49041758 15.7295917,6.52497737 15.7585249,6.56395854 C15.9231063,6.78569617 15.876772,7.09886961 15.6550344,7.263451 L12.798001,9.3840407 C12.7118152,9.44801079 12.607332,9.48254921 12.5,9.48254921 C12.2238576,9.48254921 12,9.25869158 12,8.98254921 L12,8 Z"
+                      fill="#000000"
+                    />
+                    <path
+                      d="M12.0583175,16 L16,16 C18.209139,16 20,14.209139 20,12 L20,11 C20,9.34314575 18.6568542,8 17,8 L17,6 C19.7614237,6 22,8.23857625 22,11 L22,12 C22,15.3137085 19.3137085,18 16,18 L12.0583175,18 L12.0583175,18.9825492 C12.0583175,19.2586916 11.8344599,19.4825492 11.5583175,19.4825492 C11.4509855,19.4825492 11.3465023,19.4480108 11.2603165,19.3840407 L8.40328311,17.263451 C8.18154548,17.0988696 8.13521119,16.7856962 8.29979258,16.5639585 C8.32872576,16.5249774 8.36318164,16.4904176 8.40207551,16.4613672 L11.2591089,14.3274051 C11.48035,14.1621567 11.7936615,14.2075478 11.9589099,14.4287888 C12.0234473,14.5151942 12.0583175,14.6201505 12.0583175,14.7279974 L12.0583175,16 Z"
+                      fill="#000000"
+                      opacity="0.3"
+                    />
+                  </g>
+                </svg>
+              </span>
+              Tải lại
+            </a>
+            <!--end::Button-->
+          </div>
+        </div>
+        <div class="card-body">
+          <!--begin::Search Form-->
+          <div class="mb-7">
+            <div class="row align-items-center">
+              <div class="col-lg-9 col-xl-12">
+                <div class="row align-items-center">
+                  <div class="col-md-5 my-2 my-md-0">
+                    <div class="input-icon">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Tìm Kiếm..."
+                        id="kt_datatable_search_query"
+                      />
+                      <span>
+                        <i class="flaticon2-search-1 text-muted"></i>
+                      </span>
                     </div>
-                    <div class="card-toolbar">
-                        <!--begin::Dropdown-->
-                        <div class="dropdown dropdown-inline mr-2">
-                            <button type="button" class="btn btn-light-primary font-weight-bolder dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="svg-icon svg-icon-md">
-                                <!--begin::Svg Icon | path:/metronic/theme/html/demo1/dist/assets/media/svg/icons/Design/PenAndRuller.svg-->
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <rect x="0" y="0" width="24" height="24" />
-                                        <path d="M3,16 L5,16 C5.55228475,16 6,15.5522847 6,15 C6,14.4477153 5.55228475,14 5,14 L3,14 L3,12 L5,12 C5.55228475,12 6,11.5522847 6,11 C6,10.4477153 5.55228475,10 5,10 L3,10 L3,8 L5,8 C5.55228475,8 6,7.55228475 6,7 C6,6.44771525 5.55228475,6 5,6 L3,6 L3,4 C3,3.44771525 3.44771525,3 4,3 L10,3 C10.5522847,3 11,3.44771525 11,4 L11,19 C11,19.5522847 10.5522847,20 10,20 L4,20 C3.44771525,20 3,19.5522847 3,19 L3,16 Z" fill="#000000" opacity="0.3" />
-                                        <path d="M16,3 L19,3 C20.1045695,3 21,3.8954305 21,5 L21,15.2485298 C21,15.7329761 20.8241635,16.200956 20.5051534,16.565539 L17.8762883,19.5699562 C17.6944473,19.7777745 17.378566,19.7988332 17.1707477,19.6169922 C17.1540423,19.602375 17.1383289,19.5866616 17.1237117,19.5699562 L14.4948466,16.565539 C14.1758365,16.200956 14,15.7329761 14,15.2485298 L14,5 C14,3.8954305 14.8954305,3 16,3 Z" fill="#000000" />
-                                    </g>
-                                </svg>
-                                <!--end::Svg Icon-->
-                            </span>Tùy Chọn</button>
-                            <!--begin::Dropdown Menu-->
-                            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                                <!--begin::Navigation-->
-                                <ul class="navi flex-column navi-hover py-2">
-                                    <li class="navi-header font-weight-bolder text-uppercase font-size-sm text-primary pb-2">Tùy chọn:</li>
-                                    {% if perms.clinic.can_add_service %}
-                                    <li class="navi-item">
-                                        <a href="{% url 'them_dich_vu_kham' %}" class="navi-link addLichHenKhamBtn">
-                                            <span class="navi-icon">
-                                                <i class="la la-file-import"></i>
-                                            </span>
-                                            <span class="navi-text">Thêm DVK thường</span>
-                                        </a>
-                                    </li>
-                                    {% endif %}
-                                    {% if perms.clinic.can_add_service_with_excel_file %}
-                                    <li class="navi-item">
-                                        <a href="{% url 'import_dich_vu_ky_thuat' %}" class="navi-link addLichHenKhamBtn">
-                                            <span class="navi-icon">
-                                                <i class="la la-file-excel-o"></i>
-                                            </span>
-                                            <span class="navi-text">Thêm DVK bằng Excel</span>
-                                        </a>
-                                    </li>
-                                    {% endif %}
-                                </ul>
-                                <!--end::Navigation-->
-                            </div>
-                            <!--end::Dropdown Menu-->
-                        </div>
-                        <!--end::Dropdown-->
-                        <!--begin::Button-->
-                        <a href="#" class="btn btn-primary font-weight-bolder" id="btn-reload">
-                            <span class="svg-icon svg-icon-md">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <rect x="0" y="0" width="24" height="24"/>
-                                        <path d="M12,8 L8,8 C5.790861,8 4,9.790861 4,12 L4,13 C4,14.6568542 5.34314575,16 7,16 L7,18 C4.23857625,18 2,15.7614237 2,13 L2,12 C2,8.6862915 4.6862915,6 8,6 L12,6 L12,4.72799742 C12,4.62015048 12.0348702,4.51519416 12.0994077,4.42878885 C12.264656,4.2075478 12.5779675,4.16215674 12.7992086,4.32740507 L15.656242,6.46136716 C15.6951359,6.49041758 15.7295917,6.52497737 15.7585249,6.56395854 C15.9231063,6.78569617 15.876772,7.09886961 15.6550344,7.263451 L12.798001,9.3840407 C12.7118152,9.44801079 12.607332,9.48254921 12.5,9.48254921 C12.2238576,9.48254921 12,9.25869158 12,8.98254921 L12,8 Z" fill="#000000"/>
-                                        <path d="M12.0583175,16 L16,16 C18.209139,16 20,14.209139 20,12 L20,11 C20,9.34314575 18.6568542,8 17,8 L17,6 C19.7614237,6 22,8.23857625 22,11 L22,12 C22,15.3137085 19.3137085,18 16,18 L12.0583175,18 L12.0583175,18.9825492 C12.0583175,19.2586916 11.8344599,19.4825492 11.5583175,19.4825492 C11.4509855,19.4825492 11.3465023,19.4480108 11.2603165,19.3840407 L8.40328311,17.263451 C8.18154548,17.0988696 8.13521119,16.7856962 8.29979258,16.5639585 C8.32872576,16.5249774 8.36318164,16.4904176 8.40207551,16.4613672 L11.2591089,14.3274051 C11.48035,14.1621567 11.7936615,14.2075478 11.9589099,14.4287888 C12.0234473,14.5151942 12.0583175,14.6201505 12.0583175,14.7279974 L12.0583175,16 Z" fill="#000000" opacity="0.3"/>
-                                    </g>
-                                </svg>
-                            </span>
-                            Tải lại
-                        </a>
-                        <!--end::Button-->
-                    </div>
+                  </div>
+                  {% if perms.clinic.can_export_list_of_service %}
+                  <div>
+                    <a
+                      href="#"
+                      class="btn btn-light-success font-weight-bolder ml-2"
+                      id="excelExport"
+                    >
+                      <span class="navi-icon">
+                        <i class="la la-file-excel-o"></i>
+                      </span>
+                      <span class="navi-text">Xuất file excel</span>
+                    </a>
+                  </div>
+                  {% endif %}
                 </div>
-                <div class="card-body">
-                    <!--begin::Search Form-->
-                    <div class="mb-7">
-                        <div class="row align-items-center">
-                            <div class="col-lg-9 col-xl-12">
-                                <div class="row align-items-center">
-                                    <div class="col-md-5 my-2 my-md-0">
-                                        <div class="input-icon">
-                                            <input type="text" class="form-control" placeholder="Tìm Kiếm..." id="kt_datatable_search_query" />
-                                            <span>
-                                                <i class="flaticon2-search-1 text-muted"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    {% if perms.clinic.can_export_list_of_service %}
-                                    <div>
-                                        <a href="#" class="btn btn-light-success font-weight-bolder ml-2" id="excelExport">
-                                            <span class="navi-icon">
-                                                <i class="la la-file-excel-o"></i>
-                                            </span>
-                                            <span class="navi-text">Xuất file excel</span>
-                                        </a>
-                                    </div>
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--end::Search Form-->
+              </div>
+            </div>
+          </div>
+          <!--end::Search Form-->
 
-                    <!--begin: Datatable-->
-                    <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable"></div>
-                    <!--end: Datatable-->
-                </div>
-            </div>
-            <!--end::Card-->
+          <!--begin: Datatable-->
+          <div
+            class="datatable datatable-bordered datatable-head-custom"
+            id="kt_datatable"
+          ></div>
+          <!--end: Datatable-->
         </div>
-        <!--end::Container-->
+      </div>
+      <!--end::Card-->
     </div>
-    <!--end::Entry-->
+    <!--end::Container-->
+  </div>
+  <!--end::Entry-->
 </div>
 <!--end::Content-->
-{% endblock content %}
-
-{% block scripts %}
+{% endblock content %} {% block scripts %}
 <!--begin::Global Theme Bundle(used by all pages)-->
 
 <script src="{% static 'assets/js/excelexportjs.js' %} "></script>
 <!--end::Global Theme Bundle-->
 <script>
-"use strict";
-// Class definition
+  "use strict";
+  // Class definition
 
-var KTDatatableRemoteAjaxDemo = function() {
+  var KTDatatableRemoteAjaxDemo = (function () {
     // Private functions
     let globalData = null;
 
     // basic demo
-    var demo = function() {
-
-        var datatable = $('#kt_datatable').KTDatatable({
-            // datasource definition
-            data: {
-                type: 'remote',
-                source: {
-                    read: {
-                        url: HOST_URL + '/api/dich_vu_kham/',
-                        method: 'GET',
-                        // sample custom headers
-                        // headers: {'x-my-custom-header': 'some value', 'x-test-header': 'the value'},
-                        map: function(raw) {
-                            // sample data mapping
-                            var dataSet = raw;
-                            if (typeof raw.data !== 'undefined') {
-                                dataSet = raw.data;
-                            }
-                            globalData = null
-                            globalData = dataSet
-                            return dataSet;
-                        },
-                    },
-                },
-                pageSize: 10,
-                serverPaging: true,
-                serverFiltering: true,
-                serverSorting: false,
-                saveState: false,
+    var demo = function () {
+      var datatable = $("#kt_datatable").KTDatatable({
+        // datasource definition
+        data: {
+          type: "remote",
+          source: {
+            read: {
+              url: HOST_URL + "/api/dich_vu_kham/",
+              method: "GET",
+              // sample custom headers
+              // headers: {'x-my-custom-header': 'some value', 'x-test-header': 'the value'},
+              map: function (raw) {
+                // sample data mapping
+                var dataSet = raw;
+                if (typeof raw.data !== "undefined") {
+                  dataSet = raw.data;
+                }
+                globalData = null;
+                globalData = dataSet;
+                return dataSet;
+              },
             },
+          },
+          pageSize: 5,
+          serverPaging: true,
+          serverFiltering: true,
+          serverSorting: false,
+          saveState: false,
+        },
 
-            // layout definition
-            layout: {
-                scroll: true,
-                footer: false,
-            },
+        // layout definition
+        layout: {
+          scroll: true,
+          footer: false,
+        },
 
-            // column sorting
-            sortable: true,
+        // column sorting
+        sortable: true,
 
-            pagination: true,
+        pagination: true,
 
-            search: {
-                input: $('#kt_datatable_search_query'),
-                key: 'search'
-            },
+        search: {
+          input: $("#kt_datatable_search_query"),
+          key: "search",
+        },
 
-            // columns definition
-            columns: [{
-                field: 'id',
-                title: 'STT',
-                width: 30,
-                type: 'number',
-                selector: false,
-                textAlign: 'center',
-            }, {
-                field: 'ten_dvkt',
-                title: 'Khoa Khám',
-                autoHide: false,
-                width: 210,
-            }, {
-                field: 'ma_dvkt',
-                title: 'Mã Khoa Khám',
-                autoHide: false,
-                width: 100,
-            }, {
-                field: 'don_gia',
-                title: 'Đơn Giá',
-                autoHide: false,
-                width: 70,
-            }, {
-                field: 'quyet_dinh',
-                title: 'Quyết Định',
-                autoHide: false,
-                width: 50,
-            }, {
-                field: 'Update',
-                title: 'Chỉnh Sửa',
-                sortable: false,
-                width: 75,
-                textAlign: 'center',
-                overflow: 'visible',
-                autoHide: false,
-                template: function(row) {
-                    return `
+        // columns definition
+        columns: [
+          {
+            field: "id",
+            title: "STT",
+            width: 30,
+            type: "number",
+            selector: false,
+            textAlign: "center",
+          },
+          {
+            field: "ten_dvkt",
+            title: "Khoa Khám",
+            autoHide: false,
+            width: 210,
+          },
+          {
+            field: "ma_dvkt",
+            title: "Mã Khoa Khám",
+            autoHide: false,
+            width: 100,
+          },
+          {
+            field: "don_gia",
+            title: "Đơn Giá",
+            autoHide: false,
+            width: 70,
+          },
+          {
+            field: "quyet_dinh",
+            title: "Quyết Định",
+            autoHide: false,
+            width: 50,
+          },
+          {
+            field: "Update",
+            title: "Chỉnh Sửa",
+            sortable: false,
+            width: 75,
+            textAlign: "center",
+            overflow: "visible",
+            autoHide: false,
+            template: function (row) {
+              return `
                         {% if perms.clinic.can_change_service %}
                         <a href="/danh_sach_dich_vu_kham/${row.id}/chinh_sua_dich_vu_kham" class="btn-edit btn btn-icon btn-clean" title="Chỉnh sửa thông tin dịch vụ khám">
                             <i class="la la-edit icon-lg text-primary"></i>
                         </a>
                         {% endif %}
                     `;
-                },
-            }, {
-                field: 'Html',
-                title: 'HTML',
-                width: 50,
-                sortable: false,
-                textAlign: 'center',
-                autoHide: false,
-                template: function(row) {
-                    if (row.html == true) {
-                        var _input = `<input class='dichVuHtmlCheckbox' data-id-dich-vu="${row.id}" type="checkbox" name="Checkboxes15" checked/>`
-                    } else if (row.html == false) {
-                        var _input = `<input class='dichVuHtmlCheckbox' data-id-dich-vu="${row.id}" type="checkbox" name="Checkboxes15"/>`
-                    }
+            },
+          },
+          {
+            field: "Html",
+            title: "HTML",
+            width: 50,
+            sortable: false,
+            textAlign: "center",
+            autoHide: false,
+            template: function (row) {
+              if (row.html == true) {
+                var _input = `<input class='dichVuHtmlCheckbox' data-id-dich-vu="${row.id}" type="checkbox" name="Checkboxes15" checked/>`;
+              } else if (row.html == false) {
+                var _input = `<input class='dichVuHtmlCheckbox' data-id-dich-vu="${row.id}" type="checkbox" name="Checkboxes15"/>`;
+              }
 
-                    return `
+              return `
                         <div class="d-flex align-items-center ml-5">
                             <label class="checkbox checkbox-inline checkbox-success">
                                 ${_input}
                                 <span></span>
                             </label>
                         </div>
-                    `
-               
-                }
-            }, {
-                field: 'ChiSo',
-                title: 'Chỉ Số',
-                width: 50,
-                sortable: false,
-                textAlign: 'center',
-                autoHide: false,
-                template: function(row) {
-                    if (row.chi_so == true) {
-                        var _input = `<input class='dichVuChiSoCheckbox' data-id-dich-vu="${row.id}" type="checkbox" name="Checkboxes15" checked/>`
-                    } else if (row.chi_so == false) {
-                        var _input = `<input class='dichVuChiSoCheckbox' data-id-dich-vu="${row.id}" type="checkbox" name="Checkboxes15"/>`
-                    }
+                    `;
+            },
+          },
+          {
+            field: "ChiSo",
+            title: "Chỉ Số",
+            width: 50,
+            sortable: false,
+            textAlign: "center",
+            autoHide: false,
+            template: function (row) {
+              if (row.chi_so == true) {
+                var _input = `<input class='dichVuChiSoCheckbox' data-id-dich-vu="${row.id}" type="checkbox" name="Checkboxes15" checked/>`;
+              } else if (row.chi_so == false) {
+                var _input = `<input class='dichVuChiSoCheckbox' data-id-dich-vu="${row.id}" type="checkbox" name="Checkboxes15"/>`;
+              }
 
-                    return `
+              return `
                         <div class="d-flex align-items-center ml-5">
                             <label class="checkbox checkbox-inline checkbox-success">
                                 ${_input}
                                 <span></span>
                             </label>
                         </div>
-                    `
-               
-                }
-            }, {
-                field: 'Delete',
-                title: 'Xóa',
-                sortable: false,
-                width: 75,
-                textAlign: 'center',
-                overflow: 'visible',
-                autoHide: false,
-                template: function(row) {
-                    return `
+                    `;
+            },
+          },
+          {
+            field: "Delete",
+            title: "Xóa",
+            sortable: false,
+            width: 75,
+            textAlign: "center",
+            overflow: "visible",
+            autoHide: false,
+            template: function (row) {
+              return `
                         {% if perms.clinic.can_delete_service %}
                         <a href="javascript:;" class="btn_delete btn btn-icon btn-clean" title="Xóa dịch vụ khám khỏi phòng khám" data-id="${row.id}" data-ten="${row.ten_dvkt}">
                             <i class="la la-trash-alt icon-lg text-danger"></i>
                         </a>
                         {% endif %}
                     `;
-                },
-            }, ],
+            },
+          },
+        ],
+      });
 
+      $("#excelExport").on("click", function () {
+        $("#kt_datatable").excelexportjs({
+          containerid: "kt_datatable",
+          datatype: "json",
+          dataset: globalData,
+          columns: getColumns(globalData),
+          locale: "vi-VN",
+          filename: "abc",
         });
+      });
 
-        $('#excelExport').on('click', function(){
-            $('#kt_datatable').excelexportjs({
-                containerid: "kt_datatable",
-                datatype: 'json',
-                dataset: globalData,
-                columns: getColumns(globalData),
-                locale: 'vi-VN',
-                filename: 'abc'
-            })
-        })
+      $("#btn-reload").on("click", function () {
+        $("#kt_datatable").KTDatatable("reload");
+      });
 
-        $('#btn-reload').on('click', function(){
-            $('#kt_datatable').KTDatatable('reload');
-        })
+      $(
+        "#kt_datatable_search_status, #kt_datatable_search_type"
+      ).selectpicker();
 
-        $('#kt_datatable_search_status, #kt_datatable_search_type').selectpicker();
+      datatable.on("click", ".dichVuHtmlCheckbox", function () {
+        var id_dich_vu = $(this).data("id-dich-vu");
+        var flag;
 
-        datatable.on('click', '.dichVuHtmlCheckbox', function() {
-            var id_dich_vu = $(this).data('id-dich-vu')
-            var flag
+        if ($(this).is(":checked")) {
+          flag = "True";
+          console.log("true");
+        } else {
+          flag = "False";
+          console.log("false");
+        }
 
-            if ($(this).is(":checked")){
-                flag = "True"
-                console.log('true')
-            } else {
-                flag = "False"
-                console.log('false')
-            }
-
-            $.ajax({
-                type: "GET",
-                url: HOST_URL + "/api/set_dich_vu_html/", 
-                data: {
-                    "id_dich_vu": id_dich_vu,
-                    "flag": flag
-                },
-                success: function(response){
-                    
-                },
-                error: function(response){
-                    
-                }
-            })
-        })
-
-        datatable.on('click', '.dichVuChiSoCheckbox', function() {
-            var id_dich_vu = $(this).data('id-dich-vu')
-            var flag
-
-            if ($(this).is(":checked")){
-                flag = "True"
-                console.log('true')
-            } else {
-                flag = "False"
-                console.log('false')
-            }
-
-            $.ajax({
-                type: "GET",
-                url: HOST_URL + "/api/set_dich_vu_chi_so/", 
-                data: {
-                    "id_dich_vu": id_dich_vu,
-                    "flag": flag
-                },
-                success: function(response){
-                    
-                },
-                error: function(response){
-                    
-                }
-            })
-        })
-        
-        $(document).on("click", ".btn-edit", function () {
-            var ho_ten = $(this).data("benh_nhan")
-            var thoi_gian_bat_dau = $(this).data("thoi_gian_bat_dau")
-            var thoi_gian_ket_thuc = $(this).data("thoi_gian_ket_thuc")
-            var thoi_gian_tai_kham = $(this).data("thoi_gian_tai_kham")
-
-            $('.modal-ho_ten').val(ho_ten)
-            $('.modal-thoi_gian_bat_dau').val(thoi_gian_bat_dau)
-            $('.modal-thoi_gian_ket_thuc').val(thoi_gian_ket_thuc)
-            $('.modal-thoi_gian_tai_kham').val(thoi_gian_tai_kham)
+        $.ajax({
+          type: "GET",
+          url: HOST_URL + "/api/set_dich_vu_html/",
+          data: {
+            id_dich_vu: id_dich_vu,
+            flag: flag,
+          },
+          success: function (response) {},
+          error: function (response) {},
         });
+      });
 
+      datatable.on("click", ".dichVuChiSoCheckbox", function () {
+        var id_dich_vu = $(this).data("id-dich-vu");
+        var flag;
+
+        if ($(this).is(":checked")) {
+          flag = "True";
+          console.log("true");
+        } else {
+          flag = "False";
+          console.log("false");
+        }
+
+        $.ajax({
+          type: "GET",
+          url: HOST_URL + "/api/set_dich_vu_chi_so/",
+          data: {
+            id_dich_vu: id_dich_vu,
+            flag: flag,
+          },
+          success: function (response) {},
+          error: function (response) {},
+        });
+      });
+
+      $(document).on("click", ".btn-edit", function () {
+        var ho_ten = $(this).data("benh_nhan");
+        var thoi_gian_bat_dau = $(this).data("thoi_gian_bat_dau");
+        var thoi_gian_ket_thuc = $(this).data("thoi_gian_ket_thuc");
+        var thoi_gian_tai_kham = $(this).data("thoi_gian_tai_kham");
+
+        $(".modal-ho_ten").val(ho_ten);
+        $(".modal-thoi_gian_bat_dau").val(thoi_gian_bat_dau);
+        $(".modal-thoi_gian_ket_thuc").val(thoi_gian_ket_thuc);
+        $(".modal-thoi_gian_tai_kham").val(thoi_gian_tai_kham);
+      });
     };
 
-    var deleteDichVu = function() {
-        $('#kt_datatable').on('click', '.btn_delete', function() {
-            var id = $(this).attr('data-id')
-            var ten_dv = $(this).attr('data-ten')
-            Swal.fire({
-                title: "Xóa Dịch Vụ " +ten_dv+ " khỏi danh sách",
-                text: "Bạn sẽ không thể hoàn tác lại dịch vụ này!",
-                icon: "warning",
-                cancelButtonText: "Hủy",
-                confirmButtonText: "Xác Nhận",
-                showCancelButton: true,
-            }).then(function(result) {
-                if (result.value) {
-                    console.log(id)
-                    var formData = new FormData()
-                    formData.append('id', id)
-                    formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
+    var deleteDichVu = function () {
+      $("#kt_datatable").on("click", ".btn_delete", function () {
+        var id = $(this).attr("data-id");
+        var ten_dv = $(this).attr("data-ten");
+        Swal.fire({
+          title: "Xóa Dịch Vụ " + ten_dv + " khỏi danh sách",
+          text: "Bạn sẽ không thể hoàn tác lại dịch vụ này!",
+          icon: "warning",
+          cancelButtonText: "Hủy",
+          confirmButtonText: "Xác Nhận",
+          showCancelButton: true,
+        }).then(function (result) {
+          if (result.value) {
+            console.log(id);
+            var formData = new FormData();
+            formData.append("id", id);
+            formData.append("csrfmiddlewaretoken", "{{ csrf_token }}");
 
-                    $.ajax({
-                        type: "POST",
-                        url: "{% url 'xoa_dich_vu' %}",
-                        data: formData,
-                        cache: false,
-                        processData: false,
-                        contentType: false,
-                        success: function(response){
-                            Swal.fire(
-                                'Đã Xóa!',
-                                'Dịch Vụ Đã Xóa Thành Công.',
-                                'success'
-                            )
-                            $('#kt_datatable').KTDatatable('reload');
-                        },
-                        error: function(response){
-                        }
-                    })
-                }else if (result.dismiss === 'cancel') {
-					Swal.fire(
-						'Đã Hủy',
-						'Vẫn Còn Người Để Khám Thêm Mà! :)',
-						'error'
-					)
-				}
+            $.ajax({
+              type: "POST",
+              url: "{% url 'xoa_dich_vu' %}",
+              data: formData,
+              cache: false,
+              processData: false,
+              contentType: false,
+              success: function (response) {
+                Swal.fire("Đã Xóa!", "Dịch Vụ Đã Xóa Thành Công.", "success");
+                $("#kt_datatable").KTDatatable("reload");
+              },
+              error: function (response) {},
             });
-            
+          } else if (result.dismiss === "cancel") {
+            Swal.fire("Đã Hủy", "Vẫn Còn Người Để Khám Thêm Mà! :)", "error");
+          }
         });
-    }
+      });
+    };
 
     return {
-        // public functions
-        init: function() {
-            demo();
-            deleteDichVu();
-        },
+      // public functions
+      init: function () {
+        demo();
+        deleteDichVu();
+      },
     };
-}();
+  })();
 
-jQuery(document).ready(function() {
+  jQuery(document).ready(function () {
     KTDatatableRemoteAjaxDemo.init();
-});
+  });
 </script>
 {% endblock scripts %}
-

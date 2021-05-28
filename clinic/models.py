@@ -690,6 +690,10 @@ class LichHenKham(models.Model):
 
         return hoan_thanh_kham
 
+    @staticmethod
+    def get_count_in_day(queryset):
+        total_count = queryset.values('benh_nhan__id').distinct().count() if queryset else 0
+        return total_count
 
 class LichSuTrangThaiLichHen(models.Model):
     lich_hen_kham = models.ForeignKey(LichHenKham, on_delete=models.CASCADE, related_name="lich_hen")
@@ -1022,6 +1026,22 @@ class PhanKhoaKham(models.Model):
                     flag = True
         return flag
 
+    @property
+    def check_chuoi_kham_has_timestart(self):
+        flag = False
+        if self.chuoi_kham is not None:
+            if self.chuoi_kham.thoi_gian_bat_dau is not None:
+                flag = True
+
+        return flag
+
+    @property
+    def check_chuoi_kham_has_timeend(self):
+        flag = False
+        if self.chuoi_kham is not None:
+            if self.chuoi_kham.thoi_gian_ket_thuc is not None:
+                flag = True
+        return flag
 
 @receiver(post_save, sender=PhanKhoaKham)
 def send_func_room_info(sender, instance, created, **kwargs):

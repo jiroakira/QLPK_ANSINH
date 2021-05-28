@@ -1,258 +1,465 @@
-{% extends 'base.html' %}
-
-{% load static %}
-
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 
 <!--begin::Content-->
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-    <!--begin::Subheader-->
-    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
-        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
-            <!--begin::Info-->
-            <div class="d-flex align-items-center flex-wrap mr-1">
-                <!--begin::Page Heading-->
-                <div class="d-flex align-items-baseline flex-wrap mr-5">
-                    <!--begin::Page Title-->
-                    <h5 class="text-dark font-weight-bold my-1 mr-5">Tải Lên Kết Quả Khám</h5>
-                    <!--end::Page Title-->
-                    <!--begin::Breadcrumb-->
-                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
-                        <li class="breadcrumb-item">
-                            <a href="#" class="text-muted">Bác sĩ chuyên khoa</a>
-                        </li>
-                        <li class="breadcrumb-item">
-                            <a href="#" class="text-muted">Bệnh nhân {{chuoi_kham.benh_nhan.ho_ten}}</a>
-                        </li>
-                        <li class="breadcrumb-item">
-                            <a href="#" class="text-muted">Tải lên kết quả khám</a>
-                        </li>
-                    </ul>
-                    <!--end::Breadcrumb-->
-                </div>
-                <!--end::Page Heading-->
-            </div>
-            <!--end::Info-->
+  <!--begin::Subheader-->
+  <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+    <div
+      class="
+        container-fluid
+        d-flex
+        align-items-center
+        justify-content-between
+        flex-wrap flex-sm-nowrap
+      "
+    >
+      <!--begin::Info-->
+      <div class="d-flex align-items-center flex-wrap mr-1">
+        <!--begin::Page Heading-->
+        <div class="d-flex align-items-baseline flex-wrap mr-5">
+          <!--begin::Page Title-->
+          <h5 class="text-dark font-weight-bold my-1 mr-5">
+            Tải Lên Kết Quả Khám
+          </h5>
+          <!--end::Page Title-->
+          <!--begin::Breadcrumb-->
+          <ul
+            class="
+              breadcrumb breadcrumb-transparent breadcrumb-dot
+              font-weight-bold
+              p-0
+              my-2
+              font-size-sm
+            "
+          >
+            <li class="breadcrumb-item">
+              <a href="#" class="text-muted">Bác sĩ chuyên khoa</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="#" class="text-muted"
+                >Bệnh nhân {{chuoi_kham.benh_nhan.ho_ten}}</a
+              >
+            </li>
+            <li class="breadcrumb-item">
+              <a href="#" class="text-muted">Tải lên kết quả khám</a>
+            </li>
+          </ul>
+          <!--end::Breadcrumb-->
         </div>
+        <!--end::Page Heading-->
+      </div>
+      <!--end::Info-->
     </div>
-    <!--end::Subheader-->
- 
-    <!--begin::Entry-->
-    <div class="d-flex flex-column-fluid">
-        <!--begin::Container-->
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <!--begin::Card-->
-                    <div class="card card-custom">
-                        <div class="card-header">
-                            <div class="card-title">
-                                <h3 class="card-label">Dịch Vụ Kĩ Thuật: {{ dich_vu.ten_dvkt }}</h3>
-                            </div>
-                            
-                        </div>
-                        <!--begin::Form-->
-                        <form id="upload-form">
-                            <div class="card-body">
-                                
-                                <div id="result">
-                                    <div class="form-group row">
-                                        <label class="col-lg-2 col-form-label text-lg-right">Mã kết quả:</label>
-                                        <div class="col-lg-10">
-                                            <input type="text" id="ma_ket_qua" class="form-control" placeholder="Nhập mã kết quả" name="ma_ket_qua" value="{{ma_ket_qua}}" disabled />
-                                            <span class="form-text text-muted">Mã kết quả có dạng : <code>"Mã PCN" - "Tên Bệnh Nhân" - Thời gian khám</code></span>
-                                        </div>
-                                    </div>
-                                    {% comment %} <div class="form-group row">
-                                        <label class="col-lg-2 col-form-label text-lg-right">Mô tả:</label>
-                                        <div class="col-lg-10">
-                                            <input type="text" id="mo_ta" class="form-control" placeholder="Nhập mô tả bệnh" name="mo_ta" />       
-                                        </div>
-                                    </div> {% endcomment %}
-                                    <div class="form-group row">
-                                        <label class="col-lg-2 col-form-label text-lg-right">Chụp ảnh:</label>
-                                        <div class="col-lg-10">
-                                            <div class="dropzone dropzone-multi" id="kt_dropzone_4">
-                                                <div class="dropzone-panel mb-lg-0 mb-2">
-                                                    <a href="javascript:;" class="btn btn-light-primary font-weight-bold btn-sm" id="openCamera" data-name="{{ ho_ten_benh_nhan }}">Mở máy ảnh</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-2 col-form-label text-lg-right">Chọn mẫu phiếu:</label>
-                                        <div class="col-lg-10">
-                                            <select class="form-control selectpicker" id="selectMauPhieu" data-live-search="true" name="param">
-                                                <option value="" selected disabled>Chọn mẫu phiếu</option>
-                                                {% for mp in danh_sach_mau_phieu %}
-                                                    <option value="{{mp.codename}}">{{mp.ten_mau}}</option>
-                                                {% endfor %}      
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-2 col-form-label text-lg-right">Kết quả:</label>
-                                        <div class="col-lg-10">
-                                            {% comment %} <textarea class="form-control" id="ket_qua" rows="3" placeholder="Nhập kết quả của bệnh nhân" name='ket_qua'></textarea>  {% endcomment %}
-                                            {% comment %} <textarea class="form-control" id="noi_dung" name="memo" placeholder="Nhập nội dung" rows="7"></textarea> {% endcomment %}
-                                            {% comment %} <textarea name="kt-ckeditor-5" id="kt-ckeditor-5"></textarea> {% endcomment %}
-                                            <div class="summernote" id="kt_summernote_1"></div>
-                                        </div>
-                                    </div>
-                                    <div id="divMauPhieu" style="display: none;"></div>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="row">
-                                    <div class="col-lg-3"></div>
-                                    <div class="col-lg-9">
-                                        <button type="button" id='change_assignment' data-id-phan-khoa="{{id_phan_khoa}}" data-id-chuoi-kham="{{id_chuoi_kham}}" data-id-phong-chuc-nang="{{id_phong_chuc_nang}}" class="btn btn-info mr-2">Thay đổi chỉ định</button>
-                                        <button type="reset" id='cancel_button' class="btn btn-light-primary">Hủy</button>
-                                        <button type="button" id="upload" data-id-phan-khoa="{{id_phan_khoa}}" data-id-chuoi-kham="{{id_chuoi_kham}}" data-id-phong-chuc-nang="{{id_phong_chuc_nang}}" class="dropzone-upload btn btn-primary mr-2">Lưu</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                        <!--end::Form-->
+  </div>
+  <!--end::Subheader-->
+
+  <!--begin::Entry-->
+  <div class="d-flex flex-column-fluid">
+    <!--begin::Container-->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <!--begin::Card-->
+          <div class="card card-custom">
+            <div class="card-header">
+              <div class="card-title">
+                <h3 class="card-label">
+                  Dịch Vụ Kĩ Thuật: {{ dich_vu.ten_dvkt }}
+                </h3>
+              </div>
+            </div>
+            <!--begin::Form-->
+            <form id="upload-form">
+              <div class="card-body">
+                <div id="result">
+                  <div class="form-group row">
+                    <label class="col-lg-2 col-form-label text-lg-right"
+                      >Mã kết quả:</label
+                    >
+                    <div class="col-lg-10">
+                      <input
+                        type="text"
+                        id="ma_ket_qua"
+                        class="form-control"
+                        placeholder="Nhập mã kết quả"
+                        name="ma_ket_qua"
+                        value="{{ma_ket_qua}}"
+                        disabled
+                      />
+                      <span class="form-text text-muted"
+                        >Mã kết quả có dạng :
+                        <code
+                          >"Mã PCN" - "Tên Bệnh Nhân" - Thời gian khám</code
+                        ></span
+                      >
                     </div>
-                    <!--end::Card-->
+                  </div>
+                  {% comment %}
+                  <div class="form-group row">
+                    <label class="col-lg-2 col-form-label text-lg-right"
+                      >Mô tả:</label
+                    >
+                    <div class="col-lg-10">
+                      <input
+                        type="text"
+                        id="mo_ta"
+                        class="form-control"
+                        placeholder="Nhập mô tả bệnh"
+                        name="mo_ta"
+                      />
+                    </div>
+                  </div>
+                  {% endcomment %}
+                  <div class="form-group row">
+                    <label class="col-lg-2 col-form-label text-lg-right"
+                      >Chụp ảnh:</label
+                    >
+                    <div class="col-lg-10">
+                      <div class="dropzone dropzone-multi" id="kt_dropzone_4">
+                        <div class="dropzone-panel mb-lg-0 mb-2">
+                          <a
+                            href="javascript:;"
+                            class="
+                              btn btn-light-primary
+                              font-weight-bold
+                              btn-sm
+                            "
+                            id="openCamera"
+                            data-name="{{ ho_ten_benh_nhan }}"
+                            >Mở máy ảnh</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-lg-2 col-form-label text-lg-right"
+                      >Chọn mẫu phiếu:</label
+                    >
+                    <div class="col-lg-10">
+                      <select
+                        class="form-control selectpicker"
+                        id="selectMauPhieu"
+                        data-live-search="true"
+                        name="param"
+                      >
+                        <option value="" selected disabled>
+                          Chọn mẫu phiếu
+                        </option>
+                        {% for mp in danh_sach_mau_phieu %}
+                        <option value="{{mp.codename}}">{{mp.ten_mau}}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-lg-2 col-form-label text-lg-right"
+                      >Kết quả:</label
+                    >
+                    <div class="col-lg-10">
+                      {% comment %}
+                      <textarea
+                        class="form-control"
+                        id="ket_qua"
+                        rows="3"
+                        placeholder="Nhập kết quả của bệnh nhân"
+                        name="ket_qua"
+                      ></textarea>
+                      {% endcomment %} {% comment %}
+                      <textarea
+                        class="form-control"
+                        id="noi_dung"
+                        name="memo"
+                        placeholder="Nhập nội dung"
+                        rows="7"
+                      ></textarea>
+                      {% endcomment %} {% comment %}
+                      <textarea
+                        name="kt-ckeditor-5"
+                        id="kt-ckeditor-5"
+                      ></textarea>
+                      {% endcomment %}
+                      <div class="summernote" id="kt_summernote_1"></div>
+                    </div>
+                  </div>
+                  <div id="divMauPhieu" style="display: none"></div>
                 </div>
- 
-            </div>
+              </div>
+              <div class="card-footer">
+                <div class="row">
+                  <div class="col-lg-3"></div>
+                  <div class="col-lg-9">
+                    <button
+                      type="button"
+                      id="change_assignment"
+                      data-id-phan-khoa="{{id_phan_khoa}}"
+                      data-id-chuoi-kham="{{id_chuoi_kham}}"
+                      data-id-phong-chuc-nang="{{id_phong_chuc_nang}}"
+                      class="btn btn-info mr-2"
+                    >
+                      Thay đổi chỉ định
+                    </button>
+                    <button
+                      type="reset"
+                      id="cancel_button"
+                      class="btn btn-light-primary"
+                    >
+                      Hủy
+                    </button>
+                    <button
+                      type="button"
+                      id="upload"
+                      data-id-phan-khoa="{{id_phan_khoa}}"
+                      data-id-chuoi-kham="{{id_chuoi_kham}}"
+                      data-id-phong-chuc-nang="{{id_phong_chuc_nang}}"
+                      class="dropzone-upload btn btn-primary mr-2"
+                    >
+                      Lưu
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <!--end::Form-->
+          </div>
+          <!--end::Card-->
         </div>
-        <!--end::Container-->
+      </div>
     </div>
-    <!--end::Entry-->
+    <!--end::Container-->
+  </div>
+  <!--end::Entry-->
 </div>
 <!-- end::Content -->
 
 <!-- Open Camera Modal-->
-<div class="modal fade" id="CameraModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Chụp ảnh siêu âm</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <i aria-hidden="true" class="ki ki-close"></i>
-                </button>
+<div
+  class="modal fade"
+  id="CameraModal"
+  data-backdrop="static"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="staticBackdrop"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Chụp ảnh siêu âm</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <i aria-hidden="true" class="ki ki-close"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card-body">
+          <div class="form-group row">
+            <div class="col-lg-12">
+              <video
+                id="webcam"
+                autoplay
+                playsinline
+                width="640"
+                height="480"
+                class="ml-8"
+              ></video>
+              <canvas id="canvas" class="d-none ml-8"></canvas>
+              <div class="flash"></div>
+              <audio
+                id="snapSound"
+                src="{% static 'assets/plugins/custom/webcam-easy/demo/audio/snap.wav' %}"
+                preload="auto"
+              ></audio>
             </div>
-            <div class="modal-body">
-                <div class="card-body">
-                    <div class="form-group row">
-                        <div class="col-lg-12">
-                            <video id="webcam" autoplay playsinline width="640" height="480" class="ml-8"></video>
-                            <canvas id="canvas" class="d-none ml-8"></canvas>
-                            <div class="flash"></div>
-                            <audio id="snapSound" src="{% static 'assets/plugins/custom/webcam-easy/demo/audio/snap.wav' %}" preload="auto"></audio>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer row justify-content-center py-8 px-8 py-md-10 px-md-0">
-                <div id="cameraControls">
-                    <a href="javascript:;" id="take-photo" class="btn btn-primary font-weight-bold">Chụp Ảnh</a>
-                    <a href="javascript:;" id="download-photo" download="{{ ho_ten_benh_nhan }}.png" target="_blank" title="Save Photo" class="d-none"><i class="fas fa-download"></i>Tải Về</a>  
-                    <a href="javascript:;" id="resume-camera" title="Resume Camera" class="d-none"><i class="fas fa-camera-retro"></i>Chụp Thêm</a>
-                </div>
-                <button type="button" class="btn btn-light-primary font-weight-bold float-right" data-dismiss="modal">Đóng</button>
-            </div>     
+          </div>
         </div>
+      </div>
+      <div
+        class="
+          modal-footer
+          row
+          justify-content-center
+          py-8
+          px-8
+          py-md-10
+          px-md-0
+        "
+      >
+        <div id="cameraControls">
+          <a
+            href="javascript:;"
+            id="take-photo"
+            class="btn btn-primary font-weight-bold"
+            >Chụp Ảnh</a
+          >
+          <a
+            href="javascript:;"
+            id="download-photo"
+            download="{{ ho_ten_benh_nhan }}.png"
+            target="_blank"
+            title="Save Photo"
+            class="d-none"
+            ><i class="fas fa-download"></i>Tải Về</a
+          >
+          <a
+            href="javascript:;"
+            id="resume-camera"
+            title="Resume Camera"
+            class="d-none"
+            ><i class="fas fa-camera-retro"></i>Chụp Thêm</a
+          >
+        </div>
+        <button
+          type="button"
+          class="btn btn-light-primary font-weight-bold float-right"
+          data-dismiss="modal"
+        >
+          Đóng
+        </button>
+      </div>
     </div>
+  </div>
 </div>
 
 <!--begin::Thay Doi Phan Khoa Modal-->
 <div id="phan_khoa_modal" class="modal fade" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header py-5">
-                <h5 class="modal-title"> 
-                    <span class="d-block font-size-nm">Thay đổi chỉ định</span>
-                </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <i aria-hidden="true" class="ki ki-close"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="card card-custom">
-                    <div class="card-body">
-                        <!--begin::Search Form-->
-                        <div class="mb-7">
-                            <div class="row align-items-center">
-                                <div class="col-lg-12 col-xl-9">
-                                    <div class="row align-items-center">
-                                        <div class="col-md-6 my-2 my-md-0">
-                                            <div class="input-icon">
-                                                <input type="text" class="form-control" placeholder="Tìm kiếm..." id="kt_datatable_search_query_2" />
-                                                <span>
-                                                    <i class="flaticon2-search-1 text-muted"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--end::Search Form-->
-                        <!--begin: Selected Rows Group Action Form-->
-                        <div class="mt-10 mb-5 collapse" id="kt_datatable_group_action_form_2">
-                            <div class="d-flex align-items-center">
-                                <div class="font-weight-bold text-success mr-3">Đã chọn 
-                                <span id="kt_datatable_selected_records_2"></span> khoa khám!</div>
-                            </div>
-                        </div>
-                        <!--end: Selected Rows Group Action Form-->
-                        <!--begin: Datatable-->
-                        <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable"></div>
-                        <!--end: Datatable-->
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header py-5">
+        <h5 class="modal-title">
+          <span class="d-block font-size-nm">Thay đổi chỉ định</span>
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <i aria-hidden="true" class="ki ki-close"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card card-custom">
+          <div class="card-body">
+            <!--begin::Search Form-->
+            <div class="mb-7">
+              <div class="row align-items-center">
+                <div class="col-lg-12 col-xl-9">
+                  <div class="row align-items-center">
+                    <div class="col-md-6 my-2 my-md-0">
+                      <div class="input-icon">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Tìm kiếm..."
+                          id="kt_datatable_search_query_2"
+                        />
+                        <span>
+                          <i class="flaticon2-search-1 text-muted"></i>
+                        </span>
+                      </div>
                     </div>
+                  </div>
                 </div>
-
-                <!--begin::Card-->
-                <div class="card card-custom mt-7">
-                    <div class="card-header">
-                        <div class="card-title">
-                            <h3 class="card-label">Bảng phân khoa</h3>
-                        </div>
-                    </div>
-                    <div class="card-body" id='tablePhanKhoa'>
-                        <!--begin: Datatable-->
-                        <table class="table table-bordered table-hover table-checkable" id="kt_datatable_3" style="margin-top: 13px !important;">
-                            <thead>
-                                <tr>
-                                    <td>ID</td>
-                                    <td>Tên Dịch Vụ</td>
-                                    <td>Phòng Chức Năng</td>
-                                    <td>Bảo Hiểm</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                
-                            </tbody>
-                        </table>
-                        <!--end: Datatable-->
-                    </div>
+              </div>
+            </div>
+            <!--end::Search Form-->
+            <!--begin: Selected Rows Group Action Form-->
+            <div
+              class="mt-10 mb-5 collapse"
+              id="kt_datatable_group_action_form_2"
+            >
+              <div class="d-flex align-items-center">
+                <div class="font-weight-bold text-success mr-3">
+                  Đã chọn
+                  <span id="kt_datatable_selected_records_2"></span> khoa khám!
                 </div>
-                <!--end::Card-->
+              </div>
             </div>
-            <div class="modal-footer">
-                {% comment %} <button type="button" id="printDiv" class="btn btn-light-success font-weight-bold text-uppercase float-left">In</button> {% endcomment %}
-                <button type="button" class="btn btn-light-primary font-weight-bold text-uppercase" data-dismiss="modal">Hủy</button>
-                <button type="button" id="btn_submit" data-id-chuoi-kham="{{ id_chuoi_kham }}" class="btn btn-primary font-weight-bold text-uppercase">Xác nhận</button>
-            </div>
+            <!--end: Selected Rows Group Action Form-->
+            <!--begin: Datatable-->
+            <div
+              class="datatable datatable-bordered datatable-head-custom"
+              id="kt_datatable"
+            ></div>
+            <!--end: Datatable-->
+          </div>
         </div>
+
+        <!--begin::Card-->
+        <div class="card card-custom mt-7">
+          <div class="card-header">
+            <div class="card-title">
+              <h3 class="card-label">Bảng phân khoa</h3>
+            </div>
+          </div>
+          <div class="card-body" id="tablePhanKhoa">
+            <!--begin: Datatable-->
+            <table
+              class="table table-bordered table-hover table-checkable"
+              id="kt_datatable_3"
+              style="margin-top: 13px !important"
+            >
+              <thead>
+                <tr>
+                  <td>ID</td>
+                  <td>Tên Dịch Vụ</td>
+                  <td>Phòng Chức Năng</td>
+                  <td>Bảo Hiểm</td>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+            <!--end: Datatable-->
+          </div>
+        </div>
+        <!--end::Card-->
+      </div>
+      <div class="modal-footer">
+        {% comment %}
+        <button
+          type="button"
+          id="printDiv"
+          class="
+            btn btn-light-success
+            font-weight-bold
+            text-uppercase
+            float-left
+          "
+        >
+          In
+        </button>
+        {% endcomment %}
+        <button
+          type="button"
+          class="btn btn-light-primary font-weight-bold text-uppercase"
+          data-dismiss="modal"
+        >
+          Hủy
+        </button>
+        <button
+          type="button"
+          id="btn_submit"
+          data-id-chuoi-kham="{{ id_chuoi_kham }}"
+          class="btn btn-primary font-weight-bold text-uppercase"
+        >
+          Xác nhận
+        </button>
+      </div>
     </div>
+  </div>
 </div>
 <!--end::Modal-->
 
-<div id='newTableHtml' style="display: none;"></div>
+<div id="newTableHtml" style="display: none"></div>
 
-{% endblock content %}
-
-
-{% block scripts %}
+{% endblock content %} {% block scripts %}
 
 <!--begin::Global Theme Bundle(used by all pages)-->
-
 
 <script src="{% static 'assets/js/summernote-image-attributes.js' %}"></script>
 <script src="{% static 'assets/js/lang_summernote/vi_VN.js' %}"></script>
@@ -262,651 +469,650 @@
 <!--end::Global Theme Bundle-->
 
 <script>
-    $(document).ajaxStart(function() {
-        KTApp.blockPage({
-            overlayColor: '#000000',
-            state: 'primary',
-            message: 'Đang xử lý...'
-        });
-    })
+  $(document).ajaxStart(function () {
+    KTApp.blockPage({
+      overlayColor: "#000000",
+      state: "primary",
+      message: "Đang xử lý...",
+    });
+  });
 
-    $(document).ajaxStop(function() {
-        KTApp.unblockPage();
-    })
-
+  $(document).ajaxStop(function () {
+    KTApp.unblockPage();
+  });
 </script>
 
 <script>
-// Class definition
-    var lstData = [];
-    var lstCheckbox = {};
-    var list_data_2 = [];
-
-    {% comment %}   
-    var benh_nhan = {{ benh_nhan|safe }};
-    var dia_chi = {{ dia_chi|safe }};
-    var tuoi = {{ tuoi|safe }};
-    var gioi_tinh = {{ gioi_tinh|safe }};
-    var bac_si_chuyen_khoa = {{ bac_si_chuyen_khoa|safe }}
-    var bac_si_lam_sang = {{ bac_si_lam_sang|safe }}
-    var ngay_kham = {{ ngay_kham|safe }} {% endcomment %}
-
-    const data_mau_phieu = {{ data|safe }};
-
-    var KTFormControls = function () {
-        // Private functions
-        var fillPatientInfo = function(id_div) {
-            var id_div = id_div
-
-            for (const [key, value] of Object.entries(data_mau_phieu)) {
-                $(`${id_div} table tbody td:contains(${key})`).each(function() {
-                    var thisContent = $(this).html();
-                    var formattedContent = thisContent.replace(key, value)
-                    var td = `<td>${formattedContent}</td>`
-                    $(this).replaceWith(td);
-                });
-            }
-        }
-
-        var _initValidate = function () {
-            fillPatientInfo('#divMauPhieu')
-            var html = $("#divMauPhieu").html()
-
-            $('.summernote').summernote({
-                toolbar: [
-                    ['style', ['style']],
-                    ['font', ['bold', 'underline', 'clear']],
-                    ['fontname', ['fontname']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['table', ['table']],
-                    ['insert', ['link', 'picture', 'video']],
-                    ['view', ['fullscreen', 'codeview', 'help']],
-                    ['misc', ['print']]
-                ],
-                print: {
-                    'stylesheetUrl': 'url_of_stylesheet_for_printing'
-                },
-                imageAttributes: {
-                    icon: '<i class="note-icon-pencil"/>',
-                    figureClass: 'figureClass',
-                    figcaptionClass: 'captionClass',
-                    captionText: 'Caption Goes Here.',
-                    manageAspectRatio: true // true = Lock the Image Width/Height, Default to true
-                },
-                lang: 'vi_VN',
-                popover: {
-                    image: [
-                        ['image', ['resizeFull', 'resizeHalf', 'resizeQuarter', 'resizeNone']],
-                        ['float', ['floatLeft', 'floatRight', 'floatNone']],
-                        ['remove', ['removeMedia']],
-                        ['custom', ['imageAttributes']],
-                    ],
-                    link: [
-                        ['link', ['linkDialogShow', 'unlink']]
-                    ],
-                    table: [
-                        ['add', ['addRowDown', 'addRowUp', 'addColLeft', 'addColRight']],
-                        ['delete', ['deleteRow', 'deleteCol', 'deleteTable']],
-                    ],
-                    air: [
-                        ['color', ['color']],
-                        ['font', ['bold', 'underline', 'clear']],
-                        ['para', ['ul', 'paragraph']],
-                        ['table', ['table']],
-                        ['insert', ['link', 'picture']]
-                    ]
-                },
-
-                callbacks: {
-                    onImageUpload: function (files) {
-                        if (!files.length) return;
-                        var file = files[0];
-                        // create FileReader
-                        var reader = new FileReader();
-                        reader.onloadend = function () {
-                            // when loaded file, img's src set datauri
-              
-                            var img = $("<img>").attr({src: reader.result, width: "250px"}); // << Add here img attributes !
-                         
-                            $('.summernote').summernote("insertNode", img[0]);
-                        }
-                        if (file) {
-                            // convert fileObject to datauri
-                            reader.readAsDataURL(file);
-                        }
-
-                    }
-                }
-
-            });
-
-
-
-            $('.summernote').summernote("code", html);
-
-        }
-
-        var send_content = function() {
-            
-            $(document).on('click', '#upload', function() {
-                var formData = new FormData()
-                var id_phan_khoa = $(this).data('id-phan-khoa')
-                var id_chuoi_kham = $(this).data('id-chuoi-kham')
-                var ma_ket_qua = $('#ma_ket_qua').val()
-                {% comment %} var mo_ta = $('#mo_ta').val() {% endcomment %}
-                var content = $(".summernote").summernote("code")
-
-                formData.append('id_phan_khoa', id_phan_khoa)
-                formData.append('id_chuoi_kham', id_chuoi_kham)
-                formData.append('noi_dung', content)
-                {% comment %} formData.append('mo_ta', mo_ta) {% endcomment %}
-                formData.append('ma_ket_qua', ma_ket_qua)
-                formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
-
-                $.ajax({
-                    type: "POST",
-                    url: "{% url 'store_ket_qua_chuyen_khoa_html' %}",
-                    data: formData,
-                    cache: false,
-                    processData: false,
-                    contentType: false,
-                    success: function(response){
-                        if (response.status == 200) {
-                            var id_phong_chuc_nang = $("#upload-form").find("#upload").data('id-phong-chuc-nang')
-                            toastr.success(response.message, "Thành Công")
-                            setTimeout(function () {
-                                window.location.href = '/phong_chuyen_khoa/' + id_phong_chuc_nang; //redirect về danh sách chờ lâm sàng
-                            }, 1500)
-                            
-                        } else if (response.status == 404) {
-                            toastr.warning(response.message, "Thất Bại")
-                        }
-                    },
-                    error: function(response){
-                        toastr.warning("Xảy ra lỗi khi gửi dữ liệu, vui lòng kiểm tra lại", "Thất Bại")
-                    }
-                }) 
-            })
-        }
-
-        var initCamera = function() {
-            $('#openCamera').click(function(){
-                $('#CameraModal').modal('show');
-                webcam.start()
-                    .then(result =>{
-                        webcam.flip();
-                        cameraStarted();
-                        console.log("webcam started");
-                    })
-                    .catch(err => {
-                        displayError();
-                    });
-            });
-
-            var benh_nhan = $('#openCamera').attr('data-name');
-
-            const webcamElement = document.getElementById('webcam');
-
-            const canvasElement = document.getElementById('canvas');
-
-            const snapSoundElement = document.getElementById('snapSound');
-
-            const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
-
-            function cameraStarted(){
-                $("#errorMsg").addClass("d-none");
-                $('.flash').hide();
-                $("#webcam-caption").html("on");
-                $(".webcam-container").removeClass("d-none");
-                if( webcam.webcamList.length > 1){
-                    $("#cameraFlip").removeClass('d-none');
-                }
-                $('body').css('overflow-y','hidden');
-            }
-
-            function displayError(){
-                console.log("error");
-            }
-
-            function cameraStopped(){
-                $("#errorMsg").addClass("d-none");
-                $("#cameraFlip").addClass('d-none');
-                $(".webcam-container").addClass("d-none");
-                $("#webcam-caption").html("Click to Start Camera");
-                $('.md-modal').removeClass('md-show');
-            }
-
-            $('#take-photo').click(function(){
-                beforeTakePhoto();
-                var picture = webcam.snap();
-                // set fixed size for image after being taken
-                var img = $("<img>").attr({src: picture, width: "250px"});
-                // insert image into editor
-                $('.summernote').summernote("insertNode", img[0]);
-
-                {% comment %} document.querySelector('#download-photo').href = picture; {% endcomment %}
-                afterTakePhoto();
-                $('#CameraModal').modal('hide');
-            })
-
-            function beforeTakePhoto(){
-                $('.flash')
-                    .show() 
-                    .animate({opacity: 0.3}, 500) 
-                    .fadeOut(500)
-                    .css({'opacity': 0.7});
-                $('#cameraControls').addClass('d-none');
-            }
-
-            function afterTakePhoto(){
-                webcam.stop();
-                $('#canvas').removeClass('d-none');
-                $('#take-photo').addClass('d-none');
-                $('#exit-app').removeClass('d-none');
-                {% comment %} $('#download-photo').removeClass('d-none');
-                $('#download-photo').addClass('btn btn-success font-weight-bold'); {% endcomment %}
-                $('#resume-camera').removeClass('d-none');
-                $('#resume-camera').addClass('btn btn-primary font-weight-bold');
-                $('#cameraControls').removeClass('d-none');
-                $('#webcam').addClass('d-none');
-            }
-
-            function removeCapture(){
-                $('#webcam').removeClass('d-none');
-                $('#canvas').addClass('d-none');
-                $('#cameraControls').removeClass('d-none');
-                $('#take-photo').removeClass('d-none');
-                $('#exit-app').addClass('d-none');
-                $('#download-photo').addClass('d-none');
-                $('#resume-camera').addClass('d-none');
-            }
-
-            $("#resume-camera").click(function () {
-                webcam.stream()
-                    .then(facingMode =>{
-                        removeCapture();
-                    });
-            });
-
-            $("#CameraModal").on('hide.bs.modal',function () {
-                {% comment %} removeCapture();
-                cameraStopped(); {% endcomment %}
-                webcam.stop();
-                {% comment %} const $body = $('body');
-                $body[0].style.setProperty('overflow-y', 'auto', '!important'); {% endcomment %}
-            });
-
-        }
-
-        $("#cancel_button").on('click', function() {
-            window.history.back()
-        })
-
-        $(document).on('click', '#change_assignment', function(){
-            $('#phan_khoa_modal').modal('show');
-        })
-
-        $('#phan_khoa_modal').on('shown.bs.modal', function() {
-            var ajax_data;
-            var id_chuoi_kham = $("#change_assignment").data('id-chuoi-kham');
-
-            var options = {
-                // datasource definition
-                data: {
-                    type: 'remote',
-                    source: { 
-                        read: {
-                            url: HOST_URL + '/api/dich_vu_kham/',
-                            method: 'GET',
-                        },
-                    },
-                    pageSize: 10,
-                    serverPaging: true,
-                    serverFiltering: true,
-                    serverSorting: false,
-                    saveState: false,
-                },
-
-                // layout definition
-                layout: {
-                    scroll: false, // enable/disable datatable scroll both horizontal and
-                    footer: false // display/hide footer
-                },
-
-                // column sorting
-                sortable: true,
-
-                pagination: true,
-
-                // columns definition
-                columns: [{
-                    field: 'id',
-                    title: '#',
-                    sortable: false,
-                    width: 20,
-                    selector: {
-                        class: 'dvkt_checkbox',
-                    },
-                    textAlign: 'center',
-                }, {
-                    field: 'ten_dvkt',
-                    title: 'Tên Dịch Vụ',
-                    template: function(row) {
-                        return row.ten_dvkt
-                    }
-                }, {
-                    field: 'quyet_dinh',
-                    title: 'Quyết Định',
-                }, {
-                    field: 'cong_bo',
-                    title: 'Công Bố',
-                }, {
-                    field: 'bac_si_phu_trach.ho_ten',
-                    title: 'Bác Sĩ Phụ Trách',
-                    
-                }, {
-                    field: 'phong_chuc_nang.ten_phong_chuc_nang',
-                    title: 'Phòng Chức Năng',
-                    textAlign: 'center',
-                    autoHide: false
-                }, {
-                    field: 'bao hiem',
-                    title: 'Dùng Bảo Hiểm',
-                    textAlign: 'center',
-                    autoHide: false,
-                    template: function(row){
-                        if(row.bao_hiem_dich_vu == "True"){
-                            return '<span class="label font-weight-bold label-lg label-light-primary label-inline">Có áp dụng</span>'
-                        }else{
-                            return '<span class="label font-weight-bold label-lg label-light-warning label-inline">Không áp dụng</span>'
-                        }
-                    }
-                }]
-            };
-            // enable extension
-            options.extensions = {
-                // boolean or object (extension options)
-                checkbox: true,
-            };
-
-            options.search = {
-                input: $('#kt_datatable_search_query_2'),
-                key: 'search'
-            };
-            
-            var datatable = $('#kt_datatable').KTDatatable(options);
-            
-            $.ajax({
-                type: "GET",
-                url: "{% url 'danh_sach_phan_khoa_chuoi_kham' %}",
-                data: {
-                    id_chuoi_kham : $("#change_assignment").data('id-chuoi-kham'),
-                },
-                dataType: 'json',
-                success: function (response) {
-                    var response_data = response.data
-                    console.log(response_data)
-                    var tr = ''
-                    console.log(lstData)
-
-                    for (var i = 0; i < response_data.length; i++) {
-                        var checkbox
-
-                        if (response_data[i].obj.bao_hiem == true) {
-                            checkbox = `<input type="checkbox" id="checkbox_${response_data[i].obj.id}" class="big-checkbox" checked data-checked="True" data-unchecked="False">`
-                        } else {
-                            checkbox = `<input type="checkbox" id="checkbox_${response_data[i].obj.id}" class="big-checkbox" data-checked="True" data-unchecked="False">`
-                        }
-
-                        var initTr = `
-                            <tr id="tr_${response_data[i].obj.id}" class="${response_data[i].obj.id}" data-id = "${response_data[i].obj.id}" name="true" data-checked="True" data-unchecked="False">
-                                <td>
-                                    ${response_data[i].obj.ma_dvkt}
-                                </td>
-                                <td>
-                                    ${response_data[i].obj.ten_dvkt}
-                                </td>
-                                <td>
-                                    ${response_data[i].obj.phong_chuc_nang.ten_phong_chuc_nang}
-                                </td>
-                                
-                                <td>
-                                    ${checkbox}
-                                </td>
-
-                            </tr>
-                        `
-                        tr += initTr
-                        lstData.push(response_data[i])
-                        datatable.setActive(cell=String(response_data[i].obj.id))
-                    }
-                    $('#kt_datatable_3 tbody').html(tr)
-                    console.log(lstData)
-                },
-                error: function (response) {                       
-                }
-            })
-
-            datatable.on('click', 'tbody input[type="checkbox"]', function () {
-                $(this).toggleClass('selected');
-                // console.log($(this).val())
-                var objList = [];
-                
-                if($(this).is(":checked")){
-                    var trVals = $(this).closest('tr').data();
-                
-                    delete trVals['row']
-                
-                    lstData.push(trVals)
-                    console.log(trVals)
-                    console.log(lstData)
-                    $(trVals).each(function () {
-                        $('#kt_datatable_3 tbody').append(`
-                            <tr class="${trVals.obj.id}" data-id = "${trVals.obj.id}" name="true" data-checked="True" data-unchecked="False">
-                                <td>
-                                ${trVals.obj.ma_dvkt}
-                                </td>
-                                <td>
-                                ${trVals.obj.ten_dvkt}
-                                </td>
-                                <td>
-                                ${trVals.obj.phong_chuc_nang.ten_phong_chuc_nang}
-                                </td>
-                                <td>
-                                    <input type="checkbox" id="${trVals.obj.id}" class="big-checkbox" data-checked="True" data-unchecked="False">
-                                </td>
-                            </tr>
-                        `);
-                    })
-
-                } else {
-                    var trVals = $(this).closest('tr').data();
-                    
-                    delete trVals['row']
-
-                    $(`.${trVals.obj.id}`).remove();
-                    
-                    lstData = lstData.filter(function(item) {
-                        var item = item
-                        delete item['obj']['bao_hiem']
-                    
-                        return JSON.stringify(item) !== JSON.stringify(trVals);
-                    });
-
-                    console.log(lstData)
-                
-                    // replacePhanKhoaHtml(trVals)
-                    {% comment %} phanKhoaHtml = phanKhoaHtml.replace(`
-                            <tr class="${trVals.obj.id}">
-                                <td colspan="4" rowspan="1" style="border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:1px solid black; height:28px; text-align:left; vertical-align:bottom; white-space:nowrap"><span style="color:#000000; font-family:Times New Roman, serif"><span style="font-size:16px">${trVals.obj.ten_dvkt}</span></span></td>
-                                <td colspan="7" rowspan="1" style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:1px solid black; text-align:center; vertical-align:bottom; white-space:nowrap"><span style="font-size:16px"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="color:black">${trVals.obj.phong_chuc_nang.ten_phong_chuc_nang}</span></span></span></td>
-                                <td class="so-luong-dang-cho" colspan="7" rowspan="1" style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:1px solid black; text-align:center; vertical-align:bottom; white-space:nowrap"><span style="font-size:16px"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="color:black">${so_luong_dang_cho}</span></span></span></td>
-                            </tr>
-                            `, "") {% endcomment %}
-
-                }
-            });
-
-            $('#kt_datatable_3').on('click', 'tbody input[type="checkbox"]', function () {
-                if($(this).is(":checked")){
-                    lstCheckbox = {};
-                    getCheckbox();
-                    console.log(lstCheckbox);
-                } else {
-                    lstCheckbox = {}; 
-                    getCheckbox();
-                    console.log(lstCheckbox);
-                }
-            })
-
-            function postData(id_chuoi_kham){
-                var id_chuoi_kham = id_chuoi_kham
-                var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
-
-                function csrfSafeMethod(method) {
-                    // these HTTP methods do not require CSRF protection
-                    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-                }
-
-                $.ajaxSetup({
-                    beforeSend: function(xhr, settings) {
-                        function getCookie(name) {
-                            var cookieValue = null;
-                            if (document.cookie && document.cookie != '') {
-                                var cookies = document.cookie.split(';');
-                                for (var i = 0; i < cookies.length; i++) {
-                                    var cookie = jQuery.trim(cookies[i]);
-                                    // Does this cookie string begin with the name we want?
-                                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
-                                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                                        break;
-                                    }
-                                }
-                            }
-                            return cookieValue;
-                        }
-                        if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
-                            // Only send the token to relative URLs i.e. locally.
-                            xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
-                        }
-                    } 
-                });
-
-                $.ajax({
-                    type: "POST",
-                    url: "{% url 'thay_doi_phan_khoa' %}",
-                    data: {
-                        'data': JSON.stringify(getPostData()),
-                        'csrfmiddlewaretoken': csrftoken,
-                        'id_chuoi_kham': id_chuoi_kham,
-                    },
-                    dataType: 'json',
-                    safe: false,
-                    success: function(response) {
-                        if (response.status == 200) {
-                            toastr.success(response.message, "Thành Công")
-                            location.reload();
-                        
-                        } else if (response.status == 404) {
-                            toastr.warning(response.message, "Lỗi")
-                        }
-
-                    },
-                    error: function() {
-                        toastr.warning("Phân Khoa Không Thành Công", "Lỗi")                                                                                                                         
-                    }
-                });
-            }
-
-            function getPostData(){
-                var rowData = lstData;
-                var checkBoxObj = lstCheckbox;
-                for (const each in checkBoxObj) {
-                    for (let i = 0; i < rowData.length; i++) {
-                        if (rowData[i].obj.id == each) {
-                            rowData[i].obj.bao_hiem = checkBoxObj[each];
-                        }
-                    }
-                }
-                console.log(rowData);
-                return rowData;
-            }
-
-            function getCheckbox(){
-                
-                $('#kt_datatable_3 tbody tr').each(function() {
-
-                    var sectionId = $(this).data('id');
-                    console.log(sectionId)
-
-                    $(this).find('input.big-checkbox:checked').each(function() {
-                        console.log($(this).attr('data-checked'));
-                        lstCheckbox[sectionId] = $(this).attr('data-checked');
-                    });
-
-                    $(this).find('input.big-checkbox:not(:checked)').each(function() {
-                        lstCheckbox[sectionId] = $(this).attr('data-unchecked');
-                    });
-                });
-            }
-
-            $("#btn_submit").on('click', function() {
-                var id_chuoi_kham = $(this).data('id-chuoi-kham')
-                getCheckbox();
-                getPostData();
-                postData(id_chuoi_kham);
-            })
-        })
-
-        $("#phan_khoa_modal").on('hidden.bs.modal', function() {
-            lstData = []
-            $("#phan_khoa_modal").removeData('bs.modal')
-            $('#kt_datatable').KTDatatable('destroy')    
-        })
-
-        $('#selectMauPhieu').on('changed.bs.select', function(e, clickedIndex, newValue, oldValue) {
-            var codename = this.value
-            console.log(codename)
-            $.ajax({
-                url        : HOST_URL + '/api/chi_tiet_mau_phieu/',
-                data       : {'codename': codename},
-                success: function(response){
-                    if (response.status == 200) {
-                        var newTableHtml = response.data.noi_dung
-
-                        $("#newTableHtml").html(newTableHtml)
-
-                        fillPatientInfo("#newTableHtml")
-
-                        var html = $("#newTableHtml").html()
-
-                        $('.summernote').summernote("code", html);
-
-                    } else if (response.status == 404){
-                        toastr.warning(response.data, "Xảy Ra Lỗi")
-                    }
-                    
-                },
-                error: function(response){
-                    
-                }
-            })
-        })
-
-        return {
-            // public functions
-            init: function() {
-                _initValidate();
-                send_content();
-                initCamera();
-            }
-        };
-    }();
- 
-    jQuery(document).ready(function() {
-        KTFormControls.init();
-    });
+  // Class definition
+      var lstData = [];
+      var lstCheckbox = {};
+      var list_data_2 = [];
+
+      {% comment %}
+      var benh_nhan = {{ benh_nhan|safe }};
+      var dia_chi = {{ dia_chi|safe }};
+      var tuoi = {{ tuoi|safe }};
+      var gioi_tinh = {{ gioi_tinh|safe }};
+      var bac_si_chuyen_khoa = {{ bac_si_chuyen_khoa|safe }}
+      var bac_si_lam_sang = {{ bac_si_lam_sang|safe }}
+      var ngay_kham = {{ ngay_kham|safe }} {% endcomment %}
+
+      const data_mau_phieu = {{ data|safe }};
+
+      var KTFormControls = function () {
+          // Private functions
+          var fillPatientInfo = function(id_div) {
+              var id_div = id_div
+
+              for (const [key, value] of Object.entries(data_mau_phieu)) {
+                  $(`${id_div} table tbody td:contains(${key})`).each(function() {
+                      var thisContent = $(this).html();
+                      var formattedContent = thisContent.replace(key, value)
+                      var td = `<td>${formattedContent}</td>`
+                      $(this).replaceWith(td);
+                  });
+              }
+          }
+
+          var _initValidate = function () {
+              fillPatientInfo('#divMauPhieu')
+              var html = $("#divMauPhieu").html()
+
+              $('.summernote').summernote({
+                  toolbar: [
+                      ['style', ['style']],
+                      ['font', ['bold', 'underline', 'clear']],
+                      ['fontname', ['fontname']],
+                      ['color', ['color']],
+                      ['para', ['ul', 'ol', 'paragraph']],
+                      ['table', ['table']],
+                      ['insert', ['link', 'picture', 'video']],
+                      ['view', ['fullscreen', 'codeview', 'help']],
+                      ['misc', ['print']]
+                  ],
+                  print: {
+                      'stylesheetUrl': 'url_of_stylesheet_for_printing'
+                  },
+                  imageAttributes: {
+                      icon: '<i class="note-icon-pencil"/>',
+                      figureClass: 'figureClass',
+                      figcaptionClass: 'captionClass',
+                      captionText: 'Caption Goes Here.',
+                      manageAspectRatio: true // true = Lock the Image Width/Height, Default to true
+                  },
+                  lang: 'vi_VN',
+                  popover: {
+                      image: [
+                          ['image', ['resizeFull', 'resizeHalf', 'resizeQuarter', 'resizeNone']],
+                          ['float', ['floatLeft', 'floatRight', 'floatNone']],
+                          ['remove', ['removeMedia']],
+                          ['custom', ['imageAttributes']],
+                      ],
+                      link: [
+                          ['link', ['linkDialogShow', 'unlink']]
+                      ],
+                      table: [
+                          ['add', ['addRowDown', 'addRowUp', 'addColLeft', 'addColRight']],
+                          ['delete', ['deleteRow', 'deleteCol', 'deleteTable']],
+                      ],
+                      air: [
+                          ['color', ['color']],
+                          ['font', ['bold', 'underline', 'clear']],
+                          ['para', ['ul', 'paragraph']],
+                          ['table', ['table']],
+                          ['insert', ['link', 'picture']]
+                      ]
+                  },
+
+                  callbacks: {
+                      onImageUpload: function (files) {
+                          if (!files.length) return;
+                          var file = files[0];
+                          // create FileReader
+                          var reader = new FileReader();
+                          reader.onloadend = function () {
+                              // when loaded file, img's src set datauri
+
+                              var img = $("<img>").attr({src: reader.result, width: "250px"}); // << Add here img attributes !
+
+                              $('.summernote').summernote("insertNode", img[0]);
+                          }
+                          if (file) {
+                              // convert fileObject to datauri
+                              reader.readAsDataURL(file);
+                          }
+
+                      }
+                  }
+
+              });
+
+
+
+              $('.summernote').summernote("code", html);
+
+          }
+
+          var send_content = function() {
+
+              $(document).on('click', '#upload', function() {
+                  var formData = new FormData()
+                  var id_phan_khoa = $(this).data('id-phan-khoa')
+                  var id_chuoi_kham = $(this).data('id-chuoi-kham')
+                  var ma_ket_qua = $('#ma_ket_qua').val()
+                  {% comment %} var mo_ta = $('#mo_ta').val() {% endcomment %}
+                  var content = $(".summernote").summernote("code")
+
+                  formData.append('id_phan_khoa', id_phan_khoa)
+                  formData.append('id_chuoi_kham', id_chuoi_kham)
+                  formData.append('noi_dung', content)
+                  {% comment %} formData.append('mo_ta', mo_ta) {% endcomment %}
+                  formData.append('ma_ket_qua', ma_ket_qua)
+                  formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
+
+                  $.ajax({
+                      type: "POST",
+                      url: "{% url 'store_ket_qua_chuyen_khoa_html' %}",
+                      data: formData,
+                      cache: false,
+                      processData: false,
+                      contentType: false,
+                      success: function(response){
+                          if (response.status == 200) {
+                              var id_phong_chuc_nang = $("#upload-form").find("#upload").data('id-phong-chuc-nang')
+                              toastr.success(response.message, "Thành Công")
+                              setTimeout(function () {
+                                  window.location.href = '/phong_chuyen_khoa/' + id_phong_chuc_nang; //redirect về danh sách chờ lâm sàng
+                              }, 1500)
+
+                          } else if (response.status == 404) {
+                              toastr.warning(response.message, "Thất Bại")
+                          }
+                      },
+                      error: function(response){
+                          toastr.warning("Xảy ra lỗi khi gửi dữ liệu, vui lòng kiểm tra lại", "Thất Bại")
+                      }
+                  })
+              })
+          }
+
+          var initCamera = function() {
+              $('#openCamera').click(function(){
+                  $('#CameraModal').modal('show');
+                  webcam.start()
+                      .then(result =>{
+                          webcam.flip();
+                          cameraStarted();
+                          console.log("webcam started");
+                      })
+                      .catch(err => {
+                          displayError();
+                      });
+              });
+
+              var benh_nhan = $('#openCamera').attr('data-name');
+
+              const webcamElement = document.getElementById('webcam');
+
+              const canvasElement = document.getElementById('canvas');
+
+              const snapSoundElement = document.getElementById('snapSound');
+
+              const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
+
+              function cameraStarted(){
+                  $("#errorMsg").addClass("d-none");
+                  $('.flash').hide();
+                  $("#webcam-caption").html("on");
+                  $(".webcam-container").removeClass("d-none");
+                  if( webcam.webcamList.length > 1){
+                      $("#cameraFlip").removeClass('d-none');
+                  }
+                  $('body').css('overflow-y','hidden');
+              }
+
+              function displayError(){
+                  console.log("error");
+              }
+
+              function cameraStopped(){
+                  $("#errorMsg").addClass("d-none");
+                  $("#cameraFlip").addClass('d-none');
+                  $(".webcam-container").addClass("d-none");
+                  $("#webcam-caption").html("Click to Start Camera");
+                  $('.md-modal').removeClass('md-show');
+              }
+
+              $('#take-photo').click(function(){
+                  beforeTakePhoto();
+                  var picture = webcam.snap();
+                  // set fixed size for image after being taken
+                  var img = $("<img>").attr({src: picture, width: "250px"});
+                  // insert image into editor
+                  $('.summernote').summernote("insertNode", img[0]);
+
+                  {% comment %} document.querySelector('#download-photo').href = picture; {% endcomment %}
+                  afterTakePhoto();
+                  $('#CameraModal').modal('hide');
+              })
+
+              function beforeTakePhoto(){
+                  $('.flash')
+                      .show()
+                      .animate({opacity: 0.3}, 500)
+                      .fadeOut(500)
+                      .css({'opacity': 0.7});
+                  $('#cameraControls').addClass('d-none');
+              }
+
+              function afterTakePhoto(){
+                  webcam.stop();
+                  $('#canvas').removeClass('d-none');
+                  $('#take-photo').addClass('d-none');
+                  $('#exit-app').removeClass('d-none');
+                  {% comment %} $('#download-photo').removeClass('d-none');
+                  $('#download-photo').addClass('btn btn-success font-weight-bold'); {% endcomment %}
+                  $('#resume-camera').removeClass('d-none');
+                  $('#resume-camera').addClass('btn btn-primary font-weight-bold');
+                  $('#cameraControls').removeClass('d-none');
+                  $('#webcam').addClass('d-none');
+              }
+
+              function removeCapture(){
+                  $('#webcam').removeClass('d-none');
+                  $('#canvas').addClass('d-none');
+                  $('#cameraControls').removeClass('d-none');
+                  $('#take-photo').removeClass('d-none');
+                  $('#exit-app').addClass('d-none');
+                  $('#download-photo').addClass('d-none');
+                  $('#resume-camera').addClass('d-none');
+              }
+
+              $("#resume-camera").click(function () {
+                  webcam.stream()
+                      .then(facingMode =>{
+                          removeCapture();
+                      });
+              });
+
+              $("#CameraModal").on('hide.bs.modal',function () {
+                  {% comment %} removeCapture();
+                  cameraStopped(); {% endcomment %}
+                  webcam.stop();
+                  {% comment %} const $body = $('body');
+                  $body[0].style.setProperty('overflow-y', 'auto', '!important'); {% endcomment %}
+              });
+
+          }
+
+          $("#cancel_button").on('click', function() {
+              window.history.back()
+          })
+
+          $(document).on('click', '#change_assignment', function(){
+              $('#phan_khoa_modal').modal('show');
+          })
+
+          $('#phan_khoa_modal').on('shown.bs.modal', function() {
+              var ajax_data;
+              var id_chuoi_kham = $("#change_assignment").data('id-chuoi-kham');
+
+              var options = {
+                  // datasource definition
+                  data: {
+                      type: 'remote',
+                      source: {
+                          read: {
+                              url: HOST_URL + '/api/dich_vu_kham/',
+                              method: 'GET',
+                          },
+                      },
+                      pageSize: 5,
+                      serverPaging: true,
+                      serverFiltering: true,
+                      serverSorting: false,
+                      saveState: false,
+                  },
+
+                  // layout definition
+                  layout: {
+                      scroll: false, // enable/disable datatable scroll both horizontal and
+                      footer: false // display/hide footer
+                  },
+
+                  // column sorting
+                  sortable: true,
+
+                  pagination: true,
+
+                  // columns definition
+                  columns: [{
+                      field: 'id',
+                      title: '#',
+                      sortable: false,
+                      width: 20,
+                      selector: {
+                          class: 'dvkt_checkbox',
+                      },
+                      textAlign: 'center',
+                  }, {
+                      field: 'ten_dvkt',
+                      title: 'Tên Dịch Vụ',
+                      template: function(row) {
+                          return row.ten_dvkt
+                      }
+                  }, {
+                      field: 'quyet_dinh',
+                      title: 'Quyết Định',
+                  }, {
+                      field: 'cong_bo',
+                      title: 'Công Bố',
+                  }, {
+                      field: 'bac_si_phu_trach.ho_ten',
+                      title: 'Bác Sĩ Phụ Trách',
+
+                  }, {
+                      field: 'phong_chuc_nang.ten_phong_chuc_nang',
+                      title: 'Phòng Chức Năng',
+                      textAlign: 'center',
+                      autoHide: false
+                  }, {
+                      field: 'bao hiem',
+                      title: 'Dùng Bảo Hiểm',
+                      textAlign: 'center',
+                      autoHide: false,
+                      template: function(row){
+                          if(row.bao_hiem_dich_vu == "True"){
+                              return '<span class="label font-weight-bold label-lg label-light-primary label-inline">Có áp dụng</span>'
+                          }else{
+                              return '<span class="label font-weight-bold label-lg label-light-warning label-inline">Không áp dụng</span>'
+                          }
+                      }
+                  }]
+              };
+              // enable extension
+              options.extensions = {
+                  // boolean or object (extension options)
+                  checkbox: true,
+              };
+
+              options.search = {
+                  input: $('#kt_datatable_search_query_2'),
+                  key: 'search'
+              };
+
+              var datatable = $('#kt_datatable').KTDatatable(options);
+
+              $.ajax({
+                  type: "GET",
+                  url: "{% url 'danh_sach_phan_khoa_chuoi_kham' %}",
+                  data: {
+                      id_chuoi_kham : $("#change_assignment").data('id-chuoi-kham'),
+                  },
+                  dataType: 'json',
+                  success: function (response) {
+                      var response_data = response.data
+                      console.log(response_data)
+                      var tr = ''
+                      console.log(lstData)
+
+                      for (var i = 0; i < response_data.length; i++) {
+                          var checkbox
+
+                          if (response_data[i].obj.bao_hiem == true) {
+                              checkbox = `<input type="checkbox" id="checkbox_${response_data[i].obj.id}" class="big-checkbox" checked data-checked="True" data-unchecked="False">`
+                          } else {
+                              checkbox = `<input type="checkbox" id="checkbox_${response_data[i].obj.id}" class="big-checkbox" data-checked="True" data-unchecked="False">`
+                          }
+
+                          var initTr = `
+                              <tr id="tr_${response_data[i].obj.id}" class="${response_data[i].obj.id}" data-id = "${response_data[i].obj.id}" name="true" data-checked="True" data-unchecked="False">
+                                  <td>
+                                      ${response_data[i].obj.ma_dvkt}
+                                  </td>
+                                  <td>
+                                      ${response_data[i].obj.ten_dvkt}
+                                  </td>
+                                  <td>
+                                      ${response_data[i].obj.phong_chuc_nang.ten_phong_chuc_nang}
+                                  </td>
+
+                                  <td>
+                                      ${checkbox}
+                                  </td>
+
+                              </tr>
+                          `
+                          tr += initTr
+                          lstData.push(response_data[i])
+                          datatable.setActive(cell=String(response_data[i].obj.id))
+                      }
+                      $('#kt_datatable_3 tbody').html(tr)
+                      console.log(lstData)
+                  },
+                  error: function (response) {
+                  }
+              })
+
+              datatable.on('click', 'tbody input[type="checkbox"]', function () {
+                  $(this).toggleClass('selected');
+                  // console.log($(this).val())
+                  var objList = [];
+
+                  if($(this).is(":checked")){
+                      var trVals = $(this).closest('tr').data();
+
+                      delete trVals['row']
+
+                      lstData.push(trVals)
+                      console.log(trVals)
+                      console.log(lstData)
+                      $(trVals).each(function () {
+                          $('#kt_datatable_3 tbody').append(`
+                              <tr class="${trVals.obj.id}" data-id = "${trVals.obj.id}" name="true" data-checked="True" data-unchecked="False">
+                                  <td>
+                                  ${trVals.obj.ma_dvkt}
+                                  </td>
+                                  <td>
+                                  ${trVals.obj.ten_dvkt}
+                                  </td>
+                                  <td>
+                                  ${trVals.obj.phong_chuc_nang.ten_phong_chuc_nang}
+                                  </td>
+                                  <td>
+                                      <input type="checkbox" id="${trVals.obj.id}" class="big-checkbox" data-checked="True" data-unchecked="False">
+                                  </td>
+                              </tr>
+                          `);
+                      })
+
+                  } else {
+                      var trVals = $(this).closest('tr').data();
+
+                      delete trVals['row']
+
+                      $(`.${trVals.obj.id}`).remove();
+
+                      lstData = lstData.filter(function(item) {
+                          var item = item
+                          delete item['obj']['bao_hiem']
+
+                          return JSON.stringify(item) !== JSON.stringify(trVals);
+                      });
+
+                      console.log(lstData)
+
+                      // replacePhanKhoaHtml(trVals)
+                      {% comment %} phanKhoaHtml = phanKhoaHtml.replace(`
+                              <tr class="${trVals.obj.id}">
+                                  <td colspan="4" rowspan="1" style="border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:1px solid black; height:28px; text-align:left; vertical-align:bottom; white-space:nowrap"><span style="color:#000000; font-family:Times New Roman, serif"><span style="font-size:16px">${trVals.obj.ten_dvkt}</span></span></td>
+                                  <td colspan="7" rowspan="1" style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:1px solid black; text-align:center; vertical-align:bottom; white-space:nowrap"><span style="font-size:16px"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="color:black">${trVals.obj.phong_chuc_nang.ten_phong_chuc_nang}</span></span></span></td>
+                                  <td class="so-luong-dang-cho" colspan="7" rowspan="1" style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:1px solid black; text-align:center; vertical-align:bottom; white-space:nowrap"><span style="font-size:16px"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="color:black">${so_luong_dang_cho}</span></span></span></td>
+                              </tr>
+                              `, "") {% endcomment %}
+
+                  }
+              });
+
+              $('#kt_datatable_3').on('click', 'tbody input[type="checkbox"]', function () {
+                  if($(this).is(":checked")){
+                      lstCheckbox = {};
+                      getCheckbox();
+                      console.log(lstCheckbox);
+                  } else {
+                      lstCheckbox = {};
+                      getCheckbox();
+                      console.log(lstCheckbox);
+                  }
+              })
+
+              function postData(id_chuoi_kham){
+                  var id_chuoi_kham = id_chuoi_kham
+                  var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+
+                  function csrfSafeMethod(method) {
+                      // these HTTP methods do not require CSRF protection
+                      return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+                  }
+
+                  $.ajaxSetup({
+                      beforeSend: function(xhr, settings) {
+                          function getCookie(name) {
+                              var cookieValue = null;
+                              if (document.cookie && document.cookie != '') {
+                                  var cookies = document.cookie.split(';');
+                                  for (var i = 0; i < cookies.length; i++) {
+                                      var cookie = jQuery.trim(cookies[i]);
+                                      // Does this cookie string begin with the name we want?
+                                      if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                                          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                                          break;
+                                      }
+                                  }
+                              }
+                              return cookieValue;
+                          }
+                          if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+                              // Only send the token to relative URLs i.e. locally.
+                              xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+                          }
+                      }
+                  });
+
+                  $.ajax({
+                      type: "POST",
+                      url: "{% url 'thay_doi_phan_khoa' %}",
+                      data: {
+                          'data': JSON.stringify(getPostData()),
+                          'csrfmiddlewaretoken': csrftoken,
+                          'id_chuoi_kham': id_chuoi_kham,
+                      },
+                      dataType: 'json',
+                      safe: false,
+                      success: function(response) {
+                          if (response.status == 200) {
+                              toastr.success(response.message, "Thành Công")
+                              location.reload();
+
+                          } else if (response.status == 404) {
+                              toastr.warning(response.message, "Lỗi")
+                          }
+
+                      },
+                      error: function() {
+                          toastr.warning("Phân Khoa Không Thành Công", "Lỗi")
+                      }
+                  });
+              }
+
+              function getPostData(){
+                  var rowData = lstData;
+                  var checkBoxObj = lstCheckbox;
+                  for (const each in checkBoxObj) {
+                      for (let i = 0; i < rowData.length; i++) {
+                          if (rowData[i].obj.id == each) {
+                              rowData[i].obj.bao_hiem = checkBoxObj[each];
+                          }
+                      }
+                  }
+                  console.log(rowData);
+                  return rowData;
+              }
+
+              function getCheckbox(){
+
+                  $('#kt_datatable_3 tbody tr').each(function() {
+
+                      var sectionId = $(this).data('id');
+                      console.log(sectionId)
+
+                      $(this).find('input.big-checkbox:checked').each(function() {
+                          console.log($(this).attr('data-checked'));
+                          lstCheckbox[sectionId] = $(this).attr('data-checked');
+                      });
+
+                      $(this).find('input.big-checkbox:not(:checked)').each(function() {
+                          lstCheckbox[sectionId] = $(this).attr('data-unchecked');
+                      });
+                  });
+              }
+
+              $("#btn_submit").on('click', function() {
+                  var id_chuoi_kham = $(this).data('id-chuoi-kham')
+                  getCheckbox();
+                  getPostData();
+                  postData(id_chuoi_kham);
+              })
+          })
+
+          $("#phan_khoa_modal").on('hidden.bs.modal', function() {
+              lstData = []
+              $("#phan_khoa_modal").removeData('bs.modal')
+              $('#kt_datatable').KTDatatable('destroy')
+          })
+
+          $('#selectMauPhieu').on('changed.bs.select', function(e, clickedIndex, newValue, oldValue) {
+              var codename = this.value
+              console.log(codename)
+              $.ajax({
+                  url        : HOST_URL + '/api/chi_tiet_mau_phieu/',
+                  data       : {'codename': codename},
+                  success: function(response){
+                      if (response.status == 200) {
+                          var newTableHtml = response.data.noi_dung
+
+                          $("#newTableHtml").html(newTableHtml)
+
+                          fillPatientInfo("#newTableHtml")
+
+                          var html = $("#newTableHtml").html()
+
+                          $('.summernote').summernote("code", html);
+
+                      } else if (response.status == 404){
+                          toastr.warning(response.data, "Xảy Ra Lỗi")
+                      }
+
+                  },
+                  error: function(response){
+
+                  }
+              })
+          })
+
+          return {
+              // public functions
+              init: function() {
+                  _initValidate();
+                  send_content();
+                  initCamera();
+              }
+          };
+      }();
+
+      jQuery(document).ready(function() {
+          KTFormControls.init();
+      });
 </script>
 
 {% endblock scripts %}
