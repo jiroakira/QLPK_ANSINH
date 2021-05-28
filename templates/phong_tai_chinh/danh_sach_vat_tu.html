@@ -202,8 +202,7 @@
                           Tùy chọn:
                         </li>
 
-                        {% if perms.medicine.can_add_supplies_using_excel_file
-                        %}
+                        {% if perms.medicine.can_add_supplies_using_excel_file %}
                         <li class="navi-item">
                           <a
                             href="{% url 'them_vat_tu_excel' %}"
@@ -215,8 +214,8 @@
                             <span class="navi-text">Thêm Vật Tư Excel</span>
                           </a>
                         </li>
-                        {% endif %} {% if
-                        perms.medicine.can_export_medical_supplies_list %}
+                        {% endif %} 
+                        {% if perms.medicine.can_export_medical_supplies_list %}
                         <li class="navi-item">
                           <a
                             href="javascript:;"
