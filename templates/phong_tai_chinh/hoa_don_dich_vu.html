@@ -86,14 +86,6 @@
             {% else %}
             <button
               type="button"
-              class="btn btn-light-primary font-weight-bold float-right mr-3"
-              data-id-chuoi-kham="{{ id_chuoi_kham }}"
-              id="btn_finish"
-            >
-              Hoàn Thành
-            </button>
-            <button
-              type="button"
               class="btn btn-primary font-weight-bold float-right"
               data-tong-tien="{{data_tong_tien}}"
               data-ma-hoa-don="{{ma_hoa_don}}"
@@ -101,6 +93,16 @@
             >
               Thanh Toán
             </button>
+
+            <button
+              type="button"
+              class="btn btn-light-warning font-weight-bold float-right mr-3"
+              data-id-chuoi-kham="{{ id_chuoi_kham }}"
+              id="btn_finish"
+            >
+              Hoàn Thành
+            </button>
+            
             <button
               type="button"
               class="btn btn-light-primary font-weight-bold float-right mr-3"
@@ -709,11 +711,12 @@
 
       Swal.fire({
           title: "Hoàn Thành Khám Cho Bệnh Nhân ",
-          text: "Bạn có chắc chắn muốn hoàn thành chuỗi khám không?",
-          icon: "warning",
+          text: "Sau khi hoàn thành thì hóa đơn sẽ có doanh thu bằng 0, bạn có chắc chắn hoàn thành khám cho bệnh nhân?",
+          icon: "error",
           cancelButtonText: "Hủy",
           confirmButtonText: "Xác Nhận",
           showCancelButton: true,
+          dangerMode: true,
       }).then(function(result) {
           if (result.value) {
               $.ajax({

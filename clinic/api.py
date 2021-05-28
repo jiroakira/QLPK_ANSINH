@@ -1528,7 +1528,7 @@ class DanhSachDoanhThuTheoThoiGian(APIView):
             if range_start == range_end:
                 end = end + timedelta(1)
 
-        tong_tien_hoa_don_chuoi_kham_theo_thoi_gian = HoaDonChuoiKham.objects.filter(thoi_gian_tao__gt=start, thoi_gian_tao__lt=end).exclude(Q(tong_tien__isnull=True) | Q(
+        tong_tien_hoa_don_chuoi_kham_theo_thoi_gian = HoaDonChuoiKham.objects.filter(thoi_gian_cap_nhat__gt=start, thoi_gian_cap_nhat__lt=end).exclude(Q(tong_tien__isnull=True) | Q(
             tong_tien=0.000)).annotate(day=TruncDay("thoi_gian_tao")).values("day").annotate(c=Count("id")).annotate(total_spent=Sum(F("tong_tien")))
 
         list_tong_tien = [x['total_spent']
