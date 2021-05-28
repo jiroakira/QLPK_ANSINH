@@ -107,8 +107,8 @@
                       <span class="navi-text">Thêm DVK thường</span>
                     </a>
                   </li>
-                  {% endif %} {% if perms.clinic.can_add_service_with_excel_file
-                  %}
+                  {% endif %} 
+                  {% if perms.clinic.can_add_service_with_excel_file %}
                   <li class="navi-item">
                     <a
                       href="{% url 'import_dich_vu_ky_thuat' %}"
