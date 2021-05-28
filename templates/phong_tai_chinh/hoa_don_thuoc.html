@@ -168,27 +168,45 @@
 
     $(document).on('click', '#button-finish', function() {
         var id_don_thuoc = $('#button-finish').data('id');
-        console.log(id_don_thuoc)
-        $.ajax({
-            type: "POST",
-            url: "{% url 'hoan_thanh_kham_don_thuoc' %}",
-            data: {
-                'id': id_don_thuoc,
-            },
-            dataType: 'json',
-            safe: false,
-            success: function (response) {
-                if (response.status == 200) {
-                    toastr.success(response.message, "Thành Công")
-                    setTimeout(function () {
-                        window.location.href = "/phong_tai_chinh/"
-                    }, 2000);
-                } else if (response.status == 404) {
-                    toastr.warning(response.message, "Xảy Ra Lỗi")
-                }
-            },
-            error: function () {
-                                                                                                                                  
+
+        Swal.fire({
+            title: "Hoàn Thành Khám Cho Bệnh Nhân ",
+            text: "Sau khi hoàn thành thì hóa đơn sẽ có doanh thu bằng 0, bạn có chắc chắn hoàn thành khám cho bệnh nhân?",
+            icon: "error",
+            cancelButtonText: "Hủy",
+            confirmButtonText: "Xác Nhận",
+            showCancelButton: true,
+            dangerMode: true,
+        }).then(function(result) {
+            if (result.value) {
+                $.ajax({
+                    type: "POST",
+                    url: "{% url 'hoan_thanh_kham_don_thuoc' %}",
+                    data: {
+                        'id': id_don_thuoc,
+                    },
+                    dataType: 'json',
+                    safe: false,
+                    success: function (response) {
+                        if (response.status == 200) {
+                            toastr.success(response.message, "Thành Công")
+                            setTimeout(function () {
+                                window.location.href = "/phong_tai_chinh/"
+                            }, 2000);
+                        } else if (response.status == 404) {
+                            toastr.warning(response.message, "Xảy Ra Lỗi")
+                        }
+                    },
+                    error: function () {
+                                                                                                                                        
+                    }
+                });
+            }else if (result.dismiss === 'cancel') {
+                Swal.fire(
+                    'Đã Hủy',
+                    'Hoàn Thành Khám Cho Chuỗi Khám Có Đơn Thuốc Không Thành Công!',
+                    'error'
+                )
             }
         });
     })
