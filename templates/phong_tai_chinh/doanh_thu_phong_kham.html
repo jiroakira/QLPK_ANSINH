@@ -122,8 +122,10 @@
                       <span class="navi-text">Doanh Thu Dịch Vụ Khám</span>
                     </a>
                   </li>
-                  {% endcomment %} {% comment %} <li class="navi-it {%
-                  endcomment %}
+                  {% endcomment %}
+                  <!--prettier-ignore-->
+                  {% comment %} <li class="navi-it 
+                  {% endcomment %}
                   <li class="navi-item">
                     <a
                       href="javascript:;"
@@ -389,15 +391,6 @@
   </div>
 </div>
 <!--end::Modal-->
-
-{% endblock content %} {% block scripts %} {% comment %}
-<script>
-  var HOST_URL =
-    "https://preview.keenthemes.com/metronic/theme/html/tools/preview";
-</script>
-{% endcomment %}
-<!--begin::Global Theme Bundle(used by all pages)-->
-
 {% endblock content %} {% block scripts %}
 <script src="{% static 'assets/js/pages/crud/forms/widgets/bootstrap-datetimepicker9cd7.js' %} "></script>
 <!--end::Global Theme Bundle-->

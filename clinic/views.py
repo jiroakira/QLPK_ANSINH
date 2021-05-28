@@ -200,7 +200,7 @@ def index(request):
             time_start = starting_day.date()
             time_end = (starting_day + delta).date()
             time_str = starting_day.strftime("%d/%m/%Y")
-            danh_sach_hoa_don = HoaDonChuoiKham.objects.filter(thoi_gian_tao__range=[
+            danh_sach_hoa_don = HoaDonChuoiKham.objects.filter(thoi_gian_cap_nhat__range=[
                                                                time_start, time_end]).exclude(Q(tong_tien__isnull=True) | Q(tong_tien=0.000))
             danh_sach_hoa_don_thuoc = HoaDonThuoc.objects.filter(thoi_gian_tao__range=[
                                                                  time_start, time_end]).exclude(Q(tong_tien__isnull=True) | Q(tong_tien=0.000))
