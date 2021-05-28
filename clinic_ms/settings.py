@@ -94,10 +94,10 @@ ROOT_URLCONF = 'clinic_ms.urls'
 
 AUTH_USER_MODEL = 'clinic.User'
 AUTHENTICATION_BACKENDS = [
-    #'django.contrib.auth.backends.ModelBackend',
+    # 'django.contrib.auth.backends.ModelBackend',
     'django.contrib.auth.backends.ModelBackend',
     'clinic.backends.CredentialsBackend',
-] #custom backend authentication for both mobile phone no and username
+]  # custom backend authentication for both mobile phone no and username
 
 
 TEMPLATES = [
@@ -131,23 +131,23 @@ CHANNEL_LAYERS = {
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': config("DB_NAME"),
-#         'USER': config("DB_USER"),
-#         'PASSWORD': config("DB_PASSWORD"),
-#         'HOST': config('DB_HOST'),
-#         'PORT': '',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': config("DB_NAME"),
+        'USER': config("DB_USER"),
+        'PASSWORD': config("DB_PASSWORD"),
+        'HOST': config('DB_HOST'),
+        'PORT': '',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation
@@ -249,7 +249,7 @@ STATICFILES_DIRS = (
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # STATIC_ROOT = '/home/niovtjvk/public_html/static'
 
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # media directory in the root directory 
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # media directory in the root directory
 # MEDIA_URL = 'media/'
 # MEDIA_ROOT = '/home/niovtjvk/ClinicMSSystem2/media/'
 
