@@ -21,6 +21,7 @@ from django.contrib.auth.models import PermissionsMixin
 import re
 import unicodedata
 from django.db.models import Count, F, Sum, Q
+from finance.models import HoaDonChuoiKham
 
 def file_url(self, filename): 
 
