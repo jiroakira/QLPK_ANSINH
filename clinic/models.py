@@ -854,13 +854,14 @@ class ChuoiKham(models.Model):
             return False
 
     def check_thanh_toan(self):
-        if self.hoa_don_dich_vu.exists():
-            if self.hoa_don_dich_vu.tong_tien is not None:
-                return True
-            else:
-                return False
-        else:
-            return False
+        flag = False
+        try:
+            hoa_don_dich_vu = self.hoa_don_dich_vu
+            if hoa_don_dich_vu.tong_tien is not None:
+                flag = True
+        except HoaDonChuoiKham.DoesNotExist:
+            flag = False
+        return flag
 
     def get_tong_tien_phan_khoa(self):
         total = 0
