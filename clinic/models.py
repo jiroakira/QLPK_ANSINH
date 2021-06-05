@@ -854,9 +854,8 @@ class ChuoiKham(models.Model):
             return False
 
     def check_thanh_toan(self):
-        hoa_don_dich_vu = self.hoa_don_dich_vu
-        if hoa_don_dich_vu is not None:
-            if hoa_don_dich_vu.tong_tien is not None:
+        if self.hoa_don_dich_vu is not None:
+            if self.hoa_don_dich_vu.tong_tien is not None:
                 return True
             else:
                 return False
