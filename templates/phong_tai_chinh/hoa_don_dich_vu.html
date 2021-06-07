@@ -82,7 +82,44 @@
             </button>
 
             {% if check_da_thanh_toan == True %}
-            <div></div>
+              {% if check_thanh_toan_them == True %}
+                <button
+                  type="button"
+                  class="btn btn-primary font-weight-bold float-right"
+                  data-tong-tien="{{data_tong_tien}}"
+                  data-ma-hoa-don="{{ma_hoa_don}}"
+                  id="btn-thanh-toan"
+                >
+                  Thanh Toán
+                </button>
+
+                {% comment %} <button
+                  type="button"
+                  class="btn btn-light-warning font-weight-bold float-right mr-3"
+                  data-id-chuoi-kham="{{ id_chuoi_kham }}"
+                  id="btn_finish"
+                >
+                  Hoàn Thành
+                </button> {% endcomment %}
+                
+                {% comment %} <button
+                  type="button"
+                  class="btn btn-light-primary font-weight-bold float-right mr-3"
+                  data-id-chuoi-kham="{{ id_chuoi_kham }}"
+                  id="btn_thay_doi"
+                >
+                  Thay Đổi
+                </button> {% endcomment %}
+                {% comment %} <button
+                  type="button"
+                  class="btn btn-light-primary font-weight-bold float-right mr-3"
+                  data-id-chuoi-kham="{{ id_chuoi_kham }}"
+                  data-thanh-tien="{{data_thanh_tien}}"
+                  id="btn_giam_gia"
+                >
+                  Giảm giá
+                </button> {% endcomment %}
+              {% endif %}
             {% else %}
             <button
               type="button"
