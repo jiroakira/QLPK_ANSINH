@@ -881,11 +881,19 @@
             template: function (row) {
               if (row.thanh_toan_sau != true) {
                 if (row.trang_thai_thanh_toan == "True") {
-                  return (
-                    '<span class="label font-weight-bold label-lg label-light-success label-inline">' +
-                    "Đã Thanh Toán" +
-                    "</span>"
-                  );
+                  if (row.thanh_toan_them == true) {
+                    return (
+                      '<span class="label font-weight-bold label-lg label-light-info label-inline">' +
+                      "Thanh Toán Thêm" +
+                      "</span>"
+                    );
+                  } else {
+                    return (
+                      '<span class="label font-weight-bold label-lg label-light-success label-inline">' +
+                      "Đã Thanh Toán" +
+                      "</span>"
+                    );
+                  }
                 } else if (row.trang_thai_thanh_toan == "False") {
                   return (
                     '<span class="label font-weight-bold label-lg label-light-warning label-inline">' +
@@ -912,21 +920,32 @@
             template: function (row) {
               if (row.thanh_toan_sau != true) {
                 if (row.trang_thai_thanh_toan == "True") {
-                  return `
-                                {% if perms.finance.can_checkout_service_receipt %}
-                                <a href="/phong_tai_chinh/hoa_don_dich_vu/${row.id}" class="btn btn-sm btn-clean mr-2" title="Edit details">
-                                    Xem Lại
-                                </a>
-                                {% endif %}
-                            `;
+                  if (row.thanh_toan_them == true) {
+                    return `
+                      {% if perms.finance.can_checkout_service_receipt %}
+                      <a href="/phong_tai_chinh/hoa_don_dich_vu/${row.id}" class="btn btn-sm btn-clean mr-2" title="Edit details">
+                          Thanh Toán Thêm
+                      </a>
+                      {% endif %}
+                    `;
+                  } else {
+                    return `
+                      {% if perms.finance.can_checkout_service_receipt %}
+                      <a href="/phong_tai_chinh/hoa_don_dich_vu/${row.id}" class="btn btn-sm btn-clean mr-2" title="Edit details">
+                          Xem Lại
+                      </a>
+                      {% endif %}
+                    `;
+                  }
+
                 } else if (row.trang_thai_thanh_toan == "False") {
                   return `
-                                {% if perms.finance.can_checkout_service_receipt %}
-                                <a href="/phong_tai_chinh/hoa_don_dich_vu/${row.id}" class="btn btn-sm btn-clean mr-2" title="Edit details">
-                                    Hóa Đơn
-                                </a>
-                                {% endif %}
-                            `;
+                      {% if perms.finance.can_checkout_service_receipt %}
+                      <a href="/phong_tai_chinh/hoa_don_dich_vu/${row.id}" class="btn btn-sm btn-clean mr-2" title="Edit details">
+                          Hóa Đơn
+                      </a>
+                      {% endif %}
+                  `;
                 }
               } else {
                 return "";

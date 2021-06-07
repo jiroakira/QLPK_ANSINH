@@ -1,4 +1,8 @@
 
+from finance.models import HoaDonChuoiKham
+from django.db.models import CharField
+from datetime import timedelta
+from django.db.models.functions import Lower
 import decimal
 import hashlib
 import datetime
@@ -23,29 +27,34 @@ import unicodedata
 from django.db.models import Count, F, Sum, Q
 from finance.models import HoaDonChuoiKham
 
-def file_url(self, filename): 
+
+def file_url(self, filename):
 
     hash_ = hashlib.md5()
-    hash_.update(str(filename).encode("utf-8") + str(datetime.datetime.now()).encode("utf-8"))
+    hash_.update(str(filename).encode("utf-8") +
+                 str(datetime.datetime.now()).encode("utf-8"))
     file_hash = hash_.hexdigest()
     filename = filename
     return "%s%s/%s" % (self.file_prepend, file_hash, filename)
 
+
 def strip_accents(text):
     try:
         text = unicode(text, 'utf-8')
-    except (TypeError, NameError): 
+    except (TypeError, NameError):
         pass
     text = unicodedata.normalize('NFD', text)
     text = text.encode('ascii', 'ignore')
     text = text.decode("utf-8")
     return str(text)
 
+
 def text_to_id(text):
     text = strip_accents(text.lower())
     text = re.sub('[ ]+', '_', text)
     text = re.sub('[^0-9a-zA-Z_-]', '', text)
     return text
+
 
 class UserManager(BaseUserManager):
     def create_user(self, ho_ten, so_dien_thoai, dia_chi, password=None):
@@ -60,14 +69,14 @@ class UserManager(BaseUserManager):
 
         user = self.model(
             so_dien_thoai=so_dien_thoai,
-            ho_ten = ho_ten,
-            dia_chi = dia_chi,
+            ho_ten=ho_ten,
+            dia_chi=dia_chi,
         )
 
         user.set_password(password)
         user.save(using=self._db)
         return user
-        
+
     def create_nguoi_dung(self, ho_ten, so_dien_thoai, gioi_tinh, dan_toc, ngay_sinh, ma_so_bao_hiem, dia_chi, password=None):
         """
         Creates and saves a User with the given email and password.
@@ -79,13 +88,13 @@ class UserManager(BaseUserManager):
             raise ValueError('Users must have their name')
 
         user = self.model(
-            so_dien_thoai  = so_dien_thoai,
-            ho_ten         = ho_ten,
-            dia_chi        = dia_chi,
-            gioi_tinh      = gioi_tinh,
-            dan_toc        = dan_toc,
-            ngay_sinh      = ngay_sinh,
-            ma_so_bao_hiem = ma_so_bao_hiem,
+            so_dien_thoai=so_dien_thoai,
+            ho_ten=ho_ten,
+            dia_chi=dia_chi,
+            gioi_tinh=gioi_tinh,
+            dan_toc=dan_toc,
+            ngay_sinh=ngay_sinh,
+            ma_so_bao_hiem=ma_so_bao_hiem,
         )
 
         user.set_password(password)
@@ -100,7 +109,7 @@ class UserManager(BaseUserManager):
             username=username,
             so_dien_thoai=so_dien_thoai,
             ho_ten=ho_ten,
-            cmnd_cccd = cmnd_cccd,
+            cmnd_cccd=cmnd_cccd,
             gioi_tinh=gioi_tinh,
         )
         user.set_password(password)
@@ -116,9 +125,9 @@ class UserManager(BaseUserManager):
             so_dien_thoai=so_dien_thoai,
             password=password,
             ho_ten=ho_ten,
-            dia_chi = dia_chi,
+            dia_chi=dia_chi,
         )
-        
+
         user.staff = True
         user.admin = True
         user.superuser = True
@@ -152,6 +161,7 @@ class UserManager(BaseUserManager):
             )
         return self.none()
 
+
 class User(AbstractBaseUser, PermissionsMixin):
     file_prepend = 'user/img/'
     GENDER = (
@@ -168,36 +178,45 @@ class User(AbstractBaseUser, PermissionsMixin):
         ('6', 'Nhân Viên Phòng Thuốc'),
         ('7', 'Quản Trị Viên')
     )
-    id = models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
+    id = models.AutoField(auto_created=True, primary_key=True,
+                          serialize=False, verbose_name='ID')
     ma_benh_nhan = models.CharField(max_length=20, unique=True, null=True)
     phone_regex = RegexValidator(regex=r"(84|0[3|5|7|8|9])+([0-9]{8})\b")
-    username = models.CharField(max_length=255, unique=True, null=True, blank=True)
-    so_dien_thoai = models.CharField(max_length=10, unique=True, validators=[phone_regex])
-    ho_ten = models.CharField(max_length = 255)
+    username = models.CharField(
+        max_length=255, unique=True, null=True, blank=True)
+    so_dien_thoai = models.CharField(
+        max_length=10, unique=True, validators=[phone_regex])
+    ho_ten = models.CharField(max_length=255)
 
     email = models.EmailField(null=True, blank=True)
-    cmnd_cccd = models.CharField(max_length=13, null=True, unique = True)
+    cmnd_cccd = models.CharField(max_length=13, null=True, unique=True)
     ngay_sinh = models.DateField(null=True, blank=True)
-    gioi_tinh = models.CharField(choices=GENDER, max_length = 10, null=True, blank=True)
+    gioi_tinh = models.CharField(
+        choices=GENDER, max_length=10, null=True, blank=True)
 
     can_nang = models.PositiveIntegerField(null=True, blank=True)
 
-    anh_dai_dien = models.FileField(max_length=1000, upload_to=file_url, null=True, blank=True)
-    tinh = models.ForeignKey('Province', on_delete=models.SET_NULL, null=True, blank=True)
-    huyen = models.ForeignKey('District', on_delete=models.SET_NULL, null=True, blank=True)
-    xa = models.ForeignKey('Ward', on_delete=models.SET_NULL, null=True, blank=True)
+    anh_dai_dien = models.FileField(
+        max_length=1000, upload_to=file_url, null=True, blank=True)
+    tinh = models.ForeignKey(
+        'Province', on_delete=models.SET_NULL, null=True, blank=True)
+    huyen = models.ForeignKey(
+        'District', on_delete=models.SET_NULL, null=True, blank=True)
+    xa = models.ForeignKey(
+        'Ward', on_delete=models.SET_NULL, null=True, blank=True)
     dia_chi = models.TextField(max_length=1000, null=True, blank=True)
     dan_toc = models.CharField(max_length=40, null=True, blank=True)
-    chuc_nang = models.CharField(choices=ROLE, max_length = 1, default='1')
+    chuc_nang = models.CharField(choices=ROLE, max_length=1, default='1')
 
     active = models.BooleanField(default=True)
-    staff = models.BooleanField(default=False) # a admin user; non super-user
-    admin = models.BooleanField(default=False) # a superuser
+    staff = models.BooleanField(default=False)  # a admin user; non super-user
+    admin = models.BooleanField(default=False)  # a superuser
     superuser = models.BooleanField(default=False)
 
     # notice the absence of a "Password field", that is built in.
-    parent = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True, related_name='child')
-    
+    parent = models.ForeignKey(
+        'self', on_delete=models.SET_NULL, null=True, blank=True, related_name='child')
+
     ma_so_bao_hiem = models.CharField(max_length=25, null=True, blank=True)
     ma_dkbd = models.CharField(max_length=10, null=True, blank=True)
     ma_khuvuc = models.CharField(max_length=10, null=True, blank=True)
@@ -233,11 +252,14 @@ class User(AbstractBaseUser, PermissionsMixin):
             ('general_revenue_view', 'Xem Doanh Thu Phòng Khám'),
             ('can_view_checkout_list', 'Xem Danh Sách Thanh Toán Tài Chính'),
             ('export_insurance_data', 'Xuất Bảo Hiểm Tài Chính'),
-            ('can_export_list_of_patient_insurance_coverage', 'Xuất Danh Sách Bệnh Nhân Bảo Hiểm Chi Trả'),
+            ('can_export_list_of_patient_insurance_coverage',
+             'Xuất Danh Sách Bệnh Nhân Bảo Hiểm Chi Trả'),
             ('can_view_list_of_patient', 'Xem Danh Sách Bệnh Nhân Chờ'),
             ('can_bao_cao_thuoc', 'Báo Cáo Thuốc'),
-            ('can_export_list_import_export_general_medicines', 'Xuất Danh Sách Xuất Nhập Tồn Tổng Hợp Thuốc'),
-            ('can_export_soon_expired_list_medicines', 'Xuất Danh Sách Thuốc Sắp Hết Hạn'),
+            ('can_export_list_import_export_general_medicines',
+             'Xuất Danh Sách Xuất Nhập Tồn Tổng Hợp Thuốc'),
+            ('can_export_soon_expired_list_medicines',
+             'Xuất Danh Sách Thuốc Sắp Hết Hạn'),
             ('can_see_general_medicine_list_report', 'Xem Báo Cáo Tổng Hợp Thuốc'),
             ('can_view_general_features', "Phòng Tổng Hợp"),
         )
@@ -254,9 +276,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     USERNAME_FIELD = 'so_dien_thoai'
-    REQUIRED_FIELDS = ['ho_ten', 'dia_chi',] # Email & Password are required by default.
+    # Email & Password are required by default.
+    REQUIRED_FIELDS = ['ho_ten', 'dia_chi', ]
 
-    def __str__(self):       
+    def __str__(self):
         return f"({self.id}) {self.ho_ten}"
 
     @property
@@ -318,13 +341,13 @@ class User(AbstractBaseUser, PermissionsMixin):
             return "Không có số điện thoại"
 
     def get_gioi_tinh(self):
-        if self.gioi_tinh == '1': 
+        if self.gioi_tinh == '1':
             return "Nam"
         elif self.gioi_tinh == '2':
             return "Nữ"
-        else: 
+        else:
             return "Không xác định"
-    
+
     def get_user_role(self):
         if self.chuc_nang == '2':
             return "Lễ Tân"
@@ -338,7 +361,7 @@ class User(AbstractBaseUser, PermissionsMixin):
             return "Nhân Viên Phòng Thuốc"
         elif self.chuc_nang == '7':
             return "Quản Trị Viên"
-    
+
     @property
     def is_bac_si(self):
         if self.chuc_nang == '3' or self.chuc_nang == '4' or self.is_superuser:
@@ -353,7 +376,7 @@ class User(AbstractBaseUser, PermissionsMixin):
             mo_ta = "Nhân Viên Phòng Khám"
 
         return mo_ta
-    
+
     def is_bac_si_lam_sang(self):
         if self.chuc_nang == '3' or self.is_superuser:
             return True
@@ -362,26 +385,32 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     @staticmethod
     def get_count_in_day(queryset):
-        total_count = queryset.aggregate(Count('id'))['id__count'] if queryset else 0 
+        total_count = queryset.aggregate(
+            Count('id'))['id__count'] if queryset else 0
         return total_count
-        
+
+
 class BacSi(models.Model):
     Type = (
         ('full_time', "Full-Time"),
         ('part_time', "Part-Time"),
     )
-    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True, related_name='user_bac_si')
-    chung_chi_hanh_nghe = models.CharField(max_length=50, null=True, blank=True)
+    user = models.OneToOneField(
+        User, on_delete=models.CASCADE, null=True, blank=True, related_name='user_bac_si')
+    chung_chi_hanh_nghe = models.CharField(
+        max_length=50, null=True, blank=True)
     gioi_thieu = models.TextField(null=True, blank=True)
     chuc_danh = models.CharField(max_length=255, null=True, blank=True)
     chuyen_khoa = models.CharField(max_length=255, null=True, blank=True)
     noi_cong_tac = models.TextField(null=True, blank=True)
     kinh_nghiem = models.TextField(null=True, blank=True)
-    loai_cong_viec = models.CharField(null=True, blank=True, choices= Type, max_length=50)
+    loai_cong_viec = models.CharField(
+        null=True, blank=True, choices=Type, max_length=50)
 
     class Meta:
         verbose_name = "Bác Sĩ"
         verbose_name_plural = "Bác Sĩ"
+
 
 class TinhTrangPhongKham(models.Model):
     """ Mở rộng phần tình trạng của phòng khám, khi phòng khám muốn tạm ngưng hoạt động
@@ -400,25 +429,28 @@ class TinhTrangPhongKham(models.Model):
     class Meta:
         verbose_name = 'Tình Trạng Phòng Khám'
         verbose_name_plural = "Tình Trạng Phòng Khám"
-    
+
+
 class PhongKham(models.Model):
     """ Thông tin chi tiết của phòng khám """
     file_prepend = "logo_phong_kham/"
 
     ma_cskcb = models.CharField(max_length=10, null=True, blank=True)
 
-    ten_phong_kham = models.CharField(max_length = 255)
+    ten_phong_kham = models.CharField(max_length=255)
     dia_chi = models.TextField(null=True, blank=True)
-    so_dien_thoai = models.CharField(max_length = 12)
+    so_dien_thoai = models.CharField(max_length=12)
     email = models.EmailField(null=True, blank=True)
-    logo = models.FileField(upload_to = file_url, null=True, blank=True)
-    tinh_trang = models.ForeignKey(TinhTrangPhongKham, on_delete=models.CASCADE)
+    logo = models.FileField(upload_to=file_url, null=True, blank=True)
+    tinh_trang = models.ForeignKey(
+        TinhTrangPhongKham, on_delete=models.CASCADE)
     gia_tri_diem_tich = models.PositiveIntegerField(null=True, blank=True)
-    # NEW 
+    # NEW
     chu_khoan = models.CharField(max_length=255, null=True, blank=True)
     so_tai_khoan = models.CharField(max_length=20, null=True, blank=True)
     thong_tin_ngan_hang = models.TextField(null=True, blank=True)
     # END
+
     class Meta:
         verbose_name = "Phòng Khám"
         verbose_name_plural = "Phòng Khám"
@@ -427,15 +459,19 @@ class PhongKham(models.Model):
             ('can_change_clinic_info', "Thay đổi thông tin phòng khám"),
         )
 
+
 class PhongChucNang(models.Model):
     """ Mỗi dịch vụ khám sẽ có một phòng chức năng riêng biệt, là nơi bệnh nhân sau khi được phân dịch vụ khám sẽ đến trong suốt chuỗi khám của bệnh nhân """
     ten_phong_chuc_nang = models.CharField(max_length=255)
     slug = models.CharField(max_length=255, null=True, blank=True)
-    bac_si_phu_trach = models.ForeignKey(User, null=True, blank=True, on_delete=models.DO_NOTHING, related_name="bac_si_chuyen_khoa")
+    bac_si_phu_trach = models.ForeignKey(
+        User, null=True, blank=True, on_delete=models.DO_NOTHING, related_name="bac_si_chuyen_khoa")
     # dich_vu_kham = models.ForeignKey(DichVuKham, null=True, blank=True, on_delete=models.DO_NOTHING, related_name="phong_chuc_nang_theo_dich_vu")
-    thoi_gian_tao = models.DateTimeField(editable=False, null=True, blank=True, auto_now_add=True)
-    thoi_gian_cap_nhat = models.DateTimeField(null=True, blank=True, auto_now=True)
-    
+    thoi_gian_tao = models.DateTimeField(
+        editable=False, null=True, blank=True, auto_now_add=True)
+    thoi_gian_cap_nhat = models.DateTimeField(
+        null=True, blank=True, auto_now=True)
+
     class Meta:
         verbose_name = "Phòng Chức Năng"
         verbose_name_plural = "Phòng Chức Năng"
@@ -448,7 +484,7 @@ class PhongChucNang(models.Model):
 
     def __str__(self):
         return self.ten_phong_chuc_nang
-    
+
     def danh_sach_benh_nhan_theo_dich_vu_kham(self):
         # return self.dich_vu_kham.dich_vu_kham.all()
         return self.ten_phong_chuc_nang
@@ -466,28 +502,34 @@ class PhongChucNang(models.Model):
 
     # TODO review table PhongChucNang again
 
+
 class DichVuKham(models.Model):
     """ Danh sách tất cả các dịch vụ khám trong phòng khám """
-    khoa = models.ForeignKey("DanhMucKhoa", on_delete=models.SET_NULL, null=True, blank=True)
+    khoa = models.ForeignKey(
+        "DanhMucKhoa", on_delete=models.SET_NULL, null=True, blank=True)
 
     ma_dvkt = models.CharField(max_length=50, null=True, blank=True)
     stt = models.CharField(max_length=10, null=True, blank=True, unique=True)
     ten_dvkt = models.CharField(max_length=255, null=True, blank=True)
     ma_gia = models.CharField(max_length=50, null=True, blank=True)
-    don_gia = models.DecimalField(null=True, blank=True, max_digits=10, decimal_places=0)
-    don_gia_bhyt = models.DecimalField(null=True, blank=True, max_digits=10, decimal_places=0)
+    don_gia = models.DecimalField(
+        null=True, blank=True, max_digits=10, decimal_places=0)
+    don_gia_bhyt = models.DecimalField(
+        null=True, blank=True, max_digits=10, decimal_places=0)
     quyet_dinh = models.CharField(max_length=10, null=True, blank=True)
     cong_bo = models.CharField(max_length=10, null=True, blank=True)
     ma_cosokcb = models.CharField(max_length=20, null=True, blank=True)
     ten_dich_vu = models.CharField(max_length=255, null=True, blank=True)
     bao_hiem = models.BooleanField(default=False)
 
-    nhom_chi_phi = models.ForeignKey('NhomChiPhi', on_delete=models.SET_NULL, null=True, blank=True)
+    nhom_chi_phi = models.ForeignKey(
+        'NhomChiPhi', on_delete=models.SET_NULL, null=True, blank=True)
     tyle_tt = models.IntegerField(null=True, blank=True)
     # bac_si_phu_trach = models.ForeignKey(User, on_delete=models.SET_NULL, related_name="bac_si_phu_trach", null=True, blank=True)
     # khoa_kham = models.ForeignKey(KhoaKham, on_delete=models.SET_NULL, related_name="khoa_kham", null=True, blank=True)
-    phong_chuc_nang = models.ForeignKey(PhongChucNang, on_delete=models.SET_NULL, null=True, blank=True, related_name="dich_vu_kham_theo_phong")
-    
+    phong_chuc_nang = models.ForeignKey(
+        PhongChucNang, on_delete=models.SET_NULL, null=True, blank=True, related_name="dich_vu_kham_theo_phong")
+
     chi_so = models.BooleanField(default=False)
     html = models.BooleanField(default=False)
 
@@ -501,7 +543,8 @@ class DichVuKham(models.Model):
         verbose_name_plural = "Dịch Vụ Khám"
         permissions = (
             ('can_add_service', 'Thêm dịch vụ kỹ thuật'),
-            ('can_add_service_with_excel_file', 'Thêm dịch vụ kỹ thuật bằng Excel File'),
+            ('can_add_service_with_excel_file',
+             'Thêm dịch vụ kỹ thuật bằng Excel File'),
             ('can_change_service', 'Thay đổi dịch vụ kỹ thuật'),
             ('can_view_service', 'Xem dịch vụ kỹ thuật'),
             ('can_delete_service', 'Xóa dịch vụ kỹ thuật'),
@@ -522,7 +565,7 @@ class DichVuKham(models.Model):
             return True
         else:
             return False
-    
+
     def get_don_gia(self):
         if self.don_gia is not None:
             don_gia = "{:,}".format(int(self.don_gia))
@@ -542,11 +585,13 @@ class DichVuKham(models.Model):
             return self.phong_chuc_nang.ten_phong_chuc_nang
         else:
             return '-'
-    
+
+
 class GiaDichVu(models.Model):
     """ Bảng giá sẽ lưu trữ tất cả giá của dịch vụ khám và cả thuốc """
-    id_dich_vu_kham = models.OneToOneField(DichVuKham, null=True, blank=True, on_delete=models.PROTECT, related_name="gia_dich_vu_kham")
-    gia = models.DecimalField(max_digits=10, decimal_places=3)  
+    id_dich_vu_kham = models.OneToOneField(
+        DichVuKham, null=True, blank=True, on_delete=models.PROTECT, related_name="gia_dich_vu_kham")
+    gia = models.DecimalField(max_digits=10, decimal_places=3)
     # id_thuoc = models.ForeignKey(Thuoc, on_delete=models.PROTECT, null=True, blank=True, related_name="gia_thuoc")
     thoi_gian_tao = models.DateTimeField(null=True, blank=True, editable=False)
     thoi_gian_chinh_sua = models.DateTimeField(null=True, blank=True)
@@ -557,12 +602,14 @@ class GiaDichVu(models.Model):
         self.thoi_gian_chinh_sua = timezone.now()
         return super(GiaDichVu, self).save(*agrs, **kwargs)
 
+
 class BaoHiem(models.Model):
     """ Bảng Bảo Hiểm sẽ lưu trữ tất cả các loại bảo hiểm áp dụng trong phòng khám """
     ten_bao_hiem = models.CharField(max_length=255)
     # dạng bảo hiểm ở đây là số % được bảo hiểm chi trả
     dang_bao_hiem = models.SmallIntegerField(null=True, blank=True)
-    id_dich_vu_kham = models.OneToOneField(DichVuKham, null=True, blank=True, on_delete=models.PROTECT, related_name="bao_hiem_dich_vu_kham")
+    id_dich_vu_kham = models.OneToOneField(
+        DichVuKham, null=True, blank=True, on_delete=models.PROTECT, related_name="bao_hiem_dich_vu_kham")
     # id_thuoc = models.ForeignKey(Thuoc, on_delete=models.PROTECT, null=True, blank=True, related_name="bao_hiem_thuoc")
     thoi_gian_tao = models.DateTimeField()
     thoi_gian_chinh_sua = models.DateTimeField()
@@ -573,11 +620,15 @@ class BaoHiem(models.Model):
         self.thoi_gian_chinh_sua = timezone.now()
         return super(BaoHiem, self).save(*agrs, **kwargs)
 
+
 class ProfilePhongChucNang(models.Model):
-    phong_chuc_nang = models.OneToOneField(PhongChucNang, on_delete=models.CASCADE, related_name="profile_phong_chuc_nang")
+    phong_chuc_nang = models.OneToOneField(
+        PhongChucNang, on_delete=models.CASCADE, related_name="profile_phong_chuc_nang")
     so_luong_cho = models.PositiveIntegerField(null=True, blank=True)
-    thoi_gian_trung_binh = models.PositiveIntegerField(help_text="Đơn vị(phút)", null=True, blank=True)
+    thoi_gian_trung_binh = models.PositiveIntegerField(
+        help_text="Đơn vị(phút)", null=True, blank=True)
     status = models.BooleanField(default=True)
+
 
 @receiver(post_save, sender=PhongChucNang)
 def create_or_update_func_room_profile(sender, instance, created, **kwargs):
@@ -585,8 +636,10 @@ def create_or_update_func_room_profile(sender, instance, created, **kwargs):
         ProfilePhongChucNang.objects.create(phong_chuc_nang=instance)
     instance.profile_phong_chuc_nang.save()
 
+
 def get_sentinel_user():
     return User.objects.get_or_create(ho_ten='deleted')[0]
+
 
 class TrangThaiLichHen(models.Model):
     ten_trang_thai = models.CharField(max_length=255)
@@ -596,12 +649,12 @@ class TrangThaiLichHen(models.Model):
         verbose_name_plural = "Trạng Thái Lịch Hẹn"
 
     def __str__(self):
-        return f"({self.id})" + self.ten_trang_thai 
+        return f"({self.id})" + self.ten_trang_thai
+
 
 def get_default_trang_thai_lich_hen():
     return TrangThaiLichHen.objects.get_or_create(ten_trang_thai="Đã đặt trước")[0]
 
-from datetime import timedelta
 
 today = timezone.localtime(timezone.now())
 tomorrow = today + timedelta(1)
@@ -611,6 +664,8 @@ today_end = tomorrow.replace(hour=0, minute=0, second=0)
 # class LichHenKhamManager(models.Manager):
 #     def lich_hen_hom_nay(self):
 #         return self.filter(thoi_gian_bat_dau__lte = today_end, thoi_gian_ket_thuc__gte = today_start)
+
+
 class LichHenKham(models.Model):
 
     LYDO_VVIEN = (
@@ -627,21 +682,28 @@ class LichHenKham(models.Model):
     )
 
     ma_lich_hen = models.CharField(max_length=15, null=True, blank=True)
-    benh_nhan = models.ForeignKey(User, on_delete=models.CASCADE, related_name="benh_nhan_hen_kham")
-    nguoi_phu_trach = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name="nguoi_phu_trach")
+    benh_nhan = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="benh_nhan_hen_kham")
+    nguoi_phu_trach = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, blank=True, related_name="nguoi_phu_trach")
 
     thoi_gian_bat_dau = models.DateTimeField()
     thoi_gian_ket_thuc = models.DateTimeField(null=True, blank=True)
     ly_do = models.TextField(null=True, blank=True)
     dia_diem = models.CharField(max_length=255, null=True, blank=True)
-    loai_dich_vu = models.CharField(choices=LOAI_DICH_VU, null=True, blank=True, max_length=25)
-    trang_thai = models.ForeignKey(TrangThaiLichHen, on_delete=models.CASCADE, null=True, blank=True)
+    loai_dich_vu = models.CharField(
+        choices=LOAI_DICH_VU, null=True, blank=True, max_length=25)
+    trang_thai = models.ForeignKey(
+        TrangThaiLichHen, on_delete=models.CASCADE, null=True, blank=True)
 
-    ly_do_vvien = models.CharField(max_length=5, choices=LYDO_VVIEN, null=True, blank=True)
-    thanh_toan_sau = models.BooleanField(default = False)
+    ly_do_vvien = models.CharField(
+        max_length=5, choices=LYDO_VVIEN, null=True, blank=True)
+    thanh_toan_sau = models.BooleanField(default=False)
 
-    thoi_gian_tao = models.DateTimeField(editable=False, null=True, blank=True, auto_now_add=True)
-    thoi_gian_chinh_sua = models.DateTimeField(null=True, blank=True, auto_now=True)
+    thoi_gian_tao = models.DateTimeField(
+        editable=False, null=True, blank=True, auto_now_add=True)
+    thoi_gian_chinh_sua = models.DateTimeField(
+        null=True, blank=True, auto_now=True)
 
     class Meta:
         verbose_name = "Lịch Hẹn Khám"
@@ -663,7 +725,7 @@ class LichHenKham(models.Model):
             ma_lich_hen = "LH" + date_time
             self.ma_lich_hen = ma_lich_hen
         return super(LichHenKham, self).save(*args, **kwargs)
-    
+
     def check_thanh_toan(self):
         hoa_don_lam_sang = self.hoa_don_lam_sang.all().last()
         if hoa_don_lam_sang is not None:
@@ -685,7 +747,8 @@ class LichHenKham(models.Model):
         if self.loai_dich_vu == 'kham_theo_yeu_cau':
             chuoi_kham = self.danh_sach_chuoi_kham.all().last()
             if chuoi_kham is not None:
-                trang_thai_chuoi_kham = TrangThaiChuoiKham.objects.get(trang_thai_chuoi_kham='Hoàn Thành')
+                trang_thai_chuoi_kham = TrangThaiChuoiKham.objects.get(
+                    trang_thai_chuoi_kham='Hoàn Thành')
                 if chuoi_kham.trang_thai == trang_thai_chuoi_kham:
                     hoan_thanh_kham = True
 
@@ -693,19 +756,34 @@ class LichHenKham(models.Model):
 
     @staticmethod
     def get_count_in_day(queryset):
-        total_count = queryset.values('benh_nhan__id').distinct().count() if queryset else 0
+        total_count = queryset.values(
+            'benh_nhan__id').distinct().count() if queryset else 0
         return total_count
 
+    def get_id_chuoi_kham(self):
+        if self.danh_sach_chuoi_kham.exists():
+            chuoi_kham = self.danh_sach_chuoi_kham.all().last()
+            id_chuoi_kham = chuoi_kham.id
+            return id_chuoi_kham
+        else:
+            return ""
+
+
 class LichSuTrangThaiLichHen(models.Model):
-    lich_hen_kham = models.ForeignKey(LichHenKham, on_delete=models.CASCADE, related_name="lich_hen")
-    trang_thai_lich_hen = models.ForeignKey(TrangThaiLichHen, on_delete=models.CASCADE, related_name="trang_thai_lich_hen")
+    lich_hen_kham = models.ForeignKey(
+        LichHenKham, on_delete=models.CASCADE, related_name="lich_hen")
+    trang_thai_lich_hen = models.ForeignKey(
+        TrangThaiLichHen, on_delete=models.CASCADE, related_name="trang_thai_lich_hen")
     # Nêu rõ nguyên nhân dẫn đến trạng thái đó
-    chi_tiet_trang_thai = models.CharField(max_length=500, null=True, blank=True)
+    chi_tiet_trang_thai = models.CharField(
+        max_length=500, null=True, blank=True)
 
     thoi_gian_tao = models.DateTimeField(auto_now_add=True)
 
+
 def get_sentinel_dich_vu():
     return DichVuKham.objects.get_or_create(ten_dich_vu='deleted')[0]
+
 
 class TrangThaiKhoaKham(models.Model):
     """ Tất cả các trạng thái có thể xảy ra trong phòng khám """
@@ -716,7 +794,8 @@ class TrangThaiKhoaKham(models.Model):
         verbose_name_plural = "Trạng Thái Khoa Khám"
 
     def __str__(self):
-        return f"({self.id})" + self.trang_thai_khoa_kham 
+        return f"({self.id})" + self.trang_thai_khoa_kham
+
 
 class TrangThaiChuoiKham(models.Model):
     trang_thai_chuoi_kham = models.CharField(max_length=255)
@@ -728,26 +807,35 @@ class TrangThaiChuoiKham(models.Model):
     def __str__(self):
         return f"({self.id})" + self.trang_thai_chuoi_kham
 
+
 def get_default_trang_thai_chuoi_kham():
     return TrangThaiChuoiKham.objects.get_or_create(trang_thai_chuoi_kham="Đang chờ")[0]
 
+
 def get_default_trang_thai_khoa_kham():
     return TrangThaiKhoaKham.objects.get_or_create(trang_thai_khoa_kham="Đang chờ")[0]
+
 
 class ChuoiKham(models.Model):
     """ Mỗi bệnh nhân khi tới phòng khám để sau khi khám tổng quát thì đều sẽ có một chuỗi khám.
     Do chuỗi khám này có tính tích lũy nên bệnh nhân có thể dễ dàng xem lại được lịch sử khám của mình kết hợp với các kết quả khám tại phòng khám """
     ma_lk = models.CharField(max_length=100, null=True, blank=True)
-    benh_nhan = models.ForeignKey(User, on_delete=models.CASCADE, related_name="chuoi_kham")
-    bac_si_dam_nhan = models.ForeignKey(User, on_delete=models.SET_NULL, related_name="bac_si_chuoi_kham", null=True, blank=True)
-    lich_hen = models.ForeignKey(LichHenKham, on_delete=models.CASCADE, null=True, blank=True, related_name='danh_sach_chuoi_kham')
+    benh_nhan = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="chuoi_kham")
+    bac_si_dam_nhan = models.ForeignKey(
+        User, on_delete=models.SET_NULL, related_name="bac_si_chuoi_kham", null=True, blank=True)
+    lich_hen = models.ForeignKey(LichHenKham, on_delete=models.CASCADE,
+                                 null=True, blank=True, related_name='danh_sach_chuoi_kham')
     thoi_gian_bat_dau = models.DateTimeField(null=True, blank=True)
     thoi_gian_ket_thuc = models.DateTimeField(null=True, blank=True)
     thoi_gian_tai_kham = models.DateTimeField(null=True, blank=True)
-    trang_thai = models.ForeignKey(TrangThaiChuoiKham, on_delete=models.CASCADE, related_name="trang_thai", null=True, blank=True)
+    trang_thai = models.ForeignKey(
+        TrangThaiChuoiKham, on_delete=models.CASCADE, related_name="trang_thai", null=True, blank=True)
 
-    thoi_gian_tao = models.DateTimeField(auto_now_add=True, blank=True, null=True)
-    thoi_gian_cap_nhat = models.DateTimeField(auto_now=True, blank=True, null=True)
+    thoi_gian_tao = models.DateTimeField(
+        auto_now_add=True, blank=True, null=True)
+    thoi_gian_cap_nhat = models.DateTimeField(
+        auto_now=True, blank=True, null=True)
 
     class Meta:
         verbose_name = "Chuỗi Khám"
@@ -772,13 +860,13 @@ class ChuoiKham(models.Model):
             return "1"
         else:
             return (self.thoi_gian_ket_thuc - self.thoi_gian_bat_dau).days
-    
+
     def get_ket_qua_dieu_tri(self):
         return self.ket_qua_tong_quat.all()[0].ket_qua_dieu_tri
 
     def get_ngay_ttoan(self):
         return self.hoa_don_dich_vu.thoi_gian_tao.strftime("%Y%m%d%H%M")
-    
+
     def get_tien_thuoc(self):
         return self.don_thuoc_chuoi_kham.all()[0].hoa_don_thuoc.tong_tien
 
@@ -795,7 +883,7 @@ class ChuoiKham(models.Model):
         return ""
 
     def get_chi_phi_dich_vu(self):
-        
+
         if (hasattr(self, 'hoa_don_dich_vu')):
             if self.hoa_don_dich_vu.tong_tien is not None:
                 tong_tien = "{:,}".format(int(self.hoa_don_dich_vu.tong_tien))
@@ -805,7 +893,7 @@ class ChuoiKham(models.Model):
             tong_tien = '-'
 
         return tong_tien
-    
+
     def get_chi_phi_lam_sang(self):
         lich_hen = self.lich_hen
         if lich_hen is not None:
@@ -815,7 +903,7 @@ class ChuoiKham(models.Model):
             else:
                 tong_tien = '-'
             return tong_tien
-        else: 
+        else:
             return '-'
 
     def get_chi_phi_thuoc(self):
@@ -833,7 +921,6 @@ class ChuoiKham(models.Model):
             tong_tien = '-'
         return tong_tien
 
-
     @property
     def check_don_thuoc_exist(self):
         don_thuoc = self.don_thuoc_chuoi_kham.all().first()
@@ -844,11 +931,12 @@ class ChuoiKham(models.Model):
 
     def get_id_don_thuoc(self):
         don_thuoc = self.don_thuoc_chuoi_kham.all().first()
-        id_don_thuoc = don_thuoc.id 
+        id_don_thuoc = don_thuoc.id
         return id_don_thuoc
 
     def check_da_thanh_toan(self):
-        da_thanh_toan = TrangThaiChuoiKham.objects.filter(trang_thai_chuoi_kham='Đã Thanh Toán').first()
+        da_thanh_toan = TrangThaiChuoiKham.objects.filter(
+            trang_thai_chuoi_kham='Đã Thanh Toán').first()
         if self.trang_thai == da_thanh_toan:
             return True
         else:
@@ -863,22 +951,38 @@ class ChuoiKham(models.Model):
         except HoaDonChuoiKham.DoesNotExist:
             flag = False
         return flag
+      
+    def check_thanh_toan_them(self):
+        flag = False
+        if self.check_thanh_toan():
+            tong_tien_thanh_toan = self.hoa_don_dich_vu.tong_tien
+            tong_tien_phan_khoa = self.phan_khoa_kham.all().aggregate(
+                tong_tien=Sum('dich_vu_kham__don_gia'))['tong_tien']
+            if int(tong_tien_phan_khoa) > int(tong_tien_thanh_toan):
+                flag = True
+        return flag
 
     def get_tong_tien_phan_khoa(self):
         total = 0
         for phan_khoa in self.phan_khoa_kham.all():
             total += phan_khoa.get_gia_dich_vu()
-        return total 
+        return total
+
 
 class InPaidBilledManager(models.Manager):
     def get_queryset(self):
         return super(InPaidBilledManager, self).get_queryset().filter(check_exists_in_paid_bill=True)
 
+
 class PhanKhoaKham(models.Model):
-    benh_nhan = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-    dich_vu_kham = models.ForeignKey(DichVuKham, on_delete=models.SET_NULL, null=True, blank=True, related_name="phan_khoa_dich_vu")
-    bac_si_lam_sang = models.ForeignKey(User, on_delete=models.SET_NULL, related_name="bac_si", null=True)
-    chuoi_kham = models.ForeignKey(ChuoiKham, on_delete=models.CASCADE, null=True, blank=True, related_name="phan_khoa_kham")
+    benh_nhan = models.ForeignKey(
+        User, on_delete=models.CASCADE, null=True, blank=True)
+    dich_vu_kham = models.ForeignKey(
+        DichVuKham, on_delete=models.SET_NULL, null=True, blank=True, related_name="phan_khoa_dich_vu")
+    bac_si_lam_sang = models.ForeignKey(
+        User, on_delete=models.SET_NULL, related_name="bac_si", null=True)
+    chuoi_kham = models.ForeignKey(
+        ChuoiKham, on_delete=models.CASCADE, null=True, blank=True, related_name="phan_khoa_kham")
     bao_hiem = models.BooleanField(default=False)
 
     priority = models.SmallIntegerField(null=True, blank=True)
@@ -886,10 +990,13 @@ class PhanKhoaKham(models.Model):
     thoi_gian_bat_dau = models.DateTimeField(null=True, blank=True)
     thoi_gian_ket_thuc = models.DateTimeField(null=True, blank=True)
 
-    trang_thai = models.ForeignKey(TrangThaiKhoaKham, on_delete=models.SET_NULL, null=True)
+    trang_thai = models.ForeignKey(
+        TrangThaiKhoaKham, on_delete=models.SET_NULL, null=True)
 
-    thoi_gian_tao = models.DateTimeField(null=True, blank=True, auto_now_add=True)
-    thoi_gian_cap_nhat = models.DateTimeField(null=True, blank=True, auto_now=True)
+    thoi_gian_tao = models.DateTimeField(
+        null=True, blank=True, auto_now_add=True)
+    thoi_gian_cap_nhat = models.DateTimeField(
+        null=True, blank=True, auto_now=True)
 
     objects = models.Manager()
     in_paid_bill = InPaidBilledManager()
@@ -950,7 +1057,7 @@ class PhanKhoaKham(models.Model):
             return self.benh_nhan.tuoi()
         else:
             return "-"
-    
+
     def get_gioi_tinh_benh_nhan(self):
         if self.benh_nhan is not None:
             if self.benh_nhan.gioi_tinh == '1':
@@ -967,17 +1074,19 @@ class PhanKhoaKham(models.Model):
             return self.bac_si_lam_sang.ho_ten
         else:
             return "Không có"
-        
+
     def gia_dich_vu_theo_bao_hiem(self):
-        gia = self.dich_vu_kham.gia_dich_vu_kham.gia 
+        gia = self.dich_vu_kham.gia_dich_vu_kham.gia
         if self.bao_hiem:
-            tong_tien = gia * decimal.Decimal((1 - (self.dich_vu_kham.bao_hiem_dich_vu_kham.dang_bao_hiem / 100)))
+            tong_tien = gia * \
+                decimal.Decimal(
+                    (1 - (self.dich_vu_kham.bao_hiem_dich_vu_kham.dang_bao_hiem / 100)))
         else:
             tong_tien = gia
         return tong_tien
 
     def gia(self):
-        return self.dich_vu_kham.gia_dich_vu_kham.gia 
+        return self.dich_vu_kham.gia_dich_vu_kham.gia
 
     def muc_bao_hiem(self):
         return self.dich_vu_kham.bao_hiem_dich_vu_kham.dang_bao_hiem
@@ -996,7 +1105,7 @@ class PhanKhoaKham(models.Model):
 
     def get_t_nguonkhac(self):
         return 0
-    
+
     def get_t_ngoaids(self):
         return 0
 
@@ -1009,7 +1118,7 @@ class PhanKhoaKham(models.Model):
             return True
         else:
             return False
-    
+
     def get_gia_dich_vu(self):
         if self.dich_vu_kham is not None:
             tong_tien = int(self.dich_vu_kham.don_gia)
@@ -1018,7 +1127,6 @@ class PhanKhoaKham(models.Model):
 
         return tong_tien
 
- 
     def check_exists_in_paid_bill(self):
         flag = False
         if self.chuoi_kham is not None:
@@ -1044,6 +1152,7 @@ class PhanKhoaKham(models.Model):
                 flag = True
         return flag
 
+
 @receiver(post_save, sender=PhanKhoaKham)
 def send_func_room_info(sender, instance, created, **kwargs):
     if created:
@@ -1054,43 +1163,56 @@ def send_func_room_info(sender, instance, created, **kwargs):
             }
         )
 
+
 class LichSuTrangThaiKhoaKham(models.Model):
-    phan_khoa_kham = models.ForeignKey(PhanKhoaKham, on_delete=models.CASCADE, null=True, blank=True)
-    trang_thai_khoa_kham = models.ForeignKey(TrangThaiKhoaKham, on_delete=models.CASCADE, null=True, blank=True)
+    phan_khoa_kham = models.ForeignKey(
+        PhanKhoaKham, on_delete=models.CASCADE, null=True, blank=True)
+    trang_thai_khoa_kham = models.ForeignKey(
+        TrangThaiKhoaKham, on_delete=models.CASCADE, null=True, blank=True)
     # Nêu rõ nguyên nhân dẫn tới trạng thái đó
-    chi_tiet_trang_thai = models.CharField(max_length=500, null=True, blank=True)
-    
+    chi_tiet_trang_thai = models.CharField(
+        max_length=500, null=True, blank=True)
+
     thoi_gian_tao = models.DateTimeField(auto_now_add=True)
 
+
 class LichSuChuoiKham(models.Model):
-    chuoi_kham = models.ForeignKey(ChuoiKham, on_delete=models.CASCADE, null=True, blank=True)
-    trang_thai = models.ForeignKey(TrangThaiChuoiKham, on_delete=models.CASCADE, null=True, blank=True)
+    chuoi_kham = models.ForeignKey(
+        ChuoiKham, on_delete=models.CASCADE, null=True, blank=True)
+    trang_thai = models.ForeignKey(
+        TrangThaiChuoiKham, on_delete=models.CASCADE, null=True, blank=True)
     # Nêu rõ nguyên nhân dẫn tới trạng thái đó
-    chi_tiet_trang_thai = models.CharField(max_length=500, null=True, blank=True)
-    
+    chi_tiet_trang_thai = models.CharField(
+        max_length=500, null=True, blank=True)
+
     thoi_gian_tao = models.DateTimeField(auto_now_add=True)
+
 
 class KetQuaTongQuat(models.Model):
     """ Kết quả tổng quát của người dùng sau một lần đến thăm khám tại phòng khám """
 
     RESULT_CHOICES = (
         ("1", "Khỏi"),
-        ("2", "Đỡ"), 
+        ("2", "Đỡ"),
         ("3", "Không Thay Đổi"),
         ("4", "Nặng Hơn"),
         ("5", "Tử Vong"),
     )
 
-    chuoi_kham = models.ForeignKey(ChuoiKham, on_delete=models.SET_NULL, null=True, related_name="ket_qua_tong_quat")
+    chuoi_kham = models.ForeignKey(
+        ChuoiKham, on_delete=models.SET_NULL, null=True, related_name="ket_qua_tong_quat")
     # benh_nhan = models.ForeignKey(User, on_delete=models.SET(get_sentinel_user))
-    ma_benh = models.ForeignKey('DanhMucBenh', on_delete=models.SET_NULL, null=True, blank=True)
+    ma_benh = models.ForeignKey(
+        'DanhMucBenh', on_delete=models.SET_NULL, null=True, blank=True)
     ma_ket_qua = models.CharField(max_length=50, null=True, blank=True)
     mo_ta = models.CharField(max_length=255, null=True, blank=True)
     ket_luan = models.TextField(null=True, blank=True)
 
-    ket_qua_dieu_tri = models.CharField(max_length=5, choices=RESULT_CHOICES, null=True, blank=True)
+    ket_qua_dieu_tri = models.CharField(
+        max_length=5, choices=RESULT_CHOICES, null=True, blank=True)
 
-    thoi_gian_tao = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    thoi_gian_tao = models.DateTimeField(
+        auto_now_add=True, null=True, blank=True)
 
     class Meta:
         verbose_name = "Kết Quả Tổng Quát"
@@ -1106,7 +1228,7 @@ class KetQuaTongQuat(models.Model):
         if not self.mo_ta:
             return "Không có mô tả"
         return self.mo_ta
-    
+
     def get_ket_luan(self):
         if not self.ket_luan:
             return "Không có kết luận"
@@ -1119,19 +1241,25 @@ class KetQuaTongQuat(models.Model):
         else:
             return False
 
+
 class KetQuaChuyenKhoa(models.Model):
-    """ Kết quả của khám chuyên khoa mà người dùng có thể nhận được """ 
-    ma_ket_qua = models.CharField(max_length=50, null=True, blank=True, unique=True)
-    bac_si_chuyen_khoa = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='ket_qua_bac_si_chuyen_khoa')
-    phan_khoa_kham = models.ForeignKey(PhanKhoaKham, on_delete=models.CASCADE, null=True, blank=True, related_name="ket_qua_chuyen_khoa")
-    ket_qua_tong_quat = models.ForeignKey(KetQuaTongQuat, on_delete=models.CASCADE, related_name="ket_qua_chuyen_khoa")
+    """ Kết quả của khám chuyên khoa mà người dùng có thể nhận được """
+    ma_ket_qua = models.CharField(
+        max_length=50, null=True, blank=True, unique=True)
+    bac_si_chuyen_khoa = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, blank=True, related_name='ket_qua_bac_si_chuyen_khoa')
+    phan_khoa_kham = models.ForeignKey(
+        PhanKhoaKham, on_delete=models.CASCADE, null=True, blank=True, related_name="ket_qua_chuyen_khoa")
+    ket_qua_tong_quat = models.ForeignKey(
+        KetQuaTongQuat, on_delete=models.CASCADE, related_name="ket_qua_chuyen_khoa")
     mo_ta = models.CharField(max_length=255, null=True, blank=True)
     ket_luan = models.TextField(null=True, blank=True)
 
-    chi_so = models.BooleanField(default = False)
+    chi_so = models.BooleanField(default=False)
     html = models.BooleanField(default=False)
 
-    thoi_gian_tao = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    thoi_gian_tao = models.DateTimeField(
+        auto_now_add=True, null=True, blank=True)
 
     class Meta:
         verbose_name = "Kết Quả Chuyên Khoa"
@@ -1148,7 +1276,7 @@ class KetQuaChuyenKhoa(models.Model):
         if not self.mo_ta:
             return "Không có mô tả"
         return self.mo_ta
-    
+
     def get_ket_luan(self):
         if not self.ket_luan:
             return "Không có kết luận"
@@ -1163,41 +1291,49 @@ class KetQuaChuyenKhoa(models.Model):
         else:
             return "Không xác định"
 
+
 key_store = FileSystemStorage()
+
 
 class FileKetQua(models.Model):
     """ File kết quả của mỗi người dùng """
     file_prepend = 'user/documents/'
-    file = models.FileField(upload_to=file_url,null=True, blank=True, storage=key_store)
+    file = models.FileField(upload_to=file_url, null=True,
+                            blank=True, storage=key_store)
     # file = models.CharField(max_length=500, null=True, blank=True)
     thoi_gian_tao = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name = "Tài Liệu"
         verbose_name_plural = "Tài Liệu"
-    
+
     def __unicode__(self):
         return self.file.url
 
     def filename(self):
         return os.path.basename(self.file.name)
-    
+
     def get_url(self):
         return self.file.url
     # ket_qua_chuyen_khoa = models.ForeignKey(KetQuaChuyenKhoa, on_delete=models.SET_NULL, null=True, blank=True, related_name="file_ket_qua_chuyen_khoa")
     # ket_qua_tong_quat = models.ForeignKey(KetQuaTongQuat, on_delete=models.SET_NULL, null=True, blank=True, related_name="file_ket_qua_tong_quat")
 
+
 class FileKetQuaTongQuat(models.Model):
-    file = models.ForeignKey(FileKetQua, on_delete=models.CASCADE, related_name="file_tong_quat")
-    ket_qua_tong_quat = models.ForeignKey(KetQuaTongQuat, on_delete=models.CASCADE, related_name="file_ket_qua_tong_quat")
+    file = models.ForeignKey(
+        FileKetQua, on_delete=models.CASCADE, related_name="file_tong_quat")
+    ket_qua_tong_quat = models.ForeignKey(
+        KetQuaTongQuat, on_delete=models.CASCADE, related_name="file_ket_qua_tong_quat")
 
     class Meta:
         verbose_name = "File Kết Quả Tổng Quát"
         verbose_name_plural = "File Kết Quả Tổng Quát"
 
+
 class FilePhongKham(models.Model):
     file_prepend = 'phongkham/documents/'
-    file = models.FileField(upload_to=file_url, null=True, blank=True, storage=key_store)
+    file = models.FileField(upload_to=file_url, null=True,
+                            blank=True, storage=key_store)
 
     thoi_gian_tao = models.DateTimeField(auto_now_add=True)
 
@@ -1205,29 +1341,34 @@ class FilePhongKham(models.Model):
         verbose_name = "Tài Liệu Phòng Khám"
         verbose_name_plural = "Tài Liệu Phòng Khám"
 
+
 class FileKetQuaChuyenKhoa(models.Model):
-    file = models.ForeignKey(FileKetQua, on_delete=models.CASCADE, related_name="file_chuyen_khoa")
-    ket_qua_chuyen_khoa = models.ForeignKey(KetQuaChuyenKhoa, on_delete=models.CASCADE, related_name="file_ket_qua_chuyen_khoa")
+    file = models.ForeignKey(
+        FileKetQua, on_delete=models.CASCADE, related_name="file_chuyen_khoa")
+    ket_qua_chuyen_khoa = models.ForeignKey(
+        KetQuaChuyenKhoa, on_delete=models.CASCADE, related_name="file_ket_qua_chuyen_khoa")
 
     class Meta:
         verbose_name = "File Kết Quả Chuyên Khoa"
         verbose_name_plural = "File Kết Quả Chuyên Khoa"
 
-from django.db.models import CharField
-from django.db.models.functions import Lower
+
 CharField.register_lookup(Lower)
+
 
 class BaiDang(models.Model):
     file_prepend = 'bai_dang/'
     tieu_de = models.CharField(null=True, blank=True, max_length=1024)
-    hinh_anh = models.ImageField(upload_to = file_url, null=True, blank=True)
+    hinh_anh = models.ImageField(upload_to=file_url, null=True, blank=True)
     noi_dung_chinh = models.TextField(null=True, blank=True)
     noi_dung = models.TextField(null=True, blank=True)
     thoi_gian_bat_dau = models.DateTimeField(null=True, blank=True)
     thoi_gian_ket_thuc = models.DateTimeField(null=True, blank=True)
-    nguoi_dang_bai = models.ForeignKey(User, on_delete=models.SET_NULL, related_name="nguoi_dang_bai", null=True, blank=True)
+    nguoi_dang_bai = models.ForeignKey(
+        User, on_delete=models.SET_NULL, related_name="nguoi_dang_bai", null=True, blank=True)
 
-    thoi_gian_tao = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    thoi_gian_tao = models.DateTimeField(
+        auto_now_add=True, null=True, blank=True)
 
     class Meta:
         verbose_name = "Bài Đăng"
@@ -1240,10 +1381,12 @@ class BaiDang(models.Model):
         )
 
     def get_truncated_noi_dung_chinh(self):
-        noi_dung_chinh = (self.noi_dung_chinh[:75] + '...') if len(self.noi_dung_chinh) > 75 else self.noi_dung_chinh
+        noi_dung_chinh = (self.noi_dung_chinh[:75] + '...') if len(
+            self.noi_dung_chinh) > 75 else self.noi_dung_chinh
         return noi_dung_chinh
 
 # * ------ Update 19/01 -------
+
 
 class NhomChiSoXetNghiem(models.Model):
     ten_nhom = models.CharField(max_length=255, null=True, blank=True)
@@ -1255,13 +1398,18 @@ class NhomChiSoXetNghiem(models.Model):
     def __str__(self):
         return f"({self.id}){self.ten_nhom}"
 
+
 class ChiSoXetNghiem(models.Model):
-    dich_vu_kham = models.ForeignKey(DichVuKham, on_delete=models.CASCADE, null=True, blank=True, related_name="chi_so_xet_nghiem")
-    doi_tuong_xet_nghiem = models.ForeignKey("DoiTuongXetNghiem", on_delete=models.SET_NULL, null=True, blank=True)
-    nhom_chi_so = models.ForeignKey("NhomChiSoXetNghiem", on_delete=models.CASCADE, null=True, blank=True)
+    dich_vu_kham = models.ForeignKey(
+        DichVuKham, on_delete=models.CASCADE, null=True, blank=True, related_name="chi_so_xet_nghiem")
+    doi_tuong_xet_nghiem = models.ForeignKey(
+        "DoiTuongXetNghiem", on_delete=models.SET_NULL, null=True, blank=True)
+    nhom_chi_so = models.ForeignKey(
+        "NhomChiSoXetNghiem", on_delete=models.CASCADE, null=True, blank=True)
     ma_chi_so = models.CharField(max_length=10, null=True, blank=True)
     ten_chi_so = models.CharField(max_length=255, null=True, blank=True)
-    chi_tiet = models.ForeignKey("ChiTietChiSoXetNghiem", on_delete=models.CASCADE, null=True, blank=True)
+    chi_tiet = models.ForeignKey(
+        "ChiTietChiSoXetNghiem", on_delete=models.CASCADE, null=True, blank=True)
 
     class Meta:
         verbose_name = "Chỉ Số Xét Nghiệm"
@@ -1276,9 +1424,12 @@ class ChiSoXetNghiem(models.Model):
     def __str__(self):
         return f"({self.ma_chi_so}){self.ten_chi_so}/{self.doi_tuong_xet_nghiem}"
 
+
 class ChiTietChiSoXetNghiem(models.Model):
-    chi_so_binh_thuong_min = models.CharField(null=True, blank=True, max_length=10)
-    chi_so_binh_thuong_max = models.CharField(null=True, blank=True, max_length=10)
+    chi_so_binh_thuong_min = models.CharField(
+        null=True, blank=True, max_length=10)
+    chi_so_binh_thuong_max = models.CharField(
+        null=True, blank=True, max_length=10)
     chi_so_binh_thuong = models.CharField(null=True, blank=True, max_length=10)
     don_vi_do = models.CharField(max_length=50, null=True, blank=True)
     ghi_chu = models.CharField(max_length=50, null=True, blank=True)
@@ -1311,13 +1462,13 @@ class ChiTietChiSoXetNghiem(models.Model):
             return ""
         else:
             return self.chi_so_binh_thuong_max
-    
+
     def get_chi_so_binh_thuong(self):
         if not self.chi_so_binh_thuong:
             return ""
         else:
             return self.chi_so_binh_thuong
-    
+
     def get_don_vi_do(self):
         if not self.don_vi_do:
             return ""
@@ -1330,6 +1481,7 @@ class ChiTietChiSoXetNghiem(models.Model):
         else:
             return self.ghi_chu
 
+
 class DoiTuongXetNghiem(models.Model):
     MALE = "1"
     FEMALE = "2"
@@ -1339,21 +1491,24 @@ class DoiTuongXetNghiem(models.Model):
         (FEMALE, "Nữ"),
         (UNDEFINED, "Chưa Xác Định"),
     )
-    gioi_tinh = models.CharField(choices=gender_choices, max_length=5, null=True, blank=True)
-    do_tuoi = models.ForeignKey('DoTuoiXetNghiem', on_delete=models.CASCADE, null=True, blank=True)
+    gioi_tinh = models.CharField(
+        choices=gender_choices, max_length=5, null=True, blank=True)
+    do_tuoi = models.ForeignKey(
+        'DoTuoiXetNghiem', on_delete=models.CASCADE, null=True, blank=True)
 
     class Meta:
         verbose_name = "Đối Tượng Xét Nghiệm"
         verbose_name_plural = "Đối Tượng Xét Nghiệm"
 
     def __str__(self):
-        if self.gioi_tinh == "1":        
+        if self.gioi_tinh == "1":
             return f"Nam({self.do_tuoi})"
         elif self.gioi_tinh == "2":
             return f"Nữ({self.do_tuoi})"
         else:
             return f"Không Xác Định({self.do_tuoi})"
-    
+
+
 class DoTuoiXetNghiem(models.Model):
     do_tuoi_min = models.PositiveIntegerField(null=True, blank=True)
     do_tuoi_max = models.PositiveIntegerField(null=True, blank=True)
@@ -1371,6 +1526,7 @@ class DoTuoiXetNghiem(models.Model):
         else:
             return str(self.do_tuoi_min) + "-" + str(self.do_tuoi_max)
 
+
 class KetQuaXetNghiem(models.Model):
     OK = "1"
     NG = "0"
@@ -1378,11 +1534,15 @@ class KetQuaXetNghiem(models.Model):
         (OK, "Bình thường"),
         (NG, "Bất bình thường"),
     )
-    phan_khoa_kham = models.ForeignKey(PhanKhoaKham, on_delete=models.CASCADE, null=True, blank=True)
-    ket_qua_chuyen_khoa = models.ForeignKey(KetQuaChuyenKhoa, on_delete=models.CASCADE, null=True, blank=True, related_name="ket_qua_xet_nghiem")
-    chi_so_xet_nghiem = models.ForeignKey(ChiSoXetNghiem, on_delete=models.SET_NULL, null=True, blank=True)
+    phan_khoa_kham = models.ForeignKey(
+        PhanKhoaKham, on_delete=models.CASCADE, null=True, blank=True)
+    ket_qua_chuyen_khoa = models.ForeignKey(
+        KetQuaChuyenKhoa, on_delete=models.CASCADE, null=True, blank=True, related_name="ket_qua_xet_nghiem")
+    chi_so_xet_nghiem = models.ForeignKey(
+        ChiSoXetNghiem, on_delete=models.SET_NULL, null=True, blank=True)
     ket_qua_xet_nghiem = models.CharField(max_length=50, null=True, blank=True)
-    danh_gia_chi_so = models.CharField(choices=judment_choices, max_length=5, null=True, blank=True)
+    danh_gia_chi_so = models.CharField(
+        choices=judment_choices, max_length=5, null=True, blank=True)
     danh_gia_ghi_chu = models.CharField(max_length=100, null=True, blank=True)
 
     class Meta:
@@ -1440,15 +1600,20 @@ class KetQuaXetNghiem(models.Model):
     def get_ten_dvkt(self):
         return self.phan_khoa_kham.dich_vu_kham.ten_dvkt
 
+
 class HtmlKetQua(models.Model):
-    phan_khoa_kham = models.ForeignKey(PhanKhoaKham, on_delete=models.CASCADE, null=True, blank=True)
-    ket_qua_tong_quat = models.ForeignKey(KetQuaTongQuat, on_delete=models.CASCADE, null=True, blank=True, related_name="html_ket_qua_tong_quat")
-    ket_qua_chuyen_khoa = models.ForeignKey(KetQuaChuyenKhoa, on_delete=models.CASCADE, null=True, blank=True, related_name="html_ket_qua")
+    phan_khoa_kham = models.ForeignKey(
+        PhanKhoaKham, on_delete=models.CASCADE, null=True, blank=True)
+    ket_qua_tong_quat = models.ForeignKey(
+        KetQuaTongQuat, on_delete=models.CASCADE, null=True, blank=True, related_name="html_ket_qua_tong_quat")
+    ket_qua_chuyen_khoa = models.ForeignKey(
+        KetQuaChuyenKhoa, on_delete=models.CASCADE, null=True, blank=True, related_name="html_ket_qua")
     noi_dung = models.TextField(null=True, blank=True)
 
     class Meta:
         verbose_name = "Kết Quả Dạng HTML"
         verbose_name_plural = "Kết Quả Dạng HTML"
+
 
 class DanhMucChuongBenh(models.Model):
     stt = models.CharField(max_length=5, null=True, blank=True)
@@ -1459,13 +1624,15 @@ class DanhMucChuongBenh(models.Model):
 
     class Meta:
         verbose_name = "Danh Mục Chương Bệnh"
-        verbose_name_plural = "Danh Mục Chương Bệnh" 
+        verbose_name_plural = "Danh Mục Chương Bệnh"
 
     def __str__(self):
         return self.stt + f" ({self.ma_chuong})"
 
+
 class DanhMucNhomBenh(models.Model):
-    chuong_benh = models.ForeignKey(DanhMucChuongBenh, on_delete=models.CASCADE, null=True, blank=True, related_name="nhom_benh")
+    chuong_benh = models.ForeignKey(
+        DanhMucChuongBenh, on_delete=models.CASCADE, null=True, blank=True, related_name="nhom_benh")
     ma_nhom_chinh = models.CharField(max_length=15, null=True, blank=True)
     ten_nhom_chinh = models.CharField(max_length=255, null=True, blank=True)
     ma_nhom_phu_1 = models.CharField(max_length=15, null=True, blank=True)
@@ -1482,8 +1649,10 @@ class DanhMucNhomBenh(models.Model):
     def __str__(self):
         return self.ten_nhom_chinh
 
+
 class DanhMucLoaiBenh(models.Model):
-    nhom_benh = models.ForeignKey(DanhMucNhomBenh, on_delete=models.CASCADE, null=True, blank=True, related_name="loai_benh")
+    nhom_benh = models.ForeignKey(
+        DanhMucNhomBenh, on_delete=models.CASCADE, null=True, blank=True, related_name="loai_benh")
     ma_loai = models.CharField(max_length=10, null=True, blank=True)
     ten_loai = models.CharField(max_length=255, null=True, blank=True)
 
@@ -1492,12 +1661,14 @@ class DanhMucLoaiBenh(models.Model):
     class Meta:
         verbose_name = "Danh Mục Loại Bệnh"
         verbose_name_plural = "Danh Mục Loại Bệnh"
-    
+
     def __str__(self):
         return self.ten_loai
 
+
 class DanhMucBenh(models.Model):
-    loai_benh = models.ForeignKey(DanhMucLoaiBenh, on_delete=models.CASCADE, null=True, blank=True, related_name="benh")
+    loai_benh = models.ForeignKey(
+        DanhMucLoaiBenh, on_delete=models.CASCADE, null=True, blank=True, related_name="benh")
     ma_benh = models.CharField(max_length=15, null=True, blank=True)
     ten_benh = models.CharField(max_length=1024, null=True, blank=True)
     ma_nhom_bcao_byt = models.CharField(max_length=5, null=True, blank=True)
@@ -1512,6 +1683,7 @@ class DanhMucBenh(models.Model):
     def __str__(self):
         return self.ten_benh
 
+
 class NhomChiPhi(models.Model):
     ma_nhom = models.CharField(max_length=2, null=True, blank=True)
     ten_nhom = models.CharField(max_length=255, null=True, blank=True)
@@ -1524,6 +1696,7 @@ class NhomChiPhi(models.Model):
     def __str__(self):
         return f"({self.ma_nhom}) {self.ten_nhom}"
 
+
 class NhomTaiNan(models.Model):
     ma_nhom = models.CharField(max_length=2, null=True, blank=True)
     ten_nhom = models.CharField(max_length=100, null=True, blank=True)
@@ -1532,8 +1705,10 @@ class NhomTaiNan(models.Model):
     class Meta:
         verbose_name = "Nhóm Tai Nạn"
         verbose_name_plural = "Nhóm Tai Nạn"
+
     def __str__(self):
         return self.ten_nhom
+
 
 class DanhMucKhoa(models.Model):
     stt = models.IntegerField(null=True, blank=True)
@@ -1547,6 +1722,7 @@ class DanhMucKhoa(models.Model):
     def __str__(self):
         return self.ten_khoa
 
+
 class ThietBi(models.Model):
     ma_may = models.CharField(max_length=50, null=True, blank=True)
     ten_may = models.CharField(max_length=255, null=True, blank=True)
@@ -1559,6 +1735,7 @@ class ThietBi(models.Model):
     def __str__(self):
         return self.ten_may
 
+
 class GoiThau(models.Model):
     ma_goi = models.CharField(max_length=5, null=True, blank=True)
     goi = models.CharField(max_length=255, null=True, blank=True)
@@ -1569,6 +1746,7 @@ class GoiThau(models.Model):
         verbose_name = "Gói Thầu"
         verbose_name_plural = "Gói Thầu"
 
+
 class DuongDungThuoc(models.Model):
     stt = models.IntegerField(null=True, blank=True)
     ma_duong_dung = models.CharField(max_length=5, null=True, blank=True)
@@ -1578,10 +1756,13 @@ class DuongDungThuoc(models.Model):
         verbose_name = "Đường Dùng Thuốc"
         verbose_name_plural = "Đường Dùng Thuốc"
 
+
 class MauPhieu(models.Model):
-    dich_vu = models.ForeignKey(DichVuKham, on_delete=models.SET_NULL, null=True, blank=True, related_name="mau_phieu")
+    dich_vu = models.ForeignKey(
+        DichVuKham, on_delete=models.SET_NULL, null=True, blank=True, related_name="mau_phieu")
     ten_mau = models.CharField(max_length=255, null=True, blank=True)
-    codename = models.CharField(max_length=255, null=True, blank=True, unique=True)
+    codename = models.CharField(
+        max_length=255, null=True, blank=True, unique=True)
     noi_dung = models.TextField()
 
     thoi_gian_tao = models.DateTimeField(editable=False, null=True, blank=True)
@@ -1606,6 +1787,7 @@ class MauPhieu(models.Model):
         self.thoi_gian_cap_nhat = timezone.now()
         return super(MauPhieu, self).save(*args, **kwargs)
 
+
 class Province(models.Model):
     id = models.IntegerField(primary_key=True, unique=True)
     name = models.CharField(max_length=255, null=True, blank=True)
@@ -1614,19 +1796,23 @@ class Province(models.Model):
     def __str__(self):
         return self.name
 
+
 class District(models.Model):
     id = models.IntegerField(primary_key=True, unique=True)
-    province = models.ForeignKey(Province, on_delete=models.CASCADE, related_name="district")
+    province = models.ForeignKey(
+        Province, on_delete=models.CASCADE, related_name="district")
     name = models.CharField(max_length=255, null=True, blank=True)
     type = models.CharField(max_length=255, null=True, blank=True)
 
     def __str__(self):
         return self.name
 
+
 class Ward(models.Model):
     id = models.IntegerField(primary_key=True, unique=True)
-    district = models.ForeignKey(District, on_delete=models.CASCADE, related_name="ward")
-    name = models.CharField(max_length=255, null=True, blank=True)  
+    district = models.ForeignKey(
+        District, on_delete=models.CASCADE, related_name="ward")
+    name = models.CharField(max_length=255, null=True, blank=True)
     type = models.CharField(max_length=255, null=True, blank=True)
 
     def __str__(self):

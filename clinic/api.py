@@ -2722,23 +2722,7 @@ class DanhSachBenhNhanChoLamSang(generics.ListCreateAPIView):
                 trang_thai=trang_thai_lich_hen).order_by('-id')
 
         return queryset
-    # def get(self, request, format=None):
-    #     trang_thai_lam_sang = TrangThaiLichHen.objects.get_or_create(ten_trang_thai = "Đã Thanh Toán Lâm Sàng")[0]
-    #     trang_thai_dich_vu = TrangThaiLichHen.objects.get_or_create(ten_trang_thai = "Đã Thanh Toán Dịch Vụ")[0]
-    #     trang_thai_phan_khoa = TrangThaiLichHen.objects.get_or_create(ten_trang_thai = "Đã Phân Khoa")[0]
-    #     now = timezone.localtime(timezone.now())
-    #     tomorrow = now + timedelta(1)
-    #     today_end = tomorrow.replace(hour=0, minute=0, second=0)
 
-    #     lich_hen = LichHenKham.objects.filter(Q(trang_thai=trang_thai_lam_sang)| Q(trang_thai=trang_thai_dich_vu) | Q(trang_thai=trang_thai_phan_khoa)).filter(thoi_gian_bat_dau__lte=today_end)
-    #     serializer = LichHenKhamSerializer(lich_hen, many=True, context={'request':request})
-    #     response = {
-    #         "error": False,
-    #         "status": status.HTTP_200_OK,
-    #         "message": "Danh Sach Lich Hen Kham",
-    #         "data": serializer.data
-    #     }
-    #     return Response(response)
 
 # * --- update 6/1/2021 ---
 

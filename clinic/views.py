@@ -1348,8 +1348,9 @@ def hoa_don_dich_vu(request, **kwargs):
     check_da_thanh_toan = chuoi_kham.check_thanh_toan()
 
     if check_da_thanh_toan == True:
+        check_thanh_toan_them = chuoi_kham.check_thanh_toan_them()
         hoa_don_dich_vu = chuoi_kham.hoa_don_dich_vu
-        print(hoa_don_dich_vu)
+
         tong_tien_hoa_don = hoa_don_dich_vu.tong_tien
         if hoa_don_dich_vu.nguoi_thanh_toan is not None:
             nguoi_thuc_hien = hoa_don_dich_vu.nguoi_thanh_toan.ho_ten.upper()
@@ -1418,6 +1419,7 @@ def hoa_don_dich_vu(request, **kwargs):
             'ma_hoa_don': ma_hoa_don,
             'id_chuoi_kham': id_chuoi_kham,
             'check_da_thanh_toan': check_da_thanh_toan,
+            'check_thanh_toan_them': check_thanh_toan_them,
             'discount': "{:,}".format(int(tien_giam_gia)),
             'tien_phai_thanh_toan': "{:,}".format(int(tien_phai_thanh_toan)),
             'data_dict': data_dict,
