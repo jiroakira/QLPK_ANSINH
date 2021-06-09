@@ -25,6 +25,7 @@ from django.contrib.auth.models import PermissionsMixin
 import re
 import unicodedata
 from django.db.models import Count, F, Sum, Q
+from finance.models import HoaDonChuoiKham
 
 
 def file_url(self, filename):
@@ -950,7 +951,7 @@ class ChuoiKham(models.Model):
         except HoaDonChuoiKham.DoesNotExist:
             flag = False
         return flag
-
+      
     def check_thanh_toan_them(self):
         flag = False
         if self.check_thanh_toan():
