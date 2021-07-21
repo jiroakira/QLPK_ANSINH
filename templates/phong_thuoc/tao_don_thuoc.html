@@ -349,7 +349,7 @@
         type: "remote",
         source: {
           read: {
-            url: HOST_URL + "/router/api/danh_sach_thuoc/",
+            url: HOST_URL + "/api/thuoc/",
             method: "GET",
           },
         },
@@ -422,7 +422,7 @@
 
       options.search = {
         input: $("#kt_datatable_search_query"),
-        key: "generalSearch",
+        key: "search",
       };
 
       var datatable = $("#kt_datatable").KTDatatable(options);
@@ -483,7 +483,7 @@
       };
       options.search = {
         input: $("#kt_datatable_search_query_2"),
-        key: "generalSearch",
+        key: "search",
       };
 
       var datatable = $("#kt_datatable_2").KTDatatable(options);
